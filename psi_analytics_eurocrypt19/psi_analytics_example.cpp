@@ -31,14 +31,13 @@ auto read_test_options(int32_t argcp, char **argvp) {
   ("neles,n",        po::value<decltype(context.neles)>(&context.neles)->default_value(1000u),                      "Number of my elements")
   ("bit-length,b",   po::value<decltype(context.bitlen)>(&context.bitlen)->default_value(61u),                      "Bit-length of the elements")
   ("epsilon,e",      po::value<decltype(context.epsilon)>(&context.epsilon)->default_value(2.4f),                   "Epsilon, a table size multiplier")
-  ("address,a",      po::value<decltype(context.address)>(&context.address)->default_value("127.0.0.1"),            "IP address of the server")
-  ("port,p",         po::value<decltype(context.port)>(&context.port)->default_value(7777),                         "Port of the server")
   ("threads,t",      po::value<decltype(context.nthreads)>(&context.nthreads)->default_value(1),                    "Number of threads")
-  ("others-neles,o", po::value<decltype(context.notherpartyselems)>(&context.notherpartyselems)->default_value(0u), "Number of other party's elements")
   ("threshold,c",    po::value<decltype(context.threshold)>(&context.threshold)->default_value(0u),                 "Show PSI size if it is > threshold")
   ("nmegabins,m",    po::value<decltype(context.nmegabins)>(&context.nmegabins)->default_value(1u),                 "Number of mega bins")
   ("polysize,s",     po::value<decltype(context.polynomialsize)>(&context.polynomialsize)->default_value(0u),       "Size of the polynomial(s), default: neles")
   ("functions,f",    po::value<decltype(context.nfuns)>(&context.nfuns)->default_value(2u),                         "Number of hash functions in hash tables")
+  ("num_parties,np",    po::value<decltype(context.np)>(&context.np)->default_value(100u),                         "Number of parties")
+  ("file_address,np",    po::value<decltype(context.file_address)>(&context.file_address)->default_value("../../files/addresses"),                         "IP Addresses")
   ("type,y",         po::value<std::string>(&type)->default_value("None"),                                          "Function type {None, Threshold, Sum, SumIfGtThreshold}");
   // clang-format on
 
@@ -73,18 +72,35 @@ auto read_test_options(int32_t argcp, char **argvp) {
     throw std::runtime_error(error_msg.c_str());
   }
 
-  if (context.notherpartyselems == 0) {
-    context.notherpartyselems = context.neles;
-  }
-
   if (context.polynomialsize == 0) {
     context.polynomialsize = context.neles * context.nfuns;
   }
   context.polynomialbytelength = context.polynomialsize * sizeof(std::uint64_t);
 
-  const std::size_t client_neles =
-      context.role == CLIENT ? context.neles : context.notherpartyselems;
-  context.nbins = client_neles * context.epsilon;
+  context.nbins = context.neles * context.epsilon;
+
+  //Setting network parameters
+  if(context.role == P0) {
+    context.address.reserve(context.np);
+    context.port.reserve(context.np);
+    //store addresses of other parties
+    std::ifstream in(filename, std::ifstream::in);
+    if(!exists(filename)) {
+      std::cerr << "Address file doesn't exist" << std::endl;
+      exit(-1);
+    }
+
+    for(int i=0; i< context.np; i++) {
+      in >> context.address[i];
+      context.port[i] = REF_PORT;
+    }
+    in.close();
+  } else {
+    context.address.reserve(1);
+    context.port.reserve(1);
+    context.address[0] = DEF_ADDRESS;
+    context.port[0] = REF_PORT;
+  }
 
   return context;
 }

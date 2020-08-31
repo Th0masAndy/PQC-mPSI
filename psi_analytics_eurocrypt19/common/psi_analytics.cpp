@@ -54,97 +54,32 @@ using duration_millis = std::chrono::duration<double, milliseconds_ratio>;
 
 uint64_t run_psi_analytics(const std::vector<std::uint64_t> &inputs, PsiAnalyticsContext &context) {
   // establish network connection
-  std::unique_ptr<CSocket> sock =
+  /*std::unique_ptr<CSocket> sock =
       EstablishConnection(context.address, context.port, static_cast<e_role>(context.role));
   sock->Close();
   const auto clock_time_total_start = std::chrono::system_clock::now();
+  */
 
   // create hash tables from the elements
-  std::vector<uint64_t> bins;
-  if (context.role == CLIENT) {
-    bins = OpprgPsiClient(inputs, context);
+  if (context.role == P_0) {
+    std::vector<uint64_t> bins;
+    std::vector<uint64_t> agg_bins(context.nbins, 0);
+
+    for(int i=0; i<< context.np-1; i++) {
+      bins = OpprgPsiClient(inputs, context, i);
+
+    }
+
   } else {
+    std::vector<uint64_t> bins;
     bins = OpprgPsiServer(inputs, context);
   }
 
-  // instantiate ABY
-  ABYParty party(static_cast<e_role>(context.role), context.address, context.port, LT, 64,
-                 context.nthreads);
-  party.ConnectAndBaseOTs();
-  auto bc = dynamic_cast<BooleanCircuit *>(
-      party.GetSharings().at(S_BOOL)->GetCircuitBuildRoutine());  // GMW circuit
-  assert(bc);
-
-  share_ptr s_in_server, s_in_client;
-
-  // share inputs in ABY
-  if (context.role == SERVER) {
-    s_in_server = share_ptr(bc->PutSIMDINGate(bins.size(), bins.data(), context.maxbitlen, SERVER));
-    s_in_client = share_ptr(bc->PutDummySIMDINGate(bins.size(), context.maxbitlen));
-  } else {
-    s_in_server = share_ptr(bc->PutDummySIMDINGate(bins.size(), context.maxbitlen));
-    s_in_client = share_ptr(bc->PutSIMDINGate(bins.size(), bins.data(), context.maxbitlen, CLIENT));
-  }
-
-  // compare outputs of OPPRFs for each bin in ABY (using SIMD)
-  auto s_eq = share_ptr(bc->PutEQGate(s_in_server.get(), s_in_client.get()));
-
-  std::vector<share_ptr> bin_results;
-  for (uint32_t i = 0; i < bins.size(); ++i) {
-    uint32_t pos[] = {i};
-    bin_results.emplace_back(bc->PutSubsetGate(s_eq.get(), pos, 1));
-    bin_results.at(i) = share_ptr(bc->PutOUTGate(bin_results.at(i).get(), ALL));
-  }
-
-  share_ptr s_out;
-  auto t_bitlen = static_cast<std::size_t>(std::ceil(std::log2(context.threshold)));
-  auto s_threshold = share_ptr(bc->PutCONSGate(context.threshold, t_bitlen));
-  std::uint64_t const_zero = 0;
-  auto s_zero = share_ptr(bc->PutCONSGate(const_zero, 1));
-
-  if (context.analytics_type == PsiAnalyticsContext::NONE) {
-    // we want to only do benchmarking, so no additional operations
-  } else if (context.analytics_type == PsiAnalyticsContext::THRESHOLD) {
-    auto s_eq_rotated = share_ptr(bc->PutSplitterGate(s_eq.get()));
-    s_out = share_ptr(bc->PutHammingWeightGate(s_eq_rotated.get()));
-    s_out = share_ptr(bc->PutGTGate(s_out.get(), s_threshold.get()));
-  } else if (context.analytics_type == PsiAnalyticsContext::SUM) {
-    auto s_eq_rotated = share_ptr(bc->PutSplitterGate(s_eq.get()));
-    s_out = share_ptr(bc->PutHammingWeightGate(s_eq_rotated.get()));
-  } else if (context.analytics_type == PsiAnalyticsContext::SUM_IF_GT_THRESHOLD) {
-    auto s_eq_rotated = share_ptr(bc->PutSplitterGate(s_eq.get()));
-    s_out = share_ptr(bc->PutHammingWeightGate(s_eq_rotated.get()));
-    auto s_gt_t = share_ptr(bc->PutGTGate(s_out.get(), s_threshold.get()));
-    s_out = share_ptr(bc->PutMUXGate(s_out.get(), s_zero.get(), s_gt_t.get()));
-  } else {
-    throw std::runtime_error("Encountered an unknown analytics type");
-  }
-
-  if (context.analytics_type != PsiAnalyticsContext::NONE) {
-    s_out = share_ptr(bc->PutOUTGate(s_out.get(), ALL));
-  }
-
-  party.ExecCircuit();
-
-  uint64_t output = 0;
-  if (context.analytics_type != PsiAnalyticsContext::NONE) {
-    output = s_out->get_clear_value<uint64_t>();
-  }
-
-  context.timings.aby_setup = party.GetTiming(P_SETUP);
-  context.timings.aby_online = party.GetTiming(P_ONLINE);
-  context.timings.aby_total = context.timings.aby_setup + context.timings.aby_online;
-  context.timings.base_ots_aby = party.GetTiming(P_BASE_OT);
-
-  const auto clock_time_total_end = std::chrono::system_clock::now();
-  const duration_millis clock_time_total_duration = clock_time_total_end - clock_time_total_start;
-  context.timings.total = clock_time_total_duration.count();
-
-  return output;
+  return 1;
 }
 
 std::vector<uint64_t> OpprgPsiClient(const std::vector<uint64_t> &elements,
-                                     PsiAnalyticsContext &context) {
+                                     PsiAnalyticsContext &context, int server_index) {
   const auto start_time = std::chrono::system_clock::now();
   const auto hashing_start_time = std::chrono::system_clock::now();
 
@@ -165,14 +100,14 @@ std::vector<uint64_t> OpprgPsiClient(const std::vector<uint64_t> &elements,
   context.timings.hashing = hashing_duration.count();
   const auto oprf_start_time = std::chrono::system_clock::now();
 
-  std::vector<uint64_t> masks_with_dummies = ot_receiver(cuckoo_table_v, context);
-  
+  std::vector<uint64_t> masks_with_dummies = ot_receiver(cuckoo_table_v, context, server_index);
+
   const auto oprf_end_time = std::chrono::system_clock::now();
   const duration_millis oprf_duration = oprf_end_time - oprf_start_time;
   context.timings.oprf = oprf_duration.count();
 
   std::unique_ptr<CSocket> sock =
-      EstablishConnection(context.address, context.port, static_cast<e_role>(context.role));
+      EstablishConnection(context.address[server_index], context.port[server_index], static_cast<e_role>(context.role));
 
   const auto nbinsinmegabin = ceil_divide(context.nbins, context.nmegabins);
   std::vector<std::vector<ZpMersenneLongElement>> polynomials(context.nmegabins);
@@ -186,12 +121,12 @@ std::vector<uint64_t> OpprgPsiClient(const std::vector<uint64_t> &elements,
   }
 
   std::vector<uint8_t> poly_rcv_buffer(context.nmegabins * context.polynomialbytelength, 0);
-  
+
   const auto receiving_start_time = std::chrono::system_clock::now();
-  
+
   sock->Receive(poly_rcv_buffer.data(), context.nmegabins * context.polynomialbytelength);
   sock->Close();
-  
+
   const auto receiving_end_time = std::chrono::system_clock::now();
   const duration_millis sending_duration = receiving_end_time - receiving_start_time;
   context.timings.polynomials_transmission = sending_duration.count();
@@ -273,7 +208,7 @@ std::vector<uint64_t> OpprgPsiServer(const std::vector<uint64_t> &elements,
   }
 
   std::unique_ptr<CSocket> sock =
-      EstablishConnection(context.address, context.port, static_cast<e_role>(context.role));
+      EstablishConnection(context.address[0], context.port[0], static_cast<e_role>(context.role));
 
   InterpolatePolynomials(polynomials, content_of_bins, masks, context);
 

@@ -41,7 +41,7 @@ using duration_millis = std::chrono::duration<double, milliseconds_ratio>;
 namespace ENCRYPTO {
 // Client
 std::vector<std::uint64_t> ot_receiver(const std::vector<std::uint64_t> &inputs,
-                                       ENCRYPTO::PsiAnalyticsContext &context) {
+                                       ENCRYPTO::PsiAnalyticsContext &context, int server_index) {
   std::vector<std::uint64_t> outputs;
   outputs.reserve(inputs.size());
   std::size_t numOTs = inputs.size();
@@ -58,7 +58,7 @@ std::vector<std::uint64_t> ot_receiver(const std::vector<std::uint64_t> &inputs,
   // set up networking
   std::string name = "n";
   osuCrypto::IOService ios;
-  osuCrypto::Session ep(ios, context.address, context.port + 1, osuCrypto::SessionMode::Client,
+  osuCrypto::Session ep(ios, context.address[server_index], context.port[server_index] + 1, osuCrypto::SessionMode::Client,
                         name);
   auto recvChl = ep.addChannel(name, name);
 
@@ -124,7 +124,7 @@ std::vector<std::vector<std::uint64_t>> ot_sender(
 
   std::string name = "n";
   osuCrypto::IOService ios;
-  osuCrypto::Session ep(ios, context.address, context.port + 1, osuCrypto::SessionMode::Server,
+  osuCrypto::Session ep(ios, context.address[0], context.port[0] + 1, osuCrypto::SessionMode::Server,
                         name);
   auto sendChl = ep.addChannel(name, name);
 

@@ -25,7 +25,6 @@
 namespace ENCRYPTO {
 
 struct PsiAnalyticsContext {
-  uint16_t port;
   uint32_t role;
   uint64_t bitlen;
   uint64_t neles;
@@ -38,7 +37,10 @@ struct PsiAnalyticsContext {
   uint64_t polynomialbytelength;
   uint64_t nmegabins;
   double epsilon;
-  std::string address;
+  uint64_t np;
+  std::string file_address;
+  std::vector<std::string> address;
+  std::vector<uint16_t> port;
 
   enum {
     NONE,                // only calculate the equality of the bin elements - used for benchmarking

@@ -34,7 +34,7 @@
 namespace ENCRYPTO {
 
 std::vector<std::uint64_t> ot_receiver(const std::vector<std::uint64_t>& inputs,
-                                       ENCRYPTO::PsiAnalyticsContext& context);
+                                       ENCRYPTO::PsiAnalyticsContext& context, int server_index);
 
 std::vector<std::vector<std::uint64_t>> ot_sender(
     const std::vector<std::vector<std::uint64_t>>& inputs, ENCRYPTO::PsiAnalyticsContext& context);
