@@ -18,6 +18,7 @@
 #include "abycore/aby/abyparty.h"
 
 #include "common/psi_analytics.h"
+#include "common/constants.h"
 #include "common/psi_analytics_context.h"
 
 auto read_test_options(int32_t argcp, char **argvp) {
@@ -28,7 +29,7 @@ auto read_test_options(int32_t argcp, char **argvp) {
   // clang-format off
   allowed.add_options()("help,h", "produce this message")
   ("role,r",         po::value<decltype(context.role)>(&context.role)->required(),                                  "Role of the node")
-  ("neles,n",        po::value<decltype(context.neles)>(&context.neles)->default_value(1000u),                      "Number of my elements")
+  ("neles,n",        po::value<decltype(context.neles)>(&context.neles)->default_value(100u),                      "Number of my elements")
   ("bit-length,b",   po::value<decltype(context.bitlen)>(&context.bitlen)->default_value(61u),                      "Bit-length of the elements")
   ("epsilon,e",      po::value<decltype(context.epsilon)>(&context.epsilon)->default_value(2.4f),                   "Epsilon, a table size multiplier")
   ("threads,t",      po::value<decltype(context.nthreads)>(&context.nthreads)->default_value(1),                    "Number of threads")
@@ -36,8 +37,8 @@ auto read_test_options(int32_t argcp, char **argvp) {
   ("nmegabins,m",    po::value<decltype(context.nmegabins)>(&context.nmegabins)->default_value(1u),                 "Number of mega bins")
   ("polysize,s",     po::value<decltype(context.polynomialsize)>(&context.polynomialsize)->default_value(0u),       "Size of the polynomial(s), default: neles")
   ("functions,f",    po::value<decltype(context.nfuns)>(&context.nfuns)->default_value(2u),                         "Number of hash functions in hash tables")
-  ("num_parties,np",    po::value<decltype(context.np)>(&context.np)->default_value(100u),                         "Number of parties")
-  ("file_address,np",    po::value<decltype(context.file_address)>(&context.file_address)->default_value("../../files/addresses"),                         "IP Addresses")
+  ("num_parties,np",    po::value<decltype(context.np)>(&context.np)->default_value(4u),                         "Number of parties")
+  ("file_address,fa",    po::value<decltype(context.file_address)>(&context.file_address)->default_value("../../files/addresses"),                         "IP Addresses")
   ("type,y",         po::value<std::string>(&type)->default_value("None"),                                          "Function type {None, Threshold, Sum, SumIfGtThreshold}");
   // clang-format on
 
@@ -81,25 +82,27 @@ auto read_test_options(int32_t argcp, char **argvp) {
 
   //Setting network parameters
   if(context.role == P0) {
-    context.address.reserve(context.np);
     context.port.reserve(context.np);
     //store addresses of other parties
-    std::ifstream in(filename, std::ifstream::in);
-    if(!exists(filename)) {
+    std::ifstream in(context.file_address, std::ifstream::in);
+    /*if(!exists(filename)) {
       std::cerr << "Address file doesn't exist" << std::endl;
       exit(-1);
-    }
-
+    }*/
+    //std::cout<< "Total Number of Parties: " << context.np <<", File Name: " << context.file_address << std::endl;
+    std::string address;
     for(int i=0; i< context.np; i++) {
-      in >> context.address[i];
-      context.port[i] = REF_PORT;
+      in >> address;
+      //std::cout<< "Address: " << address << std::endl;
+      context.address.push_back(address);
+      context.port[i] = REF_PORT + i + 1;
     }
     in.close();
   } else {
     context.address.reserve(1);
     context.port.reserve(1);
     context.address[0] = DEF_ADDRESS;
-    context.port[0] = REF_PORT;
+    context.port[0] = REF_PORT + context.role;
   }
 
   return context;

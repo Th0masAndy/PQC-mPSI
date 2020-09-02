@@ -22,7 +22,7 @@
 // OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 #include "psi_analytics.h"
-
+//#include "constants.h"
 #include "ENCRYPTO_utils/connection.h"
 #include "ENCRYPTO_utils/socket.h"
 #include "abycore/sharing/boolsharing.h"
@@ -61,13 +61,15 @@ uint64_t run_psi_analytics(const std::vector<std::uint64_t> &inputs, PsiAnalytic
   */
 
   // create hash tables from the elements
-  if (context.role == P_0) {
+  if (context.role == P0) {
     std::vector<uint64_t> bins;
     std::vector<uint64_t> agg_bins(context.nbins, 0);
 
-    for(int i=0; i<< context.np-1; i++) {
+    for(uint64_t i=0; i< context.np-1; i++) {
       bins = OpprgPsiClient(inputs, context, i);
-
+      for(uint64_t j=0; j< context.nbins; j++) {
+      	agg_bins[j] += bins[j];
+      }
     }
 
   } else {
