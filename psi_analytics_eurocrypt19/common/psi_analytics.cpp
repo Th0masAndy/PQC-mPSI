@@ -52,32 +52,31 @@ using share_ptr = std::shared_ptr<share>;
 using milliseconds_ratio = std::ratio<1, 1000>;
 using duration_millis = std::chrono::duration<double, milliseconds_ratio>;
 
-uint64_t run_psi_analytics(const std::vector<std::uint64_t> &inputs, PsiAnalyticsContext &context) {
+std::vector<uint64_t> run_psi_analytics(const std::vector<std::uint64_t> &inputs, PsiAnalyticsContext &context) {
   // establish network connection
   /*std::unique_ptr<CSocket> sock =
       EstablishConnection(context.address, context.port, static_cast<e_role>(context.role));
   sock->Close();
   const auto clock_time_total_start = std::chrono::system_clock::now();
   */
+  std::vector<uint64_t> bins;
 
   // create hash tables from the elements
-  if (context.role == P0) {
-    std::vector<uint64_t> bins;
-    std::vector<uint64_t> agg_bins(context.nbins, 0);
-
+  if (context.role == P_0) {
+    std::vector<uint64_t> bins(context.nbins, 0);
+    std::vector<uint64_t> sub_bins;
     for(uint64_t i=0; i< context.np-1; i++) {
-      bins = OpprgPsiClient(inputs, context, i);
+      sub_bins = OpprgPsiClient(inputs, context, i);
       for(uint64_t j=0; j< context.nbins; j++) {
-      	agg_bins[j] += bins[j];
+      	bins[j] += sub_bins[j];
       }
     }
 
   } else {
-    std::vector<uint64_t> bins;
     bins = OpprgPsiServer(inputs, context);
   }
 
-  return 1;
+  return bins;
 }
 
 std::vector<uint64_t> OpprgPsiClient(const std::vector<uint64_t> &elements,
@@ -177,15 +176,12 @@ std::vector<uint64_t> OpprgPsiServer(const std::vector<uint64_t> &elements,
 
   auto simple_table_v = simple_table.AsRaw2DVector();
   // context.simple_table = simple_table_v;
-
   const auto hashing_end_time = std::chrono::system_clock::now();
   const duration_millis hashing_duration = hashing_end_time - hashing_start_time;
   context.timings.hashing = hashing_duration.count();
-
   const auto oprf_start_time = std::chrono::system_clock::now();
 
   auto masks = ot_sender(simple_table_v, context);
-
   const auto oprf_end_time = std::chrono::system_clock::now();
   const duration_millis oprf_duration = oprf_end_time - oprf_start_time;
   context.timings.oprf = oprf_duration.count();

@@ -1,6 +1,6 @@
 #pragma once
-#define P0 0
-#define DEF_ADDRESS "127.0.0.1" 
+#define P_0 0
+#define DEF_ADDRESS "127.0.0.1"
 #define REF_PORT 32000
 //
 // \author Oleksandr Tkachenko

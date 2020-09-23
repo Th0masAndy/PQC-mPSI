@@ -37,8 +37,8 @@ auto read_test_options(int32_t argcp, char **argvp) {
   ("nmegabins,m",    po::value<decltype(context.nmegabins)>(&context.nmegabins)->default_value(1u),                 "Number of mega bins")
   ("polysize,s",     po::value<decltype(context.polynomialsize)>(&context.polynomialsize)->default_value(0u),       "Size of the polynomial(s), default: neles")
   ("functions,f",    po::value<decltype(context.nfuns)>(&context.nfuns)->default_value(2u),                         "Number of hash functions in hash tables")
-  ("num_parties,np",    po::value<decltype(context.np)>(&context.np)->default_value(4u),                         "Number of parties")
-  ("file_address,fa",    po::value<decltype(context.file_address)>(&context.file_address)->default_value("../../files/addresses"),                         "IP Addresses")
+  ("num_parties,N",    po::value<decltype(context.np)>(&context.np)->default_value(4u),                         "Number of parties")
+  ("file_address,F",    po::value<decltype(context.file_address)>(&context.file_address)->default_value("../../files/addresses"),                         "IP Addresses")
   ("type,y",         po::value<std::string>(&type)->default_value("None"),                                          "Function type {None, Threshold, Sum, SumIfGtThreshold}");
   // clang-format on
 
@@ -79,9 +79,8 @@ auto read_test_options(int32_t argcp, char **argvp) {
   context.polynomialbytelength = context.polynomialsize * sizeof(std::uint64_t);
 
   context.nbins = context.neles * context.epsilon;
-
   //Setting network parameters
-  if(context.role == P0) {
+  if(context.role == P_0) {
     context.port.reserve(context.np);
     //store addresses of other parties
     std::ifstream in(context.file_address, std::ifstream::in);
@@ -99,9 +98,8 @@ auto read_test_options(int32_t argcp, char **argvp) {
     }
     in.close();
   } else {
-    context.address.reserve(1);
     context.port.reserve(1);
-    context.address[0] = DEF_ADDRESS;
+    context.address.push_back(DEF_ADDRESS);
     context.port[0] = REF_PORT + context.role;
   }
 
@@ -112,7 +110,7 @@ int main(int argc, char **argv) {
   auto context = read_test_options(argc, argv);
   auto gen_bitlen = static_cast<std::size_t>(std::ceil(std::log2(context.neles))) + 3;
   auto inputs = ENCRYPTO::GeneratePseudoRandomElements(context.neles, gen_bitlen);
-  ENCRYPTO::run_psi_analytics(inputs, context);
+  std::vector<uint64_t> bins = ENCRYPTO::run_psi_analytics(inputs, context);
   std::cout << "PSI circuit successfully executed" << std::endl;
   PrintTimings(context);
   return EXIT_SUCCESS;
