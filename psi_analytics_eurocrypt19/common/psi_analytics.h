@@ -33,8 +33,11 @@ namespace ENCRYPTO {
 
 std::vector<uint64_t> run_psi_analytics(const std::vector<std::uint64_t> &inputs, PsiAnalyticsContext &context);
 
+auto cuckoo_hash(const std::vector<uint64_t> &elements, PsiAnalyticsContext &context);
+
 std::vector<uint64_t> OpprgPsiClient(const std::vector<uint64_t> &elements,
-                                     PsiAnalyticsContext &context, int i);
+                                     PsiAnalyticsContext &context, int i,
+				     const std::vector<uint64_t> &cuckoo_table_v);
 
 std::vector<uint64_t> OpprgPsiServer(const std::vector<uint64_t> &elements,
                                      PsiAnalyticsContext &context);

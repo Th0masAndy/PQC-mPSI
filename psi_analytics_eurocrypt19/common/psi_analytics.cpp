@@ -52,36 +52,7 @@ using share_ptr = std::shared_ptr<share>;
 using milliseconds_ratio = std::ratio<1, 1000>;
 using duration_millis = std::chrono::duration<double, milliseconds_ratio>;
 
-std::vector<uint64_t> run_psi_analytics(const std::vector<std::uint64_t> &inputs, PsiAnalyticsContext &context) {
-  // establish network connection
-  /*std::unique_ptr<CSocket> sock =
-      EstablishConnection(context.address, context.port, static_cast<e_role>(context.role));
-  sock->Close();
-  const auto clock_time_total_start = std::chrono::system_clock::now();
-  */
-  std::vector<uint64_t> bins;
-
-  // create hash tables from the elements
-  if (context.role == P_0) {
-    std::vector<uint64_t> bins(context.nbins, 0);
-    std::vector<uint64_t> sub_bins;
-    for(uint64_t i=0; i< context.np-1; i++) {
-      sub_bins = OpprgPsiClient(inputs, context, i);
-      for(uint64_t j=0; j< context.nbins; j++) {
-      	bins[j] += sub_bins[j];
-      }
-    }
-
-  } else {
-    bins = OpprgPsiServer(inputs, context);
-  }
-
-  return bins;
-}
-
-std::vector<uint64_t> OpprgPsiClient(const std::vector<uint64_t> &elements,
-                                     PsiAnalyticsContext &context, int server_index) {
-  const auto start_time = std::chrono::system_clock::now();
+auto cuckoo_hash(const std::vector<uint64_t> &elements, PsiAnalyticsContext &context, int server_index) {
   const auto hashing_start_time = std::chrono::system_clock::now();
 
   ENCRYPTO::CuckooTable cuckoo_table(static_cast<std::size_t>(context.nbins));
@@ -99,6 +70,65 @@ std::vector<uint64_t> OpprgPsiClient(const std::vector<uint64_t> &elements,
   const auto hashing_end_time = std::chrono::system_clock::now();
   const duration_millis hashing_duration = hashing_end_time - hashing_start_time;
   context.timings.hashing = hashing_duration.count();
+
+  return cuckoo_table_v;
+}
+
+/*
+std::vector<uint64_t> run_psi_analytics(const std::vector<std::uint64_t> &inputs, PsiAnalyticsContext &context) {
+  // establish network connection
+  //std::unique_ptr<CSocket> sock =
+      EstablishConnection(context.address, context.port, static_cast<e_role>(context.role));
+  sock->Close();
+  const auto clock_time_total_start = std::chrono::system_clock::now();
+  //
+  std::vector<uint64_t> bins;
+
+  // create hash tables from the elements
+  if (context.role == P_0) {
+    std::vector<uint64_t> bins(context.nbins, 0);
+    std::vector<uint64_t> sub_bins;
+    std::vector<uint64_t> table;
+    for(uint64_t i=0; i< context.np-1; i++) {
+      table = cuckoo_hash(inputs, context, i);
+      sub_bins = OpprgPsiClient(inputs, context, i, table);
+      for(uint64_t j=0; j< context.nbins; j++) {
+      	bins[j] += sub_bins[j];
+      }
+    }
+
+  } else {
+    bins = OpprgPsiServer(inputs, context);
+  }
+
+  return bins;
+}
+*/
+std::vector<uint64_t> OpprgPsiClient(const std::vector<uint64_t> &elements,
+                                     PsiAnalyticsContext &context, int server_index,
+				     const std::vector<uint64_t> &cuckoo_table_v) {
+  const auto start_time = std::chrono::system_clock::now();
+
+/*
+  const auto hashing_start_time = std::chrono::system_clock::now();
+
+  ENCRYPTO::CuckooTable cuckoo_table(static_cast<std::size_t>(context.nbins));
+  cuckoo_table.SetNumOfHashFunctions(context.nfuns);
+  cuckoo_table.Insert(elements);
+  cuckoo_table.MapElements();
+  // cuckoo_table.Print();
+
+  if (cuckoo_table.GetStashSize() > 0u) {
+    std::cerr << "[Error] Stash of size " << cuckoo_table.GetStashSize() << " occured\n";
+  }
+
+  auto cuckoo_table_v = cuckoo_table.AsRawVector();
+
+  const auto hashing_end_time = std::chrono::system_clock::now();
+  const duration_millis hashing_duration = hashing_end_time - hashing_start_time;
+  context.timings.hashing = hashing_duration.count();
+*/
+
   const auto oprf_start_time = std::chrono::system_clock::now();
 
   std::vector<uint64_t> masks_with_dummies = ot_receiver(cuckoo_table_v, context, server_index);
@@ -332,6 +362,35 @@ void PrintTimings(const PsiAnalyticsContext &context) {
             << context.timings.total - context.timings.base_ots_aby -
                    context.timings.base_ots_libote
             << "ms\n";
+}
+
+std::vector<uint64_t> run_psi_analytics(const std::vector<std::uint64_t> &inputs, PsiAnalyticsContext &context) {
+  // establish network connection
+  /*std::unique_ptr<CSocket> sock =
+      EstablishConnection(context.address, context.port, static_cast<e_role>(context.role));
+  sock->Close();
+  const auto clock_time_total_start = std::chrono::system_clock::now();
+  */
+  std::vector<uint64_t> bins;
+
+  // create hash tables from the elements
+  if (context.role == P_0) {
+    std::vector<uint64_t> bins(context.nbins, 0);
+    std::vector<uint64_t> sub_bins;
+    std::vector<uint64_t> table;
+    for(uint64_t i=0; i< context.np-1; i++) {
+      table = cuckoo_hash(inputs, context, i);
+      sub_bins = OpprgPsiClient(inputs, context, i, table);
+      for(uint64_t j=0; j< context.nbins; j++) {
+        bins[j] += sub_bins[j];
+      }
+    }
+
+  } else {
+    bins = OpprgPsiServer(inputs, context);
+  }
+
+  return bins;
 }
 
 }
