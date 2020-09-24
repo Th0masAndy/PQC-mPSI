@@ -58,5 +58,6 @@ std::unique_ptr<CSocket> EstablishConnection(const std::string &address, uint16_
 
 std::size_t PlainIntersectionSize(std::vector<std::uint64_t> v1, std::vector<std::uint64_t> v2);
 
+void PrintBins(std::vector<std::uint64_t> bins, std::string outfile);
 void PrintTimings(const PsiAnalyticsContext &context);
 }

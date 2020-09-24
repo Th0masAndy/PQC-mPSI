@@ -364,6 +364,19 @@ void PrintTimings(const PsiAnalyticsContext &context) {
             << "ms\n";
 }
 
+void PrintBins(std::vector<uint64_t> bins, std::string outFile) {
+  std::ofstream myfile;
+  uint64_t i;
+  uint64_t size;
+  size = bins.size();
+  myfile.open(outFile);
+  for(i=0; i<size; i++) {
+    myfile << bins[i] << "\n";
+  }
+  myfile.close();
+  std::cout << "Written outputs to file.";
+}
+
 std::vector<uint64_t> run_psi_analytics(const std::vector<std::uint64_t> &inputs, PsiAnalyticsContext &context) {
   // establish network connection
   /*std::unique_ptr<CSocket> sock =
@@ -384,6 +397,9 @@ std::vector<uint64_t> run_psi_analytics(const std::vector<std::uint64_t> &inputs
       for(uint64_t j=0; j< context.nbins; j++) {
         bins[j] += sub_bins[j];
       }
+    }
+    for(uint64_t j=0; j<context.nbins; j++) {
+      bins[j] = -bins[j];
     }
 
   } else {
