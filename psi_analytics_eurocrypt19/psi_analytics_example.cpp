@@ -112,6 +112,8 @@ int main(int argc, char **argv) {
   auto inputs = ENCRYPTO::GeneratePseudoRandomElements(context.neles, gen_bitlen);
   std::vector<uint64_t> bins = ENCRYPTO::run_psi_analytics(inputs, context);
   std::cout << "PSI circuit successfully executed" << std::endl;
+  std::string outfile = "op_party_"+std::to_string(context.role)+".txt";
+  ENCRYPTO::PrintBins(bins, outfile);
   PrintTimings(context);
   return EXIT_SUCCESS;
 }

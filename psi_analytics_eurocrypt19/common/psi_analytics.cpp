@@ -406,6 +406,8 @@ std::vector<uint64_t> run_psi_analytics(const std::vector<std::uint64_t> &inputs
     bins = OpprgPsiServer(inputs, context);
   }
 
+  //std::cout << "First bin of " << context.role << " is " << bins[0] << "\n";
+
   return bins;
 }
 
