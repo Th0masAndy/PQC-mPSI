@@ -52,7 +52,7 @@ using share_ptr = std::shared_ptr<share>;
 using milliseconds_ratio = std::ratio<1, 1000>;
 using duration_millis = std::chrono::duration<double, milliseconds_ratio>;
 
-auto cuckoo_hash(const std::vector<uint64_t> &elements, PsiAnalyticsContext &context, int server_index) {
+auto cuckoo_hash(const std::vector<uint64_t> &elements, PsiAnalyticsContext &context) {
   const auto hashing_start_time = std::chrono::system_clock::now();
 
   ENCRYPTO::CuckooTable cuckoo_table(static_cast<std::size_t>(context.nbins));
@@ -391,8 +391,8 @@ std::vector<uint64_t> run_psi_analytics(const std::vector<std::uint64_t> &inputs
     std::vector<uint64_t> bins(context.nbins, 0);
     std::vector<uint64_t> sub_bins;
     std::vector<uint64_t> table;
+    table = cuckoo_hash(inputs, context);
     for(uint64_t i=0; i< context.np-1; i++) {
-      table = cuckoo_hash(inputs, context, i);
       sub_bins = OpprgPsiClient(inputs, context, i, table);
       for(uint64_t j=0; j< context.nbins; j++) {
         bins[j] += sub_bins[j];
