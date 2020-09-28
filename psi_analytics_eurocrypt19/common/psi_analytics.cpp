@@ -76,7 +76,7 @@ auto cuckoo_hash(const std::vector<uint64_t> &elements, PsiAnalyticsContext &con
 
 /*
 std::vector<uint64_t> run_psi_analytics(const std::vector<std::uint64_t> &inputs, PsiAnalyticsContext &context) {
-  // establish network connection
+  // establish networkuconnection
   //std::unique_ptr<CSocket> sock =
       EstablishConnection(context.address, context.port, static_cast<e_role>(context.role));
   sock->Close();
@@ -364,13 +364,12 @@ void PrintTimings(const PsiAnalyticsContext &context) {
             << "ms\n";
 }
 
-void PrintBins(std::vector<uint64_t> bins, std::string outFile) {
+void PrintBins(std::vector<uint64_t> &bins, std::string outFile, PsiAnalyticsContext &context) {
   std::ofstream myfile;
   uint64_t i;
-  uint64_t size;
-  size = bins.size();
+  std::cout << "Writing " << context.nbins << " values to " << outFile << std::endl;
   myfile.open(outFile);
-  for(i=0; i<size; i++) {
+  for(i=0; i<context.nbins; i++) {
     myfile << bins[i] << "\n";
   }
   myfile.close();
@@ -388,25 +387,29 @@ std::vector<uint64_t> run_psi_analytics(const std::vector<std::uint64_t> &inputs
 
   // create hash tables from the elements
   if (context.role == P_0) {
-    std::vector<uint64_t> bins(context.nbins, 0);
+    bins.reserve(context.nbins);
+    for(uint64_t i=0; i<context.nbins; i++) {
+    	bins[i] = 0;
+    }
     std::vector<uint64_t> sub_bins;
     std::vector<uint64_t> table;
     table = cuckoo_hash(inputs, context);
     for(uint64_t i=0; i< context.np-1; i++) {
       sub_bins = OpprgPsiClient(inputs, context, i, table);
       for(uint64_t j=0; j< context.nbins; j++) {
-        bins[j] += sub_bins[j];
+        bins[j] = bins[j] + sub_bins[j];
       }
-    }
-    for(uint64_t j=0; j<context.nbins; j++) {
-      bins[j] = -bins[j];
     }
 
   } else {
     bins = OpprgPsiServer(inputs, context);
   }
 
-  //std::cout << "First bin of " << context.role << " is " << bins[0] << "\n";
+  std::cout << "First bin of " << context.role << " is " << bins[0] << "\n";
+
+  std::string outfile = "../in_party_" + std::to_string(context.role) + ".txt";
+
+  PrintBins(bins, outfile, context);
 
   return bins;
 }
