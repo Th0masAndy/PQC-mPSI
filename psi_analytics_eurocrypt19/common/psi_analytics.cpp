@@ -135,7 +135,7 @@ std::vector<uint64_t> OpprgPsiClient(const std::vector<uint64_t> &elements,
 
   const auto oprf_end_time = std::chrono::system_clock::now();
   const duration_millis oprf_duration = oprf_end_time - oprf_start_time;
-  context.timings.oprf = oprf_duration.count();
+  context.timings.oprf += oprf_duration.count();
 
   std::unique_ptr<CSocket> sock =
       EstablishConnection(context.address[server_index], context.port[server_index], static_cast<e_role>(context.role));
@@ -160,7 +160,7 @@ std::vector<uint64_t> OpprgPsiClient(const std::vector<uint64_t> &elements,
 
   const auto receiving_end_time = std::chrono::system_clock::now();
   const duration_millis sending_duration = receiving_end_time - receiving_start_time;
-  context.timings.polynomials_transmission = sending_duration.count();
+  context.timings.polynomials_transmission += sending_duration.count();
 
   const auto eval_poly_start_time = std::chrono::system_clock::now();
   for (auto poly_i = 0ull; poly_i < polynomials.size(); ++poly_i) {
@@ -177,7 +177,7 @@ std::vector<uint64_t> OpprgPsiClient(const std::vector<uint64_t> &elements,
 
   const auto eval_poly_end_time = std::chrono::system_clock::now();
   const duration_millis eval_poly_duration = eval_poly_end_time - eval_poly_start_time;
-  context.timings.polynomials = eval_poly_duration.count();
+  context.timings.polynomials += eval_poly_duration.count();
 
   std::vector<uint64_t> raw_bin_result;
   raw_bin_result.reserve(X.size());
@@ -187,7 +187,7 @@ std::vector<uint64_t> OpprgPsiClient(const std::vector<uint64_t> &elements,
 
   const auto end_time = std::chrono::system_clock::now();
   const duration_millis total_duration = end_time - start_time;
-  context.timings.total = total_duration.count();
+  context.timings.total += total_duration.count();
 
   return raw_bin_result;
 }
@@ -195,6 +195,7 @@ std::vector<uint64_t> OpprgPsiClient(const std::vector<uint64_t> &elements,
 std::vector<uint64_t> OpprgPsiServer(const std::vector<uint64_t> &elements,
                                      PsiAnalyticsContext &context) {
   const auto start_time = std::chrono::system_clock::now();
+  std::cout << "Starting at " << std::chrono::system_clock::to_time_t(start_time) << std::endl;
 
   const auto hashing_start_time = std::chrono::system_clock::now();
 
@@ -253,6 +254,7 @@ std::vector<uint64_t> OpprgPsiServer(const std::vector<uint64_t> &elements,
   const duration_millis sending_duration = sending_end_time - sending_start_time;
   context.timings.polynomials_transmission = sending_duration.count();
   const auto end_time = std::chrono::system_clock::now();
+  std::cout << "Ending at " << std::chrono::system_clock::to_time_t(end_time) << std::endl;
   const duration_millis total_duration = end_time - start_time;
 
   return content_of_bins;
@@ -353,14 +355,13 @@ void PrintTimings(const PsiAnalyticsContext &context) {
             << context.timings.polynomials_transmission << " ms\n";
 //  std::cout << "Time for OPPRF " << context.timings.opprf << " ms\n";
 
-  std::cout << "ABY timings: online time " << context.timings.aby_online << " ms, setup time "
-            << context.timings.aby_setup << " ms, total time " << context.timings.aby_total
-            << " ms\n";
+  //std::cout << "ABY timings: online time " << context.timings.aby_online << " ms, setup time "
+  //          << context.timings.aby_setup << " ms, total time " << context.timings.aby_total
+  //          << " ms\n";
 
   std::cout << "Total runtime: " << context.timings.total << "ms\n";
   std::cout << "Total runtime w/o base OTs: "
-            << context.timings.total - context.timings.base_ots_aby -
-                   context.timings.base_ots_libote
+            << context.timings.total - context.timings.base_ots_libote
             << "ms\n";
 }
 

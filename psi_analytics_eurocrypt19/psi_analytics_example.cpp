@@ -110,9 +110,9 @@ int main(int argc, char **argv) {
   auto context = read_test_options(argc, argv);
   auto gen_bitlen = static_cast<std::size_t>(std::ceil(std::log2(context.neles))) + 3;
   //auto inputs = ENCRYPTO::GeneratePseudoRandomElements(context.neles, gen_bitlen, context.role * 12345);
-  //auto inputs = ENCRYPTO::GeneratePseudoRandomElements(context.neles, gen_bitlen);
+  auto inputs = ENCRYPTO::GeneratePseudoRandomElements(context.neles, gen_bitlen);
   //auto inputs = ENCRYPTO::GenerateSequentialElements(context.neles);  
-
+/*
   std::vector<uint64_t> inputs;
   for(int i=0; i<1024; i++) {
     uint64_t val = i + context.role;
@@ -120,7 +120,7 @@ int main(int argc, char **argv) {
     //std::cout << val << " ";
   }
   //std::cout << std::endl;
-
+*/
   std::vector<uint64_t> bins = ENCRYPTO::run_psi_analytics(inputs, context);
   std::cout << "PSI circuit successfully executed: " << bins[0] << std::endl;
   //std::string outfile = "op_party_"+std::to_string(context.role)+".txt";
