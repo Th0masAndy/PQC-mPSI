@@ -51,7 +51,6 @@ using share_ptr = std::shared_ptr<share>;
 
 using milliseconds_ratio = std::ratio<1, 1000>;
 using duration_millis = std::chrono::duration<double, milliseconds_ratio>;
-
 auto cuckoo_hash(const std::vector<uint64_t> &elements, PsiAnalyticsContext &context) {
   const auto hashing_start_time = std::chrono::system_clock::now();
 
@@ -74,6 +73,7 @@ auto cuckoo_hash(const std::vector<uint64_t> &elements, PsiAnalyticsContext &con
   return cuckoo_table_v;
 }
 
+
 /*
 std::vector<uint64_t> run_psi_analytics(const std::vector<std::uint64_t> &inputs, PsiAnalyticsContext &context) {
   // establish networkuconnection
@@ -83,6 +83,7 @@ std::vector<uint64_t> run_psi_analytics(const std::vector<std::uint64_t> &inputs
   const auto clock_time_total_start = std::chrono::system_clock::now();
   //
   std::vector<uint64_t> bins;
+
 
   // create hash tables from the elements
   if (context.role == P_0) {
@@ -107,11 +108,14 @@ std::vector<uint64_t> run_psi_analytics(const std::vector<std::uint64_t> &inputs
 std::vector<uint64_t> OpprgPsiClient(const std::vector<uint64_t> &elements,
                                      PsiAnalyticsContext &context, int server_index,
 				     const std::vector<uint64_t> &cuckoo_table_v) {
+  /*  std::unique_ptr<CSocket> sock1 =
+      EstablishConnection(context.address[server_index], context.port[server_index], static_cast<e_role>(context.role));
+  sock1->Close();*/
   const auto start_time = std::chrono::system_clock::now();
 
-/*
-  const auto hashing_start_time = std::chrono::system_clock::now();
 
+/*  const auto hashing_start_time = std::chrono::system_clock::now();
+  //std::cout<<"nbins:"<<context.nbins<<" "<<context.neles<<std::endl;
   ENCRYPTO::CuckooTable cuckoo_table(static_cast<std::size_t>(context.nbins));
   cuckoo_table.SetNumOfHashFunctions(context.nfuns);
   cuckoo_table.Insert(elements);
@@ -194,6 +198,9 @@ std::vector<uint64_t> OpprgPsiClient(const std::vector<uint64_t> &elements,
 
 std::vector<uint64_t> OpprgPsiServer(const std::vector<uint64_t> &elements,
                                      PsiAnalyticsContext &context) {
+  /*std::unique_ptr<CSocket> sock1 =
+      EstablishConnection(context.address[0], context.port[0], static_cast<e_role>(context.role));
+  sock1->Close();*/
   const auto start_time = std::chrono::system_clock::now();
   std::cout << "Starting at " << std::chrono::system_clock::to_time_t(start_time) << std::endl;
 
@@ -256,6 +263,7 @@ std::vector<uint64_t> OpprgPsiServer(const std::vector<uint64_t> &elements,
   const auto end_time = std::chrono::system_clock::now();
   std::cout << "Ending at " << std::chrono::system_clock::to_time_t(end_time) << std::endl;
   const duration_millis total_duration = end_time - start_time;
+  context.timings.total = total_duration.count();
 
   return content_of_bins;
 }
@@ -348,6 +356,7 @@ std::size_t PlainIntersectionSize(std::vector<std::uint64_t> v1, std::vector<std
 }
 
 void PrintTimings(const PsiAnalyticsContext &context) {
+  std::cout << "Printing timings for Party " << context.role << std::endl;
   std::cout << "Time for hashing " << context.timings.hashing << " ms\n";
   std::cout << "Time for OPRF " << context.timings.oprf << " ms\n";
   std::cout << "Time for polynomials " << context.timings.polynomials << " ms\n";
@@ -360,9 +369,9 @@ void PrintTimings(const PsiAnalyticsContext &context) {
   //          << " ms\n";
 
   std::cout << "Total runtime: " << context.timings.total << "ms\n";
-  std::cout << "Total runtime w/o base OTs: "
-            << context.timings.total - context.timings.base_ots_libote
-            << "ms\n";
+  //std::cout << "Total runtime w/o base OTs: "
+  //          << context.timings.total - context.timings.base_ots_libote
+  //          << "ms\n";
 }
 
 void PrintBins(std::vector<uint64_t> &bins, std::string outFile, PsiAnalyticsContext &context) {
@@ -406,11 +415,11 @@ std::vector<uint64_t> run_psi_analytics(const std::vector<std::uint64_t> &inputs
     bins = OpprgPsiServer(inputs, context);
   }
 
-  std::cout << "First bin of " << context.role << " is " << bins[0] << "\n";
+//  std::cout << "First bin of " << context.role << " is " << bins[0] << "\n";
 
   std::string outfile = "../in_party_" + std::to_string(context.role) + ".txt";
 
-  PrintBins(bins, outfile, context);
+  //PrintBins(bins, outfile, context);
 
   return bins;
 }

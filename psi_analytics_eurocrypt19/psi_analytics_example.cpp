@@ -31,12 +31,12 @@ auto read_test_options(int32_t argcp, char **argvp) {
   ("role,r",         po::value<decltype(context.role)>(&context.role)->required(),                                  "Role of the node")
   ("neles,n",        po::value<decltype(context.neles)>(&context.neles)->default_value(100u),                      "Number of my elements")
   ("bit-length,b",   po::value<decltype(context.bitlen)>(&context.bitlen)->default_value(61u),                      "Bit-length of the elements")
-  ("epsilon,e",      po::value<decltype(context.epsilon)>(&context.epsilon)->default_value(2.4f),                   "Epsilon, a table size multiplier")
+  ("epsilon,e",      po::value<decltype(context.epsilon)>(&context.epsilon)->default_value(1.27f),                   "Epsilon, a table size multiplier")
   ("threads,t",      po::value<decltype(context.nthreads)>(&context.nthreads)->default_value(1),                    "Number of threads")
   ("threshold,c",    po::value<decltype(context.threshold)>(&context.threshold)->default_value(0u),                 "Show PSI size if it is > threshold")
   ("nmegabins,m",    po::value<decltype(context.nmegabins)>(&context.nmegabins)->default_value(1u),                 "Number of mega bins")
-  ("polysize,s",     po::value<decltype(context.polynomialsize)>(&context.polynomialsize)->default_value(0u),       "Size of the polynomial(s), default: neles")
-  ("functions,f",    po::value<decltype(context.nfuns)>(&context.nfuns)->default_value(2u),                         "Number of hash functions in hash tables")
+  ("polysize,s",     po::value<decltype(context.polynomialsize)>(&context.polynomialsize)->default_value(1024u),       "Size of the polynomial(s), default: neles")
+  ("functions,f",    po::value<decltype(context.nfuns)>(&context.nfuns)->default_value(3u),                         "Number of hash functions in hash tables")
   ("num_parties,N",    po::value<decltype(context.np)>(&context.np)->default_value(4u),                         "Number of parties")
   ("file_address,F",    po::value<decltype(context.file_address)>(&context.file_address)->default_value("../../files/addresses"),                         "IP Addresses")
   ("type,y",         po::value<std::string>(&type)->default_value("None"),                                          "Function type {None, Threshold, Sum, SumIfGtThreshold}");
@@ -122,10 +122,11 @@ int main(int argc, char **argv) {
   //std::cout << std::endl;
 */
   std::vector<uint64_t> bins = ENCRYPTO::run_psi_analytics(inputs, context);
+  //std::vector<uint64_t> bins = ENCRYPTO::GeneratePseudoRandomElements(context.nbins, gen_bitlen);
   std::cout << "PSI circuit successfully executed: " << bins[0] << std::endl;
-  //std::string outfile = "op_party_"+std::to_string(context.role)+".txt";
+  std::string outfile = "../in_party_"+std::to_string(context.role)+".txt";
   //std::cout << "Printing " << bins[0] << " to " << outfile << std::endl;
-  //ENCRYPTO::PrintBins(bins, outfile, context);
+  ENCRYPTO::PrintBins(bins, outfile, context);
   PrintTimings(context);
   return EXIT_SUCCESS;
 }
