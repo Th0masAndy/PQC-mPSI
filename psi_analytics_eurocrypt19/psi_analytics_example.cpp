@@ -20,7 +20,7 @@
 #include "common/psi_analytics.h"
 #include "common/constants.h"
 #include "common/psi_analytics_context.h"
-
+#include <thread>
 auto read_test_options(int32_t argcp, char **argvp) {
   namespace po = boost::program_options;
   ENCRYPTO::PsiAnalyticsContext context;
@@ -35,7 +35,7 @@ auto read_test_options(int32_t argcp, char **argvp) {
   ("threads,t",      po::value<decltype(context.nthreads)>(&context.nthreads)->default_value(1),                    "Number of threads")
   ("threshold,c",    po::value<decltype(context.threshold)>(&context.threshold)->default_value(0u),                 "Show PSI size if it is > threshold")
   ("nmegabins,m",    po::value<decltype(context.nmegabins)>(&context.nmegabins)->default_value(1u),                 "Number of mega bins")
-  ("polysize,s",     po::value<decltype(context.polynomialsize)>(&context.polynomialsize)->default_value(1024u),       "Size of the polynomial(s), default: neles")
+  ("polysize,s",     po::value<decltype(context.polynomialsize)>(&context.polynomialsize)->default_value(0u),       "Size of the polynomial(s), default: neles")
   ("functions,f",    po::value<decltype(context.nfuns)>(&context.nfuns)->default_value(3u),                         "Number of hash functions in hash tables")
   ("num_parties,N",    po::value<decltype(context.np)>(&context.np)->default_value(4u),                         "Number of parties")
   ("file_address,F",    po::value<decltype(context.file_address)>(&context.file_address)->default_value("../../files/addresses"),                         "IP Addresses")
@@ -71,6 +71,14 @@ auto read_test_options(int32_t argcp, char **argvp) {
   } else {
     std::string error_msg(std::string("Unknown function type: " + type));
     throw std::runtime_error(error_msg.c_str());
+  }
+
+  if(context.nthreads == 0) {
+    context.nthreads = std::thread::hardware_concurrency();
+  }
+
+  if(context.nthreads > context.np-1) {
+    context.nthreads = context.np-1;
   }
 
   if (context.polynomialsize == 0) {
@@ -111,7 +119,7 @@ int main(int argc, char **argv) {
   auto gen_bitlen = static_cast<std::size_t>(std::ceil(std::log2(context.neles))) + 3;
   //auto inputs = ENCRYPTO::GeneratePseudoRandomElements(context.neles, gen_bitlen, context.role * 12345);
   auto inputs = ENCRYPTO::GeneratePseudoRandomElements(context.neles, gen_bitlen);
-  //auto inputs = ENCRYPTO::GenerateSequentialElements(context.neles);  
+  //auto inputs = ENCRYPTO::GenerateSequentialElements(context.neles);
 /*
   std::vector<uint64_t> inputs;
   for(int i=0; i<1024; i++) {

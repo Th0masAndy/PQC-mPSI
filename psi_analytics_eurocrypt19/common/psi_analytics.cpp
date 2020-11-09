@@ -44,6 +44,7 @@
 #include <random>
 #include <ratio>
 #include <unordered_set>
+#include <thread>
 
 namespace ENCRYPTO {
 
@@ -111,7 +112,6 @@ std::vector<uint64_t> OpprgPsiClient(const std::vector<uint64_t> &elements,
   /*  std::unique_ptr<CSocket> sock1 =
       EstablishConnection(context.address[server_index], context.port[server_index], static_cast<e_role>(context.role));
   sock1->Close();*/
-  const auto start_time = std::chrono::system_clock::now();
 
 
 /*  const auto hashing_start_time = std::chrono::system_clock::now();
@@ -189,10 +189,6 @@ std::vector<uint64_t> OpprgPsiClient(const std::vector<uint64_t> &elements,
     raw_bin_result.push_back(X[i].elem ^ Y[i].elem);
   }
 
-  const auto end_time = std::chrono::system_clock::now();
-  const duration_millis total_duration = end_time - start_time;
-  context.timings.total += total_duration.count();
-
   return raw_bin_result;
 }
 
@@ -201,8 +197,8 @@ std::vector<uint64_t> OpprgPsiServer(const std::vector<uint64_t> &elements,
   /*std::unique_ptr<CSocket> sock1 =
       EstablishConnection(context.address[0], context.port[0], static_cast<e_role>(context.role));
   sock1->Close();*/
-  const auto start_time = std::chrono::system_clock::now();
-  std::cout << "Starting at " << std::chrono::system_clock::to_time_t(start_time) << std::endl;
+
+  //std::cout << "Starting at " << std::chrono::system_clock::to_time_t(start_time) << std::endl;
 
   const auto hashing_start_time = std::chrono::system_clock::now();
 
@@ -260,10 +256,6 @@ std::vector<uint64_t> OpprgPsiServer(const std::vector<uint64_t> &elements,
   const auto sending_end_time = std::chrono::system_clock::now();
   const duration_millis sending_duration = sending_end_time - sending_start_time;
   context.timings.polynomials_transmission = sending_duration.count();
-  const auto end_time = std::chrono::system_clock::now();
-  std::cout << "Ending at " << std::chrono::system_clock::to_time_t(end_time) << std::endl;
-  const duration_millis total_duration = end_time - start_time;
-  context.timings.total = total_duration.count();
 
   return content_of_bins;
 }
@@ -386,6 +378,13 @@ void PrintBins(std::vector<uint64_t> &bins, std::string outFile, PsiAnalyticsCon
   std::cout << "Written outputs to file.";
 }
 
+void multi_opprf_thread(int tid, std::vector<std::vector<uint64_t>> &sub_bins, std::vector<uint64_t> inputs,
+                        PsiAnalyticsContext &context, std::vector<uint64_t> table) {
+    for(int i=tid; i < context.np-1; i=i+context.nthreads) {
+      sub_bins[i] = OpprgPsiClient(inputs, context, i, table);
+    }
+}
+
 std::vector<uint64_t> run_psi_analytics(const std::vector<std::uint64_t> &inputs, PsiAnalyticsContext &context) {
   // establish network connection
   /*std::unique_ptr<CSocket> sock =
@@ -393,24 +392,34 @@ std::vector<uint64_t> run_psi_analytics(const std::vector<std::uint64_t> &inputs
   sock->Close();
   const auto clock_time_total_start = std::chrono::system_clock::now();
   */
+  const auto start_time = std::chrono::system_clock::now();
   std::vector<uint64_t> bins;
 
   // create hash tables from the elements
   if (context.role == P_0) {
+
     bins.reserve(context.nbins);
     for(uint64_t i=0; i<context.nbins; i++) {
     	bins[i] = 0;
     }
-    std::vector<uint64_t> sub_bins;
+    std::vector<std::vector<uint64_t>> sub_bins(context.np-1);
     std::vector<uint64_t> table;
     table = cuckoo_hash(inputs, context);
-    for(uint64_t i=0; i< context.np-1; i++) {
-      sub_bins = OpprgPsiClient(inputs, context, i, table);
-      for(uint64_t j=0; j< context.nbins; j++) {
-        bins[j] = bins[j] + sub_bins[j];
-      }
+
+    std::thread opprf_threads[context.nthreads];
+    for(int i=0; i<context.nthreads; i++) {
+      opprf_threads[i] = std::thread(multi_opprf_thread, i, std::ref(sub_bins), inputs, std::ref(context), table);
     }
 
+    for (int i=0; i<context.nthreads; i++) {
+      opprf_threads[i].join();
+    }
+
+    for(uint64_t i=0; i< context.np-1; i++) {
+      for(uint64_t j=0; j< context.nbins; j++) {
+        bins[j] = bins[j] + sub_bins[i][j];
+      }
+    }
   } else {
     bins = OpprgPsiServer(inputs, context);
   }
@@ -420,6 +429,9 @@ std::vector<uint64_t> run_psi_analytics(const std::vector<std::uint64_t> &inputs
   std::string outfile = "../in_party_" + std::to_string(context.role) + ".txt";
 
   //PrintBins(bins, outfile, context);
+  const auto end_time = std::chrono::system_clock::now();
+  const duration_millis total_duration = end_time - start_time;
+  context.timings.total += total_duration.count();
 
   return bins;
 }
