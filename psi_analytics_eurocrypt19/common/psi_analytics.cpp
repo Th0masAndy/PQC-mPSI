@@ -25,8 +25,8 @@
 //#include "constants.h"
 #include "ENCRYPTO_utils/connection.h"
 #include "ENCRYPTO_utils/socket.h"
-#include "abycore/sharing/boolsharing.h"
-#include "abycore/sharing/sharing.h"
+//#include "abycore/sharing/boolsharing.h"
+//#include "abycore/sharing/sharing.h"
 
 #include "ots/ots.h"
 #include "polynomials/Poly.h"
