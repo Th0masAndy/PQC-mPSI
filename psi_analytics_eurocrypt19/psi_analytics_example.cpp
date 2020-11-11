@@ -102,13 +102,13 @@ auto read_test_options(int32_t argcp, char **argvp) {
       in >> address;
       //std::cout<< "Address: " << address << std::endl;
       context.address.push_back(address);
-      context.port[i] = REF_PORT + i + 1;
+      context.port[i] = REF_PORT + i*2;
     }
     in.close();
   } else {
     context.port.reserve(1);
     context.address.push_back(DEF_ADDRESS);
-    context.port[0] = REF_PORT + context.role;
+    context.port[0] = REF_PORT + 2*(context.role-1);
   }
 
   return context;
