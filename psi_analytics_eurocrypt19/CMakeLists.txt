@@ -19,7 +19,7 @@ add_library(psi_analytics_eurocrypt19
         polynomials/Poly.cpp
         ots/ots.cpp
         )
-        
+
 set_target_properties(psi_analytics_eurocrypt19
         PROPERTIES ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib"
         )
@@ -42,6 +42,11 @@ target_link_libraries(psi_analytics_eurocrypt19 INTERFACE
         libOTe
         Boost::program_options
         Threads::Threads
+        $ENV{HOME}/libscapi/build/NTL/src/ntl.a
+        $ENV{HOME}/libscapi/libscapi.a
+        $ENV{HOME}/libscapi/install/lib/OTExtensionBristol
+        $ENV{HOME}/libscapi/install/lib/libsimpleot.a
+        boost_system boost_thread pthread crypto dl ssl z
         # relic is a transitive dependency of libOTe right now
         # change relic to another library (if needed) if this changes
         relic_s
@@ -55,6 +60,9 @@ target_include_directories(psi_analytics_eurocrypt19 PUBLIC
         ${PSI_ANALYTICS_SOURCE_ROOT}/extern/ABY/src
         ${PSI_ANALYTICS_SOURCE_ROOT}/extern/ABY/extern/ENCRYPTO_utils/src
         ${PSI_ANALYTICS_SOURCE_ROOT}/extern/HashingTables
+        $ENV{HOME}/libscapi/build/NTL/include
+        $ENV{HOME}/libscapi/install/include
+        $ENV{HOME}/libscapi/install/include/OTExtensionBristol
         ${GLIB_INCLUDE_DIRS}
         )
 

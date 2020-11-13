@@ -80,6 +80,7 @@ elseif (NOT libOTe_FOUND AND NOT TARGET libOTe::libote)
     add_subdirectory(extern/libOTe)
 endif ()
 
+add_subdirectory(extern/MPCHonestMajority)
 add_dependencies(libOTe relic_s)
 
 add_subdirectory(psi_analytics_eurocrypt19)
