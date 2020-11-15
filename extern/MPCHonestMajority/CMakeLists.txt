@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 2.8)
 project(MPCHonestMajority)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3 -std=c++11 -maes -mpclmul -mbmi2 -Wno-ignored-attributes")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3 -std=c++11 -maes -mpclmul -mbmi2 -msse4.1 -Wno-ignored-attributes")
 
 
 INCLUDE_DIRECTORIES($ENV{HOME}/libscapi/build/NTL/include $ENV{HOME} $ENV{HOME}/libscapi/install/include

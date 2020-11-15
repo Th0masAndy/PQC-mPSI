@@ -27,51 +27,51 @@
 #include "Mersenne.h"
 
 template <>
-ZpMersenneIntElement TemplateField<ZpMersenneIntElement>::GetElement(long b) {
+ZpMersenneIntElement1 TemplateField<ZpMersenneIntElement1>::GetElement(long b) {
   if (b == 1) {
     return *m_ONE;
   }
   if (b == 0) {
     return *m_ZERO;
   } else {
-    ZpMersenneIntElement element(b);
+    ZpMersenneIntElement1 element(b);
     return element;
   }
 }
 
 template <>
-ZpMersenneLongElement TemplateField<ZpMersenneLongElement>::GetElement(long b) {
+ZpMersenneLongElement1 TemplateField<ZpMersenneLongElement1>::GetElement(long b) {
   if (b == 1) {
     return *m_ONE;
   }
   if (b == 0) {
     return *m_ZERO;
   } else {
-    ZpMersenneLongElement element(b);
+    ZpMersenneLongElement1 element(b);
     return element;
   }
 }
 
 template <>
-void TemplateField<ZpMersenneIntElement>::elementToBytes(unsigned char* elemenetInBytes,
-                                                         ZpMersenneIntElement& element) {
+void TemplateField<ZpMersenneIntElement1>::elementToBytes(unsigned char* elemenetInBytes,
+                                                         ZpMersenneIntElement1& element) {
   memcpy(elemenetInBytes, (byte*)(&element.elem), 4);
 }
 
 template <>
-void TemplateField<ZpMersenneLongElement>::elementToBytes(unsigned char* elemenetInBytes,
-                                                          ZpMersenneLongElement& element) {
+void TemplateField<ZpMersenneLongElement1>::elementToBytes(unsigned char* elemenetInBytes,
+                                                          ZpMersenneLongElement1& element) {
   memcpy(elemenetInBytes, (byte*)(&element.elem), 8);
 }
 
 template <>
-ZpMersenneIntElement TemplateField<ZpMersenneIntElement>::bytesToElement(
+ZpMersenneIntElement1 TemplateField<ZpMersenneIntElement1>::bytesToElement(
     unsigned char* elemenetInBytes) {
-  return ZpMersenneIntElement((unsigned int)(*(unsigned int*)elemenetInBytes));
+  return ZpMersenneIntElement1((unsigned int)(*(unsigned int*)elemenetInBytes));
 }
 
 template <>
-ZpMersenneLongElement TemplateField<ZpMersenneLongElement>::bytesToElement(
+ZpMersenneLongElement1 TemplateField<ZpMersenneLongElement1>::bytesToElement(
     unsigned char* elemenetInBytes) {
-  return ZpMersenneLongElement((unsigned long)(*(unsigned long*)elemenetInBytes));
+  return ZpMersenneLongElement1((unsigned long)(*(unsigned long*)elemenetInBytes));
 }

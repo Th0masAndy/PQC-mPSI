@@ -23,9 +23,13 @@
 // OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 #include "abycore/aby/abyparty.h"
-#include "abycore/circuit/share.h"
+#include<string>
+#include<memory>
+#include "socket.h"
 #include "helpers.h"
 #include "psi_analytics_context.h"
+
+#define ceil_divide(x, y)			(( ((x) + (y)-1)/(y)))
 
 #include <vector>
 

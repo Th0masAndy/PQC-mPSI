@@ -15,6 +15,9 @@ endif ()
 add_library(psi_analytics_eurocrypt19
         common/psi_analytics.cpp
         common/helpers.cpp
+	common/socket.cpp
+        common/connection.cpp
+        common/utils.cpp
         polynomials/Mersenne.cpp
         polynomials/Poly.cpp
         ots/ots.cpp
@@ -27,13 +30,17 @@ set_target_properties(psi_analytics_eurocrypt19
 target_compile_options(psi_analytics_eurocrypt19
         PRIVATE
         -march=native
+        #-std=c++11
         -ffunction-sections -mpclmul -mbmi2 -maes
         -mavx -msse2 -msse3 -msse4.1
+        #-march=haswell
         -Wall -Wno-strict-overflow -Wno-ignored-attributes -Wno-parentheses)
 
+link_directories(/usr/ssl/lib/ $ENV{HOME}/libscapi/install/lib )
+
 target_link_libraries(psi_analytics_eurocrypt19 INTERFACE
-        ABY::aby
-        ENCRYPTO_utils::encrypto_utils
+        #ABY::aby
+        #ENCRYPTO_utils::encrypto_utils
         ${GLIB_LDFLAGS}
         gmp
         gmpxx
@@ -44,8 +51,8 @@ target_link_libraries(psi_analytics_eurocrypt19 INTERFACE
         Threads::Threads
         $ENV{HOME}/libscapi/build/NTL/src/ntl.a
         $ENV{HOME}/libscapi/libscapi.a
-        $ENV{HOME}/libscapi/install/lib/OTExtensionBristol
-        $ENV{HOME}/libscapi/install/lib/libsimpleot.a
+        OTExtensionBristol
+        libsimpleot.a
         boost_system boost_thread pthread crypto dl ssl z
         # relic is a transitive dependency of libOTe right now
         # change relic to another library (if needed) if this changes
@@ -62,6 +69,7 @@ target_include_directories(psi_analytics_eurocrypt19 PUBLIC
         ${PSI_ANALYTICS_SOURCE_ROOT}/extern/HashingTables
         $ENV{HOME}/libscapi/build/NTL/include
         $ENV{HOME}/libscapi/install/include
+        $ENV{HOME}
         $ENV{HOME}/libscapi/install/include/OTExtensionBristol
         ${GLIB_INCLUDE_DIRS}
         )

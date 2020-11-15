@@ -12,10 +12,16 @@
 #include <iostream>
 
 #include <boost/program_options.hpp>
-
-#include <ENCRYPTO_utils/crypto/crypto.h>
-#include <ENCRYPTO_utils/parse_options.h>
+#include<fstream>
+//#include <ENCRYPTO_utils/crypto/crypto.h>
+//#include <ENCRYPTO_utils/parse_options.h>
 #include "abycore/aby/abyparty.h"
+
+#include "MPCHonestMajority/MPSI_Party.h"
+#include "MPCHonestMajority/ZpKaratsubaElement.h"
+#include <smmintrin.h>
+#include <inttypes.h>
+#include <stdio.h>
 
 #include "common/psi_analytics.h"
 #include "common/constants.h"
@@ -136,5 +142,53 @@ int main(int argc, char **argv) {
   //std::cout << "Printing " << bins[0] << " to " << outfile << std::endl;
   ENCRYPTO::PrintBins(bins, outfile, context);
   PrintTimings(context);
-  return EXIT_SUCCESS;
+   
+   CmdParser parser;                                                                  
+   auto parameters = parser.parseArguments("", argc, argv);                           
+   int times = stoi(parser.getValueByKey(parameters, "internalIterationsNumber"));    
+   string fieldType(parser.getValueByKey(parameters, "fieldType"));                   
+                                                                                      
+   /*if(fieldType.compare("ZpMersenne") == 0)                                           
+   {                                                                                  
+                                                                                      
+       MPSI_Party<ZpMersenneIntElement> mpsi(argc, argv);                             
+       auto t1 = high_resolution_clock::now();                                        
+       mpsi.runMPSI();                                                                
+       auto t2 = high_resolution_clock::now();                                        
+                                                                                      
+       auto duration = duration_cast<milliseconds>(t2-t1).count();                    
+       cout << "time in milliseconds for " << times << " runs: " << duration << endl; 
+                                                                                      
+                                                                                      
+       cout << "end main" << '\n';                                                    
+                                                                                      
+   } */                                                                                 
+                                                                                      
+   if(fieldType.compare("ZpMersenne61") == 0)                                    
+   {                                                                                  
+                                                                                      
+       MPSI_Party<ZpMersenneLongElement> mpsi(argc, argv);                            
+       auto t1 = high_resolution_clock::now();                                        
+       mpsi.runMPSI();                                                                
+                                                                                      
+       auto t2 = high_resolution_clock::now();                                        
+                                                                                      
+       auto duration = duration_cast<milliseconds>(t2-t1).count();                    
+       cout << "time in milliseconds for " << times << " runs: " << duration << endl; 
+                                                                                      
+       cout << "end main" << '\n';                                                    
+                                                                                      
+   }                                                                                  
+/*                                                                                     
+   else if(fieldType.compare("ZpKaratsuba") == 0) {                                   
+                                                                                      
+                                                                                      
+       MPSI_Party<ZpKaratsubaElement> mpsi(argc, argv);                               
+       auto t1 = high_resolution_clock::now();                                        
+       mpsi.runMPSI();                                                                
+       auto t2 = high_resolution_clock::now();                                        
+                                                                                      
+       auto duration = duration_cast<milliseconds>(t2 - t1).count();                  
+       cout << "time in milliseconds for " << times << " runs: " << duration << endl; 
+ */ return EXIT_SUCCESS;
 }

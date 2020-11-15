@@ -23,8 +23,8 @@
 
 #include "psi_analytics.h"
 //#include "constants.h"
-#include "ENCRYPTO_utils/connection.h"
-#include "ENCRYPTO_utils/socket.h"
+#include "connection.h"
+#include "socket.h"
 //#include "abycore/sharing/boolsharing.h"
 //#include "abycore/sharing/sharing.h"
 
@@ -48,7 +48,7 @@
 
 namespace ENCRYPTO {
 
-using share_ptr = std::shared_ptr<share>;
+//using share_ptr = std::shared_ptr<share>;
 
 using milliseconds_ratio = std::ratio<1, 1000>;
 using duration_millis = std::chrono::duration<double, milliseconds_ratio>;
@@ -145,8 +145,8 @@ std::vector<uint64_t> OpprgPsiClient(const std::vector<uint64_t> &elements,
       EstablishConnection(context.address[server_index], context.port[server_index], static_cast<e_role>(context.role));
 
   const auto nbinsinmegabin = ceil_divide(context.nbins, context.nmegabins);
-  std::vector<std::vector<ZpMersenneLongElement>> polynomials(context.nmegabins);
-  std::vector<ZpMersenneLongElement> X(context.nbins), Y(context.nbins);
+  std::vector<std::vector<ZpMersenneLongElement1>> polynomials(context.nmegabins);
+  std::vector<ZpMersenneLongElement1> X(context.nbins), Y(context.nbins);
   for (auto &polynomial : polynomials) {
     polynomial.resize(context.polynomialsize);
   }
@@ -295,7 +295,7 @@ void InterpolatePolynomialsPaddedWithDummies(
   std::random_device urandom("/dev/urandom");
   auto my_rand = [&urandom, &dist]() { return dist(urandom); };
 
-  std::vector<ZpMersenneLongElement> X(context.polynomialsize), Y(context.polynomialsize),
+  std::vector<ZpMersenneLongElement1> X(context.polynomialsize), Y(context.polynomialsize),
       coeff(context.polynomialsize);
 
   for (auto i = 0ull, bin_counter = 0ull; i < context.polynomialsize;) {

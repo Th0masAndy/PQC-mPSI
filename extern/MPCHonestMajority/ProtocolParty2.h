@@ -31,7 +31,7 @@
 
 using namespace std;
 using namespace std::chrono;
-
+//using byte = unsigned char;
 template <class FieldType>
 class ProtocolParty : public MPCProtocol, HonestMajority{
 

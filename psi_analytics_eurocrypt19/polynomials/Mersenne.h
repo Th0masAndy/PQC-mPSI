@@ -38,15 +38,15 @@ typedef unsigned char byte;
 
 using namespace NTL;
 
-class ZpMersenneIntElement {
+class ZpMersenneIntElement1 {
   // private:
  public:  // TODO return to private after tesing
   static const unsigned int p = 2147483647;
   unsigned int elem;
 
  public:
-  ZpMersenneIntElement() { elem = 0; };
-  ZpMersenneIntElement(int elem) {
+  ZpMersenneIntElement1() { elem = 0; };
+  ZpMersenneIntElement1(int elem) {
     this->elem = elem;
     if (this->elem < p) {
       return;
@@ -58,14 +58,14 @@ class ZpMersenneIntElement {
     this->elem -= p;
   }
 
-  ZpMersenneIntElement& operator=(const ZpMersenneIntElement& other) {
+  ZpMersenneIntElement1& operator=(const ZpMersenneIntElement1& other) {
     elem = other.elem;
     return *this;
   };
-  bool operator!=(const ZpMersenneIntElement& other) { return !(other.elem == elem); };
+  bool operator!=(const ZpMersenneIntElement1& other) { return !(other.elem == elem); };
 
-  ZpMersenneIntElement operator+(const ZpMersenneIntElement& f2) {
-    ZpMersenneIntElement answer;
+  ZpMersenneIntElement1 operator+(const ZpMersenneIntElement1& f2) {
+    ZpMersenneIntElement1 answer;
 
     answer.elem = (elem + f2.elem);
 
@@ -73,8 +73,8 @@ class ZpMersenneIntElement {
 
     return answer;
   }
-  ZpMersenneIntElement operator-(const ZpMersenneIntElement& f2) {
-    ZpMersenneIntElement answer;
+  ZpMersenneIntElement1 operator-(const ZpMersenneIntElement1& f2) {
+    ZpMersenneIntElement1 answer;
 
     int temp = (int)elem - (int)f2.elem;
 
@@ -86,7 +86,7 @@ class ZpMersenneIntElement {
 
     return answer;
   }
-  ZpMersenneIntElement operator/(const ZpMersenneIntElement& f2) {
+  ZpMersenneIntElement1 operator/(const ZpMersenneIntElement1& f2) {
     // code taken from NTL for the function XGCD
     int a = f2.elem;
     int b = p;
@@ -134,13 +134,13 @@ class ZpMersenneIntElement {
 
     if (s < 0) s = s + p;
 
-    ZpMersenneIntElement inverse(s);
+    ZpMersenneIntElement1 inverse(s);
 
     return inverse * (*this);
   }
 
-  ZpMersenneIntElement operator*(const ZpMersenneIntElement& f2) {
-    ZpMersenneIntElement answer;
+  ZpMersenneIntElement1 operator*(const ZpMersenneIntElement1& f2) {
+    ZpMersenneIntElement1 answer;
 
     long multLong = (long)elem * (long)f2.elem;
 
@@ -159,11 +159,11 @@ class ZpMersenneIntElement {
     return answer;
   }
 
-  ZpMersenneIntElement& operator+=(const ZpMersenneIntElement& f2) {
+  ZpMersenneIntElement1& operator+=(const ZpMersenneIntElement1& f2) {
     elem = (f2.elem + elem) % p;
     return *this;
   };
-  ZpMersenneIntElement& operator*=(const ZpMersenneIntElement& f2) {
+  ZpMersenneIntElement1& operator*=(const ZpMersenneIntElement1& f2) {
     long multLong = (long)elem * (long)f2.elem;
 
     // get the bottom 31 bit
@@ -181,18 +181,18 @@ class ZpMersenneIntElement {
   }
 };
 
-inline std::ostream& operator<<(std::ostream& s, const ZpMersenneIntElement& a) {
+inline std::ostream& operator<<(std::ostream& s, const ZpMersenneIntElement1& a) {
   return s << a.elem;
 };
 
-class ZpMersenneLongElement {
+class ZpMersenneLongElement1 {
   // private:
  public:  // TODO return to private after tesing
   static const unsigned long long p = 2305843009213693951;
   unsigned long long elem;
 
-  ZpMersenneLongElement() { elem = 0; };
-  ZpMersenneLongElement(unsigned long elem) {
+  ZpMersenneLongElement1() { elem = 0; };
+  ZpMersenneLongElement1(unsigned long elem) {
     this->elem = elem;
     if (this->elem >= p) {
       this->elem = (this->elem & p) + (this->elem >> 61);
@@ -201,20 +201,20 @@ class ZpMersenneLongElement {
     }
   }
 
-  inline ZpMersenneLongElement& operator=(const ZpMersenneLongElement& other)
+  inline ZpMersenneLongElement1& operator=(const ZpMersenneLongElement1& other)
 
   {
     elem = other.elem;
     return *this;
   };
-  inline bool operator!=(const ZpMersenneLongElement& other)
+  inline bool operator!=(const ZpMersenneLongElement1& other)
 
   {
     return !(other.elem == elem);
   };
 
-  ZpMersenneLongElement operator+(const ZpMersenneLongElement& f2) {
-    ZpMersenneLongElement answer;
+  ZpMersenneLongElement1 operator+(const ZpMersenneLongElement1& f2) {
+    ZpMersenneLongElement1 answer;
 
     answer.elem = (elem + f2.elem);
 
@@ -223,8 +223,8 @@ class ZpMersenneLongElement {
     return answer;
   }
 
-  ZpMersenneLongElement operator-(const ZpMersenneLongElement& f2) {
-    ZpMersenneLongElement answer;
+  ZpMersenneLongElement1 operator-(const ZpMersenneLongElement1& f2) {
+    ZpMersenneLongElement1 answer;
 
     int64_t temp = elem - f2.elem;
 
@@ -237,8 +237,8 @@ class ZpMersenneLongElement {
     return answer;
   }
 
-  ZpMersenneLongElement operator/(const ZpMersenneLongElement& f2) {
-    ZpMersenneLongElement answer;
+  ZpMersenneLongElement1 operator/(const ZpMersenneLongElement1& f2) {
+    ZpMersenneLongElement1 answer;
     mpz_t d;
     mpz_t result;
     mpz_t mpz_elem;
@@ -262,8 +262,8 @@ class ZpMersenneLongElement {
     return answer;
   }
 
-  ZpMersenneLongElement operator*(const ZpMersenneLongElement& f2) {
-    ZpMersenneLongElement answer;
+  ZpMersenneLongElement1 operator*(const ZpMersenneLongElement1& f2) {
+    ZpMersenneLongElement1 answer;
 
     unsigned long long high;
     unsigned long long low = _mulx_u64(elem, f2.elem, &high);
@@ -281,7 +281,7 @@ class ZpMersenneLongElement {
     return answer;
   }
 
-  ZpMersenneLongElement& operator+=(const ZpMersenneLongElement& f2) {
+  ZpMersenneLongElement1& operator+=(const ZpMersenneLongElement1& f2) {
     elem = (elem + f2.elem);
 
     if (elem >= p) elem -= p;
@@ -289,7 +289,7 @@ class ZpMersenneLongElement {
     return *this;
   }
 
-  ZpMersenneLongElement& operator*=(const ZpMersenneLongElement& f2) {
+  ZpMersenneLongElement1& operator*=(const ZpMersenneLongElement1& f2) {
     unsigned long long high;
     unsigned long long low = _mulx_u64(elem, f2.elem, &high);
 
@@ -307,7 +307,7 @@ class ZpMersenneLongElement {
   }
 };
 
-inline std::ostream& operator<<(std::ostream& s, const ZpMersenneLongElement& a) {
+inline std::ostream& operator<<(std::ostream& s, const ZpMersenneLongElement1& a) {
   return s << a.elem;
 };
 

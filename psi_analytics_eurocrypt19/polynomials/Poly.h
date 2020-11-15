@@ -31,11 +31,11 @@
 
 class Poly {
  public:
-  static void evalMersenne(ZpMersenneLongElement &Y,
-                           const std::vector<ZpMersenneLongElement> &coeff,
-                           ZpMersenneLongElement X);
+  static void evalMersenne(ZpMersenneLongElement1 &Y,
+                           const std::vector<ZpMersenneLongElement1> &coeff,
+                           ZpMersenneLongElement1 X);
 
-  static void interpolateMersenne(std::vector<ZpMersenneLongElement> &coeff,
-                                  const std::vector<ZpMersenneLongElement> &X,
-                                  std::vector<ZpMersenneLongElement> &Y);
+  static void interpolateMersenne(std::vector<ZpMersenneLongElement1> &coeff,
+                                  const std::vector<ZpMersenneLongElement1> &X,
+                                  std::vector<ZpMersenneLongElement1> &Y);
 };

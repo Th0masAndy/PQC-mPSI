@@ -27,11 +27,11 @@
 #include "Poly.h"
 
 // coef[i] (beginning from 0)is multiplied by x^i
-void Poly::evalMersenne(ZpMersenneLongElement& Y, const std::vector<ZpMersenneLongElement>& coeff,
-                        ZpMersenneLongElement X)
+void Poly::evalMersenne(ZpMersenneLongElement1& Y, const std::vector<ZpMersenneLongElement1>& coeff,
+                        ZpMersenneLongElement1 X)
 // does a Horner evaluation
 {
-  ZpMersenneLongElement acc(0);
+  ZpMersenneLongElement1 acc(0);
 
   for (int64_t i = coeff.size() - 1; i >= 0; i--) {
     acc = acc * X;         // mul(acc, acc, a);
@@ -42,29 +42,29 @@ void Poly::evalMersenne(ZpMersenneLongElement& Y, const std::vector<ZpMersenneLo
   Y = acc;
 }
 
-void Poly::interpolateMersenne(std::vector<ZpMersenneLongElement>& coeff,
-                               const std::vector<ZpMersenneLongElement>& X,
-                               std::vector<ZpMersenneLongElement>& Y) {
+void Poly::interpolateMersenne(std::vector<ZpMersenneLongElement1>& coeff,
+                               const std::vector<ZpMersenneLongElement1>& X,
+                               std::vector<ZpMersenneLongElement1>& Y) {
   int64_t m = X.size();
   if (Y.size() != X.size()) std::cout << "interpolate: vector length mismatch" << std::endl;
 
-  ZpMersenneLongElement one(1);
-  ZpMersenneLongElement zero(0);
+  ZpMersenneLongElement1 one(1);
+  ZpMersenneLongElement1 zero(0);
 
-  ZpMersenneLongElement p(ZpMersenneLongElement::p);
+  ZpMersenneLongElement1 p(ZpMersenneLongElement1::p);
 
-  std::vector<ZpMersenneLongElement> prod;
+  std::vector<ZpMersenneLongElement1> prod;
   prod = X;
 
-  ZpMersenneLongElement t1, t2;
+  ZpMersenneLongElement1 t1, t2;
 
   int64_t k, i;
 
-  std::vector<ZpMersenneLongElement> res;
+  std::vector<ZpMersenneLongElement1> res;
   res.resize(m);
 
   for (k = 0; k < m; k++) {
-    const ZpMersenneLongElement& aa = X[k];
+    const ZpMersenneLongElement1& aa = X[k];
 
     t1 = 1;
     for (i = k - 1; i >= 0; i--) {
