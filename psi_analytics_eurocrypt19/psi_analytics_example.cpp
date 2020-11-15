@@ -117,7 +117,51 @@ auto read_test_options(int32_t argcp, char **argvp) {
     context.port[0] = REF_PORT + 2*(context.role-1);
   }
 
+  //Setting Circuit Component parameters
+  context.outputFileName = "output.txt";
+  context.circuitFileName = "ic.txt";
+  context.partiesFile = "Parties.txt";
+
+  context.fieldType = "ZpMersenne61";
+  context.genRandomSharesType = "HIM";
+  context.multType = "DN";
+  context.verifyType = "Single";
+
   return context;
+}
+
+void prepareArgs(ENCRYPTO::PsiAnalyticsContext context, int& size, char** circuitArgv) {
+size = 25;
+circuitArgv = (char **) malloc(sizeof(char*)*(size));
+for(int i=0; i < size; i++) {
+  circuitArgv[i] = (char *) malloc(sizeof(char)*50);
+}
+circuitArgv[0] = "./build/MPCHonestMajority";
+circuitArgv[1] = "-partyID";
+sprintf(circuitArgv[2], "%lu", context.role);
+circuitArgv[3] = "-partiesNumber";
+sprintf(circuitArgv[4], "%llu", context.np);
+/*circuitArgv[4] = to_string(context.np);
+circuitArgv[5] = "-numBins";
+circuitArgv[6] = to_string(context.nbins);
+circuitArgv[7] = "-inputsFile";
+circuitArgv[8] = "../../in_party_1.txt";
+circuitArgv[9] = "-outputsFile";
+circuitArgv[10] = context.
+circuitArgv[11] = "-circuitFile";
+/*ic.txt
+-fieldType
+ZpMersenne61
+-genRandomSharesType
+HIM
+-multType
+DN
+-verifyType
+Single
+-partiesFile
+Parties.txt
+-internalIterationsNumber
+1*/
 }
 
 int main(int argc, char **argv) {
@@ -125,6 +169,14 @@ int main(int argc, char **argv) {
   auto gen_bitlen = static_cast<std::size_t>(std::ceil(std::log2(context.neles))) + 3;
   //auto inputs = ENCRYPTO::GeneratePseudoRandomElements(context.neles, gen_bitlen, context.role * 12345);
   auto inputs = ENCRYPTO::GeneratePseudoRandomElements(context.neles, gen_bitlen);
+
+  int size;
+  char** circuitArgv;
+  prepareArgs(context, size, circuitArgv);
+  for(int i=0; i<1;i++){
+      std::cout<< "Circuit Param "<<circuitArgv[i]<<std::endl;
+  }
+
   //auto inputs = ENCRYPTO::GenerateSequentialElements(context.neles);
 /*
   std::vector<uint64_t> inputs;
@@ -142,53 +194,34 @@ int main(int argc, char **argv) {
   //std::cout << "Printing " << bins[0] << " to " << outfile << std::endl;
   ENCRYPTO::PrintBins(bins, outfile, context);
   PrintTimings(context);
-   
-   CmdParser parser;                                                                  
-   auto parameters = parser.parseArguments("", argc, argv);                           
-   int times = stoi(parser.getValueByKey(parameters, "internalIterationsNumber"));    
-   string fieldType(parser.getValueByKey(parameters, "fieldType"));                   
-                                                                                      
-   /*if(fieldType.compare("ZpMersenne") == 0)                                           
-   {                                                                                  
-                                                                                      
-       MPSI_Party<ZpMersenneIntElement> mpsi(argc, argv);                             
-       auto t1 = high_resolution_clock::now();                                        
-       mpsi.runMPSI();                                                                
-       auto t2 = high_resolution_clock::now();                                        
-                                                                                      
-       auto duration = duration_cast<milliseconds>(t2-t1).count();                    
-       cout << "time in milliseconds for " << times << " runs: " << duration << endl; 
-                                                                                      
-                                                                                      
-       cout << "end main" << '\n';                                                    
-                                                                                      
-   } */                                                                                 
-                                                                                      
-   if(fieldType.compare("ZpMersenne61") == 0)                                    
-   {                                                                                  
-                                                                                      
-       MPSI_Party<ZpMersenneLongElement> mpsi(argc, argv);                            
-       auto t1 = high_resolution_clock::now();                                        
-       mpsi.runMPSI();                                                                
-                                                                                      
-       auto t2 = high_resolution_clock::now();                                        
-                                                                                      
-       auto duration = duration_cast<milliseconds>(t2-t1).count();                    
-       cout << "time in milliseconds for " << times << " runs: " << duration << endl; 
-                                                                                      
-       cout << "end main" << '\n';                                                    
-                                                                                      
-   }                                                                                  
-/*                                                                                     
-   else if(fieldType.compare("ZpKaratsuba") == 0) {                                   
-                                                                                      
-                                                                                      
-       MPSI_Party<ZpKaratsubaElement> mpsi(argc, argv);                               
-       auto t1 = high_resolution_clock::now();                                        
-       mpsi.runMPSI();                                                                
-       auto t2 = high_resolution_clock::now();                                        
-                                                                                      
-       auto duration = duration_cast<milliseconds>(t2 - t1).count();                  
-       cout << "time in milliseconds for " << times << " runs: " << duration << endl; 
- */ return EXIT_SUCCESS;
+
+  /*MPSI_Party<ZpMersenneLongElement> mpsi(context.role, context.np, context.nbins, context.outputFileName,
+                                         context.circuitFileName, context.fieldType, context.genRandomSharesType,
+                                         context.multType, context.verifyType, context.partiesFile, bins);*/
+
+
+
+    /*
+   CmdParser parser;
+   auto parameters = parser.parseArguments("", argc, argv);
+   int times = stoi(parser.getValueByKey(parameters, "internalIterationsNumber"));
+   string fieldType(parser.getValueByKey(parameters, "fieldType"));
+
+   if(fieldType.compare("ZpMersenne61") == 0)
+   {
+
+       MPSI_Party<ZpMersenneLongElement> mpsi(argc, argv);
+       auto t1 = high_resolution_clock::now();
+       mpsi.runMPSI();
+
+       auto t2 = high_resolution_clock::now();
+
+       auto duration = duration_cast<milliseconds>(t2-t1).count();
+       cout << "time in milliseconds for " << times << " runs: " << duration << endl;
+
+       cout << "end main" << '\n';
+
+   }
+ */
+ return EXIT_SUCCESS;
 }

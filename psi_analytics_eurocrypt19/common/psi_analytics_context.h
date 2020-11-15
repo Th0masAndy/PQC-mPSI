@@ -38,6 +38,16 @@ struct PsiAnalyticsContext {
   uint64_t nmegabins;
   double epsilon;
   uint64_t np;
+
+  std::string fieldType;
+  std::string genRandomSharesType;
+  std::string multType;
+  std::string verifyType;
+  std::string partiesFile;
+  std::string circuitFileName;
+  std::string outputFileName;
+
+
   std::string file_address;
   std::vector<std::string> address;
   std::vector<uint16_t> port;
