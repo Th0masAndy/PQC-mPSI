@@ -130,38 +130,33 @@ auto read_test_options(int32_t argcp, char **argvp) {
   return context;
 }
 
-void prepareArgs(ENCRYPTO::PsiAnalyticsContext context, int& size, char** circuitArgv) {
-size = 25;
-circuitArgv = (char **) malloc(sizeof(char*)*(size));
-for(int i=0; i < size; i++) {
-  circuitArgv[i] = (char *) malloc(sizeof(char)*50);
-}
+void prepareArgs(ENCRYPTO::PsiAnalyticsContext context, char** circuitArgv) {
 circuitArgv[0] = "./build/MPCHonestMajority";
 circuitArgv[1] = "-partyID";
 sprintf(circuitArgv[2], "%lu", context.role);
 circuitArgv[3] = "-partiesNumber";
 sprintf(circuitArgv[4], "%llu", context.np);
-/*circuitArgv[4] = to_string(context.np);
 circuitArgv[5] = "-numBins";
-circuitArgv[6] = to_string(context.nbins);
+sprintf(circuitArgv[6], "%llu", context.nbins);
 circuitArgv[7] = "-inputsFile";
-circuitArgv[8] = "../../in_party_1.txt";
+string arg_val = "../in_party_" + to_string(context.role) + ".txt";
+sprintf(circuitArgv[8], arg_val.c_str());
 circuitArgv[9] = "-outputsFile";
-circuitArgv[10] = context.
+strcpy(circuitArgv[10], context.outputFileName.c_str());
 circuitArgv[11] = "-circuitFile";
-/*ic.txt
--fieldType
-ZpMersenne61
--genRandomSharesType
-HIM
--multType
-DN
--verifyType
-Single
--partiesFile
-Parties.txt
--internalIterationsNumber
-1*/
+strcpy(circuitArgv[12], context.circuitFileName.c_str());
+circuitArgv[13] = "-fieldType";
+strcpy(circuitArgv[14], context.fieldType.c_str());
+circuitArgv[15] = "-genRandomSharesType";
+strcpy(circuitArgv[16], context.genRandomSharesType.c_str());
+circuitArgv[17] = "-multType";
+strcpy(circuitArgv[18], context.multType.c_str());
+circuitArgv[19] = "-verifyType";
+strcpy(circuitArgv[20], context.verifyType.c_str());
+circuitArgv[21] = "-partiesFile";
+strcpy(circuitArgv[22], context.partiesFile.c_str());
+circuitArgv[23] = "-internalIterationsNumber";
+circuitArgv[24] = "1";
 }
 
 int main(int argc, char **argv) {
@@ -172,10 +167,15 @@ int main(int argc, char **argv) {
 
   int size;
   char** circuitArgv;
-  prepareArgs(context, size, circuitArgv);
-  for(int i=0; i<1;i++){
+  size = 25;                                           
+circuitArgv = (char **) malloc(sizeof(char*)*(size));
+for(int i=0; i < size; i++) {                        
+  circuitArgv[i] = (char *) malloc(sizeof(char)*50); 
+}                                                    
+  prepareArgs(context, circuitArgv);
+  /*for(int i=0; i<25;i++){
       std::cout<< "Circuit Param "<<circuitArgv[i]<<std::endl;
-  }
+  }*/
 
   //auto inputs = ENCRYPTO::GenerateSequentialElements(context.neles);
 /*
@@ -195,22 +195,15 @@ int main(int argc, char **argv) {
   ENCRYPTO::PrintBins(bins, outfile, context);
   PrintTimings(context);
 
-  /*MPSI_Party<ZpMersenneLongElement> mpsi(context.role, context.np, context.nbins, context.outputFileName,
-                                         context.circuitFileName, context.fieldType, context.genRandomSharesType,
-                                         context.multType, context.verifyType, context.partiesFile, bins);*/
-
-
-
-    /*
    CmdParser parser;
-   auto parameters = parser.parseArguments("", argc, argv);
+   auto parameters = parser.parseArguments("", size, circuitArgv);
    int times = stoi(parser.getValueByKey(parameters, "internalIterationsNumber"));
    string fieldType(parser.getValueByKey(parameters, "fieldType"));
 
    if(fieldType.compare("ZpMersenne61") == 0)
    {
 
-       MPSI_Party<ZpMersenneLongElement> mpsi(argc, argv);
+       MPSI_Party<ZpMersenneLongElement> mpsi(size, circuitArgv);
        auto t1 = high_resolution_clock::now();
        mpsi.runMPSI();
 
@@ -222,6 +215,6 @@ int main(int argc, char **argv) {
        cout << "end main" << '\n';
 
    }
- */
+ 
  return EXIT_SUCCESS;
 }
