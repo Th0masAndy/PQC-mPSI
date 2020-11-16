@@ -12,7 +12,7 @@ void outputPhase();
 
 #define mpsi_print true
 
-template <class FieldType> 
+template <class FieldType>
 class MPSI_Party : public ProtocolParty<FieldType>{
 	public:
 		/*Inherited from ProtocolParty:
@@ -24,10 +24,10 @@ class MPSI_Party : public ProtocolParty<FieldType>{
 		 * vector<shared_ptr<ProtocolPartyData>> parties
 		 * vector<FieldType> randomTAnd2TShares
 		 * (All other variables are protected)
-		 * 
+		 *
 		 * Methods:
 		 * Constructor
-		 * roundFunctionSync, exchangeData, roundFunctionSyncBroadcast, recData, roundFunctionSyncForP1, 
+		 * roundFunctionSync, exchangeData, roundFunctionSyncBroadcast, recData, roundFunctionSyncForP1,
 		 *   recDataToP1, sendDataToP1, sendFromP1
 		 * run, runOffline, runOnline
 		 * readMyInputs
@@ -57,10 +57,12 @@ class MPSI_Party : public ProtocolParty<FieldType>{
 		string myInputFile, myOutputFile;
 
 		MPSI_Party(int argc, char* argv[]);
-		
+		MPSI_Party(int argc, char* argv[], vector<uint64_t>& bins, uint64_t nbins);
+
 		//read num_bins MPSI inputs
 		void readMPSIInputs();
-		
+		void readMPSIInputs(vector<uint64_t>& bins, uint64_t nbins);
+
 		//perform MPSI
 		void runMPSI();
 
@@ -95,7 +97,7 @@ class MPSI_Party : public ProtocolParty<FieldType>{
 };
 
 template <class FieldType> MPSI_Party<FieldType>::MPSI_Party(int argc, char* argv[]) : ProtocolParty<FieldType>(argc, argv) {
-        //The call to ProtocolParty constructor initializes inherited variables 
+        //The call to ProtocolParty constructor initializes inherited variables
         // N, T, m_partyID, as well as the VDM matrix and related vectors.
 
         //Initialize global variables that have not been inherited.
@@ -110,6 +112,37 @@ template <class FieldType> MPSI_Party<FieldType>::MPSI_Party(int argc, char* arg
         this->myOutputFile = parser.getValueByKey(this->arguments, "outputsFile");
 
 	readMPSIInputs();
+
+        masks.resize(num_bins);
+        a_vals.resize(num_bins);
+        mult_outs.resize(num_bins);
+        outputs.resize(num_bins);
+
+	sent_total = 0;
+
+	cout << "Element size is " << this->field->getElementSizeInBytes() << std::endl;
+
+        cout << "Constructor done \n";
+
+        //Generation of shared values, such as triples, must be done later.
+}
+
+template <class FieldType> MPSI_Party<FieldType>::MPSI_Party(int argc, char* argv[], vector<uint64_t>& bins, uint64_t nbins) : ProtocolParty<FieldType>(argc, argv) {
+        //The call to ProtocolParty constructor initializes inherited variables
+        // N, T, m_partyID, as well as the VDM matrix and related vectors.
+
+        //Initialize global variables that have not been inherited.
+
+	cout << "Entered constructor\n";
+        CmdParser parser = this->getParser();
+
+        //this->num_bins = stoi(parser.getValueByKey(this->arguments, "numBins"));
+	//std::istringstream iss(parser.getValueByKey(this->arguments, "numBins"));
+	//iss >> this->num_bins;
+        this->myInputFile = parser.getValueByKey(this->arguments, "inputsFile");
+        this->myOutputFile = parser.getValueByKey(this->arguments, "outputsFile");
+
+	readMPSIInputs(bins, nbins);
 
         masks.resize(num_bins);
         a_vals.resize(num_bins);
@@ -154,6 +187,36 @@ template <class FieldType> void MPSI_Party<FieldType>::readMPSIInputs() {
                 cout << "Party " << this->m_partyId << " has read ";
 		cout << add_a.size() << " " << this->num_bins << " " << add_a[0] << std::endl;
         }
+}
+
+//read num_bins MPSI inputs
+template <class FieldType> void MPSI_Party<FieldType>::readMPSIInputs(vector<uint64_t>& bins, uint64_t nbins) {
+  	uint64_t input;
+    uint64_t i = 0;
+		uint64_t j = 0;
+        do {
+                input = bins[j++];
+		if(input > 0) {
+			add_a.push_back(this->field->GetElement(input));
+		}
+		else {
+			add_a.push_back(*(this->field->GetZero()));
+		}
+		//negate sum for leader
+		if (this->m_partyId == 0) {
+			add_a[i] = *(this->field->GetZero()) - add_a[i];
+		}
+                i++;
+        } while(j<nbins);
+
+	this->num_bins = add_a.size();
+
+        if (mpsi_print == true) {
+                cout << "Party " << this->m_partyId << " has read ";
+		cout << add_a.size() << " " << this->num_bins << " " << add_a[0] << std::endl;
+        }
+		//cout<<"Num Bins"<< this->num_bins<<endl;
+		//cout<<"Reading Completed!"<<endl;
 }
 
 //perform MPSI
@@ -237,7 +300,7 @@ template <class FieldType> void MPSI_Party<FieldType>::modDoubleRandom(uint64_t 
                 // generate random degree-T polynomial
                 for(int i = 0; i < T+1; i++)
                 {
-                        // A random field element, uniform distribution, 
+                        // A random field element, uniform distribution,
                         // note that x1[0] is the secret which is also random
                         x1[i] = this->field->Random();
                 }
@@ -262,7 +325,7 @@ template <class FieldType> void MPSI_Party<FieldType>::modDoubleRandom(uint64_t 
                         sendBufsElements[i][2*k] = y1[i];
                         sendBufsElements[i][2*k + 1] = y2[i];
                 }
-		
+
         }
 
         for(int i=0; i < N; i++)
@@ -305,7 +368,7 @@ template <class FieldType> void MPSI_Party<FieldType>::modDoubleRandom(uint64_t 
 */
 template <class FieldType> void MPSI_Party<FieldType>::addShareOpen(uint64_t num_vals, vector<FieldType>& shares, vector<FieldType>& secrets) {
 	cout << "addShareOpen for " << this->m_partyId << ":\n";
-	
+
 	int fieldByteSize = this->field->getElementSizeInBytes();
 	vector<vector<byte>> recBufsBytes;
 	vector<byte> sendBufsBytes;
@@ -326,7 +389,7 @@ template <class FieldType> void MPSI_Party<FieldType>::addShareOpen(uint64_t num
         	for (i = 0; i < N; i++) {
                 	recBufsBytes[i].resize(num_vals*fieldByteSize);
         	}
-		
+
 		//uint64_t recSize = N * num_vals * fieldByteSize;
 		//cout << "In addShareOpen(), P0 receives: " << recSize << " in total." << std::endl;
 
@@ -345,7 +408,7 @@ template <class FieldType> void MPSI_Party<FieldType>::addShareOpen(uint64_t num
 		//send the shares to p1
 		this->parties[0]->getChannel()->write(aPlusRSharesBytes.data(), aPlusRSharesBytes.size());
     	}
-	
+
 	//reconstruct the shares recieved from the other parties
 	if (this->m_partyId == 0) {
 
@@ -357,7 +420,7 @@ template <class FieldType> void MPSI_Party<FieldType>::addShareOpen(uint64_t num
            		 }
 		}
 	}
-	
+
 }
 
 /*
@@ -423,7 +486,7 @@ template <class FieldType> void MPSI_Party<FieldType>::reshare(vector<FieldType>
 			//cout << sendBufsElements[i].size() << " " << sendBufsBytes[i].size() << " " << recBufsBytes[i].size();
 		}
 		uint64_t sendSize = N * no_vals * fieldByteSize;
-		cout << "In reshare(), P0 sends a total of: " << sendSize << "bytes." << std::endl; 
+		cout << "In reshare(), P0 sends a total of: " << sendSize << "bytes." << std::endl;
 		this->sent_total = this->sent_total + sendSize;
 	}
 	else {
@@ -441,7 +504,7 @@ template <class FieldType> void MPSI_Party<FieldType>::reshare(vector<FieldType>
         this->roundFunctionSync(sendBufsBytes, recBufsBytes, 2);
 
 	//cout << "roundFunctionSync() done ";
-	
+
 	if (this->m_partyId != 0) {
 		for(uint64_t k=0; k < no_vals; k++) {
                 	shares[k] = this->field->bytesToElement(recBufsBytes[0].data() + (k * fieldByteSize));
@@ -589,14 +652,14 @@ template <class FieldType> void MPSI_Party<FieldType>::testShareGenWithComm() {
 	this->openShare(this->num_bins, share_t, TRes);
 	cout << "opening additive sharings... \n";
 	addShareOpen(this->num_bins, share_add, AddRes);
-	
+
 	if(this->m_partyId == 0){
 		cout << "Leader has recovered shares ";
 		for(i=0; i<this->num_bins; i++) {
 			cout << this->field->elementToString(TRes[i]) << " " << this->field->elementToString(AddRes[i]) << ";";
 		}
 		cout << "\n";
-	}		
+	}
 }
 
 template <class FieldType> void MPSI_Party<FieldType>::testResharing() {

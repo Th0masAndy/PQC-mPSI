@@ -167,11 +167,11 @@ int main(int argc, char **argv) {
 
   int size;
   char** circuitArgv;
-  size = 25;                                           
+  size = 25;
 circuitArgv = (char **) malloc(sizeof(char*)*(size));
-for(int i=0; i < size; i++) {                        
-  circuitArgv[i] = (char *) malloc(sizeof(char)*50); 
-}                                                    
+for(int i=0; i < size; i++) {
+  circuitArgv[i] = (char *) malloc(sizeof(char)*50);
+}
   prepareArgs(context, circuitArgv);
   /*for(int i=0; i<25;i++){
       std::cout<< "Circuit Param "<<circuitArgv[i]<<std::endl;
@@ -203,7 +203,7 @@ for(int i=0; i < size; i++) {
    if(fieldType.compare("ZpMersenne61") == 0)
    {
 
-       MPSI_Party<ZpMersenneLongElement> mpsi(size, circuitArgv);
+       MPSI_Party<ZpMersenneLongElement> mpsi(size, circuitArgv, bins, context.nbins);
        auto t1 = high_resolution_clock::now();
        mpsi.runMPSI();
 
@@ -215,6 +215,6 @@ for(int i=0; i < size; i++) {
        cout << "end main" << '\n';
 
    }
- 
+
  return EXIT_SUCCESS;
 }
