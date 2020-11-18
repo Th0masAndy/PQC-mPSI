@@ -84,3 +84,12 @@ if (PSI_ANALYTICS_BUILD_EXAMPLE)
         PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin"
     )
 endif (PSI_ANALYTICS_BUILD_EXAMPLE)
+
+macro (add_test _name)
+	add_executable(${_name} "tests/test_${_name}.cpp")
+  target_link_libraries(${_name} PUBLIC psi_analytics_eurocrypt19)
+  set_target_properties(${_name} PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin"
+  )
+endmacro()
+
+add_test(circuit)
