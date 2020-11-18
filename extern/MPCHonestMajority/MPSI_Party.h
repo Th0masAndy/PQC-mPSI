@@ -63,6 +63,8 @@ class MPSI_Party : public ProtocolParty<FieldType>{
 		void readMPSIInputs();
 		void readMPSIInputs(vector<uint64_t>& bins, uint64_t nbins);
 
+		void convertSharestoFieldType(vector<uint64_t>& bins, vector<FieldType>& shares, uint64_t nbins);
+
 		//perform MPSI
 		void runMPSI();
 
@@ -217,6 +219,26 @@ template <class FieldType> void MPSI_Party<FieldType>::readMPSIInputs(vector<uin
         }
 		//cout<<"Num Bins"<< this->num_bins<<endl;
 		//cout<<"Reading Completed!"<<endl;
+}
+
+//convert shares to field type
+template <class FieldType> void MPSI_Party<FieldType>::convertSharestoFieldType(vector<uint64_t>& bins, vector<FieldType>& shares, uint64_t nbins) {
+  	uint64_t input;
+
+		uint64_t j = 0;
+
+		for(int i=0; i<nbins; i++) {
+			input = bins[j++];
+			if(input > 0) {
+				shares.push_back(this->field->GetElement(input));
+			}
+			else {
+				shares.push_back(*(this->field->GetZero()));
+			}
+			if (this->m_partyId == 0) {
+				shares[i] = *(this->field->GetZero()) - shares[i];
+			}
+		}
 }
 
 //perform MPSI
