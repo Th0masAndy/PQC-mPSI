@@ -415,9 +415,21 @@ std::vector<uint64_t> run_psi_analytics(const std::vector<std::uint64_t> &inputs
       opprf_threads[i].join();
     }
 
+    TemplateField<ZpMersenneLongElement1> *field;
+    std::vector<ZpMersenneLongElement1> field_bins;
+    for(uint64_t j=0; j< context.nbins; j++) {
+      field_bins.push_back(field->GetElement(sub_bins[0][j]));
+    }
+
+    for(uint64_t i=1; i< context.np-1; i++) {
+      for(uint64_t j=0; j< context.nbins; j++) {
+          field_bins[j] = field_bins[j]+field->GetElement(sub_bins[i][j]);
+      }
+    }
+
     for(uint64_t i=0; i< context.np-1; i++) {
       for(uint64_t j=0; j< context.nbins; j++) {
-        bins[j] = bins[j] + sub_bins[i][j];
+        bins[j] = field_bins[j].elem;
       }
     }
   } else {

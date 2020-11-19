@@ -14,26 +14,34 @@ vector<vector<uint64_t>> global_bins;
 void circuit_thread(int size, char** circuitArgv, vector<uint64_t>& bins, vector<ZpMersenneLongElement>& shares, int nbins) {
     MPSI_Party<ZpMersenneLongElement> mpsi(size, circuitArgv, bins, nbins);
     mpsi.convertSharestoFieldType(bins, shares, nbins);
+    cout<<"After sharing, thread "<< mpsi.m_partyId <<" : " <<bins[6]<<" "<<shares[6]<<endl;
     vector<ZpMersenneLongElement> secrets;
-    mpsi.convertSharestoFieldType(bins, shares, nbins);
     mpsi.addShareOpen(nbins, shares, secrets);
 
     if(mpsi.m_partyId == 0) {
+      cout<<"After opening additive share, thread "<< mpsi.m_partyId <<" : " <<shares[6]<<" "<<secrets[6]<<endl;
       vector<uint64_t> total_bin;
       uint64_t np = mpsi.N;
       uint64_t val;
       for(int i=0; i<nbins; i++) {
         val = 0;
-        val -= global_bins[0][i];
-        for(int j=0; j< np; j++) {
+        if(i == 6) {
+          cout<<"Mid-way totaling, thread "<< mpsi.m_partyId <<" : " <<val <<endl;
+        }
+        val += global_bins[0][i];
+        if(i == 6) {
+          cout<<"Mid-way totaling, thread "<< mpsi.m_partyId <<" : " <<val <<endl;
+        }
+        for(int j=1; j< np; j++) {
           val += global_bins[j][i];
         }
         total_bin.push_back(val);
       }
       vector<ZpMersenneLongElement> totSecrets;
       mpsi.convertSharestoFieldType(total_bin, totSecrets, nbins);
+      cout<<"After totaling, thread "<< mpsi.m_partyId <<" : " <<total_bin[6] <<" "<<totSecrets[6]<<" "<< secrets[6]<<endl;
       for(int i=0; i<nbins; i++) {
-        if(shares[i] != totSecrets[i]) {
+        if(secrets[i] != totSecrets[i]) {
           cout<<"Not equal at index "<< i << endl;
         }
       }
@@ -101,11 +109,15 @@ int main(int argc, char** argv) {
     prepareArgs(circuitArgv[i], i, np, nbins, string(argv[3]), string(argv[4]), string(argv[5]));
 
     vector<uint64_t> bin;
-
+    ifstream myfile;
+    string inputFileName = "../in_party_" + to_string(i) + ".txt";
+    myfile.open(inputFileName);
     for(int j=0; j<nbins; j++) {
-      val = dis(gen);
+      myfile >> val;
+      //val = dis(gen);
       bin.push_back(val);
     }
+    myfile.close();
     global_bins.push_back(bin);
   }
 
