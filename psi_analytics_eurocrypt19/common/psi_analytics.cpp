@@ -443,7 +443,7 @@ std::vector<uint64_t> run_psi_analytics(const std::vector<std::uint64_t> &inputs
   //PrintBins(bins, outfile, context);
   const auto end_time = std::chrono::system_clock::now();
   const duration_millis total_duration = end_time - start_time;
-  context.timings.total += total_duration.count();
+  context.timings.total = total_duration.count();
 
   return bins;
 }

@@ -1,7 +1,7 @@
 #pragma once
 #define P_0 0
 #define DEF_ADDRESS "127.0.0.1"
-#define REF_PORT 32000
+#define REF_PORT 31000
 //
 // \author Oleksandr Tkachenko
 // \email tkachenko@encrypto.cs.tu-darmstadt.de
