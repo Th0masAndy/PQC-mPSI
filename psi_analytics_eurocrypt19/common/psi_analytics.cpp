@@ -52,6 +52,7 @@ namespace ENCRYPTO {
 
 using milliseconds_ratio = std::ratio<1, 1000>;
 using duration_millis = std::chrono::duration<double, milliseconds_ratio>;
+
 auto cuckoo_hash(const std::vector<uint64_t> &elements, PsiAnalyticsContext &context) {
   const auto hashing_start_time = std::chrono::system_clock::now();
 
@@ -74,65 +75,25 @@ auto cuckoo_hash(const std::vector<uint64_t> &elements, PsiAnalyticsContext &con
   return cuckoo_table_v;
 }
 
+auto simple_hash(const std::vector<uint64_t> &elements, PsiAnalyticsContext &context) {
+  const auto hashing_start_time = std::chrono::system_clock::now();
 
-/*
-std::vector<uint64_t> run_psi_analytics(const std::vector<std::uint64_t> &inputs, PsiAnalyticsContext &context) {
-  // establish networkuconnection
-  //std::unique_ptr<CSocket> sock =
-      EstablishConnection(context.address, context.port, static_cast<e_role>(context.role));
-  sock->Close();
-  const auto clock_time_total_start = std::chrono::system_clock::now();
-  //
-  std::vector<uint64_t> bins;
+  ENCRYPTO::SimpleTable simple_table(static_cast<std::size_t>(context.nbins));
+  simple_table.SetNumOfHashFunctions(context.nfuns);
+  simple_table.Insert(elements);
+  simple_table.MapElements();
+  // simple_table.Print();
 
-
-  // create hash tables from the elements
-  if (context.role == P_0) {
-    std::vector<uint64_t> bins(context.nbins, 0);
-    std::vector<uint64_t> sub_bins;
-    std::vector<uint64_t> table;
-    for(uint64_t i=0; i< context.np-1; i++) {
-      table = cuckoo_hash(inputs, context, i);
-      sub_bins = OpprgPsiClient(inputs, context, i, table);
-      for(uint64_t j=0; j< context.nbins; j++) {
-      	bins[j] += sub_bins[j];
-      }
-    }
-
-  } else {
-    bins = OpprgPsiServer(inputs, context);
-  }
-
-  return bins;
-}
-*/
-std::vector<uint64_t> OpprgPsiClient(const std::vector<uint64_t> &elements,
-                                     PsiAnalyticsContext &context, int server_index,
-				     const std::vector<uint64_t> &cuckoo_table_v) {
-  /*  std::unique_ptr<CSocket> sock1 =
-      EstablishConnection(context.address[server_index], context.port[server_index], static_cast<e_role>(context.role));
-  sock1->Close();*/
-
-
-/*  const auto hashing_start_time = std::chrono::system_clock::now();
-  //std::cout<<"nbins:"<<context.nbins<<" "<<context.neles<<std::endl;
-  ENCRYPTO::CuckooTable cuckoo_table(static_cast<std::size_t>(context.nbins));
-  cuckoo_table.SetNumOfHashFunctions(context.nfuns);
-  cuckoo_table.Insert(elements);
-  cuckoo_table.MapElements();
-  // cuckoo_table.Print();
-
-  if (cuckoo_table.GetStashSize() > 0u) {
-    std::cerr << "[Error] Stash of size " << cuckoo_table.GetStashSize() << " occured\n";
-  }
-
-  auto cuckoo_table_v = cuckoo_table.AsRawVector();
-
+  auto simple_table_v = simple_table.AsRaw2DVector();
+  // context.simple_table = simple_table_v;
   const auto hashing_end_time = std::chrono::system_clock::now();
   const duration_millis hashing_duration = hashing_end_time - hashing_start_time;
   context.timings.hashing = hashing_duration.count();
-*/
 
+  return simple_table_v;
+}
+
+std::vector<uint64_t> OprfClient(const std::vector<uint64_t> &cuckoo_table_v, PsiAnalyticsContext &context, int server_index) {
   const auto oprf_start_time = std::chrono::system_clock::now();
 
   std::vector<uint64_t> masks_with_dummies = ot_receiver(cuckoo_table_v, context, server_index);
@@ -141,6 +102,30 @@ std::vector<uint64_t> OpprgPsiClient(const std::vector<uint64_t> &elements,
   const duration_millis oprf_duration = oprf_end_time - oprf_start_time;
   context.timings.oprf += oprf_duration.count();
 
+  return masks_with_dummies;
+}
+
+std::vector<std::vector<uint64_t>> OprfServer(const std::vector<std::vector<uint64_t>> &simple_table_v, PsiAnalyticsContext &context) {
+  const auto oprf_start_time = std::chrono::system_clock::now();
+
+  auto masks = ot_sender(simple_table_v, context);
+  const auto oprf_end_time = std::chrono::system_clock::now();
+  const duration_millis oprf_duration = oprf_end_time - oprf_start_time;
+  context.timings.oprf = oprf_duration.count();
+
+  return masks;
+}
+
+
+
+std::vector<uint64_t> OpprgPsiClient(const std::vector<uint64_t> &elements,
+                                     PsiAnalyticsContext &context, int server_index,
+				     const std::vector<uint64_t> &cuckoo_table_v) {
+  /*  std::unique_ptr<CSocket> sock1 =
+      EstablishConnection(context.address[server_index], context.port[server_index], static_cast<e_role>(context.role));
+  sock1->Close();*/
+
+  std::vector<uint64_t> masks_with_dummies = OprfClient(cuckoo_table_v, context, server_index);
   std::unique_ptr<CSocket> sock =
       EstablishConnection(context.address[server_index], context.port[server_index], static_cast<e_role>(context.role));
 
@@ -194,32 +179,17 @@ std::vector<uint64_t> OpprgPsiClient(const std::vector<uint64_t> &elements,
 
 std::vector<uint64_t> OpprgPsiServer(const std::vector<uint64_t> &elements,
                                      PsiAnalyticsContext &context) {
-  /*std::unique_ptr<CSocket> sock1 =
-      EstablishConnection(context.address[0], context.port[0], static_cast<e_role>(context.role));
-  sock1->Close();*/
+  auto simple_table_v = simple_hash(elements, context);
 
-  //std::cout << "Starting at " << std::chrono::system_clock::to_time_t(start_time) << std::endl;
-
-  const auto hashing_start_time = std::chrono::system_clock::now();
-
-  ENCRYPTO::SimpleTable simple_table(static_cast<std::size_t>(context.nbins));
-  simple_table.SetNumOfHashFunctions(context.nfuns);
-  simple_table.Insert(elements);
-  simple_table.MapElements();
-  // simple_table.Print();
-
-  auto simple_table_v = simple_table.AsRaw2DVector();
-  // context.simple_table = simple_table_v;
-  const auto hashing_end_time = std::chrono::system_clock::now();
-  const duration_millis hashing_duration = hashing_end_time - hashing_start_time;
-  context.timings.hashing = hashing_duration.count();
+  auto masks = OprfServer(simple_table_v, context);
+/*
   const auto oprf_start_time = std::chrono::system_clock::now();
 
   auto masks = ot_sender(simple_table_v, context);
   const auto oprf_end_time = std::chrono::system_clock::now();
   const duration_millis oprf_duration = oprf_end_time - oprf_start_time;
   context.timings.oprf = oprf_duration.count();
-
+*/
   const auto polynomials_start_time = std::chrono::system_clock::now();
 
   std::vector<uint64_t> polynomials(context.nmegabins * context.polynomialsize, 0);
