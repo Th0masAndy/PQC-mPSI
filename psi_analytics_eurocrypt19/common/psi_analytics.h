@@ -41,6 +41,9 @@ auto cuckoo_hash(const std::vector<uint64_t> &elements, PsiAnalyticsContext &con
 auto simple_hash(const std::vector<uint64_t> &elements, PsiAnalyticsContext &context);
 
 std::vector<uint64_t> OprfClient(const std::vector<uint64_t> &cuckoo_table_v, PsiAnalyticsContext &context, int server_index);
+std::vector<std::vector<uint64_t>> OprfServer(const std::vector<std::vector<uint64_t>> &simple_table_v, PsiAnalyticsContext &context);
+
+std::vector<uint64_t> PolynomialsServer(const std::vector<std::vector<uint64_t>> &masks, PsiAnalyticsContext &context);
 
 std::vector<uint64_t> OpprgPsiClient(const std::vector<uint64_t> &elements,
                                      PsiAnalyticsContext &context, int i,

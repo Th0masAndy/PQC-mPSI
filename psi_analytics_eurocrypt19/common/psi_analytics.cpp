@@ -116,7 +116,34 @@ std::vector<std::vector<uint64_t>> OprfServer(const std::vector<std::vector<uint
   return masks;
 }
 
+std::vector<uint64_t> PolynomialsServer(const std::vector<std::vector<uint64_t>> &masks, PsiAnalyticsContext &context) {
+  const auto polynomials_start_time = std::chrono::system_clock::now();
 
+  std::vector<uint64_t> polynomials(context.nmegabins * context.polynomialsize, 0);
+  std::vector<uint64_t> content_of_bins(context.nbins);
+
+  std::random_device urandom("/dev/urandom");
+  std::uniform_int_distribution<uint64_t> dist(0,
+                                               (1ull << context.maxbitlen) - 1);  // [0,2^elebitlen)
+
+  // generate random numbers to use for mapping the polynomial to
+  std::generate(content_of_bins.begin(), content_of_bins.end(), [&]() { return dist(urandom); });
+  {
+    auto tmp = content_of_bins;
+    std::sort(tmp.begin(), tmp.end());
+    auto last = std::unique(tmp.begin(), tmp.end());
+    tmp.erase(last, tmp.end());
+    assert(tmp.size() == content_of_bins.size());
+  }
+
+  InterpolatePolynomials(polynomials, content_of_bins, masks, context);
+  context.content_of_bins = content_of_bins;
+
+  const auto polynomials_end_time = std::chrono::system_clock::now();
+  const duration_millis polynomials_duration = polynomials_end_time - polynomials_start_time;
+  context.timings.polynomials = polynomials_duration.count();
+  return polynomials;
+}
 
 std::vector<uint64_t> OpprgPsiClient(const std::vector<uint64_t> &elements,
                                      PsiAnalyticsContext &context, int server_index,
@@ -183,13 +210,6 @@ std::vector<uint64_t> OpprgPsiServer(const std::vector<uint64_t> &elements,
 
   auto masks = OprfServer(simple_table_v, context);
 /*
-  const auto oprf_start_time = std::chrono::system_clock::now();
-
-  auto masks = ot_sender(simple_table_v, context);
-  const auto oprf_end_time = std::chrono::system_clock::now();
-  const duration_millis oprf_duration = oprf_end_time - oprf_start_time;
-  context.timings.oprf = oprf_duration.count();
-*/
   const auto polynomials_start_time = std::chrono::system_clock::now();
 
   std::vector<uint64_t> polynomials(context.nmegabins * context.polynomialsize, 0);
@@ -209,14 +229,19 @@ std::vector<uint64_t> OpprgPsiServer(const std::vector<uint64_t> &elements,
     assert(tmp.size() == content_of_bins.size());
   }
 
-  std::unique_ptr<CSocket> sock =
-      EstablishConnection(context.address[0], context.port[0], static_cast<e_role>(context.role));
+//  std::unique_ptr<CSocket> sock = EstablishConnection(context.address[0], context.port[0], static_cast<e_role>(context.role));
 
   InterpolatePolynomials(polynomials, content_of_bins, masks, context);
 
   const auto polynomials_end_time = std::chrono::system_clock::now();
   const duration_millis polynomials_duration = polynomials_end_time - polynomials_start_time;
   context.timings.polynomials = polynomials_duration.count();
+*/
+
+  std::vector<uint64_t> polynomials = PolynomialsServer(masks, context);
+  std::unique_ptr<CSocket> sock =
+      EstablishConnection(context.address[0], context.port[0], static_cast<e_role>(context.role));
+
   const auto sending_start_time = std::chrono::system_clock::now();
 
   // send polynomials to the receiver
@@ -227,7 +252,7 @@ std::vector<uint64_t> OpprgPsiServer(const std::vector<uint64_t> &elements,
   const duration_millis sending_duration = sending_end_time - sending_start_time;
   context.timings.polynomials_transmission = sending_duration.count();
 
-  return content_of_bins;
+  return context.content_of_bins;
 }
 
 void InterpolatePolynomials(std::vector<uint64_t> &polynomials,

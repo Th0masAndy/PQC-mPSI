@@ -47,6 +47,7 @@ struct PsiAnalyticsContext {
   std::string circuitFileName;
   std::string outputFileName;
 
+  std::vector<uint64_t> content_of_bins;
 
   std::string file_address;
   std::vector<std::string> address;
