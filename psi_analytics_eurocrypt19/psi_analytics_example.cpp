@@ -27,6 +27,10 @@
 #include "common/constants.h"
 #include "common/psi_analytics_context.h"
 #include <thread>
+
+using milliseconds_ratio = std::ratio<1, 1000>;
+using duration_millis = std::chrono::duration<double, milliseconds_ratio>;
+
 auto read_test_options(int32_t argcp, char **argvp) {
   	namespace po = boost::program_options;
   	ENCRYPTO::PsiAnalyticsContext context;
@@ -209,13 +213,18 @@ int main(int argc, char **argv) {
 */
 
 	cout << context.role << ": Running protocol..." << endl;
+
+	auto start_time = std::chrono::system_clock::now();
   	bins = ENCRYPTO::run_psi_analytics(inputs, context);
   	//std::vector<uint64_t> bins = ENCRYPTO::GeneratePseudoRandomElements(context.nbins, gen_bitlen);
+	auto t1 = std::chrono::system_clock::now();
+	const duration_millis opprf_time = t1-start_time;
+	context.timings.opprf = opprf_time.count();
   	cout << context.role << ": PSI circuit successfully executed: " << bins[0] << endl;
   	std::string outfile = "../in_party_"+std::to_string(context.role)+".txt";
   	//std::cout << "Printing " << bins[0] << " to " << outfile << std::endl;
   	ENCRYPTO::PrintBins(bins, outfile, context);
-  	PrintTimings(context);
+  	//PrintTimings(context);
 /*
    	CmdParser parser;
    	auto parameters = parser.parseArguments("", size, circuitArgv);
@@ -230,13 +239,16 @@ int main(int argc, char **argv) {
 	cout << context.role << ": Passing inputs..." << endl;
 	mpsi.readMPSIInputs(bins, context.nbins);
 	cout << context.role << ": Running circuit..." << endl;
-	auto t1 = high_resolution_clock::now();
+	auto t2 = std::chrono::system_clock::now();
        	mpsi.runMPSI();
+       	auto end_time = std::chrono::system_clock::now();
+	const duration_millis circuit_time = end_time - t2;
 
-       	auto t2 = high_resolution_clock::now();
+	context.timings.circuit = circuit_time.count();
+	const duration_millis duration = end_time - start_time;
+	context.timings.total = (duration).count();
 
-       	auto duration = duration_cast<milliseconds>(t2-t1).count();
-       	cout << context.role << ": Circuit successfully executed in " << duration << "ms." << endl;
+	PrintTimings(context);
 
        	cout << "end main" << endl;
 /*

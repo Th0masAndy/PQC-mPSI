@@ -69,9 +69,10 @@ struct PsiAnalyticsContext {
     double opprf;
     double polynomials;
     double polynomials_transmission;
-    double aby_setup;
-    double aby_online;
-    double aby_total;
+    //double aby_setup;
+    //double aby_online;
+    //double aby_total;
+    double circuit;
     double total;
   } timings;
 };
