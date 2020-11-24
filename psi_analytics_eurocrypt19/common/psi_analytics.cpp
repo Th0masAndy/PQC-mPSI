@@ -348,19 +348,21 @@ std::size_t PlainIntersectionSize(std::vector<std::uint64_t> v1, std::vector<std
 }
 
 void PrintTimings(const PsiAnalyticsContext &context) {
-  std::cout << "Printing timings for Party " << context.role << std::endl;
-  std::cout << "Time for hashing " << context.timings.hashing << " ms\n";
-  std::cout << "Time for OPRF " << context.timings.oprf << " ms\n";
-  std::cout << "Time for polynomials " << context.timings.polynomials << " ms\n";
-  std::cout << "Time for transmission of the polynomials "
+  std::cout << context.role << ": Printing timings..." << std::endl;
+  std::cout << context.role << ": Time for hashing " << context.timings.hashing << " ms\n";
+  std::cout << context.role << ": Time for OPRF " << context.timings.oprf << " ms\n";
+  std::cout << context.role << ": Time for polynomials " << context.timings.polynomials << " ms\n";
+  std::cout << context.role << ": Time for transmission of the polynomials "
             << context.timings.polynomials_transmission << " ms\n";
+  std::cout << context.role << ": Time for OPPRF " << context.timings.opprf << " ms\n";
+  std::cout << context.role << ": Time for circuit " << context.timings.circuit << " ms\n";
 //  std::cout << "Time for OPPRF " << context.timings.opprf << " ms\n";
 
   //std::cout << "ABY timings: online time " << context.timings.aby_online << " ms, setup time "
   //          << context.timings.aby_setup << " ms, total time " << context.timings.aby_total
   //          << " ms\n";
 
-  std::cout << "Total runtime: " << context.timings.total << "ms\n";
+  std::cout << context.role << ": Total runtime: " << context.timings.total << "ms\n";
   //std::cout << "Total runtime w/o base OTs: "
   //          << context.timings.total - context.timings.base_ots_libote
   //          << "ms\n";
@@ -392,7 +394,7 @@ std::vector<uint64_t> run_psi_analytics(const std::vector<std::uint64_t> &inputs
   sock->Close();
   const auto clock_time_total_start = std::chrono::system_clock::now();
   */
-  const auto start_time = std::chrono::system_clock::now();
+  //const auto start_time = std::chrono::system_clock::now();
   std::vector<uint64_t> bins;
 
   // create hash tables from the elements
@@ -441,9 +443,9 @@ std::vector<uint64_t> run_psi_analytics(const std::vector<std::uint64_t> &inputs
   std::string outfile = "../in_party_" + std::to_string(context.role) + ".txt";
 
   //PrintBins(bins, outfile, context);
-  const auto end_time = std::chrono::system_clock::now();
-  const duration_millis total_duration = end_time - start_time;
-  context.timings.total = total_duration.count();
+  //const auto end_time = std::chrono::system_clock::now();
+  //const duration_millis total_duration = end_time - start_time;
+  //context.timings.total = total_duration.count();
 
   return bins;
 }
