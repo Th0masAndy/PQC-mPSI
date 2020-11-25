@@ -145,14 +145,13 @@ std::vector<uint64_t> PolynomialsServer(const std::vector<std::vector<uint64_t>>
   return polynomials;
 }
 
-std::vector<uint64_t> OpprgPsiClient(const std::vector<uint64_t> &elements,
-                                     PsiAnalyticsContext &context, int server_index,
-				     const std::vector<uint64_t> &cuckoo_table_v) {
+std::vector<uint64_t> OpprgPsiClient(const std::vector<uint64_t> &masks_with_dummies,
+                                     PsiAnalyticsContext &context, int server_index) {
   /*  std::unique_ptr<CSocket> sock1 =
       EstablishConnection(context.address[server_index], context.port[server_index], static_cast<e_role>(context.role));
   sock1->Close();*/
 
-  std::vector<uint64_t> masks_with_dummies = OprfClient(cuckoo_table_v, context, server_index);
+//  std::vector<uint64_t> masks_with_dummies = OprfClient(cuckoo_table_v, context, server_index);
   std::unique_ptr<CSocket> sock =
       EstablishConnection(context.address[server_index], context.port[server_index], static_cast<e_role>(context.role));
 
@@ -204,41 +203,8 @@ std::vector<uint64_t> OpprgPsiClient(const std::vector<uint64_t> &elements,
   return raw_bin_result;
 }
 
-std::vector<uint64_t> OpprgPsiServer(const std::vector<uint64_t> &elements,
+std::vector<uint64_t> OpprgPsiServer(const std::vector<uint64_t> &polynomials,
                                      PsiAnalyticsContext &context) {
-  auto simple_table_v = simple_hash(elements, context);
-
-  auto masks = OprfServer(simple_table_v, context);
-/*
-  const auto polynomials_start_time = std::chrono::system_clock::now();
-
-  std::vector<uint64_t> polynomials(context.nmegabins * context.polynomialsize, 0);
-  std::vector<uint64_t> content_of_bins(context.nbins);
-
-  std::random_device urandom("/dev/urandom");
-  std::uniform_int_distribution<uint64_t> dist(0,
-                                               (1ull << context.maxbitlen) - 1);  // [0,2^elebitlen)
-
-  // generate random numbers to use for mapping the polynomial to
-  std::generate(content_of_bins.begin(), content_of_bins.end(), [&]() { return dist(urandom); });
-  {
-    auto tmp = content_of_bins;
-    std::sort(tmp.begin(), tmp.end());
-    auto last = std::unique(tmp.begin(), tmp.end());
-    tmp.erase(last, tmp.end());
-    assert(tmp.size() == content_of_bins.size());
-  }
-
-//  std::unique_ptr<CSocket> sock = EstablishConnection(context.address[0], context.port[0], static_cast<e_role>(context.role));
-
-  InterpolatePolynomials(polynomials, content_of_bins, masks, context);
-
-  const auto polynomials_end_time = std::chrono::system_clock::now();
-  const duration_millis polynomials_duration = polynomials_end_time - polynomials_start_time;
-  context.timings.polynomials = polynomials_duration.count();
-*/
-
-  std::vector<uint64_t> polynomials = PolynomialsServer(masks, context);
   std::unique_ptr<CSocket> sock =
       EstablishConnection(context.address[0], context.port[0], static_cast<e_role>(context.role));
 
@@ -375,11 +341,17 @@ void PrintBins(std::vector<uint64_t> &bins, std::string outFile, PsiAnalyticsCon
   std::cout << "Written outputs to file.";
 }
 
-void multi_opprf_thread(int tid, std::vector<std::vector<uint64_t>> &sub_bins, std::vector<uint64_t> inputs,
-                        PsiAnalyticsContext &context, std::vector<uint64_t> table) {
+void multi_hint_thread(int tid, std::vector<std::vector<uint64_t>> &sub_bins, std::vector<std::vector<uint64_t>> masks_with_dummies,
+                        PsiAnalyticsContext &context) {
     for(int i=tid; i < context.np-1; i=i+context.nthreads) {
-      sub_bins[i] = OpprgPsiClient(inputs, context, i, table);
+      sub_bins[i] = OpprgPsiClient(masks_with_dummies[i], context, i);
     }
+}
+
+void multi_oprf_thread(int tid, std::vector<std::vector<uint64_t>> &masks_with_dummies, std::vector<uint64_t> table, PsiAnalyticsContext &context) {
+  for(int i=tid; i<context.np-1; i=i+context.nthreads) {
+    masks_with_dummies[i] = OprfClient(table, context, i);
+  }
 }
 
 std::vector<uint64_t> run_psi_analytics(const std::vector<std::uint64_t> &inputs, PsiAnalyticsContext &context) {
@@ -401,15 +373,25 @@ std::vector<uint64_t> run_psi_analytics(const std::vector<std::uint64_t> &inputs
     }
     std::vector<std::vector<uint64_t>> sub_bins(context.np-1);
     std::vector<uint64_t> table;
+    std::vector<std::vector<uint64_t>> masks_with_dummies(context.np-1);
     table = cuckoo_hash(inputs, context);
 
-    std::thread opprf_threads[context.nthreads];
+    std::thread oprf_threads[context.nthreads];
     for(int i=0; i<context.nthreads; i++) {
-      opprf_threads[i] = std::thread(multi_opprf_thread, i, std::ref(sub_bins), inputs, std::ref(context), table);
+      oprf_threads[i] = std::thread(multi_oprf_thread, i, std::ref(masks_with_dummies), table, std::ref(context));
+    }
+
+    for(int i=0; i<context.nthreads; i++) {
+      oprf_threads[i].join();
+    }
+
+    std::thread hint_threads[context.nthreads];
+    for(int i=0; i<context.nthreads; i++) {
+      hint_threads[i] = std::thread(multi_hint_thread, i, std::ref(sub_bins), masks_with_dummies, std::ref(context));
     }
 
     for (int i=0; i<context.nthreads; i++) {
-      opprf_threads[i].join();
+      hint_threads[i].join();
     }
 
     TemplateField<ZpMersenneLongElement1> *field;
@@ -430,7 +412,10 @@ std::vector<uint64_t> run_psi_analytics(const std::vector<std::uint64_t> &inputs
       }
     }
   } else {
-    bins = OpprgPsiServer(inputs, context);
+    auto simple_table_v = simple_hash(inputs, context);
+    auto masks = OprfServer(simple_table_v, context);
+    std::vector<uint64_t> polynomials = PolynomialsServer(masks, context);
+    bins = OpprgPsiServer(polynomials, context);
   }
 
 //  std::cout << "First bin of " << context.role << " is " << bins[0] << "\n";
