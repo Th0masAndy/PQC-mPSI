@@ -26,7 +26,7 @@ int main(int argc, char **argv) {
   }
 
   for(int i=0; i< 100; i++) {
-    f << "party_" + to_string(i) + "_port = " + to_string(REF_PORT+i)<< "\n";
+    f << "party_" + to_string(i) + "_port = " + to_string(REF_PORT+20*i)<< "\n";
   }
   f.close();
 

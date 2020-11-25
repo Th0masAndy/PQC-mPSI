@@ -289,7 +289,7 @@ void InterpolatePolynomialsPaddedWithDummies(
 std::unique_ptr<CSocket> EstablishConnection(const std::string &address, uint16_t port,
                                              e_role role) {
   std::unique_ptr<CSocket> socket;
-  if (role == SERVER) {
+  if (role != SERVER) {
     socket = Listen(address.c_str(), port);
   } else {
     socket = Connect(address.c_str(), port);

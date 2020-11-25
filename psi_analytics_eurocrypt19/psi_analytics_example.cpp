@@ -221,9 +221,9 @@ int main(int argc, char **argv) {
 	const duration_millis opprf_time = t1-start_time;
 	context.timings.opprf = opprf_time.count();
   	cout << context.role << ": PSI circuit successfully executed: " << bins[0] << endl;
-  	std::string outfile = "../in_party_"+std::to_string(context.role)+".txt";
+  	//std::string outfile = "../in_party_"+std::to_string(context.role)+".txt";
   	//std::cout << "Printing " << bins[0] << " to " << outfile << std::endl;
-  	ENCRYPTO::PrintBins(bins, outfile, context);
+  	//ENCRYPTO::PrintBins(bins, outfile, context);
   	//PrintTimings(context);
 /*
    	CmdParser parser;
