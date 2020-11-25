@@ -46,10 +46,10 @@ std::vector<std::vector<uint64_t>> OprfServer(const std::vector<std::vector<uint
 std::vector<uint64_t> PolynomialsServer(const std::vector<std::vector<uint64_t>> &masks, PsiAnalyticsContext &context);
 
 std::vector<uint64_t> OpprgPsiClient(const std::vector<uint64_t> &elements,
-                                     PsiAnalyticsContext &context, int i);
+                                     PsiAnalyticsContext &context, int i, std::unique_ptr<CSocket> &sock);
 
 std::vector<uint64_t> OpprgPsiServer(const std::vector<uint64_t> &polynomials,
-                                     PsiAnalyticsContext &context);
+                                     PsiAnalyticsContext &context, std::unique_ptr<CSocket> &sock);
 
 void InterpolatePolynomials(std::vector<uint64_t> &polynomials,
                             std::vector<uint64_t> &content_of_bins,
@@ -71,6 +71,6 @@ void PrintBins(std::vector<std::uint64_t> &bins, std::string outfile, PsiAnalyti
 void PrintTimings(const PsiAnalyticsContext &context);
 
 void multi_hint_thread(int tid, std::vector<std::vector<uint64_t>> &sub_bins, std::vector<std::vector<uint64_t>> masks_with_dummies,
-                        PsiAnalyticsContext &context);
+                        PsiAnalyticsContext &context, std::vector<std::unique_ptr<CSocket>> &allsocks);
 void multi_oprf_thread(int tid, std::vector<std::vector<uint64_t>> &masks_with_dummies, std::vector<uint64_t> table, PsiAnalyticsContext &context);
 }

@@ -146,14 +146,14 @@ std::vector<uint64_t> PolynomialsServer(const std::vector<std::vector<uint64_t>>
 }
 
 std::vector<uint64_t> OpprgPsiClient(const std::vector<uint64_t> &masks_with_dummies,
-                                     PsiAnalyticsContext &context, int server_index) {
+                                     PsiAnalyticsContext &context, int server_index, std::unique_ptr<CSocket> &sock) {
   /*  std::unique_ptr<CSocket> sock1 =
       EstablishConnection(context.address[server_index], context.port[server_index], static_cast<e_role>(context.role));
   sock1->Close();*/
 
 //  std::vector<uint64_t> masks_with_dummies = OprfClient(cuckoo_table_v, context, server_index);
-  std::unique_ptr<CSocket> sock =
-      EstablishConnection(context.address[server_index], context.port[server_index], static_cast<e_role>(context.role));
+//  std::unique_ptr<CSocket> sock =
+//      EstablishConnection(context.address[server_index], context.port[server_index], static_cast<e_role>(context.role));
 
   const auto nbinsinmegabin = ceil_divide(context.nbins, context.nmegabins);
   std::vector<std::vector<ZpMersenneLongElement1>> polynomials(context.nmegabins);
@@ -204,9 +204,9 @@ std::vector<uint64_t> OpprgPsiClient(const std::vector<uint64_t> &masks_with_dum
 }
 
 std::vector<uint64_t> OpprgPsiServer(const std::vector<uint64_t> &polynomials,
-                                     PsiAnalyticsContext &context) {
-  std::unique_ptr<CSocket> sock =
-      EstablishConnection(context.address[0], context.port[0], static_cast<e_role>(context.role));
+                                     PsiAnalyticsContext &context, std::unique_ptr<CSocket> &sock) {
+  //std::unique_ptr<CSocket> sock =
+  //    EstablishConnection(context.address[0], context.port[0], static_cast<e_role>(context.role));
 
   const auto sending_start_time = std::chrono::system_clock::now();
 
@@ -342,15 +342,24 @@ void PrintBins(std::vector<uint64_t> &bins, std::string outFile, PsiAnalyticsCon
 }
 
 void multi_hint_thread(int tid, std::vector<std::vector<uint64_t>> &sub_bins, std::vector<std::vector<uint64_t>> masks_with_dummies,
-                        PsiAnalyticsContext &context) {
+                        PsiAnalyticsContext &context, std::vector<std::unique_ptr<CSocket>> &allsocks) {
     for(int i=tid; i < context.np-1; i=i+context.nthreads) {
-      sub_bins[i] = OpprgPsiClient(masks_with_dummies[i], context, i);
+      sub_bins[i] = OpprgPsiClient(masks_with_dummies[i], context, i, allsocks[i]);
     }
 }
 
 void multi_oprf_thread(int tid, std::vector<std::vector<uint64_t>> &masks_with_dummies, std::vector<uint64_t> table, PsiAnalyticsContext &context) {
   for(int i=tid; i<context.np-1; i=i+context.nthreads) {
     masks_with_dummies[i] = OprfClient(table, context, i);
+  }
+}
+
+void multi_conn_thread(int tid, std::vector<std::unique_ptr<CSocket>> &socks, PsiAnalyticsContext &context) {
+  for(int i=tid; i<context.np-1; i=i+context.nthreads) {
+    socks[i] = EstablishConnection(context.address[i], context.port[i], static_cast<e_role>(context.role));
+    std::vector<uint8_t> testdata(1);
+    testdata[0] = 0;
+    socks[i]->Receive(testdata.data(), 1);
   }
 }
 
@@ -366,6 +375,16 @@ std::vector<uint64_t> run_psi_analytics(const std::vector<std::uint64_t> &inputs
 
   // create hash tables from the elements
   if (context.role == P_0) {
+
+    std::thread conn_threads[context.nthreads];
+    std::vector<std::unique_ptr<CSocket>> allsocks;
+    for(int i=0; i<context.nthreads; i++) {
+      conn_threads[i] = std::thread(multi_conn_thread, i, std::ref(allsocks), std::ref(context));
+    }
+
+    for(int i=0; i<context.nthreads; i++) {
+      conn_threads[i].join();
+    }
 
     bins.reserve(context.nbins);
     for(uint64_t i=0; i<context.nbins; i++) {
@@ -387,7 +406,7 @@ std::vector<uint64_t> run_psi_analytics(const std::vector<std::uint64_t> &inputs
 
     std::thread hint_threads[context.nthreads];
     for(int i=0; i<context.nthreads; i++) {
-      hint_threads[i] = std::thread(multi_hint_thread, i, std::ref(sub_bins), masks_with_dummies, std::ref(context));
+      hint_threads[i] = std::thread(multi_hint_thread, i, std::ref(sub_bins), masks_with_dummies, std::ref(context), std::ref(allsocks));
     }
 
     for (int i=0; i<context.nthreads; i++) {
@@ -412,10 +431,16 @@ std::vector<uint64_t> run_psi_analytics(const std::vector<std::uint64_t> &inputs
       }
     }
   } else {
+
+    std::vector<uint8_t> testdata(1);
+    testdata[0] = 1u;
+    std::unique_ptr<CSocket> sock =
+      EstablishConnection(context.address[0], context.port[0], static_cast<e_role>(context.role));
+    sock->Send(testdata.data(), 1);
     auto simple_table_v = simple_hash(inputs, context);
     auto masks = OprfServer(simple_table_v, context);
     std::vector<uint64_t> polynomials = PolynomialsServer(masks, context);
-    bins = OpprgPsiServer(polynomials, context);
+    bins = OpprgPsiServer(polynomials, context, sock);
   }
 
 //  std::cout << "First bin of " << context.role << " is " << bins[0] << "\n";
