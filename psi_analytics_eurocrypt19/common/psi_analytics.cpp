@@ -363,7 +363,7 @@ void multi_conn_thread(int tid, std::vector<std::unique_ptr<CSocket>> &socks, Ps
   }
 }
 
-std::vector<uint64_t> run_psi_analytics(const std::vector<std::uint64_t> &inputs, PsiAnalyticsContext &context) {
+std::vector<uint64_t> run_psi_analytics(const std::vector<std::uint64_t> &inputs, PsiAnalyticsContext &context, std::vector<std::unique_ptr<CSocket>> &allsocks) {
   // establish network connection
   /*std::unique_ptr<CSocket> sock =
       EstablishConnection(context.address, context.port, static_cast<e_role>(context.role));
@@ -375,7 +375,7 @@ std::vector<uint64_t> run_psi_analytics(const std::vector<std::uint64_t> &inputs
 
   // create hash tables from the elements
   if (context.role == P_0) {
-
+/*
     std::thread conn_threads[context.nthreads];
     std::vector<std::unique_ptr<CSocket>> allsocks(context.np-1);
     for(int i=0; i<context.nthreads; i++) {
@@ -384,7 +384,7 @@ std::vector<uint64_t> run_psi_analytics(const std::vector<std::uint64_t> &inputs
 
     for(int i=0; i<context.nthreads; i++) {
       conn_threads[i].join();
-    }
+    }*/
 
     bins.reserve(context.nbins);
     for(uint64_t i=0; i<context.nbins; i++) {
@@ -431,16 +431,17 @@ std::vector<uint64_t> run_psi_analytics(const std::vector<std::uint64_t> &inputs
       }
     }
   } else {
-
+/*
     std::vector<uint8_t> testdata(1);
     testdata[0] = 1u;
     std::unique_ptr<CSocket> sock =
       EstablishConnection(context.address[0], context.port[0], static_cast<e_role>(context.role));
     sock->Send(testdata.data(), 1);
+*/    
     auto simple_table_v = simple_hash(inputs, context);
     auto masks = OprfServer(simple_table_v, context);
     std::vector<uint64_t> polynomials = PolynomialsServer(masks, context);
-    bins = OpprgPsiServer(polynomials, context, sock);
+    bins = OpprgPsiServer(polynomials, context, allsocks[0]);
   }
 
 //  std::cout << "First bin of " << context.role << " is " << bins[0] << "\n";

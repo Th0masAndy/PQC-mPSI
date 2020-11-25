@@ -35,7 +35,7 @@
 
 namespace ENCRYPTO {
 
-std::vector<uint64_t> run_psi_analytics(const std::vector<std::uint64_t> &inputs, PsiAnalyticsContext &context);
+std::vector<uint64_t> run_psi_analytics(const std::vector<std::uint64_t> &inputs, PsiAnalyticsContext &context, std::vector<std::unique_ptr<CSocket>> &allsocks);
 
 auto cuckoo_hash(const std::vector<uint64_t> &elements, PsiAnalyticsContext &context);
 auto simple_hash(const std::vector<uint64_t> &elements, PsiAnalyticsContext &context);
@@ -73,4 +73,5 @@ void PrintTimings(const PsiAnalyticsContext &context);
 void multi_hint_thread(int tid, std::vector<std::vector<uint64_t>> &sub_bins, std::vector<std::vector<uint64_t>> masks_with_dummies,
                         PsiAnalyticsContext &context, std::vector<std::unique_ptr<CSocket>> &allsocks);
 void multi_oprf_thread(int tid, std::vector<std::vector<uint64_t>> &masks_with_dummies, std::vector<uint64_t> table, PsiAnalyticsContext &context);
+void multi_conn_thread(int tid, std::vector<std::unique_ptr<CSocket>> &socks, PsiAnalyticsContext &context);
 }
