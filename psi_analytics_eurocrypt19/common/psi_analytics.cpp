@@ -377,7 +377,7 @@ std::vector<uint64_t> run_psi_analytics(const std::vector<std::uint64_t> &inputs
   if (context.role == P_0) {
 
     std::thread conn_threads[context.nthreads];
-    std::vector<std::unique_ptr<CSocket>> allsocks;
+    std::vector<std::unique_ptr<CSocket>> allsocks(context.np-1);
     for(int i=0; i<context.nthreads; i++) {
       conn_threads[i] = std::thread(multi_conn_thread, i, std::ref(allsocks), std::ref(context));
     }

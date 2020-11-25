@@ -96,7 +96,7 @@ bool Listen(const std::string& address, uint16_t port,
 
 std::unique_ptr<CSocket> Connect(const std::string& address, uint16_t port) {
 	auto socket = std::make_unique<CSocket>();
-	for (int i = 0; i < RETRY_CONNECT; i++) {
+	while(true) {
 		if (socket->Connect(address, port))
 			return socket;
 		SleepMiliSec(10);
