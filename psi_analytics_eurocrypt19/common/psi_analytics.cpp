@@ -53,7 +53,7 @@ namespace ENCRYPTO {
 using milliseconds_ratio = std::ratio<1, 1000>;
 using duration_millis = std::chrono::duration<double, milliseconds_ratio>;
 
-auto cuckoo_hash(const std::vector<uint64_t> &elements, PsiAnalyticsContext &context) {
+auto cuckoo_hash(PsiAnalyticsContext &context, const std::vector<uint64_t> &elements) {
   const auto hashing_start_time = std::chrono::system_clock::now();
 
   ENCRYPTO::CuckooTable cuckoo_table(static_cast<std::size_t>(context.nbins));
@@ -75,7 +75,7 @@ auto cuckoo_hash(const std::vector<uint64_t> &elements, PsiAnalyticsContext &con
   return cuckoo_table_v;
 }
 
-auto simple_hash(const std::vector<uint64_t> &elements, PsiAnalyticsContext &context) {
+auto simple_hash(PsiAnalyticsContext &context, const std::vector<uint64_t> &elements) {
   const auto hashing_start_time = std::chrono::system_clock::now();
 
   ENCRYPTO::SimpleTable simple_table(static_cast<std::size_t>(context.nbins));
@@ -93,7 +93,7 @@ auto simple_hash(const std::vector<uint64_t> &elements, PsiAnalyticsContext &con
   return simple_table_v;
 }
 
-std::vector<uint64_t> OprfClient(const std::vector<uint64_t> &cuckoo_table_v, PsiAnalyticsContext &context, int server_index) {
+std::vector<uint64_t> LeaderOprf(PsiAnalyticsContext &context, int server_index, const std::vector<uint64_t> &cuckoo_table_v) {
 //  const auto oprf_start_time = std::chrono::system_clock::now();
 
   std::vector<uint64_t> masks_with_dummies = ot_receiver(cuckoo_table_v, context, server_index);
@@ -105,7 +105,7 @@ std::vector<uint64_t> OprfClient(const std::vector<uint64_t> &cuckoo_table_v, Ps
   return masks_with_dummies;
 }
 
-std::vector<std::vector<uint64_t>> OprfServer(const std::vector<std::vector<uint64_t>> &simple_table_v, PsiAnalyticsContext &context) {
+std::vector<std::vector<uint64_t>> ClientOprf(PsiAnalyticsContext &context, const std::vector<std::vector<uint64_t>> &simple_table_v) {
   const auto oprf_start_time = std::chrono::system_clock::now();
 
   auto masks = ot_sender(simple_table_v, context);
@@ -116,7 +116,7 @@ std::vector<std::vector<uint64_t>> OprfServer(const std::vector<std::vector<uint
   return masks;
 }
 
-std::vector<uint64_t> PolynomialsServer(const std::vector<std::vector<uint64_t>> &masks, PsiAnalyticsContext &context) {
+std::vector<uint64_t> ClientEvaluateHint(PsiAnalyticsContext &context, const std::vector<std::vector<uint64_t>> &masks) {
   const auto polynomials_start_time = std::chrono::system_clock::now();
 
   std::vector<uint64_t> polynomials(context.nmegabins * context.polynomialsize, 0);
@@ -136,7 +136,7 @@ std::vector<uint64_t> PolynomialsServer(const std::vector<std::vector<uint64_t>>
     assert(tmp.size() == content_of_bins.size());
   }
 
-  InterpolatePolynomials(polynomials, content_of_bins, masks, context);
+  InterpolatePolynomials(context, polynomials, content_of_bins, masks);
   context.content_of_bins = content_of_bins;
 
   const auto polynomials_end_time = std::chrono::system_clock::now();
@@ -146,25 +146,6 @@ std::vector<uint64_t> PolynomialsServer(const std::vector<std::vector<uint64_t>>
 }
 
 std::vector<uint8_t> LeaderReceiveHint(PsiAnalyticsContext &context, std::unique_ptr<CSocket> &sock) {
-  /*  std::unique_ptr<CSocket> sock1 =
-      EstablishConnection(context.address[server_index], context.port[server_index], static_cast<e_role>(context.role));
-  sock1->Close();*/
-
-//  std::vector<uint64_t> masks_with_dummies = OprfClient(cuckoo_table_v, context, server_index);
-//  std::unique_ptr<CSocket> sock =
-//      EstablishConnection(context.address[server_index], context.port[server_index], static_cast<e_role>(context.role));
-/*
-  const auto nbinsinmegabin = ceil_divide(context.nbins, context.nmegabins);
-  std::vector<std::vector<ZpMersenneLongElement1>> polynomials(context.nmegabins);
-  std::vector<ZpMersenneLongElement1> X(context.nbins), Y(context.nbins);
-  for (auto &polynomial : polynomials) {
-    polynomial.resize(context.polynomialsize);
-  }
-
-  for (auto i = 0ull; i < X.size(); ++i) {
-    X.at(i).elem = masks_with_dummies.at(i);
-  }
-*/
   std::vector<uint8_t> poly_rcv_buffer(context.nmegabins * context.polynomialbytelength, 0);
 
   //const auto receiving_start_time = std::chrono::system_clock::now();
@@ -180,8 +161,8 @@ std::vector<uint8_t> LeaderReceiveHint(PsiAnalyticsContext &context, std::unique
   return poly_rcv_buffer;
 }
 
-std::vector<uint64_t> LeaderEvaluateHint(std::vector<uint8_t> &poly_rcv_buffer, const std::vector<uint64_t> &masks_with_dummies, 
-					PsiAnalyticsContext &context) {
+std::vector<uint64_t> LeaderEvaluateHint(PsiAnalyticsContext &context, std::vector<uint8_t> &poly_rcv_buffer, 
+					 const std::vector<uint64_t> &masks_with_dummies) {
   const auto nbinsinmegabin = ceil_divide(context.nbins, context.nmegabins);
   std::vector<std::vector<ZpMersenneLongElement1>> polynomials(context.nmegabins);
   std::vector<ZpMersenneLongElement1> X(context.nbins), Y(context.nbins);
@@ -214,8 +195,8 @@ std::vector<uint64_t> LeaderEvaluateHint(std::vector<uint8_t> &poly_rcv_buffer, 
   return raw_bin_result;
 }
 
-std::vector<uint64_t> OpprgPsiServer(const std::vector<uint64_t> &polynomials,
-                                     PsiAnalyticsContext &context, std::unique_ptr<CSocket> &sock) {
+std::vector<uint64_t> ClientSendHint(PsiAnalyticsContext &context, std::unique_ptr<CSocket> &sock,
+					const std::vector<uint64_t> &polynomials) {
   //std::unique_ptr<CSocket> sock =
   //    EstablishConnection(context.address[0], context.port[0], static_cast<e_role>(context.role));
 
@@ -232,10 +213,9 @@ std::vector<uint64_t> OpprgPsiServer(const std::vector<uint64_t> &polynomials,
   return context.content_of_bins;
 }
 
-void InterpolatePolynomials(std::vector<uint64_t> &polynomials,
+void InterpolatePolynomials(PsiAnalyticsContext &context, std::vector<uint64_t> &polynomials,
                             std::vector<uint64_t> &content_of_bins,
-                            const std::vector<std::vector<uint64_t>> &masks,
-                            PsiAnalyticsContext &context) {
+                            const std::vector<std::vector<uint64_t>> &masks) {
   std::size_t nbins = masks.size();
   std::size_t masks_offset = 0;
   std::size_t nbinsinmegabin = ceil_divide(nbins, context.nmegabins);
@@ -250,18 +230,18 @@ void InterpolatePolynomials(std::vector<uint64_t> &polynomials,
       nbinsinmegabin -= overflow;
     }
 
-    InterpolatePolynomialsPaddedWithDummies(polynomial, bin, masks_in_bin, nbinsinmegabin, context);
+    InterpolatePolynomialsPaddedWithDummies(context, polynomial, bin, masks_in_bin, nbinsinmegabin);
     masks_offset += nbinsinmegabin;
   }
 
   assert(masks_offset == masks.size());
 }
 
-void InterpolatePolynomialsPaddedWithDummies(
-    std::vector<uint64_t>::iterator polynomial_offset,
-    std::vector<uint64_t>::const_iterator random_value_in_bin,
-    std::vector<std::vector<uint64_t>>::const_iterator masks_for_elems_in_bin,
-    std::size_t nbins_in_megabin, PsiAnalyticsContext &context) {
+void InterpolatePolynomialsPaddedWithDummies(PsiAnalyticsContext &context, 
+					    std::vector<uint64_t>::iterator polynomial_offset,
+					    std::vector<uint64_t>::const_iterator random_value_in_bin,
+					    std::vector<std::vector<uint64_t>>::const_iterator masks_for_elems_in_bin,
+					    std::size_t nbins_in_megabin) {
   std::uniform_int_distribution<std::uint64_t> dist(0,
                                                     (1ull << context.maxbitlen) - 1);  // [0,2^61)
   std::random_device urandom("/dev/urandom");
@@ -355,7 +335,7 @@ void PrintBins(std::vector<uint64_t> &bins, std::string outFile, PsiAnalyticsCon
 void multi_eval_thread(int tid, std::vector<std::vector<uint8_t>> poly_rcv_buffer, std::vector<std::vector<uint64_t>> masks_with_dummies,
 			PsiAnalyticsContext &context, std::vector<std::vector<uint64_t>> &sub_bins) {
   for(int i=tid; i < context.np-1; i = i+context.nthreads) {
-    sub_bins[i] = LeaderEvaluateHint(poly_rcv_buffer[i], masks_with_dummies[i], context);
+    sub_bins[i] = LeaderEvaluateHint(context, poly_rcv_buffer[i], masks_with_dummies[i]);
   }
 }          
 
@@ -368,7 +348,7 @@ void multi_hint_thread(int tid, std::vector<std::vector<uint8_t>> &poly_rcv, Psi
 
 void multi_oprf_thread(int tid, std::vector<std::vector<uint64_t>> &masks_with_dummies, std::vector<uint64_t> table, PsiAnalyticsContext &context) {
   for(int i=tid; i<context.np-1; i=i+context.nthreads) {
-    masks_with_dummies[i] = OprfClient(table, context, i);
+    masks_with_dummies[i] = LeaderOprf(context, i, table);
   }
 }
 
@@ -381,7 +361,8 @@ void multi_conn_thread(int tid, std::vector<std::unique_ptr<CSocket>> &socks, Ps
   }
 }
 
-std::vector<uint64_t> run_psi_analytics(const std::vector<std::uint64_t> &inputs, PsiAnalyticsContext &context, std::vector<std::unique_ptr<CSocket>> &allsocks) {
+std::vector<uint64_t> run_psi_analytics(PsiAnalyticsContext &context, const std::vector<std::uint64_t> &inputs, 
+					std::vector<std::unique_ptr<CSocket>> &allsocks) {
   // establish network connection
   /*std::unique_ptr<CSocket> sock =
       EstablishConnection(context.address, context.port, static_cast<e_role>(context.role));
@@ -413,7 +394,7 @@ std::vector<uint64_t> run_psi_analytics(const std::vector<std::uint64_t> &inputs
     std::vector<std::vector<uint64_t>> sub_bins(context.np-1);
     std::vector<uint64_t> table;
     std::vector<std::vector<uint64_t>> masks_with_dummies(context.np-1);
-    table = cuckoo_hash(inputs, context);
+    table = cuckoo_hash(context, inputs);
 
     const auto oprf_start_time = std::chrono::system_clock::now();
     std::thread oprf_threads[context.nthreads];
@@ -486,10 +467,10 @@ std::vector<uint64_t> run_psi_analytics(const std::vector<std::uint64_t> &inputs
       EstablishConnection(context.address[0], context.port[0], static_cast<e_role>(context.role));
     sock->Send(testdata.data(), 1);
 */
-    auto simple_table_v = simple_hash(inputs, context);
-    auto masks = OprfServer(simple_table_v, context);
-    std::vector<uint64_t> polynomials = PolynomialsServer(masks, context);
-    bins = OpprgPsiServer(polynomials, context, allsocks[0]);
+    auto simple_table_v = simple_hash(context, inputs);
+    auto masks = ClientOprf(context, simple_table_v);
+    std::vector<uint64_t> polynomials = ClientEvaluateHint(context, masks);
+    bins = ClientSendHint(context, allsocks[0], polynomials);
    }
 
   //const duration_millis total_duration = end_time - start_time;

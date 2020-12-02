@@ -235,7 +235,7 @@ int main(int argc, char **argv) {
 	cout << context.role << ": Running protocol..." << endl;
 
 	auto start_time = std::chrono::system_clock::now();
-  	bins = ENCRYPTO::run_psi_analytics(inputs, context, allsocks);
+  	bins = ENCRYPTO::run_psi_analytics(context, inputs, allsocks);
   	//std::vector<uint64_t> bins = ENCRYPTO::GeneratePseudoRandomElements(context.nbins, gen_bitlen);
 	auto t1 = std::chrono::system_clock::now();
 	const duration_millis opprf_time = t1-start_time;

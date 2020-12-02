@@ -23,8 +23,8 @@
 // OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 #include "abycore/aby/abyparty.h"
-#include<string>
-#include<memory>
+#include <string>
+#include <memory>
 #include "socket.h"
 #include "helpers.h"
 #include "psi_analytics_context.h"
@@ -35,35 +35,46 @@
 
 namespace ENCRYPTO {
 
-std::vector<uint64_t> run_psi_analytics(const std::vector<std::uint64_t> &inputs, PsiAnalyticsContext &context, std::vector<std::unique_ptr<CSocket>> &allsocks);
+//Calls the different subprotocols of OPPRF
+std::vector<uint64_t> run_psi_analytics(PsiAnalyticsContext &context, const std::vector<std::uint64_t> &inputs,
+					 std::vector<std::unique_ptr<CSocket>> &allsocks);
 
-auto cuckoo_hash(const std::vector<uint64_t> &elements, PsiAnalyticsContext &context);
-auto simple_hash(const std::vector<uint64_t> &elements, PsiAnalyticsContext &context);
+//Performs cuckoo hashing of party's inputs
+auto cuckoo_hash(PsiAnalyticsContext &context, const std::vector<uint64_t> &elements);
 
-std::vector<uint64_t> OprfClient(const std::vector<uint64_t> &cuckoo_table_v, PsiAnalyticsContext &context, int server_index);
-std::vector<std::vector<uint64_t>> OprfServer(const std::vector<std::vector<uint64_t>> &simple_table_v, PsiAnalyticsContext &context);
+//Performs simple hashing of party's inputs
+auto simple_hash(PsiAnalyticsContext &context, const std::vector<uint64_t> &elements);
 
-std::vector<uint64_t> PolynomialsServer(const std::vector<std::vector<uint64_t>> &masks, PsiAnalyticsContext &context);
+//Receives OPRF
+std::vector<uint64_t> LeaderOprf(PsiAnalyticsContext &context, int server_index, const std::vector<uint64_t> &cuckoo_table_v);
 
+//OPRF Sender
+std::vector<std::vector<uint64_t>> ClientOprf(PsiAnalyticsContext &context, const std::vector<std::vector<uint64_t>> &simple_table_v);
+
+//Construct polynomial hints
+std::vector<uint64_t> ClientEvaluateHint(PsiAnalyticsContext &context, const std::vector<std::vector<uint64_t>> &masks);
+
+//Receive hint
 std::vector<uint8_t> LeaderReceiveHint(PsiAnalyticsContext &context, std::unique_ptr<CSocket> &sock);
 
-std::vector<uint64_t> LeaderEvaluateHint(std::vector<uint8_t> &poly_rcv_buffer, 
-					 const std::vector<uint64_t> &masks_with_dummies,
-					PsiAnalyticsContext &context);
+//Evaluate received hint
+std::vector<uint64_t> LeaderEvaluateHint(PsiAnalyticsContext &context, std::vector<uint8_t> &poly_rcv_buffer, 
+					 const std::vector<uint64_t> &masks_with_dummies);
 
-std::vector<uint64_t> OpprgPsiServer(const std::vector<uint64_t> &polynomials,
-                                     PsiAnalyticsContext &context, std::unique_ptr<CSocket> &sock);
+//Send hint
+std::vector<uint64_t> ClientSendHint(PsiAnalyticsContext &context, std::unique_ptr<CSocket> &sock,
+					const std::vector<uint64_t> &polynomials);
 
-void InterpolatePolynomials(std::vector<uint64_t> &polynomials,
+//Interpolate polynomial for hint
+void InterpolatePolynomials(PsiAnalyticsContext &context, std::vector<uint64_t> &polynomials,
                             std::vector<uint64_t> &content_of_bins,
-                            const std::vector<std::vector<uint64_t>> &masks,
-                            PsiAnalyticsContext &context);
+                            const std::vector<std::vector<uint64_t>> &masks);
 
-void InterpolatePolynomialsPaddedWithDummies(
-    std::vector<uint64_t>::iterator polynomial_offset,
-    std::vector<uint64_t>::const_iterator random_value_in_bin,
-    std::vector<std::vector<uint64_t>>::const_iterator masks_for_elems_in_bin,
-    std::size_t nbins_in_megabin, PsiAnalyticsContext &context);
+void InterpolatePolynomialsPaddedWithDummies(PsiAnalyticsContext &context,
+					    std::vector<uint64_t>::iterator polynomial_offset,
+    					    std::vector<uint64_t>::const_iterator random_value_in_bin,
+					    std::vector<std::vector<uint64_t>>::const_iterator masks_for_elems_in_bin,
+					    std::size_t nbins_in_megabin);
 
 std::unique_ptr<CSocket> EstablishConnection(const std::string &address, uint16_t port,
                                              e_role role);
