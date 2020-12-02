@@ -315,6 +315,7 @@ void PrintTimings(const PsiAnalyticsContext &context) {
   std::cout << context.role << ": Time for polynomials " << context.timings.polynomials << " ms\n";
   std::cout << context.role << ": Time for transmission of the polynomials "
             << context.timings.polynomials_transmission << " ms\n";
+  std::cout << context.role << ": Time for aggregation " << context.timings.aggregation << " ms\n";
   std::cout << context.role << ": Time for OPPRF " << context.timings.opprf << " ms\n";
   std::cout << context.role << ": Time for circuit " << context.timings.circuit << " ms\n";
 //  std::cout << "Time for OPPRF " << context.timings.opprf << " ms\n";
@@ -413,6 +414,8 @@ std::vector<uint64_t> run_psi_analytics(const std::vector<std::uint64_t> &inputs
       hint_threads[i].join();
     }
 
+    const auto agg_start_time = std::chrono::system_clock::now();
+
     TemplateField<ZpMersenneLongElement1> *field;
     std::vector<ZpMersenneLongElement1> field_bins;
     for(uint64_t j=0; j< context.nbins; j++) {
@@ -430,6 +433,11 @@ std::vector<uint64_t> run_psi_analytics(const std::vector<std::uint64_t> &inputs
         bins[j] = field_bins[j].elem;
       }
     }
+
+    const auto agg_end_time = std::chrono::system_clock::now();
+    const duration_millis agg_duration = agg_end_time - agg_start_time;
+    context.timings.aggregation += agg_duration.count();
+
   } else {
 /*
     std::vector<uint8_t> testdata(1);
@@ -437,11 +445,12 @@ std::vector<uint64_t> run_psi_analytics(const std::vector<std::uint64_t> &inputs
     std::unique_ptr<CSocket> sock =
       EstablishConnection(context.address[0], context.port[0], static_cast<e_role>(context.role));
     sock->Send(testdata.data(), 1);
-*/    
+*/
     auto simple_table_v = simple_hash(inputs, context);
     auto masks = OprfServer(simple_table_v, context);
     std::vector<uint64_t> polynomials = PolynomialsServer(masks, context);
     bins = OpprgPsiServer(polynomials, context, allsocks[0]);
+    context.timings.aggregation = 0;
   }
 
 //  std::cout << "First bin of " << context.role << " is " << bins[0] << "\n";

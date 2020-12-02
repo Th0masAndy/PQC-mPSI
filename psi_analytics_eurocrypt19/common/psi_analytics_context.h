@@ -70,6 +70,7 @@ struct PsiAnalyticsContext {
     double opprf;
     double polynomials;
     double polynomials_transmission;
+    double aggregation;
     //double aby_setup;
     //double aby_online;
     //double aby_total;
