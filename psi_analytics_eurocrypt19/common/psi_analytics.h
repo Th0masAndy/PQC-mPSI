@@ -45,8 +45,11 @@ std::vector<std::vector<uint64_t>> OprfServer(const std::vector<std::vector<uint
 
 std::vector<uint64_t> PolynomialsServer(const std::vector<std::vector<uint64_t>> &masks, PsiAnalyticsContext &context);
 
-std::vector<uint64_t> OpprgPsiClient(const std::vector<uint64_t> &elements,
-                                     PsiAnalyticsContext &context, int i, std::unique_ptr<CSocket> &sock);
+std::vector<uint8_t> LeaderReceiveHint(PsiAnalyticsContext &context, std::unique_ptr<CSocket> &sock);
+
+std::vector<uint64_t> LeaderEvaluateHint(std::vector<uint8_t> &poly_rcv_buffer, 
+					 const std::vector<uint64_t> &masks_with_dummies,
+					PsiAnalyticsContext &context);
 
 std::vector<uint64_t> OpprgPsiServer(const std::vector<uint64_t> &polynomials,
                                      PsiAnalyticsContext &context, std::unique_ptr<CSocket> &sock);
@@ -70,8 +73,10 @@ std::size_t PlainIntersectionSize(std::vector<std::uint64_t> v1, std::vector<std
 void PrintBins(std::vector<std::uint64_t> &bins, std::string outfile, PsiAnalyticsContext &context);
 void PrintTimings(const PsiAnalyticsContext &context);
 
-void multi_hint_thread(int tid, std::vector<std::vector<uint64_t>> &sub_bins, std::vector<std::vector<uint64_t>> masks_with_dummies,
-                        PsiAnalyticsContext &context, std::vector<std::unique_ptr<CSocket>> &allsocks);
+void multi_eval_thread(int tid, std::vector<std::vector<uint8_t>> poly_rcv_buffer, std::vector<std::vector<uint64_t>> masks_with_dummies,
+		       PsiAnalyticsContext &context, std::vector<std::vector<uint64_t>> &sub_bins);
+void multi_hint_thread(int tid, std::vector<std::vector<uint8_t>> &poly_rcv, PsiAnalyticsContext &context, 
+			std::vector<std::unique_ptr<CSocket>> &allsocks);
 void multi_oprf_thread(int tid, std::vector<std::vector<uint64_t>> &masks_with_dummies, std::vector<uint64_t> table, PsiAnalyticsContext &context);
 void multi_conn_thread(int tid, std::vector<std::unique_ptr<CSocket>> &socks, PsiAnalyticsContext &context);
 }

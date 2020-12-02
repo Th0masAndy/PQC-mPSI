@@ -145,8 +145,7 @@ std::vector<uint64_t> PolynomialsServer(const std::vector<std::vector<uint64_t>>
   return polynomials;
 }
 
-std::vector<uint64_t> OpprgPsiClient(const std::vector<uint64_t> &masks_with_dummies,
-                                     PsiAnalyticsContext &context, int server_index, std::unique_ptr<CSocket> &sock) {
+std::vector<uint8_t> LeaderReceiveHint(PsiAnalyticsContext &context, std::unique_ptr<CSocket> &sock) {
   /*  std::unique_ptr<CSocket> sock1 =
       EstablishConnection(context.address[server_index], context.port[server_index], static_cast<e_role>(context.role));
   sock1->Close();*/
@@ -154,7 +153,7 @@ std::vector<uint64_t> OpprgPsiClient(const std::vector<uint64_t> &masks_with_dum
 //  std::vector<uint64_t> masks_with_dummies = OprfClient(cuckoo_table_v, context, server_index);
 //  std::unique_ptr<CSocket> sock =
 //      EstablishConnection(context.address[server_index], context.port[server_index], static_cast<e_role>(context.role));
-
+/*
   const auto nbinsinmegabin = ceil_divide(context.nbins, context.nmegabins);
   std::vector<std::vector<ZpMersenneLongElement1>> polynomials(context.nmegabins);
   std::vector<ZpMersenneLongElement1> X(context.nbins), Y(context.nbins);
@@ -165,35 +164,64 @@ std::vector<uint64_t> OpprgPsiClient(const std::vector<uint64_t> &masks_with_dum
   for (auto i = 0ull; i < X.size(); ++i) {
     X.at(i).elem = masks_with_dummies.at(i);
   }
-
+*/
   std::vector<uint8_t> poly_rcv_buffer(context.nmegabins * context.polynomialbytelength, 0);
 
-  const auto receiving_start_time = std::chrono::system_clock::now();
+  //const auto receiving_start_time = std::chrono::system_clock::now();
 
   sock->Receive(poly_rcv_buffer.data(), context.nmegabins * context.polynomialbytelength);
   sock->Close();
-
+/*
   const auto receiving_end_time = std::chrono::system_clock::now();
   const duration_millis sending_duration = receiving_end_time - receiving_start_time;
   context.timings.polynomials_transmission += sending_duration.count();
+*/
 
-  const auto eval_poly_start_time = std::chrono::system_clock::now();
+  return poly_rcv_buffer;
+/*
+  std::vector<std::vector<ZpMersenneLongElement1>> polynomials(context.nmegabins);
+  for(auto &polynomial : polynomials) {
+    polynomial.resize(context.polynomialsize);
+  }
+  for (auto poly_i = 0ull; poly_i < polynomials.size(); ++poly_i) {
+    for (auto coeff_i = 0ull; coeff_i < context.polynomialsize; ++coeff_i) {
+      polynomials.at(poly_i).at(coeff_i).elem = reinterpret_cast(uint64_t *>(poly_rcv_buffer.data()))[poly_i*context.polynomialsize + coeff_i];
+   }
+  }
+return polynomials;
+*/
+}
+
+std::vector<uint64_t> LeaderEvaluateHint(std::vector<uint8_t> &poly_rcv_buffer, const std::vector<uint64_t> &masks_with_dummies, 
+					PsiAnalyticsContext &context) {
+  const auto nbinsinmegabin = ceil_divide(context.nbins, context.nmegabins);
+  std::vector<std::vector<ZpMersenneLongElement1>> polynomials(context.nmegabins);
+  std::vector<ZpMersenneLongElement1> X(context.nbins), Y(context.nbins);
+  for (auto &polynomial : polynomials) {
+    polynomial.resize(context.polynomialsize);
+  }
+
+  for (auto i = 0ull; i < X.size(); ++i) {
+    X.at(i).elem = masks_with_dummies.at(i);
+  }
+  //const auto eval_poly_start_time = std::chrono::system_clock::now();
   for (auto poly_i = 0ull; poly_i < polynomials.size(); ++poly_i) {
     for (auto coeff_i = 0ull; coeff_i < context.polynomialsize; ++coeff_i) {
       polynomials.at(poly_i).at(coeff_i).elem = (reinterpret_cast<uint64_t *>(
           poly_rcv_buffer.data()))[poly_i * context.polynomialsize + coeff_i];
     }
   }
+  
 
   for (auto i = 0ull; i < X.size(); ++i) {
     std::size_t p = i / nbinsinmegabin;
     Poly::evalMersenne(Y.at(i), polynomials.at(p), X.at(i));
   }
-
+/*
   const auto eval_poly_end_time = std::chrono::system_clock::now();
   const duration_millis eval_poly_duration = eval_poly_end_time - eval_poly_start_time;
   context.timings.polynomials += eval_poly_duration.count();
-
+*/
   std::vector<uint64_t> raw_bin_result;
   raw_bin_result.reserve(X.size());
   for (auto i = 0ull; i < X.size(); ++i) {
@@ -315,7 +343,6 @@ void PrintTimings(const PsiAnalyticsContext &context) {
   std::cout << context.role << ": Time for polynomials " << context.timings.polynomials << " ms\n";
   std::cout << context.role << ": Time for transmission of the polynomials "
             << context.timings.polynomials_transmission << " ms\n";
-  std::cout << context.role << ": Time for aggregation " << context.timings.aggregation << " ms\n";
   std::cout << context.role << ": Time for OPPRF " << context.timings.opprf << " ms\n";
   std::cout << context.role << ": Time for circuit " << context.timings.circuit << " ms\n";
 //  std::cout << "Time for OPPRF " << context.timings.opprf << " ms\n";
@@ -342,10 +369,17 @@ void PrintBins(std::vector<uint64_t> &bins, std::string outFile, PsiAnalyticsCon
   std::cout << "Written outputs to file.";
 }
 
-void multi_hint_thread(int tid, std::vector<std::vector<uint64_t>> &sub_bins, std::vector<std::vector<uint64_t>> masks_with_dummies,
-                        PsiAnalyticsContext &context, std::vector<std::unique_ptr<CSocket>> &allsocks) {
+void multi_eval_thread(int tid, std::vector<std::vector<uint8_t>> poly_rcv_buffer, std::vector<std::vector<uint64_t>> masks_with_dummies,
+			PsiAnalyticsContext &context, std::vector<std::vector<uint64_t>> &sub_bins) {
+  for(int i=tid; i < context.np-1; i = i+context.nthreads) {
+    sub_bins[i] = LeaderEvaluateHint(poly_rcv_buffer[i], masks_with_dummies[i], context);
+  }
+}          
+
+void multi_hint_thread(int tid, std::vector<std::vector<uint8_t>> &poly_rcv, PsiAnalyticsContext &context, 
+			std::vector<std::unique_ptr<CSocket>> &allsocks) {
     for(int i=tid; i < context.np-1; i=i+context.nthreads) {
-      sub_bins[i] = OpprgPsiClient(masks_with_dummies[i], context, i, allsocks[i]);
+      poly_rcv[i] = LeaderReceiveHint(context, allsocks[i]);
     }
 }
 
@@ -391,6 +425,8 @@ std::vector<uint64_t> run_psi_analytics(const std::vector<std::uint64_t> &inputs
     for(uint64_t i=0; i<context.nbins; i++) {
     	bins[i] = 0;
     }
+    
+    std::vector<std::vector<uint8_t>> poly_rcv(context.np-1);
     std::vector<std::vector<uint64_t>> sub_bins(context.np-1);
     std::vector<uint64_t> table;
     std::vector<std::vector<uint64_t>> masks_with_dummies(context.np-1);
@@ -405,13 +441,24 @@ std::vector<uint64_t> run_psi_analytics(const std::vector<std::uint64_t> &inputs
       oprf_threads[i].join();
     }
 
+    const auto polynomials_start = std::chrono::system_clock::now();
+
     std::thread hint_threads[context.nthreads];
     for(int i=0; i<context.nthreads; i++) {
-      hint_threads[i] = std::thread(multi_hint_thread, i, std::ref(sub_bins), masks_with_dummies, std::ref(context), std::ref(allsocks));
+      hint_threads[i] = std::thread(multi_hint_thread, i, std::ref(poly_rcv), std::ref(context), std::ref(allsocks));
     }
 
     for (int i=0; i<context.nthreads; i++) {
       hint_threads[i].join();
+    }
+
+    std::thread eval_threads[context.nthreads];
+    for(int i=0; i<context.nthreads; i++) {
+      eval_threads[i] = std::thread(multi_eval_thread, i, poly_rcv, masks_with_dummies, std::ref(context), std::ref(sub_bins));
+    }
+
+    for(int i=0; i<context.nthreads; i++) {
+      eval_threads[i].join();
     }
 
     const auto agg_start_time = std::chrono::system_clock::now();
@@ -450,15 +497,8 @@ std::vector<uint64_t> run_psi_analytics(const std::vector<std::uint64_t> &inputs
     auto masks = OprfServer(simple_table_v, context);
     std::vector<uint64_t> polynomials = PolynomialsServer(masks, context);
     bins = OpprgPsiServer(polynomials, context, allsocks[0]);
-    context.timings.aggregation = 0;
-  }
+   }
 
-//  std::cout << "First bin of " << context.role << " is " << bins[0] << "\n";
-
-  std::string outfile = "../in_party_" + std::to_string(context.role) + ".txt";
-
-  //PrintBins(bins, outfile, context);
-  //const auto end_time = std::chrono::system_clock::now();
   //const duration_millis total_duration = end_time - start_time;
   //context.timings.total = total_duration.count();
 
