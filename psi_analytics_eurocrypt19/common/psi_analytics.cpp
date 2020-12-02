@@ -95,23 +95,34 @@ auto simple_hash(PsiAnalyticsContext &context, const std::vector<uint64_t> &elem
 
 std::vector<uint64_t> LeaderOprf(PsiAnalyticsContext &context, int server_index, const std::vector<uint64_t> &cuckoo_table_v) {
 //  const auto oprf_start_time = std::chrono::system_clock::now();
+  osuCrypto::IOService ios;
+  osuCrypto::Channel rcvChl;
+  osuCrypto::Session ep = ot_receiver_connect(context, server_index, ios, rcvChl);
 
-  std::vector<uint64_t> masks_with_dummies = ot_receiver(cuckoo_table_v, context, server_index);
+  std::vector<uint64_t> masks_with_dummies = ot_receiver(cuckoo_table_v, rcvChl, context, server_index);
 /*
   const auto oprf_end_time = std::chrono::system_clock::now();
   const duration_millis oprf_duration = oprf_end_time - oprf_start_time;
   context.timings.oprf += oprf_duration.count();
 */
+
+  ot_receiver_disconnect(rcvChl, ios, ep);
   return masks_with_dummies;
 }
 
 std::vector<std::vector<uint64_t>> ClientOprf(PsiAnalyticsContext &context, const std::vector<std::vector<uint64_t>> &simple_table_v) {
   const auto oprf_start_time = std::chrono::system_clock::now();
 
-  auto masks = ot_sender(simple_table_v, context);
+  osuCrypto::IOService ios;
+  osuCrypto::Channel sendChl;
+  osuCrypto::Session ep = ot_sender_connect(context, ios, sendChl);
+
+  auto masks = ot_sender(simple_table_v, sendChl, context);
   const auto oprf_end_time = std::chrono::system_clock::now();
   const duration_millis oprf_duration = oprf_end_time - oprf_start_time;
   context.timings.oprf = oprf_duration.count();
+
+  ot_sender_disconnect(sendChl, ios, ep);
 
   return masks;
 }

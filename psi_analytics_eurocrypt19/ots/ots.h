@@ -28,15 +28,27 @@
 #include <string>
 #include <vector>
 
+#include "cryptoTools/Network/Channel.h"
+#include "cryptoTools/Network/IOService.h"
+#include "cryptoTools/Network/Channel.h"
+
 #include "common/psi_analytics_context.h"
 #include "common/constants.h"
 
 namespace ENCRYPTO {
 
-std::vector<std::uint64_t> ot_receiver(const std::vector<std::uint64_t>& inputs,
+osuCrypto::Session ot_receiver_connect(ENCRYPTO::PsiAnalyticsContext& context, int server_index,
+				       osuCrypto::IOService& ios, osuCrypto::Channel& recvChl);
+
+std::vector<std::uint64_t> ot_receiver(const std::vector<std::uint64_t>& inputs, osuCrypto::Channel& recvChl,
                                        ENCRYPTO::PsiAnalyticsContext& context, int server_index);
 
-std::vector<std::vector<std::uint64_t>> ot_sender(
-    const std::vector<std::vector<std::uint64_t>>& inputs, ENCRYPTO::PsiAnalyticsContext& context);
+void ot_receiver_disconnect(osuCrypto::Channel& recvChl, osuCrypto::IOService& ios, osuCrypto::Session& ep);
 
+osuCrypto::Session ot_sender_connect(ENCRYPTO::PsiAnalyticsContext& context, osuCrypto::IOService& ios,
+				     osuCrypto::Channel& sendChl);
+
+std::vector<std::vector<std::uint64_t>> ot_sender(const std::vector<std::vector<std::uint64_t>>& inputs, 
+						  osuCrypto::Channel& sendChl,ENCRYPTO::PsiAnalyticsContext& context);
+void ot_sender_disconnect(osuCrypto::Channel& sendChl, osuCrypto::IOService& ios, osuCrypto::Session& ep);
 }

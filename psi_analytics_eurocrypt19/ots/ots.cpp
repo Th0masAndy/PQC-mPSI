@@ -24,9 +24,11 @@
 
 #include "ots.h"
 
+/*
 #include "cryptoTools/Network/Channel.h"
 #include "cryptoTools/Network/IOService.h"
 #include "cryptoTools/Network/Session.h"
+*/
 
 #include "libOTe/Base/BaseOT.h"
 #include "libOTe/NChooseOne/Kkrt/KkrtNcoOtReceiver.h"
@@ -39,8 +41,19 @@ using milliseconds_ratio = std::ratio<1, 1000>;
 using duration_millis = std::chrono::duration<double, milliseconds_ratio>;
 
 namespace ENCRYPTO {
-// Client
-std::vector<std::uint64_t> ot_receiver(const std::vector<std::uint64_t> &inputs,
+// Receiver
+osuCrypto::Session ot_receiver_connect(ENCRYPTO::PsiAnalyticsContext& context, int server_index,
+                                       osuCrypto::IOService& ios, osuCrypto::Channel& recvChl) {
+  // set up networking
+  std::string name = "n";
+//  osuCrypto::IOService ios;
+  osuCrypto::Session ep(ios, context.address[server_index], context.port[server_index] + 1, osuCrypto::SessionMode::Client,
+                        name);
+  recvChl = ep.addChannel(name, name);
+  return ep;
+}
+
+std::vector<std::uint64_t> ot_receiver(const std::vector<std::uint64_t> &inputs, osuCrypto::Channel& recvChl,
                                        ENCRYPTO::PsiAnalyticsContext &context, int server_index) {
   std::vector<std::uint64_t> outputs;
   outputs.reserve(inputs.size());
@@ -56,11 +69,11 @@ std::vector<std::uint64_t> ot_receiver(const std::vector<std::uint64_t> &inputs,
   recv.configure(false, 40, symsecbits);
 
   // set up networking
-  std::string name = "n";
-  osuCrypto::IOService ios;
-  osuCrypto::Session ep(ios, context.address[server_index], context.port[server_index] + 1, osuCrypto::SessionMode::Client,
-                        name);
-  auto recvChl = ep.addChannel(name, name);
+//  std::string name = "n";
+//  osuCrypto::IOService ios;
+//  osuCrypto::Session ep(ios, context.address[server_index], context.port[server_index] + 1, osuCrypto::SessionMode::Client,
+//                        name);
+//  osuCrypto::Channel recvChl = ep.addChannel(name, name);
 
   const auto baseots_start_time = std::chrono::system_clock::now();
   // the number of base OT that need to be done
@@ -101,16 +114,27 @@ std::vector<std::uint64_t> ot_receiver(const std::vector<std::uint64_t> &inputs,
   const duration_millis OPRF_duration = OPRF_end_time - OPRF_start_time;
   context.timings.oprf = OPRF_duration.count();
 
-  recvChl.close();
-  ep.stop();
-  ios.stop();
-
   return outputs;
 }
 
-// Server
-std::vector<std::vector<std::uint64_t>> ot_sender(
-    const std::vector<std::vector<std::uint64_t>> &inputs, ENCRYPTO::PsiAnalyticsContext &context) {
+void ot_receiver_disconnect(osuCrypto::Channel& recvChl, osuCrypto::IOService& ios, osuCrypto::Session& ep) {
+  recvChl.close();
+  ep.stop();
+  ios.stop();
+}
+
+// Sender
+osuCrypto::Session ot_sender_connect(ENCRYPTO::PsiAnalyticsContext& context, osuCrypto::IOService& ios, 
+				     osuCrypto::Channel& sendChl) {
+  std::string name = "n";
+  osuCrypto::Session ep(ios, context.address[0], context.port[0] + 1, osuCrypto::SessionMode::Server,
+                        name);
+  sendChl = ep.addChannel(name, name);
+  return ep;
+}
+
+std::vector<std::vector<std::uint64_t>> ot_sender(const std::vector<std::vector<std::uint64_t>> &inputs, 
+						  osuCrypto::Channel& sendChl, ENCRYPTO::PsiAnalyticsContext &context) {
   std::size_t numOTs = inputs.size();
   osuCrypto::PRNG prng(_mm_set_epi32(4253465, 3434565, 234435, 23987025));
   osuCrypto::KkrtNcoOtSender sender;
@@ -121,13 +145,13 @@ std::vector<std::vector<std::uint64_t>> ot_sender(
   //  2) 40  =  statistical security param.
   //  3) numOTs = number of OTs that we will perform
   sender.configure(false, 40, 128);
-
+/*
   std::string name = "n";
   osuCrypto::IOService ios;
   osuCrypto::Session ep(ios, context.address[0], context.port[0] + 1, osuCrypto::SessionMode::Server,
                         name);
   auto sendChl = ep.addChannel(name, name);
-
+*/
   const auto baseots_start_time = std::chrono::system_clock::now();
 
   osuCrypto::u64 baseCount = sender.getBaseOTCount();
@@ -173,10 +197,13 @@ std::vector<std::vector<std::uint64_t>> ot_sender(
   const duration_millis OPRF_duration = OPRF_end_time - OPRF_start_time;
   context.timings.oprf = OPRF_duration.count();
 
+  return outputs;
+}
+
+void ot_sender_disconnect(osuCrypto::Channel& sendChl, osuCrypto::IOService& ios, osuCrypto::Session& ep) {
   sendChl.close();
   ep.stop();
   ios.stop();
-  return outputs;
-}
+  }
 
 }
