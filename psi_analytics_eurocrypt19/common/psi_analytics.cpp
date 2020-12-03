@@ -28,7 +28,7 @@
 //#include "abycore/sharing/boolsharing.h"
 //#include "abycore/sharing/sharing.h"
 
-#include "ots/ots.h"
+//#include "ots/ots.h"
 #include "polynomials/Poly.h"
 
 #include "HashingTables/cuckoo_hashing/cuckoo_hashing.h"
@@ -93,36 +93,38 @@ auto simple_hash(PsiAnalyticsContext &context, const std::vector<uint64_t> &elem
   return simple_table_v;
 }
 
-std::vector<uint64_t> LeaderOprf(PsiAnalyticsContext &context, int server_index, const std::vector<uint64_t> &cuckoo_table_v) {
+std::vector<uint64_t> LeaderOprf(PsiAnalyticsContext &context, int server_index, const std::vector<uint64_t> &cuckoo_table_v, 
+				 osuCrypto::Channel &recvChl) {
 //  const auto oprf_start_time = std::chrono::system_clock::now();
-  osuCrypto::IOService ios;
-  osuCrypto::Channel rcvChl;
-  osuCrypto::Session ep = ot_receiver_connect(context, server_index, ios, rcvChl);
+  //osuCrypto::IOService ios;
+  //osuCrypto::Channel rcvChl;
+  //osuCrypto::Session ep = ot_receiver_connect(context, server_index, ios, rcvChl);
 
-  std::vector<uint64_t> masks_with_dummies = ot_receiver(cuckoo_table_v, rcvChl, context, server_index);
+  std::vector<uint64_t> masks_with_dummies = ot_receiver(cuckoo_table_v, recvChl, context, server_index);
 /*
   const auto oprf_end_time = std::chrono::system_clock::now();
   const duration_millis oprf_duration = oprf_end_time - oprf_start_time;
   context.timings.oprf += oprf_duration.count();
 */
 
-  ot_receiver_disconnect(rcvChl, ios, ep);
+  //ot_receiver_disconnect(rcvChl, ios, ep);
   return masks_with_dummies;
 }
 
-std::vector<std::vector<uint64_t>> ClientOprf(PsiAnalyticsContext &context, const std::vector<std::vector<uint64_t>> &simple_table_v) {
+std::vector<std::vector<uint64_t>> ClientOprf(PsiAnalyticsContext &context, const std::vector<std::vector<uint64_t>> &simple_table_v, 
+						osuCrypto::Channel &sendChl) {
   const auto oprf_start_time = std::chrono::system_clock::now();
-
+/*
   osuCrypto::IOService ios;
   osuCrypto::Channel sendChl;
   osuCrypto::Session ep = ot_sender_connect(context, ios, sendChl);
-
+*/
   auto masks = ot_sender(simple_table_v, sendChl, context);
   const auto oprf_end_time = std::chrono::system_clock::now();
   const duration_millis oprf_duration = oprf_end_time - oprf_start_time;
   context.timings.oprf = oprf_duration.count();
 
-  ot_sender_disconnect(sendChl, ios, ep);
+  //ot_sender_disconnect(sendChl, ios, ep);
 
   return masks;
 }
@@ -357,9 +359,10 @@ void multi_hint_thread(int tid, std::vector<std::vector<uint8_t>> &poly_rcv, Psi
     }
 }
 
-void multi_oprf_thread(int tid, std::vector<std::vector<uint64_t>> &masks_with_dummies, std::vector<uint64_t> table, PsiAnalyticsContext &context) {
+void multi_oprf_thread(int tid, std::vector<std::vector<uint64_t>> &masks_with_dummies, std::vector<uint64_t> table, 
+			PsiAnalyticsContext &context, std::vector<osuCrypto::Channel> &chl) {
   for(int i=tid; i<context.np-1; i=i+context.nthreads) {
-    masks_with_dummies[i] = LeaderOprf(context, i, table);
+    masks_with_dummies[i] = LeaderOprf(context, i, table, chl[i]);
   }
 }
 
@@ -373,7 +376,7 @@ void multi_conn_thread(int tid, std::vector<std::unique_ptr<CSocket>> &socks, Ps
 }
 
 std::vector<uint64_t> run_psi_analytics(PsiAnalyticsContext &context, const std::vector<std::uint64_t> &inputs, 
-					std::vector<std::unique_ptr<CSocket>> &allsocks) {
+					std::vector<std::unique_ptr<CSocket>> &allsocks, std::vector<osuCrypto::Channel> &chls) {
   // establish network connection
   /*std::unique_ptr<CSocket> sock =
       EstablishConnection(context.address, context.port, static_cast<e_role>(context.role));
@@ -410,7 +413,7 @@ std::vector<uint64_t> run_psi_analytics(PsiAnalyticsContext &context, const std:
     const auto oprf_start_time = std::chrono::system_clock::now();
     std::thread oprf_threads[context.nthreads];
     for(int i=0; i<context.nthreads; i++) {
-      oprf_threads[i] = std::thread(multi_oprf_thread, i, std::ref(masks_with_dummies), table, std::ref(context));
+      oprf_threads[i] = std::thread(multi_oprf_thread, i, std::ref(masks_with_dummies), table, std::ref(context), std::ref(chls));
     }
 
     for(int i=0; i<context.nthreads; i++) {
@@ -479,7 +482,7 @@ std::vector<uint64_t> run_psi_analytics(PsiAnalyticsContext &context, const std:
     sock->Send(testdata.data(), 1);
 */
     auto simple_table_v = simple_hash(context, inputs);
-    auto masks = ClientOprf(context, simple_table_v);
+    auto masks = ClientOprf(context, simple_table_v, chls[0]);
     std::vector<uint64_t> polynomials = ClientEvaluateHint(context, masks);
     bins = ClientSendHint(context, allsocks[0], polynomials);
    }

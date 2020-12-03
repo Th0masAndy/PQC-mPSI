@@ -28,6 +28,7 @@
 #include "socket.h"
 #include "helpers.h"
 #include "psi_analytics_context.h"
+#include "ots/ots.h"
 
 #define ceil_divide(x, y)			(( ((x) + (y)-1)/(y)))
 
@@ -37,7 +38,7 @@ namespace ENCRYPTO {
 
 //Calls the different subprotocols of OPPRF
 std::vector<uint64_t> run_psi_analytics(PsiAnalyticsContext &context, const std::vector<std::uint64_t> &inputs,
-					 std::vector<std::unique_ptr<CSocket>> &allsocks);
+					 std::vector<std::unique_ptr<CSocket>> &allsocks, std::vector<osuCrypto::Channel> &chls);
 
 //Performs cuckoo hashing of party's inputs
 auto cuckoo_hash(PsiAnalyticsContext &context, const std::vector<uint64_t> &elements);
@@ -46,10 +47,12 @@ auto cuckoo_hash(PsiAnalyticsContext &context, const std::vector<uint64_t> &elem
 auto simple_hash(PsiAnalyticsContext &context, const std::vector<uint64_t> &elements);
 
 //Receives OPRF
-std::vector<uint64_t> LeaderOprf(PsiAnalyticsContext &context, int server_index, const std::vector<uint64_t> &cuckoo_table_v);
+std::vector<uint64_t> LeaderOprf(PsiAnalyticsContext &context, int server_index, const std::vector<uint64_t> &cuckoo_table_v,
+				 osuCrypto::Channel &chl);
 
 //OPRF Sender
-std::vector<std::vector<uint64_t>> ClientOprf(PsiAnalyticsContext &context, const std::vector<std::vector<uint64_t>> &simple_table_v);
+std::vector<std::vector<uint64_t>> ClientOprf(PsiAnalyticsContext &context, const std::vector<std::vector<uint64_t>> &simple_table_v,
+						osuCrypto::Channel &chl);
 
 //Construct polynomial hints
 std::vector<uint64_t> ClientEvaluateHint(PsiAnalyticsContext &context, const std::vector<std::vector<uint64_t>> &masks);
@@ -88,6 +91,7 @@ void multi_eval_thread(int tid, std::vector<std::vector<uint8_t>> poly_rcv_buffe
 		       PsiAnalyticsContext &context, std::vector<std::vector<uint64_t>> &sub_bins);
 void multi_hint_thread(int tid, std::vector<std::vector<uint8_t>> &poly_rcv, PsiAnalyticsContext &context, 
 			std::vector<std::unique_ptr<CSocket>> &allsocks);
-void multi_oprf_thread(int tid, std::vector<std::vector<uint64_t>> &masks_with_dummies, std::vector<uint64_t> table, PsiAnalyticsContext &context);
+void multi_oprf_thread(int tid, std::vector<std::vector<uint64_t>> &masks_with_dummies, std::vector<uint64_t> table, 
+			PsiAnalyticsContext &context, std::vector<osuCrypto::Channel> &chls);
 void multi_conn_thread(int tid, std::vector<std::unique_ptr<CSocket>> &socks, PsiAnalyticsContext &context);
 }

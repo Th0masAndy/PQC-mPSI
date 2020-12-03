@@ -212,8 +212,13 @@ int main(int argc, char **argv) {
   	//std::cout << std::endl;
 */
 	
-	std::vector<std::unique_ptr<CSocket>> allsocks(context.np-1);
+	std::vector<std::unique_ptr<CSocket>> allsocks;
+	std::vector<osuCrypto::Channel> chl;
+	osuCrypto::IOService ios;
+	std::vector<osuCrypto::Session> ep;
+
 	if(context.role == P_0) {
+		allsocks.resize(context.np-1);
 		std::thread conn_threads[context.nthreads];
     		//std::vector<std::unique_ptr<CSocket>> allsocks(context.np-1);
     		for(int i=0; i<context.nthreads; i++) {
@@ -223,19 +228,32 @@ int main(int argc, char **argv) {
     		for(int i=0; i<context.nthreads; i++) {
       			conn_threads[i].join();
 		}
+
+		chl.resize(context.np-1);
+		for(int i=0; i<context.np-1; i++) {
+			//osuCrypto::IOService thisio;
+			ep.push_back(ENCRYPTO::ot_receiver_connect(context, i, ios, chl[i]));
+			//ios[i] = thisio;
+		}
 	}
 
 	else {
 		std::vector<uint8_t> testdata(1);
+		allsocks.resize(1);
     		testdata[0] = 1u;
     		allsocks[0] = ENCRYPTO::EstablishConnection(context.address[0], context.port[0], static_cast<e_role>(context.role));
     		allsocks[0]->Send(testdata.data(), 1);
+
+		chl.resize(1);
+		///osuCrypto::IOService thisio;
+		ep.push_back(ENCRYPTO::ot_sender_connect(context, ios, chl[0]));
+		//ios[0] = thisio;
 	}
 
 	cout << context.role << ": Running protocol..." << endl;
 
 	auto start_time = std::chrono::system_clock::now();
-  	bins = ENCRYPTO::run_psi_analytics(context, inputs, allsocks);
+  	bins = ENCRYPTO::run_psi_analytics(context, inputs, allsocks, chl);
   	//std::vector<uint64_t> bins = ENCRYPTO::GeneratePseudoRandomElements(context.nbins, gen_bitlen);
 	auto t1 = std::chrono::system_clock::now();
 	const duration_millis opprf_time = t1-start_time;
@@ -269,6 +287,12 @@ int main(int argc, char **argv) {
 	context.timings.total = (duration).count();
 
 	PrintTimings(context);
+
+	for(int i=0; i<chl.size(); i++) {
+		chl[i].close();
+		ep[i].stop();
+	}
+	ios.stop();
 
        	cout << "end main" << endl;
 /*
