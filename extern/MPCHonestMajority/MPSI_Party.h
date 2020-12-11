@@ -584,13 +584,40 @@ template <class FieldType> void MPSI_Party<FieldType>::subtract_rj() {
 //The parties multiply with T-sharings of a random value
 //And send to the leader to open it.
 template <class FieldType> void MPSI_Party<FieldType>::mult_sj() {
+	int fieldByteSize = this->field->getElementSizeInBytes();
+	vector<byte> multbytes(this->num_bins * fieldByteSize);
+	vector<vector<byte>> recBufsBytes;
+	int i;
+	uint64_t j;
+
 	this->DNHonestMultiplication(this->masks, this->a_vals, this->mult_outs, this->num_bins);
-	this->openShare(this->num_bins, this->mult_outs, this->outputs);
+	for(j=0; j < this->num_bins; j++) {
+		this->field->elementToBytes(multbytes.data() + (j*fieldByteSize), mult_outs[j]);
+	}
+
+	//this->openShare(this->num_bins, this->mult_outs, this->outputs);
 	if(this->m_partyId == 0) {
+		recBufsBytes.resize(this->N);
+		for(i=0; i<this->N; i++) {
+			recBufsBytes[i].resize(this->num_bins * fieldByteSize);
+		}
+		this->roundFunctionSyncForP1(multbytes, recBufsBytes);
+
 		this->sent_total = this->sent_total + ((this->N - 1) * (this->masks.size() * this->field->getElementSizeInBytes()));
 	}
 	else {
+		this->parties[0]->getChannel()->write(multbytes.data(), multbytes.size());
 		this->sent_total = this->sent_total + (2 * this->num_bins * this->field->getElementSizeInBytes());
+	}
+
+	if(this->m_partyId == 0) {
+		vector<FieldType> x1(this->N);
+		for(j=0; j<this->num_bins; j++) {
+			for(i=0; i<this->N; i++) {
+				x1[i] = this->field->bytesToElement(recBufsBytes[i].data() + (j*fieldByteSize));
+			}
+			this->outputs[j] = this->interpolate(x1);
+		}
 	}
 }
 
@@ -603,8 +630,9 @@ template <class FieldType> void MPSI_Party<FieldType>::evaluateCircuit() {
 	auto t10 = high_resolution_clock::now();
 	auto dur5 = duration_cast<milliseconds>(t10-t9).count();
 	cout << this->m_partyId << ": Circuit evaluated in " << dur5 << " milliseconds." << endl;
-
-	outputPrint();
+	if(this->m_partyId == 0) {
+		outputPrint();
+	}
 }
 
 //print output results
