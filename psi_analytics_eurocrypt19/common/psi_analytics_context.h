@@ -39,6 +39,12 @@ struct PsiAnalyticsContext {
   double epsilon;
   uint64_t np;
 
+  //relaxed batched opprf params 
+  uint64_t ffuns;
+  uint64_t fbins;
+  double fepsilon;
+
+
   std::string fieldType;
   std::string genRandomSharesType;
   std::string multType;
@@ -59,6 +65,12 @@ struct PsiAnalyticsContext {
     SUM,                 // number of matched elements
     SUM_IF_GT_THRESHOLD  // number of matched elements if T > PSI, 0 otherwise
   } analytics_type;
+
+  enum {
+    POLY,
+    RELAXED,
+    TABLE
+  } opprf_type;
 
   const uint64_t maxbitlen = 61;
 

@@ -24,6 +24,7 @@
 #include <stdio.h>
 
 #include "common/psi_analytics.h"
+#include "common/relaxed_opprf.h"
 #include "common/constants.h"
 #include "common/psi_analytics_context.h"
 #include <thread>
@@ -36,6 +37,7 @@ auto read_test_options(int32_t argcp, char **argvp) {
   	ENCRYPTO::PsiAnalyticsContext context;
   	po::options_description allowed("Allowed options");
   	std::string type;
+    std::string opprf_type;
   	// clang-format off
   	allowed.add_options()("help,h", "produce this message")
   	("role,r",         po::value<decltype(context.role)>(&context.role)->required(),                                  "Role of the node")
@@ -49,7 +51,8 @@ auto read_test_options(int32_t argcp, char **argvp) {
   	("functions,f",    po::value<decltype(context.nfuns)>(&context.nfuns)->default_value(3u),                         "Number of hash functions in hash tables")
   	("num_parties,N",    po::value<decltype(context.np)>(&context.np)->default_value(4u),                         "Number of parties")
   	("file_address,F",    po::value<decltype(context.file_address)>(&context.file_address)->default_value("../../files/addresses"),                         "IP Addresses")
-  	("type,y",         po::value<std::string>(&type)->default_value("None"),                                          "Function type {None, Threshold, Sum, SumIfGtThreshold}");
+  	("type,y",         po::value<std::string>(&type)->default_value("None"),                                          "Function type {None, Threshold, Sum, SumIfGtThreshold}")
+    ("opprf_type,o",         po::value<std::string>(&opprf_type)->default_value("Poly"),                                          "OPPRF type {Poly, Relaxed, Table}");
   	// clang-format on
 
   	po::variables_map vm;
@@ -82,6 +85,17 @@ auto read_test_options(int32_t argcp, char **argvp) {
     		std::string error_msg(std::string("Unknown function type: " + type));
     		throw std::runtime_error(error_msg.c_str());
   	}
+
+    if (opprf_type.compare("Poly") == 0) {
+      context.opprf_type = ENCRYPTO::PsiAnalyticsContext::POLY;
+    } else if (opprf_type.compare("Relaxed") == 0) {
+      context.opprf_type = ENCRYPTO::PsiAnalyticsContext::RELAXED;
+    } else if (opprf_type.compare("Table") == 0) {
+      context.opprf_type = ENCRYPTO::PsiAnalyticsContext::TABLE;
+    } else {
+      std::string error_msg(std::string("Unknown opprf type: " + opprf_type));
+      throw std::runtime_error(error_msg.c_str());
+    }
 
   	if(context.nthreads == 0) {
     		context.nthreads = std::thread::hardware_concurrency();
@@ -131,6 +145,11 @@ auto read_test_options(int32_t argcp, char **argvp) {
   	context.multType = "DN";
   	context.verifyType = "Single";
 
+    //Setting Relaxed Batch OPPRF Params
+    context.ffuns =3u;
+    context.fepsilon= 1.27f;
+    context.fbins=context.fepsilon*context.neles*context.nfuns;
+
   	return context;
 }
 
@@ -167,7 +186,7 @@ int main(int argc, char **argv) {
 
         auto context = read_test_options(argc, argv);
         auto gen_bitlen = static_cast<std::size_t>(std::ceil(std::log2(context.neles))) + 3;
-        //auto inputs = ENCRYPTO::GeneratePseudoRandomElements(context.neles, gen_bitlen, context.role * 12345);        
+        //auto inputs = ENCRYPTO::GeneratePseudoRandomElements(context.neles, gen_bitlen, context.role * 12345);
         auto inputs = ENCRYPTO::GeneratePseudoRandomElements(context.neles, gen_bitlen);
 	//auto inputs = ENCRYPTO::GenerateSequentialElements(context.neles);
 
@@ -184,7 +203,7 @@ int main(int argc, char **argv) {
         int times = stoi(parser.getValueByKey(parameters, "internalIterationsNumber"));
         string fieldType(parser.getValueByKey(parameters, "fieldType"));
 	std::vector<uint64_t> bins(context.nbins);
-	
+
 	//MPSI_Party<ZpMersenneLongElement> mpsi(size, circuitArgv);:q
 
 	MPSI_Party<ZpMersenneLongElement> mpsi(size, circuitArgv, bins, context.nbins);
@@ -211,7 +230,7 @@ int main(int argc, char **argv) {
   	}
   	//std::cout << std::endl;
 */
-	
+
 	std::vector<std::unique_ptr<CSocket>> allsocks;
 	std::vector<osuCrypto::Channel> chl;
 	osuCrypto::IOService ios;
@@ -253,7 +272,16 @@ int main(int argc, char **argv) {
 	cout << context.role << ": Running protocol..." << endl;
 
 	auto start_time = std::chrono::system_clock::now();
-  	bins = ENCRYPTO::run_psi_analytics(context, inputs, allsocks, chl);
+  switch(context.opprf_type) {
+    case ENCRYPTO::PsiAnalyticsContext::POLY: bins = ENCRYPTO::run_psi_analytics(context, inputs, allsocks, chl);
+                                              break;
+    case ENCRYPTO::PsiAnalyticsContext::RELAXED: bins = RELAXEDNS::run_relaxed_opprf(context, inputs, allsocks, chl);
+                                                 break;
+    case ENCRYPTO::PsiAnalyticsContext::TABLE: 	std::string error_msg("Not implemented currently.");
+                                                throw std::runtime_error(error_msg.c_str());
+                                                break;
+  }
+//  	bins = ENCRYPTO::run_psi_analytics(context, inputs, allsocks, chl);
   	//std::vector<uint64_t> bins = ENCRYPTO::GeneratePseudoRandomElements(context.nbins, gen_bitlen);
 	auto t1 = std::chrono::system_clock::now();
 	const duration_millis opprf_time = t1-start_time;
@@ -284,6 +312,7 @@ int main(int argc, char **argv) {
 
 	context.timings.circuit = circuit_time.count();
 	const duration_millis duration = end_time - start_time;
+
 	context.timings.total = (duration).count();
 
 	PrintTimings(context);

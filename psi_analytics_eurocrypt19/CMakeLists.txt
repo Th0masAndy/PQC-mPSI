@@ -15,12 +15,15 @@ endif ()
 add_library(psi_analytics_eurocrypt19
         common/psi_analytics.cpp
         common/helpers.cpp
-	common/socket.cpp
+	      common/socket.cpp
+        common/relaxed_opprf.cpp
         common/connection.cpp
         common/utils.cpp
+        common/table_opprf.cpp
         polynomials/Mersenne.cpp
         polynomials/Poly.cpp
         ots/ots.cpp
+        ots/block_op_ots.cpp
         )
 
 set_target_properties(psi_analytics_eurocrypt19
