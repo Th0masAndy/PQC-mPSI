@@ -38,8 +38,9 @@ struct PsiAnalyticsContext {
   uint64_t nmegabins;
   double epsilon;
   uint64_t np;
+  uint64_t radixparam;
 
-  //relaxed batched opprf params 
+  //relaxed batched opprf params
   uint64_t ffuns;
   uint64_t fbins;
   double fepsilon;
@@ -60,10 +61,9 @@ struct PsiAnalyticsContext {
   std::vector<uint16_t> port;
 
   enum {
-    NONE,                // only calculate the equality of the bin elements - used for benchmarking
-    THRESHOLD,           // 1 if T > PSI, 0 otherwise
-    SUM,                 // number of matched elements
-    SUM_IF_GT_THRESHOLD  // number of matched elements if T > PSI, 0 otherwise
+    NONE,
+    PSI,
+    THRESHOLD
   } analytics_type;
 
   enum {

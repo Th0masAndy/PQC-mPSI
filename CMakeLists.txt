@@ -61,7 +61,7 @@ elseif (NOT HashingTables_FOUND AND NOT TARGET HashingTables::hashingtables)
 endif ()
 
 # we need to set these compile flags globally to compile compile libOTe and its dependencies
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -no-pie -pthread -maes -msse2 -msse3 -msse4.1 -mpclmul -mbmi2 -mavx -mavx2")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -no-pie -pthread -maes -msse2 -msse3 -msse4.1 -mpclmul -mbmi2 -mavx -mrdseed -mavx2")
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-ignored-attributes")
 
@@ -82,5 +82,7 @@ endif ()
 
 add_subdirectory(extern/MPCHonestMajority)
 add_dependencies(libOTe relic_s)
+
+add_subdirectory(extern/EzPC/SCI)
 
 add_subdirectory(psi_analytics_eurocrypt19)

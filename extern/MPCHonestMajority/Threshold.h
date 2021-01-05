@@ -13,7 +13,7 @@ void outputPhase();
 #define mpsi_print true
 
 template <class FieldType>
-class MPSI_Party : public ProtocolParty<FieldType>{
+class Threshold : public ProtocolParty<FieldType>{
 	public:
 		/*Inherited from ProtocolParty:
 		 * Variables:
@@ -47,17 +47,20 @@ class MPSI_Party : public ProtocolParty<FieldType>{
 		 */
 
 		uint64_t num_bins; // number of bins
+		uint64_t num_triples;//number of multiplication triples
 		uint64_t sent_total; //total number of bytes sent
+		int K; //threshold for intersection
 		vector<FieldType> masks; //the shares of the masks s_j for each value to be multiplied with
 		vector<FieldType> add_a; //additive shares of a_j
 		vector<FieldType> a_vals; //threshold shares of a_j
 		vector<FieldType> mult_outs; //threshold shares of s_j*a_j
 		vector<FieldType> outputs; //the shares of s_j*a_j
 		vector<FieldType> randomTAndAddShares; //shares of r_j for conversion of inputs to T-sharings
+		vector<FieldType> poly_outs; //shares of multiplication output of polynomial for threshold
 		string myInputFile, myOutputFile;
 
-		MPSI_Party(int argc, char* argv[]);
-		MPSI_Party(int argc, char* argv[], vector<uint64_t>& bins, uint64_t nbins);
+		Threshold(int argc, char* argv[]);
+		Threshold(int argc, char* argv[], vector<uint64_t>& bins, uint64_t nbins);
 
 		//read num_bins MPSI inputs
 		void readMPSIInputs();
@@ -79,7 +82,9 @@ class MPSI_Party : public ProtocolParty<FieldType>{
 
 		void subtract_rj();
 
-		void mult_sj();
+		void thresh_poly();
+
+		void leader_open();
 
 		//open an additive sharing
 		//code similar to DNHonestMultiplication() as only P1 opens
@@ -88,7 +93,7 @@ class MPSI_Party : public ProtocolParty<FieldType>{
 		//print output results to file
 		void outputPrint();
 
-		~MPSI_Party() {}
+		~Threshold() {}
 
 	private:
 		void testOpenAdd();
@@ -98,7 +103,7 @@ class MPSI_Party : public ProtocolParty<FieldType>{
 		void testConversion();
 };
 
-template <class FieldType> MPSI_Party<FieldType>::MPSI_Party(int argc, char* argv[]) : ProtocolParty<FieldType>(argc, argv) {
+template <class FieldType> Threshold<FieldType>::Threshold(int argc, char* argv[]) : ProtocolParty<FieldType>(argc, argv) {
         //The call to ProtocolParty constructor initializes inherited variables
         // N, T, m_partyID, as well as the VDM matrix and related vectors.
 
@@ -112,6 +117,11 @@ template <class FieldType> MPSI_Party<FieldType>::MPSI_Party(int argc, char* arg
 	//iss >> this->num_bins;
         this->myInputFile = parser.getValueByKey(this->arguments, "inputsFile");
         this->myOutputFile = parser.getValueByKey(this->arguments, "outputsFile");
+
+	this->K = stoi(parser.getValueByKey(this->arguments, "threshold"));
+	/*this->K = this->N - this->thresh;
+	if(this->thresh < this->K)
+		this->K = this->thresh;*/
 
 	//readMPSIInputs();
 /*
@@ -129,7 +139,7 @@ template <class FieldType> MPSI_Party<FieldType>::MPSI_Party(int argc, char* arg
         //Generation of shared values, such as triples, must be done later.
 }
 
-template <class FieldType> MPSI_Party<FieldType>::MPSI_Party(int argc, char* argv[], vector<uint64_t>& bins, uint64_t nbins) : ProtocolParty<FieldType>(argc, argv) {
+template <class FieldType> Threshold<FieldType>::Threshold(int argc, char* argv[], vector<uint64_t>& bins, uint64_t nbins) : ProtocolParty<FieldType>(argc, argv) {
         //The call to ProtocolParty constructor initializes inherited variables
         // N, T, m_partyID, as well as the VDM matrix and related vectors.
 
@@ -143,6 +153,8 @@ template <class FieldType> MPSI_Party<FieldType>::MPSI_Party(int argc, char* arg
 	//iss >> this->num_bins;
         this->myInputFile = parser.getValueByKey(this->arguments, "inputsFile");
         this->myOutputFile = parser.getValueByKey(this->arguments, "outputsFile");
+
+	this->K = stoi(parser.getValueByKey(this->arguments, "threshold"));
 
 //	readMPSIInputs(bins, nbins);
 /*
@@ -161,7 +173,7 @@ template <class FieldType> MPSI_Party<FieldType>::MPSI_Party(int argc, char* arg
 }
 
 //read num_bins MPSI inputs
-template <class FieldType> void MPSI_Party<FieldType>::readMPSIInputs() {
+template <class FieldType> void Threshold<FieldType>::readMPSIInputs() {
         ifstream myfile;
         //long long int input;
 	uint64_t input;
@@ -191,7 +203,7 @@ template <class FieldType> void MPSI_Party<FieldType>::readMPSIInputs() {
 }
 
 //read num_bins MPSI inputs
-template <class FieldType> void MPSI_Party<FieldType>::readMPSIInputs(vector<uint64_t>& bins, uint64_t nbins) {
+template <class FieldType> void Threshold<FieldType>::readMPSIInputs(vector<uint64_t>& bins, uint64_t nbins) {
   	uint64_t input;
     	uint64_t i = 0;
 	uint64_t j = 0;
@@ -220,7 +232,7 @@ template <class FieldType> void MPSI_Party<FieldType>::readMPSIInputs(vector<uin
 }
 
 //convert shares to field type
-template <class FieldType> void MPSI_Party<FieldType>::convertSharestoFieldType(vector<uint64_t>& bins, vector<FieldType>& shares, uint64_t nbins) {
+template <class FieldType> void Threshold<FieldType>::convertSharestoFieldType(vector<uint64_t>& bins, vector<FieldType>& shares, uint64_t nbins) {
   	uint64_t input;
 	uint64_t j = 0;
 	for(int i=0; i<nbins; i++) {
@@ -238,11 +250,20 @@ template <class FieldType> void MPSI_Party<FieldType>::convertSharestoFieldType(
 }
 
 //perform MPSI
-template <class FieldType> void MPSI_Party<FieldType>::runMPSI() {
+template <class FieldType> void Threshold<FieldType>::runMPSI() {
         this->masks.resize(this->num_bins);
         this->a_vals.resize(this->num_bins);
         this->mult_outs.resize(this->num_bins);
         this->outputs.resize(this->num_bins);
+	this->poly_outs.resize(this->num_bins);
+
+	int half = this->N / 2;
+	if(this->K < half) {
+		this->num_triples = this->K * this->num_bins;
+	}
+	else {
+		this->num_triples = (this->N - this->K + 1) * this->num_bins;
+	}
 
 	auto t1 = high_resolution_clock::now();
 
@@ -275,7 +296,7 @@ template <class FieldType> void MPSI_Party<FieldType>::runMPSI() {
 */
         //Generate random T and 2T sharings for multiplication
 	auto t7 = high_resolution_clock::now();
-        this->generateRandom2TAndTShares(this->num_bins, this->randomTAnd2TShares);
+        this->generateRandom2TAndTShares(this->num_triples, this->randomTAnd2TShares);
 	auto t8 = high_resolution_clock::now();
 	auto dur4 = duration_cast<milliseconds>(t8-t7).count();
 	cout << this->m_partyId << ": T- and 2T-sharings generated in " << dur4 << " milliseconds." << endl;
@@ -287,7 +308,7 @@ template <class FieldType> void MPSI_Party<FieldType>::runMPSI() {
 }
 
 //prepare additive and T-threshold sharings of secret random value r_j using DN07's protocol
-template <class FieldType> void MPSI_Party<FieldType>::modDoubleRandom(uint64_t no_random, vector<FieldType>& randomElementsToFill) {
+template <class FieldType> void Threshold<FieldType>::modDoubleRandom(uint64_t no_random, vector<FieldType>& randomElementsToFill) {
 	cout << this->m_partyId <<  ": Generating double sharings..." << endl;
         int index = 0;
         int N = this->N;
@@ -396,7 +417,7 @@ template <class FieldType> void MPSI_Party<FieldType>::modDoubleRandom(uint64_t 
  * DOES NOT SEND reconstructions
  * Code similar to ::DNHonestMultiplication
 */
-template <class FieldType> void MPSI_Party<FieldType>::addShareOpen(uint64_t num_vals, vector<FieldType>& shares, vector<FieldType>& secrets) {
+template <class FieldType> void Threshold<FieldType>::addShareOpen(uint64_t num_vals, vector<FieldType>& shares, vector<FieldType>& secrets) {
 	cout << this->m_partyId << ": Reconstructing additive shares..." << endl;
 
 	int fieldByteSize = this->field->getElementSizeInBytes();
@@ -456,7 +477,7 @@ template <class FieldType> void MPSI_Party<FieldType>::addShareOpen(uint64_t num
 /*
  * Share given values as T-shares and send to everyone else
 */
-template <class FieldType> void MPSI_Party<FieldType>::reshare(vector<FieldType>& vals, vector<FieldType>& shares) {
+template <class FieldType> void Threshold<FieldType>::reshare(vector<FieldType>& vals, vector<FieldType>& shares) {
         int N = this->N;
         int T = this->T;
         uint64_t no_vals = vals.size();
@@ -551,7 +572,7 @@ template <class FieldType> void MPSI_Party<FieldType>::reshare(vector<FieldType>
 //The parties add an additive share of a random value to each of their elements,
 //coordinate with the leader (P0) to open the masked additive sharing,
 //Leader then reshares the masked value as a T-sharing and distributes it.
-template <class FieldType> void MPSI_Party<FieldType>::add_rj() {
+template <class FieldType> void Threshold<FieldType>::add_rj() {
 	uint64_t j;
         vector<FieldType> reconar; // reconstructed aj+rj
         reconar.resize(num_bins);
@@ -571,7 +592,7 @@ template <class FieldType> void MPSI_Party<FieldType>::add_rj() {
 //Step 2 of the online phase:
 //The parties subtract the T-sharing of the random values they had added,
 // from this T-sharing.
-template <class FieldType> void MPSI_Party<FieldType>::subtract_rj() {
+template <class FieldType> void Threshold<FieldType>::subtract_rj() {
 	uint64_t j;
 
         for(j=0; j<num_bins; j++) {
@@ -581,18 +602,69 @@ template <class FieldType> void MPSI_Party<FieldType>::subtract_rj() {
 }
 
 //Step 3 of the online phase:
-//The parties multiply with T-sharings of a random value
-//And send to the leader to open it.
-template <class FieldType> void MPSI_Party<FieldType>::mult_sj() {
+//if K < N / 2:
+//Evaluate the polynomial s * p(x) = s * x * (x - 1) * ... * (x - (K - 1))
+//Else:
+//Evaluate the polynomial s * p(x) = s * (x - K) * (x - (K + 1)) * ... (x - N)
+template <class FieldType> void Threshold<FieldType>::thresh_poly() {
+	int fieldByteSize = this->field->getElementSizeInBytes();
+	vector<FieldType> left(this->num_bins);
+	vector<FieldType> right(this->num_bins);
+	vector<byte> polybytes(this->num_bins * fieldByteSize);
+	vector<vector<byte>> recBufsBytes;
+	uint64_t i, j;
+	int offset, half;
+
+	half = this->N / 2;
+
+	if(this->K < half) {
+		for(j = 0; j < this->num_bins; j++) {
+			this->poly_outs[j] = this->a_vals[j];
+		}
+
+		for(i = 1; i < this->K; i++) {
+			offset = (i - 1) * num_bins * 2;
+			for(j = 0; j < num_bins; j++) {
+				left[j] = this->poly_outs[j];
+				right[j] = this->a_vals[j] - this->field->GetElement(i);
+			}
+			this->DNHonestMultiplication(left, right, this->poly_outs, this->num_bins, offset);
+		}
+		offset = (this->K - 1) * num_bins * 2;
+	}
+
+	else {
+		for(j = 0; j < this->num_bins; j++) {
+			this->poly_outs[j] = this->a_vals[j] - this->field->GetElement(this->K);
+		}
+
+		for(i = this->K + 1; i <= this->N; i++) {
+			offset = (i - this->K - 1) * num_bins * 2;
+			for(j = 0; j < num_bins; j++) {
+				left[j] = this->poly_outs[j];
+				right[j] = this->a_vals[j] - this->field->GetElement(i);
+			}
+			this->DNHonestMultiplication(left, right, this->poly_outs, this->num_bins, offset);
+		}
+		offset = (this->N - this->K) * num_bins * 2;
+	}
+
+	this->DNHonestMultiplication(this->masks, this->poly_outs, this->mult_outs, this->num_bins, offset);
+}
+
+//Step 4 of the online phase:
+//The parties send shares to the leader to open
+template <class FieldType> void Threshold<FieldType>::leader_open() {
 	int fieldByteSize = this->field->getElementSizeInBytes();
 	vector<byte> multbytes(this->num_bins * fieldByteSize);
 	vector<vector<byte>> recBufsBytes;
 	int i;
 	uint64_t j;
 
-	this->DNHonestMultiplication(this->masks, this->a_vals, this->mult_outs, this->num_bins, 0);
+	int offset = (this->K - 1) * num_bins * 2;
+	//this->DNHonestMultiplication(this->masks, this->poly_outs, this->mult_outs, this->num_bins, offset);
 	for(j=0; j < this->num_bins; j++) {
-		this->field->elementToBytes(multbytes.data() + (j*fieldByteSize), mult_outs[j]);
+		this->field->elementToBytes(multbytes.data() + (j*fieldByteSize), this->mult_outs[j]);
 	}
 
 	//this->openShare(this->num_bins, this->mult_outs, this->outputs);
@@ -621,12 +693,13 @@ template <class FieldType> void MPSI_Party<FieldType>::mult_sj() {
 	}
 }
 
-//Call the 3 steps of the online phase.
-template <class FieldType> void MPSI_Party<FieldType>::evaluateCircuit() {
+//Call the 4 steps of the online phase.
+template <class FieldType> void Threshold<FieldType>::evaluateCircuit() {
 	auto t9 = high_resolution_clock::now();
 	add_rj();
 	subtract_rj();
-	mult_sj();
+	thresh_poly();
+	leader_open();
 	auto t10 = high_resolution_clock::now();
 	auto dur5 = duration_cast<milliseconds>(t10-t9).count();
 	cout << this->m_partyId << ": Circuit evaluated in " << dur5 << " milliseconds." << endl;
@@ -636,17 +709,29 @@ template <class FieldType> void MPSI_Party<FieldType>::evaluateCircuit() {
 }
 
 //print output results
-template <class FieldType> void MPSI_Party<FieldType>::outputPrint() {
+template <class FieldType> void Threshold<FieldType>::outputPrint() {
         vector<int> matches;
         uint64_t counter=0;
         uint64_t i;
+	int half = this->N / 2;
 
         for(i=0; i < this->num_bins; i++) {
                 if(outputs[i] != *(this->field->GetZero())) {
-			continue;
+			if (this->K < half) {
+				matches.push_back(i);
+				counter++;
+			}
+			else
+				continue;
 		}
-                matches.push_back(i);
-                counter++;
+		else {
+			if(this->K >= half) {
+                		matches.push_back(i);
+                		counter++;
+			}
+			else
+				continue;
+		}
         }
 	cout << this->m_partyId << ": 0 found at " << matches.size() << " positions. " << endl;
 	cout << this->sent_total << " bytes sent." << endl;
@@ -658,7 +743,7 @@ template <class FieldType> void MPSI_Party<FieldType>::outputPrint() {
 }
 
 
-template <class FieldType> void MPSI_Party<FieldType>::testOpenAdd() {
+template <class FieldType> void Threshold<FieldType>::testOpenAdd() {
 	vector<FieldType> sum(1);
 	sum[0] = *(this->field->GetZero());
 	for(uint64_t i=0; i<this->num_bins; i++) {
@@ -667,7 +752,7 @@ template <class FieldType> void MPSI_Party<FieldType>::testOpenAdd() {
 	cout << "Sum: " << sum[0] << "for Party " << this->m_partyId << "\n";
 }
 
-template <class FieldType> void MPSI_Party<FieldType>::testShareGenNoComm(vector<FieldType>& share_t, vector<FieldType>& share_add) {
+template <class FieldType> void Threshold<FieldType>::testShareGenNoComm(vector<FieldType>& share_t, vector<FieldType>& share_add) {
 	//Basically modDoubleRandom() but without the communication
 	//Instead run the VDM matrix on current partiy's shares
 	//and see if it matches / can be reconstructed
@@ -682,7 +767,7 @@ template <class FieldType> void MPSI_Party<FieldType>::testShareGenNoComm(vector
 
 }
 
-template <class FieldType> void MPSI_Party<FieldType>::testShareGenWithComm() {
+template <class FieldType> void Threshold<FieldType>::testShareGenWithComm() {
 	//run modDoubleRandom() fully
 	//open T-sharings at even positions
 	//and additive sharings at odd positions
@@ -720,7 +805,7 @@ template <class FieldType> void MPSI_Party<FieldType>::testShareGenWithComm() {
 	}
 }
 
-template <class FieldType> void MPSI_Party<FieldType>::testResharing() {
+template <class FieldType> void Threshold<FieldType>::testResharing() {
 	vector<FieldType> shares(this->num_bins);
 	vector<FieldType> opened(this->num_bins);
 	cout << "Initialization of test variables done. " << add_a.size() << " " << shares.size() << " " << opened.size() << "\n";
@@ -735,7 +820,7 @@ template <class FieldType> void MPSI_Party<FieldType>::testResharing() {
 	}
 }
 
-template <class FieldType> void MPSI_Party<FieldType>::testConversion() {
+template <class FieldType> void Threshold<FieldType>::testConversion() {
 	vector<FieldType> secrets(this->num_bins);
 	vector<FieldType> orig(this->num_bins);
 

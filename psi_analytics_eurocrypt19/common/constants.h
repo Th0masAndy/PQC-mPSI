@@ -2,6 +2,7 @@
 #define P_0 0
 #define DEF_ADDRESS "0.0.0.0"
 #define REF_PORT 31000
+#define REF_SCI_PORT 32000
 //
 // \author Oleksandr Tkachenko
 // \email tkachenko@encrypto.cs.tu-darmstadt.de

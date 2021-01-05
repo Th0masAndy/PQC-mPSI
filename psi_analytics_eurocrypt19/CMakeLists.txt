@@ -35,7 +35,7 @@ target_compile_options(psi_analytics_eurocrypt19
         -march=native
         #-std=c++11
         -ffunction-sections -mpclmul -mbmi2 -maes
-        -mavx -msse2 -msse3 -msse4.1
+        -mavx -msse2 -msse3 -msse4.1 -mrdseed
         #-march=haswell
         -Wall -Wno-strict-overflow -Wno-ignored-attributes -Wno-parentheses)
 
@@ -70,6 +70,7 @@ target_include_directories(psi_analytics_eurocrypt19 PUBLIC
         ${PSI_ANALYTICS_SOURCE_ROOT}/extern/ABY/src
         ${PSI_ANALYTICS_SOURCE_ROOT}/extern/ABY/extern/ENCRYPTO_utils/src
         ${PSI_ANALYTICS_SOURCE_ROOT}/extern/HashingTables
+        ${PSI_ANALYTICS_SOURCE_ROOT}/extern/EzPC/SCI/src
         $ENV{HOME}/libscapi/build/NTL/include
         $ENV{HOME}/libscapi/install/include
         $ENV{HOME}

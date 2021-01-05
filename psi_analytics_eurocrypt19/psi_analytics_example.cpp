@@ -18,6 +18,7 @@
 #include "abycore/aby/abyparty.h"
 
 #include "MPCHonestMajority/MPSI_Party.h"
+#include "MPCHonestMajority/Threshold.h"
 #include "MPCHonestMajority/ZpKaratsubaElement.h"
 #include <smmintrin.h>
 #include <inttypes.h>
@@ -51,8 +52,9 @@ auto read_test_options(int32_t argcp, char **argvp) {
   	("functions,f",    po::value<decltype(context.nfuns)>(&context.nfuns)->default_value(3u),                         "Number of hash functions in hash tables")
   	("num_parties,N",    po::value<decltype(context.np)>(&context.np)->default_value(4u),                         "Number of parties")
   	("file_address,F",    po::value<decltype(context.file_address)>(&context.file_address)->default_value("../../files/addresses"),                         "IP Addresses")
-  	("type,y",         po::value<std::string>(&type)->default_value("None"),                                          "Function type {None, Threshold, Sum, SumIfGtThreshold}")
-    ("opprf_type,o",         po::value<std::string>(&opprf_type)->default_value("Poly"),                                          "OPPRF type {Poly, Relaxed, Table}");
+  	("type,y",         po::value<std::string>(&type)->default_value("PSI"),                                          "Function type {None, PSI, Threshold}")
+    ("opprf_type,o",         po::value<std::string>(&opprf_type)->default_value("Poly"),                                          "OPPRF type {Poly, Relaxed, Table}")
+    ("radixparam,R",     po::value<decltype(context.radixparam)>(&context.radixparam)->default_value(4u),       "Radix Parameter, default: 4");
   	// clang-format on
 
   	po::variables_map vm;
@@ -75,16 +77,14 @@ auto read_test_options(int32_t argcp, char **argvp) {
 
   	if (type.compare("None") == 0) {
     		context.analytics_type = ENCRYPTO::PsiAnalyticsContext::NONE;
+  	} else if (type.compare("PSI") == 0) {
+    		context.analytics_type = ENCRYPTO::PsiAnalyticsContext::PSI;
   	} else if (type.compare("Threshold") == 0) {
     		context.analytics_type = ENCRYPTO::PsiAnalyticsContext::THRESHOLD;
-  	} else if (type.compare("Sum") == 0) {
-    		context.analytics_type = ENCRYPTO::PsiAnalyticsContext::SUM;
-  	} else if (type.compare("SumIfGtThreshold") == 0) {
-    		context.analytics_type = ENCRYPTO::PsiAnalyticsContext::SUM_IF_GT_THRESHOLD;
   	} else {
-    		std::string error_msg(std::string("Unknown function type: " + type));
-    		throw std::runtime_error(error_msg.c_str());
-  	}
+      std::string error_msg(std::string("Unknown analytics type: " + type));
+      throw std::runtime_error(error_msg.c_str());
+    }
 
     if (opprf_type.compare("Poly") == 0) {
       context.opprf_type = ENCRYPTO::PsiAnalyticsContext::POLY;
@@ -148,6 +148,7 @@ auto read_test_options(int32_t argcp, char **argvp) {
     //Setting Relaxed Batch OPPRF Params
     context.ffuns =3u;
     context.fepsilon= 1.27f;
+
     context.fbins=context.fepsilon*context.neles*context.nfuns;
 
   	return context;
@@ -182,61 +183,74 @@ void prepareArgs(ENCRYPTO::PsiAnalyticsContext context, char** circuitArgv) {
 	circuitArgv[24] = "1";
 }
 
-int main(int argc, char **argv) {
+void MPSI_execution(ENCRYPTO::PsiAnalyticsContext &context, std::vector<uint64_t> &bins, std::vector<uint64_t> &inputs, std::vector<std::unique_ptr<CSocket>> &allsocks, std::vector<osuCrypto::Channel> &chl, 	MPSI_Party<ZpMersenneLongElement> &mpsi) {
+  auto start_time = std::chrono::system_clock::now();
+  switch(context.opprf_type) {
+    case ENCRYPTO::PsiAnalyticsContext::POLY: bins = ENCRYPTO::run_psi_analytics(context, inputs, allsocks, chl);
+                                              break;
+    case ENCRYPTO::PsiAnalyticsContext::RELAXED: bins = RELAXEDNS::run_relaxed_opprf(context, inputs, allsocks, chl);
+                                                 break;
+    case ENCRYPTO::PsiAnalyticsContext::TABLE: 	std::string error_msg("Not implemented currently.");
+                                                throw std::runtime_error(error_msg.c_str());
+                                                break;
+  }
+  auto t1 = std::chrono::system_clock::now();
+	const duration_millis opprf_time = t1-start_time;
+	context.timings.opprf = opprf_time.count();
 
-        auto context = read_test_options(argc, argv);
-        auto gen_bitlen = static_cast<std::size_t>(std::ceil(std::log2(context.neles))) + 3;
-        //auto inputs = ENCRYPTO::GeneratePseudoRandomElements(context.neles, gen_bitlen, context.role * 12345);
-        auto inputs = ENCRYPTO::GeneratePseudoRandomElements(context.neles, gen_bitlen);
-	//auto inputs = ENCRYPTO::GenerateSequentialElements(context.neles);
+  cout << context.role << ": PSI circuit successfully executed: " << bins[0] << endl;
+  cout << context.role << ": Passing inputs..." << endl;
+	mpsi.readMPSIInputs(bins, context.nbins);
 
-	int size;
-        char** circuitArgv;
-        size = 25;
-        circuitArgv = (char **) malloc(sizeof(char*)*(size));
-        for(int i=0; i < size; i++) {
-                circuitArgv[i] = (char *) malloc(sizeof(char)*50);
-        }
-        prepareArgs(context, circuitArgv);
-	CmdParser parser;
-        auto parameters = parser.parseArguments("", size, circuitArgv);
-        int times = stoi(parser.getValueByKey(parameters, "internalIterationsNumber"));
-        string fieldType(parser.getValueByKey(parameters, "fieldType"));
-	std::vector<uint64_t> bins(context.nbins);
+  cout << context.role << ": Running circuit..." << endl;
+  auto t2 = std::chrono::system_clock::now();
+        mpsi.runMPSI();
+        auto end_time = std::chrono::system_clock::now();
+  const duration_millis circuit_time = end_time - t2;
 
-	//MPSI_Party<ZpMersenneLongElement> mpsi(size, circuitArgv);:q
+  context.timings.circuit = circuit_time.count();
+  const duration_millis duration = end_time - start_time;
 
-	MPSI_Party<ZpMersenneLongElement> mpsi(size, circuitArgv, bins, context.nbins);
+  context.timings.total = (duration).count();
 
-/*	int size;
-	char** circuitArgv;
-  	size = 25;
-	circuitArgv = (char **) malloc(sizeof(char*)*(size));
-	for(int i=0; i < size; i++) {
-		circuitArgv[i] = (char *) malloc(sizeof(char)*50);
-	}
-  	prepareArgs(context, circuitArgv);
-  	for(int i=0; i<25;i++){
-      	std::cout<< "Circuit Param "<<circuitArgv[i]<<std::endl;
-  	}*/
+  PrintTimings(context);
+}
 
-  	//auto inputs = ENCRYPTO::GenerateSequentialElements(context.neles);
-/*
-  	std::vector<uint64_t> inputs;
-  	for(int i=0; i<1024; i++) {
-    	uint64_t val = i + context.role;
-    	inputs.push_back(val);
-    	//std::cout << val << " ";
-  	}
-  	//std::cout << std::endl;
-*/
+void MPSI_threshold_execution(ENCRYPTO::PsiAnalyticsContext &context, std::vector<uint64_t> &bins, std::vector<uint64_t> &inputs, std::vector<std::unique_ptr<CSocket>> &allsocks, std::vector<osuCrypto::Channel> &chl, std::vector<sci::NetIO*>	ioArr, Threshold<ZpMersenneLongElement> &mpsi) {
+  auto start_time = std::chrono::system_clock::now();
+  switch(context.opprf_type) {
+    case ENCRYPTO::PsiAnalyticsContext::POLY: bins = ENCRYPTO::run_psi_analytics(context, inputs, allsocks, chl);
+                                              break;
+    case ENCRYPTO::PsiAnalyticsContext::RELAXED: bins = RELAXEDNS::run_threshold_relaxed_opprf(context, inputs, allsocks, chl, ioArr);
+                                                 break;
+    case ENCRYPTO::PsiAnalyticsContext::TABLE: 	std::string error_msg("Not implemented currently.");
+                                                throw std::runtime_error(error_msg.c_str());
+                                                break;
+  }
+  auto t1 = std::chrono::system_clock::now();
+	const duration_millis opprf_time = t1-start_time;
+	context.timings.opprf = opprf_time.count();
 
-	std::vector<std::unique_ptr<CSocket>> allsocks;
-	std::vector<osuCrypto::Channel> chl;
-	osuCrypto::IOService ios;
-	std::vector<osuCrypto::Session> ep;
+  cout << context.role << ": PSI circuit successfully executed: " << bins[0] << endl;
+  cout << context.role << ": Passing inputs..." << endl;
+  mpsi.readMPSIInputs(bins, context.nbins);
 
-	if(context.role == P_0) {
+  cout << context.role << ": Running circuit..." << endl;
+  auto t2 = std::chrono::system_clock::now();
+        mpsi.runMPSI();
+        auto end_time = std::chrono::system_clock::now();
+  const duration_millis circuit_time = end_time - t2;
+
+  context.timings.circuit = circuit_time.count();
+  const duration_millis duration = end_time - start_time;
+
+  context.timings.total = (duration).count();
+
+  PrintTimings(context);
+}
+
+void synchronize_parties(ENCRYPTO::PsiAnalyticsContext &context, std::vector<std::unique_ptr<CSocket>> &allsocks, std::vector<osuCrypto::Channel> &chl, osuCrypto::IOService &ios, std::vector<osuCrypto::Session> &ep) {
+  if(context.role == P_0) {
 		allsocks.resize(context.np-1);
 		std::thread conn_threads[context.nthreads];
     		//std::vector<std::unique_ptr<CSocket>> allsocks(context.np-1);
@@ -270,23 +284,112 @@ int main(int argc, char **argv) {
 	}
 
 	cout << context.role << ": Running protocol..." << endl;
+}
 
-	auto start_time = std::chrono::system_clock::now();
-  switch(context.opprf_type) {
-    case ENCRYPTO::PsiAnalyticsContext::POLY: bins = ENCRYPTO::run_psi_analytics(context, inputs, allsocks, chl);
-                                              break;
-    case ENCRYPTO::PsiAnalyticsContext::RELAXED: bins = RELAXEDNS::run_relaxed_opprf(context, inputs, allsocks, chl);
-                                                 break;
-    case ENCRYPTO::PsiAnalyticsContext::TABLE: 	std::string error_msg("Not implemented currently.");
-                                                throw std::runtime_error(error_msg.c_str());
-                                                break;
+
+int main(int argc, char **argv) {
+
+        auto context = read_test_options(argc, argv);
+        auto gen_bitlen = static_cast<std::size_t>(std::ceil(std::log2(context.neles))) + 3;
+        //auto inputs = ENCRYPTO::GeneratePseudoRandomElements(context.neles, gen_bitlen, context.role * 12345);
+        auto inputs = ENCRYPTO::GeneratePseudoRandomElements(context.neles, gen_bitlen);
+	//auto inputs = ENCRYPTO::GenerateSequentialElements(context.neles);
+	      int size;
+        char** circuitArgv;
+
+        if(context.analytics_type == ENCRYPTO::PsiAnalyticsContext::THRESHOLD)
+          size = 27;
+        else
+          size = 25;
+        circuitArgv = (char **) malloc(sizeof(char*)*(size));
+        for(int i=0; i < size; i++)
+            circuitArgv[i] = (char *) malloc(sizeof(char)*50);
+        prepareArgs(context, circuitArgv);
+        if(context.analytics_type == ENCRYPTO::PsiAnalyticsContext::THRESHOLD) {
+          circuitArgv[25] = "-threshold";
+         	circuitArgv[26] = "1";
+        }
+
+	CmdParser parser;
+        auto parameters = parser.parseArguments("", size, circuitArgv);
+        int times = stoi(parser.getValueByKey(parameters, "internalIterationsNumber"));
+        string fieldType(parser.getValueByKey(parameters, "fieldType"));
+	std::vector<uint64_t> bins(context.nbins);
+
+	//MPSI_Party<ZpMersenneLongElement> mpsi(size, circuitArgv);:q
+
+
+/*	int size;
+	char** circuitArgv;
+  	size = 25;
+	circuitArgv = (char **) malloc(sizeof(char*)*(size));
+	for(int i=0; i < size; i++) {
+		circuitArgv[i] = (char *) malloc(sizeof(char)*50);
+	}
+  	prepareArgs(context, circuitArgv);
+  	for(int i=0; i<25;i++){
+      	std::cout<< "Circuit Param "<<circuitArgv[i]<<std::endl;
+  	}*/
+
+  	//auto inputs = ENCRYPTO::GenerateSequentialElements(context.neles);
+/*
+  	std::vector<uint64_t> inputs;
+  	for(int i=0; i<1024; i++) {
+    	uint64_t val = i + context.role;
+    	inputs.push_back(val);
+    	//std::cout << val << " ";
+  	}
+  	//std::cout << std::endl;
+*/
+std::vector<sci::NetIO*> ioArr;
+int party;
+if(context.analytics_type == ENCRYPTO::PsiAnalyticsContext::THRESHOLD) {
+  if(context.role == P_0) {
+     std::thread boolean_conn_threads[context.nthreads];
+     party = 1;
+     ioArr.resize(2*(context.np-1));
+     for(int i=0; i<context.nthreads; i++) {
+       boolean_conn_threads[i] = std::thread(RELAXEDNS::multi_boolean_conn, i, std::ref(ioArr), std::ref(context));
+     }
+     for(int i=0; i<context.nthreads; i++)
+          boolean_conn_threads[i].join();
+  } else {
+    party = 2;
+    ioArr.resize(2);
+    for(int i=0; i<2; i++) {
+      ioArr[i] = new sci::NetIO(nullptr, REF_SCI_PORT+2*(context.role-1)+i);
+    }
   }
+}
+
+	std::vector<std::unique_ptr<CSocket>> allsocks;
+	std::vector<osuCrypto::Channel> chl;
+  osuCrypto::IOService ios;
+	std::vector<osuCrypto::Session> ep;
+
+  switch(context.analytics_type) {
+    case ENCRYPTO::PsiAnalyticsContext::PSI: {MPSI_Party<ZpMersenneLongElement> mpsi(size, circuitArgv, bins, context.nbins);
+                                             synchronize_parties(context, allsocks, chl, ios, ep);
+                                             MPSI_execution(context, bins, inputs, allsocks, chl, mpsi);
+                                             }
+                                             break;
+
+
+    case ENCRYPTO::PsiAnalyticsContext::THRESHOLD: {Threshold<ZpMersenneLongElement> mpsi(size, circuitArgv);
+                                                   synchronize_parties(context, allsocks, chl, ios, ep);
+                                                   MPSI_threshold_execution(context, bins, inputs, allsocks, chl, ioArr, mpsi);
+                                                   }
+                                                   break;
+    case ENCRYPTO::PsiAnalyticsContext::NONE: {std::string error_msg("Not implemented currently.");
+                                              throw std::runtime_error(error_msg.c_str());
+                                              }
+                                              break;
+  }
+
 //  	bins = ENCRYPTO::run_psi_analytics(context, inputs, allsocks, chl);
   	//std::vector<uint64_t> bins = ENCRYPTO::GeneratePseudoRandomElements(context.nbins, gen_bitlen);
-	auto t1 = std::chrono::system_clock::now();
-	const duration_millis opprf_time = t1-start_time;
-	context.timings.opprf = opprf_time.count();
-  	cout << context.role << ": PSI circuit successfully executed: " << bins[0] << endl;
+
+
   	//std::string outfile = "../in_party_"+std::to_string(context.role)+".txt";
   	//std::cout << "Printing " << bins[0] << " to " << outfile << std::endl;
   	//ENCRYPTO::PrintBins(bins, outfile, context);
@@ -302,28 +405,13 @@ int main(int argc, char **argv) {
 */
        //MPSI_Party<ZpMersenneLongElement> mpsi(size, circuitArgv, bins, context.nbins);
 
-	cout << context.role << ": Passing inputs..." << endl;
-	mpsi.readMPSIInputs(bins, context.nbins);
-	cout << context.role << ": Running circuit..." << endl;
-	auto t2 = std::chrono::system_clock::now();
-       	mpsi.runMPSI();
-       	auto end_time = std::chrono::system_clock::now();
-	const duration_millis circuit_time = end_time - t2;
-
-	context.timings.circuit = circuit_time.count();
-	const duration_millis duration = end_time - start_time;
-
-	context.timings.total = (duration).count();
-
-	PrintTimings(context);
-
 	for(int i=0; i<chl.size(); i++) {
 		chl[i].close();
 		ep[i].stop();
 	}
 	ios.stop();
 
-       	cout << "end main" << endl;
+      	cout << "end main" << endl;
 /*
    }
 */

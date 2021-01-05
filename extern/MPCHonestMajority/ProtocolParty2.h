@@ -224,7 +224,7 @@ public:
      */
     void GRRHonestMultiplication(FieldType *a, FieldType *b, vector<FieldType> &cToFill, int numOfTrupples);
 
-    void DNHonestMultiplication(vector<FieldType> a, vector<FieldType> b, vector<FieldType> &cToFill, uint64_t numOfTrupples);
+    void DNHonestMultiplication(vector<FieldType> a, vector<FieldType> b, vector<FieldType> &cToFill, uint64_t numOfTrupples, int offset);
 
     void offlineDNForMultiplication(int numOfTriples);
 
@@ -1837,7 +1837,7 @@ int ProtocolParty<FieldType>::processMultDN(int indexInRandomArray) {
 
 
 template <class FieldType>
-void ProtocolParty<FieldType>::DNHonestMultiplication(vector<FieldType> a, vector<FieldType> b, vector<FieldType> &cToFill, uint64_t numOfTrupples) {
+void ProtocolParty<FieldType>::DNHonestMultiplication(vector<FieldType> a, vector<FieldType> b, vector<FieldType> &cToFill, uint64_t numOfTrupples, int offset) {
 
     int index = 0;
     //int numOfMultGates = circuit.getNrOfMultiplicationGates();
@@ -1852,7 +1852,7 @@ void ProtocolParty<FieldType>::DNHonestMultiplication(vector<FieldType> a, vecto
     vector<vector<byte>> recBufsBytes;
 
     //int offset = numOfMultGates*2;
-    int offset = 0;
+    //int offset = 0;
 
 
     //generate the shares for x+a and y+b. do it in the same array to send once
