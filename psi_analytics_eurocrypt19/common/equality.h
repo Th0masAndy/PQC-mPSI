@@ -8,9 +8,12 @@
 #include<ctime>
 #include <thread>
 #include<bitset>
+#include "constants.h"
 
 using namespace sci;
 using namespace std;
+
+#define BITLEN_61
 
 template<typename IO>
 class Equality {
@@ -167,10 +170,10 @@ class Equality {
 				clock_gettime(CLOCK_MONOTONIC, &locfinish);
 				double total_time = (lomfinish.tv_sec - lomstart.tv_sec);
 				total_time += (lomfinish.tv_nsec - lomstart.tv_nsec) / 1000000000.0;
-				std::cout<<"Leaf OT Message Time: "<<total_time<<std::endl;
+				//std::cout<<"Leaf OT Message Time: "<<total_time<<std::endl;
 				total_time = (locfinish.tv_sec - locstart.tv_sec);
 				total_time += (locfinish.tv_nsec - locstart.tv_nsec) / 1000000000.0;
-				std::cout<<"Leaf OT Comm. Time "<<total_time<<std::endl;
+				//std::cout<<"Leaf OT Comm. Time "<<total_time<<std::endl;
 
 			}
 			else // party = sci::BOB
@@ -219,7 +222,7 @@ class Equality {
 			clock_gettime(CLOCK_MONOTONIC, &finish);
 			double total_time = (finish.tv_sec - start.tv_sec);
   		total_time += (finish.tv_nsec - start.tv_nsec) / 1000000000.0;
-      std::cout<<"Leaf OT-Time: "<<total_time<<std::endl;
+      //std::cout<<"Leaf OT-Time: "<<total_time<<std::endl;
 
       /*std::cout<<"Some leaf ot messages:"<<std::endl;
 			for(int i=0; i<10; i++) {
@@ -257,7 +260,7 @@ class Equality {
 			clock_gettime(CLOCK_MONOTONIC, &finish);
 			double total_time = (finish.tv_sec - start.tv_sec);
   		total_time += (finish.tv_nsec - start.tv_nsec) / 1000000000.0;
-      std::cout<<"Triple Generation Time: "<<total_time<<std::endl;
+      //std::cout<<"Triple Generation Time: "<<total_time<<std::endl;
     }
 
 		void traverse_and_compute_ANDs(uint8_t* z){
@@ -396,7 +399,7 @@ class Equality {
 			clock_gettime(CLOCK_MONOTONIC, &finish);
 			double total_time = (finish.tv_sec - start.tv_sec);
   		total_time += (finish.tv_nsec - start.tv_nsec) / 1000000000.0;
-      std::cout<<"AND Time: "<<total_time<<std::endl;
+      //std::cout<<"AND Time: "<<total_time<<std::endl;
 
 			//std::cout<<"Some Outputs"<< std::endl;
 
@@ -453,7 +456,6 @@ class Equality {
 		}
 
 		void boolean_to_arithmetic(uint8_t* z, uint64_t* a_shares) {
-			std::cout<<"Hello World!"<<std::endl;
 
 			uint64_t aux_val;
 			if(party ==sci::ALICE) {
@@ -463,13 +465,15 @@ class Equality {
 				otInstance->send_cot_moduloAdd<uint64_t>(a_shares, aux_shares, num_cmps);
 				for(int i=0; i<num_cmps; i++) {
 						aux_val = -a_shares[i];
-						a_shares[i] = (uint64_t)(((uint64_t)z[i]) - 2*aux_val);
+						a_shares[i] = ((uint64_t)(((uint64_t)z[i]) - 2*aux_val));//  & ENCRYPTO::__61_bit_mask;
+						a_shares[i] = (a_shares[i] & ENCRYPTO::__61_bit_mask) -1;
 				}
 			}
 			else {
 				otInstance->recv_cot_moduloAdd<uint64_t>(a_shares, z, num_cmps);
 				for(int i=0; i<num_cmps; i++) {
-						a_shares[i] = (uint64_t)(((uint64_t)z[i]) - 2*a_shares[i]);
+						a_shares[i] = ((uint64_t)(((uint64_t)z[i]) - 2*a_shares[i]));// & ENCRYPTO::__61_bit_mask;
+						a_shares[i] = a_shares[i] & ENCRYPTO::__61_bit_mask;
 				}
 			}
 		}
@@ -499,6 +503,8 @@ void equality_thread(int tid, int party, uint64_t* x, uint8_t* z, uint64_t* a_sh
 
 
 void perform_equality(uint64_t* x, int party, int l, int b, int num_cmps, uint8_t* z, uint64_t* a_shares, sci::NetIO** ioArr, OTPack<sci::NetIO>** otpackArr) {
+    //std::cout<<"X Value: "<<x[5]<<std::endl;
+	  //std::cout<<"B Value: "<<b<< std::endl;
     uint64_t mask_l;
     if (l == 64) mask_l = -1;
     else mask_l = (1ULL << l) - 1;

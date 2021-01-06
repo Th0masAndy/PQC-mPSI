@@ -48,8 +48,6 @@
 #include <unordered_set>
 #include <thread>
 
-#include "bool_to_arith.h"
-
 namespace RELAXEDNS {
   struct hashlocmap {
     int bin;
@@ -152,7 +150,7 @@ uint64_t addresses1;
 uint8_t bitaddress;
 uint64_t mask_ad = (1ULL << 2) - 1;
 
-actual_contents_of_bins.reserve(context.nbins);
+//actual_contents_of_bins.reserve(context.nbins);
 
 for(int i=0; i<context.nbins; i++) {
       addresses1 = hashToPosition(reinterpret_cast<uint64_t *>(&masks_with_dummies[i])[0], padding_vals[i]);
@@ -188,7 +186,7 @@ for(int i=0; i<context.nbins; i++) {
     uint64_t bufferlength = (uint64_t)ceil(context.nbins/2.0);
 osuCrypto::PRNG tab_prng(osuCrypto::sysRandomSeed(), bufferlength);
 
-content_of_bins.reserve(context.nbins);
+//content_of_bins.reserve(context.nbins);
 for( int i=0; i<context.nbins; i++) {
   content_of_bins[i] = tab_prng.get<uint64_t>();
 }
@@ -295,7 +293,8 @@ sock->Send(table_opprf.data(), context.nbins * ts* sizeof(uint64_t));
     }
   }
 
-  void multi_equality_thread(int tid, std::vector<std::vector<uint64_t>> &x, int party, int num_cmps, std::vector<std::vector<uint8_t>> &z, std::vector<std::vector<uint64_t>> &a_shares_bins, std::vector<sci::NetIO*> &ioArr, std::vector<sci::OTPack<sci::NetIO>*> &otpackArr, ENCRYPTO::PsiAnalyticsContext &context) {
+  void multi_equality_thread(int tid, std::vector<std::vector<uint64_t>> &x, int party, int num_cmps, std::vector<std::vector<uint8_t>> &z, std::vector<std::vector<uint64_t>> &a_shares_bins, std::vector<std::vector<uint64_t>> &aux_bins, std::vector<sci::NetIO*> &ioArr, std::vector<sci::OTPack<sci::NetIO>*> &otpackArr, ENCRYPTO::PsiAnalyticsContext &context, std::vector<std::unique_ptr<CSocket>> &allsocks) {
+    //std::cout<<"X Value: "<<x[0][5]<<std::endl;
     for(int i=tid; i<context.np-1; i=i+context.nthreads) {
       sci::NetIO* ioThreadArr[2];
       sci::OTPack<sci::NetIO> *otThreadpackArr[2];
@@ -304,6 +303,7 @@ sock->Send(table_opprf.data(), context.nbins * ts* sizeof(uint64_t));
         otThreadpackArr[j] = otpackArr[2*i+j];
       }
       perform_equality(x[i].data(), party, context.bitlen, context.radixparam, num_cmps, z[i].data(), a_shares_bins[i].data(), ioThreadArr, otThreadpackArr);
+      //allsocks[i]->Receive(aux_bins[i].data(), num_cmps * sizeof(uint64_t));
     }
   }
 
@@ -327,6 +327,9 @@ std::vector<uint64_t> run_relaxed_opprf(ENCRYPTO::PsiAnalyticsContext &context, 
     }
 
     std::vector<std::vector<uint64_t>> sub_bins(context.np-1);
+    for(int i=0; i<context.np-1; i++) {
+      sub_bins[i].reserve(context.nbins);
+    }
     std::vector<uint64_t> table;
     std::vector<std::vector<osuCrypto::block>> masks_with_dummies(context.np-1);
     table = ENCRYPTO::cuckoo_hash(context, inputs);
@@ -349,6 +352,7 @@ std::vector<uint64_t> run_relaxed_opprf(ENCRYPTO::PsiAnalyticsContext &context, 
     for(int i=0; i<context.nthreads; i++) {
       hint_threads[i] = std::thread(multi_hint_thread, i, std::ref(sub_bins), std::ref(table), std::ref(masks_with_dummies), std::ref(context), std::ref(allsocks), std::ref(chls));
     }
+
 
     for(int i=0; i<context.nthreads; i++) {
       hint_threads[i].join();
@@ -389,6 +393,7 @@ std::vector<uint64_t> run_relaxed_opprf(ENCRYPTO::PsiAnalyticsContext &context, 
 
     auto masks = RELAXEDNS::ot_sender(simple_table_v, chls[0], context);
     std::vector<uint64_t> actual_contents_of_bins;
+    actual_contents_of_bins.reserve(context.np-1);
     OpprgPsiNonLeader(actual_contents_of_bins, simple_table_v, masks, context, allsocks[0], chls[0]);
 
     TemplateField<ZpMersenneLongElement1> *field;
@@ -422,6 +427,9 @@ std::vector<uint64_t> run_threshold_relaxed_opprf(ENCRYPTO::PsiAnalyticsContext 
     }
 
     std::vector<std::vector<uint64_t>> sub_bins(context.np-1);
+    for(int i=0; i<context.np-1; i++) {
+      sub_bins[i].reserve(padded_size);
+    }
     std::vector<uint64_t> table;
     std::vector<std::vector<osuCrypto::block>> masks_with_dummies(context.np-1);
     table = ENCRYPTO::cuckoo_hash(context, inputs);
@@ -448,6 +456,10 @@ std::vector<uint64_t> run_threshold_relaxed_opprf(ENCRYPTO::PsiAnalyticsContext 
     for(int i=0; i<context.nthreads; i++) {
       hint_threads[i].join();
     }
+    /*
+    std::cout<<"Checkpoint 1: X Value: "<< sub_bins[0][5]<<std::endl;
+
+    allsocks[0]->Send(sub_bins[0].data(), padded_size * sizeof(uint64_t));*/
 
     std::vector<sci::OTPack<sci::NetIO>*> otpackArr(2*(context.np-1));
     std::thread ot_pack_threads[context.nthreads];
@@ -460,10 +472,11 @@ std::vector<uint64_t> run_threshold_relaxed_opprf(ENCRYPTO::PsiAnalyticsContext 
     }
 
     for(int i=0; i<context.np-1; i++){
-      sub_bins[i].resize(padded_size);
       for(int j=context.nbins; j<padded_size; j++)
         sub_bins[i][j] = S_CONST;
     }
+
+    //std::cout<<"Checkpoint 1: X Value: "<< sub_bins[0][5]<<std::endl;
 
     std::vector<std::vector<uint8_t>> res_bins(context.np-1);
     for(int i=0;i<context.np-1; i++)
@@ -473,9 +486,13 @@ std::vector<uint64_t> run_threshold_relaxed_opprf(ENCRYPTO::PsiAnalyticsContext 
     for(int i=0;i<context.np-1; i++)
       a_shares_bins[i].resize(padded_size);
 
+    std::vector<std::vector<uint64_t>> aux_bins(context.np-1);
+    /*for(int i=0;i<context.np-1; i++)
+      aux_bins[i].reserve(padded_size);*/
+
     std::thread equality_threads[context.nthreads];
     for(int i=0; i<context.nthreads; i++) {
-      equality_threads[i] = std::thread(multi_equality_thread, i, std::ref(sub_bins), 2, padded_size, std::ref(res_bins), std::ref(a_shares_bins), std::ref(ioArr), std::ref(otpackArr), std::ref(context));
+      equality_threads[i] = std::thread(multi_equality_thread, i, std::ref(sub_bins), 2, padded_size, std::ref(res_bins), std::ref(a_shares_bins), std::ref(aux_bins), std::ref(ioArr), std::ref(otpackArr), std::ref(context), std::ref(allsocks));
     }
 
     for(int i=0; i<context.nthreads; i++) {
@@ -488,11 +505,13 @@ std::vector<uint64_t> run_threshold_relaxed_opprf(ENCRYPTO::PsiAnalyticsContext 
 
     const auto agg_start_time = std::chrono::system_clock::now();
 
-    std::cout<<"##########################"<<std::endl;
+    /*std::cout<<"##########################"<<std::endl;
     for(int i=0; i<5; i++) {
       std::cout<<a_shares_bins[0][i]<<std::endl;
     }
     std::cout<<"##########################"<<std::endl;
+
+    allsocks[0]->Send(a_shares_bins[0].data(), padded_size * sizeof(uint64_t));*/
 
     TemplateField<ZpMersenneLongElement1> *field;
     std::vector<ZpMersenneLongElement1> field_bins;
@@ -512,11 +531,22 @@ std::vector<uint64_t> run_threshold_relaxed_opprf(ENCRYPTO::PsiAnalyticsContext 
       }
     }
 
-    std::cout<<"##########################"<<std::endl;
+    //Checking for intersection threshold
+
+    /*std::cout<<"Checking THreshold: "<<std::endl;
+    for(int i=0;i<20; i++) {
+      ZpMersenneLongElement1 x = field->GetElement(bins[i]);
+      for(int j=0; j<context.np-1; j++) {
+        x = x + field->GetElement(aux_bins[j][i]);
+      }
+      std::cout<<"Value is: "<<x<<std::endl;
+    }*/
+
+    /*std::cout<<"##########################"<<std::endl;
     for(int i=0; i<5; i++) {
       std::cout<<bins[i]<<std::endl;
     }
-    std::cout<<"##########################"<<std::endl;
+    std::cout<<"##########################"<<std::endl;*/
 
     const auto agg_end_time = std::chrono::system_clock::now();
     const duration_millis agg_duration = agg_end_time - agg_start_time;
@@ -529,7 +559,21 @@ std::vector<uint64_t> run_threshold_relaxed_opprf(ENCRYPTO::PsiAnalyticsContext 
 
     auto masks = RELAXEDNS::ot_sender(simple_table_v, chls[0], context);
     std::vector<uint64_t> actual_contents_of_bins;
+    actual_contents_of_bins.reserve(padded_size);
     OpprgPsiNonLeader(actual_contents_of_bins, simple_table_v, masks, context, allsocks[0], chls[0]);
+
+    /*std::vector<uint64_t> sub_bins;
+    sub_bins.reserve(padded_size);
+
+    allsocks[0]->Receive(sub_bins.data(), padded_size * sizeof(uint64_t));
+    int ctr2=0;
+    for(int i=0; i<padded_size; i++){
+      if(sub_bins[i] == actual_contents_of_bins[i]) {
+          ctr2++;
+      }
+    }*/
+
+    //std::cout<<"Bin Contents: "<< ctr2<<std::endl;
 
     std::vector<sci::OTPack<sci::NetIO>*> otpackArr(2);
     for(int j=0; j<2; j++) {
@@ -540,7 +584,6 @@ std::vector<uint64_t> run_threshold_relaxed_opprf(ENCRYPTO::PsiAnalyticsContext 
       }
     }
 
-    actual_contents_of_bins.resize(padded_size);
     for(int j=context.nbins; j<padded_size; j++)
       actual_contents_of_bins[j] = C_CONST;
 
@@ -557,15 +600,52 @@ std::vector<uint64_t> run_threshold_relaxed_opprf(ENCRYPTO::PsiAnalyticsContext 
       otThreadpackArr[j] = otpackArr[j];
     }
 
-    perform_equality(actual_contents_of_bins.data(), 1, context.bitlen, context.radixparam, padded_size, res_bins.data(), a_shares_bins.data(), ioThreadArr, otThreadpackArr);
+    //std::cout<<"Checkpoint 1: X Value: "<< actual_contents_of_bins[5]<<std::endl;
 
-    std::cout<<"##########################"<<std::endl;
+    perform_equality(actual_contents_of_bins.data(), 1, context.bitlen, context.radixparam, padded_size, res_bins.data(), a_shares_bins.data(), ioThreadArr, otThreadpackArr);
+    //allsocks[0]->Send(a_shares_bins.data(), padded_size * sizeof(uint64_t));
+    /*std::cout<<"##########################"<<std::endl;
     for(int i=0; i<5; i++) {
       std::cout<<a_shares_bins[i]<<std::endl;
     }
+    std::cout<<"##########################"<<std::endl;*/
+
+    /*std::vector<uint64_t> sample_bins;
+    sample_bins.resize(padded_size);
+
+    allsocks[0]->Receive(sample_bins.data(), padded_size * sizeof(uint64_t));
+    std::cout<<"##########################"<<std::endl;
+    for(int i=0; i<5; i++) {
+      std::cout<<sample_bins[i]<<std::endl;
+    }
     std::cout<<"##########################"<<std::endl;
 
+    std::cout<<"##########################"<<std::endl;*/
     TemplateField<ZpMersenneLongElement1> *field;
+    /*int ctr=0;
+    int ctr3 = 0;
+    for(int i=0; i < padded_size; i++) {
+      uint64_t val = a_shares_bins[i]+sample_bins[i];
+      if(val == 1){
+        ctr++;
+      }
+
+      ZpMersenneLongElement1 fx, fy, fz;
+      fx = field->GetElement(a_shares_bins[i]);
+      fy = field->GetElement(sample_bins[i]);
+      fz = fx + fy;
+      if(fz.elem == 1)
+        ctr3++;
+
+      if (i<20) {
+        std::cout<<"Values: "<<val<<" "<<fz.elem<<std::endl;
+      }
+    }
+    std::cout<<"##########################"<<std::endl;
+
+    std::cout<<"Counter: "<<ctr<<" "<<ctr3<<std::endl;
+    */
+    //TemplateField<ZpMersenneLongElement1> *field;
     std::vector<ZpMersenneLongElement1> field_bins;
     for(uint64_t j=0; j< context.nbins; j++) {
       field_bins.push_back(field->GetElement(a_shares_bins[j]));
@@ -574,8 +654,8 @@ std::vector<uint64_t> run_threshold_relaxed_opprf(ENCRYPTO::PsiAnalyticsContext 
     for(uint64_t j=0; j< context.nbins; j++) {
       bins[j] = field_bins[j].elem;
     }
-    
-    std::cout<<"##########################"<<std::endl;
+
+    /*std::cout<<"##########################"<<std::endl;
     for(int i=0; i<5; i++) {
       std::cout<<bins[i]<<std::endl;
     }
@@ -583,11 +663,11 @@ std::vector<uint64_t> run_threshold_relaxed_opprf(ENCRYPTO::PsiAnalyticsContext 
     std::cout<<"##########################"<<std::endl;
     std::cout<<"Checking some vals"<<std::endl;
     ZpMersenneLongElement1 x, y, z;
-    x = field->GetElement(3449976826603511870>>2);
-    y = field->GetElement(14996767247106039747>>2);
+    x = field->GetElement(1449062978617677817);
+    y = field->GetElement(856780030596016136);
     z = x + y;
     std::cout<<"Z: "<< z.elem <<std::endl;
-    std::cout<<"##########################"<<std::endl;
+    std::cout<<"##########################"<<std::endl;*/
 
 /*    std::vector<uint64_t> polynomials = ClientEvaluateHint(context, masks);
     bins = ClientSendHint(context, allsocks[0], polynomials);*/

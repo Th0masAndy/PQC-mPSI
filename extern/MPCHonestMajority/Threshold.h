@@ -216,9 +216,9 @@ template <class FieldType> void Threshold<FieldType>::readMPSIInputs(vector<uint
 			add_a.push_back(*(this->field->GetZero()));
 		}
 		//negate sum for leader
-		if (this->m_partyId == 0) {
+		/*if (this->m_partyId == 0) {
 			add_a[i] = *(this->field->GetZero()) - add_a[i];
-		}
+		}*/
                 i++;
         } while(j<nbins);
 

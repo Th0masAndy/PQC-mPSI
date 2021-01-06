@@ -46,7 +46,7 @@ auto read_test_options(int32_t argcp, char **argvp) {
   	("bit-length,b",   po::value<decltype(context.bitlen)>(&context.bitlen)->default_value(61u),                      "Bit-length of the elements")
   	("epsilon,e",      po::value<decltype(context.epsilon)>(&context.epsilon)->default_value(1.27f),                   "Epsilon, a table size multiplier")
   	("threads,t",      po::value<decltype(context.nthreads)>(&context.nthreads)->default_value(1),                    "Number of threads")
-  	("threshold,c",    po::value<decltype(context.threshold)>(&context.threshold)->default_value(0u),                 "Show PSI size if it is > threshold")
+  	("threshold,c",    po::value<decltype(context.threshold)>(&context.threshold)->default_value(2u),                 "Threshold Parameter, default: 2")
   	("nmegabins,m",    po::value<decltype(context.nmegabins)>(&context.nmegabins)->default_value(1u),                 "Number of mega bins")
   	("polysize,s",     po::value<decltype(context.polynomialsize)>(&context.polynomialsize)->default_value(0u),       "Size of the polynomial(s), default: neles")
   	("functions,f",    po::value<decltype(context.nfuns)>(&context.nfuns)->default_value(3u),                         "Number of hash functions in hash tables")
@@ -307,7 +307,7 @@ int main(int argc, char **argv) {
         prepareArgs(context, circuitArgv);
         if(context.analytics_type == ENCRYPTO::PsiAnalyticsContext::THRESHOLD) {
           circuitArgv[25] = "-threshold";
-         	circuitArgv[26] = "1";
+          sprintf(circuitArgv[26], "%lu", context.threshold);
         }
 
 	CmdParser parser;
