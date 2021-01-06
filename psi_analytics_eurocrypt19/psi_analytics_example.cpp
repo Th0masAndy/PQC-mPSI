@@ -293,6 +293,12 @@ int main(int argc, char **argv) {
         auto gen_bitlen = static_cast<std::size_t>(std::ceil(std::log2(context.neles))) + 3;
         //auto inputs = ENCRYPTO::GeneratePseudoRandomElements(context.neles, gen_bitlen, context.role * 12345);
         auto inputs = ENCRYPTO::GeneratePseudoRandomElements(context.neles, gen_bitlen);
+				//auto inputs = ENCRYPTO::GenerateSequentialElements(context.neles);
+
+				for(int i=0; i < inputs.size(); i++) {
+						inputs[i] = inputs[i] * ((context.role % 2) + 1);
+				}
+			
 	//auto inputs = ENCRYPTO::GenerateSequentialElements(context.neles);
 	      int size;
         char** circuitArgv;
