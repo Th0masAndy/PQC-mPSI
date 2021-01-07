@@ -393,7 +393,7 @@ std::vector<uint64_t> run_relaxed_opprf(ENCRYPTO::PsiAnalyticsContext &context, 
 
     auto masks = RELAXEDNS::ot_sender(simple_table_v, chls[0], context);
     std::vector<uint64_t> actual_contents_of_bins;
-    actual_contents_of_bins.reserve(context.np-1);
+    actual_contents_of_bins.reserve(context.nbins);
     OpprgPsiNonLeader(actual_contents_of_bins, simple_table_v, masks, context, allsocks[0], chls[0]);
 
     TemplateField<ZpMersenneLongElement1> *field;
@@ -402,9 +402,11 @@ std::vector<uint64_t> run_relaxed_opprf(ENCRYPTO::PsiAnalyticsContext &context, 
       field_bins.push_back(field->GetElement(actual_contents_of_bins[j]));
     }
 
+
     for(uint64_t j=0; j< context.nbins; j++) {
       bins[j] = field_bins[j].elem;
     }
+    
 /*    std::vector<uint64_t> polynomials = ClientEvaluateHint(context, masks);
     bins = ClientSendHint(context, allsocks[0], polynomials);*/
    }

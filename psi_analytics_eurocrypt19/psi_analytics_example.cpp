@@ -189,6 +189,7 @@ void MPSI_execution(ENCRYPTO::PsiAnalyticsContext &context, std::vector<uint64_t
     case ENCRYPTO::PsiAnalyticsContext::POLY: bins = ENCRYPTO::run_psi_analytics(context, inputs, allsocks, chl);
                                               break;
     case ENCRYPTO::PsiAnalyticsContext::RELAXED: bins = RELAXEDNS::run_relaxed_opprf(context, inputs, allsocks, chl);
+
                                                  break;
     case ENCRYPTO::PsiAnalyticsContext::TABLE: 	std::string error_msg("Not implemented currently.");
                                                 throw std::runtime_error(error_msg.c_str());
@@ -298,7 +299,7 @@ int main(int argc, char **argv) {
 				for(int i=0; i < inputs.size(); i++) {
 						inputs[i] = inputs[i] * ((context.role % 2) + 1);
 				}
-			
+
 	//auto inputs = ENCRYPTO::GenerateSequentialElements(context.neles);
 	      int size;
         char** circuitArgv;
@@ -320,7 +321,7 @@ int main(int argc, char **argv) {
         auto parameters = parser.parseArguments("", size, circuitArgv);
         int times = stoi(parser.getValueByKey(parameters, "internalIterationsNumber"));
         string fieldType(parser.getValueByKey(parameters, "fieldType"));
-	std::vector<uint64_t> bins(context.nbins);
+	std::vector<uint64_t> bins;
 
 	//MPSI_Party<ZpMersenneLongElement> mpsi(size, circuitArgv);:q
 
