@@ -252,6 +252,12 @@ void MPSI_threshold_execution(ENCRYPTO::PsiAnalyticsContext &context, std::vecto
 
 void synchronize_parties(ENCRYPTO::PsiAnalyticsContext &context, std::vector<std::unique_ptr<CSocket>> &allsocks, std::vector<osuCrypto::Channel> &chl, osuCrypto::IOService &ios, std::vector<osuCrypto::Session> &ep) {
   if(context.role == P_0) {
+    chl.resize(context.np-1);
+		for(int i=0; i<context.np-1; i++) {
+			//osuCrypto::IOService thisio;
+			ep.push_back(ENCRYPTO::ot_receiver_connect(context, i, ios, chl[i]));
+			//ios[i] = thisio;
+		}
 		allsocks.resize(context.np-1);
 		std::thread conn_threads[context.nthreads];
     		//std::vector<std::unique_ptr<CSocket>> allsocks(context.np-1);
@@ -262,25 +268,17 @@ void synchronize_parties(ENCRYPTO::PsiAnalyticsContext &context, std::vector<std
     		for(int i=0; i<context.nthreads; i++) {
       			conn_threads[i].join();
 		}
-
-		chl.resize(context.np-1);
-		for(int i=0; i<context.np-1; i++) {
-			//osuCrypto::IOService thisio;
-			ep.push_back(ENCRYPTO::ot_receiver_connect(context, i, ios, chl[i]));
-			//ios[i] = thisio;
-		}
 	}
 
 	else {
+    chl.resize(1);
+    ///osuCrypto::IOService thisio;
+    ep.push_back(ENCRYPTO::ot_sender_connect(context, ios, chl[0]));
 		std::vector<uint8_t> testdata(1);
 		allsocks.resize(1);
     		testdata[0] = 1u;
     		allsocks[0] = ENCRYPTO::EstablishConnection(context.address[0], context.port[0], static_cast<e_role>(context.role));
     		allsocks[0]->Send(testdata.data(), 1);
-
-		chl.resize(1);
-		///osuCrypto::IOService thisio;
-		ep.push_back(ENCRYPTO::ot_sender_connect(context, ios, chl[0]));
 		//ios[0] = thisio;
 	}
 
