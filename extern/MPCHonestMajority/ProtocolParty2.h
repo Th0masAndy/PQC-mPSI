@@ -224,7 +224,7 @@ public:
      */
     void GRRHonestMultiplication(FieldType *a, FieldType *b, vector<FieldType> &cToFill, int numOfTrupples);
 
-    void DNHonestMultiplication(vector<FieldType> a, vector<FieldType> b, vector<FieldType> &cToFill, uint64_t numOfTrupples, int offset);
+    uint64_t DNHonestMultiplication(vector<FieldType> a, vector<FieldType> b, vector<FieldType> &cToFill, uint64_t numOfTrupples, int offset);
 
     void offlineDNForMultiplication(int numOfTriples);
 
@@ -253,10 +253,10 @@ public:
     void inputPhase();
     void inputVerification();
 
-    void generateRandomShares(uint64_t numOfRnadoms, vector<FieldType>& randomElementsToFill);
+    uint64_t generateRandomShares(uint64_t numOfRandoms, vector<FieldType>& randomElementsToFill);
     void setupPRSS();
     void generateRandomSharesPRSS(int numOfRnadoms, vector<FieldType>& randomElementsToFill);
-    void generateRandom2TAndTShares(uint64_t numOfRandomPairs, vector<FieldType>& randomElementsToFill);
+    uint64_t generateRandom2TAndTShares(uint64_t numOfRandomPairs, vector<FieldType>& randomElementsToFill);
 
 
     /**
@@ -1114,13 +1114,13 @@ void ProtocolParty<FieldType>::generateRandomSharesPRSS(int numOfRnadoms, vector
 }
 
 template <class FieldType>
-void ProtocolParty<FieldType>::generateRandomShares(uint64_t numOfRandoms, vector<FieldType>& randomElementsToFill){
+uint64_t ProtocolParty<FieldType>::generateRandomShares(uint64_t numOfRandoms, vector<FieldType>& randomElementsToFill){
 
 
     int index = 0;
     vector<vector<byte>> recBufsBytes(N);
     int robin = 0;
-    int no_random = numOfRandoms;
+    uint64_t no_random = numOfRandoms;
 
     vector<FieldType> x1(N),y1(N), x2(N),y2(N), t1(N), r1(N), t2(N), r2(N);;
 
@@ -1191,7 +1191,7 @@ void ProtocolParty<FieldType>::generateRandomShares(uint64_t numOfRandoms, vecto
         }
     }
 
-    uint64_t sendSize = N * no_buckets * fieldByteSize;
+    uint64_t sendSize = (N - 1) * no_buckets * fieldByteSize;
     cout << "Every party sends: " << sendSize << " bytes in total." << std::endl;
 
     roundFunctionSync(sendBufsBytes, recBufsBytes,4);
@@ -1226,18 +1226,20 @@ void ProtocolParty<FieldType>::generateRandomShares(uint64_t numOfRandoms, vecto
 
         }
     }
+    
+    return sendSize;
 
 }
 
 
 template <class FieldType>
-void ProtocolParty<FieldType>::generateRandom2TAndTShares(uint64_t numOfRandomPairs, vector<FieldType>& randomElementsToFill){
+uint64_t ProtocolParty<FieldType>::generateRandom2TAndTShares(uint64_t numOfRandomPairs, vector<FieldType>& randomElementsToFill){
 
 
     int index = 0;
     vector<vector<byte>> recBufsBytes(N);
     int robin = 0;
-    int no_random = numOfRandomPairs;
+    uint64_t no_random = numOfRandomPairs;
 
     vector<FieldType> x1(N),y1(N), x2(N),y2(N), t1(N), r1(N), t2(N), r2(N);;
 
@@ -1313,7 +1315,7 @@ void ProtocolParty<FieldType>::generateRandom2TAndTShares(uint64_t numOfRandomPa
     }
 
     int fieldByteSize = field->getElementSizeInBytes();
-    uint64_t sendSize = N * no_buckets * fieldByteSize * 2;
+    uint64_t sendSize = (N - 1) * no_buckets * fieldByteSize * 2;
     cout << "Each party sends a total of: " << sendSize << " for T and 2T shares." << std::endl;
     for(int i=0; i < N; i++)
     {
@@ -1358,6 +1360,8 @@ void ProtocolParty<FieldType>::generateRandom2TAndTShares(uint64_t numOfRandomPa
         }
     }
 
+    //sendSize = (N - 1) * fieldByteSize * no_buckets * 2;
+    return sendSize;
 }
 
 /**
@@ -1837,11 +1841,12 @@ int ProtocolParty<FieldType>::processMultDN(int indexInRandomArray) {
 
 
 template <class FieldType>
-void ProtocolParty<FieldType>::DNHonestMultiplication(vector<FieldType> a, vector<FieldType> b, vector<FieldType> &cToFill, uint64_t numOfTrupples, int offset) {
+uint64_t ProtocolParty<FieldType>::DNHonestMultiplication(vector<FieldType> a, vector<FieldType> b, vector<FieldType> &cToFill, uint64_t numOfTrupples, int offset) {
 
     int index = 0;
     //int numOfMultGates = circuit.getNrOfMultiplicationGates();
-    int numOfMultGates = numOfTrupples;
+    uint64_t numOfMultGates = numOfTrupples;
+    uint64_t sendSize = 0;
     int fieldByteSize = field->getElementSizeInBytes();
     vector<FieldType> xyMinusRShares(numOfTrupples);//hold both in the same vector to send in one batch
     vector<byte> xyMinusRSharesBytes(numOfTrupples *fieldByteSize);//hold both in the same vector to send in one batch
@@ -1891,6 +1896,7 @@ void ProtocolParty<FieldType>::DNHonestMultiplication(vector<FieldType> a, vecto
 
         //send the shares to p1
         parties[0]->getChannel()->write(xyMinusRSharesBytes.data(), xyMinusRSharesBytes.size());
+	sendSize += numOfTrupples * fieldByteSize;
 
     }
 
@@ -1916,6 +1922,7 @@ void ProtocolParty<FieldType>::DNHonestMultiplication(vector<FieldType> a, vecto
 
         //send the reconstructed vector to all the other parties
         sendFromP1(xyMinusRBytes);
+	sendSize += (N - 1) * xyMinusRBytes.size();
     }
 
     else {//each party get the xy-r reconstruced vector from party 1
@@ -1943,6 +1950,7 @@ void ProtocolParty<FieldType>::DNHonestMultiplication(vector<FieldType> a, vecto
     {
         cToFill[k] = randomTAnd2TShares[offset + 2*k] + xyMinusR[k];
     }
+    return sendSize;
 
 }
 
