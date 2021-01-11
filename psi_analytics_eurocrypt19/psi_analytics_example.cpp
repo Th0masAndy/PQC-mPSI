@@ -221,10 +221,13 @@ void MPSI_execution(ENCRYPTO::PsiAnalyticsContext &context, std::vector<uint64_t
 
 void MPSI_threshold_execution(ENCRYPTO::PsiAnalyticsContext &context, std::vector<uint64_t> &bins, std::vector<uint64_t> &inputs, std::vector<std::unique_ptr<CSocket>> &allsocks, std::vector<osuCrypto::Channel> &chl, std::vector<sci::NetIO*>	ioArr, Threshold<ZpMersenneLongElement> &mpsi) {
   ResetCommunication(allsocks, chl, context);
+  RELAXEDNS::ResetCommunicationThreshold(ioArr, context);
   auto start_time = std::chrono::system_clock::now();
   switch(context.opprf_type) {
-    case ENCRYPTO::PsiAnalyticsContext::POLY: bins = ENCRYPTO::run_psi_analytics(context, inputs, allsocks, chl);
-                                              break;
+    case ENCRYPTO::PsiAnalyticsContext::POLY: {std::string error_msg("Not implemented currently.");
+                                               throw std::runtime_error(error_msg.c_str());
+                                               break;
+                                              }
     case ENCRYPTO::PsiAnalyticsContext::RELAXED: bins = RELAXEDNS::run_threshold_relaxed_opprf(context, inputs, allsocks, chl, ioArr);
                                                  break;
     case ENCRYPTO::PsiAnalyticsContext::TABLE: 	std::string error_msg("Not implemented currently.");
