@@ -375,7 +375,7 @@ void multi_conn_thread(int tid, std::vector<std::unique_ptr<CSocket>> &socks, Ps
   }
 }
 
-void ResetCommunication(std::vector<std::unique_ptr<CSocket>> &allsocks, std::vector<osuCrypto::Channel> &chls, const PsiAnalyticsContext &context) {
+void ResetCommunication(std::vector<std::unique_ptr<CSocket>> &allsocks, std::vector<osuCrypto::Channel> &chls, PsiAnalyticsContext &context) {
   if(context.role == P_0) {
     for(int i=0; i<context.np-1; i++) {
       chls[i].resetStats();
@@ -385,70 +385,70 @@ void ResetCommunication(std::vector<std::unique_ptr<CSocket>> &allsocks, std::ve
   } else {
     chls[0].resetStats();
     allsocks[0]->ResetSndCnt();
-    allsocks[0]->esetRcvCnt();
+    allsocks[0]->ResetRcvCnt();
   }
 }
 
-void AccumulateCommunication(std::vector<std::unique_ptr<CSocket>> &allsocks, std::vector<osuCrypto::Channel> &chls, const PsiAnalyticsContext &context) {
+void AccumulateCommunicationPSI(std::vector<std::unique_ptr<CSocket>> &allsocks, std::vector<osuCrypto::Channel> &chls, PsiAnalyticsContext &context) {
 
-  context.communicationCost.sentBytesOPRF = 0;
-  context.communicationCost.recvBytesOPRF = 0;
+  context.sentBytesOPRF = 0;
+  context.recvBytesOPRF = 0;
 
-  context.communicationCost.sentBytesHint = 0;
-  context.communicationCost.recvBytesHint = 0;
+  context.sentBytesHint = 0;
+  context.recvBytesHint = 0;
 
-  context.communicationCost.sentBytesCircuit = 0;
-  context.communicationCost.recvBytesCircuit = 0;
+  context.sentBytesCircuit = 0;
+  context.recvBytesCircuit = 0;
 
-  context.communicationCost.sentBytesSCI = 0;
-  context.communicationCost.recvBytesSCI = 0;
+  context.sentBytesSCI = 0;
+  context.recvBytesSCI = 0;
 
   if(context.role == P_0) {
     for(int i=0; i<context.np-1; i++) {
-      context.communicationCost.sentBytesOPRF += chls[i].getTotalDataSent();
-      context.communicationCost.sentBytesHint += allsocks[i]->getSndCnt();
+      context.sentBytesOPRF += chls[i].getTotalDataSent();
+      context.sentBytesHint += allsocks[i]->getSndCnt();
 
-      context.communicationCost.recvBytesOPRF += chls[i].getTotalDataRecv();
-      context.communicationCost.recvBytesHint += allsocks[i]->getRcvCnt();
+      context.recvBytesOPRF += chls[i].getTotalDataRecv();
+      context.recvBytesHint += allsocks[i]->getRcvCnt();
     }
   } else {
-    context.communicationCost.sentBytesOPRF += chls[0].getTotalDataSent();
-    context.communicationCost.sentBytesHint += allsocks[0]->getSndCnt();
+    context.sentBytesOPRF += chls[0].getTotalDataSent();
+    context.sentBytesHint += allsocks[0]->getSndCnt();
 
-    context.communicationCost.recvBytesOPRF += chls[0].getTotalDataRecv();
-    context.communicationCost.recvBytesHint += allsocks[0]->getRcvCnt();
+    context.recvBytesOPRF += chls[0].getTotalDataRecv();
+    context.recvBytesHint += allsocks[0]->getRcvCnt();
   }
 }
 
-void PrintCommunication(const PsiAnalyticsContext &context) {
-  context.communicationCost.sentBytes = context.communicationCost.sentBytesOPRF + context.communicationCost.sentBytesHint + context.communicationCost.sentBytesCircuit + context.communicationCost.sentBytesSCI;
-  context.communicationCost.recvBytes = context.communicationCost.recvBytesOPRF + context.communicationCost.recvBytesHint + context.communicationCost.recvBytesCircuit + context.communicationCost.recvBytesSCI;
-  std::cout<<"Communication Statistics: "<<std::endl;
+void PrintCommunication(PsiAnalyticsContext &context) {
+  context.sentBytes = context.sentBytesOPRF + context.sentBytesHint + context.sentBytesCircuit + context.sentBytesSCI;
+  context.recvBytes = context.recvBytesOPRF + context.recvBytesHint + context.recvBytesCircuit + context.recvBytesSCI;
+  std::cout<< context.role << ": Communication Statistics: "<<std::endl;
   double sentinMB, recvinMB;
-  sentinMB = context.communicationCost.sentBytesOPRF/((1.0*(1ULL<<20)));
-  recvinMB = context.communicationCost.recvBytesOPRF/((1.0*(1ULL<<20)));
-  std::cout<<"Sent Data OPRF (MB): "<<sentinMB<<std::endl;
-  std::cout<<"Received Data OPRF (MB): "<<recvinMB<<std::endl;
+  sentinMB = context.sentBytesOPRF/((1.0*(1ULL<<20)));
+  recvinMB = context.recvBytesOPRF/((1.0*(1ULL<<20)));
+  std::cout<<context.role << ": Sent Data OPRF (MB): "<<sentinMB<<std::endl;
+  std::cout<<context.role << ": Received Data OPRF (MB): "<<recvinMB<<std::endl;
 
-  sentinMB = context.communicationCost.sentBytesHint/((1.0*(1ULL<<20)));
-  recvinMB = context.communicationCost.recvBytesHint/((1.0*(1ULL<<20)));
-  std::cout<<"Sent Data Hint (MB): "<<sentinMB<<std::endl;
-  std::cout<<"Received Data Hint (MB): "<<recvinMB<<std::endl;
+  sentinMB = context.sentBytesHint/((1.0*(1ULL<<20)));
+  recvinMB = context.recvBytesHint/((1.0*(1ULL<<20)));
+  std::cout<<context.role << ": Sent Data Hint (MB): "<<sentinMB<<std::endl;
+  std::cout<<context.role << ": Received Data Hint (MB): "<<recvinMB<<std::endl;
 
-  sentinMB = context.communicationCost.sentBytesCircuit/((1.0*(1ULL<<20)));
-  recvinMB = context.communicationCost.recvBytesCircuit/((1.0*(1ULL<<20)));
-  std::cout<<"Sent Data Circuit (MB): "<<sentinMB<<std::endl;
-  std::cout<<"Received Data Circuit (MB): "<<recvinMB<<std::endl;
+  sentinMB = context.sentBytesCircuit/((1.0*(1ULL<<20)));
+  recvinMB = context.recvBytesCircuit/((1.0*(1ULL<<20)));
+  std::cout<<context.role << ": Sent Data Circuit (MB): "<<sentinMB<<std::endl;
+  std::cout<<context.role << ": Received Data Circuit (MB): "<<recvinMB<<std::endl;
 
-  sentinMB = context.communicationCost.sentBytesSCI/((1.0*(1ULL<<20)));
-  recvinMB = context.communicationCost.recvBytesSCI/((1.0*(1ULL<<20)));
-  std::cout<<"Sent Data CryptFlow2 (MB): "<<sentinMB<<std::endl;
-  std::cout<<"Received Data CryptFlow2 (MB): "<<recvinMB<<std::endl;
+  sentinMB = context.sentBytesSCI/((1.0*(1ULL<<20)));
+  recvinMB = context.recvBytesSCI/((1.0*(1ULL<<20)));
+  std::cout<<context.role << ": Sent Data CryptFlow2 (MB): "<<sentinMB<<std::endl;
+  std::cout<<context.role << ": Received Data CryptFlow2 (MB): "<<recvinMB<<std::endl;
 
-  sentinMB = context.communicationCost.sentBytes/((1.0*(1ULL<<20)));
-  recvinMB = context.communicationCost.recvBytes/((1.0*(1ULL<<20)));
-  std::cout<<"Sent Data (MB): "<<sentinMB<<std::endl;
-  std::cout<<"Received Data (MB): "<<recvinMB<<std::endl;
+  sentinMB = context.sentBytes/((1.0*(1ULL<<20)));
+  recvinMB = context.recvBytes/((1.0*(1ULL<<20)));
+  std::cout<<context.role << ": Total Sent Data (MB): "<<sentinMB<<std::endl;
+  std::cout<<context.role << ": Total Received Data (MB): "<<recvinMB<<std::endl;
 }
 
 std::vector<uint64_t> run_psi_analytics(PsiAnalyticsContext &context, const std::vector<std::uint64_t> &inputs,

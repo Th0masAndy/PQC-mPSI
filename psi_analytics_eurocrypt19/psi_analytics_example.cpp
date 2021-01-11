@@ -184,6 +184,7 @@ void prepareArgs(ENCRYPTO::PsiAnalyticsContext context, char** circuitArgv) {
 }
 
 void MPSI_execution(ENCRYPTO::PsiAnalyticsContext &context, std::vector<uint64_t> &bins, std::vector<uint64_t> &inputs, std::vector<std::unique_ptr<CSocket>> &allsocks, std::vector<osuCrypto::Channel> &chl, 	MPSI_Party<ZpMersenneLongElement> &mpsi) {
+  ResetCommunication(allsocks, chl, context);
   auto start_time = std::chrono::system_clock::now();
   switch(context.opprf_type) {
     case ENCRYPTO::PsiAnalyticsContext::POLY: bins = ENCRYPTO::run_psi_analytics(context, inputs, allsocks, chl);
@@ -213,11 +214,13 @@ void MPSI_execution(ENCRYPTO::PsiAnalyticsContext &context, std::vector<uint64_t
   const duration_millis duration = end_time - start_time;
 
   context.timings.total = (duration).count();
-
+  AccumulateCommunicationPSI(allsocks, chl, context);
   PrintTimings(context);
+  PrintCommunication(context);
 }
 
 void MPSI_threshold_execution(ENCRYPTO::PsiAnalyticsContext &context, std::vector<uint64_t> &bins, std::vector<uint64_t> &inputs, std::vector<std::unique_ptr<CSocket>> &allsocks, std::vector<osuCrypto::Channel> &chl, std::vector<sci::NetIO*>	ioArr, Threshold<ZpMersenneLongElement> &mpsi) {
+  ResetCommunication(allsocks, chl, context);
   auto start_time = std::chrono::system_clock::now();
   switch(context.opprf_type) {
     case ENCRYPTO::PsiAnalyticsContext::POLY: bins = ENCRYPTO::run_psi_analytics(context, inputs, allsocks, chl);
@@ -246,8 +249,11 @@ void MPSI_threshold_execution(ENCRYPTO::PsiAnalyticsContext &context, std::vecto
   const duration_millis duration = end_time - start_time;
 
   context.timings.total = (duration).count();
+  AccumulateCommunicationPSI(allsocks, chl, context);
+  RELAXEDNS::AccumulateCommunicationThreshold(ioArr, context);
 
   PrintTimings(context);
+  PrintCommunication(context);
 }
 
 void synchronize_parties(ENCRYPTO::PsiAnalyticsContext &context, std::vector<std::unique_ptr<CSocket>> &allsocks, std::vector<osuCrypto::Channel> &chl, osuCrypto::IOService &ios, std::vector<osuCrypto::Session> &ep) {

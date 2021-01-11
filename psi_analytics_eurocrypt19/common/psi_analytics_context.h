@@ -40,6 +40,19 @@ struct PsiAnalyticsContext {
   uint64_t np;
   uint64_t radixparam;
 
+
+  uint64_t sentBytesOPRF;
+  uint64_t recvBytesOPRF;
+  uint64_t sentBytesHint;
+  uint64_t recvBytesHint;
+  uint64_t sentBytesCircuit;
+  uint64_t recvBytesCircuit;
+  uint64_t sentBytesSCI;
+  uint64_t recvBytesSCI;
+
+  uint64_t sentBytes;
+  uint64_t recvBytes;
+
   //relaxed batched opprf params
   uint64_t ffuns;
   uint64_t fbins;
@@ -90,20 +103,6 @@ struct PsiAnalyticsContext {
     double circuit;
     double total;
   } timings;
-
-  struct {
-    double sentBytesOPRF;
-    double recvBytesOPRF;
-    double sentBytesHint;
-    double recvBytesHint;
-    double sentBytesCircuit;
-    double recvBytesCircuit;
-    double sentBytesSCI;
-    double recvBytesSCI;
-
-    double sentBytes;
-    double recvBytes;
-  } communicationCost;
 };
 
 }

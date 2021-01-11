@@ -86,6 +86,6 @@ void multi_equality_thread(int tid, std::vector<std::vector<uint64_t>> &x, int p
 void OpprgPsiLeader(std::vector<uint64_t> &content_of_bins, std::vector<uint64_t> &cuckoo_table_v, const std::vector<std::vector<osuCrypto::block>> &masks_with_dummies, ENCRYPTO::PsiAnalyticsContext &context, std::unique_ptr<CSocket> &sock, osuCrypto::Channel &chl);
 void OpprgPsiNonLeader(std::vector<uint64_t> &actual_contents_of_bins, std::vector<std::vector<osuCrypto::block>> &masks, ENCRYPTO::PsiAnalyticsContext & context, std::unique_ptr<CSocket> &sock, osuCrypto::Channel &chl);
 
-void ResetCommunicationThreshold(std::vector<sci::NetIO*> &ioArr, const ENCRYPTO::PsiAnalyticsContext &context);
-void AccumulateCommunicationThreshold(std::vector<sci::NetIO*> &ioArr, const ENCRYPTO::PsiAnalyticsContext &context);
+void ResetCommunicationThreshold(std::vector<sci::NetIO*> &ioArr, ENCRYPTO::PsiAnalyticsContext &context);
+void AccumulateCommunicationThreshold(std::vector<sci::NetIO*> &ioArr, ENCRYPTO::PsiAnalyticsContext &context);
 }
