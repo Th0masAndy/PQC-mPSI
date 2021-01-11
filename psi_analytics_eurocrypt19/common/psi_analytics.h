@@ -86,6 +86,10 @@ std::size_t PlainIntersectionSize(std::vector<std::uint64_t> v1, std::vector<std
 
 void PrintBins(std::vector<std::uint64_t> &bins, std::string outfile, PsiAnalyticsContext &context);
 void PrintTimings(const PsiAnalyticsContext &context);
+void PrintCommunication(const PsiAnalyticsContext &context);
+
+void ResetCommunication(std::vector<std::unique_ptr<CSocket>> &allsocks, std::vector<osuCrypto::Channel> &chls, const PsiAnalyticsContext &context);
+void AccumulateCommunicationPSI(std::vector<std::unique_ptr<CSocket>> &allsocks, std::vector<osuCrypto::Channel> &chls, const PsiAnalyticsContext &context);
 
 void multi_eval_thread(int tid, std::vector<std::vector<uint8_t>> poly_rcv_buffer, std::vector<std::vector<uint64_t>> masks_with_dummies,
 		       PsiAnalyticsContext &context, std::vector<std::vector<uint64_t>> &sub_bins);

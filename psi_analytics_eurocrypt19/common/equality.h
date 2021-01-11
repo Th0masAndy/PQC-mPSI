@@ -533,10 +533,10 @@ void perform_equality(uint64_t* x, int party, int l, int b, int num_cmps, uint8_
       cmp_threads[i].join();
     }
 
-    for (int i = 0; i < 2; i++) {
+    /*for (int i = 0; i < 2; i++) {
         delete ioArr[i];
         delete otpackArr[i];
-    }
+    }*/
     /************** Verification ****************/
     /********************************************/
    /*

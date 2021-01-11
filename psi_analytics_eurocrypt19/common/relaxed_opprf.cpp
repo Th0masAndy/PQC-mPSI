@@ -59,6 +59,31 @@ namespace RELAXEDNS {
 using milliseconds_ratio = std::ratio<1, 1000>;
 using duration_millis = std::chrono::duration<double, milliseconds_ratio>;
 
+void ResetCommunicationThreshold(std::vector<sci::NetIO*> &ioArr, const ENCRYPTO::PsiAnalyticsContext &context){
+  if(context.role == P_0) {
+    context.sci_io_start.resize(2*(context.np-1));
+    for(int i=0; i<2*(context.np-1); i++) {
+      context.sci_io_start[i] = ioArr[i]->counter;
+    }
+  } else {
+    context.sci_io_start.resize(2);
+    for(int i=0; i<2; i++) {
+      context.sci_io_start[i] = ioArr[i]->counter;
+    }
+  }
+}
+
+void AccumulateCommunicationThreshold(std::vector<sci::NetIO*> &ioArr, const ENCRYPTO::PsiAnalyticsContext &context){
+  if(context.role == P_0) {
+    for(int i=0; i<2*(context.np-1); i++) {
+      context.communicationCost.sentBytesSCI += ioArr[i]->counter - context.sci_io_start[i];
+    }
+  } else {
+    for(int i=0; i<2; i++) {
+      context.communicationCost.sentBytesSCI += ioArr[i]->counter - context.sci_io_start[i];
+    }
+  }
+}
 
 void multi_oprf_thread(int tid, std::vector<std::vector<osuCrypto::block>> &masks_with_dummies, std::vector<uint64_t> table,
 			ENCRYPTO::PsiAnalyticsContext &context, std::vector<osuCrypto::Channel> &chl) {
@@ -406,7 +431,7 @@ std::vector<uint64_t> run_relaxed_opprf(ENCRYPTO::PsiAnalyticsContext &context, 
     for(uint64_t j=0; j< context.nbins; j++) {
       bins[j] = field_bins[j].elem;
     }
-    
+
 /*    std::vector<uint64_t> polynomials = ClientEvaluateHint(context, masks);
     bins = ClientSendHint(context, allsocks[0], polynomials);*/
    }

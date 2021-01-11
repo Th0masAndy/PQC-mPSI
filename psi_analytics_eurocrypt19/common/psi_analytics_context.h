@@ -55,6 +55,7 @@ struct PsiAnalyticsContext {
   std::string outputFileName;
 
   std::vector<uint64_t> content_of_bins;
+  std::vector<uint64_t> sci_io_start;
 
   std::string file_address;
   std::vector<std::string> address;
@@ -89,6 +90,20 @@ struct PsiAnalyticsContext {
     double circuit;
     double total;
   } timings;
+
+  struct {
+    double sentBytesOPRF;
+    double recvBytesOPRF;
+    double sentBytesHint;
+    double recvBytesHint;
+    double sentBytesCircuit;
+    double recvBytesCircuit;
+    double sentBytesSCI;
+    double recvBytesSCI;
+
+    double sentBytes;
+    double recvBytes;
+  } communicationCost;
 };
 
 }
