@@ -277,17 +277,25 @@ void synchronize_parties(ENCRYPTO::PsiAnalyticsContext &context, std::vector<std
     		for(int i=0; i<context.nthreads; i++) {
       			conn_threads[i].join();
 		}
+
+		std::thread sync_threads[context.nthreads];
+		for(int i=0; i<context.nthreads; i++) { 
+			sync_threads[i] = std::thread(ENCRYPTO::multi_sync_thread, i, std::ref(allsocks), std::ref(context));
+		}
+
+		for(int i=0; i<context.nthreads; i++) {
+			sync_threads[i].join();
+		}
 	}
 
 	else {
     chl.resize(1);
     ///osuCrypto::IOService thisio;
     ep.push_back(ENCRYPTO::ot_sender_connect(context, ios, chl[0]));
-		std::vector<uint8_t> testdata(1);
+		std::vector<uint8_t> testdata(1000, 0);
 		allsocks.resize(1);
-    		testdata[0] = 1u;
     		allsocks[0] = ENCRYPTO::EstablishConnection(context.address[0], context.port[0], static_cast<e_role>(context.role));
-    		allsocks[0]->Send(testdata.data(), 1);
+    		allsocks[0]->Receive(testdata.data(), 1000);
 		//ios[0] = thisio;
 	}
 

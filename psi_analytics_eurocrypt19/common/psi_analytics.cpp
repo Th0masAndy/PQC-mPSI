@@ -369,11 +369,15 @@ void multi_oprf_thread(int tid, std::vector<std::vector<uint64_t>> &masks_with_d
 void multi_conn_thread(int tid, std::vector<std::unique_ptr<CSocket>> &socks, PsiAnalyticsContext &context) {
   for(int i=tid; i<context.np-1; i=i+context.nthreads) {
     socks[i] = EstablishConnection(context.address[i], context.port[i], static_cast<e_role>(context.role));
-    std::vector<uint8_t> testdata(1);
-    testdata[0] = 0;
-    socks[i]->Receive(testdata.data(), 1);
   }
 }
+
+void multi_sync_thread(int tid, std::vector<std::unique_ptr<CSocket>> &socks, PsiAnalyticsContext &context) {
+	for(int i=tid; i<context.np-1; i=i+context.nthreads) {
+		std::vector<uint8_t> testdata(1000, 0);
+		socks[i]->Send(testdata.data(), 1000);
+	}	
+}                                                                                                            
 
 void ResetCommunication(std::vector<std::unique_ptr<CSocket>> &allsocks, std::vector<osuCrypto::Channel> &chls, PsiAnalyticsContext &context) {
   if(context.role == P_0) {

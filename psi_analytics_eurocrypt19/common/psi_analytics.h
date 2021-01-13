@@ -98,4 +98,5 @@ void multi_hint_thread(int tid, std::vector<std::vector<uint8_t>> &poly_rcv, Psi
 void multi_oprf_thread(int tid, std::vector<std::vector<uint64_t>> &masks_with_dummies, std::vector<uint64_t> table,
 			PsiAnalyticsContext &context, std::vector<osuCrypto::Channel> &chls);
 void multi_conn_thread(int tid, std::vector<std::unique_ptr<CSocket>> &socks, PsiAnalyticsContext &context);
+void multi_sync_thread(int tid, std::vector<std::unique_ptr<CSocket>> &socks, PsiAnalyticsContext &context);
 }
