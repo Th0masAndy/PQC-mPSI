@@ -47,6 +47,7 @@ class MPSI_Party : public ProtocolParty<FieldType>{
 		 */
 
 		uint64_t num_bins; // number of bins
+		uint64_t sent_bytes, recv_bytes; // communication
 		vector<FieldType> masks; //the shares of the masks s_j for each value to be multiplied with
 		vector<FieldType> add_a; //additive shares of a_j
 		vector<FieldType> a_vals; //threshold shares of a_j
@@ -112,6 +113,9 @@ template <class FieldType> MPSI_Party<FieldType>::MPSI_Party(int argc, char* arg
         this->myInputFile = parser.getValueByKey(this->arguments, "inputsFile");
         this->myOutputFile = parser.getValueByKey(this->arguments, "outputsFile");
 
+	this->sent_bytes = 0;
+	this->recv_bytes = 0;
+
 	//readMPSIInputs();
 /*
         masks.resize(num_bins);
@@ -141,6 +145,9 @@ template <class FieldType> MPSI_Party<FieldType>::MPSI_Party(int argc, char* arg
 	//iss >> this->num_bins;
         this->myInputFile = parser.getValueByKey(this->arguments, "inputsFile");
         this->myOutputFile = parser.getValueByKey(this->arguments, "outputsFile");
+
+	this->sent_bytes = 0;
+	this->recv_bytes = 0;
 
 //	readMPSIInputs(bins, nbins);
 /*
@@ -286,8 +293,13 @@ template <class FieldType> void MPSI_Party<FieldType>::runMPSI() {
 		outputPrint();
 	}
 
-        cout << this->m_partyId << ": " << this->sent_bytes << " bytes sent." << endl;
-        cout << this->m_partyId << ": " << this->recv_bytes << " bytes received." << endl;
+	for(int i = 0; i < this->parties.size(); i++) {
+		this->sent_bytes += this->parties[i].get()->getChannel().get()->bytesOut;
+		this->recv_bytes += this->parties[i].get()->getChannel().get()->bytesIn;
+	}
+	cout << this->m_partyId << ": " << "communicated with " << this->parties.size() << " parties." << endl;
+	cout << this->m_partyId << ": " << this->sent_bytes << " bytes sent." << endl;
+	cout << this->m_partyId << ": " << this->recv_bytes << " bytes received." << endl;
 }
 
 //prepare additive and T-threshold sharings of secret random value r_j using DN07's protocol
@@ -320,11 +332,7 @@ template <class FieldType> void MPSI_Party<FieldType>::modDoubleRandom(uint64_t 
                 recBufsBytes[i].resize(no_buckets*fieldByteSize*2);
         }
 
-	uint64_t sendSize = (N - 1) * no_buckets * fieldByteSize * 2;
-	uint64_t recvSize = (N - 1) * no_buckets * fieldByteSize * 2;
 	cout << this->m_partyId << ": no_random: " << no_random << " no_buckets: " << no_buckets << " N: " << N << " T: " << T << endl;
-	cout << this->m_partyId << ": modDoubleRandom() sends: " << sendSize << " bytes and receives: " << recvSize << " bytes." << endl;
-	//this->sent_total += sendSize;
 
         /**
          *  generate random sharings.
@@ -393,8 +401,6 @@ template <class FieldType> void MPSI_Party<FieldType>::modDoubleRandom(uint64_t 
                 cout << this->m_partyId << ": First pair of shares is " << randomElementsToFill[0] << " " << randomElementsToFill[1] << endl;
         }
 */
-	this->sent_bytes += sendSize;
-	this->recv_bytes += recvSize;
 
 }
 
@@ -414,8 +420,6 @@ template <class FieldType> void MPSI_Party<FieldType>::addShareOpen(uint64_t num
 	int i;
 	uint64_t j;
 	int N = this->N;
-	uint64_t sendSize = 0;
-	uint64_t recvSize = 0;
 
 	secrets.resize(num_vals);
 
@@ -435,7 +439,6 @@ template <class FieldType> void MPSI_Party<FieldType>::addShareOpen(uint64_t num
 
 		//receive the shares from all the other parties
 		this->roundFunctionSyncForP1(aPlusRSharesBytes, recBufsBytes);
-		recvSize += (N - 1) * num_vals * fieldByteSize;
 	}
 		//cout << "sendBufsBytes filled...";
 
@@ -448,7 +451,6 @@ template <class FieldType> void MPSI_Party<FieldType>::addShareOpen(uint64_t num
 		//this->sent_total = this->sent_total + aPlusRSharesBytes.size();
 		//send the shares to p1
 		this->parties[0]->getChannel()->write(aPlusRSharesBytes.data(), aPlusRSharesBytes.size());
-		sendSize += num_vals * fieldByteSize;
     	}
 
 	//reconstruct the shares recieved from the other parties
@@ -462,8 +464,6 @@ template <class FieldType> void MPSI_Party<FieldType>::addShareOpen(uint64_t num
            		 }
 		}
 	}
-	this->sent_bytes += sendSize;
-	this->recv_bytes += recvSize;
 }
 
 /*
@@ -482,8 +482,6 @@ template <class FieldType> void MPSI_Party<FieldType>::reshare(vector<FieldType>
 	vector<vector<FieldType>> recBufsElements(N);
 
         int fieldByteSize = this->field->getElementSizeInBytes();
-	uint64_t sendSize = 0;
-	uint64_t recvSize = 0;
 /*
         for(int i=0; i < N; i++)
         {
@@ -530,9 +528,6 @@ template <class FieldType> void MPSI_Party<FieldType>::reshare(vector<FieldType>
 			}
 			//cout << sendBufsElements[i].size() << " " << sendBufsBytes[i].size() << " " << recBufsBytes[i].size();
 		}
-		sendSize = (N - 1) * no_vals * fieldByteSize;
-		cout << this->m_partyId << ": In reshare(), a total of: " << sendSize << "bytes sent." << endl;
-		//this->sent_total = this->sent_total + sendSize;
 	}
 	else {
 		for (int i=0; i<N; i++) {
@@ -542,7 +537,6 @@ template <class FieldType> void MPSI_Party<FieldType>::reshare(vector<FieldType>
 				this->field->elementToBytes(sendBufsBytes[i].data(), *(this->field->GetZero()));
 			}
 		}
-		recvSize = this->num_bins * fieldByteSize;
 	}
 
 	//cout << "byte conversion done \n";
@@ -562,8 +556,6 @@ template <class FieldType> void MPSI_Party<FieldType>::reshare(vector<FieldType>
                 cout << this->m_partyId << ": First t-sharing received is: " << shares[0] << endl;
         }
 */
-	this->sent_bytes += sendSize;
-	this->recv_bytes += recvSize;
 }
 
 //Step 1 of the online phase:
@@ -621,11 +613,9 @@ template <class FieldType> void MPSI_Party<FieldType>::mult_sj() {
 			recBufsBytes[i].resize(this->num_bins * fieldByteSize);
 		}
 		this->roundFunctionSyncForP1(multbytes, recBufsBytes);
-		this->recv_bytes += (this->N - 1) * this->num_bins * fieldByteSize;
 	}
 	else {
 		this->parties[0]->getChannel()->write(multbytes.data(), multbytes.size());
-		this->sent_bytes += this->num_bins * fieldByteSize;
 	}
 
 	if(this->m_partyId == 0) {

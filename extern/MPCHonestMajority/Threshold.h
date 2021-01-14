@@ -48,7 +48,8 @@ class Threshold : public ProtocolParty<FieldType>{
 
 		uint64_t num_bins; // number of bins
 		uint64_t num_triples;//number of multiplication triples
-		uint64_t sent_total; //total number of bytes sent
+		uint64_t sent_bytes; //total number of bytes sent
+		uint64_t recv_bytes; //total number of bytes received
 		int K; //threshold for intersection
 		vector<FieldType> masks; //the shares of the masks s_j for each value to be multiplied with
 		vector<FieldType> add_a; //additive shares of a_j
@@ -109,7 +110,7 @@ template <class FieldType> Threshold<FieldType>::Threshold(int argc, char* argv[
 
         //Initialize global variables that have not been inherited.
 
-	cout << this->m_partyId << ": Entered constructor." << endl;
+	//cout << this->m_partyId << ": Entered constructor." << endl;
         CmdParser parser = this->getParser();
 
         //this->num_bins = stoi(parser.getValueByKey(this->arguments, "numBins"));
@@ -119,6 +120,9 @@ template <class FieldType> Threshold<FieldType>::Threshold(int argc, char* argv[
         this->myOutputFile = parser.getValueByKey(this->arguments, "outputsFile");
 
 	this->K = stoi(parser.getValueByKey(this->arguments, "threshold"));
+
+	this->sent_bytes = 0;
+	this->recv_bytes = 0;
 	/*this->K = this->N - this->thresh;
 	if(this->thresh < this->K)
 		this->K = this->thresh;*/
@@ -130,11 +134,10 @@ template <class FieldType> Threshold<FieldType>::Threshold(int argc, char* argv[
         mult_outs.resize(num_bins);
         outputs.resize(num_bins);
 */
-	sent_total = 0;
 
 	cout << this->m_partyId << ": Element size is " << this->field->getElementSizeInBytes() << "." << endl;
 
-        cout << this->m_partyId << ": Constructor done." << endl;
+        //cout << this->m_partyId << ": Constructor done." << endl;
 
         //Generation of shared values, such as triples, must be done later.
 }
@@ -145,7 +148,7 @@ template <class FieldType> Threshold<FieldType>::Threshold(int argc, char* argv[
 
         //Initialize global variables that have not been inherited.
 
-	cout << this->m_partyId << ": Entered constructor." << endl;
+	//cout << this->m_partyId << ": Entered constructor." << endl;
         CmdParser parser = this->getParser();
 
         this->num_bins = nbins;
@@ -156,6 +159,9 @@ template <class FieldType> Threshold<FieldType>::Threshold(int argc, char* argv[
 
 	this->K = stoi(parser.getValueByKey(this->arguments, "threshold"));
 
+	this->sent_bytes = 0;
+	this->recv_bytes = 0;
+
 //	readMPSIInputs(bins, nbins);
 /*
         masks.resize(num_bins);
@@ -163,11 +169,10 @@ template <class FieldType> Threshold<FieldType>::Threshold(int argc, char* argv[
         mult_outs.resize(num_bins);
         outputs.resize(num_bins);
 */
-	sent_total = 0;
 
 	cout << this->m_partyId << ": Element size is " << this->field->getElementSizeInBytes() << "." << endl;
 
-        cout << this->m_partyId << ": Constructor done" << endl;
+        //cout << this->m_partyId << ": Constructor done" << endl;
 
         //Generation of shared values, such as triples, must be done later.
 }
@@ -301,8 +306,6 @@ template <class FieldType> void Threshold<FieldType>::runMPSI() {
 	auto dur4 = duration_cast<milliseconds>(t8-t7).count();
 	cout << this->m_partyId << ": T- and 2T-sharings generated in " << dur4 << " milliseconds." << endl;
 
-	this->sent_total = (this->sent_total * 5) / 2;
-
         //Evaluate the circuit
         evaluateCircuit();
 }
@@ -337,10 +340,7 @@ template <class FieldType> void Threshold<FieldType>::modDoubleRandom(uint64_t n
                 recBufsBytes[i].resize(no_buckets*fieldByteSize*2);
         }
 
-	uint64_t sendSize = N * no_buckets * fieldByteSize * 2;
 	cout << this->m_partyId << ": no_random: " << no_random << " no_buckets: " << no_buckets << " N: " << N << " T: " << T << endl;
-	cout << this->m_partyId << ": modDoubleRandom() sends: " << sendSize << " bytes." << endl;
-	this->sent_total += sendSize;
 
         /**
          *  generate random sharings.
@@ -454,8 +454,6 @@ template <class FieldType> void Threshold<FieldType>::addShareOpen(uint64_t num_
 	//cout << "Sent to leader...";
 
 	else {//since I am not party 1 parties[0]->getID()=1
-		cout << this->m_partyId << ": In addShareOpen(), " << aPlusRSharesBytes.size() << " bytes sent." << endl;
-		this->sent_total = this->sent_total + aPlusRSharesBytes.size();
 		//send the shares to p1
 		this->parties[0]->getChannel()->write(aPlusRSharesBytes.data(), aPlusRSharesBytes.size());
     	}
@@ -536,9 +534,6 @@ template <class FieldType> void Threshold<FieldType>::reshare(vector<FieldType>&
 			}
 			//cout << sendBufsElements[i].size() << " " << sendBufsBytes[i].size() << " " << recBufsBytes[i].size();
 		}
-		uint64_t sendSize = N * no_vals * fieldByteSize;
-		cout << this->m_partyId << "In reshare(), a total of: " << sendSize << "bytes sent." << endl;
-		this->sent_total = this->sent_total + sendSize;
 	}
 	else {
 		for (int i=0; i<N; i++) {
@@ -674,12 +669,9 @@ template <class FieldType> void Threshold<FieldType>::leader_open() {
 			recBufsBytes[i].resize(this->num_bins * fieldByteSize);
 		}
 		this->roundFunctionSyncForP1(multbytes, recBufsBytes);
-
-		this->sent_total = this->sent_total + ((this->N - 1) * (this->masks.size() * this->field->getElementSizeInBytes()));
 	}
 	else {
 		this->parties[0]->getChannel()->write(multbytes.data(), multbytes.size());
-		this->sent_total = this->sent_total + (2 * this->num_bins * this->field->getElementSizeInBytes());
 	}
 
 	if(this->m_partyId == 0) {
@@ -706,6 +698,13 @@ template <class FieldType> void Threshold<FieldType>::evaluateCircuit() {
 	if(this->m_partyId == 0) {
 		outputPrint();
 	}
+
+	for(int i = 0; i < this->parties.size(); i++) {
+		this->sent_bytes += this->parties[i].get()->getChannel().get()->bytesOut;
+		this->recv_bytes += this->parties[i].get()->getChannel().get()->bytesIn;
+	}
+	cout << this->m_partyId << ": " << this->sent_bytes << " bytes sent." << endl;
+	cout << this->m_partyId << ": " << this->recv_bytes << " bytes received." << endl;
 }
 
 //print output results
@@ -734,7 +733,6 @@ template <class FieldType> void Threshold<FieldType>::outputPrint() {
 		}
         }
 	cout << this->m_partyId << ": 0 found at " << matches.size() << " positions. " << endl;
-	cout << this->sent_total << " bytes sent." << endl;
 /*
         for(i=0; i < counter; i++) {
                 cout << matches[i] << " " << outputs[i] << "\n";
