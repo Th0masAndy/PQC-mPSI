@@ -214,6 +214,10 @@ void MPSI_execution(ENCRYPTO::PsiAnalyticsContext &context, std::vector<uint64_t
   const duration_millis duration = end_time - start_time;
 
   context.timings.total = (duration).count();
+
+  context.sentBytesCircuit = mpsi.sent_bytes;
+  context.recvBytesCircuit = mpsi.recv_bytes;
+
   AccumulateCommunicationPSI(allsocks, chl, context);
   PrintTimings(context);
   PrintCommunication(context);

@@ -37,6 +37,7 @@ class ProtocolParty : public MPCProtocol, HonestMajority{
 
 public:
     int N, M, T, m_partyId;
+    uint64_t sent_bytes, recv_bytes;
     VDM<FieldType> matrix_vand;
     vector<FieldType> firstRowVandInverse;
     TemplateField<FieldType> *field;
@@ -224,7 +225,7 @@ public:
      */
     void GRRHonestMultiplication(FieldType *a, FieldType *b, vector<FieldType> &cToFill, int numOfTrupples);
 
-    uint64_t DNHonestMultiplication(vector<FieldType> a, vector<FieldType> b, vector<FieldType> &cToFill, uint64_t numOfTrupples, int offset);
+    void DNHonestMultiplication(vector<FieldType> a, vector<FieldType> b, vector<FieldType> &cToFill, uint64_t numOfTrupples, int offset);
 
     void offlineDNForMultiplication(int numOfTriples);
 
@@ -253,10 +254,10 @@ public:
     void inputPhase();
     void inputVerification();
 
-    uint64_t generateRandomShares(uint64_t numOfRandoms, vector<FieldType>& randomElementsToFill);
+    void generateRandomShares(uint64_t numOfRandoms, vector<FieldType>& randomElementsToFill);
     void setupPRSS();
     void generateRandomSharesPRSS(int numOfRnadoms, vector<FieldType>& randomElementsToFill);
-    uint64_t generateRandom2TAndTShares(uint64_t numOfRandomPairs, vector<FieldType>& randomElementsToFill);
+    void generateRandom2TAndTShares(uint64_t numOfRandomPairs, vector<FieldType>& randomElementsToFill);
 
 
     /**
@@ -396,6 +397,9 @@ ProtocolParty<FieldType>::ProtocolParty(int argc, char* argv[]) : MPCProtocol("M
 
     m_partyId = stoi(parser.getValueByKey(arguments, "partyID"));
     s = to_string(m_partyId);
+
+    sent_bytes = 0;
+    recv_bytes = 0;
 
     string circuitFileName = parser.getValueByKey(arguments, "circuitFile");
     //circuit.readCircuit(circuitFileName.c_str());
@@ -1114,13 +1118,14 @@ void ProtocolParty<FieldType>::generateRandomSharesPRSS(int numOfRnadoms, vector
 }
 
 template <class FieldType>
-uint64_t ProtocolParty<FieldType>::generateRandomShares(uint64_t numOfRandoms, vector<FieldType>& randomElementsToFill){
+void ProtocolParty<FieldType>::generateRandomShares(uint64_t numOfRandoms, vector<FieldType>& randomElementsToFill){
 
 
     int index = 0;
     vector<vector<byte>> recBufsBytes(N);
     int robin = 0;
     uint64_t no_random = numOfRandoms;
+    uint64_t sendSize, recvSize;
 
     vector<FieldType> x1(N),y1(N), x2(N),y2(N), t1(N), r1(N), t2(N), r2(N);;
 
@@ -1191,7 +1196,8 @@ uint64_t ProtocolParty<FieldType>::generateRandomShares(uint64_t numOfRandoms, v
         }
     }
 
-    uint64_t sendSize = (N - 1) * no_buckets * fieldByteSize;
+    sendSize = (N - 1) * no_buckets * fieldByteSize;
+    recvSize = (N - 1) * no_buckets * fieldByteSize;
     cout << "Every party sends: " << sendSize << " bytes in total." << std::endl;
 
     roundFunctionSync(sendBufsBytes, recBufsBytes,4);
@@ -1227,19 +1233,22 @@ uint64_t ProtocolParty<FieldType>::generateRandomShares(uint64_t numOfRandoms, v
         }
     }
     
-    return sendSize;
+    this->sent_bytes += sendSize;
+    this->recv_bytes += recvSize;
 
 }
 
 
 template <class FieldType>
-uint64_t ProtocolParty<FieldType>::generateRandom2TAndTShares(uint64_t numOfRandomPairs, vector<FieldType>& randomElementsToFill){
+void ProtocolParty<FieldType>::generateRandom2TAndTShares(uint64_t numOfRandomPairs, vector<FieldType>& randomElementsToFill){
 
 
     int index = 0;
     vector<vector<byte>> recBufsBytes(N);
     int robin = 0;
     uint64_t no_random = numOfRandomPairs;
+    uint64_t sendSize = 0;
+    uint64_t recvSize = 0;
 
     vector<FieldType> x1(N),y1(N), x2(N),y2(N), t1(N), r1(N), t2(N), r2(N);;
 
@@ -1315,7 +1324,8 @@ uint64_t ProtocolParty<FieldType>::generateRandom2TAndTShares(uint64_t numOfRand
     }
 
     int fieldByteSize = field->getElementSizeInBytes();
-    uint64_t sendSize = (N - 1) * no_buckets * fieldByteSize * 2;
+    sendSize = (N - 1) * no_buckets * fieldByteSize * 2;
+    recvSize = (N - 1) * no_buckets * fieldByteSize * 2;
     cout << "Each party sends a total of: " << sendSize << " for T and 2T shares." << std::endl;
     for(int i=0; i < N; i++)
     {
@@ -1360,8 +1370,8 @@ uint64_t ProtocolParty<FieldType>::generateRandom2TAndTShares(uint64_t numOfRand
         }
     }
 
-    //sendSize = (N - 1) * fieldByteSize * no_buckets * 2;
-    return sendSize;
+    this->sent_bytes += sendSize;
+    this->recv_bytes += recvSize;
 }
 
 /**
@@ -1841,12 +1851,13 @@ int ProtocolParty<FieldType>::processMultDN(int indexInRandomArray) {
 
 
 template <class FieldType>
-uint64_t ProtocolParty<FieldType>::DNHonestMultiplication(vector<FieldType> a, vector<FieldType> b, vector<FieldType> &cToFill, uint64_t numOfTrupples, int offset) {
+void ProtocolParty<FieldType>::DNHonestMultiplication(vector<FieldType> a, vector<FieldType> b, vector<FieldType> &cToFill, uint64_t numOfTrupples, int offset) {
 
     int index = 0;
     //int numOfMultGates = circuit.getNrOfMultiplicationGates();
     uint64_t numOfMultGates = numOfTrupples;
     uint64_t sendSize = 0;
+    uint64_t recvSize = 0;
     int fieldByteSize = field->getElementSizeInBytes();
     vector<FieldType> xyMinusRShares(numOfTrupples);//hold both in the same vector to send in one batch
     vector<byte> xyMinusRSharesBytes(numOfTrupples *fieldByteSize);//hold both in the same vector to send in one batch
@@ -1890,6 +1901,7 @@ uint64_t ProtocolParty<FieldType>::DNHonestMultiplication(vector<FieldType> a, v
 
         //receive the shares from all the other parties
         roundFunctionSyncForP1(xyMinusRSharesBytes, recBufsBytes);
+	recvSize += (N - 1) * numOfTrupples * fieldByteSize;
 
     }
     else {//since I am not party 1 parties[0]->getID()=1
@@ -1928,6 +1940,7 @@ uint64_t ProtocolParty<FieldType>::DNHonestMultiplication(vector<FieldType> a, v
     else {//each party get the xy-r reconstruced vector from party 1
 
         parties[0]->getChannel()->read(xyMinusRBytes.data(), xyMinusRBytes.size());
+	recvSize += xyMinusRBytes.size();
     }
 
 
@@ -1950,7 +1963,9 @@ uint64_t ProtocolParty<FieldType>::DNHonestMultiplication(vector<FieldType> a, v
     {
         cToFill[k] = randomTAnd2TShares[offset + 2*k] + xyMinusR[k];
     }
-    return sendSize;
+    
+    this->sent_bytes += sendSize;
+    this->recv_bytes += recvSize;
 
 }
 

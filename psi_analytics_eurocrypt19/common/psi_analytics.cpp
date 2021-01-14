@@ -401,8 +401,8 @@ void AccumulateCommunicationPSI(std::vector<std::unique_ptr<CSocket>> &allsocks,
   context.sentBytesHint = 0;
   context.recvBytesHint = 0;
 
-  context.sentBytesCircuit = 0;
-  context.recvBytesCircuit = 0;
+  //context.sentBytesCircuit = 0;
+  //context.recvBytesCircuit = 0;
 
   context.sentBytesSCI = 0;
   context.recvBytesSCI = 0;

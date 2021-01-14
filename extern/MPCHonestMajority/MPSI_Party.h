@@ -47,7 +47,6 @@ class MPSI_Party : public ProtocolParty<FieldType>{
 		 */
 
 		uint64_t num_bins; // number of bins
-		uint64_t sent_total; //total number of bytes sent
 		vector<FieldType> masks; //the shares of the masks s_j for each value to be multiplied with
 		vector<FieldType> add_a; //additive shares of a_j
 		vector<FieldType> a_vals; //threshold shares of a_j
@@ -66,24 +65,24 @@ class MPSI_Party : public ProtocolParty<FieldType>{
 		void convertSharestoFieldType(vector<uint64_t>& bins, vector<FieldType>& shares, uint64_t nbins);
 
 		//perform MPSI
-		uint64_t runMPSI();
+		void runMPSI();
 
 		//prepare additive and T-threshold sharings of secret random value r_j using DN07's protocol
-		uint64_t modDoubleRandom(uint64_t no_random, vector<FieldType>& randomElementsToFill);
+		void modDoubleRandom(uint64_t no_random, vector<FieldType>& randomElementsToFill);
 
-		uint64_t reshare(vector<FieldType>& vals, vector<FieldType>& shares);
+		void reshare(vector<FieldType>& vals, vector<FieldType>& shares);
 
-		uint64_t evaluateCircuit();
+		void evaluateCircuit();
 
-		uint64_t add_rj();
+		void add_rj();
 
 		void subtract_rj();
 
-		uint64_t mult_sj();
+		void mult_sj();
 
 		//open an additive sharing
 		//code similar to DNHonestMultiplication() as only P1 opens
-		uint64_t addShareOpen(uint64_t numShares, vector<FieldType> &Shares, vector<FieldType> &Secrets);
+		void addShareOpen(uint64_t numShares, vector<FieldType> &Shares, vector<FieldType> &Secrets);
 
 		//print output results to file
 		void outputPrint();
@@ -120,7 +119,6 @@ template <class FieldType> MPSI_Party<FieldType>::MPSI_Party(int argc, char* arg
         mult_outs.resize(num_bins);
         outputs.resize(num_bins);
 */
-	sent_total = 0;
 
 	cout << this->m_partyId << ": Element size is " << this->field->getElementSizeInBytes() << "." << endl;
 
@@ -151,7 +149,6 @@ template <class FieldType> MPSI_Party<FieldType>::MPSI_Party(int argc, char* arg
         mult_outs.resize(num_bins);
         outputs.resize(num_bins);
 */
-	sent_total = 0;
 
 	cout << this->m_partyId << ": Element size is " << this->field->getElementSizeInBytes() << "." << endl;
 
@@ -238,7 +235,7 @@ template <class FieldType> void MPSI_Party<FieldType>::convertSharestoFieldType(
 }
 
 //perform MPSI
-template <class FieldType> uint64_t MPSI_Party<FieldType>::runMPSI() {
+template <class FieldType> void MPSI_Party<FieldType>::runMPSI() {
         this->masks.resize(this->num_bins);
         this->a_vals.resize(this->num_bins);
         this->mult_outs.resize(this->num_bins);
@@ -253,7 +250,7 @@ template <class FieldType> uint64_t MPSI_Party<FieldType>::runMPSI() {
 
 	//Generate random T-sharings
         auto t5 = high_resolution_clock::now();
-        this->sent_total += this->generateRandomShares(this->num_bins, this->masks);
+        this->generateRandomShares(this->num_bins, this->masks);
         auto t6 = high_resolution_clock::now();
         auto dur3 = duration_cast<milliseconds>(t6-t5).count();
         cout << this->m_partyId << ": T-sharings generated in " << dur3 << "milliseconds." << endl;
@@ -261,7 +258,7 @@ template <class FieldType> uint64_t MPSI_Party<FieldType>::runMPSI() {
 
         //Generate random additive and T-sharings
 	auto t3 = high_resolution_clock::now();
-        this->sent_total += modDoubleRandom(this->num_bins, this->randomTAndAddShares);
+        modDoubleRandom(this->num_bins, this->randomTAndAddShares);
 	auto t4 = high_resolution_clock::now();
 	auto dur2 = duration_cast<milliseconds>(t4-t3).count();
 	cout << this->m_partyId << ": T- and additive sharings generated in " << dur2 << " milliseconds." << endl;
@@ -275,7 +272,7 @@ template <class FieldType> uint64_t MPSI_Party<FieldType>::runMPSI() {
 */
         //Generate random T and 2T sharings for multiplication
 	auto t7 = high_resolution_clock::now();
-        this->sent_total += this->generateRandom2TAndTShares(this->num_bins, this->randomTAnd2TShares);
+        this->generateRandom2TAndTShares(this->num_bins, this->randomTAnd2TShares);
 	auto t8 = high_resolution_clock::now();
 	auto dur4 = duration_cast<milliseconds>(t8-t7).count();
 	cout << this->m_partyId << ": T- and 2T-sharings generated in " << dur4 << " milliseconds." << endl;
@@ -283,17 +280,18 @@ template <class FieldType> uint64_t MPSI_Party<FieldType>::runMPSI() {
 	//this->sent_total = (this->sent_total * 5) / 2;
 
         //Evaluate the circuit
-        this->sent_total += evaluateCircuit();
+        evaluateCircuit();
 
 	if(this->m_partyId == 0) {
 		outputPrint();
 	}
 
-	return sent_total;
+        cout << this->m_partyId << ": " << this->sent_bytes << " bytes sent." << endl;
+        cout << this->m_partyId << ": " << this->recv_bytes << " bytes received." << endl;
 }
 
 //prepare additive and T-threshold sharings of secret random value r_j using DN07's protocol
-template <class FieldType> uint64_t MPSI_Party<FieldType>::modDoubleRandom(uint64_t no_random, vector<FieldType>& randomElementsToFill) {
+template <class FieldType> void MPSI_Party<FieldType>::modDoubleRandom(uint64_t no_random, vector<FieldType>& randomElementsToFill) {
 	//cout << this->m_partyId <<  ": Generating double sharings..." << endl;
         int index = 0;
         int N = this->N;
@@ -323,8 +321,9 @@ template <class FieldType> uint64_t MPSI_Party<FieldType>::modDoubleRandom(uint6
         }
 
 	uint64_t sendSize = (N - 1) * no_buckets * fieldByteSize * 2;
+	uint64_t recvSize = (N - 1) * no_buckets * fieldByteSize * 2;
 	cout << this->m_partyId << ": no_random: " << no_random << " no_buckets: " << no_buckets << " N: " << N << " T: " << T << endl;
-	cout << this->m_partyId << ": modDoubleRandom() sends: " << sendSize << " bytes." << endl;
+	cout << this->m_partyId << ": modDoubleRandom() sends: " << sendSize << " bytes and receives: " << recvSize << " bytes." << endl;
 	//this->sent_total += sendSize;
 
         /**
@@ -394,7 +393,8 @@ template <class FieldType> uint64_t MPSI_Party<FieldType>::modDoubleRandom(uint6
                 cout << this->m_partyId << ": First pair of shares is " << randomElementsToFill[0] << " " << randomElementsToFill[1] << endl;
         }
 */
-	return sendSize;
+	this->sent_bytes += sendSize;
+	this->recv_bytes += recvSize;
 
 }
 
@@ -404,7 +404,7 @@ template <class FieldType> uint64_t MPSI_Party<FieldType>::modDoubleRandom(uint6
  * DOES NOT SEND reconstructions
  * Code similar to ::DNHonestMultiplication
 */
-template <class FieldType> uint64_t MPSI_Party<FieldType>::addShareOpen(uint64_t num_vals, vector<FieldType>& shares, vector<FieldType>& secrets) {
+template <class FieldType> void MPSI_Party<FieldType>::addShareOpen(uint64_t num_vals, vector<FieldType>& shares, vector<FieldType>& secrets) {
 	//cout << this->m_partyId << ": Reconstructing additive shares..." << endl;
 
 	int fieldByteSize = this->field->getElementSizeInBytes();
@@ -415,6 +415,7 @@ template <class FieldType> uint64_t MPSI_Party<FieldType>::addShareOpen(uint64_t
 	uint64_t j;
 	int N = this->N;
 	uint64_t sendSize = 0;
+	uint64_t recvSize = 0;
 
 	secrets.resize(num_vals);
 
@@ -434,6 +435,7 @@ template <class FieldType> uint64_t MPSI_Party<FieldType>::addShareOpen(uint64_t
 
 		//receive the shares from all the other parties
 		this->roundFunctionSyncForP1(aPlusRSharesBytes, recBufsBytes);
+		recvSize += (N - 1) * num_vals * fieldByteSize;
 	}
 		//cout << "sendBufsBytes filled...";
 
@@ -446,7 +448,7 @@ template <class FieldType> uint64_t MPSI_Party<FieldType>::addShareOpen(uint64_t
 		//this->sent_total = this->sent_total + aPlusRSharesBytes.size();
 		//send the shares to p1
 		this->parties[0]->getChannel()->write(aPlusRSharesBytes.data(), aPlusRSharesBytes.size());
-		sendSize = num_vals * fieldByteSize;
+		sendSize += num_vals * fieldByteSize;
     	}
 
 	//reconstruct the shares recieved from the other parties
@@ -460,14 +462,14 @@ template <class FieldType> uint64_t MPSI_Party<FieldType>::addShareOpen(uint64_t
            		 }
 		}
 	}
-	return sendSize;
-
+	this->sent_bytes += sendSize;
+	this->recv_bytes += recvSize;
 }
 
 /*
  * Share given values as T-shares and send to everyone else
 */
-template <class FieldType> uint64_t MPSI_Party<FieldType>::reshare(vector<FieldType>& vals, vector<FieldType>& shares) {
+template <class FieldType> void MPSI_Party<FieldType>::reshare(vector<FieldType>& vals, vector<FieldType>& shares) {
         int N = this->N;
         int T = this->T;
         uint64_t no_vals = vals.size();
@@ -481,6 +483,7 @@ template <class FieldType> uint64_t MPSI_Party<FieldType>::reshare(vector<FieldT
 
         int fieldByteSize = this->field->getElementSizeInBytes();
 	uint64_t sendSize = 0;
+	uint64_t recvSize = 0;
 /*
         for(int i=0; i < N; i++)
         {
@@ -539,6 +542,7 @@ template <class FieldType> uint64_t MPSI_Party<FieldType>::reshare(vector<FieldT
 				this->field->elementToBytes(sendBufsBytes[i].data(), *(this->field->GetZero()));
 			}
 		}
+		recvSize = this->num_bins * fieldByteSize;
 	}
 
 	//cout << "byte conversion done \n";
@@ -558,16 +562,17 @@ template <class FieldType> uint64_t MPSI_Party<FieldType>::reshare(vector<FieldT
                 cout << this->m_partyId << ": First t-sharing received is: " << shares[0] << endl;
         }
 */
-	return sendSize;
+	this->sent_bytes += sendSize;
+	this->recv_bytes += recvSize;
 }
 
 //Step 1 of the online phase:
 //The parties add an additive share of a random value to each of their elements,
 //coordinate with the leader (P0) to open the masked additive sharing,
 //Leader then reshares the masked value as a T-sharing and distributes it.
-template <class FieldType> uint64_t MPSI_Party<FieldType>::add_rj() {
-	uint64_t j, sendSize = 0;
-        vector<FieldType> reconar; // reconstructed aj+rj
+template <class FieldType> void MPSI_Party<FieldType>::add_rj() {
+        uint64_t j;
+	vector<FieldType> reconar; // reconstructed aj+rj
         reconar.resize(num_bins);
 
         //add additive share of rj to corresponding share of aj
@@ -576,12 +581,10 @@ template <class FieldType> uint64_t MPSI_Party<FieldType>::add_rj() {
         }
 
         //reconstruct additive shares, store in reconar
-        sendSize += addShareOpen(num_bins, add_a, reconar);
+        addShareOpen(num_bins, add_a, reconar);
 
         //reshare and save in a_vals;
-        sendSize += reshare(reconar, this->a_vals);
-
-	return sendSize;
+        reshare(reconar, this->a_vals);
 }
 
 //Step 2 of the online phase:
@@ -599,15 +602,14 @@ template <class FieldType> void MPSI_Party<FieldType>::subtract_rj() {
 //Step 3 of the online phase:
 //The parties multiply with T-sharings of a random value
 //And send to the leader to open it.
-template <class FieldType> uint64_t MPSI_Party<FieldType>::mult_sj() {
+template <class FieldType> void MPSI_Party<FieldType>::mult_sj() {
 	int fieldByteSize = this->field->getElementSizeInBytes();
 	vector<byte> multbytes(this->num_bins * fieldByteSize);
 	vector<vector<byte>> recBufsBytes;
 	int i;
-	uint64_t j, sendSize = 0;
+	uint64_t j;
 
-	sendSize = this->DNHonestMultiplication(this->masks, this->a_vals, this->mult_outs, this->num_bins, 0);
-	cout << this->m_partyId << ": " << sendSize << " bytes used in multiplication." << endl;
+	this->DNHonestMultiplication(this->masks, this->a_vals, this->mult_outs, this->num_bins, 0);
 	for(j=0; j < this->num_bins; j++) {
 		this->field->elementToBytes(multbytes.data() + (j*fieldByteSize), mult_outs[j]);
 	}
@@ -619,10 +621,11 @@ template <class FieldType> uint64_t MPSI_Party<FieldType>::mult_sj() {
 			recBufsBytes[i].resize(this->num_bins * fieldByteSize);
 		}
 		this->roundFunctionSyncForP1(multbytes, recBufsBytes);
+		this->recv_bytes += (this->N - 1) * this->num_bins * fieldByteSize;
 	}
 	else {
 		this->parties[0]->getChannel()->write(multbytes.data(), multbytes.size());
-		sendSize += this->num_bins * fieldByteSize;
+		this->sent_bytes += this->num_bins * fieldByteSize;
 	}
 
 	if(this->m_partyId == 0) {
@@ -634,24 +637,20 @@ template <class FieldType> uint64_t MPSI_Party<FieldType>::mult_sj() {
 			this->outputs[j] = this->interpolate(x1);
 		}
 	}
-	return sendSize;
 }
 
 //Call the 3 steps of the online phase.
-template <class FieldType> uint64_t MPSI_Party<FieldType>::evaluateCircuit() {
-	uint64_t sendSize = 0;
-
+template <class FieldType> void MPSI_Party<FieldType>::evaluateCircuit() {
 	auto t9 = high_resolution_clock::now();
-	sendSize += add_rj();
+	add_rj();
 	subtract_rj();
-	sendSize += mult_sj();
+	mult_sj();
 	auto t10 = high_resolution_clock::now();
 	auto dur5 = duration_cast<milliseconds>(t10-t9).count();
 	cout << this->m_partyId << ": Circuit evaluated in " << dur5 << " milliseconds." << endl;
 	/*if(this->m_partyId == 0) {
 		outputPrint();
 	}*/
-	return sendSize;
 }
 
 //print output results
@@ -668,7 +667,8 @@ template <class FieldType> void MPSI_Party<FieldType>::outputPrint() {
                 counter++;
         }
 	cout << this->m_partyId << ": 0 found at " << matches.size() << " positions. " << endl;
-	cout << this->m_partyId << ": " << this->sent_total << " bytes sent." << endl;
+	//cout << this->m_partyId << ": " << this->sent_bytes << " bytes sent." << endl;
+	//cout << this->m_partyId << ": " << this->recv_bytes << " bytes received." << endl;
 /*
         for(i=0; i < counter; i++) {
                 cout << matches[i] << " " << outputs[i] << "\n";
