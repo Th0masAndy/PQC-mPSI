@@ -368,7 +368,8 @@ ProtocolParty<FieldType>::ProtocolParty(int argc, char* argv[]) : MPCProtocol("M
         else if(verifyType=="Batch")
             honestMult = new DNHonestMult<FieldType>(0, this);
     }
-    
+    std::cout<<"CP 1"<<std::endl;
+
 
 
     string fieldType = parser.getValueByKey(arguments, "fieldType");
@@ -379,9 +380,13 @@ ProtocolParty<FieldType>::ProtocolParty(int argc, char* argv[]) : MPCProtocol("M
     } else if(fieldType.compare("ZpKaratsuba") == 0) {
         field = new TemplateField<FieldType>(0);
     } else if(fieldType.compare("GF2E") == 0) {
-        field = new TemplateField<FieldType>(8);
+        std::cout<<"GF2E Method"<<std::endl;
+        field = new TemplateField<FieldType>(80);
     } else if(fieldType.compare("ZZ_p") == 0) {
         field = new TemplateField<FieldType>(2147483647);
+    } else if(fieldType.compare("ZpMersenne127") == 0) {
+        std::cout<<"ZpMersenne 127"<<std::endl;
+        field = new TemplateField<FieldType>(0);
     }
     N = stoi(parser.getValueByKey(arguments, "partiesNumber"));
 
@@ -644,7 +649,7 @@ template <class FieldType>
 void ProtocolParty<FieldType>::run() {
     for (iteration = 0; iteration<times; iteration++){
         //auto t1start = high_resolution_clock::now();
-       
+
         //timer->startSubTask("Offline", iteration);
         runOffline();
         //timer->endSubTask("Offline", iteration);
@@ -652,7 +657,7 @@ void ProtocolParty<FieldType>::run() {
         //timer->startSubTask("Online", iteration);
         runOnline();
         //timer->endSubTask("Online", iteration);
-        
+
         //auto t2end = high_resolution_clock::now();
         //auto duration = duration_cast<milliseconds>(t2end-t1start).count();
 
@@ -697,12 +702,12 @@ void ProtocolParty<FieldType>::runOnline() {
     inputVerification();
     //timer->endSubTask("inputPhase", iteration);
     auto t2 = high_resolution_clock::now();
-   
+
     auto duration = duration_cast<milliseconds>(t2-t1).count();
     if(flag_print_timings) {
         cout << "time in milliseconds inputPhase: " << duration << endl;
     }
-    
+
     string sss = "";
 
 
@@ -717,7 +722,7 @@ void ProtocolParty<FieldType>::runOnline() {
     if(flag_print_timings) {
         cout << "time in milliseconds computationPhase: " << duration << endl;
     }
-    
+
     t1 = high_resolution_clock::now();
     //timer->startSubTask("VerificationPhase", iteration);
     verificationPhase();
@@ -1633,7 +1638,7 @@ FieldType ProtocolParty<FieldType>::reconstructShare(vector<FieldType>& x, int d
             cout << "cheating!!!" << '\n';
         exit(0);
     }
-    
+
     else
     */
         return interpolate(x);
@@ -1667,7 +1672,7 @@ int ProtocolParty<FieldType>::processNotMult(){
 
             count++;
         }
-         
+
 
     }
     return count;

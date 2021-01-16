@@ -340,23 +340,25 @@ sock->Send(table_opprf.data(), context.nbins * ts* sizeof(uint64_t));
     }
   }*/
 
-std::vector<uint64_t> run_relaxed_opprf(ENCRYPTO::PsiAnalyticsContext &context, const std::vector<std::uint64_t> &inputs,
+void run_relaxed_opprf(std::vector<std::vector<uint64_t>> &sub_bins, ENCRYPTO::PsiAnalyticsContext &context, const std::vector<std::uint64_t> &inputs,
 					std::vector<std::unique_ptr<CSocket>> &allsocks, std::vector<osuCrypto::Channel> &chls) {
 
-  std::vector<uint64_t> bins;
+  //std::vector<uint64_t> bins;
+  //std::vector<std::vector<uint64_t>> sub_bins(context.np-1);
+
+
 
   // create hash tables from the elements
   if (context.role == P_0) {
-
-    bins.reserve(context.nbins);
+    sub_bins.resize(context.np-1, std::vector<uint64_t>(context.nbins, 0));
+    /*bins.reserve(context.nbins);
     for(uint64_t i=0; i<context.nbins; i++) {
     	bins[i] = 0;
-    }
+    }*/
 
-    std::vector<std::vector<uint64_t>> sub_bins(context.np-1);
-    for(int i=0; i<context.np-1; i++) {
+    /*for(int i=0; i<context.np-1; i++) {
       sub_bins[i].reserve(context.nbins);
-    }
+    }*/
     std::vector<uint64_t> table;
     std::vector<std::vector<osuCrypto::block>> masks_with_dummies(context.np-1);
     table = ENCRYPTO::cuckoo_hash(context, inputs);
@@ -391,7 +393,7 @@ std::vector<uint64_t> run_relaxed_opprf(ENCRYPTO::PsiAnalyticsContext &context, 
 
     const auto agg_start_time = std::chrono::system_clock::now();
 
-    TemplateField<ZpMersenneLongElement1> *field;
+    /*TemplateField<ZpMersenneLongElement1> *field;
     std::vector<ZpMersenneLongElement1> field_bins;
     for(uint64_t j=0; j< context.nbins; j++) {
       field_bins.push_back(field->GetElement(sub_bins[0][j]));
@@ -407,22 +409,23 @@ std::vector<uint64_t> run_relaxed_opprf(ENCRYPTO::PsiAnalyticsContext &context, 
       for(uint64_t j=0; j< context.nbins; j++) {
         bins[j] = field_bins[j].elem;
       }
-    }
+    }*/
 
     const auto agg_end_time = std::chrono::system_clock::now();
     const duration_millis agg_duration = agg_end_time - agg_start_time;
     context.timings.aggregation += agg_duration.count();
 
   } else {
-    bins.reserve(context.nbins);
+    //bins.reserve(context.nbins);
 
     auto simple_table_v = ENCRYPTO::simple_hash(context, inputs);
 
     auto masks = RELAXEDNS::ot_sender(simple_table_v, chls[0], context);
-    std::vector<uint64_t> actual_contents_of_bins;
-    actual_contents_of_bins.reserve(context.nbins);
-    OpprgPsiNonLeader(actual_contents_of_bins, simple_table_v, masks, context, allsocks[0], chls[0]);
-
+    sub_bins.resize(1, std::vector<uint64_t>(context.nbins, 0));
+    //std::vector<uint64_t> actual_contents_of_bins;
+    //actual_contents_of_bins.reserve(context.nbins);
+    OpprgPsiNonLeader(sub_bins[0], simple_table_v, masks, context, allsocks[0], chls[0]);
+    /*
     TemplateField<ZpMersenneLongElement1> *field;
     std::vector<ZpMersenneLongElement1> field_bins;
     for(uint64_t j=0; j< context.nbins; j++) {
@@ -432,13 +435,14 @@ std::vector<uint64_t> run_relaxed_opprf(ENCRYPTO::PsiAnalyticsContext &context, 
 
     for(uint64_t j=0; j< context.nbins; j++) {
       bins[j] = field_bins[j].elem;
-    }
+    }*/
 
 /*    std::vector<uint64_t> polynomials = ClientEvaluateHint(context, masks);
     bins = ClientSendHint(context, allsocks[0], polynomials);*/
    }
 
-  return bins;
+  //return sub_bins;
+  std::cout<<"Hello"<<std::endl;
 }
 
 std::vector<uint64_t> run_threshold_relaxed_opprf(ENCRYPTO::PsiAnalyticsContext &context, const std::vector<std::uint64_t> &inputs,

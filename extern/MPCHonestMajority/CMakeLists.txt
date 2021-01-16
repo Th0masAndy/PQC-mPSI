@@ -13,7 +13,7 @@ set(SOURCE_FILES ProtocolParty.cpp ProtocolParty2.cpp TemplateField.cpp ZpKarats
 link_directories(/usr/ssl/lib/ $ENV{HOME}/libscapi/install/lib )
 
 
-add_executable(MPCHonestMajority ${SOURCE_FILES})
+add_library(MPCHonestMajority ${SOURCE_FILES})
 
 TARGET_LINK_LIBRARIES(MPCHonestMajority $ENV{HOME}/libscapi/build/NTL/src/ntl.a
         $ENV{HOME}/libscapi/libscapi.a gmp OTExtensionBristol libsimpleot.a

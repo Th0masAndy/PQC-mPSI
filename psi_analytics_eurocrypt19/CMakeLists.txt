@@ -50,6 +50,7 @@ target_link_libraries(psi_analytics_eurocrypt19 INTERFACE
         ntl
         HashingTables
         libOTe
+        MPCHonestMajority
         Boost::program_options
         Threads::Threads
         $ENV{HOME}/libscapi/build/NTL/src/ntl.a
@@ -70,6 +71,7 @@ target_include_directories(psi_analytics_eurocrypt19 PUBLIC
         ${PSI_ANALYTICS_SOURCE_ROOT}/extern/ABY/src
         ${PSI_ANALYTICS_SOURCE_ROOT}/extern/ABY/extern/ENCRYPTO_utils/src
         ${PSI_ANALYTICS_SOURCE_ROOT}/extern/HashingTables
+        ${PSI_ANALYTICS_SOURCE_ROOT}/extern/MPCHonestMajority
         ${PSI_ANALYTICS_SOURCE_ROOT}/extern/EzPC/SCI/src
         $ENV{HOME}/libscapi/build/NTL/include
         $ENV{HOME}/libscapi/install/include
