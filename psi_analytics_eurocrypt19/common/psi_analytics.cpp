@@ -376,8 +376,8 @@ void multi_sync_thread(int tid, std::vector<std::unique_ptr<CSocket>> &socks, Ps
 	for(int i=tid; i<context.np-1; i=i+context.nthreads) {
 		std::vector<uint8_t> testdata(1000, 0);
 		socks[i]->Send(testdata.data(), 1000);
-	}	
-}                                                                                                            
+	}
+}
 
 void ResetCommunication(std::vector<std::unique_ptr<CSocket>> &allsocks, std::vector<osuCrypto::Channel> &chls, PsiAnalyticsContext &context) {
   if(context.role == P_0) {
@@ -455,7 +455,7 @@ void PrintCommunication(PsiAnalyticsContext &context) {
   std::cout<<context.role << ": Total Received Data (MB): "<<recvinMB<<std::endl;
 }
 
-std::vector<uint64_t> run_psi_analytics(PsiAnalyticsContext &context, const std::vector<std::uint64_t> &inputs,
+void run_psi_analytics(std::vector<std::vector<uint64_t>> &sub_bins, PsiAnalyticsContext &context, const std::vector<std::uint64_t> &inputs,
 					std::vector<std::unique_ptr<CSocket>> &allsocks, std::vector<osuCrypto::Channel> &chls) {
   // establish network connection
   /*std::unique_ptr<CSocket> sock =
@@ -464,10 +464,10 @@ std::vector<uint64_t> run_psi_analytics(PsiAnalyticsContext &context, const std:
   const auto clock_time_total_start = std::chrono::system_clock::now();
   */
   //const auto start_time = std::chrono::system_clock::now();
-  std::vector<uint64_t> bins;
 
   // create hash tables from the elements
   if (context.role == P_0) {
+    sub_bins.resize(context.np-1, std::vector<uint64_t>(context.nbins, 0));
 /*
     std::thread conn_threads[context.nthreads];
     std::vector<std::unique_ptr<CSocket>> allsocks(context.np-1);
@@ -479,13 +479,8 @@ std::vector<uint64_t> run_psi_analytics(PsiAnalyticsContext &context, const std:
       conn_threads[i].join();
     }*/
 
-    bins.reserve(context.nbins);
-    for(uint64_t i=0; i<context.nbins; i++) {
-    	bins[i] = 0;
-    }
-
     std::vector<std::vector<uint8_t>> poly_rcv(context.np-1);
-    std::vector<std::vector<uint64_t>> sub_bins(context.np-1);
+    //std::vector<std::vector<uint64_t>> sub_bins(context.np-1);
     std::vector<uint64_t> table;
     std::vector<std::vector<uint64_t>> masks_with_dummies(context.np-1);
     table = cuckoo_hash(context, inputs);
@@ -530,7 +525,7 @@ std::vector<uint64_t> run_psi_analytics(PsiAnalyticsContext &context, const std:
     context.timings.polynomials += eval_poly_duration.count();
 
     const auto agg_start_time = std::chrono::system_clock::now();
-
+    /*
     TemplateField<ZpMersenneLongElement1> *field;
     std::vector<ZpMersenneLongElement1> field_bins;
     for(uint64_t j=0; j< context.nbins; j++) {
@@ -548,7 +543,7 @@ std::vector<uint64_t> run_psi_analytics(PsiAnalyticsContext &context, const std:
         bins[j] = field_bins[j].elem;
       }
     }
-
+    */
     const auto agg_end_time = std::chrono::system_clock::now();
     const duration_millis agg_duration = agg_end_time - agg_start_time;
     context.timings.aggregation += agg_duration.count();
@@ -560,17 +555,17 @@ std::vector<uint64_t> run_psi_analytics(PsiAnalyticsContext &context, const std:
     std::unique_ptr<CSocket> sock =
       EstablishConnection(context.address[0], context.port[0], static_cast<e_role>(context.role));
     sock->Send(testdata.data(), 1);
-*/
+*/  sub_bins.resize(1);
     auto simple_table_v = simple_hash(context, inputs);
     auto masks = ClientOprf(context, simple_table_v, chls[0]);
     std::vector<uint64_t> polynomials = ClientEvaluateHint(context, masks);
-    bins = ClientSendHint(context, allsocks[0], polynomials);
+    sub_bins[0] = ClientSendHint(context, allsocks[0], polynomials);
    }
 
   //const duration_millis total_duration = end_time - start_time;
   //context.timings.total = total_duration.count();
 
-  return bins;
+  //return bins;
 }
 
 }

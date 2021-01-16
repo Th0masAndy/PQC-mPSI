@@ -37,7 +37,7 @@
 namespace ENCRYPTO {
 
 //Calls the different subprotocols of OPPRF
-std::vector<uint64_t> run_psi_analytics(PsiAnalyticsContext &context, const std::vector<std::uint64_t> &inputs,
+void run_psi_analytics(std::vector<std::vector<uint64_t>> &sub_bins, PsiAnalyticsContext &context, const std::vector<std::uint64_t> &inputs,
 					 std::vector<std::unique_ptr<CSocket>> &allsocks, std::vector<osuCrypto::Channel> &chls);
 
 //Performs cuckoo hashing of party's inputs

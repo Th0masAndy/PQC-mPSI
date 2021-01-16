@@ -44,7 +44,7 @@ auto read_test_options(int32_t argcp, char **argvp) {
   	("role,r",         po::value<decltype(context.role)>(&context.role)->required(),                                  "Role of the node")
   	("neles,n",        po::value<decltype(context.neles)>(&context.neles)->default_value(100u),                      "Number of my elements")
   	("bit-length,b",   po::value<decltype(context.bitlen)>(&context.bitlen)->default_value(61u),                      "Bit-length of the elements")
-  	("epsilon,e",      po::value<decltype(context.epsilon)>(&context.epsilon)->default_value(1.27f),                   "Epsilon, a table size multiplier")
+  	("epsilon,e",      po::value<decltype(context.epsilon)>(&context.epsilon)->default_value(1.28f),                   "Epsilon, a table size multiplier")
   	("threads,t",      po::value<decltype(context.nthreads)>(&context.nthreads)->default_value(1),                    "Number of threads")
   	("threshold,c",    po::value<decltype(context.threshold)>(&context.threshold)->default_value(2u),                 "Threshold Parameter, default: 2")
   	("nmegabins,m",    po::value<decltype(context.nmegabins)>(&context.nmegabins)->default_value(1u),                 "Number of mega bins")
@@ -147,7 +147,7 @@ auto read_test_options(int32_t argcp, char **argvp) {
 
     //Setting Relaxed Batch OPPRF Params
     context.ffuns =3u;
-    context.fepsilon= 1.27f;
+    context.fepsilon= 1.31f;
 
     context.fbins=context.fepsilon*context.neles*context.nfuns;
 
@@ -183,21 +183,20 @@ void prepareArgs(ENCRYPTO::PsiAnalyticsContext context, char** circuitArgv) {
 	circuitArgv[24] = "1";
 }
 
-void MPSI_execution(ENCRYPTO::PsiAnalyticsContext &context, std::vector<uint64_t> &bins, std::vector<uint64_t> &inputs, std::vector<std::unique_ptr<CSocket>> &allsocks, std::vector<osuCrypto::Channel> &chl, 	MPSI_Party<ZpMersenne127Element> &mpsi) {
+void MPSI_execution(ENCRYPTO::PsiAnalyticsContext &context, std::vector<uint64_t> &bins, std::vector<uint64_t> &inputs, std::vector<std::unique_ptr<CSocket>> &allsocks, std::vector<osuCrypto::Channel> &chl, 	MPSI_Party<GF2E> &mpsi) {
   ResetCommunication(allsocks, chl, context);
   auto start_time = std::chrono::system_clock::now();
   std::vector<std::vector<uint64_t>> sub_bins;
-  /*switch(context.opprf_type) {
-    case ENCRYPTO::PsiAnalyticsContext::POLY: bins = ENCRYPTO::run_psi_analytics(context, inputs, allsocks, chl);
+  switch(context.opprf_type) {
+    case ENCRYPTO::PsiAnalyticsContext::POLY: ENCRYPTO::run_psi_analytics(sub_bins, context, inputs, allsocks, chl);
                                               break;
-    case ENCRYPTO::PsiAnalyticsContext::RELAXED: sub_bins = RELAXEDNS::run_relaxed_opprf(context, inputs, allsocks, chl);
-
+    case ENCRYPTO::PsiAnalyticsContext::RELAXED: RELAXEDNS::run_relaxed_opprf(sub_bins, context, inputs, allsocks, chl);
                                                  break;
     case ENCRYPTO::PsiAnalyticsContext::TABLE: 	std::string error_msg("Not implemented currently.");
                                                 throw std::runtime_error(error_msg.c_str());
                                                 break;
-  }*/
-  RELAXEDNS::run_relaxed_opprf(sub_bins, context, inputs, allsocks, chl);
+  }
+
   auto t1 = std::chrono::system_clock::now();
 	const duration_millis opprf_time = t1-start_time;
 	context.timings.opprf = opprf_time.count();
@@ -229,6 +228,8 @@ void MPSI_threshold_execution(ENCRYPTO::PsiAnalyticsContext &context, std::vecto
   ResetCommunication(allsocks, chl, context);
   RELAXEDNS::ResetCommunicationThreshold(ioArr, context);
   auto start_time = std::chrono::system_clock::now();
+  std::vector<std::vector<uint64_t>> sub_bins;
+  //std::vector<uint64_t> bins;
   switch(context.opprf_type) {
     case ENCRYPTO::PsiAnalyticsContext::POLY: {std::string error_msg("Not implemented currently.");
                                                throw std::runtime_error(error_msg.c_str());
@@ -244,7 +245,7 @@ void MPSI_threshold_execution(ENCRYPTO::PsiAnalyticsContext &context, std::vecto
 	const duration_millis opprf_time = t1-start_time;
 	context.timings.opprf = opprf_time.count();
 
-  cout << context.role << ": PSI circuit successfully executed: " << bins[0] << endl;
+  //cout << context.role << ": PSI circuit successfully executed: " << bins[0] << endl;
   cout << context.role << ": Passing inputs..." << endl;
   mpsi.readMPSIInputs(bins, context.nbins);
 
@@ -399,7 +400,7 @@ if(context.analytics_type == ENCRYPTO::PsiAnalyticsContext::THRESHOLD) {
 	std::vector<osuCrypto::Session> ep;
 
   switch(context.analytics_type) {
-    case ENCRYPTO::PsiAnalyticsContext::PSI: {MPSI_Party<ZpMersenne127Element> mpsi(size, circuitArgv, bins, context.nbins);
+    case ENCRYPTO::PsiAnalyticsContext::PSI: {MPSI_Party<GF2E> mpsi(size, circuitArgv, bins, context.nbins);
                                              synchronize_parties(context, allsocks, chl, ios, ep);
                                              MPSI_execution(context, bins, inputs, allsocks, chl, mpsi);
                                              }

@@ -381,7 +381,7 @@ ProtocolParty<FieldType>::ProtocolParty(int argc, char* argv[]) : MPCProtocol("M
         field = new TemplateField<FieldType>(0);
     } else if(fieldType.compare("GF2E") == 0) {
         std::cout<<"GF2E Method"<<std::endl;
-        field = new TemplateField<FieldType>(80);
+        field = new TemplateField<FieldType>(64);
     } else if(fieldType.compare("ZZ_p") == 0) {
         field = new TemplateField<FieldType>(2147483647);
     } else if(fieldType.compare("ZpMersenne127") == 0) {
