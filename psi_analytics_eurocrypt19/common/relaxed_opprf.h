@@ -41,10 +41,10 @@
 
 namespace RELAXEDNS {
 
-void run_relaxed_opprf(std::vector<std::vector<uint64_t>> &sub_bins,ENCRYPTO::PsiAnalyticsContext &context, const std::vector<std::uint64_t> &inputs,
+void run_relaxed_opprf(std::vector<std::vector<uint64_t>> &sub_bins, ENCRYPTO::PsiAnalyticsContext &context, const std::vector<std::uint64_t> &inputs,
 					 std::vector<std::unique_ptr<CSocket>> &allsocks, std::vector<osuCrypto::Channel> &chls);
 
-std::vector<uint64_t> run_threshold_relaxed_opprf(ENCRYPTO::PsiAnalyticsContext &context, const std::vector<std::uint64_t> &inputs,
+void run_threshold_relaxed_opprf(std::vector<std::vector<uint64_t>> &sub_bins, ENCRYPTO::PsiAnalyticsContext &context, const std::vector<std::uint64_t> &inputs,
 					 std::vector<std::unique_ptr<CSocket>> &allsocks, std::vector<osuCrypto::Channel> &chls, std::vector<sci::NetIO*> &ioArr);
 
 

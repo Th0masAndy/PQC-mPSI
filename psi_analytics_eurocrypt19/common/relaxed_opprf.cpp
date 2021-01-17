@@ -352,7 +352,7 @@ void run_relaxed_opprf(std::vector<std::vector<uint64_t>> &sub_bins, ENCRYPTO::P
 
   // create hash tables from the elements
   if (context.role == P_0) {
-    sub_bins.resize(context.np-1, std::vector<uint64_t>(context.nbins, 0));
+     sub_bins.resize(context.np-1, std::vector<uint64_t>(context.nbins, 0));
     /*bins.reserve(context.nbins);
     for(uint64_t i=0; i<context.nbins; i++) {
     	bins[i] = 0;
@@ -447,19 +447,15 @@ void run_relaxed_opprf(std::vector<std::vector<uint64_t>> &sub_bins, ENCRYPTO::P
   std::cout<<"Hello"<<std::endl;
 }
 
-std::vector<uint64_t> run_threshold_relaxed_opprf(ENCRYPTO::PsiAnalyticsContext &context, const std::vector<std::uint64_t> &inputs,
+void run_threshold_relaxed_opprf(std::vector<std::vector<uint64_t>> &a_shares_bins, ENCRYPTO::PsiAnalyticsContext &context, const std::vector<std::uint64_t> &inputs,
 					std::vector<std::unique_ptr<CSocket>> &allsocks, std::vector<osuCrypto::Channel> &chls, std::vector<sci::NetIO*> &ioArr) {
 
-  std::vector<uint64_t> bins;
+
   int padded_size = ((context.nbins+7)/8)*8;
 
   // create hash tables from the elements
   if (context.role == P_0) {
-
-    bins.reserve(context.nbins);
-    for(uint64_t i=0; i<context.nbins; i++) {
-    	bins[i] = 0;
-    }
+     a_shares_bins.resize(context.np-1, std::vector<uint64_t>(padded_size, 0));
 
     std::vector<std::vector<uint64_t>> sub_bins(context.np-1);
     for(int i=0; i<context.np-1; i++) {
@@ -491,7 +487,7 @@ std::vector<uint64_t> run_threshold_relaxed_opprf(ENCRYPTO::PsiAnalyticsContext 
     for(int i=0; i<context.nthreads; i++) {
       hint_threads[i].join();
     }
-    std::cout<<"Checkpoint 1"<<std::endl;
+
 
     /*
     std::cout<<"Checkpoint 1: X Value: "<< sub_bins[0][5]<<std::endl;
@@ -508,7 +504,7 @@ std::vector<uint64_t> run_threshold_relaxed_opprf(ENCRYPTO::PsiAnalyticsContext 
       ot_pack_threads[i].join();
     }
 
-    std::cout<<"Checkpoint 1"<<std::endl;
+
 
     for(int i=0; i<context.np-1; i++){
       for(int j=context.nbins; j<padded_size; j++)
@@ -521,9 +517,9 @@ std::vector<uint64_t> run_threshold_relaxed_opprf(ENCRYPTO::PsiAnalyticsContext 
     for(int i=0;i<context.np-1; i++)
       res_bins[i].resize(padded_size);
 
-    std::vector<std::vector<uint64_t>> a_shares_bins(context.np-1);
+    /*std::vector<std::vector<uint64_t>> a_shares_bins(context.np-1);
     for(int i=0;i<context.np-1; i++)
-      a_shares_bins[i].resize(padded_size);
+      a_shares_bins[i].resize(padded_size);*/
 
     std::vector<std::vector<uint64_t>> aux_bins(context.np-1);
     /*for(int i=0;i<context.np-1; i++)
@@ -552,9 +548,9 @@ std::vector<uint64_t> run_threshold_relaxed_opprf(ENCRYPTO::PsiAnalyticsContext 
 
     allsocks[0]->Send(a_shares_bins[0].data(), padded_size * sizeof(uint64_t));*/
 
-    TemplateField<ZpMersenneLongElement1> *field;
-    std::vector<ZpMersenneLongElement1> field_bins;
-    for(uint64_t j=0; j< context.nbins; j++) {
+    //TemplateField<ZpMersenneLongElement1> *field;
+    //std::vector<ZpMersenneLongElement1> field_bins;
+    /*for(uint64_t j=0; j< context.nbins; j++) {
       field_bins.push_back(field->GetElement(a_shares_bins[0][j]));
     }
 
@@ -568,7 +564,7 @@ std::vector<uint64_t> run_threshold_relaxed_opprf(ENCRYPTO::PsiAnalyticsContext 
       for(uint64_t j=0; j< context.nbins; j++) {
         bins[j] = field_bins[j].elem;
       }
-    }
+    }*/
 
     //Checking for intersection threshold
 
@@ -592,7 +588,7 @@ std::vector<uint64_t> run_threshold_relaxed_opprf(ENCRYPTO::PsiAnalyticsContext 
     context.timings.aggregation += agg_duration.count();
 
   } else {
-    bins.reserve(context.nbins);
+    a_shares_bins.resize(1, std::vector<uint64_t>(padded_size, 0));
 
     auto simple_table_v = ENCRYPTO::simple_hash(context, inputs);
 
@@ -629,8 +625,8 @@ std::vector<uint64_t> run_threshold_relaxed_opprf(ENCRYPTO::PsiAnalyticsContext 
     std::vector<uint8_t> res_bins;
     res_bins.resize(padded_size);
 
-    std::vector<uint64_t> a_shares_bins;
-    a_shares_bins.resize(padded_size);
+    /*std::vector<uint64_t> a_shares_bins;
+    a_shares_bins.resize(padded_size);*/
 
     sci::NetIO* ioThreadArr[2];
     sci::OTPack<sci::NetIO> * otThreadpackArr[2];
@@ -641,7 +637,7 @@ std::vector<uint64_t> run_threshold_relaxed_opprf(ENCRYPTO::PsiAnalyticsContext 
 
     //std::cout<<"Checkpoint 1: X Value: "<< actual_contents_of_bins[5]<<std::endl;
 
-    perform_equality(actual_contents_of_bins.data(), 1, context.bitlen, context.radixparam, padded_size, res_bins.data(), a_shares_bins.data(), ioThreadArr, otThreadpackArr);
+    perform_equality(actual_contents_of_bins.data(), 1, context.bitlen, context.radixparam, padded_size, res_bins.data(), a_shares_bins[0].data(), ioThreadArr, otThreadpackArr);
     //allsocks[0]->Send(a_shares_bins.data(), padded_size * sizeof(uint64_t));
     /*std::cout<<"##########################"<<std::endl;
     for(int i=0; i<5; i++) {
@@ -660,7 +656,7 @@ std::vector<uint64_t> run_threshold_relaxed_opprf(ENCRYPTO::PsiAnalyticsContext 
     std::cout<<"##########################"<<std::endl;
 
     std::cout<<"##########################"<<std::endl;*/
-    TemplateField<ZpMersenneLongElement1> *field;
+    //TemplateField<ZpMersenneLongElement1> *field;
     /*int ctr=0;
     int ctr3 = 0;
     for(int i=0; i < padded_size; i++) {
@@ -685,14 +681,14 @@ std::vector<uint64_t> run_threshold_relaxed_opprf(ENCRYPTO::PsiAnalyticsContext 
     std::cout<<"Counter: "<<ctr<<" "<<ctr3<<std::endl;
     */
     //TemplateField<ZpMersenneLongElement1> *field;
-    std::vector<ZpMersenneLongElement1> field_bins;
+    /*std::vector<ZpMersenneLongElement1> field_bins;
     for(uint64_t j=0; j< context.nbins; j++) {
       field_bins.push_back(field->GetElement(a_shares_bins[j]));
     }
 
     for(uint64_t j=0; j< context.nbins; j++) {
       bins[j] = field_bins[j].elem;
-    }
+    }*/
 
     /*std::cout<<"##########################"<<std::endl;
     for(int i=0; i<5; i++) {
@@ -712,7 +708,7 @@ std::vector<uint64_t> run_threshold_relaxed_opprf(ENCRYPTO::PsiAnalyticsContext 
     bins = ClientSendHint(context, allsocks[0], polynomials);*/
    }
 
-  return bins;
+  //return bins;
 }
 
 }

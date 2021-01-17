@@ -65,7 +65,7 @@ class Threshold : public ProtocolParty<FieldType>{
 
 		//read num_bins MPSI inputs
 		void readMPSIInputs();
-		void readMPSIInputs(vector<uint64_t>& bins, uint64_t nbins);
+		void readMPSIInputs(vector<vector<uint64_t>>& bins, uint64_t nbins);
 
 		void convertSharestoFieldType(vector<uint64_t>& bins, vector<FieldType>& shares, uint64_t nbins);
 
@@ -208,30 +208,34 @@ template <class FieldType> void Threshold<FieldType>::readMPSIInputs() {
 }
 
 //read num_bins MPSI inputs
-template <class FieldType> void Threshold<FieldType>::readMPSIInputs(vector<uint64_t>& bins, uint64_t nbins) {
+template <class FieldType> void Threshold<FieldType>::readMPSIInputs(vector<vector<uint64_t>>& bins, uint64_t nbins) {
   	uint64_t input;
     	uint64_t i = 0;
 	uint64_t j = 0;
-        do {
-                input = bins[j++];
-		if(input > 0) {
-			add_a.push_back(this->field->GetElement(input));
-		}
-		else {
-			add_a.push_back(*(this->field->GetZero()));
-		}
-		//negate sum for leader
-		/*if (this->m_partyId == 0) {
-			add_a[i] = *(this->field->GetZero()) - add_a[i];
-		}*/
-                i++;
-        } while(j<nbins);
+          std::cout<<"Check point 4"<<std::endl;
+					for(int i=0; i<nbins; i++) {
+						add_a.push_back(this->field->GetElement(bins[0][i]));
+					}
+					std::cout<<"Check point 5"<<std::endl;
+
+					if (this->m_partyId == 0) {
+						for(int j=1; j< this->N-1; j++) {
+							for(int i =0; i< nbins; i++) {
+								add_a[i] = add_a[i] + this->field->GetElement(bins[j][i]);
+							}
+						}
+						/*std::cout<<"Check point 6"<<std::endl;
+						for(int i=0; i< nbins; i++) {
+							add_a[i] = *(this->field->GetZero()) - add_a[i];
+						}*/
+					}
 
 	this->num_bins = add_a.size();
-
+	std::cout<<"Num Bins"<<this->num_bins<<std::endl;
+/*
         if (mpsi_print == true) {
                 cout << this->m_partyId << ": " << this->num_bins << " values read." << endl;
-        }
+        }*/
 		//cout<<"Num Bins"<< this->num_bins<<endl;
 		//cout<<"Reading Completed!"<<endl;
 }

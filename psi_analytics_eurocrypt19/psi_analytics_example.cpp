@@ -235,7 +235,7 @@ void MPSI_threshold_execution(ENCRYPTO::PsiAnalyticsContext &context, std::vecto
                                                throw std::runtime_error(error_msg.c_str());
                                                break;
                                               }
-    case ENCRYPTO::PsiAnalyticsContext::RELAXED: bins = RELAXEDNS::run_threshold_relaxed_opprf(context, inputs, allsocks, chl, ioArr);
+    case ENCRYPTO::PsiAnalyticsContext::RELAXED: RELAXEDNS::run_threshold_relaxed_opprf(sub_bins, context, inputs, allsocks, chl, ioArr);
                                                  break;
     case ENCRYPTO::PsiAnalyticsContext::TABLE: 	std::string error_msg("Not implemented currently.");
                                                 throw std::runtime_error(error_msg.c_str());
@@ -247,7 +247,7 @@ void MPSI_threshold_execution(ENCRYPTO::PsiAnalyticsContext &context, std::vecto
 
   //cout << context.role << ": PSI circuit successfully executed: " << bins[0] << endl;
   cout << context.role << ": Passing inputs..." << endl;
-  mpsi.readMPSIInputs(bins, context.nbins);
+  mpsi.readMPSIInputs(sub_bins, context.nbins);
 
   cout << context.role << ": Running circuit..." << endl;
   auto t2 = std::chrono::system_clock::now();
