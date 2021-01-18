@@ -13,7 +13,7 @@
 using namespace sci;
 using namespace std;
 
-#define BITLEN_5
+#define BITLEN 8
 
 template<typename IO>
 class Equality {
@@ -460,7 +460,7 @@ class Equality {
 			//uint64_t aux_val;
 			if(party ==sci::ALICE) {
 				uint8_t* aux_shares = (uint8_t *)malloc(sizeof(uint8_t)*num_cmps);
-				for(int i=0; i<num_cmps; i++)
+				//for(int i=0; i<num_cmps; i++)
 					//aux_shares[i] = ((uint8_t)z[i]);
 				otInstance->send_cot_moduloAdd<uint8_t>(aux_shares, z, num_cmps);
 				/*for(int i=0; i<num_cmps; i++) {
