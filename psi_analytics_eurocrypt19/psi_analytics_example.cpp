@@ -247,11 +247,11 @@ void MPSI_threshold_execution(ENCRYPTO::PsiAnalyticsContext &context, std::vecto
 
   //cout << context.role << ": PSI circuit successfully executed: " << bins[0] << endl;
   cout << context.role << ": Passing inputs..." << endl;
-  mpsi.readMPSIInputs(sub_bins, context.nbins);
+  //mpsi.readMPSIInputs(sub_bins, context.nbins);
 
   cout << context.role << ": Running circuit..." << endl;
   auto t2 = std::chrono::system_clock::now();
-        mpsi.runMPSI();
+        //mpsi.runMPSI();
         auto end_time = std::chrono::system_clock::now();
   const duration_millis circuit_time = end_time - t2;
 
@@ -262,8 +262,8 @@ void MPSI_threshold_execution(ENCRYPTO::PsiAnalyticsContext &context, std::vecto
   AccumulateCommunicationPSI(allsocks, chl, context);
   RELAXEDNS::AccumulateCommunicationThreshold(ioArr, context);
 
-  context.sentBytesCircuit = mpsi.sent_bytes;
-  context.recvBytesCircuit = mpsi.recv_bytes;
+  //context.sentBytesCircuit = mpsi.sent_bytes;
+  //context.recvBytesCircuit = mpsi.recv_bytes;
 
   PrintTimings(context);
   PrintCommunication(context);

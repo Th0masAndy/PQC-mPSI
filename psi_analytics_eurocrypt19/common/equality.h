@@ -13,7 +13,7 @@
 using namespace sci;
 using namespace std;
 
-#define BITLEN_61
+#define BITLEN_5
 
 template<typename IO>
 class Equality {
@@ -457,24 +457,25 @@ class Equality {
 
 		void boolean_to_arithmetic(uint8_t* z, uint64_t* a_shares) {
 
-			uint64_t aux_val;
+			//uint64_t aux_val;
 			if(party ==sci::ALICE) {
-				uint64_t* aux_shares = (uint64_t *)malloc(sizeof(uint64_t)*num_cmps);
+				uint8_t* aux_shares = (uint8_t *)malloc(sizeof(uint8_t)*num_cmps);
 				for(int i=0; i<num_cmps; i++)
-					aux_shares[i] = ((uint64_t)z[i]);
-				otInstance->send_cot_moduloAdd<uint64_t>(a_shares, aux_shares, num_cmps);
-				for(int i=0; i<num_cmps; i++) {
+					//aux_shares[i] = ((uint8_t)z[i]);
+				otInstance->send_cot_moduloAdd<uint8_t>(aux_shares, z, num_cmps);
+				/*for(int i=0; i<num_cmps; i++) {
 						aux_val = -a_shares[i];
 						a_shares[i] = ((uint64_t)(((uint64_t)z[i]) - 2*aux_val));//  & ENCRYPTO::__61_bit_mask;
 						a_shares[i] = (a_shares[i] & ENCRYPTO::__61_bit_mask) -1;
-				}
+				}*/
 			}
 			else {
-				otInstance->recv_cot_moduloAdd<uint64_t>(a_shares, z, num_cmps);
-				for(int i=0; i<num_cmps; i++) {
+				uint8_t* aux_shares = (uint8_t *)malloc(sizeof(uint8_t)*num_cmps);
+				otInstance->recv_cot_moduloAdd<uint8_t>(aux_shares, z, num_cmps);
+				/*for(int i=0; i<num_cmps; i++) {
 						a_shares[i] = ((uint64_t)(((uint64_t)z[i]) - 2*a_shares[i]));// & ENCRYPTO::__61_bit_mask;
 						a_shares[i] = a_shares[i] & ENCRYPTO::__61_bit_mask;
-				}
+				}*/
 			}
 		}
 };
