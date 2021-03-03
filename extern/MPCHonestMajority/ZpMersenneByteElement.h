@@ -14,5 +14,22 @@ class ZpMersenneByteElement{
 		uint8_t elem;
 		ZpMersenneByteElement();
 		ZpMersenneByteElement(uint8_t elem);
-		//init(uint8_t prime);
+		
+		ZpMersenneByteElement& operator=(const ZpMersenneByteElement& other);
+		bool operator!=(const ZpMersenneByteElement& other);
+		bool operator==(const ZpMersenneByteElement& other);
+		
+		ZpMersenneByteElement operator+(const ZpMersenneByteElement& other);
+		ZpMersenneByteElement& operator+=(const ZpMersenneByteElement& other);
+		
+		ZpMersenneByteElement operator-(const ZpMersenneByteElement& other);
+		ZpMersenneByteElement& operator-=(const ZpMersenneByteElement& other);
+		
+		ZpMersenneByteElement operator*(const ZpMersenneByteElement& other);
+		ZpMersenneByteElement& operator*=(const ZpMersenneByteElement& other);
+		
+		ZpMersenneByteElement operator/(const ZpMersenneByteElement& other);
+		ZpMersenneByteElement& operator/=(const ZpMersenneByteElement& other);
+		
+		ZpMersenneByteElement inv();
 };
