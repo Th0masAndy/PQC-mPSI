@@ -1,7 +1,8 @@
 #include "ZpMersenneByteElement.h"
 #include "gmp.h"
 
-static uint8_t p = 31;
+static uint8_t p = 31; // Mersenne Prime only; multiplication protocol does not work with non-Mersenne primes
+static uint8_t p_size = 5; // size of bit representation of p
 
 ZpMersenneByteElement::ZpMersenneByteElement() {
 	this->elem = 0;
@@ -66,5 +67,31 @@ ZpMersenneByteElement& ZpMersenneByteElement::operator-=(const ZpMersenneByteEle
 		ans = ans + p;
 	}
 	this->elem = (uint8_t) ans;
+	return *this;
+}
+
+ZpMersenneByteElement ZpMersenneByteElement::operator*(const ZpMersenneByteElement& other) {
+	ZpMersenneByteElement answer;
+	
+	uint16_t prod = (uint16_t)this->elem * (uint16_t)other.elem;
+	uint8_t bottom = prod & p;
+	uint8_t top = (prod >> p_size);
+	uint8_t ans = top + bottom;
+	if(ans >= p) {
+		ans = ans - p;
+	}
+	answer.elem = ans;
+	return answer;
+}
+
+ZpMersenneByteElement& ZpMersenneByteElement::operator*=(const ZpMersenneByteElement& other) {
+	uint16_t prod = (uint16_t)this->elem * (uint16_t)other.elem;
+	uint8_t bottom = prod & p;
+	uint8_t top = (prod >> p_size);
+	uint8_t ans = top + bottom;
+	if(ans >= p) {
+		ans = ans - p;
+	}
+	this->elem = ans;
 	return *this;
 }
