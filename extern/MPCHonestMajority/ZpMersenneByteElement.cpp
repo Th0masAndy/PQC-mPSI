@@ -95,3 +95,54 @@ ZpMersenneByteElement& ZpMersenneByteElement::operator*=(const ZpMersenneByteEle
 	this->elem = ans;
 	return *this;
 }
+
+template <>
+TemplateField<ZpMersenneByteElement>::TemplateField(long fieldParam) {
+
+    this->fieldParam = p;
+    this->elementSizeInBytes = 1;//round up to the next byte
+    this->elementSizeInBits = p_size;
+
+    auto randomKey = prg.generateKey(128);
+    prg.setKey(randomKey);
+
+    m_ZERO = new ZpMersenneByteElement(0);
+    m_ONE = new ZpMersenneByteElement(1);
+}
+
+template <>
+ZpMersenneByteElement TemplateField<ZpMersenneByteElement>::GetElement(long b) {
+
+
+    if(b == 1)
+    {
+        return *m_ONE;
+    }
+    if(b == 0)
+    {
+        return *m_ZERO;
+    }
+    else{
+        ZpMersenneByteElement element(b);
+        return element;
+    }
+}
+
+template <>
+void TemplateField<ZpMersenneByteElement>::elementToBytes(unsigned char* elementInBytes, ZpMersenneByteElement& element){
+
+    memcpy(elementInBytes, (byte*)(&element.elem), 1);
+}
+
+template <>
+void TemplateField<ZpMersenneByteElement>::elementVectorToByteVector(vector<ZpMersenneByteElement> &elementVector, vector<byte> &byteVector){
+
+    copy_byte_array_to_byte_vector((byte *)elementVector.data(), elementVector.size()*elementSizeInBytes, byteVector,0);
+}
+
+template <>
+ZpMersenneByteElement TemplateField<ZpMersenneByteElement>::bytesToElement(uint8_t* elemenetInBytes){
+
+    return ZpMersenneByteElement((unsigned int)(*(unsigned int *)elemenetInBytes));
+}
+
