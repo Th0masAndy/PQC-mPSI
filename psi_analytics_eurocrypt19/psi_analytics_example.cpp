@@ -20,6 +20,7 @@
 #include "MPCHonestMajority/MPSI_Party.h"
 #include "MPCHonestMajority/Threshold.h"
 #include "MPCHonestMajority/ZpKaratsubaElement.h"
+#include "MPCHonestMajority/ZpMersenneByteElement.h"
 #include <smmintrin.h>
 #include <inttypes.h>
 #include <stdio.h>
@@ -228,7 +229,7 @@ void MPSI_threshold_execution(ENCRYPTO::PsiAnalyticsContext &context, std::vecto
   ResetCommunication(allsocks, chl, context);
   RELAXEDNS::ResetCommunicationThreshold(ioArr, context);
   auto start_time = std::chrono::system_clock::now();
-  std::vector<std::vector<uint64_t>> sub_bins;
+  std::vector<std::vector<uint8_t>> sub_bins;
   //std::vector<uint64_t> bins;
   switch(context.opprf_type) {
     case ENCRYPTO::PsiAnalyticsContext::POLY: {std::string error_msg("Not implemented currently.");

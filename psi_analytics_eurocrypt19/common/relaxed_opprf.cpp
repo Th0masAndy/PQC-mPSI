@@ -322,7 +322,7 @@ std::cout<<"Checkpoint 1"<<std::endl;
     std::cout<<"Cp 2"<<std::endl;
   }
 
-  void multi_equality_thread(int tid, std::vector<std::vector<uint64_t>> &x, int party, int num_cmps, std::vector<std::vector<uint8_t>> &z, std::vector<std::vector<uint64_t>> &a_shares_bins, std::vector<std::vector<uint64_t>> &aux_bins, std::vector<sci::NetIO*> &ioArr, std::vector<sci::OTPack<sci::NetIO>*> &otpackArr, ENCRYPTO::PsiAnalyticsContext &context, std::vector<std::unique_ptr<CSocket>> &allsocks) {
+  void multi_equality_thread(int tid, std::vector<std::vector<uint64_t>> &x, int party, int num_cmps, std::vector<std::vector<uint8_t>> &z, std::vector<std::vector<uint8_t>> &a_shares_bins, std::vector<std::vector<uint64_t>> &aux_bins, std::vector<sci::NetIO*> &ioArr, std::vector<sci::OTPack<sci::NetIO>*> &otpackArr, ENCRYPTO::PsiAnalyticsContext &context, std::vector<std::unique_ptr<CSocket>> &allsocks) {
     //std::cout<<"X Value: "<<x[0][5]<<std::endl;
     for(int i=tid; i<context.np-1; i=i+context.nthreads) {
       sci::NetIO* ioThreadArr[2];
@@ -447,7 +447,7 @@ void run_relaxed_opprf(std::vector<std::vector<uint64_t>> &sub_bins, ENCRYPTO::P
   std::cout<<"Hello"<<std::endl;
 }
 
-void run_threshold_relaxed_opprf(std::vector<std::vector<uint64_t>> &a_shares_bins, ENCRYPTO::PsiAnalyticsContext &context, const std::vector<std::uint64_t> &inputs,
+void run_threshold_relaxed_opprf(std::vector<std::vector<uint8_t>> &a_shares_bins, ENCRYPTO::PsiAnalyticsContext &context, const std::vector<std::uint64_t> &inputs,
 					std::vector<std::unique_ptr<CSocket>> &allsocks, std::vector<osuCrypto::Channel> &chls, std::vector<sci::NetIO*> &ioArr) {
 
 
@@ -455,7 +455,7 @@ void run_threshold_relaxed_opprf(std::vector<std::vector<uint64_t>> &a_shares_bi
 
   // create hash tables from the elements
   if (context.role == P_0) {
-     a_shares_bins.resize(context.np-1, std::vector<uint64_t>(padded_size, 0));
+     a_shares_bins.resize(context.np-1, std::vector<uint8_t>(padded_size, 0));
 
     std::vector<std::vector<uint64_t>> sub_bins(context.np-1);
     for(int i=0; i<context.np-1; i++) {
@@ -588,7 +588,7 @@ void run_threshold_relaxed_opprf(std::vector<std::vector<uint64_t>> &a_shares_bi
     context.timings.aggregation += agg_duration.count();
 
   } else {
-    a_shares_bins.resize(1, std::vector<uint64_t>(padded_size, 0));
+    a_shares_bins.resize(1, std::vector<uint8_t>(padded_size, 0));
 
     auto simple_table_v = ENCRYPTO::simple_hash(context, inputs);
 

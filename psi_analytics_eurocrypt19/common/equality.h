@@ -13,7 +13,7 @@
 using namespace sci;
 using namespace std;
 
-#define BITLEN 8
+#define BITLEN 5
 
 template<typename IO>
 class Equality {
@@ -455,32 +455,47 @@ class Equality {
 			}
 		}
 
-		void boolean_to_arithmetic(uint8_t* z, uint64_t* a_shares) {
+		void boolean_to_arithmetic(uint8_t* z, uint8_t* a_shares) {
 
-			//uint64_t aux_val;
+			int aux_val;
+			int smallmod = (int)(pow(2, BITLEN) - 1);
 			if(party ==sci::ALICE) {
 				uint8_t* aux_shares = (uint8_t *)malloc(sizeof(uint8_t)*num_cmps);
-				//for(int i=0; i<num_cmps; i++)
-					//aux_shares[i] = ((uint8_t)z[i]);
-				otInstance->send_cot_moduloAdd<uint8_t>(aux_shares, z, num_cmps);
-				/*for(int i=0; i<num_cmps; i++) {
+				for(int i=0; i<num_cmps; i++)
+					aux_shares[i] = z[i];
+				otInstance->send_cot_moduloAdd<uint8_t>(a_shares, aux_shares, num_cmps);
+				//int smallmod = (int)(pow(2, BITLEN) - 1);
+				for(int i=0; i<num_cmps; i++) {
 						aux_val = -a_shares[i];
-						a_shares[i] = ((uint64_t)(((uint64_t)z[i]) - 2*aux_val));//  & ENCRYPTO::__61_bit_mask;
-						a_shares[i] = (a_shares[i] & ENCRYPTO::__61_bit_mask) -1;
-				}*/
+						while (aux_val < 0) {
+							aux_val = aux_val + smallmod;
+						}
+						int tmp_share = ((int)z[i]) - 2*aux_val;
+						while(tmp_share < 0) {
+							tmp_share = tmp_share + smallmod;
+						}
+						//a_shares[i] = ((uint64_t)(((uint64_t)z[i]) - 2*aux_val));//  & ENCRYPTO::__61_bit_mask;
+						a_shares[i] = (uint8_t)tmp_share;
+						//a_shares[i] = (a_shares[i] & ENCRYPTO::__61_bit_mask) -1;
+				}
 			}
 			else {
-				uint8_t* aux_shares = (uint8_t *)malloc(sizeof(uint8_t)*num_cmps);
-				otInstance->recv_cot_moduloAdd<uint8_t>(aux_shares, z, num_cmps);
-				/*for(int i=0; i<num_cmps; i++) {
-						a_shares[i] = ((uint64_t)(((uint64_t)z[i]) - 2*a_shares[i]));// & ENCRYPTO::__61_bit_mask;
-						a_shares[i] = a_shares[i] & ENCRYPTO::__61_bit_mask;
-				}*/
+				//uint8_t* aux_shares = (uint8_t *)malloc(sizeof(uint8_t)*num_cmps);
+				otInstance->recv_cot_moduloAdd<uint8_t>(a_shares, z, num_cmps);
+				for(int i=0; i<num_cmps; i++) {
+					  int tmp_share = ((int)z[i]) - 2*a_shares[i];
+						while(tmp_share < 0) {
+							tmp_share = tmp_share + smallmod;
+						}
+						//a_shares[i] = ((uint64_t)(((uint64_t)z[i]) - 2*a_shares[i]));// & ENCRYPTO::__61_bit_mask;
+						a_shares[i] = (uint8_t)tmp_share;
+						//a_shares[i] = a_shares[i] & ENCRYPTO::__61_bit_mask;
+				}
 			}
 		}
 };
 
-void equality_thread(int tid, int party, uint64_t* x, uint8_t* z, uint64_t* a_shares, int lnum_cmps, int l, int b, sci::NetIO* io, sci::OTPack<sci::NetIO>* otpack) {
+void equality_thread(int tid, int party, uint64_t* x, uint8_t* z, uint8_t* a_shares, int lnum_cmps, int l, int b, sci::NetIO* io, sci::OTPack<sci::NetIO>* otpack) {
     Equality<NetIO>* compare;
     if(tid & 1) {
         compare = new Equality<NetIO>(3-party, l, b, lnum_cmps, io, otpack);
@@ -503,7 +518,7 @@ void equality_thread(int tid, int party, uint64_t* x, uint8_t* z, uint64_t* a_sh
 }
 
 
-void perform_equality(uint64_t* x, int party, int l, int b, int num_cmps, uint8_t* z, uint64_t* a_shares, sci::NetIO** ioArr, OTPack<sci::NetIO>** otpackArr) {
+void perform_equality(uint64_t* x, int party, int l, int b, int num_cmps, uint8_t* z, uint8_t* a_shares, sci::NetIO** ioArr, OTPack<sci::NetIO>** otpackArr) {
     //std::cout<<"X Value: "<<x[5]<<std::endl;
 	  //std::cout<<"B Value: "<<b<< std::endl;
     uint64_t mask_l;
