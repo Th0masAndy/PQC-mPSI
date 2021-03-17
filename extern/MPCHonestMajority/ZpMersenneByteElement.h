@@ -33,3 +33,5 @@ class ZpMersenneByteElement{
 		
 		ZpMersenneByteElement inv();
 };
+
+inline ::ostream& operator<<(::ostream& s, const ZpMersenneByteElement& a){ return s << a.elem; };

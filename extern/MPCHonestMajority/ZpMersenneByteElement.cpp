@@ -96,6 +96,60 @@ ZpMersenneByteElement& ZpMersenneByteElement::operator*=(const ZpMersenneByteEle
 	return *this;
 }
 
+ZpMersenneByteElement ZpMersenneByteElement::operator/(const ZpMersenneByteElement& other) {
+  //Code based on ZpMersenneIntElement
+	int a = other.elem;
+	int b = p;
+  int s;
+  
+	int u, v, q, r;
+	int u0, v0, u1, v1, u2, v2;
+
+	int aneg = 0;
+
+	if (a < 0) {
+		a = -a;
+		aneg = 1;
+	}
+
+	if (b < 0) {
+		b = -b;
+	}
+
+	u1 = 1;
+	v1 = 0;
+	u2 = 0;
+	v2 = 1;
+	u = a;
+	v = b;
+	while (v != 0) {
+		q = u / v;
+		r = u % v;
+		u = v;
+		v = r;
+		u0 = u2;
+		v0 = v2;
+		u2 = u1 - q*u2;
+		v2 = v1 - q*v2;
+		u1 = u0;
+		v1 = v0;
+	}
+
+	if(aneg) {
+		u1 = -u1;
+	}
+
+	s = u1;
+	if(s < 0) {
+		s = s + p;
+	}
+
+  ZpMersenneByteElement inverse((uint8_t) s);
+
+	return inverse * (*this);
+
+}
+
 template <>
 TemplateField<ZpMersenneByteElement>::TemplateField(long fieldParam) {
 
