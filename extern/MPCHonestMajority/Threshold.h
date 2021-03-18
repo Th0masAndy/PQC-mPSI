@@ -61,13 +61,13 @@ class Threshold : public ProtocolParty<FieldType>{
 		string myInputFile, myOutputFile;
 
 		Threshold(int argc, char* argv[]);
-		Threshold(int argc, char* argv[], vector<uint64_t>& bins, uint64_t nbins);
+		Threshold(int argc, char* argv[], vector<uint8_t>& bins, uint64_t nbins);
 
 		//read num_bins MPSI inputs
 		void readMPSIInputs();
-		void readMPSIInputs(vector<vector<uint64_t>>& bins, uint64_t nbins);
+		void readMPSIInputs(vector<vector<uint8_t>>& bins, uint64_t nbins);
 
-		void convertSharestoFieldType(vector<uint64_t>& bins, vector<FieldType>& shares, uint64_t nbins);
+		void convertSharestoFieldType(vector<uint8_t>& bins, vector<FieldType>& shares, uint64_t nbins);
 
 		//perform MPSI
 		void runMPSI();
@@ -142,7 +142,7 @@ template <class FieldType> Threshold<FieldType>::Threshold(int argc, char* argv[
         //Generation of shared values, such as triples, must be done later.
 }
 
-template <class FieldType> Threshold<FieldType>::Threshold(int argc, char* argv[], vector<uint64_t>& bins, uint64_t nbins) : ProtocolParty<FieldType>(argc, argv) {
+template <class FieldType> Threshold<FieldType>::Threshold(int argc, char* argv[], vector<uint8_t>& bins, uint64_t nbins) : ProtocolParty<FieldType>(argc, argv) {
         //The call to ProtocolParty constructor initializes inherited variables
         // N, T, m_partyID, as well as the VDM matrix and related vectors.
 
@@ -181,7 +181,7 @@ template <class FieldType> Threshold<FieldType>::Threshold(int argc, char* argv[
 template <class FieldType> void Threshold<FieldType>::readMPSIInputs() {
         ifstream myfile;
         //long long int input;
-	uint64_t input;
+	uint8_t input;
         uint64_t i = 0;
         myfile.open(myInputFile);
         do {
@@ -208,8 +208,8 @@ template <class FieldType> void Threshold<FieldType>::readMPSIInputs() {
 }
 
 //read num_bins MPSI inputs
-template <class FieldType> void Threshold<FieldType>::readMPSIInputs(vector<vector<uint64_t>>& bins, uint64_t nbins) {
-  	uint64_t input;
+template <class FieldType> void Threshold<FieldType>::readMPSIInputs(vector<vector<uint8_t>>& bins, uint64_t nbins) {
+  	uint8_t input;
     	uint64_t i = 0;
 	uint64_t j = 0;
           std::cout<<"Check point 4"<<std::endl;
@@ -241,8 +241,8 @@ template <class FieldType> void Threshold<FieldType>::readMPSIInputs(vector<vect
 }
 
 //convert shares to field type
-template <class FieldType> void Threshold<FieldType>::convertSharestoFieldType(vector<uint64_t>& bins, vector<FieldType>& shares, uint64_t nbins) {
-  	uint64_t input;
+template <class FieldType> void Threshold<FieldType>::convertSharestoFieldType(vector<uint8_t>& bins, vector<FieldType>& shares, uint64_t nbins) {
+  	uint8_t input;
 	uint64_t j = 0;
 	for(int i=0; i<nbins; i++) {
 		input = bins[j++];
