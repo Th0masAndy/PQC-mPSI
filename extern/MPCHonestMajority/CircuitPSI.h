@@ -603,7 +603,7 @@ template <class FieldType> void CircuitPSI<FieldType>::compute_intersection_shar
 	int offset;
 
 	vector<vector<FieldType>> pow_mult(prime_bitlen);
-	vector<FieldType> intermediate_mult(this->new_bins);
+	vector<FieldType> intermediate_mult(this->num_bins);
 	for(uint64_t i=0; i<prime_bitlen; i++) {
 		pow_mult[i].resize(this->num_bins);
 	}
@@ -630,7 +630,7 @@ template <class FieldType> void CircuitPSI<FieldType>::compute_intersection_shar
 	}
 
 	for(uint64_t j=0; j<this->num_bins; j++) {
-		this->cpsi_outputs[j] = -this->cpsi_outputs[j];
+		this->cpsi_outputs[j] = *(this->field->GetZero()) - this->cpsi_outputs[j];
 		if(this->m_partyId == 0) {
 			this->cpsi_outputs[j] += 1;
 		}
@@ -702,26 +702,12 @@ template <class FieldType> void CircuitPSI<FieldType>::outputPrint() {
         vector<int> matches;
         uint64_t counter=0;
         uint64_t i;
-	int half = this->N / 2;
 
         for(i=0; i < this->num_bins; i++) {
-                if(outputs[i] != *(this->field->GetZero())) {
-			if (this->K < half) {
-				matches.push_back(i);
-				counter++;
-			}
-			else
-				continue;
-		}
-		else {
-			if(this->K >= half) {
-                		matches.push_back(i);
-                		counter++;
-			}
-			else
-				continue;
-		}
-        }
+                if(outputs[i] == *(this->field->GetOne())) {
+									matches.push_back(i);
+								}
+				}
 	cout << this->m_partyId << ": 0 found at " << matches.size() << " positions. " << endl;
 /*
         for(i=0; i < counter; i++) {

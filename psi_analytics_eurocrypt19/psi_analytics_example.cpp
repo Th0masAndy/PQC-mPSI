@@ -274,6 +274,48 @@ void MPSI_threshold_execution(ENCRYPTO::PsiAnalyticsContext &context, std::vecto
   PrintCommunication(context);
 }
 
+void MPSI_circuit_execution(ENCRYPTO::PsiAnalyticsContext &context, std::vector<uint64_t> &bins, std::vector<uint64_t> &inputs, std::vector<std::unique_ptr<CSocket>> &allsocks, std::vector<osuCrypto::Channel> &chl, std::vector<sci::NetIO*> ioArr, CircuitPSI<ZpMersenneByteElement> &mpsi) {
+  ResetCommunication(allsocks, chl, context);
+	RELAXEDNS::ResetCommunicationThreshold(ioArr, context);
+	auto start_time = std::chrono::system_clock::now();
+	std::vector<std::vector<uint8_t>> sub_bins;
+	switch(context.opprf_type) {
+    case ENCRYPTO::PsiAnalyticsContext::POLY: {std::string error_msg("Not implemented currently.");
+																							throw std::runtime_error(error_msg.c_str());
+																							break;
+																							}
+	  case ENCRYPTO::PsiAnalyticsContext::RELAXED: {RELAXEDNS::run_threshold_relaxed_opprf(sub_bins, context, inputs, allsocks, chl, ioArr);
+																								 break;
+																								 }
+		case ENCRYPTO::PsiAnalyticsContext::TABLE: {std::string error_msg("Not implemented currently.");
+																							 throw std::runtime_error(error_msg.c_str());
+																							 break;
+																							}
+		}
+	  auto t1 = std::chrono::system_clock::now();
+		const duration_millis opprf_time = t1 - start_time;
+		context.timings.opprf = opprf_time.count();
+
+		cout << context.role << ": Passing inputs..." << endl;
+		mpsi.readMPSIInputs(sub_bins, context.nbins);
+
+		cout << context.role << ": Running circuit..." << endl;
+		auto t2 = std::chrono::system_clock::now();
+		mpsi.runMPSI();
+		auto end_time = std::chrono::system_clock::now();
+		const duration_millis circuit_time = end_time - t2;
+
+		context.timings.circuit = circuit_time.count();
+		const duration_millis total_time = end_time - start_time;
+		context.timings.total = total_time.count();
+		
+		AccumulateCommunicationPSI(allsocks, chl, context);
+		RELAXEDNS::AccumulateCommunicationThreshold(ioArr, context);
+
+		PrintTimings(context);
+		PrintCommunication(context);
+}
+
 void synchronize_parties(ENCRYPTO::PsiAnalyticsContext &context, std::vector<std::unique_ptr<CSocket>> &allsocks, std::vector<osuCrypto::Channel> &chl, osuCrypto::IOService &ios, std::vector<osuCrypto::Session> &ep) {
   if(context.role == P_0) {
     chl.resize(context.np-1);
