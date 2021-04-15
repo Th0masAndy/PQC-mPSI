@@ -704,7 +704,8 @@ template <class FieldType> void CircuitPSI<FieldType>::outputPrint() {
         uint64_t i;
 
         for(i=0; i < this->num_bins; i++) {
-                if(outputs[i] == *(this->field->GetOne())) {
+								cout << this->m_partyId << ": " << (int) outputs[i].elem << endl;
+                if(outputs[i] != *(this->field->GetZero())) {
 									matches.push_back(i);
 								}
 				}

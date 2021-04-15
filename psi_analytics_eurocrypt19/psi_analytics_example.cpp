@@ -368,9 +368,9 @@ int main(int argc, char **argv) {
         //auto inputs = ENCRYPTO::GeneratePseudoRandomElements(context.neles, gen_bitlen);
 				auto inputs = ENCRYPTO::GenerateSequentialElements(context.neles);
 
-				/*for(int i=0; i < inputs.size(); i++) {
+				for(int i=0; i < inputs.size(); i++) {
 						inputs[i] = inputs[i] * ((context.role % 2) + 1);
-				}*/
+				}
 
 	//auto inputs = ENCRYPTO::GenerateSequentialElements(context.neles);
 	      int size;
@@ -422,7 +422,7 @@ int main(int argc, char **argv) {
 */
 std::vector<sci::NetIO*> ioArr;
 int party;
-if(context.analytics_type == ENCRYPTO::PsiAnalyticsContext::THRESHOLD) {
+if((context.analytics_type == ENCRYPTO::PsiAnalyticsContext::THRESHOLD) || (context.analytics_type == ENCRYPTO::PsiAnalyticsContext::CIRCUIT)){
   if(context.role == P_0) {
      std::thread boolean_conn_threads[context.nthreads];
      party = 1;
@@ -459,6 +459,11 @@ if(context.analytics_type == ENCRYPTO::PsiAnalyticsContext::THRESHOLD) {
                                                    MPSI_threshold_execution(context, bins, inputs, allsocks, chl, ioArr, mpsi);
                                                    }
                                                    break;
+		case ENCRYPTO::PsiAnalyticsContext::CIRCUIT: {CircuitPSI<ZpMersenneByteElement> mpsi(size, circuitArgv);
+																								 synchronize_parties(context, allsocks, chl, ios, ep);
+																								 MPSI_circuit_execution(context, bins, inputs, allsocks, chl, ioArr, mpsi);
+																								 }
+																								 break;
     case ENCRYPTO::PsiAnalyticsContext::NONE: {std::string error_msg("Not implemented currently.");
                                               throw std::runtime_error(error_msg.c_str());
                                               }
