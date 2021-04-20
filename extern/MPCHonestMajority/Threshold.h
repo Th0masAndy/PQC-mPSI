@@ -48,9 +48,12 @@ class Threshold : public ProtocolParty<FieldType>{
 
 		uint64_t num_bins; // number of bins
 		uint64_t num_triples;//number of multiplication triples
+		uint64_t num_outs; //number of outputs
 		uint64_t sent_bytes; //total number of bytes sent
 		uint64_t recv_bytes; //total number of bytes received
 		int K; //threshold for intersection
+		int p = 31; //prime that the field is over
+		int J;
 		vector<FieldType> masks; //the shares of the masks s_j for each value to be multiplied with
 		vector<FieldType> add_a; //additive shares of a_j
 		vector<FieldType> a_vals; //threshold shares of a_j
@@ -120,6 +123,7 @@ template <class FieldType> Threshold<FieldType>::Threshold(int argc, char* argv[
         this->myOutputFile = parser.getValueByKey(this->arguments, "outputsFile");
 
 	this->K = stoi(parser.getValueByKey(this->arguments, "threshold"));
+	this->J = (int)(ceil((40 + (int)(ceil(log2(this->N))) + 3) / ceil(log2(p))));
 
 	this->sent_bytes = 0;
 	this->recv_bytes = 0;
@@ -158,6 +162,8 @@ template <class FieldType> Threshold<FieldType>::Threshold(int argc, char* argv[
         this->myOutputFile = parser.getValueByKey(this->arguments, "outputsFile");
 
 	this->K = stoi(parser.getValueByKey(this->arguments, "threshold"));
+	this->J = (int)(ceil((40 + (int)(ceil(log2(this->N))) + 3) / ceil(log2(p))));
+	cout << "J is " << J << endl;
 
 	this->sent_bytes = 0;
 	this->recv_bytes = 0;
@@ -260,18 +266,19 @@ template <class FieldType> void Threshold<FieldType>::convertSharestoFieldType(v
 
 //perform MPSI
 template <class FieldType> void Threshold<FieldType>::runMPSI() {
-        this->masks.resize(this->num_bins);
+	this->num_outs = this->num_bins * this->J;
+        this->masks.resize(this->num_outs);
         this->a_vals.resize(this->num_bins);
-        this->mult_outs.resize(this->num_bins);
-        this->outputs.resize(this->num_bins);
+        this->mult_outs.resize(this->num_outs);
+        this->outputs.resize(this->num_outs);
 	this->poly_outs.resize(this->num_bins);
 
 	int half = this->N / 2;
 	if(this->K < half) {
-		this->num_triples = this->K * this->num_bins;
+		this->num_triples = (this->K + this->J) * this->num_bins;
 	}
 	else {
-		this->num_triples = (this->N - this->K + 1) * this->num_bins;
+		this->num_triples = (this->N - this->K + 1 + this->J) * this->num_bins;
 	}
 
 	auto t1 = high_resolution_clock::now();
@@ -283,7 +290,7 @@ template <class FieldType> void Threshold<FieldType>::runMPSI() {
 
 	//Generate random T-sharings
         auto t5 = high_resolution_clock::now();
-        this->generateRandomShares(this->num_bins, this->masks);
+        this->generateRandomShares(this->num_outs, this->masks);
         auto t6 = high_resolution_clock::now();
         auto dur3 = duration_cast<milliseconds>(t6-t5).count();
         //cout << this->m_partyId << ": T-sharings generated in " << dur3 << "milliseconds." << endl;
@@ -609,6 +616,9 @@ template <class FieldType> void Threshold<FieldType>::thresh_poly() {
 	int fieldByteSize = this->field->getElementSizeInBytes();
 	vector<FieldType> left(this->num_bins);
 	vector<FieldType> right(this->num_bins);
+	vector<FieldType> sj(this->J);
+	vector<FieldType> psi(this->J);
+	vector<FieldType> vj(this->J);
 	vector<byte> polybytes(this->num_bins * fieldByteSize);
 	vector<vector<byte>> recBufsBytes;
 	uint64_t i, j;
@@ -648,21 +658,35 @@ template <class FieldType> void Threshold<FieldType>::thresh_poly() {
 		offset = (this->N - this->K) * num_bins * 2;
 	}
 
-	this->DNHonestMultiplication(this->masks, this->poly_outs, this->mult_outs, this->num_bins, offset);
+	for(j = 0; j < this->num_bins; j++) {
+		int pos = (j * this->J);
+		for(i = 0; i < this->J; i++) {
+			sj[i] = masks[pos + i];
+			psi[i] = poly_outs[j];
+			//offset = j * this->J;
+			//this->DNHonestMultiplication(this->masks, this->poly_outs, this->mult_outs, this->num_bins, offset);
+		}
+		this->DNHonestMultiplication(sj, psi, vj, this->J, offset);
+		offset = offset + (this->J * 2);
+
+		for(i = 0; i < this->J; i++) {
+			mult_outs[pos + i] = vj[i];
+		}
+	}
 }
 
 //Step 4 of the online phase:
 //The parties send shares to the leader to open
 template <class FieldType> void Threshold<FieldType>::leader_open() {
 	int fieldByteSize = this->field->getElementSizeInBytes();
-	vector<byte> multbytes(this->num_bins * fieldByteSize);
+	vector<byte> multbytes(this->num_outs * fieldByteSize);
 	vector<vector<byte>> recBufsBytes;
 	int i;
 	uint64_t j;
 
-	int offset = (this->K - 1) * num_bins * 2;
+	//int offset = (this->K - 1) * num_bins * 2;
 	//this->DNHonestMultiplication(this->masks, this->poly_outs, this->mult_outs, this->num_bins, offset);
-	for(j=0; j < this->num_bins; j++) {
+	for(j=0; j < this->num_outs; j++) {
 		this->field->elementToBytes(multbytes.data() + (j*fieldByteSize), this->mult_outs[j]);
 	}
 
@@ -670,7 +694,7 @@ template <class FieldType> void Threshold<FieldType>::leader_open() {
 	if(this->m_partyId == 0) {
 		recBufsBytes.resize(this->N);
 		for(i=0; i<this->N; i++) {
-			recBufsBytes[i].resize(this->num_bins * fieldByteSize);
+			recBufsBytes[i].resize(this->num_outs * fieldByteSize);
 		}
 		this->roundFunctionSyncForP1(multbytes, recBufsBytes);
 	}
@@ -680,7 +704,7 @@ template <class FieldType> void Threshold<FieldType>::leader_open() {
 
 	if(this->m_partyId == 0) {
 		vector<FieldType> x1(this->N);
-		for(j=0; j<this->num_bins; j++) {
+		for(j=0; j<this->num_outs; j++) {
 			for(i=0; i<this->N; i++) {
 				x1[i] = this->field->bytesToElement(recBufsBytes[i].data() + (j*fieldByteSize));
 			}
@@ -715,25 +739,38 @@ template <class FieldType> void Threshold<FieldType>::evaluateCircuit() {
 template <class FieldType> void Threshold<FieldType>::outputPrint() {
         vector<int> matches;
         uint64_t counter=0;
-        uint64_t i;
+        uint64_t i, j, pos;
+	bool allZero;
 	int half = this->N / 2;
 
         for(i=0; i < this->num_bins; i++) {
-                if(outputs[i] != *(this->field->GetZero())) {
-			if (this->K < half) {
+		pos = i * this->J;
+		if(this->K >= half) {
+			allZero = true;
+			for(j = 0; j < this->J; j++) {
+				if(outputs[pos + j] != *(this->field->GetZero())) {
+					allZero = false;
+					break;
+				}
+			}
+			if(allZero == true) {
 				matches.push_back(i);
 				counter++;
 			}
-			else
-				continue;
 		}
+
 		else {
-			if(this->K >= half) {
-                		matches.push_back(i);
-                		counter++;
+			allZero = true;
+			for(j = 0; j < this->J; j++) {
+				if(outputs[pos + j] != *(this->field->GetZero())) {
+					allZero = false;
+					break;
+				}
 			}
-			else
-				continue;
+			if(allZero == false) {
+				matches.push_back(i);
+				counter++;
+			}
 		}
         }
 	cout << this->m_partyId << ": 0 found at " << matches.size() << " positions. " << endl;
