@@ -123,7 +123,6 @@ template <class FieldType> Threshold<FieldType>::Threshold(int argc, char* argv[
         this->myOutputFile = parser.getValueByKey(this->arguments, "outputsFile");
 
 	this->K = stoi(parser.getValueByKey(this->arguments, "threshold"));
-	this->J = (int)(ceil((40 + (int)(ceil(log2(this->N))) + 3) / ceil(log2(p))));
 
 	this->sent_bytes = 0;
 	this->recv_bytes = 0;
@@ -162,8 +161,6 @@ template <class FieldType> Threshold<FieldType>::Threshold(int argc, char* argv[
         this->myOutputFile = parser.getValueByKey(this->arguments, "outputsFile");
 
 	this->K = stoi(parser.getValueByKey(this->arguments, "threshold"));
-	this->J = (int)(ceil((40 + (int)(ceil(log2(this->N))) + 3) / ceil(log2(p))));
-	cout << "J is " << J << endl;
 
 	this->sent_bytes = 0;
 	this->recv_bytes = 0;
@@ -266,12 +263,15 @@ template <class FieldType> void Threshold<FieldType>::convertSharestoFieldType(v
 
 //perform MPSI
 template <class FieldType> void Threshold<FieldType>::runMPSI() {
+	this->J = 40 + (round)(log2(this->num_bins / 1.28)) + 3; 
 	this->num_outs = this->num_bins * this->J;
         this->masks.resize(this->num_outs);
         this->a_vals.resize(this->num_bins);
         this->mult_outs.resize(this->num_outs);
         this->outputs.resize(this->num_outs);
 	this->poly_outs.resize(this->num_bins);
+
+	cout << this->m_partyId << ": J = " << this->J << endl;
 
 	int half = this->N / 2;
 	if(this->K < half) {
@@ -616,11 +616,11 @@ template <class FieldType> void Threshold<FieldType>::thresh_poly() {
 	int fieldByteSize = this->field->getElementSizeInBytes();
 	vector<FieldType> left(this->num_bins);
 	vector<FieldType> right(this->num_bins);
-	vector<FieldType> sj(this->J);
-	vector<FieldType> psi(this->J);
-	vector<FieldType> vj(this->J);
-	vector<byte> polybytes(this->num_bins * fieldByteSize);
-	vector<vector<byte>> recBufsBytes;
+	//vector<FieldType> sj(this->J);
+	vector<FieldType> psi(this->num_outs);
+	//vector<FieldType> vj(this->J);
+	//vector<byte> polybytes(this->num_bins * fieldByteSize);
+	//vector<vector<byte>> recBufsBytes;
 	uint64_t i, j;
 	int offset, half;
 
@@ -661,18 +661,20 @@ template <class FieldType> void Threshold<FieldType>::thresh_poly() {
 	for(j = 0; j < this->num_bins; j++) {
 		int pos = (j * this->J);
 		for(i = 0; i < this->J; i++) {
-			sj[i] = masks[pos + i];
-			psi[i] = poly_outs[j];
+			//sj[i] = masks[pos + i];
+			psi[pos + i] = this->poly_outs[j];
+			//mult_outs[pos + i] = poly_outs[j];
 			//offset = j * this->J;
 			//this->DNHonestMultiplication(this->masks, this->poly_outs, this->mult_outs, this->num_bins, offset);
 		}
-		this->DNHonestMultiplication(sj, psi, vj, this->J, offset);
-		offset = offset + (this->J * 2);
+	}
+	this->DNHonestMultiplication(this->masks, psi, this->mult_outs, this->num_outs, offset);
+		/*offset = offset + (this->J * 2);
 
 		for(i = 0; i < this->J; i++) {
 			mult_outs[pos + i] = vj[i];
 		}
-	}
+	}*/
 }
 
 //Step 4 of the online phase:

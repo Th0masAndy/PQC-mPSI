@@ -322,9 +322,9 @@ int main(int argc, char **argv) {
         auto inputs = ENCRYPTO::GeneratePseudoRandomElements(context.neles, gen_bitlen);
 				//auto inputs = ENCRYPTO::GenerateSequentialElements(context.neles);
 
-				/*for(int i=0; i < inputs.size(); i++) {
+				for(int i=0; i < inputs.size(); i++) {
 						inputs[i] = inputs[i] * ((context.role % 2) + 1);
-				}*/
+				}
 
 	//auto inputs = ENCRYPTO::GenerateSequentialElements(context.neles);
 	      int size;
