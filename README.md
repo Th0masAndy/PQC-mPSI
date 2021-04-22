@@ -44,3 +44,13 @@ Then, run the example binary in`${build_directory}/bin/` either from two termina
 between two machines.
 To find information about the command line arguments, run `${example_name} --help`. 
 Suitable parameters and formulas for calculating those can be found in the paper.
+
+##Quorum PSI
+
+Currently the branch relaxed\_opprf implements qpsi over the Mersenne prime field Z\_31. 
+To change this the following files need to be edited:
+-  extern/MPCHonestMajority/Threshold.h 
+-  extern/EzPC/SCI/src/OT/iknp.h
+-  psi\_analytics\_eurocrypt19/common/equality.h
+-  extern/MPCHonestMajority/ZpMersenneByteElement.cpp
+
