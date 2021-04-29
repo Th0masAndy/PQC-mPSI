@@ -291,7 +291,7 @@ std::cout<<"Average counts: "<<ave_ctr<<std::endl;
 sock->Send(padding_vals.data(), context.nbins * sizeof(osuCrypto::block));
 //Send table
 sock->Send(table_opprf.data(), context.nbins * ts* sizeof(uint64_t));
-std::cout<<"Checkpoint 1"<<std::endl;
+//std::cout<<"Checkpoint 1"<<std::endl;
   }
 
   void multi_hint_thread(int tid, std::vector<std::vector<uint64_t>> &sub_bins, std::vector<uint64_t> &cuckoo_table_v, std::vector<std::vector<osuCrypto::block>> &masks_with_dummies, ENCRYPTO::PsiAnalyticsContext &context, std::vector<std::unique_ptr<CSocket>> &allsocks, std::vector<osuCrypto::Channel> &chls) {
@@ -309,7 +309,7 @@ std::cout<<"Checkpoint 1"<<std::endl;
   }
 
   void multi_otpack_setup(int tid, std::vector<sci::NetIO*> &ioArr, std::vector<sci::OTPack<sci::NetIO>*> &otpackArr, ENCRYPTO::PsiAnalyticsContext &context) {
-    std::cout<<"Cp 3"<<context.radixparam<<": "<< context.bitlen<< std::endl;
+    //std::cout<<"Cp 3"<<context.radixparam<<": "<< context.bitlen<< std::endl;
     for(int i=tid; i<context.np-1; i=i+context.nthreads) {
       for(int j=0; j<2; j++) {
         if (j == 0) {
@@ -319,7 +319,7 @@ std::cout<<"Checkpoint 1"<<std::endl;
         }
       }
     }
-    std::cout<<"Cp 2"<<std::endl;
+    //std::cout<<"Cp 2"<<std::endl;
   }
 
   void multi_equality_thread(int tid, std::vector<std::vector<uint64_t>> &x, int party, int num_cmps, std::vector<std::vector<uint8_t>> &z, std::vector<std::vector<uint8_t>> &a_shares_bins, std::vector<std::vector<uint64_t>> &aux_bins, std::vector<sci::NetIO*> &ioArr, std::vector<sci::OTPack<sci::NetIO>*> &otpackArr, ENCRYPTO::PsiAnalyticsContext &context, std::vector<std::unique_ptr<CSocket>> &allsocks) {

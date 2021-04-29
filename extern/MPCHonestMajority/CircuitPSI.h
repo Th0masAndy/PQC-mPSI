@@ -10,7 +10,7 @@ void openShare();
 void outputPhase();
 */
 
-#define mpsi_print true
+#define mpsi_print false
 
 template <class FieldType>
 class CircuitPSI : public ProtocolParty<FieldType>{

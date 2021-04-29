@@ -263,7 +263,8 @@ template <class FieldType> void Threshold<FieldType>::convertSharestoFieldType(v
 
 //perform MPSI
 template <class FieldType> void Threshold<FieldType>::runMPSI() {
-	this->J = 40 + (round)(log2(this->num_bins / 1.28)) + 3; 
+	this->J = 2 * ceil((40 + log2(this->num_bins) + 3) / ceil(log2(this->p))) + 1;
+	//this->J = 27;
 	this->num_outs = this->num_bins * this->J;
         this->masks.resize(this->num_outs);
         this->a_vals.resize(this->num_bins);
