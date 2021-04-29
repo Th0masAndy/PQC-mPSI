@@ -456,6 +456,9 @@ class Equality {
 		}
 
 		void boolean_to_arithmetic(uint8_t* z, uint8_t* a_shares) {
+			for(int i=0; i<10; i++) {
+				cout<<" Share Boolean"<<i<<":"<<(int)z[i]<<endl;
+			}
 
 			int aux_val;
 			int smallmod = (int)(pow(2, BITLEN) - 1);
@@ -491,6 +494,9 @@ class Equality {
 						a_shares[i] = (uint8_t)tmp_share;
 						//a_shares[i] = a_shares[i] & ENCRYPTO::__61_bit_mask;
 				}
+			}
+			for(int i=0; i<10; i++) {
+				cout<<"1 Arithmetic Share "<<i<<":"<<(int)a_shares[i]<<endl;
 			}
 		}
 };

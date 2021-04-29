@@ -143,6 +143,7 @@ template <class FieldType> CircuitPSI<FieldType>::CircuitPSI(int argc, char* arg
 
         //Generation of shared values, such as triples, must be done later.
 				uint64_t radix = prime_val-1;
+				std::cout<<"Radix: "<<radix<<std::endl;
 			  int r=0;
 				int i=0;
 			  while(radix != 0) {
@@ -153,6 +154,8 @@ template <class FieldType> CircuitPSI<FieldType>::CircuitPSI(int argc, char* arg
 					}
 					i++;
 			  }
+				for(int i=0;i<sindex.size();i++)
+					std::cout<<"Sindex "<<i<<":"<<sindex[i]<<std::endl;
 				triple_ctr = prime_bitlen + sindex.size() - 2;
 }
 
@@ -244,6 +247,9 @@ template <class FieldType> void CircuitPSI<FieldType>::readMPSIInputs(vector<vec
 
 	this->num_bins = add_a.size();
 	std::cout<<"Num Bins"<<this->num_bins<<std::endl;
+	for(int i=0; i<10; i++) {
+		std::cout<<"After read op "<<i<<":"<<(int)add_a[i].elem<<std::endl;
+	}
 /*
         if (mpsi_print == true) {
                 cout << this->m_partyId << ": " << this->num_bins << " values read." << endl;
@@ -609,7 +615,7 @@ template <class FieldType> void CircuitPSI<FieldType>::compute_intersection_shar
 	}
 
 	for(uint64_t i=0; i< this->num_bins; i++)	{
-		pow_mult[0][i] = this->a_vals[i];
+		pow_mult[0][i] = this->a_vals[i]-prime_val+1;
 	}
 
 	for(uint64_t i=1; i<prime_bitlen; i++) {
@@ -630,10 +636,7 @@ template <class FieldType> void CircuitPSI<FieldType>::compute_intersection_shar
 	}
 
 	for(uint64_t j=0; j<this->num_bins; j++) {
-		this->cpsi_outputs[j] = *(this->field->GetZero()) - this->cpsi_outputs[j];
-		if(this->m_partyId == 0) {
-			this->cpsi_outputs[j] += 1;
-		}
+		//this->cpsi_outputs[j] = *(this->field->GetOne()) - this->cpsi_outputs[j];
 	}
 }
 
@@ -703,7 +706,7 @@ template <class FieldType> void CircuitPSI<FieldType>::outputPrint() {
         uint64_t counter=0;
         uint64_t i;
 
-        for(i=0; i < this->num_bins; i++) {
+        for(i=0; i < 10; i++) {
 								cout << this->m_partyId << ": " << (int) outputs[i].elem << endl;
                 if(outputs[i] != *(this->field->GetZero())) {
 									matches.push_back(i);
