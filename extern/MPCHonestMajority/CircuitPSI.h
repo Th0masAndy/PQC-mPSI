@@ -606,7 +606,7 @@ template <class FieldType> void CircuitPSI<FieldType>::subtract_rj() {
 //Step 3 of the online phase:
 //Compute x^{p-1}
 template <class FieldType> void CircuitPSI<FieldType>::compute_intersection_shares() {
-	int offset;
+	int offset=0;
 
 	vector<vector<FieldType>> pow_mult(prime_bitlen);
 	vector<FieldType> intermediate_mult(this->num_bins);
@@ -615,17 +615,38 @@ template <class FieldType> void CircuitPSI<FieldType>::compute_intersection_shar
 	}
 
 	for(uint64_t i=0; i< this->num_bins; i++)	{
-		pow_mult[0][i] = this->a_vals[i]-prime_val+1;
+		pow_mult[0][i] = this->a_vals[i]-this->N+1;
 	}
+        vector<FieldType> reconar;                                                          
+	reconar.resize(num_bins);                                                           
+	this->openShare(this->num_bins, pow_mult[0], reconar);                                   
+	if(this->m_partyId==0){                                                             
+        	for(int i=0; i<10; i++) {                                                   
+                	cout<<"reconstructed_val " << i << ":"<< (int)reconar[i].elem<<endl;
+        	}                                                                           
+	}                                                                                   
+        
 
 	for(uint64_t i=1; i<prime_bitlen; i++) {
 		this->DNHonestMultiplication(pow_mult[i-1], pow_mult[i-1], pow_mult[i], this->num_bins, offset);
 		offset = offset + num_bins * 2;
+                this->openShare(this->num_bins, pow_mult[i], reconar);                              
+		if(this->m_partyId==0){                                                             
+        		for(int j=0; j<10; j++) {                                                   
+                		cout<<"pow: "<<i <<",reconstructed_val " << j << ":"<< (int)reconar[j].elem<<endl;
+        		}	                                                                           
+		}                                                                                   
 	}
 
 	for(uint64_t i=0; i<this->num_bins; i++){
 		this->cpsi_outputs[i] = pow_mult[sindex[0]][i];
 	}
+        this->openShare(this->num_bins, cpsi_outputs, reconar);                              
+	if(this->m_partyId==0){                                                             
+        	for(int j=0; j<10; j++) {                                                   
+                	cout<<"cpsi 0: " << j << ":"<< (int)reconar[j].elem<<endl;
+        	}                                                                           
+	}                                                                                   
 
 	for(uint64_t i=1; i<sindex.size(); i++) {
 		this->DNHonestMultiplication(cpsi_outputs, pow_mult[sindex[i]], intermediate_mult, this->num_bins, offset);
@@ -633,11 +654,24 @@ template <class FieldType> void CircuitPSI<FieldType>::compute_intersection_shar
 		for(uint64_t j=0; j<this->num_bins; j++) {
 			this->cpsi_outputs[j] = intermediate_mult[j];
 		}
+                this->openShare(this->num_bins, cpsi_outputs, reconar);                              
+		if(this->m_partyId==0){                                                             
+        		for(int j=0; j<10; j++) {                                                   
+                		cout<<"cpsi "<<i<<":" << j << ":"<< (int)reconar[j].elem<<endl;
+        		}	                                                                           
+ 		}                                                                                   
 	}
 
 	for(uint64_t j=0; j<this->num_bins; j++) {
-		//this->cpsi_outputs[j] = *(this->field->GetOne()) - this->cpsi_outputs[j];
+		this->cpsi_outputs[j] = *(this->field->GetOne()) - this->cpsi_outputs[j];
 	}
+        this->openShare(this->num_bins, cpsi_outputs, reconar);
+        if(this->m_partyId==0) {
+		for(int j=0; j<10; j++) {
+                	cout<<"cpsi last: " << j << ":"<< (int)reconar[j].elem<<endl;
+                }
+        
+        }
 }
 
 //Step 4 of the online phase:
@@ -649,10 +683,9 @@ template <class FieldType> void CircuitPSI<FieldType>::leader_open() {
 	int i;
 	uint64_t j;
 
-	int offset = (this->K - 1) * num_bins * 2;
 	//this->DNHonestMultiplication(this->masks, this->poly_outs, this->mult_outs, this->num_bins, offset);
 	for(j=0; j < this->num_bins; j++) {
-		this->field->elementToBytes(multbytes.data() + (j*fieldByteSize), this->mult_outs[j]);
+		this->field->elementToBytes(multbytes.data() + (j*fieldByteSize), this->cpsi_outputs[j]);
 	}
 
 	//this->openShare(this->num_bins, this->mult_outs, this->outputs);
@@ -675,7 +708,11 @@ template <class FieldType> void CircuitPSI<FieldType>::leader_open() {
 			}
 			this->outputs[j] = this->interpolate(x1);
 		}
+                for(int j=0; j<10; j++) {                                            
+        		cout<<"outputs " << j << ":"<< (int)this->outputs[j].elem<<endl;
+		}                                                                    
 	}
+       
 }
 
 //Call the 4 steps of the online phase.
@@ -683,8 +720,16 @@ template <class FieldType> void CircuitPSI<FieldType>::evaluateCircuit() {
 	auto t9 = high_resolution_clock::now();
 	add_rj();
 	subtract_rj();
-	compute_intersection_shares();
-	//leader_open();
+        vector<FieldType> reconar;
+        reconar.resize(num_bins); 
+        this->openShare(this->num_bins, a_vals, reconar);  
+	if(this->m_partyId==0){
+        	for(int i=0; i<10; i++) {
+                 	cout<<"reconstructed_val " << i << ":"<< (int)reconar[i].elem<<endl;
+                }
+        }
+        compute_intersection_shares();
+	leader_open();
 	auto t10 = high_resolution_clock::now();
 	auto dur5 = duration_cast<milliseconds>(t10-t9).count();
 	cout << this->m_partyId << ": Circuit evaluated in " << dur5 << " milliseconds." << endl;
@@ -706,8 +751,8 @@ template <class FieldType> void CircuitPSI<FieldType>::outputPrint() {
         uint64_t counter=0;
         uint64_t i;
 
-        for(i=0; i < 10; i++) {
-								cout << this->m_partyId << ": " << (int) outputs[i].elem << endl;
+        for(i=0; i < this->num_bins; i++) {
+				//				cout << this->m_partyId << ": " << (int) outputs[i].elem << endl;
                 if(outputs[i] != *(this->field->GetZero())) {
 									matches.push_back(i);
 								}
