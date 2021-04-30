@@ -143,7 +143,6 @@ template <class FieldType> CircuitPSI<FieldType>::CircuitPSI(int argc, char* arg
 
         //Generation of shared values, such as triples, must be done later.
 				uint64_t radix = prime_val-1;
-				std::cout<<"Radix: "<<radix<<std::endl;
 			  int r=0;
 				int i=0;
 			  while(radix != 0) {
@@ -154,8 +153,7 @@ template <class FieldType> CircuitPSI<FieldType>::CircuitPSI(int argc, char* arg
 					}
 					i++;
 			  }
-				for(int i=0;i<sindex.size();i++)
-					std::cout<<"Sindex "<<i<<":"<<sindex[i]<<std::endl;
+
 				triple_ctr = prime_bitlen + sindex.size() - 2;
 }
 
@@ -247,9 +245,6 @@ template <class FieldType> void CircuitPSI<FieldType>::readMPSIInputs(vector<vec
 
 	this->num_bins = add_a.size();
 	std::cout<<"Num Bins"<<this->num_bins<<std::endl;
-	for(int i=0; i<10; i++) {
-		std::cout<<"After read op "<<i<<":"<<(int)add_a[i].elem<<std::endl;
-	}
 /*
         if (mpsi_print == true) {
                 cout << this->m_partyId << ": " << this->num_bins << " values read." << endl;
@@ -617,36 +612,15 @@ template <class FieldType> void CircuitPSI<FieldType>::compute_intersection_shar
 	for(uint64_t i=0; i< this->num_bins; i++)	{
 		pow_mult[0][i] = this->a_vals[i]-this->N+1;
 	}
-        vector<FieldType> reconar;                                                          
-	reconar.resize(num_bins);                                                           
-	this->openShare(this->num_bins, pow_mult[0], reconar);                                   
-	if(this->m_partyId==0){                                                             
-        	for(int i=0; i<10; i++) {                                                   
-                	cout<<"reconstructed_val " << i << ":"<< (int)reconar[i].elem<<endl;
-        	}                                                                           
-	}                                                                                   
-        
 
 	for(uint64_t i=1; i<prime_bitlen; i++) {
 		this->DNHonestMultiplication(pow_mult[i-1], pow_mult[i-1], pow_mult[i], this->num_bins, offset);
 		offset = offset + num_bins * 2;
-                this->openShare(this->num_bins, pow_mult[i], reconar);                              
-		if(this->m_partyId==0){                                                             
-        		for(int j=0; j<10; j++) {                                                   
-                		cout<<"pow: "<<i <<",reconstructed_val " << j << ":"<< (int)reconar[j].elem<<endl;
-        		}	                                                                           
-		}                                                                                   
 	}
 
 	for(uint64_t i=0; i<this->num_bins; i++){
 		this->cpsi_outputs[i] = pow_mult[sindex[0]][i];
 	}
-        this->openShare(this->num_bins, cpsi_outputs, reconar);                              
-	if(this->m_partyId==0){                                                             
-        	for(int j=0; j<10; j++) {                                                   
-                	cout<<"cpsi 0: " << j << ":"<< (int)reconar[j].elem<<endl;
-        	}                                                                           
-	}                                                                                   
 
 	for(uint64_t i=1; i<sindex.size(); i++) {
 		this->DNHonestMultiplication(cpsi_outputs, pow_mult[sindex[i]], intermediate_mult, this->num_bins, offset);
@@ -654,24 +628,11 @@ template <class FieldType> void CircuitPSI<FieldType>::compute_intersection_shar
 		for(uint64_t j=0; j<this->num_bins; j++) {
 			this->cpsi_outputs[j] = intermediate_mult[j];
 		}
-                this->openShare(this->num_bins, cpsi_outputs, reconar);                              
-		if(this->m_partyId==0){                                                             
-        		for(int j=0; j<10; j++) {                                                   
-                		cout<<"cpsi "<<i<<":" << j << ":"<< (int)reconar[j].elem<<endl;
-        		}	                                                                           
- 		}                                                                                   
 	}
 
 	for(uint64_t j=0; j<this->num_bins; j++) {
 		this->cpsi_outputs[j] = *(this->field->GetOne()) - this->cpsi_outputs[j];
 	}
-        this->openShare(this->num_bins, cpsi_outputs, reconar);
-        if(this->m_partyId==0) {
-		for(int j=0; j<10; j++) {
-                	cout<<"cpsi last: " << j << ":"<< (int)reconar[j].elem<<endl;
-                }
-        
-        }
 }
 
 //Step 4 of the online phase:
@@ -708,11 +669,11 @@ template <class FieldType> void CircuitPSI<FieldType>::leader_open() {
 			}
 			this->outputs[j] = this->interpolate(x1);
 		}
-                for(int j=0; j<10; j++) {                                            
+                for(int j=0; j<10; j++) {
         		cout<<"outputs " << j << ":"<< (int)this->outputs[j].elem<<endl;
-		}                                                                    
+		}
 	}
-       
+
 }
 
 //Call the 4 steps of the online phase.
@@ -720,15 +681,7 @@ template <class FieldType> void CircuitPSI<FieldType>::evaluateCircuit() {
 	auto t9 = high_resolution_clock::now();
 	add_rj();
 	subtract_rj();
-        vector<FieldType> reconar;
-        reconar.resize(num_bins); 
-        this->openShare(this->num_bins, a_vals, reconar);  
-	if(this->m_partyId==0){
-        	for(int i=0; i<10; i++) {
-                 	cout<<"reconstructed_val " << i << ":"<< (int)reconar[i].elem<<endl;
-                }
-        }
-        compute_intersection_shares();
+  compute_intersection_shares();
 	leader_open();
 	auto t10 = high_resolution_clock::now();
 	auto dur5 = duration_cast<milliseconds>(t10-t9).count();
