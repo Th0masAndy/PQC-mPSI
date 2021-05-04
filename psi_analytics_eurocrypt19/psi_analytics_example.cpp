@@ -312,6 +312,9 @@ void MPSI_circuit_execution(ENCRYPTO::PsiAnalyticsContext &context, std::vector<
 		AccumulateCommunicationPSI(allsocks, chl, context);
 		RELAXEDNS::AccumulateCommunicationThreshold(ioArr, context);
 
+		context.sentBytesCircuit = mpsi.sent_bytes;
+		context.recvBytesCircuit = mpsi.recv_bytes;
+
 		PrintTimings(context);
 		PrintCommunication(context);
 }
