@@ -387,7 +387,12 @@ ProtocolParty<FieldType>::ProtocolParty(int argc, char* argv[]) : MPCProtocol("M
     } else if(fieldType.compare("ZpMersenne127") == 0) {
         std::cout<<"ZpMersenne 127"<<std::endl;
         field = new TemplateField<FieldType>(0);
+    } else if(fieldType.compare("ZpMersenneByte") == 0) {
+        std::cout <<"ZpMersenne Byte"<<std::endl;
+        field = new TemplateField<FieldType>(0);
     }
+    
+
     N = stoi(parser.getValueByKey(arguments, "partiesNumber"));
 
     T = N/2 - 1;

@@ -141,7 +141,7 @@ auto read_test_options(int32_t argcp, char **argvp) {
   	context.circuitFileName = "ic.txt";
   	context.partiesFile = "Parties.txt";
 
-  	context.fieldType = "GF2E";
+  	context.fieldType = "ZpMersenneByte";
   	context.genRandomSharesType = "HIM";
   	context.multType = "DN";
   	context.verifyType = "Single";
