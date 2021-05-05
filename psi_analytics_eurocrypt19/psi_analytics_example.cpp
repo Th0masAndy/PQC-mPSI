@@ -141,7 +141,7 @@ auto read_test_options(int32_t argcp, char **argvp) {
   	context.circuitFileName = "ic.txt";
   	context.partiesFile = "Parties.txt";
 
-  	context.fieldType = "ZpMersenneByte";
+  	//context.fieldType = "ZpMersenneByte";
   	context.genRandomSharesType = "HIM";
   	context.multType = "DN";
   	context.verifyType = "Single";
@@ -401,14 +401,16 @@ if(context.analytics_type == ENCRYPTO::PsiAnalyticsContext::THRESHOLD) {
 	std::vector<osuCrypto::Session> ep;
 
   switch(context.analytics_type) {
-    case ENCRYPTO::PsiAnalyticsContext::PSI: {MPSI_Party<GF2E> mpsi(size, circuitArgv, bins, context.nbins);
+    case ENCRYPTO::PsiAnalyticsContext::PSI: {context.fieldType = "GF2E";
+					      MPSI_Party<GF2E> mpsi(size, circuitArgv, bins, context.nbins);
                                              synchronize_parties(context, allsocks, chl, ios, ep);
                                              MPSI_execution(context, bins, inputs, allsocks, chl, mpsi);
                                              }
                                              break;
 
 
-    case ENCRYPTO::PsiAnalyticsContext::THRESHOLD: {Threshold<ZpMersenneByteElement> mpsi(size, circuitArgv);
+    case ENCRYPTO::PsiAnalyticsContext::THRESHOLD: {context.fieldType = "ZpMersenneByte";
+						   Threshold<ZpMersenneByteElement> mpsi(size, circuitArgv);
                                                    synchronize_parties(context, allsocks, chl, ios, ep);
                                                    MPSI_threshold_execution(context, bins, inputs, allsocks, chl, ioArr, mpsi);
                                                    }
