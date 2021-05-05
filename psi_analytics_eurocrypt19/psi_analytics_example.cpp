@@ -79,8 +79,10 @@ auto read_test_options(int32_t argcp, char **argvp) {
   	if (type.compare("None") == 0) {
     		context.analytics_type = ENCRYPTO::PsiAnalyticsContext::NONE;
   	} else if (type.compare("PSI") == 0) {
+                context.fieldType = "ZpMersenne61";
     		context.analytics_type = ENCRYPTO::PsiAnalyticsContext::PSI;
   	} else if (type.compare("Threshold") == 0) {
+                context.fieldType = "ZpMersenneByte";
     		context.analytics_type = ENCRYPTO::PsiAnalyticsContext::THRESHOLD;
   	} else {
       std::string error_msg(std::string("Unknown analytics type: " + type));
@@ -184,7 +186,7 @@ void prepareArgs(ENCRYPTO::PsiAnalyticsContext context, char** circuitArgv) {
 	circuitArgv[24] = "1";
 }
 
-void MPSI_execution(ENCRYPTO::PsiAnalyticsContext &context, std::vector<uint64_t> &bins, std::vector<uint64_t> &inputs, std::vector<std::unique_ptr<CSocket>> &allsocks, std::vector<osuCrypto::Channel> &chl, 	MPSI_Party<GF2E> &mpsi) {
+void MPSI_execution(ENCRYPTO::PsiAnalyticsContext &context, std::vector<uint64_t> &bins, std::vector<uint64_t> &inputs, std::vector<std::unique_ptr<CSocket>> &allsocks, std::vector<osuCrypto::Channel> &chl, 	MPSI_Party<ZpMersenneLongElement> &mpsi) {
   ResetCommunication(allsocks, chl, context);
   auto start_time = std::chrono::system_clock::now();
   std::vector<std::vector<uint64_t>> sub_bins;
@@ -401,16 +403,14 @@ if(context.analytics_type == ENCRYPTO::PsiAnalyticsContext::THRESHOLD) {
 	std::vector<osuCrypto::Session> ep;
 
   switch(context.analytics_type) {
-    case ENCRYPTO::PsiAnalyticsContext::PSI: {context.fieldType = "GF2E";
-					      MPSI_Party<GF2E> mpsi(size, circuitArgv, bins, context.nbins);
+    case ENCRYPTO::PsiAnalyticsContext::PSI: {MPSI_Party<ZpMersenneLongElement> mpsi(size, circuitArgv, bins, context.nbins);
                                              synchronize_parties(context, allsocks, chl, ios, ep);
                                              MPSI_execution(context, bins, inputs, allsocks, chl, mpsi);
                                              }
                                              break;
 
 
-    case ENCRYPTO::PsiAnalyticsContext::THRESHOLD: {context.fieldType = "ZpMersenneByte";
-						   Threshold<ZpMersenneByteElement> mpsi(size, circuitArgv);
+    case ENCRYPTO::PsiAnalyticsContext::THRESHOLD: {Threshold<ZpMersenneByteElement> mpsi(size, circuitArgv);
                                                    synchronize_parties(context, allsocks, chl, ios, ep);
                                                    MPSI_threshold_execution(context, bins, inputs, allsocks, chl, ioArr, mpsi);
                                                    }
