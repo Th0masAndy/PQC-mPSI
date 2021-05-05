@@ -65,13 +65,13 @@ class CircuitPSI : public ProtocolParty<FieldType>{
 		string myInputFile, myOutputFile;
 
 		CircuitPSI(int argc, char* argv[]);
-		CircuitPSI(int argc, char* argv[], vector<uint64_t>& bins, uint64_t nbins);
+		CircuitPSI(int argc, char* argv[], vector<uint8_t>& bins, uint64_t nbins);
 
 		//read num_bins MPSI inputs
 		void readMPSIInputs();
-		void readMPSIInputs(vector<vector<uint64_t>>& bins, uint64_t nbins);
+		void readMPSIInputs(vector<vector<uint8_t>>& bins, uint64_t nbins);
 
-		void convertSharestoFieldType(vector<uint64_t>& bins, vector<FieldType>& shares, uint64_t nbins);
+		void convertSharestoFieldType(vector<uint8_t>& bins, vector<FieldType>& shares, uint64_t nbins);
 
 		//perform MPSI
 		void runMPSI();
@@ -153,10 +153,11 @@ template <class FieldType> CircuitPSI<FieldType>::CircuitPSI(int argc, char* arg
 					}
 					i++;
 			  }
+
 				triple_ctr = prime_bitlen + sindex.size() - 2;
 }
 
-template <class FieldType> CircuitPSI<FieldType>::CircuitPSI(int argc, char* argv[], vector<uint64_t>& bins, uint64_t nbins) : ProtocolParty<FieldType>(argc, argv) {
+template <class FieldType> CircuitPSI<FieldType>::CircuitPSI(int argc, char* argv[], vector<uint8_t>& bins, uint64_t nbins) : ProtocolParty<FieldType>(argc, argv) {
         //The call to ProtocolParty constructor initializes inherited variables
         // N, T, m_partyID, as well as the VDM matrix and related vectors.
 
@@ -193,7 +194,7 @@ template <class FieldType> CircuitPSI<FieldType>::CircuitPSI(int argc, char* arg
 template <class FieldType> void CircuitPSI<FieldType>::readMPSIInputs() {
         ifstream myfile;
         //long long int input;
-	uint64_t input;
+	uint8_t input;
         uint64_t i = 0;
         myfile.open(myInputFile);
         do {
@@ -220,8 +221,8 @@ template <class FieldType> void CircuitPSI<FieldType>::readMPSIInputs() {
 }
 
 //read num_bins MPSI inputs
-template <class FieldType> void CircuitPSI<FieldType>::readMPSIInputs(vector<vector<uint64_t>>& bins, uint64_t nbins) {
-  	  uint64_t input;
+template <class FieldType> void CircuitPSI<FieldType>::readMPSIInputs(vector<vector<uint8_t>>& bins, uint64_t nbins) {
+  	  uint8_t input;
     	uint64_t i = 0;
 	    uint64_t j = 0;
 
@@ -253,8 +254,8 @@ template <class FieldType> void CircuitPSI<FieldType>::readMPSIInputs(vector<vec
 }
 
 //convert shares to field type
-template <class FieldType> void CircuitPSI<FieldType>::convertSharestoFieldType(vector<uint64_t>& bins, vector<FieldType>& shares, uint64_t nbins) {
-  	uint64_t input;
+template <class FieldType> void CircuitPSI<FieldType>::convertSharestoFieldType(vector<uint8_t>& bins, vector<FieldType>& shares, uint64_t nbins) {
+  	uint8_t input;
 	uint64_t j = 0;
 	for(int i=0; i<nbins; i++) {
 		input = bins[j++];
@@ -600,16 +601,16 @@ template <class FieldType> void CircuitPSI<FieldType>::subtract_rj() {
 //Step 3 of the online phase:
 //Compute x^{p-1}
 template <class FieldType> void CircuitPSI<FieldType>::compute_intersection_shares() {
-	int offset;
+	int offset=0;
 
 	vector<vector<FieldType>> pow_mult(prime_bitlen);
-	vector<FieldType> intermediate_mult(this->new_bins);
+	vector<FieldType> intermediate_mult(this->num_bins);
 	for(uint64_t i=0; i<prime_bitlen; i++) {
 		pow_mult[i].resize(this->num_bins);
 	}
 
 	for(uint64_t i=0; i< this->num_bins; i++)	{
-		pow_mult[0][i] = this->a_vals[i];
+		pow_mult[0][i] = this->a_vals[i]-this->N+1;
 	}
 
 	for(uint64_t i=1; i<prime_bitlen; i++) {
@@ -630,10 +631,7 @@ template <class FieldType> void CircuitPSI<FieldType>::compute_intersection_shar
 	}
 
 	for(uint64_t j=0; j<this->num_bins; j++) {
-		this->cpsi_outputs[j] = -this->cpsi_outputs[j];
-		if(this->m_partyId == 0) {
-			this->cpsi_outputs[j] += 1;
-		}
+		this->cpsi_outputs[j] = *(this->field->GetOne()) - this->cpsi_outputs[j];
 	}
 }
 
@@ -646,10 +644,9 @@ template <class FieldType> void CircuitPSI<FieldType>::leader_open() {
 	int i;
 	uint64_t j;
 
-	int offset = (this->K - 1) * num_bins * 2;
 	//this->DNHonestMultiplication(this->masks, this->poly_outs, this->mult_outs, this->num_bins, offset);
 	for(j=0; j < this->num_bins; j++) {
-		this->field->elementToBytes(multbytes.data() + (j*fieldByteSize), this->mult_outs[j]);
+		this->field->elementToBytes(multbytes.data() + (j*fieldByteSize), this->cpsi_outputs[j]);
 	}
 
 	//this->openShare(this->num_bins, this->mult_outs, this->outputs);
@@ -672,7 +669,11 @@ template <class FieldType> void CircuitPSI<FieldType>::leader_open() {
 			}
 			this->outputs[j] = this->interpolate(x1);
 		}
+                for(int j=0; j<10; j++) {
+        		cout<<"outputs " << j << ":"<< (int)this->outputs[j].elem<<endl;
+		}
 	}
+
 }
 
 //Call the 4 steps of the online phase.
@@ -680,8 +681,8 @@ template <class FieldType> void CircuitPSI<FieldType>::evaluateCircuit() {
 	auto t9 = high_resolution_clock::now();
 	add_rj();
 	subtract_rj();
-	compute_intersection_shares();
-	//leader_open();
+  compute_intersection_shares();
+	leader_open();
 	auto t10 = high_resolution_clock::now();
 	auto dur5 = duration_cast<milliseconds>(t10-t9).count();
 	cout << this->m_partyId << ": Circuit evaluated in " << dur5 << " milliseconds." << endl;
@@ -702,26 +703,13 @@ template <class FieldType> void CircuitPSI<FieldType>::outputPrint() {
         vector<int> matches;
         uint64_t counter=0;
         uint64_t i;
-	int half = this->N / 2;
 
         for(i=0; i < this->num_bins; i++) {
+				//				cout << this->m_partyId << ": " << (int) outputs[i].elem << endl;
                 if(outputs[i] != *(this->field->GetZero())) {
-			if (this->K < half) {
-				matches.push_back(i);
-				counter++;
-			}
-			else
-				continue;
-		}
-		else {
-			if(this->K >= half) {
-                		matches.push_back(i);
-                		counter++;
-			}
-			else
-				continue;
-		}
-        }
+									matches.push_back(i);
+								}
+				}
 	cout << this->m_partyId << ": 0 found at " << matches.size() << " positions. " << endl;
 /*
         for(i=0; i < counter; i++) {

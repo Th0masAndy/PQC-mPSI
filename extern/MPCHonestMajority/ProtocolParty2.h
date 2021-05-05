@@ -368,10 +368,7 @@ ProtocolParty<FieldType>::ProtocolParty(int argc, char* argv[]) : MPCProtocol("M
         else if(verifyType=="Batch")
             honestMult = new DNHonestMult<FieldType>(0, this);
     }
-    std::cout<<"CP 1"<<std::endl;
-
-
-
+  
     string fieldType = parser.getValueByKey(arguments, "fieldType");
     if(fieldType.compare("ZpMersenne") == 0) {
         field = new TemplateField<FieldType>(2147483647);

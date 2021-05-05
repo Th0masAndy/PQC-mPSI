@@ -77,7 +77,8 @@ struct PsiAnalyticsContext {
   enum {
     NONE,
     PSI,
-    THRESHOLD
+    THRESHOLD,
+		CIRCUIT
   } analytics_type;
 
   enum {
