@@ -78,13 +78,12 @@ struct PsiAnalyticsContext {
     NONE,
     PSI,
     THRESHOLD,
-		CIRCUIT
+CIRCUIT
   } analytics_type;
 
   enum {
     POLY,
-    RELAXED,
-    TABLE
+    RELAXED
   } opprf_type;
 
   const uint64_t maxbitlen = 61;

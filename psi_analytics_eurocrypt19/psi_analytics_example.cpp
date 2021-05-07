@@ -60,7 +60,7 @@ auto read_test_options(int32_t argcp, char **argvp) {
 		("num_parties,N",    po::value<decltype(context.np)>(&context.np)->default_value(4u),                         "Number of parties")
 		("file_address,F",    po::value<decltype(context.file_address)>(&context.file_address)->default_value("../../files/addresses"),                         "IP Addresses")
 		("type,y",         po::value<std::string>(&type)->default_value("PSI"),                                          "Function type {None, PSI, Threshold, Circuit}")
-		("opprf_type,o",         po::value<std::string>(&opprf_type)->default_value("Poly"),                                          "OPPRF type {Poly, Relaxed, Table}")
+		("opprf_type,o",         po::value<std::string>(&opprf_type)->default_value("Poly"),                                          "OPPRF type {Poly, Relaxed}")
 		("radixparam,R",     po::value<decltype(context.radixparam)>(&context.radixparam)->default_value(4u),       "Radix Parameter, default: 4");
 	
 	// clang-format on
@@ -107,8 +107,6 @@ auto read_test_options(int32_t argcp, char **argvp) {
 		context.opprf_type = ENCRYPTO::PsiAnalyticsContext::POLY;
 	} else if (opprf_type.compare("Relaxed") == 0) {
 		context.opprf_type = ENCRYPTO::PsiAnalyticsContext::RELAXED;
-	} else if (opprf_type.compare("Table") == 0) {
-		context.opprf_type = ENCRYPTO::PsiAnalyticsContext::TABLE;
 	} else {
 		std::string error_msg(std::string("Unknown opprf type: " + opprf_type));
 		throw std::runtime_error(error_msg.c_str());
@@ -233,12 +231,6 @@ void MPSI_execution(ENCRYPTO::PsiAnalyticsContext &context, std::vector<uint64_t
 								     RELAXEDNS::run_relaxed_opprf(sub_bins, context, inputs, allsocks, chl);
 							     }
 							     break;
-
-		case ENCRYPTO::PsiAnalyticsContext::TABLE: {
-								   std::string error_msg("Not implemented currently.");
-								   throw std::runtime_error(error_msg.c_str());
-							   }
-							   break;
 	}
 
 	auto t1 = std::chrono::system_clock::now();
@@ -289,12 +281,6 @@ void MPSI_threshold_execution(ENCRYPTO::PsiAnalyticsContext &context, std::vecto
 								     RELAXEDNS::run_threshold_relaxed_opprf(sub_bins, context, inputs, allsocks, chl, ioArr);
 							     }
 							     break;
-
-		case ENCRYPTO::PsiAnalyticsContext::TABLE: {
-								   std::string error_msg("Not implemented currently.");
-								   throw std::runtime_error(error_msg.c_str());
-							   }
-							   break;
 	}
 	
 	auto t1 = std::chrono::system_clock::now();
@@ -342,14 +328,10 @@ void MPSI_circuit_execution(ENCRYPTO::PsiAnalyticsContext &context, std::vector<
 							  }
 							  break;
 
-		case ENCRYPTO::PsiAnalyticsContext::RELAXED: RELAXEDNS::run_threshold_relaxed_opprf(sub_bins, context, inputs, allsocks, chl, ioArr);
+		case ENCRYPTO::PsiAnalyticsContext::RELAXED: {
+								     RELAXEDNS::run_threshold_relaxed_opprf(sub_bins, context, inputs, allsocks, chl, ioArr);
+							     }
 							     break;
-							
-		case ENCRYPTO::PsiAnalyticsContext::TABLE: {
-								   std::string error_msg("Not implemented currently.");
-								   throw std::runtime_error(error_msg.c_str());
-							   }
-							   break;
 	}
 	
 	auto t1 = std::chrono::system_clock::now();
