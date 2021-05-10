@@ -62,7 +62,7 @@ using duration_millis = std::chrono::duration<double, milliseconds_ratio>;
 void ResetCommunicationThreshold(std::vector<sci::NetIO*> &ioArr, ENCRYPTO::PsiAnalyticsContext &context){
   if(context.role == P_0) {
     context.sci_io_start.resize(2*(context.np-1));
-    for(int i=0; i<2*(context.np-1); i++) {
+    for(uint64_t i=0; i<2*(context.np-1); i++) {
       context.sci_io_start[i] = ioArr[i]->counter;
     }
   } else {
@@ -75,7 +75,7 @@ void ResetCommunicationThreshold(std::vector<sci::NetIO*> &ioArr, ENCRYPTO::PsiA
 
 void AccumulateCommunicationThreshold(std::vector<sci::NetIO*> &ioArr, ENCRYPTO::PsiAnalyticsContext &context){
   if(context.role == P_0) {
-    for(int i=0; i<2*(context.np-1); i++) {
+    for(uint64_t i=0; i<2*(context.np-1); i++) {
       context.sentBytesSCI += ioArr[i]->counter - context.sci_io_start[i];
     }
   } else {
@@ -89,19 +89,17 @@ void AccumulateCommunicationThreshold(std::vector<sci::NetIO*> &ioArr, ENCRYPTO:
 
 void multi_oprf_thread(int tid, std::vector<std::vector<osuCrypto::block>> &masks_with_dummies, std::vector<uint64_t> table,
 			ENCRYPTO::PsiAnalyticsContext &context, std::vector<osuCrypto::Channel> &chl) {
-  for(int i=tid; i<context.np-1; i=i+context.nthreads) {
+  for(uint64_t i=tid; i<context.np-1; i=i+context.nthreads) {
     masks_with_dummies[i] = RELAXEDNS::ot_receiver(table, chl[i], context);
   }
 }
 
 void OpprgPsiNonLeader(std::vector<uint64_t> &actual_contents_of_bins, std::vector<std::vector<uint64_t>> &simple_table_v, std::vector<std::vector<osuCrypto::block>> &masks, ENCRYPTO::PsiAnalyticsContext & context, std::unique_ptr<CSocket> &sock, osuCrypto::Channel &chl) {
-  //const auto filter_start_time = std::chrono::system_clock::now();
-  const auto filter_start_time = std::chrono::system_clock::now();
   std::vector<uint64_t> content_of_bins;
   uint64_t bufferlength = (uint64_t)ceil(context.nbins/2.0);
   osuCrypto::PRNG prng(osuCrypto::sysRandomSeed(), bufferlength);
 
-  for( int i=0; i<context.nbins; i++) {
+  for(uint64_t i=0; i<context.nbins; i++) {
     content_of_bins.push_back(prng.get<uint64_t>());
   }
 
@@ -115,7 +113,7 @@ void OpprgPsiNonLeader(std::vector<uint64_t> &actual_contents_of_bins, std::vect
 
   std::unordered_map<uint64_t,hashlocmap> tloc;
   std::vector<uint64_t> filterinputs;
-  for(int i=0; i<context.nbins; i++) {
+  for(uint64_t i=0; i<context.nbins; i++) {
     int binsize = simple_table_v[i].size();
     for(int j=0; j<binsize; j++) {
       tloc[simple_table_v[i][j]].bin = i;
@@ -140,14 +138,14 @@ void OpprgPsiNonLeader(std::vector<uint64_t> &actual_contents_of_bins, std::vect
   bufferlength = (uint64_t)ceil(context.fbins - 3*context.nbins);
   osuCrypto::PRNG prngo(osuCrypto::sysRandomSeed(), bufferlength);
 
-  for(int i=0; i<context.fbins; i++){
+  for(uint64_t i=0; i<context.fbins; i++){
     if(!cuckoo_table.hash_table_.at(i).IsEmpty()) {
       uint64_t element = cuckoo_table.hash_table_.at(i).GetElement();
       uint64_t function_id = cuckoo_table.hash_table_.at(i).GetCurrentFunctinId();
       hashlocmap hlm = tloc[element];
       osuCrypto::PRNG prng(masks[hlm.bin][hlm.index], 2);
       uint64_t pad = 0u;
-      for(int j=0;j<=function_id;j++) {
+      for(uint64_t j=0;j<=function_id;j++) {
          pad = prng.get<uint64_t>();
       }
       garbled_cuckoo_filter[i] = content_of_bins[hlm.bin] ^ pad;
@@ -179,7 +177,7 @@ uint64_t mask_ad = (1ULL << 2) - 1;
 
 //actual_contents_of_bins.reserve(context.nbins);
 
-for(int i=0; i<context.nbins; i++) {
+for(uint64_t i=0; i<context.nbins; i++) {
       addresses1 = hashToPosition(reinterpret_cast<uint64_t *>(&masks_with_dummies[i])[0], padding_vals[i]);
       bitaddress = addresses1 & mask_ad;
       actual_contents_of_bins[i] = reinterpret_cast<uint64_t *>(&masks_with_dummies[i])[0] ^ table_opprf[ts*i+bitaddress];
@@ -200,9 +198,9 @@ for(int i=0; i<context.nbins; i++) {
 
       std::vector<std::vector<uint64_t>> opprf_values(context.nbins, std::vector<uint64_t>(context.ffuns));
 
-      for(int i=0; i<context.nbins; i++) {
+      for(uint64_t i=0; i<context.nbins; i++) {
         osuCrypto::PRNG prngo(masks_with_dummies[i], 2);
-        for(int j=0; j< context.ffuns; j++) {
+        for(uint64_t j=0; j< context.ffuns; j++) {
           opprf_values[i][j]=garbled_cuckoo_filter[addresses[i*context.ffuns+j]] ^ prngo.get<uint64_t>();
         }
       }
@@ -214,7 +212,7 @@ for(int i=0; i<context.nbins; i++) {
 osuCrypto::PRNG tab_prng(osuCrypto::sysRandomSeed(), bufferlength);
 
 //content_of_bins.reserve(context.nbins);
-for( int i=0; i<context.nbins; i++) {
+for(uint64_t i=0; i<context.nbins; i++) {
   content_of_bins[i] = tab_prng.get<uint64_t>();
 }
 
@@ -243,13 +241,13 @@ uint64_t mask_ad = (1ULL << 2) - 1;
 
 double ave_ctr=0.0;
 
-for(int i=0; i<context.nbins; i++) {
+for(uint64_t i=0; i<context.nbins; i++) {
   bool uniqueMap = false;
   int ctr=0;
   while (!uniqueMap) {
     auto nonce = padding_prng.get<osuCrypto::block>();
 
-    for(int j=0; j< context.ffuns; j++) {
+    for(uint64_t j=0; j< context.ffuns; j++) {
       addresses1[j] = hashToPosition(reinterpret_cast<uint64_t *>(&table_masks[i][j])[0], nonce);
       bitaddress[j] = addresses1[j] & mask_ad;
     }
@@ -294,13 +292,13 @@ sock->Send(table_opprf.data(), context.nbins * ts* sizeof(uint64_t));
   }
 
   void multi_hint_thread(int tid, std::vector<std::vector<uint64_t>> &sub_bins, std::vector<uint64_t> &cuckoo_table_v, std::vector<std::vector<osuCrypto::block>> &masks_with_dummies, ENCRYPTO::PsiAnalyticsContext &context, std::vector<std::unique_ptr<CSocket>> &allsocks, std::vector<osuCrypto::Channel> &chls) {
-    for(int i=tid; i<context.np-1; i=i+context.nthreads) {
+    for(uint64_t i=tid; i<context.np-1; i=i+context.nthreads) {
       OpprgPsiLeader(sub_bins[i], cuckoo_table_v, masks_with_dummies[i], context, allsocks[i], chls[i]);
     }
   }
 
   void multi_boolean_conn(int tid, std::vector<sci::NetIO*> &ioArr, ENCRYPTO::PsiAnalyticsContext &context) {
-    for(int i=tid; i<context.np-1; i=i+context.nthreads) {
+    for(uint64_t i=tid; i<context.np-1; i=i+context.nthreads) {
       for(int j=0; j<2; j++) {
         ioArr[2*i+j] = new sci::NetIO(context.address[i].c_str(), REF_SCI_PORT + 2*i +j);
       }
@@ -309,7 +307,7 @@ sock->Send(table_opprf.data(), context.nbins * ts* sizeof(uint64_t));
 
   void multi_otpack_setup(int tid, std::vector<sci::NetIO*> &ioArr, std::vector<sci::OTPack<sci::NetIO>*> &otpackArr, ENCRYPTO::PsiAnalyticsContext &context) {
     //std::cout<<"Cp 3"<<context.radixparam<<": "<< context.bitlen<< std::endl;
-    for(int i=tid; i<context.np-1; i=i+context.nthreads) {
+    for(uint64_t i=tid; i<context.np-1; i=i+context.nthreads) {
       for(int j=0; j<2; j++) {
         if (j == 0) {
             otpackArr[2*i+j] = new OTPack<NetIO>(ioArr[2*i+j], 2, context.radixparam, context.bitlen);
@@ -324,7 +322,7 @@ sock->Send(table_opprf.data(), context.nbins * ts* sizeof(uint64_t));
 
   void multi_equality_thread(int tid, std::vector<std::vector<uint64_t>> &x, int party, int num_cmps, std::vector<std::vector<uint8_t>> &z, std::vector<std::vector<uint8_t>> &a_shares_bins, std::vector<std::vector<uint64_t>> &aux_bins, std::vector<sci::NetIO*> &ioArr, std::vector<sci::OTPack<sci::NetIO>*> &otpackArr, ENCRYPTO::PsiAnalyticsContext &context, std::vector<std::unique_ptr<CSocket>> &allsocks) {
     //std::cout<<"X Value: "<<x[0][5]<<std::endl;
-    for(int i=tid; i<context.np-1; i=i+context.nthreads) {
+    for(uint64_t i=tid; i<context.np-1; i=i+context.nthreads) {
       sci::NetIO* ioThreadArr[2];
       sci::OTPack<sci::NetIO> *otThreadpackArr[2];
       for(int j=0; j<2; j++) {
@@ -367,11 +365,11 @@ void run_relaxed_opprf(std::vector<std::vector<uint64_t>> &sub_bins, ENCRYPTO::P
 
     const auto oprf_start_time = std::chrono::system_clock::now();
     std::thread oprf_threads[context.nthreads];
-    for(int i=0; i<context.nthreads; i++) {
+    for(uint64_t i=0; i<context.nthreads; i++) {
       oprf_threads[i] = std::thread(multi_oprf_thread, i, std::ref(masks_with_dummies), table, std::ref(context), std::ref(chls));
     }
 
-    for(int i=0; i<context.nthreads; i++) {
+    for(uint64_t i=0; i<context.nthreads; i++) {
       oprf_threads[i].join();
     }
     const auto oprf_end_time = std::chrono::system_clock::now();
@@ -380,12 +378,12 @@ void run_relaxed_opprf(std::vector<std::vector<uint64_t>> &sub_bins, ENCRYPTO::P
 
     const auto phase_ts_time = std::chrono::system_clock::now();
     std::thread hint_threads[context.nthreads];
-    for(int i=0; i<context.nthreads; i++) {
+    for(uint64_t i=0; i<context.nthreads; i++) {
       hint_threads[i] = std::thread(multi_hint_thread, i, std::ref(sub_bins), std::ref(table), std::ref(masks_with_dummies), std::ref(context), std::ref(allsocks), std::ref(chls));
     }
 
 
-    for(int i=0; i<context.nthreads; i++) {
+    for(uint64_t i=0; i<context.nthreads; i++) {
       hint_threads[i].join();
     }
     const auto phase_te_time = std::chrono::system_clock::now();
@@ -444,7 +442,7 @@ void run_relaxed_opprf(std::vector<std::vector<uint64_t>> &sub_bins, ENCRYPTO::P
    }
 
   //return sub_bins;
-  std::cout<<"Hello"<<std::endl;
+  //std::cout<<"Hello"<<std::endl;
 }
 
 void run_threshold_relaxed_opprf(std::vector<std::vector<uint8_t>> &a_shares_bins, ENCRYPTO::PsiAnalyticsContext &context, const std::vector<std::uint64_t> &inputs,
@@ -458,7 +456,7 @@ void run_threshold_relaxed_opprf(std::vector<std::vector<uint8_t>> &a_shares_bin
      a_shares_bins.resize(context.np-1, std::vector<uint8_t>(padded_size, 0));
 
     std::vector<std::vector<uint64_t>> sub_bins(context.np-1);
-    for(int i=0; i<context.np-1; i++) {
+    for(uint64_t i=0; i<context.np-1; i++) {
       sub_bins[i].reserve(padded_size);
     }
     std::vector<uint64_t> table;
@@ -467,11 +465,11 @@ void run_threshold_relaxed_opprf(std::vector<std::vector<uint8_t>> &a_shares_bin
 
     const auto oprf_start_time = std::chrono::system_clock::now();
     std::thread oprf_threads[context.nthreads];
-    for(int i=0; i<context.nthreads; i++) {
+    for(uint64_t i=0; i<context.nthreads; i++) {
       oprf_threads[i] = std::thread(multi_oprf_thread, i, std::ref(masks_with_dummies), table, std::ref(context), std::ref(chls));
     }
 
-    for(int i=0; i<context.nthreads; i++) {
+    for(uint64_t i=0; i<context.nthreads; i++) {
       oprf_threads[i].join();
     }
     const auto oprf_end_time = std::chrono::system_clock::now();
@@ -480,11 +478,11 @@ void run_threshold_relaxed_opprf(std::vector<std::vector<uint8_t>> &a_shares_bin
 
     const auto phase_ts_time = std::chrono::system_clock::now();
     std::thread hint_threads[context.nthreads];
-    for(int i=0; i<context.nthreads; i++) {
+    for(uint64_t i=0; i<context.nthreads; i++) {
       hint_threads[i] = std::thread(multi_hint_thread, i, std::ref(sub_bins), std::ref(table), std::ref(masks_with_dummies), std::ref(context), std::ref(allsocks), std::ref(chls));
     }
 
-    for(int i=0; i<context.nthreads; i++) {
+    for(uint64_t i=0; i<context.nthreads; i++) {
       hint_threads[i].join();
     }
 
@@ -496,17 +494,17 @@ void run_threshold_relaxed_opprf(std::vector<std::vector<uint8_t>> &a_shares_bin
 
     std::vector<sci::OTPack<sci::NetIO>*> otpackArr(2*(context.np-1));
     std::thread ot_pack_threads[context.nthreads];
-    for(int i=0; i<context.nthreads; i++) {
+    for(uint64_t i=0; i<context.nthreads; i++) {
       ot_pack_threads[i] = std::thread(multi_otpack_setup, i, std::ref(ioArr), std::ref(otpackArr), std::ref(context));
     }
 
-    for(int i=0; i<context.nthreads; i++) {
+    for(uint64_t i=0; i<context.nthreads; i++) {
       ot_pack_threads[i].join();
     }
 
 
 
-    for(int i=0; i<context.np-1; i++){
+    for(uint64_t i=0; i<context.np-1; i++){
       for(int j=context.nbins; j<padded_size; j++)
         sub_bins[i][j] = S_CONST;
     }
@@ -514,7 +512,7 @@ void run_threshold_relaxed_opprf(std::vector<std::vector<uint8_t>> &a_shares_bin
     //std::cout<<"Checkpoint 1: X Value: "<< sub_bins[0][5]<<std::endl;
 
     std::vector<std::vector<uint8_t>> res_bins(context.np-1);
-    for(int i=0;i<context.np-1; i++)
+    for(uint64_t i=0;i<context.np-1; i++)
       res_bins[i].resize(padded_size);
 
     /*std::vector<std::vector<uint64_t>> a_shares_bins(context.np-1);
@@ -526,11 +524,11 @@ void run_threshold_relaxed_opprf(std::vector<std::vector<uint8_t>> &a_shares_bin
       aux_bins[i].reserve(padded_size);*/
 
     std::thread equality_threads[context.nthreads];
-    for(int i=0; i<context.nthreads; i++) {
+    for(uint64_t i=0; i<context.nthreads; i++) {
       equality_threads[i] = std::thread(multi_equality_thread, i, std::ref(sub_bins), 2, padded_size, std::ref(res_bins), std::ref(a_shares_bins), std::ref(aux_bins), std::ref(ioArr), std::ref(otpackArr), std::ref(context), std::ref(allsocks));
     }
 
-    for(int i=0; i<context.nthreads; i++) {
+    for(uint64_t i=0; i<context.nthreads; i++) {
       equality_threads[i].join();
     }
 
