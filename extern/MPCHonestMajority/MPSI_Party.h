@@ -124,7 +124,7 @@ template <class FieldType> MPSI_Party<FieldType>::MPSI_Party(int argc, char* arg
         outputs.resize(num_bins);
 */
 
-	cout << this->m_partyId << ": Element size is " << this->field->getElementSizeInBytes() << "." << endl;
+	//cout << this->m_partyId << ": Element size is " << this->field->getElementSizeInBytes() << "." << endl;
 
         //cout << this->m_partyId << ": Constructor done." << endl;
 
@@ -157,7 +157,7 @@ template <class FieldType> MPSI_Party<FieldType>::MPSI_Party(int argc, char* arg
         outputs.resize(num_bins);
 */
 
-	cout << this->m_partyId << ": Element size is " << this->field->getElementSizeInBytes() << "." << endl;
+	//cout << this->m_partyId << ": Element size is " << this->field->getElementSizeInBytes() << "." << endl;
 
         //cout << this->m_partyId << ": Constructor done" << endl;
 
@@ -199,11 +199,11 @@ template <class FieldType> void MPSI_Party<FieldType>::readMPSIInputs(vector<vec
   	uint64_t input;
     	uint64_t i = 0;
 	uint64_t j = 0;
-          std::cout<<"Check point 4"<<std::endl;
+          //std::cout<<"Check point 4"<<std::endl;
 					for(int i=0; i<nbins; i++) {
 						add_a.push_back(this->field->GetElement(bins[0][i]));
 					}
-					std::cout<<"Check point 5"<<std::endl;
+					//std::cout<<"Check point 5"<<std::endl;
 
 					if (this->m_partyId == 0) {
 						for(int j=1; j< this->N-1; j++) {
@@ -211,14 +211,14 @@ template <class FieldType> void MPSI_Party<FieldType>::readMPSIInputs(vector<vec
 								add_a[i] = add_a[i] + this->field->GetElement(bins[j][i]);
 							}
 						}
-						std::cout<<"Check point 6"<<std::endl;
+						//std::cout<<"Check point 6"<<std::endl;
 						for(int i=0; i< nbins; i++) {
 							add_a[i] = *(this->field->GetZero()) - add_a[i];
 						}
 					}
 
 	this->num_bins = add_a.size();
-	std::cout<<"Num Bins"<<this->num_bins<<std::endl;
+	//std::cout<<"Num Bins "<<this->num_bins<<std::endl;
 /*
         if (mpsi_print == true) {
                 cout << this->m_partyId << ": " << this->num_bins << " values read." << endl;
@@ -257,14 +257,14 @@ template <class FieldType> void MPSI_Party<FieldType>::runMPSI() {
         this->honestMult->invokeOffline();
 	auto t2 = high_resolution_clock::now();
 	auto dur1 = duration_cast<milliseconds>(t2-t1).count();
-	cout << this->m_partyId << ": Time to initialise matrices is: " << dur1 << " milliseconds." << endl;
+	//cout << this->m_partyId << ": Time to initialise matrices is: " << dur1 << " milliseconds." << endl;
 
 	//Generate random T-sharings
         auto t5 = high_resolution_clock::now();
         this->generateRandomShares(this->num_bins, this->masks);
         auto t6 = high_resolution_clock::now();
         auto dur3 = duration_cast<milliseconds>(t6-t5).count();
-        cout << this->m_partyId << ": T-sharings generated in " << dur3 << "milliseconds." << endl;
+        //cout << this->m_partyId << ": T-sharings generated in " << dur3 << "milliseconds." << endl;
 
 
         //Generate random additive and T-sharings
@@ -272,7 +272,7 @@ template <class FieldType> void MPSI_Party<FieldType>::runMPSI() {
         modDoubleRandom(this->num_bins, this->randomTAndAddShares);
 	auto t4 = high_resolution_clock::now();
 	auto dur2 = duration_cast<milliseconds>(t4-t3).count();
-	cout << this->m_partyId << ": T- and additive sharings generated in " << dur2 << " milliseconds." << endl;
+	//cout << this->m_partyId << ": T- and additive sharings generated in " << dur2 << " milliseconds." << endl;
 
         //Generate random T-sharings
 /*	auto t5 = high_resolution_clock::now();
@@ -286,7 +286,7 @@ template <class FieldType> void MPSI_Party<FieldType>::runMPSI() {
         this->generateRandom2TAndTShares(this->num_bins, this->randomTAnd2TShares);
 	auto t8 = high_resolution_clock::now();
 	auto dur4 = duration_cast<milliseconds>(t8-t7).count();
-	cout << this->m_partyId << ": T- and 2T-sharings generated in " << dur4 << " milliseconds." << endl;
+	//cout << this->m_partyId << ": T- and 2T-sharings generated in " << dur4 << " milliseconds." << endl;
 
 	//this->sent_total = (this->sent_total * 5) / 2;
 
@@ -301,9 +301,9 @@ template <class FieldType> void MPSI_Party<FieldType>::runMPSI() {
 		this->sent_bytes += this->parties[i].get()->getChannel().get()->bytesOut;
 		this->recv_bytes += this->parties[i].get()->getChannel().get()->bytesIn;
 	}
-	cout << this->m_partyId << ": " << "communicated with " << this->parties.size() << " parties." << endl;
-	cout << this->m_partyId << ": " << this->sent_bytes << " bytes sent." << endl;
-	cout << this->m_partyId << ": " << this->recv_bytes << " bytes received." << endl;
+	//cout << this->m_partyId << ": " << "communicated with " << this->parties.size() << " parties." << endl;
+	//cout << this->m_partyId << ": " << this->sent_bytes << " bytes sent." << endl;
+	//cout << this->m_partyId << ": " << this->recv_bytes << " bytes received." << endl;
 }
 
 //prepare additive and T-threshold sharings of secret random value r_j using DN07's protocol
@@ -336,7 +336,7 @@ template <class FieldType> void MPSI_Party<FieldType>::modDoubleRandom(uint64_t 
                 recBufsBytes[i].resize(no_buckets*fieldByteSize*2);
         }
 
-	cout << this->m_partyId << ": no_random: " << no_random << " no_buckets: " << no_buckets << " N: " << N << " T: " << T << endl;
+	//cout << this->m_partyId << ": no_random: " << no_random << " no_buckets: " << no_buckets << " N: " << N << " T: " << T << endl;
 
         /**
          *  generate random sharings.
@@ -451,7 +451,7 @@ template <class FieldType> void MPSI_Party<FieldType>::addShareOpen(uint64_t num
 	//cout << "Sent to leader...";
 
 	else {//since I am not party 1 parties[0]->getID()=1
-		cout << this->m_partyId << ": In addShareOpen(), " << aPlusRSharesBytes.size() << " bytes sent." << endl;
+		//cout << this->m_partyId << ": In addShareOpen(), " << aPlusRSharesBytes.size() << " bytes sent." << endl;
 		//this->sent_total = this->sent_total + aPlusRSharesBytes.size();
 		//send the shares to p1
 		this->parties[0]->getChannel()->write(aPlusRSharesBytes.data(), aPlusRSharesBytes.size());
@@ -641,7 +641,7 @@ template <class FieldType> void MPSI_Party<FieldType>::evaluateCircuit() {
 	mult_sj();
 	auto t10 = high_resolution_clock::now();
 	auto dur5 = duration_cast<milliseconds>(t10-t9).count();
-	cout << this->m_partyId << ": Circuit evaluated in " << dur5 << " milliseconds." << endl;
+	//cout << this->m_partyId << ": Circuit evaluated in " << dur5 << " milliseconds." << endl;
 	/*if(this->m_partyId == 0) {
 		outputPrint();
 	}*/
@@ -660,7 +660,7 @@ template <class FieldType> void MPSI_Party<FieldType>::outputPrint() {
                 matches.push_back(i);
                 counter++;
         }
-	cout << this->m_partyId << ": 0 found at " << matches.size() << " positions. " << endl;
+	//cout << this->m_partyId << ": 0 found at " << matches.size() << " positions. " << endl;
 	//cout << this->m_partyId << ": " << this->sent_bytes << " bytes sent." << endl;
 	//cout << this->m_partyId << ": " << this->recv_bytes << " bytes received." << endl;
 /*

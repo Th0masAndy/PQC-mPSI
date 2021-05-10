@@ -353,7 +353,7 @@ public:
 
 template <class FieldType>
 ProtocolParty<FieldType>::ProtocolParty(int argc, char* argv[]) : MPCProtocol("MPCHonestMajority", argc, argv, false) {
-    cout << "ProtocolParty constructor\n";
+    //cout << "ProtocolParty constructor\n";
     CmdParser parser = this->getParser();
     this->genRandomSharesType = parser.getValueByKey(arguments, "genRandomSharesType");
     this->multType = parser.getValueByKey(arguments, "multType");
@@ -377,15 +377,15 @@ ProtocolParty<FieldType>::ProtocolParty(int argc, char* argv[]) : MPCProtocol("M
     } else if(fieldType.compare("ZpKaratsuba") == 0) {
         field = new TemplateField<FieldType>(0);
     } else if(fieldType.compare("GF2E") == 0) {
-        std::cout<<"GF2E Method"<<std::endl;
+        //std::cout<<"GF2E Method"<<std::endl;
         field = new TemplateField<FieldType>(64);
     } else if(fieldType.compare("ZZ_p") == 0) {
         field = new TemplateField<FieldType>(2147483647);
     } else if(fieldType.compare("ZpMersenne127") == 0) {
-        std::cout<<"ZpMersenne 127"<<std::endl;
+        //std::cout<<"ZpMersenne 127"<<std::endl;
         field = new TemplateField<FieldType>(0);
     } else if(fieldType.compare("ZpMersenneByte") == 0) {
-        std::cout <<"ZpMersenne Byte"<<std::endl;
+        //std::cout <<"ZpMersenne Byte"<<std::endl;
         field = new TemplateField<FieldType>(0);
     }
     

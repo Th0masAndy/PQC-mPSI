@@ -10,8 +10,6 @@ void openShare();
 void outputPhase();
 */
 
-#define mpsi_print false
-
 template <class FieldType>
 class Threshold : public ProtocolParty<FieldType>{
 	public:
@@ -138,7 +136,7 @@ template <class FieldType> Threshold<FieldType>::Threshold(int argc, char* argv[
         outputs.resize(num_bins);
 */
 
-	cout << this->m_partyId << ": Element size is " << this->field->getElementSizeInBytes() << "." << endl;
+	//cout << this->m_partyId << ": Element size is " << this->field->getElementSizeInBytes() << "." << endl;
 
         //cout << this->m_partyId << ": Constructor done." << endl;
 
@@ -215,7 +213,7 @@ template <class FieldType> void Threshold<FieldType>::readMPSIInputs(vector<vect
   	uint8_t input;
     	uint64_t i = 0;
 	uint64_t j = 0;
-          std::cout<<"Check point 4"<<std::endl;
+          //std::cout<<"Check point 4"<<std::endl;
 					for(int i=0; i<nbins; i++) {
 						add_a.push_back(this->field->GetElement(bins[0][i]));
 					}
@@ -272,7 +270,7 @@ template <class FieldType> void Threshold<FieldType>::runMPSI() {
         this->outputs.resize(this->num_outs);
 	this->poly_outs.resize(this->num_bins);
 
-	cout << this->m_partyId << ": J = " << this->J << endl;
+	//cout << this->m_partyId << ": J = " << this->J << endl;
 
 	int half = this->N / 2;
 	if(this->K < half) {
@@ -324,7 +322,7 @@ template <class FieldType> void Threshold<FieldType>::runMPSI() {
 
 //prepare additive and T-threshold sharings of secret random value r_j using DN07's protocol
 template <class FieldType> void Threshold<FieldType>::modDoubleRandom(uint64_t no_random, vector<FieldType>& randomElementsToFill) {
-	cout << this->m_partyId <<  ": Generating double sharings..." << endl;
+	//cout << this->m_partyId <<  ": Generating double sharings..." << endl;
         int index = 0;
         int N = this->N;
         int T = this->T;

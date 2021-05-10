@@ -10,8 +10,6 @@ void openShare();
 void outputPhase();
 */
 
-#define mpsi_print false
-
 template <class FieldType>
 class CircuitPSI : public ProtocolParty<FieldType>{
 	public:
@@ -45,7 +43,7 @@ class CircuitPSI : public ProtocolParty<FieldType>{
 		 * outputPhase
 		 * Destructor
 		 */
-    uint64_t prime_val = 31;
+    		uint64_t prime_val = 31;
 		uint64_t prime_bitlen = 5;
 		uint64_t triple_ctr;
 		vector<uint64_t> sindex;
@@ -137,7 +135,7 @@ template <class FieldType> CircuitPSI<FieldType>::CircuitPSI(int argc, char* arg
         outputs.resize(num_bins);
 */
 
-	cout << this->m_partyId << ": Element size is " << this->field->getElementSizeInBytes() << "." << endl;
+	//cout << this->m_partyId << ": Element size is " << this->field->getElementSizeInBytes() << "." << endl;
 
         //cout << this->m_partyId << ": Constructor done." << endl;
 
@@ -183,7 +181,7 @@ template <class FieldType> CircuitPSI<FieldType>::CircuitPSI(int argc, char* arg
         outputs.resize(num_bins);
 */
 
-	cout << this->m_partyId << ": Element size is " << this->field->getElementSizeInBytes() << "." << endl;
+	//cout << this->m_partyId << ": Element size is " << this->field->getElementSizeInBytes() << "." << endl;
 
         //cout << this->m_partyId << ": Constructor done" << endl;
 
@@ -244,12 +242,12 @@ template <class FieldType> void CircuitPSI<FieldType>::readMPSIInputs(vector<vec
 					}
 
 	this->num_bins = add_a.size();
-	std::cout<<"Num Bins"<<this->num_bins<<std::endl;
+	//std::cout<<"Num Bins: "<<this->num_bins<<std::endl;
 /*
         if (mpsi_print == true) {
                 cout << this->m_partyId << ": " << this->num_bins << " values read." << endl;
         }*/
-		//cout<<"Num Bins"<< this->num_bins<<endl;
+		//cout<<"Num Bins: "<< this->num_bins<<endl;
 		//cout<<"Reading Completed!"<<endl;
 }
 
@@ -284,14 +282,14 @@ template <class FieldType> void CircuitPSI<FieldType>::runMPSI() {
   this->honestMult->invokeOffline();
 	auto t2 = high_resolution_clock::now();
 	auto dur1 = duration_cast<milliseconds>(t2-t1).count();
-	cout << this->m_partyId << ": Time to initialise matrices is: " << dur1 << " milliseconds." << endl;
+	//cout << this->m_partyId << ": Time to initialise matrices is: " << dur1 << " milliseconds." << endl;
 
 	//Generate random T-sharings
   auto t5 = high_resolution_clock::now();
   this->generateRandomShares(this->num_bins, this->masks);
   auto t6 = high_resolution_clock::now();
   auto dur3 = duration_cast<milliseconds>(t6-t5).count();
-  cout << this->m_partyId << ": T-sharings generated in " << dur3 << "milliseconds." << endl;
+  //cout << this->m_partyId << ": T-sharings generated in " << dur3 << "milliseconds." << endl;
 
 
   //Generate random additive and T-sharings
@@ -299,14 +297,14 @@ template <class FieldType> void CircuitPSI<FieldType>::runMPSI() {
   modDoubleRandom(this->num_bins, this->randomTAndAddShares);
 	auto t4 = high_resolution_clock::now();
 	auto dur2 = duration_cast<milliseconds>(t4-t3).count();
-	cout << this->m_partyId << ": T- and additive sharings generated in " << dur2 << " milliseconds." << endl;
+	//cout << this->m_partyId << ": T- and additive sharings generated in " << dur2 << " milliseconds." << endl;
 
   //Generate random T and 2T sharings for multiplication
 	auto t7 = high_resolution_clock::now();
   this->generateRandom2TAndTShares(this->num_triples, this->randomTAnd2TShares);
 	auto t8 = high_resolution_clock::now();
 	auto dur4 = duration_cast<milliseconds>(t8-t7).count();
-	cout << this->m_partyId << ": T- and 2T-sharings generated in " << dur4 << " milliseconds." << endl;
+	//cout << this->m_partyId << ": T- and 2T-sharings generated in " << dur4 << " milliseconds." << endl;
 
         //Evaluate the circuit
         evaluateCircuit();
@@ -314,7 +312,7 @@ template <class FieldType> void CircuitPSI<FieldType>::runMPSI() {
 
 //prepare additive and T-threshold sharings of secret random value r_j using DN07's protocol
 template <class FieldType> void CircuitPSI<FieldType>::modDoubleRandom(uint64_t no_random, vector<FieldType>& randomElementsToFill) {
-	cout << this->m_partyId <<  ": Generating double sharings..." << endl;
+	//cout << this->m_partyId <<  ": Generating double sharings..." << endl;
         int index = 0;
         int N = this->N;
         int T = this->T;
@@ -342,7 +340,7 @@ template <class FieldType> void CircuitPSI<FieldType>::modDoubleRandom(uint64_t 
                 recBufsBytes[i].resize(no_buckets*fieldByteSize*2);
         }
 
-	cout << this->m_partyId << ": no_random: " << no_random << " no_buckets: " << no_buckets << " N: " << N << " T: " << T << endl;
+	//cout << this->m_partyId << ": no_random: " << no_random << " no_buckets: " << no_buckets << " N: " << N << " T: " << T << endl;
 
         /**
          *  generate random sharings.
@@ -420,7 +418,7 @@ template <class FieldType> void CircuitPSI<FieldType>::modDoubleRandom(uint64_t 
  * Code similar to ::DNHonestMultiplication
 */
 template <class FieldType> void CircuitPSI<FieldType>::addShareOpen(uint64_t num_vals, vector<FieldType>& shares, vector<FieldType>& secrets) {
-	cout << this->m_partyId << ": Reconstructing additive shares..." << endl;
+	//cout << this->m_partyId << ": Reconstructing additive shares..." << endl;
 
 	int fieldByteSize = this->field->getElementSizeInBytes();
 	vector<vector<byte>> recBufsBytes;
@@ -670,7 +668,9 @@ template <class FieldType> void CircuitPSI<FieldType>::leader_open() {
 			this->outputs[j] = this->interpolate(x1);
 		}
                 for(int j=0; j<10; j++) {
-        		cout<<"outputs " << j << ":"<< (int)this->outputs[j].elem<<endl;
+			if(mpsi_print == true) {
+				cout<<"outputs " << j << ":"<< (int)this->outputs[j].elem<<endl;
+			}
 		}
 	}
 
@@ -685,7 +685,7 @@ template <class FieldType> void CircuitPSI<FieldType>::evaluateCircuit() {
 	leader_open();
 	auto t10 = high_resolution_clock::now();
 	auto dur5 = duration_cast<milliseconds>(t10-t9).count();
-	cout << this->m_partyId << ": Circuit evaluated in " << dur5 << " milliseconds." << endl;
+	//cout << this->m_partyId << ": Circuit evaluated in " << dur5 << " milliseconds." << endl;
 	if(this->m_partyId == 0) {
 		outputPrint();
 	}
@@ -694,8 +694,8 @@ template <class FieldType> void CircuitPSI<FieldType>::evaluateCircuit() {
 		this->sent_bytes += this->parties[i].get()->getChannel().get()->bytesOut;
 		this->recv_bytes += this->parties[i].get()->getChannel().get()->bytesIn;
 	}
-	cout << this->m_partyId << ": " << this->sent_bytes << " bytes sent." << endl;
-	cout << this->m_partyId << ": " << this->recv_bytes << " bytes received." << endl;
+	//cout << this->m_partyId << ": " << this->sent_bytes << " bytes sent." << endl;
+	//cout << this->m_partyId << ": " << this->recv_bytes << " bytes received." << endl;
 }
 
 //print output results
