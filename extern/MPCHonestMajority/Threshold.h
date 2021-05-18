@@ -49,15 +49,13 @@ class Threshold : public ProtocolParty<FieldType>{
 		vector<FieldType> outputs; //the shares of s_j*a_j
 		vector<FieldType> randomTAndAddShares; //shares of r_j for conversion of inputs to T-sharings
 		vector<FieldType> poly_outs; //shares of multiplication output of polynomial for threshold
-		string myInputFile, myOutputFile;
 
 		Threshold(int argc, char* argv[]);
-		Threshold(int argc, char* argv[], vector<uint8_t>& bins, uint64_t nbins);
 
 		//read num_bins MPSI inputs
-		void readMPSIInputs();
 		void readMPSIInputs(vector<vector<uint8_t>>& bins, uint64_t nbins);
 
+		//convert shares to field type for testing
 		void convertSharestoFieldType(vector<uint8_t>& bins, vector<FieldType>& shares, uint64_t nbins);
 
 		//perform MPSI
@@ -72,17 +70,17 @@ class Threshold : public ProtocolParty<FieldType>{
 		//evaluate the circuit
 		void evaluateCircuit();
 
-		//execute the steps of the protocol
-		void add_rj();
+		//Step 1: convert additive shares to T-threshold
+		void additive_to_threshold();
 
-		void subtract_rj();
-
+		//Step 2: Evaluate the polynomial
 		void thresh_poly();
 
+		//Step 3: Send to leader to open
 		void leader_open();
 
 		//open an additive sharing
-		//code similar to DNHonestMultiplication() as only P1 opens
+		//code similar to DNHonestMultiplication() as only P0 opens
 		void addShareOpen(uint64_t numShares, vector<FieldType> &Shares, vector<FieldType> &Secrets);
 
 		//print output results to file
@@ -108,76 +106,16 @@ template <class FieldType> Threshold<FieldType>::Threshold(int argc, char* argv[
 	//cout << this->m_partyId << ": Entered constructor." << endl;
         CmdParser parser = this->getParser();
 
-        this->myInputFile = parser.getValueByKey(this->arguments, "inputsFile");
-        this->myOutputFile = parser.getValueByKey(this->arguments, "outputsFile");
+	K = stoi(parser.getValueByKey(this->arguments, "threshold"));
 
-	this->K = stoi(parser.getValueByKey(this->arguments, "threshold"));
-
-	this->sent_bytes = 0;
-	this->recv_bytes = 0;
+	sent_bytes = 0;
+	recv_bytes = 0;
 
 	//cout << this->m_partyId << ": Element size is " << this->field->getElementSizeInBytes() << "." << endl;
 
         //cout << this->m_partyId << ": Constructor done." << endl;
 
         //Generation of shared values, such as triples, must be done later.
-}
-
-template <class FieldType> Threshold<FieldType>::Threshold(int argc, char* argv[], vector<uint8_t>& bins, uint64_t nbins) : ProtocolParty<FieldType>(argc, argv) {
-        //The call to ProtocolParty constructor initializes inherited variables
-        // N, T, m_partyID, as well as the VDM matrix and related vectors.
-
-        //Initialize global variables that have not been inherited.
-
-	//cout << this->m_partyId << ": Entered constructor." << endl;
-        CmdParser parser = this->getParser();
-
-        this->num_bins = nbins;
-	
-        this->myInputFile = parser.getValueByKey(this->arguments, "inputsFile");
-        this->myOutputFile = parser.getValueByKey(this->arguments, "outputsFile");
-
-	this->K = stoi(parser.getValueByKey(this->arguments, "threshold"));
-
-	this->sent_bytes = 0;
-	this->recv_bytes = 0;
-
-	//cout << this->m_partyId << ": Element size is " << this->field->getElementSizeInBytes() << "." << endl;
-
-        //cout << this->m_partyId << ": Constructor done" << endl;
-
-        //Generation of shared values, such as triples, must be done later.
-}
-
-/*
- * read num_bins MPSI inputs from file
- */
-template <class FieldType> void Threshold<FieldType>::readMPSIInputs() {
-        ifstream myfile;
-	uint8_t input;
-        uint64_t i = 0;
-        myfile.open(myInputFile);
-        do {
-                myfile >> input;
-		if(input > 0) {
-			add_a.push_back(this->field->GetElement(input));
-		}
-		else {
-			add_a.push_back(*(this->field->GetZero()));
-		}
-		//negate sum for leader
-		if (this->m_partyId == 0) {
-			add_a[i] = *(this->field->GetZero()) - add_a[i];
-		}
-                i++;
-        } while(!(myfile.eof()));
-        myfile.close();
-
-	this->num_bins = add_a.size();
-
-        if (mpsi_print == true) {
-                cout << this->m_partyId << ": " << this->num_bins << " values read." << endl;
-        }
 }
 
 /*
@@ -204,13 +142,13 @@ template <class FieldType> void Threshold<FieldType>::readMPSIInputs(vector<vect
 		}*/
 	}
 
-	this->num_bins = add_a.size();
-	//cout<<"Num Bins"<<this->num_bins<<endl;
+	num_bins = add_a.size();
+	//cout<<"Num Bins"<<num_bins<<endl;
 
         if (mpsi_print == true) {
-                cout << this->m_partyId << ": " << this->num_bins << " values read." << endl;
+                cout << this->m_partyId << ": " << num_bins << " values read." << endl;
         }
-	//cout<<"Num Bins"<< this->num_bins<<endl;
+	//cout<<"Num Bins"<< num_bins<<endl;
 	//cout<<"Reading Completed!"<<endl;
 }
 
@@ -238,22 +176,22 @@ template <class FieldType> void Threshold<FieldType>::convertSharestoFieldType(v
  * Generate shared randomness (preprocessing) and execute the protocol
  */
 template <class FieldType> void Threshold<FieldType>::runMPSI() {
-	this->J = 2 * ceil((40 + log2(this->num_bins) + 3) / ceil(log2(this->p))) + 1; //number of times to repeat the final step to reduce false positive rate
-	this->num_outs = this->num_bins * this->J;
-        this->masks.resize(this->num_outs);
-        this->a_vals.resize(this->num_bins);
-        this->mult_outs.resize(this->num_outs);
-        this->outputs.resize(this->num_outs);
-	this->poly_outs.resize(this->num_bins);//The polynomial itself is only evaluated once per element
+	J = 2 * ceil((40 + log2(num_bins) + 3) / ceil(log2(p))) + 1; //number of times to repeat the final step to reduce false positive rate
+	num_outs = num_bins * J;
+        masks.resize(num_outs);
+        a_vals.resize(num_bins);
+        mult_outs.resize(num_outs);
+        outputs.resize(num_outs);
+	poly_outs.resize(num_bins);//The polynomial itself is only evaluated once per element
 
-	//cout << this->m_partyId << ": J = " << this->J << endl;
+	//cout << this->m_partyId << ": J = " << J << endl;
 
 	int half = this->N / 2;
-	if(this->K < half) {
-		this->num_triples = (this->K + this->J) * this->num_bins;
+	if(K < half) {
+		num_triples = (K + J) * num_bins;
 	}
 	else {
-		this->num_triples = (this->N - this->K + 1 + this->J) * this->num_bins;
+		num_triples = (this->N - K + 1 + J) * num_bins;
 	}
 
 	auto t1 = high_resolution_clock::now();
@@ -264,21 +202,21 @@ template <class FieldType> void Threshold<FieldType>::runMPSI() {
 
 	//Generate random T-sharings
         auto t3 = high_resolution_clock::now();
-        this->generateRandomShares(this->num_outs, this->masks);
+        this->generateRandomShares(num_outs, masks);
         auto t4 = high_resolution_clock::now();
         auto dur2 = duration_cast<milliseconds>(t4-t3).count();
         //cout << this->m_partyId << ": T-sharings generated in " << dur3 << "milliseconds." << endl;
 
         //Generate random additive and T-sharings
 	auto t5 = high_resolution_clock::now();
-        modDoubleRandom(this->num_bins, this->randomTAndAddShares);
+        modDoubleRandom(num_bins, randomTAndAddShares);
 	auto t6 = high_resolution_clock::now();
 	auto dur3 = duration_cast<milliseconds>(t6-t5).count();
 	//cout << this->m_partyId << ": T- and additive sharings generated in " << dur2 << " milliseconds." << endl;
 
         //Generate random T and 2T sharings for multiplication
 	auto t7 = high_resolution_clock::now();
-        this->generateRandom2TAndTShares(this->num_triples, this->randomTAnd2TShares);
+        this->generateRandom2TAndTShares(num_triples, this->randomTAnd2TShares);
 	auto t8 = high_resolution_clock::now();
 	auto dur4 = duration_cast<milliseconds>(t8-t7).count();
 	//cout << this->m_partyId << ": T- and 2T-sharings generated in " << dur4 << " milliseconds." << endl;
@@ -479,7 +417,7 @@ template <class FieldType> void Threshold<FieldType>::reshare(vector<FieldType>&
 
 		for (int i=0; i<N; i++) {
 			sendBufsBytes[i].resize(sendBufsElements[i].size() * fieldByteSize);
-			recBufsBytes[i].resize(this->num_bins * fieldByteSize);
+			recBufsBytes[i].resize(num_bins * fieldByteSize);
 			for(uint64_t j=0; j<sendBufsElements[i].size(); j++) {
 				this->field->elementToBytes(sendBufsBytes[i].data() + (j * fieldByteSize), sendBufsElements[i][j]);
 			}
@@ -488,9 +426,9 @@ template <class FieldType> void Threshold<FieldType>::reshare(vector<FieldType>&
 	}
 	else {
 		for (int i=0; i<N; i++) {
-			sendBufsBytes[i].resize(this->num_bins * fieldByteSize);
-			recBufsBytes[i].resize(this->num_bins * fieldByteSize);
-			for (uint64_t j=0; j<this->num_bins; j++) {
+			sendBufsBytes[i].resize(num_bins * fieldByteSize);
+			recBufsBytes[i].resize(num_bins * fieldByteSize);
+			for (uint64_t j=0; j<num_bins; j++) {
 				this->field->elementToBytes(sendBufsBytes[i].data(), *(this->field->GetZero()));
 			}
 		}
@@ -516,43 +454,37 @@ template <class FieldType> void Threshold<FieldType>::reshare(vector<FieldType>&
 
 /*
  * Step 1 of the online phase:
- * The parties add an additive share of a random value to each of their elements,
- * coordinate with the leader (P0) to open the masked additive sharing,
- * Leader then reshares the masked value as a T-sharing and distributes it.
+ * The parties convert their additive shares to T-threshold shares
+ * They do this by first adding additive shares of a shared random value to their shares,
+ * then the leader opens this masked value,
+ * and reshares as a T-threshold sharing,
+ * from which all parties subtract their T-threshold shares of the above randomness
+ * to get the T-threshold sharing of the original shared secret
  */
-template <class FieldType> void Threshold<FieldType>::add_rj() {
+template <class FieldType> void Threshold<FieldType>::additive_to_threshold() {
 	uint64_t j;
         vector<FieldType> reconar; // reconstructed aj+rj
         reconar.resize(num_bins);
 
         //add additive share of rj to corresponding share of aj
         for(j=0; j<num_bins; j++) {
-                add_a[j] = add_a[j] + this->randomTAndAddShares[j*2+1];
+                add_a[j] = add_a[j] + randomTAndAddShares[j*2+1];
         }
 
         //reconstruct additive shares, store in reconar
         addShareOpen(num_bins, add_a, reconar);
 
         //reshare and save in a_vals;
-        reshare(reconar, this->a_vals);
+        reshare(reconar, a_vals);
+
+	//Subtract rj from the T-threshold sharings
+	for(j=0; j<num_bins; j++) {
+		a_vals[j] = a_vals[j] - randomTAndAddShares[j*2];
+	}
 }
 
 /*
  * Step 2 of the online phase:
- * The parties subtract the T-sharing of the random values they had added,
- *  from this T-sharing.
- */
-template <class FieldType> void Threshold<FieldType>::subtract_rj() {
-	uint64_t j;
-
-        for(j=0; j<num_bins; j++) {
-                a_vals[j] = a_vals[j] - this->randomTAndAddShares[j*2];
-        }
-
-}
-
-/*
- * Step 3 of the online phase:
  * if K < N / 2:
  * Evaluate the polynomial s * p(x) = s * x * (x - 1) * ... * (x - (K - 1))
  * Else:
@@ -560,74 +492,74 @@ template <class FieldType> void Threshold<FieldType>::subtract_rj() {
  */
 template <class FieldType> void Threshold<FieldType>::thresh_poly() {
 	int fieldByteSize = this->field->getElementSizeInBytes();
-	vector<FieldType> left(this->num_bins);
-	vector<FieldType> right(this->num_bins);
-	vector<FieldType> psi(this->num_outs);
+	vector<FieldType> left(num_bins);
+	vector<FieldType> right(num_bins);
+	vector<FieldType> psi(num_outs);
 	uint64_t i, j;
 	int offset, half;
 
 	half = this->N / 2;
 
-	if(this->K < half) {
-		for(j = 0; j < this->num_bins; j++) {
-			this->poly_outs[j] = this->a_vals[j];
+	if(K < half) {
+		for(j = 0; j < num_bins; j++) {
+			poly_outs[j] = a_vals[j];
 		}
 
-		for(i = 1; i < this->K; i++) {
+		for(i = 1; i < K; i++) {
 			offset = (i - 1) * num_bins * 2;
 			for(j = 0; j < num_bins; j++) {
-				left[j] = this->poly_outs[j];
-				right[j] = this->a_vals[j] - this->field->GetElement(i);
+				left[j] = poly_outs[j];
+				right[j] = a_vals[j] - this->field->GetElement(i);
 			}
-			this->DNHonestMultiplication(left, right, this->poly_outs, this->num_bins, offset);
+			this->DNHonestMultiplication(left, right, poly_outs, num_bins, offset);
 		}
-		offset = (this->K - 1) * num_bins * 2;
+		offset = (K - 1) * num_bins * 2;
 	}
 
 	else {
-		for(j = 0; j < this->num_bins; j++) {
-			this->poly_outs[j] = this->a_vals[j] - this->field->GetElement(this->K);
+		for(j = 0; j < num_bins; j++) {
+			poly_outs[j] = a_vals[j] - this->field->GetElement(K);
 		}
 
-		for(i = this->K + 1; i <= this->N; i++) {
-			offset = (i - this->K - 1) * num_bins * 2;
+		for(i = K + 1; i <= this->N; i++) {
+			offset = (i - K - 1) * num_bins * 2;
 			for(j = 0; j < num_bins; j++) {
-				left[j] = this->poly_outs[j];
-				right[j] = this->a_vals[j] - this->field->GetElement(i);
+				left[j] = poly_outs[j];
+				right[j] = a_vals[j] - this->field->GetElement(i);
 			}
-			this->DNHonestMultiplication(left, right, this->poly_outs, this->num_bins, offset);
+			this->DNHonestMultiplication(left, right, poly_outs, num_bins, offset);
 		}
-		offset = (this->N - this->K) * num_bins * 2;
+		offset = (this->N - K) * num_bins * 2;
 	}
 
-	for(j = 0; j < this->num_bins; j++) {
-		int pos = (j * this->J);
-		for(i = 0; i < this->J; i++) {
-			psi[pos + i] = this->poly_outs[j];
+	for(j = 0; j < num_bins; j++) {
+		int pos = (j * J);
+		for(i = 0; i < J; i++) {
+			psi[pos + i] = poly_outs[j];
 		}
 	}
-	this->DNHonestMultiplication(this->masks, psi, this->mult_outs, this->num_outs, offset);
+	this->DNHonestMultiplication(masks, psi, mult_outs, num_outs, offset);
 }
 
 /*
- * Step 4 of the online phase:
+ * Step 3 of the online phase:
  * The parties send shares to the leader to open
  */
 template <class FieldType> void Threshold<FieldType>::leader_open() {
 	int fieldByteSize = this->field->getElementSizeInBytes();
-	vector<byte> multbytes(this->num_outs * fieldByteSize);
+	vector<byte> multbytes(num_outs * fieldByteSize);
 	vector<vector<byte>> recBufsBytes;
 	int i;
 	uint64_t j;
 
-	for(j=0; j < this->num_outs; j++) {
-		this->field->elementToBytes(multbytes.data() + (j*fieldByteSize), this->mult_outs[j]);
+	for(j=0; j < num_outs; j++) {
+		this->field->elementToBytes(multbytes.data() + (j*fieldByteSize), mult_outs[j]);
 	}
 
 	if(this->m_partyId == 0) {
 		recBufsBytes.resize(this->N);
 		for(i=0; i<this->N; i++) {
-			recBufsBytes[i].resize(this->num_outs * fieldByteSize);
+			recBufsBytes[i].resize(num_outs * fieldByteSize);
 		}
 		this->roundFunctionSyncForP1(multbytes, recBufsBytes);
 	}
@@ -637,22 +569,21 @@ template <class FieldType> void Threshold<FieldType>::leader_open() {
 
 	if(this->m_partyId == 0) {
 		vector<FieldType> x1(this->N);
-		for(j=0; j<this->num_outs; j++) {
+		for(j=0; j<num_outs; j++) {
 			for(i=0; i<this->N; i++) {
 				x1[i] = this->field->bytesToElement(recBufsBytes[i].data() + (j*fieldByteSize));
 			}
-			this->outputs[j] = this->interpolate(x1);
+			outputs[j] = this->interpolate(x1);
 		}
 	}
 }
 
 /*
- * Call the 4 steps of the online phase.
+ * Call the 3 steps of the online phase.
  */
 template <class FieldType> void Threshold<FieldType>::evaluateCircuit() {
 	auto t9 = high_resolution_clock::now();
-	add_rj();
-	subtract_rj();
+	additive_to_threshold();
 	thresh_poly();
 	leader_open();
 	auto t10 = high_resolution_clock::now();
@@ -663,11 +594,11 @@ template <class FieldType> void Threshold<FieldType>::evaluateCircuit() {
 	}
 
 	for(int i = 0; i < this->parties.size(); i++) {
-		this->sent_bytes += this->parties[i].get()->getChannel().get()->bytesOut;
-		this->recv_bytes += this->parties[i].get()->getChannel().get()->bytesIn;
+		sent_bytes += this->parties[i].get()->getChannel().get()->bytesOut;
+		recv_bytes += this->parties[i].get()->getChannel().get()->bytesIn;
 	}
-	//cout << this->m_partyId << ": " << this->sent_bytes << " bytes sent." << endl;
-	//cout << this->m_partyId << ": " << this->recv_bytes << " bytes received." << endl;
+	//cout << this->m_partyId << ": " << sent_bytes << " bytes sent." << endl;
+	//cout << this->m_partyId << ": " << recv_bytes << " bytes received." << endl;
 }
 
 /*
@@ -680,11 +611,11 @@ template <class FieldType> void Threshold<FieldType>::outputPrint() {
 	bool allZero;
 	int half = this->N / 2;
 
-        for(i=0; i < this->num_bins; i++) {
-		pos = i * this->J;
-		if(this->K >= half) {
+        for(i=0; i < num_bins; i++) {
+		pos = i * J;
+		if(K >= half) {
 			allZero = true;
-			for(j = 0; j < this->J; j++) {
+			for(j = 0; j < J; j++) {
 				if(outputs[pos + j] != *(this->field->GetZero())) {
 					allZero = false;
 					break;
@@ -698,7 +629,7 @@ template <class FieldType> void Threshold<FieldType>::outputPrint() {
 
 		else {
 			allZero = true;
-			for(j = 0; j < this->J; j++) {
+			for(j = 0; j < J; j++) {
 				if(outputs[pos + j] != *(this->field->GetZero())) {
 					allZero = false;
 					break;
@@ -724,8 +655,8 @@ template <class FieldType> void Threshold<FieldType>::outputPrint() {
 template <class FieldType> void Threshold<FieldType>::testOpenAdd() {
 	vector<FieldType> sum(1);
 	sum[0] = *(this->field->GetZero());
-	for(uint64_t i=0; i<this->num_bins; i++) {
-		sum[0] = sum[0] + this->add_a[i];
+	for(uint64_t i=0; i<num_bins; i++) {
+		sum[0] = sum[0] + add_a[i];
 	}
 	cout << "Sum: " << sum[0] << "for Party " << this->m_partyId << endl;
 }
@@ -749,7 +680,7 @@ template <class FieldType> void Threshold<FieldType>::testShareGenNoComm(vector<
  * Test modDoubleRandom()
  */
 template <class FieldType> void Threshold<FieldType>::testShareGenWithComm() {
-	uint64_t no_random = this->num_bins;
+	uint64_t no_random = num_bins;
 	vector<FieldType> shares;
 	vector<FieldType> share_t, share_add;
 	vector<FieldType> TRes, AddRes;
@@ -761,7 +692,7 @@ template <class FieldType> void Threshold<FieldType>::testShareGenWithComm() {
 
 	cout << "modDoubleRandom done";
 
-	for(i=0; i<this->num_bins; i++) {
+	for(i=0; i<num_bins; i++) {
 		share_t.push_back(shares[i*2]);
 		share_add.push_back(shares[i*2 + 1]);
 	}
@@ -769,13 +700,13 @@ template <class FieldType> void Threshold<FieldType>::testShareGenWithComm() {
 	TRes.resize(num_bins);
 
 	cout << "opening T sharings..." << endl;
-	this->openShare(this->num_bins, share_t, TRes);
+	this->openShare(num_bins, share_t, TRes);
 	cout << "opening additive sharings... " << endl;
-	addShareOpen(this->num_bins, share_add, AddRes);
+	addShareOpen(num_bins, share_add, AddRes);
 
 	if(this->m_partyId == 0){
 		cout << "Leader has recovered shares ";
-		for(i=0; i<this->num_bins; i++) {
+		for(i=0; i<num_bins; i++) {
 			cout << this->field->elementToString(TRes[i]) << " " << this->field->elementToString(AddRes[i]) << ";";
 		}
 		cout << endl;
@@ -786,17 +717,17 @@ template <class FieldType> void Threshold<FieldType>::testShareGenWithComm() {
  * Test reshare()
  */
 template <class FieldType> void Threshold<FieldType>::testResharing() {
-	vector<FieldType> shares(this->num_bins);
-	vector<FieldType> opened(this->num_bins);
+	vector<FieldType> shares(num_bins);
+	vector<FieldType> opened(num_bins);
 	cout << "Initialization of test variables done. " << add_a.size() << " " << shares.size() << " " << opened.size() << endl;
 
-	reshare(this->add_a, shares);
+	reshare(add_a, shares);
 
-	cout << this->num_bins << " " << this->add_a.size() << " " << shares.size() << endl;
+	cout << num_bins << " " << add_a.size() << " " << shares.size() << endl;
 	cout << "opening shares..." << endl;
-	this->openShare(this->num_bins, shares, opened);
-	for (uint64_t i = 0; i<this->num_bins; i++) {
-		cout << this->field->elementToString(opened[i]) << " " << this->field->elementToString(this->add_a[i]) << ";";
+	this->openShare(num_bins, shares, opened);
+	for (uint64_t i = 0; i<num_bins; i++) {
+		cout << this->field->elementToString(opened[i]) << " " << this->field->elementToString(add_a[i]) << ";";
 	}
 }
 
@@ -804,20 +735,17 @@ template <class FieldType> void Threshold<FieldType>::testResharing() {
  * Test additive to T-threshold conversion
  */
 template <class FieldType> void Threshold<FieldType>::testConversion() {
-	vector<FieldType> secrets(this->num_bins);
-	vector<FieldType> orig(this->num_bins);
+	vector<FieldType> secrets(num_bins);
+	vector<FieldType> orig(num_bins);
 
-	addShareOpen(this->num_bins, this->add_a, orig);
+	addShareOpen(num_bins, add_a, orig);
 	cout << "additive shares opened... ";
 
-	add_rj();
-	cout<< "add_rj() done... ";
+	additive_to_threshold();
+	cout << "additive_to_threshold() done... ";
 
-	subtract_rj();
-	cout << "subtract_rj() done... ";
-
-	this->openShare(this->num_bins, this->a_vals, secrets);
-	for(uint64_t j=0; j<this->num_bins; j++) {
+	this->openShare(num_bins, a_vals, secrets);
+	for(uint64_t j=0; j<num_bins; j++) {
 		cout << "Opened: " << orig[j] << " " << secrets[j] << endl;
 	}
 }

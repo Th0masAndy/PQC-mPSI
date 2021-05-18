@@ -12,7 +12,7 @@ using namespace std;
 vector<vector<uint64_t>> global_bins;
 
 void circuit_thread(int size, char** circuitArgv, vector<uint64_t>& bins, vector<ZpMersenneLongElement>& shares, int nbins) {
-    MPSI_Party<ZpMersenneLongElement> mpsi(size, circuitArgv, bins, nbins);
+    MPSI_Party<ZpMersenneLongElement> mpsi(size, circuitArgv);
     mpsi.convertSharestoFieldType(bins, shares, nbins);
     cout<<"After sharing, thread "<< mpsi.m_partyId <<" : " <<bins[6]<<" "<<shares[6]<<endl;
     vector<ZpMersenneLongElement> secrets;

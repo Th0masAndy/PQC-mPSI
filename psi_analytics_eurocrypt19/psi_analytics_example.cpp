@@ -488,7 +488,7 @@ int main(int argc, char **argv) {
 
 	switch(context.analytics_type) {
 		case ENCRYPTO::PsiAnalyticsContext::PSI: {
-								 MPSI_Party<ZpMersenneLongElement> mpsi(size, circuitArgv, bins, context.nbins);
+								 MPSI_Party<ZpMersenneLongElement> mpsi(size, circuitArgv);
 								 synchronize_parties(context, allsocks, chl, ios, ep);
 								 MPSI_execution(context, inputs, allsocks, chl, mpsi);
 							 }
