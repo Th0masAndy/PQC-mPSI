@@ -1,4 +1,3 @@
-
 #include <stdlib.h>
 #include "MPSI_Party.h"
 #include "Threshold.h"
@@ -21,8 +20,7 @@ __m128 _mm_mod_ps2(const __m128& a, const __m128& aDiv){
 }
 
 
-void mul128(__m128i a, __m128i b, __m128i *res1, __m128i *res2)
-{
+void mul128(__m128i a, __m128i b, __m128i *res1, __m128i *res2) {
     __m128i tmp3, tmp4, tmp5, tmp6;
 
     tmp3 = _mm_clmulepi64_si128(a, b, 0x00);
@@ -92,8 +90,7 @@ unsigned long mersenneAdd(unsigned long high, unsigned long low){
 
 
 void multkarm(__m128i *c1, __m128i *c0, __m128i b,
-              __m128i a)
-{
+              __m128i a) {
     __m128i t1, t2;
     *c0 = _mm_clmulepi64_si128(a, b, 0x00);
     *c1 = _mm_clmulepi64_si128(a, b, 0x11);
@@ -145,16 +142,14 @@ void multkarm(__m128i *c1, __m128i *c0, __m128i b,
  */
 
 
-int main(int argc, char* argv[])
-{
+int main(int argc, char* argv[]) {
 
     CmdParser parser;
     auto parameters = parser.parseArguments("", argc, argv);
     int times = stoi(parser.getValueByKey(parameters, "internalIterationsNumber"));
     string fieldType(parser.getValueByKey(parameters, "fieldType"));
 
-    if(fieldType.compare("ZpMersenne") == 0)
-    {
+    if(fieldType.compare("ZpMersenne") == 0) {
 
         MPSI_Party<ZpMersenneIntElement> mpsi(argc, argv);
         auto t1 = high_resolution_clock::now();
@@ -168,8 +163,7 @@ int main(int argc, char* argv[])
         cout << "end main" << '\n';
 
     }
-    else if(fieldType.compare("ZpMersenne61") == 0)
-    {
+    else if(fieldType.compare("ZpMersenne61") == 0) {
 
         MPSI_Party<ZpMersenneLongElement> mpsi(argc, argv);
         auto t1 = high_resolution_clock::now();
@@ -186,7 +180,6 @@ int main(int argc, char* argv[])
 
     else if(fieldType.compare("ZpKaratsuba") == 0) {
 
-
         MPSI_Party<ZpKaratsubaElement> mpsi(argc, argv);
         auto t1 = high_resolution_clock::now();
         mpsi.runMPSI();
@@ -198,8 +191,6 @@ int main(int argc, char* argv[])
 
         cout << "end main" << '\n';
     }
-
-
 
     else if(fieldType.compare("GF2m") == 0){
 
@@ -214,8 +205,7 @@ int main(int argc, char* argv[])
         cout << "end main" << '\n';
     }
 
-    else if(fieldType.compare("Zp") == 0)
-    {
+    else if(fieldType.compare("Zp") == 0){
 
         MPSI_Party<ZZ_p> mpsi(argc, argv);
 
