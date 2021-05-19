@@ -40,7 +40,7 @@ class Threshold : public ProtocolParty<FieldType>{
 		uint64_t sent_bytes; //total number of bytes sent
 		uint64_t recv_bytes; //total number of bytes received
 		int K; //threshold for intersection
-		int p = 31; //prime that the field is over
+		int p; //prime that the field is over
 		int J;
 		vector<FieldType> masks; //the shares of the masks s_j for each value to be multiplied with
 		vector<FieldType> add_a; //additive shares of a_j
@@ -107,6 +107,7 @@ template <class FieldType> Threshold<FieldType>::Threshold(int argc, char* argv[
         CmdParser parser = this->getParser();
 
 	K = stoi(parser.getValueByKey(this->arguments, "threshold"));
+	p = stoi(parser.getValueByKey(this->arguments, "primemod"));
 
 	sent_bytes = 0;
 	recv_bytes = 0;

@@ -54,6 +54,7 @@ auto read_test_options(int32_t argcp, char **argvp) {
 		("epsilon,e",      po::value<decltype(context.epsilon)>(&context.epsilon)->default_value(1.28f),                   "Epsilon, a table size multiplier")
 		("threads,t",      po::value<decltype(context.nthreads)>(&context.nthreads)->default_value(1),                    "Number of threads")
 		("threshold,c",    po::value<decltype(context.threshold)>(&context.threshold)->default_value(2u),                 "Threshold Parameter, default: 2")
+		("prime,p",        po::value<decltype(context.smallmod)>(&context.smallmod)->default_value(31),			  "Mersenne Prime for equality, default: 31")
 		//("nmegabins,m",    po::value<decltype(context.nmegabins)>(&context.nmegabins)->default_value(1u),                 "Number of mega bins")
 		//("polysize,s",     po::value<decltype(context.polynomialsize)>(&context.polynomialsize)->default_value(0u),       "Size of the polynomial(s), default: neles")
 		("functions,f",    po::value<decltype(context.nfuns)>(&context.nfuns)->default_value(3u),                         "Number of hash functions in hash tables")
@@ -431,11 +432,13 @@ int main(int argc, char **argv) {
 	//auto inputs = ENCRYPTO::GeneratePseudoRandomElements(context.neles, gen_bitlen);
 	//Even-numbered parties have identical sets, ditto odd-numbered parties
 	auto inputs = ENCRYPTO::GenerateSequentialElements(context.neles);
-	for (int i=0; i < inputs.size(); i++) {
+	/*for (int i=0; i < inputs.size(); i++) {
 		inputs[i] = inputs[i] * ((context.role % 2) + 1);
-	}
+	}*/
 	
 	if (context.analytics_type == ENCRYPTO::PsiAnalyticsContext::THRESHOLD) {
+		size = 29;
+	} else if (context.analytics_type == ENCRYPTO::PsiAnalyticsContext::CIRCUIT) {
 		size = 27;
 	} else {
 		size = 25;
@@ -450,6 +453,12 @@ int main(int argc, char **argv) {
 	if(context.analytics_type == ENCRYPTO::PsiAnalyticsContext::THRESHOLD) {
 		circuitArgv[25] = "-threshold";
 		sprintf(circuitArgv[26], "%lu", context.threshold);
+		circuitArgv[27] = "-primemod";
+		sprintf(circuitArgv[28], "%lu", context.smallmod);
+	}
+	else if(context.analytics_type == ENCRYPTO::PsiAnalyticsContext::CIRCUIT) {
+		circuitArgv[25] = "-primemod";
+		sprintf(circuitArgv[26], "%lu", context.smallmod);
 	}
 
 	auto parameters = parser.parseArguments("", size, circuitArgv);

@@ -13,8 +13,6 @@
 using namespace sci;
 using namespace std;
 
-#define BITLEN 5
-
 template<typename IO> class Equality {
 	public:
 		IO* io= nullptr;
@@ -425,19 +423,17 @@ template<typename IO> class Equality {
 			}
 		}
 
-		void boolean_to_arithmetic(uint8_t* z, uint8_t* a_shares) {
+		void boolean_to_arithmetic(uint8_t* z, uint8_t* a_shares, const uint8_t smallmod) {
 			/*for(int i=0; i<10; i++) {
 				cout<<" Share Boolean"<<i<<":"<<(int)z[i]<<endl;
 			}*/
 
 			int aux_val;
-			int smallmod = (int)(pow(2, BITLEN) - 1);
 			if(party ==sci::ALICE) {
 				uint8_t* aux_shares = (uint8_t *)malloc(sizeof(uint8_t)*num_cmps);
 				for(int i=0; i<num_cmps; i++)
 					aux_shares[i] = z[i];
-				otInstance->send_cot_moduloAdd<uint8_t>(a_shares, aux_shares, num_cmps);
-				//int smallmod = (int)(pow(2, BITLEN) - 1);
+				otInstance->send_cot_moduloAdd<uint8_t>(a_shares, aux_shares, num_cmps, smallmod);
 				for(int i=0; i<num_cmps; i++) {
 						aux_val = -a_shares[i];
 						while (aux_val < 0) {
@@ -471,7 +467,7 @@ template<typename IO> class Equality {
 		}
 };
 
-void equality_thread(int tid, int party, uint64_t* x, uint8_t* z, uint8_t* a_shares, int lnum_cmps, int l, int b, sci::NetIO* io, sci::OTPack<sci::NetIO>* otpack) {
+void equality_thread(int tid, int party, uint64_t* x, uint8_t* z, uint8_t* a_shares, int lnum_cmps, int l, int b, sci::NetIO* io, sci::OTPack<sci::NetIO>* otpack, const uint8_t smallmod) {
 	Equality<NetIO>* compare;
 	if(tid & 1) {
 		compare = new Equality<NetIO>(3-party, l, b, lnum_cmps, io, otpack);
@@ -487,14 +483,14 @@ void equality_thread(int tid, int party, uint64_t* x, uint8_t* z, uint8_t* a_sha
 	compare->generate_triples();
 
 	compare->traverse_and_compute_ANDs(z);
-	compare->boolean_to_arithmetic(z, a_shares);
+	compare->boolean_to_arithmetic(z, a_shares, smallmod);
 	//}
 	delete compare;
 	return;
 }
 
 
-void perform_equality(uint64_t* x, int party, int l, int b, int num_cmps, uint8_t* z, uint8_t* a_shares, sci::NetIO** ioArr, OTPack<sci::NetIO>** otpackArr) {
+void perform_equality(uint64_t* x, int party, int l, int b, int num_cmps, uint8_t* z, uint8_t* a_shares, sci::NetIO** ioArr, OTPack<sci::NetIO>** otpackArr, const uint8_t smallmod) {
 	//std::cout<<"X Value: "<<x[5]<<std::endl;
 	//std::cout<<"B Value: "<<b<< std::endl;
 	uint64_t mask_l;
@@ -518,7 +514,7 @@ void perform_equality(uint64_t* x, int party, int l, int b, int num_cmps, uint8_
 		} else {
 			lnum_cmps = chunk_size;
 		}
-		cmp_threads[i] = std::thread(equality_thread, i, party, x+offset, z+offset, a_shares+offset, lnum_cmps, l, b, ioArr[i], otpackArr[i]);
+		cmp_threads[i] = std::thread(equality_thread, i, party, x+offset, z+offset, a_shares+offset, lnum_cmps, l, b, ioArr[i], otpackArr[i], smallmod);
 	}
 
 	for (int i = 0; i < 2; ++i) {

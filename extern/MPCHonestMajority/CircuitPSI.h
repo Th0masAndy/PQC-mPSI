@@ -33,8 +33,8 @@ class CircuitPSI : public ProtocolParty<FieldType>{
 		 * outputPhase
 		 * Destructor
 		 */
-    		uint64_t prime_val = 31; //Prime modulus of the field
-		uint64_t prime_bitlen = 5;
+    		uint64_t prime_val; //Prime modulus of the field
+		uint64_t prime_bitlen;
 		uint64_t triple_ctr; //number of multiplication triples per bin
 		vector<uint64_t> sindex; //indices where the bit representation of the prime has bit 1
 
@@ -105,6 +105,9 @@ template <class FieldType> CircuitPSI<FieldType>::CircuitPSI(int argc, char* arg
 
 	//cout << this->m_partyId << ": Entered constructor." << endl;
         CmdParser parser = this->getParser();
+	
+	prime_val = (uint64_t)stoi(parser.getValueByKey(this->arguments, "primemod"));
+	prime_bitlen = (uint64_t)(ceil(log2(prime_val)));
 
 	sent_bytes = 0;
 	recv_bytes = 0;

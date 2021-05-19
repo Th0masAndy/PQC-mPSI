@@ -39,7 +39,7 @@ struct PsiAnalyticsContext {
   double epsilon;
   uint64_t np;
   uint64_t radixparam;
-
+  uint8_t smallmod;
 
   uint64_t sentBytesOPRF;
   uint64_t recvBytesOPRF;
@@ -78,7 +78,7 @@ struct PsiAnalyticsContext {
     NONE,
     PSI,
     THRESHOLD,
-CIRCUIT
+    CIRCUIT
   } analytics_type;
 
   enum {

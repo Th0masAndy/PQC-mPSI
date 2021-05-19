@@ -712,11 +712,10 @@ public:
 
   template <typename intType>
   void cot_send_post_moduloAdd(intType *rdata, const intType *delta,
-                               const int length) {
+                               const int length, const uint8_t smallmod) {
     const int bsize = AES_BATCH_SIZE / 2;
     block128 pad[2 * bsize];
     intType tmp[bsize];
-    int smallmod = 31;
     for (int i = 0; i < length; i += bsize) {
       for (int j = i; j < i + bsize and j < length; ++j) {
         pad[2 * (j - i)] = qT[j];
@@ -770,9 +769,9 @@ public:
   */
   template <typename intType>
   void send_cot_moduloAdd(intType *rdata, const intType *delta,
-                          const int numOTs) {
+                          const int numOTs, const uint8_t smallmod) {
     send_pre(numOTs);
-    cot_send_post_moduloAdd<intType>(rdata, delta, numOTs);
+    cot_send_post_moduloAdd<intType>(rdata, delta, numOTs, smallmod);
   }
 
   /*

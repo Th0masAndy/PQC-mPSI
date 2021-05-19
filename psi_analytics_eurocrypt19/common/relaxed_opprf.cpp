@@ -329,7 +329,7 @@ sock->Send(table_opprf.data(), context.nbins * ts* sizeof(uint64_t));
         ioThreadArr[j] = ioArr[2*i+j];
         otThreadpackArr[j] = otpackArr[2*i+j];
       }
-      perform_equality(x[i].data(), party, context.bitlen, context.radixparam, num_cmps, z[i].data(), a_shares_bins[i].data(), ioThreadArr, otThreadpackArr);
+      perform_equality(x[i].data(), party, context.bitlen, context.radixparam, num_cmps, z[i].data(), a_shares_bins[i].data(), ioThreadArr, otThreadpackArr, context.smallmod);
       //allsocks[i]->Receive(aux_bins[i].data(), num_cmps * sizeof(uint64_t));
     }
   }
@@ -635,7 +635,7 @@ void run_threshold_relaxed_opprf(std::vector<std::vector<uint8_t>> &a_shares_bin
 
     //std::cout<<"Checkpoint 1: X Value: "<< actual_contents_of_bins[5]<<std::endl;
 
-    perform_equality(actual_contents_of_bins.data(), 1, context.bitlen, context.radixparam, padded_size, res_bins.data(), a_shares_bins[0].data(), ioThreadArr, otThreadpackArr);
+    perform_equality(actual_contents_of_bins.data(), 1, context.bitlen, context.radixparam, padded_size, res_bins.data(), a_shares_bins[0].data(), ioThreadArr, otThreadpackArr, context.smallmod);
     //allsocks[0]->Send(a_shares_bins.data(), padded_size * sizeof(uint64_t));
     /*std::cout<<"##########################"<<std::endl;
     for(int i=0; i<5; i++) {
