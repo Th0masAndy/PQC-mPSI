@@ -54,7 +54,6 @@ auto read_test_options(int32_t argcp, char **argvp) {
 		("epsilon,e",      po::value<decltype(context.epsilon)>(&context.epsilon)->default_value(1.28f),                   "Epsilon, a table size multiplier")
 		("threads,t",      po::value<decltype(context.nthreads)>(&context.nthreads)->default_value(1),                    "Number of threads")
 		("threshold,c",    po::value<decltype(context.threshold)>(&context.threshold)->default_value(2u),                 "Threshold Parameter, default: 2")
-		("prime,p",        po::value<decltype(context.smallmod)>(&context.smallmod)->default_value(31),			  "Mersenne Prime for equality, default: 31")
 		//("nmegabins,m",    po::value<decltype(context.nmegabins)>(&context.nmegabins)->default_value(1u),                 "Number of mega bins")
 		//("polysize,s",     po::value<decltype(context.polynomialsize)>(&context.polynomialsize)->default_value(0u),       "Size of the polynomial(s), default: neles")
 		("functions,f",    po::value<decltype(context.nfuns)>(&context.nfuns)->default_value(3u),                         "Number of hash functions in hash tables")
@@ -153,6 +152,12 @@ auto read_test_options(int32_t argcp, char **argvp) {
 	context.genRandomSharesType = "HIM";
 	context.multType = "DN";
 	context.verifyType = "Single";
+
+	//Setting prime modulus for field in Circuit and Threshold variants
+	//Must be a Mersenne prime > # of parties, less than a byte in length
+	//E.g 31, 127
+	//IF you change this be sure to change the prime and its bitlength in ZpMersenneByteElement.cpp as well
+	context.smallmod = 31;
 
 	//Setting network parameters
 	if(context.role == P_0) {
