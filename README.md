@@ -50,7 +50,7 @@ The arguments are:
  - n: Set size (e.g 4096, 65536, 262144)
  - t: Number of threads
  - o: Type of OPPRF (Poly/Relaxed)
- - y: PSI variant (PSI/Circuit/Quorum)
+ - y: PSI variant (PSI/Circuit/Threshold)
  - c: Threshold/quorum in case of Quorum PSI
 
 E.g for Quorum PSI with Relaxed Batch OPPRF over 15 parties on the same terminal, threshold 7, set size 2^18 (=262144), run:
@@ -58,7 +58,10 @@ E.g for Quorum PSI with Relaxed Batch OPPRF over 15 parties on the same terminal
 ./run\_protocol.sh 0 14 15 262144 14 Relaxed Threshold 7
 ```
 
-Run ./build/bin/psi\_analytics\_eurocrypt19\_example --help for further details.
+For further details, run 
+```
+./build/bin/psi\_analytics\_eurocrypt19\_example --help
+```
 
 To run over multiple servers, edit the IP addresses in Parties.txt and files/addresses.
 
