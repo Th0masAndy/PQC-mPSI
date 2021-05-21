@@ -1,56 +1,78 @@
 # OPPRF-PSI [![Build Status](https://travis-ci.org/encryptogroup/OPPRF-PSI.svg?branch=master)](https://travis-ci.org/encryptogroup/OPPRF-PSI)
 
-An implementation of the first cirucit-based private set 
-intersection protocol with linear communication complexity, which was presented at 
-EUROCRYPT'19 \[[Pinkas-Schneider-Tkachenko-Yanai'19](https://ia.cr/2019/241)\].
-Please note that this is not the same code that was benchmarked in the paper but a re-implementation.
+An implementation of the first multiparty circuit-based private set intersection protocol with
+linear complexity, available at \[[https:://eprint.iacr.org/2021/172](https://ia.cr/2021/172)\].
+
+Code based on the implementation of 2-party private set intersection available at \[[encryptogroup/OPPRF-PSI](https://github.com/encryptogroup/OPPRF-PSI)\]
+and on the implementation of multiparty arithmetic circuits available at \[[cryptobiu/MPC-Benchmark/MPCHonestMajority](https://github.com/cryptobiu/MPC-Benchmark/tree/master/MPCHonestMajority)\]
 
 ## Required packages:
- - g++ (vection >=8) 
+ - g++ (version >=8) 
  - libboost-all-dev (version >=1.69) 
  - libgmp-dev 
  - libssl-dev 
  - libntl-dev
+ - libscapi
 
 ## Compilation
+
+After cloning project from Git:
+1. Copy aux\_hash/cuckoo\_hashing.cpp and aux\_hash/cuckoo\_hashing.h into extern/HashingTables/cuckoo\_hashing
+2. Copy aux\_hash/iknp.h into extern/EzPC/SCI/src/OT/
 
 To compile as library.
 
 ```
 mkdir build
 cd build
-cmake [OPTIONS] -DCMAKE_BUILD_TYPE=[Release|Debug] ..
+cmake ..
 make
-// or make -j 10 for faster compilation
+// or make -j for faster compilation
+
 ```
 
-Available options are as follows:
+## Applications & Running the Code
 
-- `-DPSI_ANALYTICS_BUILD_TESTS=ON` to compile tests
-- `-DPSI_ANALYTICS_BUILD_EXAMPLE=ON` to compile an example with circuit-based threshold checking.
+This implementation can execute protocols for multiparty circuit-based private set intersection, multiparty circuit private set intersection, 
+and multiparty quorum private set intersection, referred to in the code as "Threshold". (For further details on the protocols, see the paper.)
 
-The options can be combined to build both the tests and the example.
+To run the program, there are two methods that can be used:
+ - individually run each process as:
+   ```
+   ./build/bin/psi_analytics_eurocrypt19_example -F files/addresses -R 4
+   ```
+   with the requisite arguments, or
+ - call ./run\_protocol.sh with the arguments
 
-## Tests
+The arguments are:
+ - r: Role / party ID (indexed from 0 i.e leader party must be 0)
+ - N: Total number of parties
+ - n: Set size (e.g 4096, 65536, 262144)
+ - t: Number of threads
+ - o: Type of OPPRF (Poly/Relaxed)
+ - y: PSI variant (PSI/Circuit/Quorum)
+ - c: Threshold/quorum in case of Quorum PSI
 
-To run the tests and make sure that everything works as intended, 
-you will need to run `cmake` with enabled `PSI_ANALYTICS_BUILD_TESTS`.
-Then, run the test binary in `${build_directory}/bin/` without arguments.
+E.g for Quorum PSI with Relaxed Batch OPPRF over 15 parties on the same terminal, threshold 7, set size 2^18 (=262144), run:
+```
+./run\_protocol.sh 0 14 15 262144 14 Relaxed Threshold 7
+```
 
-## Applications
+Run ./build/bin/psi\_analytics\_eurocrypt19\_example --help for further details.
 
-To run the available example, you will need to enable the `PSI_ANALYTICS_BUILD_EXAMPLE` flag.
-Then, run the example binary in`${build_directory}/bin/` either from two terminals locally or 
-between two machines.
-To find information about the command line arguments, run `${example_name} --help`. 
-Suitable parameters and formulas for calculating those can be found in the paper.
+To run over multiple servers, edit the IP addresses in Parties.txt and files/addresses.
 
-##Quorum PSI
+Change the input sets in main() method of psi\_analytics\_eurocrypt19/psi\_analytics\_example.cpp.
 
-Currently the branch relaxed\_opprf implements qpsi over the Mersenne prime field Z\_31. 
+## Field Modulus
+
+The current branch implements the second phase of Quorum and Circuit PSI variants in the field with prime modulus 31. 
+This prime modulus can be changed to any other Mersenne prime under 1 byte in length such that the prime is greater than N.
+
 To change this the following files need to be edited:
--  extern/MPCHonestMajority/Threshold.h 
--  extern/EzPC/SCI/src/OT/iknp.h
--  psi\_analytics\_eurocrypt19/common/equality.h
--  extern/MPCHonestMajority/ZpMersenneByteElement.cpp
+-  psi\_analytics\_eurocrypt19/psi\_analytics\_example.cpp: 160 
+-  extern/MPCHonestMajority/ZpMersenneByteElement.cpp: 4, 5
 
+## Contact
+
+For any queries, contact Akash Shah or Nishka Dasgupta.
