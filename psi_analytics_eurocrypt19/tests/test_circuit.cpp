@@ -53,34 +53,38 @@ void circuit_thread(int size, char** circuitArgv, vector<uint64_t>& bins, vector
     //mpsi.runMPSI();
 }
 
+void stringToChar(char * arg, string s) {
+	strcpy(arg, s.c_str());
+}
+
 void prepareArgs(char** circuitArgv, uint32_t role, uint64_t np, uint64_t nbins,
                  string outputFileName, string circuitFileName, string partiesFile) {
-  circuitArgv[0] = "./build/MPCHonestMajority";
-  circuitArgv[1] = "-partyID";
-  sprintf(circuitArgv[2], "%lu", role);
-  circuitArgv[3] = "-partiesNumber";
-  sprintf(circuitArgv[4], "%llu", np);
-  circuitArgv[5] = "-numBins";
-  sprintf(circuitArgv[6], "%llu", nbins);
-  circuitArgv[7] = "-inputsFile";
+  stringToChar(circuitArgv[0], "./build/MPCHonestMajority");
+  stringToChar(circuitArgv[1], "-partyID");
+  sprintf(circuitArgv[2], "%u", role);
+  stringToChar(circuitArgv[3], "-partiesNumber");
+  sprintf(circuitArgv[4], "%lu", np);
+  stringToChar(circuitArgv[5], "-numBins");
+  sprintf(circuitArgv[6], "%lu", nbins);
+  stringToChar(circuitArgv[7], "-inputsFile");
   string arg_val = "../in_party_" + to_string(role) + ".txt";
-  sprintf(circuitArgv[8], arg_val.c_str());
-  circuitArgv[9] = "-outputsFile";
+  stringToChar(circuitArgv[8], arg_val);
+  stringToChar(circuitArgv[9], "-outputsFile");
   strcpy(circuitArgv[10], outputFileName.c_str());
-  circuitArgv[11] = "-circuitFile";
+  stringToChar(circuitArgv[11], "-circuitFile");
   strcpy(circuitArgv[12], circuitFileName.c_str());
-  circuitArgv[13] = "-fieldType";
-  circuitArgv[14] = "ZpMersenne61";
-  circuitArgv[15] = "-genRandomSharesType";
-  circuitArgv[16] = "HIM";
-  circuitArgv[17] = "-multType";
-  circuitArgv[18] = "DN";
-  circuitArgv[19] = "-verifyType";
-  circuitArgv[20] = "Single";
-  circuitArgv[21] = "-partiesFile";
+  stringToChar(circuitArgv[13], "-fieldType");
+  stringToChar(circuitArgv[14], "ZpMersenne61");
+  stringToChar(circuitArgv[15], "-genRandomSharesType");
+  stringToChar(circuitArgv[16], "HIM");
+  stringToChar(circuitArgv[17], "-multType");
+  stringToChar(circuitArgv[18], "DN");
+  stringToChar(circuitArgv[19], "-verifyType");
+  stringToChar(circuitArgv[20], "Single");
+  stringToChar(circuitArgv[21], "-partiesFile");
   strcpy(circuitArgv[22], partiesFile.c_str());
-  circuitArgv[23] = "-internalIterationsNumber";
-  circuitArgv[24] = "1";
+  stringToChar(circuitArgv[23], "-internalIterationsNumber");
+  stringToChar(circuitArgv[24], "1");
 }
 
 

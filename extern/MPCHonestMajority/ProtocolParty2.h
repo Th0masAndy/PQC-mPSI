@@ -1694,7 +1694,7 @@ int ProtocolParty<FieldType>::processMultiplications(int lastMultGate)
     else if(multType=="DN")
         return processMultDN(lastMultGate);
 
-
+    return 0;
     //return processMultGRR();
 }
 

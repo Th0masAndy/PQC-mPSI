@@ -186,36 +186,40 @@ auto read_test_options(int32_t argcp, char **argvp) {
 	return context;
 }
 
+void stringToChar(char * arg, string s) {
+	strcpy(arg, s.c_str());
+}
+
 /*
  * Set arguments in format parseable by circuit code
  */
 void prepareArgs(ENCRYPTO::PsiAnalyticsContext context, char** circuitArgv) {
-	circuitArgv[0] = "./build/MPCHonestMajority";
-	circuitArgv[1] = "-partyID";
-	sprintf(circuitArgv[2], "%lu", context.role);
-	circuitArgv[3] = "-partiesNumber";
-	sprintf(circuitArgv[4], "%llu", context.np);
-	circuitArgv[5] = "-numBins";
-	sprintf(circuitArgv[6], "%llu", context.nbins);
-	circuitArgv[7] = "-inputsFile";
+	stringToChar(circuitArgv[0], "./build/MPCHonestMajority");
+	stringToChar(circuitArgv[1], "-partyID");
+	sprintf(circuitArgv[2], "%u", context.role);
+	stringToChar(circuitArgv[3], "-partiesNumber");
+	sprintf(circuitArgv[4], "%lu", context.np);
+	stringToChar(circuitArgv[5], "-numBins");
+	sprintf(circuitArgv[6], "%lu", context.nbins);
+	stringToChar(circuitArgv[7], "-inputsFile");
 	string arg_val = "../in_party_" + to_string(context.role) + ".txt";
-	sprintf(circuitArgv[8], arg_val.c_str());
-	circuitArgv[9] = "-outputsFile";
+	stringToChar(circuitArgv[8], arg_val);
+	stringToChar(circuitArgv[9], "-outputsFile");
 	strcpy(circuitArgv[10], context.outputFileName.c_str());
-	circuitArgv[11] = "-circuitFile";
+	stringToChar(circuitArgv[11], "-circuitFile");
 	strcpy(circuitArgv[12], context.circuitFileName.c_str());
-	circuitArgv[13] = "-fieldType";
+	stringToChar(circuitArgv[13], "-fieldType");
 	strcpy(circuitArgv[14], context.fieldType.c_str());
-	circuitArgv[15] = "-genRandomSharesType";
+	stringToChar(circuitArgv[15], "-genRandomSharesType");
 	strcpy(circuitArgv[16], context.genRandomSharesType.c_str());
-	circuitArgv[17] = "-multType";
+	stringToChar(circuitArgv[17], "-multType");
 	strcpy(circuitArgv[18], context.multType.c_str());
-	circuitArgv[19] = "-verifyType";
+	stringToChar(circuitArgv[19], "-verifyType");
 	strcpy(circuitArgv[20], context.verifyType.c_str());
-	circuitArgv[21] = "-partiesFile";
+	stringToChar(circuitArgv[21], "-partiesFile");
 	strcpy(circuitArgv[22], context.partiesFile.c_str());
-	circuitArgv[23] = "-internalIterationsNumber";
-	circuitArgv[24] = "1";
+	stringToChar(circuitArgv[23], "-internalIterationsNumber");
+	stringToChar(circuitArgv[24], "1");
 }
 
 /*
@@ -456,14 +460,14 @@ int main(int argc, char **argv) {
 	
 	prepareArgs(context, circuitArgv);
 	if(context.analytics_type == ENCRYPTO::PsiAnalyticsContext::THRESHOLD) {
-		circuitArgv[25] = "-threshold";
+		stringToChar(circuitArgv[25], "-threshold");
 		sprintf(circuitArgv[26], "%lu", context.threshold);
-		circuitArgv[27] = "-primemod";
-		sprintf(circuitArgv[28], "%lu", context.smallmod);
+		stringToChar(circuitArgv[27], "-primemod");
+		sprintf(circuitArgv[28], "%d", context.smallmod);
 	}
 	else if(context.analytics_type == ENCRYPTO::PsiAnalyticsContext::CIRCUIT) {
-		circuitArgv[25] = "-primemod";
-		sprintf(circuitArgv[26], "%lu", context.smallmod);
+		stringToChar(circuitArgv[25], "-primemod");
+		sprintf(circuitArgv[26], "%d", context.smallmod);
 	}
 
 	auto parameters = parser.parseArguments("", size, circuitArgv);
