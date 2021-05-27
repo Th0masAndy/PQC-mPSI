@@ -424,6 +424,7 @@ template<typename IO> class Equality {
 		}
 
 		void boolean_to_arithmetic(uint8_t* z, uint8_t* a_shares, const uint8_t smallmod) {
+			//Get shares of 0/1 within a field defined by smallmod
 			/*for(int i=0; i<10; i++) {
 				cout<<" Share Boolean"<<i<<":"<<(int)z[i]<<endl;
 			}*/
