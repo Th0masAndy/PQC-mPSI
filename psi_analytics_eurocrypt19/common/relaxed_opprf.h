@@ -40,52 +40,46 @@
 #define S_CONST 18286333650295995643
 
 namespace RELAXEDNS {
+	//Run relaxed OPPRF protocol
+	void run_relaxed_opprf(std::vector<std::vector<std::uint64_t>> &sub_bins, ENCRYPTO::PsiAnalyticsContext &context, 
+			       const std::vector<std::uint64_t> &inputs, std::vector<std::unique_ptr<CSocket>> &allsocks,
+			       std::vector<osuCrypto::Channel> &chls);
 
-void run_relaxed_opprf(std::vector<std::vector<uint64_t>> &sub_bins, ENCRYPTO::PsiAnalyticsContext &context, const std::vector<std::uint64_t> &inputs,
-					 std::vector<std::unique_ptr<CSocket>> &allsocks, std::vector<osuCrypto::Channel> &chls);
+	//Run OPPRF protocol for threshold PSI
+	void run_threshold_relaxed_opprf(std::vector<std::vector<std::uint8_t>> &sub_bins, ENCRYPTO::PsiAnalyticsContext &context, 
+					 const std::vector<std::uint64_t> &inputs, std::vector<std::unique_ptr<CSocket>> &allsocks, 
+					 std::vector<osuCrypto::Channel> &chls, std::vector<sci::NetIO*> &ioArr);
 
-void run_threshold_relaxed_opprf(std::vector<std::vector<uint8_t>> &sub_bins, ENCRYPTO::PsiAnalyticsContext &context, const std::vector<std::uint64_t> &inputs,
-					 std::vector<std::unique_ptr<CSocket>> &allsocks, std::vector<osuCrypto::Channel> &chls, std::vector<sci::NetIO*> &ioArr);
+	//Parallelise the various subprotocols
+	void multi_oprf_thread(int tid, std::vector<std::vector<osuCrypto::block>> &masks_with_dummies, std::vector<std::uint64_t> table,
+			       ENCRYPTO::PsiAnalyticsContext &context, std::vector<osuCrypto::Channel> &chls);
+	
+	void multi_hint_thread(int tid, std::vector<std::vector<std::uint64_t>> &sub_bins, std::vector<std::uint64_t> &cuckoo_table_v, 
+			       std::vector<std::vector<osuCrypto::block>> &masks_with_dummies, ENCRYPTO::PsiAnalyticsContext &context, 
+			       std::vector<std::unique_ptr<CSocket>> &allsocks, std::vector<osuCrypto::Channel> &chls);
 
+	void multi_boolean_conn(int tid, std::vector<sci::NetIO*> &ioArr, ENCRYPTO::PsiAnalyticsContext &context);
 
-/*//Receives OPRF
-std::vector<uint64_t> LeaderOprf(PsiAnalyticsContext &context, int server_index, const std::vector<uint64_t> &cuckoo_table_v,
-				 osuCrypto::Channel &chl);
+	void multi_otpack_setup(int tid, std::vector<sci::NetIO*> &ioArr, std::vector<sci::OTPack<sci::NetIO>*> &otpackArr, 
+				ENCRYPTO::PsiAnalyticsContext &context);
 
-//OPRF Sender
-std::vector<std::vector<uint64_t>> ClientOprf(PsiAnalyticsContext &context, const std::vector<std::vector<uint64_t>> &simple_table_v,
-						osuCrypto::Channel &chl);
+	void multi_equality_thread(int tid, std::vector<std::vector<std::uint64_t>> &x, int party, int num_cmps, 
+				   std::vector<std::vector<std::uint8_t>> &z, std::vector<std::vector<std::uint8_t>> &a_shares_bins, 
+				   std::vector<std::vector<std::uint64_t>> &aux_bins, std::vector<sci::NetIO*> &ioArr, 
+				   std::vector<sci::OTPack<sci::NetIO>*> &otpackArr, ENCRYPTO::PsiAnalyticsContext &context, 
+				   std::vector<std::unique_ptr<CSocket>> &allsocks);
 
-//Construct polynomial hints
-std::vector<uint64_t> ClientEvaluateHint(PsiAnalyticsContext &context, const std::vector<std::vector<uint64_t>> &masks);
+	//Run the leader party's end of the protocol
+	void OpprgPsiLeader(std::vector<std::uint64_t> &content_of_bins, std::vector<std::uint64_t> &cuckoo_table_v, 
+			    const std::vector<std::vector<osuCrypto::block>> &masks_with_dummies, ENCRYPTO::PsiAnalyticsContext &context, 
+			    std::unique_ptr<CSocket> &sock, osuCrypto::Channel &chl);
 
-//Receive hint
-std::vector<uint8_t> LeaderReceiveHint(PsiAnalyticsContext &context, std::unique_ptr<CSocket> &sock);
+	//Run the other parties' end of the protocol
+	void OpprgPsiNonLeader(std::vector<std::uint64_t> &actual_contents_of_bins, std::vector<std::vector<osuCrypto::block>> &masks, 
+			       ENCRYPTO::PsiAnalyticsContext &context, std::unique_ptr<CSocket> &sock, osuCrypto::Channel &chl);
 
-//Evaluate received hint
-std::vector<uint64_t> LeaderEvaluateHint(PsiAnalyticsContext &context, std::vector<uint8_t> &poly_rcv_buffer,
-					 const std::vector<uint64_t> &masks_with_dummies);
+	//Handle communication measurements for threshold PSI
+	void ResetCommunicationThreshold(std::vector<sci::NetIO*> &ioArr, ENCRYPTO::PsiAnalyticsContext &context);
 
-//Send hint
-std::vector<uint64_t> ClientSendHint(PsiAnalyticsContext &context, std::unique_ptr<CSocket> &sock,
-					const std::vector<uint64_t> &polynomials);*/
-
-//Interpolate polynomial for hint
-/*void multi_eval_thread(int tid, std::vector<std::vector<uint8_t>> poly_rcv_buffer, std::vector<std::vector<uint64_t>> masks_with_dummies,
-		       PsiAnalyticsContext &context, std::vector<std::vector<uint64_t>> &sub_bins);
-void multi_hint_thread(int tid, std::vector<std::vector<uint8_t>> &poly_rcv, PsiAnalyticsContext &context,
-			std::vector<std::unique_ptr<CSocket>> &allsocks);*/
-void multi_oprf_thread(int tid, std::vector<std::vector<osuCrypto::block>> &masks_with_dummies, std::vector<uint64_t> table,
-			ENCRYPTO::PsiAnalyticsContext &context, std::vector<osuCrypto::Channel> &chls);
-
-void multi_hint_thread(int tid, std::vector<std::vector<uint64_t>> &sub_bins, std::vector<uint64_t> &cuckoo_table_v, std::vector<std::vector<osuCrypto::block>> &masks_with_dummies, ENCRYPTO::PsiAnalyticsContext &context, std::vector<std::unique_ptr<CSocket>> &allsocks, std::vector<osuCrypto::Channel> &chls);
-void multi_boolean_conn(int tid, std::vector<sci::NetIO*> &ioArr, ENCRYPTO::PsiAnalyticsContext &context);
-void multi_otpack_setup(int tid, std::vector<sci::NetIO*> &ioArr, std::vector<sci::OTPack<sci::NetIO>*> &otpackArr, ENCRYPTO::PsiAnalyticsContext &context);
-void multi_equality_thread(int tid, std::vector<std::vector<uint64_t>> &x, int party, int num_cmps, std::vector<std::vector<uint8_t>> &z, std::vector<std::vector<uint8_t>> &a_shares_bins, std::vector<std::vector<uint64_t>> &aux_bins, std::vector<sci::NetIO*> &ioArr, std::vector<sci::OTPack<sci::NetIO>*> &otpackArr, ENCRYPTO::PsiAnalyticsContext &context, std::vector<std::unique_ptr<CSocket>> &allsocks);
-//void multi_B2A_thread(int tid, std::vector<std::vector<uint8_t>> &inputs, std::vector<std::vector<uint64_t>> &outputs, std::vector<std::vector<uint64_t>> &a_shares_bins, ENCRYPTO::PsiAnalyticsContext &context);
-void OpprgPsiLeader(std::vector<uint64_t> &content_of_bins, std::vector<uint64_t> &cuckoo_table_v, const std::vector<std::vector<osuCrypto::block>> &masks_with_dummies, ENCRYPTO::PsiAnalyticsContext &context, std::unique_ptr<CSocket> &sock, osuCrypto::Channel &chl);
-void OpprgPsiNonLeader(std::vector<uint64_t> &actual_contents_of_bins, std::vector<std::vector<osuCrypto::block>> &masks, ENCRYPTO::PsiAnalyticsContext & context, std::unique_ptr<CSocket> &sock, osuCrypto::Channel &chl);
-
-void ResetCommunicationThreshold(std::vector<sci::NetIO*> &ioArr, ENCRYPTO::PsiAnalyticsContext &context);
-void AccumulateCommunicationThreshold(std::vector<sci::NetIO*> &ioArr, ENCRYPTO::PsiAnalyticsContext &context);
+	void AccumulateCommunicationThreshold(std::vector<sci::NetIO*> &ioArr, ENCRYPTO::PsiAnalyticsContext &context);
 }
