@@ -71,14 +71,14 @@ auto read_test_options(int32_t argcp, char **argvp) {
 		po::notify(vm);
 	} catch (const boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::program_options::required_option> > &e) {
 		if (!vm.count("help")) {
-			cout << e.what() << endl;
-			cout << allowed << endl;
+			std::cout << e.what() << endl;
+			std::cout << allowed << endl;
 			exit(EXIT_FAILURE);
 		}
 	}
 
 	if (vm.count("help")) {
-		cout << allowed << endl;
+		std::cout << allowed << endl;
 		exit(EXIT_SUCCESS);
 	}
 
@@ -186,6 +186,9 @@ auto read_test_options(int32_t argcp, char **argvp) {
 	return context;
 }
 
+/*
+ * Convert strings to char *
+ */
 void stringToChar(char * arg, string s) {
 	strcpy(arg, s.c_str());
 }
@@ -202,7 +205,7 @@ void prepareArgs(ENCRYPTO::PsiAnalyticsContext context, char** circuitArgv) {
 	stringToChar(circuitArgv[5], "-numBins");
 	sprintf(circuitArgv[6], "%lu", context.nbins);
 	stringToChar(circuitArgv[7], "-inputsFile");
-	string arg_val = "../in_party_" + to_string(context.role) + ".txt";
+	std::string arg_val = "../in_party_" + to_string(context.role) + ".txt";
 	stringToChar(circuitArgv[8], arg_val);
 	stringToChar(circuitArgv[9], "-outputsFile");
 	strcpy(circuitArgv[10], context.outputFileName.c_str());
@@ -427,7 +430,7 @@ int main(int argc, char **argv) {
 	std::vector<sci::NetIO*> ioArr;
 	
 	CmdParser parser;
-	std::vector<uint64_t> bins;
+	std::vector<std::uint64_t> bins;
 
 	std::vector<std::unique_ptr<CSocket>> allsocks;
 	std::vector<osuCrypto::Channel> chl;
@@ -439,9 +442,11 @@ int main(int argc, char **argv) {
 	//auto inputs = ENCRYPTO::GeneratePseudoRandomElements(context.neles, gen_bitlen, context.role * 12345)
 	//Same sets, pseudorandom
 	//auto inputs = ENCRYPTO::GeneratePseudoRandomElements(context.neles, gen_bitlen);
-	//Even-numbered parties have identical sets, ditto odd-numbered parties
+	//Same sets, sequential
 	auto inputs = ENCRYPTO::GenerateSequentialElements(context.neles);
-	/*for (int i=0; i < inputs.size(); i++) {
+	//Even-numbered parties have identical sets, ditto odd-numbered parties
+	/*auto inputs = ENCRYPTO::GenerateSequentialElements(context.neles);
+	for (int i=0; i < inputs.size(); i++) {
 		inputs[i] = inputs[i] * ((context.role % 2) + 1);
 	}*/
 	
@@ -547,6 +552,6 @@ int main(int argc, char **argv) {
 	}
 	ios.stop();
 
-      	cout << "end main" << endl;
+	std::cout << "end main" << endl;
  	return EXIT_SUCCESS;
 }
