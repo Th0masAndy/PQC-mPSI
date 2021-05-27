@@ -37,65 +37,73 @@
 namespace ENCRYPTO {
 
 //Calls the different subprotocols of OPPRF
-void run_psi_analytics(std::vector<std::vector<uint64_t>> &sub_bins, PsiAnalyticsContext &context, const std::vector<std::uint64_t> &inputs,
-					 std::vector<std::unique_ptr<CSocket>> &allsocks, std::vector<osuCrypto::Channel> &chls);
+void run_psi_analytics(std::vector<std::vector<std::uint64_t>> &sub_bins, PsiAnalyticsContext &context, 
+		       const std::vector<std::uint64_t> &inputs, std::vector<std::unique_ptr<CSocket>> &allsocks, 
+		       std::vector<osuCrypto::Channel> &chls);
 
 //Performs cuckoo hashing of party's inputs
-std::vector<uint64_t> cuckoo_hash(PsiAnalyticsContext &context, const std::vector<uint64_t> &elements);
+std::vector<std::uint64_t> cuckoo_hash(PsiAnalyticsContext &context, const std::vector<std::uint64_t> &elements);
 
 //Performs simple hashing of party's inputs
-std::vector<std::vector<uint64_t>> simple_hash(PsiAnalyticsContext &context, const std::vector<uint64_t> &elements);
+std::vector<std::vector<std::uint64_t>> simple_hash(PsiAnalyticsContext &context, const std::vector<std::uint64_t> &elements);
 
 //Receives OPRF
-std::vector<uint64_t> LeaderOprf(PsiAnalyticsContext &context, int server_index, const std::vector<uint64_t> &cuckoo_table_v,
-				 osuCrypto::Channel &chl);
+std::vector<std::uint64_t> LeaderOprf(PsiAnalyticsContext &context, int server_index, const std::vector<std::uint64_t> &cuckoo_table_v,
+				      osuCrypto::Channel &chl);
 
 //OPRF Sender
-std::vector<std::vector<uint64_t>> ClientOprf(PsiAnalyticsContext &context, const std::vector<std::vector<uint64_t>> &simple_table_v,
-						osuCrypto::Channel &chl);
+std::vector<std::vector<std::uint64_t>> ClientOprf(PsiAnalyticsContext &context, const std::vector<std::vector<std::uint64_t>> &simple_table_v,
+						   osuCrypto::Channel &chl);
 
 //Construct polynomial hints
-std::vector<uint64_t> ClientEvaluateHint(PsiAnalyticsContext &context, const std::vector<std::vector<uint64_t>> &masks);
+std::vector<std::uint64_t> ClientEvaluateHint(PsiAnalyticsContext &context, const std::vector<std::vector<std::uint64_t>> &masks);
 
 //Receive hint
-std::vector<uint8_t> LeaderReceiveHint(PsiAnalyticsContext &context, std::unique_ptr<CSocket> &sock);
+std::vector<std::uint8_t> LeaderReceiveHint(PsiAnalyticsContext &context, std::unique_ptr<CSocket> &sock);
 
 //Evaluate received hint
-std::vector<uint64_t> LeaderEvaluateHint(PsiAnalyticsContext &context, std::vector<uint8_t> &poly_rcv_buffer,
-					 const std::vector<uint64_t> &masks_with_dummies);
+std::vector<std::uint64_t> LeaderEvaluateHint(PsiAnalyticsContext &context, std::vector<std::uint8_t> &poly_rcv_buffer,
+					      const std::vector<std::uint64_t> &masks_with_dummies);
 
 //Send hint
-std::vector<uint64_t> ClientSendHint(PsiAnalyticsContext &context, std::unique_ptr<CSocket> &sock,
-					const std::vector<uint64_t> &polynomials);
+std::vector<std::uint64_t> ClientSendHint(PsiAnalyticsContext &context, std::unique_ptr<CSocket> &sock,
+					  const std::vector<std::uint64_t> &polynomials);
 
 //Interpolate polynomial for hint
-void InterpolatePolynomials(PsiAnalyticsContext &context, std::vector<uint64_t> &polynomials,
-                            std::vector<uint64_t> &content_of_bins,
-                            const std::vector<std::vector<uint64_t>> &masks);
+void InterpolatePolynomials(PsiAnalyticsContext &context, std::vector<std::uint64_t> &polynomials,
+                            std::vector<std::uint64_t> &content_of_bins,
+                            const std::vector<std::vector<std::uint64_t>> &masks);
 
 void InterpolatePolynomialsPaddedWithDummies(PsiAnalyticsContext &context,
-					    std::vector<uint64_t>::iterator polynomial_offset,
-    					    std::vector<uint64_t>::const_iterator random_value_in_bin,
-					    std::vector<std::vector<uint64_t>>::const_iterator masks_for_elems_in_bin,
+					    std::vector<std::uint64_t>::iterator polynomial_offset,
+    					    std::vector<std::uint64_t>::const_iterator random_value_in_bin,
+					    std::vector<std::vector<std::uint64_t>>::const_iterator masks_for_elems_in_bin,
 					    std::size_t nbins_in_megabin);
 
-std::unique_ptr<CSocket> EstablishConnection(const std::string &address, uint16_t port,
+//Establish connections with other parties
+std::unique_ptr<CSocket> EstablishConnection(const std::string &address, std::uint16_t port,
                                              e_role role);
 
+//Output intersection size
 std::size_t PlainIntersectionSize(std::vector<std::uint64_t> v1, std::vector<std::uint64_t> v2);
 
+//Print the bins after hashing
 void PrintBins(std::vector<std::uint64_t> &bins, std::string outfile, PsiAnalyticsContext &context);
-void PrintTimings(const PsiAnalyticsContext &context);
-void PrintCommunication( PsiAnalyticsContext &context);
 
+//Print the runtimes of the protocol
+void PrintTimings(const PsiAnalyticsContext &context);
+
+//Print communication of each phase in the protocol
+void PrintCommunication( PsiAnalyticsContext &context);
 void ResetCommunication(std::vector<std::unique_ptr<CSocket>> &allsocks, std::vector<osuCrypto::Channel> &chls, PsiAnalyticsContext &context);
 void AccumulateCommunicationPSI(std::vector<std::unique_ptr<CSocket>> &allsocks, std::vector<osuCrypto::Channel> &chls, PsiAnalyticsContext &context);
 
-void multi_eval_thread(int tid, std::vector<std::vector<uint8_t>> poly_rcv_buffer, std::vector<std::vector<uint64_t>> masks_with_dummies,
+//parallelise the different sub-protocols
+void multi_eval_thread(int tid, std::vector<std::vector<std::uint8_t>> poly_rcv_buffer, std::vector<std::vector<std::uint64_t>> masks_with_dummies,
 		       PsiAnalyticsContext &context, std::vector<std::vector<uint64_t>> &sub_bins);
-void multi_hint_thread(int tid, std::vector<std::vector<uint8_t>> &poly_rcv, PsiAnalyticsContext &context,
+void multi_hint_thread(int tid, std::vector<std::vector<std::uint8_t>> &poly_rcv, PsiAnalyticsContext &context,
 			std::vector<std::unique_ptr<CSocket>> &allsocks);
-void multi_oprf_thread(int tid, std::vector<std::vector<uint64_t>> &masks_with_dummies, std::vector<uint64_t> table,
+void multi_oprf_thread(int tid, std::vector<std::vector<std::uint64_t>> &masks_with_dummies, std::vector<std::uint64_t> table,
 			PsiAnalyticsContext &context, std::vector<osuCrypto::Channel> &chls);
 void multi_conn_thread(int tid, std::vector<std::unique_ptr<CSocket>> &socks, PsiAnalyticsContext &context);
 void multi_sync_thread(int tid, std::vector<std::unique_ptr<CSocket>> &socks, PsiAnalyticsContext &context);
