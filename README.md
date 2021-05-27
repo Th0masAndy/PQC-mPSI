@@ -39,7 +39,7 @@ and multiparty quorum private set intersection, referred to in the code as "Thre
 To run the program, there are two methods that can be used:
  - individually run each process as:
    ```
-   ./build/bin/psi_analytics_eurocrypt19_example -F files/addresses -R 4
+   ./build/bin/pqc_mpsi_example -F files/addresses -R 4
    ```
    with the requisite arguments, or
  - call ./run\_protocol.sh with the arguments
@@ -55,12 +55,12 @@ The arguments are:
 
 E.g for Quorum PSI with Relaxed Batch OPPRF over 15 parties on the same terminal, threshold 7, set size 2^18 (=262144), run:
 ```
-./run\_protocol.sh 0 14 15 262144 14 Relaxed Threshold 7
+./run_protocol.sh 0 14 15 262144 14 Relaxed Threshold 7
 ```
 
 For further details, run 
 ```
-./build/bin/psi\_analytics\_eurocrypt19\_example --help
+./build/bin/pqc_mpsi_example --help
 ```
 
 To run over multiple servers, edit the IP addresses in Parties.txt and files/addresses.

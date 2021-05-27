@@ -15,7 +15,7 @@ endif ()
 add_library(psi_analytics_eurocrypt19
         common/psi_analytics.cpp
         common/helpers.cpp
-	      common/socket.cpp
+	common/socket.cpp
         common/relaxed_opprf.cpp
         common/connection.cpp
         common/utils.cpp
@@ -81,12 +81,12 @@ target_include_directories(psi_analytics_eurocrypt19 PUBLIC
         )
 
 if (PSI_ANALYTICS_BUILD_EXAMPLE)
-    add_executable(psi_analytics_eurocrypt19_example psi_analytics_example.cpp)
+    add_executable(pqc_mpsi_example psi_analytics_example.cpp)
 
-    target_link_libraries(psi_analytics_eurocrypt19_example PUBLIC
+    target_link_libraries(pqc_mpsi_example PUBLIC
             psi_analytics_eurocrypt19
             )
-    set_target_properties(psi_analytics_eurocrypt19_example
+    set_target_properties(pqc_mpsi_example
         PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin"
     )
 endif (PSI_ANALYTICS_BUILD_EXAMPLE)
