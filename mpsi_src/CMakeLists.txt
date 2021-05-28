@@ -12,7 +12,7 @@ if (NOT NTL_LIB)
     message(FATAL_ERROR "ntl library not found.  Rerun cmake with -DCMAKE_PREFIX_PATH=\"<path to lib1>;<path to lib2>\"")
 endif ()
 
-add_library(psi_analytics_eurocrypt19
+add_library(mpsi_src
         common/psi_analytics.cpp
         common/helpers.cpp
 	common/socket.cpp
@@ -26,11 +26,11 @@ add_library(psi_analytics_eurocrypt19
         ots/block_op_ots.cpp
         )
 
-set_target_properties(psi_analytics_eurocrypt19
+set_target_properties(mpsi_src
         PROPERTIES ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib"
         )
 
-target_compile_options(psi_analytics_eurocrypt19
+target_compile_options(mpsi_src
         PRIVATE
         -march=native
         #-std=c++11
@@ -41,7 +41,7 @@ target_compile_options(psi_analytics_eurocrypt19
 
 link_directories(/usr/ssl/lib/ $ENV{HOME}/libscapi/install/lib )
 
-target_link_libraries(psi_analytics_eurocrypt19 INTERFACE
+target_link_libraries(mpsi_src INTERFACE
         #ABY::aby
         #ENCRYPTO_utils::encrypto_utils
         ${GLIB_LDFLAGS}
@@ -63,8 +63,8 @@ target_link_libraries(psi_analytics_eurocrypt19 INTERFACE
         relic_s
         )
 
-target_include_directories(psi_analytics_eurocrypt19 PUBLIC
-        ${PSI_ANALYTICS_SOURCE_ROOT}/psi_analytics_eurocrypt19
+target_include_directories(mpsi_src PUBLIC
+        ${PSI_ANALYTICS_SOURCE_ROOT}/mpsi_src
         ${PSI_ANALYTICS_SOURCE_ROOT}/extern
         ${PSI_ANALYTICS_SOURCE_ROOT}/extern/libOTe/cryptoTools
         ${PSI_ANALYTICS_SOURCE_ROOT}/extern/libOTe
@@ -81,10 +81,10 @@ target_include_directories(psi_analytics_eurocrypt19 PUBLIC
         )
 
 if (PSI_ANALYTICS_BUILD_EXAMPLE)
-    add_executable(pqc_mpsi_example psi_analytics_example.cpp)
+    add_executable(pqc_mpsi_example mpsi_analytics_example.cpp)
 
     target_link_libraries(pqc_mpsi_example PUBLIC
-            psi_analytics_eurocrypt19
+            mpsi_src
             )
     set_target_properties(pqc_mpsi_example
         PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin"
@@ -93,7 +93,7 @@ endif (PSI_ANALYTICS_BUILD_EXAMPLE)
 
 macro (add_test _name)
 	add_executable(${_name} "tests/test_${_name}.cpp")
-  target_link_libraries(${_name} PUBLIC psi_analytics_eurocrypt19)
+  target_link_libraries(${_name} PUBLIC mpsi_src)
   set_target_properties(${_name} PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin"
   )
 endmacro()

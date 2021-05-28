@@ -85,4 +85,4 @@ add_dependencies(libOTe relic_s)
 
 add_subdirectory(extern/EzPC/SCI)
 
-add_subdirectory(psi_analytics_eurocrypt19)
+add_subdirectory(mpsi_src)

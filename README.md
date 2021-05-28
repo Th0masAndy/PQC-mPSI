@@ -65,15 +65,15 @@ For further details, run
 
 To run over multiple servers, edit the IP addresses in Parties.txt and files/addresses.
 
-Change the input sets in main() method of psi\_analytics\_eurocrypt19/psi\_analytics\_example.cpp.
+Change the input sets in main() method of mpsi\_src/mpsi\_analytics\_example.cpp.
 
 ## Field Modulus
 
-The current branch implements the second phase of Quorum and Circuit PSI variants in the field with prime modulus 31. 
+This branch implements the second phase of Quorum and Circuit PSI variants in the field with prime modulus 31. 
 This prime modulus can be changed to any other Mersenne prime under 1 byte in length such that the prime is greater than N.
 
 To change this the following files need to be edited:
--  psi\_analytics\_eurocrypt19/psi\_analytics\_example.cpp: 160 
+-  mpsi\_src/mpsi\_analytics\_example.cpp: 160 
 -  extern/MPCHonestMajority/ZpMersenneByteElement.cpp: 4, 5
 
 ## Contact
