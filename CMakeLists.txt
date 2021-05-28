@@ -4,7 +4,7 @@ cmake_policy(SET CMP0077 NEW)
 
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${PROJECT_SOURCE_DIR}/cmake")
 
-option(PSI_ANALYTICS_BUILD_TESTS "Build PSI analytics tests" ON)
+#option(PSI_ANALYTICS_BUILD_TESTS "Build PSI analytics tests" ON)
 option(PSI_ANALYTICS_BUILD_EXAMPLE "Build PSI analytics example" ON)
 
 set(PSI_ANALYTICS_SOURCE_ROOT ${CMAKE_CURRENT_SOURCE_DIR})
