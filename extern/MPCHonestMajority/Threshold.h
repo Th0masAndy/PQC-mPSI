@@ -71,13 +71,13 @@ class Threshold : public ProtocolParty<FieldType>{
 		void evaluateCircuit();
 
 		//Step 1: convert additive shares to T-threshold
-		void additive_to_threshold();
+		void additiveToThreshold();
 
 		//Step 2: Evaluate the polynomial
-		void thresh_poly();
+		void threshPoly();
 
 		//Step 3: Send to leader to open
-		void leader_open();
+		void leaderOpen();
 
 		//open an additive sharing
 		//code similar to DNHonestMultiplication() as only P0 opens
@@ -462,7 +462,7 @@ template <class FieldType> void Threshold<FieldType>::reshare(vector<FieldType>&
  * from which all parties subtract their T-threshold shares of the above randomness
  * to get the T-threshold sharing of the original shared secret
  */
-template <class FieldType> void Threshold<FieldType>::additive_to_threshold() {
+template <class FieldType> void Threshold<FieldType>::additiveToThreshold() {
 	uint64_t j;
         vector<FieldType> reconar; // reconstructed aj+rj
         reconar.resize(num_bins);
@@ -491,7 +491,7 @@ template <class FieldType> void Threshold<FieldType>::additive_to_threshold() {
  * Else:
  * Evaluate the polynomial s * p(x) = s * (x - K) * (x - (K + 1)) * ... (x - N)
  */
-template <class FieldType> void Threshold<FieldType>::thresh_poly() {
+template <class FieldType> void Threshold<FieldType>::threshPoly() {
 	int fieldByteSize = this->field->getElementSizeInBytes();
 	vector<FieldType> left(num_bins);
 	vector<FieldType> right(num_bins);
@@ -546,7 +546,7 @@ template <class FieldType> void Threshold<FieldType>::thresh_poly() {
  * Step 3 of the online phase:
  * The parties send shares to the leader to open
  */
-template <class FieldType> void Threshold<FieldType>::leader_open() {
+template <class FieldType> void Threshold<FieldType>::leaderOpen() {
 	int fieldByteSize = this->field->getElementSizeInBytes();
 	vector<byte> multbytes(num_outs * fieldByteSize);
 	vector<vector<byte>> recBufsBytes;
@@ -584,9 +584,9 @@ template <class FieldType> void Threshold<FieldType>::leader_open() {
  */
 template <class FieldType> void Threshold<FieldType>::evaluateCircuit() {
 	auto t9 = high_resolution_clock::now();
-	additive_to_threshold();
-	thresh_poly();
-	leader_open();
+	additiveToThreshold();
+	threshPoly();
+	leaderOpen();
 	auto t10 = high_resolution_clock::now();
 	auto dur5 = duration_cast<milliseconds>(t10-t9).count();
 	cout << this->m_partyId << ": Circuit evaluated in " << dur5 << " milliseconds." << endl;
@@ -742,8 +742,8 @@ template <class FieldType> void Threshold<FieldType>::testConversion() {
 	addShareOpen(num_bins, add_a, orig);
 	cout << "additive shares opened... ";
 
-	additive_to_threshold();
-	cout << "additive_to_threshold() done... ";
+	additiveToThreshold();
+	cout << "additiveToThreshold() done... ";
 
 	this->openShare(num_bins, a_vals, secrets);
 	for(uint64_t j=0; j<num_bins; j++) {

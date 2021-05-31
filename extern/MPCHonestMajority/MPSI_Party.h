@@ -66,7 +66,7 @@ class MPSI_Party : public ProtocolParty<FieldType>{
 		void evaluateCircuit();
 
 		//convert additive shares to T-threshold
-		void additive_to_threshold();
+		void additiveToThreshold();
 
 		//mask the results with random values
 		void mult_sj();
@@ -450,7 +450,7 @@ template <class FieldType> void MPSI_Party<FieldType>::reshare(vector<FieldType>
  * finally all parties subtract the T-threshold shares of the random values added above,
  * to get the T-threshold shares of the original secret
  */
-template <class FieldType> void MPSI_Party<FieldType>::additive_to_threshold() {
+template <class FieldType> void MPSI_Party<FieldType>::additiveToThreshold() {
         uint64_t j;
 	vector<FieldType> reconar; // reconstructed aj+rj
         reconar.resize(num_bins);
@@ -517,7 +517,7 @@ template <class FieldType> void MPSI_Party<FieldType>::mult_sj() {
  */
 template <class FieldType> void MPSI_Party<FieldType>::evaluateCircuit() {
 	auto t9 = high_resolution_clock::now();
-	additive_to_threshold();
+	additiveToThreshold();
 	mult_sj();
 	auto t10 = high_resolution_clock::now();
 	auto dur5 = duration_cast<milliseconds>(t10-t9).count();
@@ -643,7 +643,7 @@ template <class FieldType> void MPSI_Party<FieldType>::testConversion() {
 	addShareOpen(num_bins, add_a, orig);
 	cout << "additive shares opened... ";
 
-	additive_to_threshold();
+	additiveToThreshold();
 	cout<< "share conversion done... ";
 
 	this->openShare(num_bins, a_vals, secrets);

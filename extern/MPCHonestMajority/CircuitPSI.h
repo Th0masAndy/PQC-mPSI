@@ -71,13 +71,13 @@ class CircuitPSI : public ProtocolParty<FieldType>{
 		void evaluateCircuit();
 
 		//convert parties' additive shares to T-threshold shares
-		void additive_to_threshold();
+		void additiveToThreshold();
 
 		//Compute shares of the intersection
-		void compute_intersection_shares();
+		void computeIntersectionShares();
 
 		//open the result shares
-		void leader_open();
+		void leaderOpen();
 
 		//open an additive sharing
 		//code similar to DNHonestMultiplication() as only P1 opens
@@ -459,7 +459,7 @@ template <class FieldType> void CircuitPSI<FieldType>::reshare(vector<FieldType>
  * from which the parties subtract the T-threshold shares of the same random value
  * to get T-threshold shares of the original secret
  */
-template <class FieldType> void CircuitPSI<FieldType>::additive_to_threshold() {
+template <class FieldType> void CircuitPSI<FieldType>::additiveToThreshold() {
 	uint64_t j;
 	vector<FieldType> reconar; // reconstructed aj+rj
 	reconar.resize(num_bins);
@@ -485,7 +485,7 @@ template <class FieldType> void CircuitPSI<FieldType>::additive_to_threshold() {
  * Step 2 of the online phase:
  * Compute x^{p-1}
  */
-template <class FieldType> void CircuitPSI<FieldType>::compute_intersection_shares() {
+template <class FieldType> void CircuitPSI<FieldType>::computeIntersectionShares() {
 	int offset=0;
 
 	vector<vector<FieldType>> pow_mult(prime_bitlen);
@@ -524,7 +524,7 @@ template <class FieldType> void CircuitPSI<FieldType>::compute_intersection_shar
  * Step 3 of the online phase:
  * The parties send shares to the leader to open
  */
-template <class FieldType> void CircuitPSI<FieldType>::leader_open() {
+template <class FieldType> void CircuitPSI<FieldType>::leaderOpen() {
 	int fieldByteSize = this->field->getElementSizeInBytes();
 	vector<byte> multbytes(num_bins * fieldByteSize);
 	vector<vector<byte>> recBufsBytes;
@@ -569,9 +569,9 @@ template <class FieldType> void CircuitPSI<FieldType>::leader_open() {
  */
 template <class FieldType> void CircuitPSI<FieldType>::evaluateCircuit() {
 	auto t9 = high_resolution_clock::now();
-	additive_to_threshold();
-	compute_intersection_shares();
-	leader_open();
+	additiveToThreshold();
+	computeIntersectionShares();
+	leaderOpen();
 	auto t10 = high_resolution_clock::now();
 	auto dur5 = duration_cast<milliseconds>(t10-t9).count();
 	//cout << this->m_partyId << ": Circuit evaluated in " << dur5 << " milliseconds." << endl;
@@ -700,8 +700,8 @@ template <class FieldType> void CircuitPSI<FieldType>::testConversion() {
 	addShareOpen(num_bins, add_a, orig);
 	cout << "additive shares opened... ";
 
-	additive_to_threshold();
-	cout << "additive_to_threshold() done... ";
+	additiveToThreshold();
+	cout << "additiveToThreshold() done... ";
 
 	this->openShare(num_bins, a_vals, secrets);
 	for(uint64_t j=0; j<num_bins; j++) {
