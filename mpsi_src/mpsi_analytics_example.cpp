@@ -71,14 +71,14 @@ auto read_test_options(int32_t argcp, char **argvp) {
 		po::notify(vm);
 	} catch (const boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<boost::program_options::required_option> > &e) {
 		if (!vm.count("help")) {
-			std::cout << e.what() << endl;
-			std::cout << allowed << endl;
+			std::cout << e.what() << std::endl;
+			std::cout << allowed << std::endl;
 			exit(EXIT_FAILURE);
 		}
 	}
 
 	if (vm.count("help")) {
-		std::cout << allowed << endl;
+		std::cout << allowed << std::endl;
 		exit(EXIT_SUCCESS);
 	}
 
@@ -189,7 +189,7 @@ auto read_test_options(int32_t argcp, char **argvp) {
 /*
  * Convert strings to char *
  */
-void stringToChar(char * arg, string s) {
+void stringToChar(char * arg, std::string s) {
 	strcpy(arg, s.c_str());
 }
 
@@ -228,7 +228,7 @@ void prepareArgs(ENCRYPTO::PsiAnalyticsContext context, char** circuitArgv) {
 /*
  * Run the full PSI (non-circuit) protocol
  */
-void MPSI_execution(ENCRYPTO::PsiAnalyticsContext &context, std::vector<uint64_t> &inputs, std::vector<std::unique_ptr<CSocket>> &allsocks, 
+void MPSI_execution(ENCRYPTO::PsiAnalyticsContext &context, std::vector<std::uint64_t> &inputs, std::vector<std::unique_ptr<CSocket>> &allsocks, 
 		    std::vector<osuCrypto::Channel> &chl, MPSI_Party<ZpMersenneLongElement> &mpsi) {
 	ResetCommunication(allsocks, chl, context);
 	auto start_time = std::chrono::system_clock::now();
@@ -277,7 +277,7 @@ void MPSI_execution(ENCRYPTO::PsiAnalyticsContext &context, std::vector<uint64_t
 /*
  * Run the threshold PSI protocol
  */ 
-void MPSI_threshold_execution(ENCRYPTO::PsiAnalyticsContext &context, std::vector<uint64_t> &inputs, std::vector<std::unique_ptr<CSocket>> &allsocks, 
+void MPSI_threshold_execution(ENCRYPTO::PsiAnalyticsContext &context, std::vector<std::uint64_t> &inputs, std::vector<std::unique_ptr<CSocket>> &allsocks, 
 			      std::vector<osuCrypto::Channel> &chl, std::vector<sci::NetIO*> ioArr, Threshold<ZpMersenneByteElement> &mpsi) {
 	ResetCommunication(allsocks, chl, context);
 	RELAXEDNS::ResetCommunicationThreshold(ioArr, context);
@@ -329,7 +329,7 @@ void MPSI_threshold_execution(ENCRYPTO::PsiAnalyticsContext &context, std::vecto
 /*
  * Run the Circuit PSI protocol
  */
-void MPSI_circuit_execution(ENCRYPTO::PsiAnalyticsContext &context, std::vector<uint64_t> &inputs, std::vector<std::unique_ptr<CSocket>> &allsocks, 
+void MPSI_circuit_execution(ENCRYPTO::PsiAnalyticsContext &context, std::vector<std::uint64_t> &inputs, std::vector<std::unique_ptr<CSocket>> &allsocks, 
 			    std::vector<osuCrypto::Channel> &chl, std::vector<sci::NetIO*> ioArr, CircuitPSI<ZpMersenneByteElement> &mpsi) {
 	ResetCommunication(allsocks, chl, context);
 	RELAXEDNS::ResetCommunicationThreshold(ioArr, context);
@@ -411,7 +411,7 @@ void synchronize_parties(ENCRYPTO::PsiAnalyticsContext &context, std::vector<std
 		chl.resize(1);
 		///osuCrypto::IOService thisio;
 		ep.push_back(ENCRYPTO::ot_sender_connect(context, ios, chl[0]));
-		std::vector<uint8_t> testdata(1000, 0);
+		std::vector<std::uint8_t> testdata(1000, 0);
 		allsocks.resize(1);
 		allsocks[0] = ENCRYPTO::EstablishConnection(context.address[0], context.port[0], static_cast<e_role>(context.role));
 		allsocks[0]->Receive(testdata.data(), 1000);
@@ -555,6 +555,6 @@ int main(int argc, char **argv) {
 	}
 	ios.stop();
 
-	std::cout << "end main" << endl;
+	std::cout << "end main" << std::endl;
  	return EXIT_SUCCESS;
 }
