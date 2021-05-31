@@ -6,10 +6,18 @@
 #include <fstream>
 #include <unistd.h>
 #include <random>
+#include <map>
 
 using namespace std;
 
 vector<vector<uint64_t>> global_bins;
+
+uint64_t manual_intersection(vector<vector<uint64_t>> inputs) {
+	uint64_t counter = 0;
+
+
+	return counter;
+}
 
 void circuit_thread(int size, char** circuitArgv, vector<uint64_t>& bins, vector<ZpMersenneLongElement>& shares, int nbins) {
     MPSI_Party<ZpMersenneLongElement> mpsi(size, circuitArgv);
