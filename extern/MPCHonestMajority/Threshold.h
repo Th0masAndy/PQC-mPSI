@@ -59,7 +59,7 @@ class Threshold : public ProtocolParty<FieldType>{
 		void convertSharestoFieldType(vector<uint8_t>& bins, vector<FieldType>& shares, uint64_t nbins);
 
 		//perform MPSI
-		void runMPSI();
+		uint64_t runMPSI();
 
 		//prepare additive and T-threshold sharings of secret random value r_j using DN07's protocol
 		void modDoubleRandom(uint64_t no_random, vector<FieldType>& randomElementsToFill);
@@ -68,7 +68,7 @@ class Threshold : public ProtocolParty<FieldType>{
 		void reshare(vector<FieldType>& vals, vector<FieldType>& shares);
 
 		//evaluate the circuit
-		void evaluateCircuit();
+		uint64_t evaluateCircuit();
 
 		//Step 1: convert additive shares to T-threshold
 		void additiveToThreshold();
@@ -83,8 +83,8 @@ class Threshold : public ProtocolParty<FieldType>{
 		//code similar to DNHonestMultiplication() as only P0 opens
 		void addShareOpen(uint64_t numShares, vector<FieldType> &Shares, vector<FieldType> &Secrets);
 
-		//print output results to file
-		void outputPrint();
+		//return size of output
+		uint64_t outputPrint();
 
 		~Threshold() {}
 
@@ -176,7 +176,8 @@ template <class FieldType> void Threshold<FieldType>::convertSharestoFieldType(v
 /*
  * Generate shared randomness (preprocessing) and execute the protocol
  */
-template <class FieldType> void Threshold<FieldType>::runMPSI() {
+template <class FieldType> uint64_t Threshold<FieldType>::runMPSI() {
+	uint64_t counter = 0;
 	J = 2 * ceil((40 + log2(num_bins) + 3) / ceil(log2(p))) + 1; //number of times to repeat the final step to reduce false positive rate
 	num_outs = num_bins * J;
         masks.resize(num_outs);
@@ -222,8 +223,9 @@ template <class FieldType> void Threshold<FieldType>::runMPSI() {
 	auto dur4 = duration_cast<milliseconds>(t8-t7).count();
 	//cout << this->m_partyId << ": T- and 2T-sharings generated in " << dur4 << " milliseconds." << endl;
 
-        //Evaluate the circuit
-        evaluateCircuit();
+        //Evaluate the circuit; return quorum intersection size
+        counter = evaluateCircuit();
+	return counter;
 }
 
 /*
@@ -582,7 +584,8 @@ template <class FieldType> void Threshold<FieldType>::leaderOpen() {
 /*
  * Call the 3 steps of the online phase.
  */
-template <class FieldType> void Threshold<FieldType>::evaluateCircuit() {
+template <class FieldType> uint64_t Threshold<FieldType>::evaluateCircuit() {
+	uint64_t counter = 0;
 	auto t9 = high_resolution_clock::now();
 	additiveToThreshold();
 	threshPoly();
@@ -591,7 +594,7 @@ template <class FieldType> void Threshold<FieldType>::evaluateCircuit() {
 	auto dur5 = duration_cast<milliseconds>(t10-t9).count();
 	cout << this->m_partyId << ": Circuit evaluated in " << dur5 << " milliseconds." << endl;
 	if(this->m_partyId == 0) {
-		outputPrint();
+		counter = outputPrint();
 	}
 
 	for(int i = 0; i < this->parties.size(); i++) {
@@ -600,14 +603,14 @@ template <class FieldType> void Threshold<FieldType>::evaluateCircuit() {
 	}
 	//cout << this->m_partyId << ": " << sent_bytes << " bytes sent." << endl;
 	//cout << this->m_partyId << ": " << recv_bytes << " bytes received." << endl;
+	return counter;
 }
 
 /*
  * print output results
  */
-template <class FieldType> void Threshold<FieldType>::outputPrint() {
-        vector<int> matches;
-        uint64_t counter=0;
+template <class FieldType> uint64_t Threshold<FieldType>::outputPrint() {
+        vector<uint64_t> matches;
         uint64_t i, j, pos;
 	bool allZero;
 	int half = this->N / 2;
@@ -624,7 +627,6 @@ template <class FieldType> void Threshold<FieldType>::outputPrint() {
 			}
 			if(allZero == true) {
 				matches.push_back(i);
-				counter++;
 			}
 		}
 
@@ -638,16 +640,16 @@ template <class FieldType> void Threshold<FieldType>::outputPrint() {
 			}
 			if(allZero == false) {
 				matches.push_back(i);
-				counter++;
 			}
 		}
         }
 	cout << this->m_partyId << ": 0 found at " << matches.size() << " positions. " << endl;
 /*
-        for(i=0; i < counter; i++) {
+        for(i=0; i < matches.size(); i++) {
                 cout << matches[i] << " " << outputs[i] << endl;
         }
 */
+	return matches.size();
 }
 
 /*

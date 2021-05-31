@@ -59,7 +59,7 @@ class CircuitPSI : public ProtocolParty<FieldType>{
 		void convertSharestoFieldType(vector<uint8_t>& bins, vector<FieldType>& shares, uint64_t nbins);
 
 		//perform MPSI
-		void runMPSI();
+		uint64_t runMPSI();
 
 		//prepare additive and T-threshold sharings of secret random value r_j using DN07's protocol
 		void modDoubleRandom(uint64_t no_random, vector<FieldType>& randomElementsToFill);
@@ -68,7 +68,7 @@ class CircuitPSI : public ProtocolParty<FieldType>{
 		void reshare(vector<FieldType>& vals, vector<FieldType>& shares);
 
 		//evaluate circuit
-		void evaluateCircuit();
+		uint64_t evaluateCircuit();
 
 		//convert parties' additive shares to T-threshold shares
 		void additiveToThreshold();
@@ -84,7 +84,7 @@ class CircuitPSI : public ProtocolParty<FieldType>{
 		void addShareOpen(uint64_t numShares, vector<FieldType> &Shares, vector<FieldType> &Secrets);
 
 		//print output results
-		void outputPrint();
+		uint64_t outputPrint();
 
 		~CircuitPSI() {}
 
@@ -189,7 +189,8 @@ template <class FieldType> void CircuitPSI<FieldType>::convertSharestoFieldType(
 /*
  * Initialize parameters and shared randomness and call circuit evaluation method
  */
-template <class FieldType> void CircuitPSI<FieldType>::runMPSI() {
+template <class FieldType> uint64_t CircuitPSI<FieldType>::runMPSI() {
+	uint64_t counter = 0;
 	masks.resize(num_bins);
 	a_vals.resize(num_bins);
 	outputs.resize(num_bins);
@@ -224,7 +225,8 @@ template <class FieldType> void CircuitPSI<FieldType>::runMPSI() {
 	//cout << this->m_partyId << ": T- and 2T-sharings generated in " << dur4 << " milliseconds." << endl;
 
         //Evaluate the circuit
-	evaluateCircuit();
+	counter = evaluateCircuit();
+	return counter;
 }
 
 /*
@@ -567,7 +569,8 @@ template <class FieldType> void CircuitPSI<FieldType>::leaderOpen() {
 /*
  * Call the 3 steps of the online phase.
  */
-template <class FieldType> void CircuitPSI<FieldType>::evaluateCircuit() {
+template <class FieldType> uint64_t CircuitPSI<FieldType>::evaluateCircuit() {
+	uint64_t counter = 0;
 	auto t9 = high_resolution_clock::now();
 	additiveToThreshold();
 	computeIntersectionShares();
@@ -576,7 +579,7 @@ template <class FieldType> void CircuitPSI<FieldType>::evaluateCircuit() {
 	auto dur5 = duration_cast<milliseconds>(t10-t9).count();
 	//cout << this->m_partyId << ": Circuit evaluated in " << dur5 << " milliseconds." << endl;
 	if(this->m_partyId == 0) {
-		outputPrint();
+		counter = outputPrint();
 	}
 
 	for(int i = 0; i < this->parties.size(); i++) {
@@ -585,14 +588,14 @@ template <class FieldType> void CircuitPSI<FieldType>::evaluateCircuit() {
 	}
 	//cout << this->m_partyId << ": " << sent_bytes << " bytes sent." << endl;
 	//cout << this->m_partyId << ": " << recv_bytes << " bytes received." << endl;
+	return counter;
 }
 
 /*
  * print output results
  */
-template <class FieldType> void CircuitPSI<FieldType>::outputPrint() {
-	vector<int> matches;
-	uint64_t counter=0;
+template <class FieldType> uint64_t CircuitPSI<FieldType>::outputPrint() {
+	vector<uint64_t> matches;
 	uint64_t i;
 
 	for(i=0; i < num_bins; i++) {
@@ -602,10 +605,11 @@ template <class FieldType> void CircuitPSI<FieldType>::outputPrint() {
 	}
 	cout << this->m_partyId << ": 0 found at " << matches.size() << " positions. " << endl;
 /*
-        for(i=0; i < counter; i++) {
+        for(i=0; i < matches.size(); i++) {
                 cout << matches[i] << " " << outputs[i] << "\n";
         }
 */
+	return matches.size();
 }
 
 /*

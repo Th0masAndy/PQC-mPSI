@@ -54,7 +54,7 @@ class MPSI_Party : public ProtocolParty<FieldType>{
 		void convertSharestoFieldType(vector<uint64_t>& bins, vector<FieldType>& shares, uint64_t nbins);
 
 		//perform MPSI
-		void runMPSI();
+		uint64_t runMPSI();
 
 		//prepare additive and T-threshold sharings of secret random value r_j using DN07's protocol
 		void modDoubleRandom(uint64_t no_random, vector<FieldType>& randomElementsToFill);
@@ -75,8 +75,8 @@ class MPSI_Party : public ProtocolParty<FieldType>{
 		//code similar to DNHonestMultiplication() as only leader opens
 		void addShareOpen(uint64_t numShares, vector<FieldType> &Shares, vector<FieldType> &Secrets);
 
-		//print output results to file
-		void outputPrint();
+		//compile output results and return count
+		uint64_t outputPrint();
 
 		~MPSI_Party() {}
 
@@ -164,11 +164,13 @@ template <class FieldType> void MPSI_Party<FieldType>::convertSharestoFieldType(
 /*
  * perform MPSI
  */
-template <class FieldType> void MPSI_Party<FieldType>::runMPSI() {
+template <class FieldType> uint64_t MPSI_Party<FieldType>::runMPSI() {
         masks.resize(num_bins);
         a_vals.resize(num_bins);
         mult_outs.resize(num_bins);
         outputs.resize(num_bins);
+
+	uint64_t counter = 0;
 
 	auto t1 = high_resolution_clock::now();
         this->honestMult->invokeOffline();
@@ -201,7 +203,7 @@ template <class FieldType> void MPSI_Party<FieldType>::runMPSI() {
         evaluateCircuit();
 
 	if(this->m_partyId == 0) {
-		outputPrint();
+		counter = outputPrint();
 	}
 
 	for(int i = 0; i < this->parties.size(); i++) {
@@ -211,6 +213,7 @@ template <class FieldType> void MPSI_Party<FieldType>::runMPSI() {
 	//cout << this->m_partyId << ": " << "communicated with " << this->parties.size() << " parties." << endl;
 	//cout << this->m_partyId << ": " << sent_bytes << " bytes sent." << endl;
 	//cout << this->m_partyId << ": " << recv_bytes << " bytes received." << endl;
+	return counter;
 }
 
 /*
@@ -527,9 +530,8 @@ template <class FieldType> void MPSI_Party<FieldType>::evaluateCircuit() {
 /*
  * print output results
  */
-template <class FieldType> void MPSI_Party<FieldType>::outputPrint() {
-        vector<int> matches;
-        uint64_t counter=0;
+template <class FieldType> uint64_t MPSI_Party<FieldType>::outputPrint() {
+        vector<uint64_t> matches;
         uint64_t i;
 
         for(i=0; i < num_bins; i++) {
@@ -537,16 +539,16 @@ template <class FieldType> void MPSI_Party<FieldType>::outputPrint() {
 			continue;
 		}
                 matches.push_back(i);
-                counter++;
         }
 	cout << this->m_partyId << ": 0 found at " << matches.size() << " positions. " << endl;
 	//cout << this->m_partyId << ": " << sent_bytes << " bytes sent." << endl;
 	//cout << this->m_partyId << ": " << recv_bytes << " bytes received." << endl;
 /*
-        for(i=0; i < counter; i++) {
+        for(i=0; i < matches.size(); i++) {
                 cout << matches[i] << " " << outputs[i] << endl;
         }
 */
+	return matches.size();
 }
 
 /*

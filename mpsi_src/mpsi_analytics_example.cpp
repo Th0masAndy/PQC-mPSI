@@ -232,7 +232,8 @@ void MPSI_execution(ENCRYPTO::PsiAnalyticsContext &context, std::vector<uint64_t
 		    std::vector<osuCrypto::Channel> &chl, MPSI_Party<ZpMersenneLongElement> &mpsi) {
 	ResetCommunication(allsocks, chl, context);
 	auto start_time = std::chrono::system_clock::now();
-	std::vector<std::vector<uint64_t>> sub_bins;
+	std::vector<std::vector<std::uint64_t>> sub_bins;
+	std::uint64_t int_count;
   
 	switch(context.opprf_type) {
 		case ENCRYPTO::PsiAnalyticsContext::POLY: {
@@ -256,7 +257,7 @@ void MPSI_execution(ENCRYPTO::PsiAnalyticsContext &context, std::vector<uint64_t
 
 	//cout << context.role << ": Running circuit..." << endl;
 	auto t2 = std::chrono::system_clock::now();
-	mpsi.runMPSI();
+	int_count = mpsi.runMPSI();
 	auto end_time = std::chrono::system_clock::now();
 	
 	const duration_millis circuit_time = end_time - t2;
@@ -281,7 +282,8 @@ void MPSI_threshold_execution(ENCRYPTO::PsiAnalyticsContext &context, std::vecto
 	ResetCommunication(allsocks, chl, context);
 	RELAXEDNS::ResetCommunicationThreshold(ioArr, context);
 	auto start_time = std::chrono::system_clock::now();
-	std::vector<std::vector<uint8_t>> sub_bins;
+	std::vector<std::vector<std::uint8_t>> sub_bins;
+	std::uint64_t int_count;
 
 	switch(context.opprf_type) {
 		case ENCRYPTO::PsiAnalyticsContext::POLY: {
@@ -306,7 +308,7 @@ void MPSI_threshold_execution(ENCRYPTO::PsiAnalyticsContext &context, std::vecto
 
 	//cout << context.role << ": Running circuit..." << endl;
 	auto t2 = std::chrono::system_clock::now();
-	mpsi.runMPSI();
+	int_count = mpsi.runMPSI();
 	auto end_time = std::chrono::system_clock::now();
 	
 	const duration_millis circuit_time = end_time - t2;
@@ -332,7 +334,8 @@ void MPSI_circuit_execution(ENCRYPTO::PsiAnalyticsContext &context, std::vector<
 	ResetCommunication(allsocks, chl, context);
 	RELAXEDNS::ResetCommunicationThreshold(ioArr, context);
 	auto start_time = std::chrono::system_clock::now();
-	std::vector<std::vector<uint8_t>> sub_bins;
+	std::vector<std::vector<std::uint8_t>> sub_bins;
+	std::uint64_t int_count;
 	
 	switch(context.opprf_type) {
 		case ENCRYPTO::PsiAnalyticsContext::POLY: {
@@ -356,7 +359,7 @@ void MPSI_circuit_execution(ENCRYPTO::PsiAnalyticsContext &context, std::vector<
 
 	//cout << context.role << ": Running circuit..." << endl;
 	auto t2 = std::chrono::system_clock::now();
-	mpsi.runMPSI();
+	int_count = mpsi.runMPSI();
 	auto end_time = std::chrono::system_clock::now();
 	const duration_millis circuit_time = end_time - t2;
 
