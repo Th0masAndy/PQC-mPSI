@@ -1,0 +1,8 @@
+#Default behaviour in case core.autocrlf is not set
+#Text files that should always be normalized and converted to native line endings on checkout
+text=auto
+*.cpp text
+*.h text
+*.c text
+*.sh text
+*.txt text
