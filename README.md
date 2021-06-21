@@ -1,7 +1,10 @@
-# OPPRF-PSI [![Build Status](https://travis-ci.org/encryptogroup/OPPRF-PSI.svg?branch=master)](https://travis-ci.org/encryptogroup/OPPRF-PSI)
+%# OPPRF-PSI [![Build Status](https://travis-ci.org/encryptogroup/OPPRF-PSI.svg?branch=master)](https://travis-ci.org/encryptogroup/OPPRF-PSI)
+
+# PQC-MPSI
 
 An implementation of the first multiparty circuit-based private set intersection protocol with
-linear complexity, available at \[[https:://eprint.iacr.org/2021/172](https://ia.cr/2021/172)\].
+linear complexity, available at \[[https:://eprint.iacr.org/2021/172](https://ia.cr/2021/172)\]. Also contains the first implementations of multiparty
+circuit and quorum private set intersection protocols.
 
 Code based on the implementation of 2-party private set intersection available at \[[encryptogroup/OPPRF-PSI](https://github.com/encryptogroup/OPPRF-PSI)\]
 and on the implementation of multiparty arithmetic circuits available at \[[cryptobiu/MPC-Benchmark/MPCHonestMajority](https://github.com/cryptobiu/MPC-Benchmark/tree/master/MPCHonestMajority)\]
@@ -78,4 +81,4 @@ To change this the following files need to be edited:
 
 ## Contact
 
-For any queries, contact Akash Shah or Nishka Dasgupta.
+For any queries, contact Akash Shah (akashshah08 at outlook.com) or Nishka Dasgupta (nishka.dasgupta at yahoo.com).
