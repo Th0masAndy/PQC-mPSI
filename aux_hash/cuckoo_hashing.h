@@ -1,5 +1,7 @@
 #pragma once
 
+// Original Work copyright (c) Oleksandr Tkachenko
+// Modified Work copyright (c) 2021 Microsoft Research
 //
 // \file cuckoo_hashing.h
 // \author Oleksandr Tkachenko
@@ -23,6 +25,7 @@
 // OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
 // OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
+// Modified by Akash Shah
 
 #include "common/hashing.h"
 

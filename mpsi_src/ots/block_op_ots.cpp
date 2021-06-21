@@ -1,4 +1,6 @@
-//
+// Original Work ots.cpp copyright (c) Oleksandr Tkachenko
+// Modified Work block_op_ots.cpp copyright (c) 2021 Microsoft Research
+// 
 // \file ots.cpp
 // \author Oleksandr Tkachenko
 // \email tkachenko@encrypto.cs.tu-darmstadt.de
@@ -21,6 +23,8 @@
 // HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
 // OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
 // OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//
+// Modified by Akash Shah
 
 #include "block_op_ots.h"
 #include "common/constants.h"

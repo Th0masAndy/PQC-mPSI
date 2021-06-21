@@ -1,5 +1,7 @@
 #pragma once
 
+// Original Work ots.h copyright (c) Oleksandr Tkachenko
+// Modified Work block_op_ots.h copyright (c) 2021 Microsoft Research
 //
 // \file ots.h
 // \author Oleksandr Tkachenko
@@ -23,6 +25,8 @@
 // HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
 // OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
 // OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//
+// Modified by Akash Shah
 
 #include <cinttypes>
 #include <string>

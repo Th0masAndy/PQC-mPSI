@@ -1,5 +1,6 @@
 #pragma once
-//
+// Original Work copyright (c) Oleksandr Tkachenko
+// Modified Work copyright (x) 2021 Microsoft Research
 // \author Oleksandr Tkachenko
 // \email tkachenko@encrypto.cs.tu-darmstadt.de
 // \organization Cryptography and Privacy Engineering Group (ENCRYPTO)
@@ -21,6 +22,8 @@
 // HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
 // OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
 // OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//
+// Modified by Akash Shah
 
 #include "abycore/aby/abyparty.h"
 #include <string>

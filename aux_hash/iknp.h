@@ -1,6 +1,6 @@
 /*
 Original Work Copyright (c) 2018 Xiao Wang (wangxiao@gmail.com)
-Modified Work Copyright (c) 2020 Microsoft Research
+Modified Work Copyright (c) 2020 Microsoft Research, 2021 Microsoft Research
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -23,6 +23,8 @@ SOFTWARE.
 Enquiries about further applications and development opportunities are welcome.
 
 Modified by Nishant Kumar
+
+Modified by Nishka Dasgupta, Akash Shah
 */
 
 #ifndef OT_IKNP_H__
