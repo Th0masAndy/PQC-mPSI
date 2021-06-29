@@ -1,3 +1,5 @@
+// Original Work copyright (c) Oleksandr Tkachenko
+// Modified Work copyright (c) 2021 Microsoft Research
 //
 // \file psi_analytics_example.cpp
 // \author Oleksandr Tkachenko
@@ -6,6 +8,25 @@
 // \TU Darmstadt, Computer Science department
 //
 // \copyright The MIT License. Copyright Oleksandr Tkachenko
+//
+// Permission is hereby granted, free of charge, to any person obtaining
+// a copy of this software and associated documentation files (the "Software"),
+// to deal in the Software without restriction, including without limitation
+// the rights to use, copy, modify, merge, publish, distribute, sublicense, 
+// and/or sell copies of the Software, and to permit persons to whom the Software
+// is furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all
+// copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+// INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR
+// A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+// HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION 
+// OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
+// OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+//
+// Modified by Akash Shah, Nishka Dasgupta
 //
 
 #include <cassert>
@@ -30,6 +51,7 @@
 #include "common/relaxed_opprf.h"
 #include "common/constants.h"
 #include "common/psi_analytics_context.h"
+//#include "tests/test_circuit.h"
 #include <thread>
 
 using milliseconds_ratio = std::ratio<1, 1000>;
@@ -49,7 +71,7 @@ auto read_test_options(int32_t argcp, char **argvp) {
   	
 	allowed.add_options()("help,h", "produce this message")
 		("role,r",         po::value<decltype(context.role)>(&context.role)->required(),                                  "Role of the node")
-		("neles,n",        po::value<decltype(context.neles)>(&context.neles)->default_value(100u),                      "Number of my elements")
+		("neles,n",        po::value<decltype(context.neles)>(&context.neles)->default_value(4096u),                      "Number of my elements")
 		("bit-length,b",   po::value<decltype(context.bitlen)>(&context.bitlen)->default_value(61u),                      "Bit-length of the elements")
 		("epsilon,e",      po::value<decltype(context.epsilon)>(&context.epsilon)->default_value(1.28f),                   "Epsilon, a table size multiplier")
 		("threads,t",      po::value<decltype(context.nthreads)>(&context.nthreads)->default_value(1),                    "Number of threads")
@@ -57,7 +79,7 @@ auto read_test_options(int32_t argcp, char **argvp) {
 		//("nmegabins,m",    po::value<decltype(context.nmegabins)>(&context.nmegabins)->default_value(1u),                 "Number of mega bins")
 		//("polysize,s",     po::value<decltype(context.polynomialsize)>(&context.polynomialsize)->default_value(0u),       "Size of the polynomial(s), default: neles")
 		("functions,f",    po::value<decltype(context.nfuns)>(&context.nfuns)->default_value(3u),                         "Number of hash functions in hash tables")
-		("num_parties,N",    po::value<decltype(context.np)>(&context.np)->default_value(4u),                         "Number of parties")
+		("num_parties,N",    po::value<decltype(context.np)>(&context.np)->default_value(5u),                         "Number of parties")
 		("file_address,F",    po::value<decltype(context.file_address)>(&context.file_address)->default_value("../../files/addresses"),                         "IP Addresses")
 		("type,y",         po::value<std::string>(&type)->default_value("PSI"),                                          "Function type {None, PSI, Threshold, Circuit}")
 		("opprf_type,o",         po::value<std::string>(&opprf_type)->default_value("Poly"),                                          "OPPRF type {Poly, Relaxed}")
@@ -514,6 +536,7 @@ int main(int argc, char **argv) {
 
 	switch(context.analytics_type) {
 		case ENCRYPTO::PsiAnalyticsContext::PSI: {
+								 //MPSI_Party<ZpMersenneLongElement> mpsi(size, circuitArgv);
 								 MPSI_Party<ZpMersenneLongElement> mpsi(size, circuitArgv);
 								 synchronize_parties(context, allsocks, chl, ios, ep);
 								 MPSI_execution(context, inputs, allsocks, chl, mpsi);
