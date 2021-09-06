@@ -2,7 +2,7 @@
 
 # PQC-MPSI
 
-An implementation of the first multiparty circuit-based private set intersection protocol with
+An implementation of the first multiparty private set intersection protocol with
 linear complexity, available at \[[https:://eprint.iacr.org/2021/172](https://ia.cr/2021/172)\]. Also contains the first implementations of multiparty
 circuit and quorum private set intersection protocols.
 
