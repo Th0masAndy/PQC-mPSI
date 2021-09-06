@@ -111,8 +111,8 @@ namespace RELAXEDNS {
 	/*
 	 * OPPRF for other (non-leader) parties
 	 */
-	void OpprgPsiNonLeader(std::vector<std::uint64_t> &actual_contents_of_bins, std::vector<std::vector<std::uint64_t>> &simple_table_v, 
-			       std::vector<std::vector<osuCrypto::block>> &masks, ENCRYPTO::PsiAnalyticsContext & context, 
+	void OpprgPsiNonLeader(std::vector<std::uint64_t> &actual_contents_of_bins, std::vector<std::vector<std::uint64_t>> &simple_table_v,
+			       std::vector<std::vector<osuCrypto::block>> &masks, ENCRYPTO::PsiAnalyticsContext & context,
 			       std::unique_ptr<CSocket> &sock, osuCrypto::Channel &chl) {
 		std::vector<std::uint64_t> content_of_bins;
 		std::uint64_t bufferlength = (std::uint64_t)ceil(context.nbins/2.0);
@@ -138,7 +138,7 @@ namespace RELAXEDNS {
 		cuckoo_table.Insert(filterinputs);
 		cuckoo_table.MapElements();
 		//cuckoo_table.Print();
-		
+
 		if (cuckoo_table.GetStashSize() > 0u) {
 			std::cerr << "[Error] Stash of size " << cuckoo_table.GetStashSize() << " occured\n";
 		}
@@ -181,7 +181,7 @@ namespace RELAXEDNS {
 		sock->Receive(table_opprf.data(), context.nbins * ts* sizeof(std::uint64_t));
 
 		//context.timings.table_transmission = ttrans_duration.count();
-		
+
 		std::uint64_t addresses1;
 		std::uint8_t bitaddress;
 		std::uint64_t mask_ad = (1ULL << 2) - 1;
@@ -198,8 +198,8 @@ namespace RELAXEDNS {
 	/*
 	 * Relaxed batch OPPRF for leader party
 	 */
-	void OpprgPsiLeader(std::vector<std::uint64_t> &content_of_bins, std::vector<std::uint64_t> &cuckoo_table_v, 
-			    std::vector<osuCrypto::block> &masks_with_dummies, ENCRYPTO::PsiAnalyticsContext &context, 
+	void OpprgPsiLeader(std::vector<std::uint64_t> &content_of_bins, std::vector<std::uint64_t> &cuckoo_table_v,
+			    std::vector<osuCrypto::block> &masks_with_dummies, ENCRYPTO::PsiAnalyticsContext &context,
 			    std::unique_ptr<CSocket> &sock, osuCrypto::Channel &chl) {
 		std::vector<std::uint64_t> garbled_cuckoo_filter;
 		garbled_cuckoo_filter.reserve(context.fbins);
@@ -230,14 +230,6 @@ namespace RELAXEDNS {
 			content_of_bins[i] = tab_prng.get<std::uint64_t>();
 		}
 
-		/* std::cout<<"***********************************"<<std::endl;
-		 * std::cout<<"The actual contents are: ["<<std::endl;
-		 * for(int i=0;i<context.nbins;i++) {
-		 *	std::cout<<"( "<<i<<", "<<content_of_bins[i]<<"), ";
-		 * }
-		 * std::cout<<"]"<<std::endl;
-		 * std::cout<<"***********************************"<<std::endl;*/
-
 		std::vector<osuCrypto::block> padding_vals;
 		padding_vals.reserve(context.nbins);
 		std::vector<std::uint64_t> table_opprf;
@@ -260,7 +252,7 @@ namespace RELAXEDNS {
 			int ctr=0;
 			while (!uniqueMap) {
 				auto nonce = padding_prng.get<osuCrypto::block>();
-				
+
 				for(std::uint64_t j=0; j< context.ffuns; j++) {
 					addresses1[j] = hashToPosition(reinterpret_cast<std::uint64_t *>(&table_masks[i][j])[0], nonce);
 					bitaddress[j] = addresses1[j] & mask_ad;
@@ -293,19 +285,18 @@ namespace RELAXEDNS {
 		}
 
 		ave_ctr = ave_ctr/context.nbins;
-		
+
 		//Send nonces
 		sock->Send(padding_vals.data(), context.nbins * sizeof(osuCrypto::block));
 		//Send table
 		sock->Send(table_opprf.data(), context.nbins * ts* sizeof(std::uint64_t));
-		//std::cout<<"Checkpoint 1"<<std::endl;
 	}
 
 	/*
 	 * Parallelise hint transmission between leader and all parties
 	 */
-	void multi_hint_thread(int tid, std::vector<std::vector<std::uint64_t>> &sub_bins, std::vector<std::uint64_t> &cuckoo_table_v, 
-			       std::vector<std::vector<osuCrypto::block>> &masks_with_dummies, ENCRYPTO::PsiAnalyticsContext &context, 
+	void multi_hint_thread(int tid, std::vector<std::vector<std::uint64_t>> &sub_bins, std::vector<std::uint64_t> &cuckoo_table_v,
+			       std::vector<std::vector<osuCrypto::block>> &masks_with_dummies, ENCRYPTO::PsiAnalyticsContext &context,
 			       std::vector<std::unique_ptr<CSocket>> &allsocks, std::vector<osuCrypto::Channel> &chls) {
 		for(std::uint64_t i=tid; i<context.np-1; i=i+context.nthreads) {
 			OpprgPsiLeader(sub_bins[i], cuckoo_table_v, masks_with_dummies[i], context, allsocks[i], chls[i]);
@@ -326,7 +317,7 @@ namespace RELAXEDNS {
 	/*
 	 * Parallelise setup of OT connections
 	 */
-	void multi_otpack_setup(int tid, std::vector<sci::NetIO*> &ioArr, std::vector<sci::OTPack<sci::NetIO>*> &otpackArr, 
+	void multi_otpack_setup(int tid, std::vector<sci::NetIO*> &ioArr, std::vector<sci::OTPack<sci::NetIO>*> &otpackArr,
 				ENCRYPTO::PsiAnalyticsContext &context) {
 		//std::cout<<"Cp 3"<<context.radixparam<<": "<< context.bitlen<< std::endl;
 		for(std::uint64_t i=tid; i<context.np-1; i=i+context.nthreads) {
@@ -338,17 +329,15 @@ namespace RELAXEDNS {
 				}
 			}
 		}
-		//std::cout<<"Cp 2"<<std::endl;
 	}
 
 	/*
 	 * Parallelise equality phase
 	 */
-	void multi_equality_thread(int tid, std::vector<std::vector<std::uint64_t>> &x, int party, int num_cmps, std::vector<std::vector<std::uint8_t>> &z, 
-				   std::vector<std::vector<std::uint8_t>> &a_shares_bins, std::vector<std::vector<std::uint64_t>> &aux_bins, 
-				   std::vector<sci::NetIO*> &ioArr, std::vector<sci::OTPack<sci::NetIO>*> &otpackArr, ENCRYPTO::PsiAnalyticsContext &context, 
+	void multi_equality_thread(int tid, std::vector<std::vector<std::uint64_t>> &x, int party, int num_cmps, std::vector<std::vector<std::uint8_t>> &z,
+				   std::vector<std::vector<std::uint8_t>> &a_shares_bins, std::vector<std::vector<std::uint64_t>> &aux_bins,
+				   std::vector<sci::NetIO*> &ioArr, std::vector<sci::OTPack<sci::NetIO>*> &otpackArr, ENCRYPTO::PsiAnalyticsContext &context,
 				   std::vector<std::unique_ptr<CSocket>> &allsocks) {
-		//std::cout<<"X Value: "<<x[0][5]<<std::endl;
 		for(std::uint64_t i=tid; i<context.np-1; i=i+context.nthreads) {
 			sci::NetIO* ioThreadArr[2];
 			sci::OTPack<sci::NetIO> *otThreadpackArr[2];
@@ -356,9 +345,8 @@ namespace RELAXEDNS {
 				ioThreadArr[j] = ioArr[2*i+j];
 				otThreadpackArr[j] = otpackArr[2*i+j];
 			}
-			perform_equality(x[i].data(), party, context.bitlen, context.radixparam, num_cmps, z[i].data(), 
+			perform_equality(x[i].data(), party, context.bitlen, context.radixparam, num_cmps, z[i].data(),
 					 a_shares_bins[i].data(), ioThreadArr, otThreadpackArr, context.smallmod);
-			//allsocks[i]->Receive(aux_bins[i].data(), num_cmps * sizeof(uint64_t));
 		}
 	}
 
@@ -369,7 +357,7 @@ namespace RELAXEDNS {
 					std::vector<std::unique_ptr<CSocket>> &allsocks, std::vector<osuCrypto::Channel> &chls) {
 		if (context.role == P_0) {//Protocol for leader party
 			sub_bins.resize(context.np-1, std::vector<std::uint64_t>(context.nbins, 0));
-			
+
 			//Hashing
 			std::vector<std::uint64_t> table;
 			std::vector<std::vector<osuCrypto::block>> masks_with_dummies(context.np-1);
@@ -392,7 +380,7 @@ namespace RELAXEDNS {
 			const auto phase_ts_time = std::chrono::system_clock::now();
 			std::thread hint_threads[context.nthreads];
 			for(std::uint64_t i=0; i<context.nthreads; i++) {
-				hint_threads[i] = std::thread(multi_hint_thread, i, std::ref(sub_bins), std::ref(table), std::ref(masks_with_dummies), 
+				hint_threads[i] = std::thread(multi_hint_thread, i, std::ref(sub_bins), std::ref(table), std::ref(masks_with_dummies),
 							      std::ref(context), std::ref(allsocks), std::ref(chls));
 			}
 			for(std::uint64_t i=0; i<context.nthreads; i++) {
@@ -408,7 +396,7 @@ namespace RELAXEDNS {
 			//OPRF
 			auto masks = RELAXEDNS::ot_sender(simple_table_v, chls[0], context);
 			sub_bins.resize(1, std::vector<std::uint64_t>(context.nbins, 0));
-			//Protocol for non-leader 
+			//Protocol for non-leader
 			OpprgPsiNonLeader(sub_bins[0], simple_table_v, masks, context, allsocks[0], chls[0]);
 		}
 
@@ -417,14 +405,14 @@ namespace RELAXEDNS {
 	/*
 	 * Run relaxed batch OPPRF and equality check for all parties
 	 */
-	void run_threshold_relaxed_opprf(std::vector<std::vector<std::uint8_t>> &a_shares_bins, ENCRYPTO::PsiAnalyticsContext &context, 
-					 const std::vector<std::uint64_t> &inputs, std::vector<std::unique_ptr<CSocket>> &allsocks, 
+	void run_threshold_relaxed_opprf(std::vector<std::vector<std::uint8_t>> &a_shares_bins, ENCRYPTO::PsiAnalyticsContext &context,
+					 const std::vector<std::uint64_t> &inputs, std::vector<std::unique_ptr<CSocket>> &allsocks,
 					 std::vector<osuCrypto::Channel> &chls, std::vector<sci::NetIO*> &ioArr) {
 		int padded_size = ((context.nbins+7)/8)*8;
-		
+
 		if (context.role == P_0) {//Protocol for leader party
 			a_shares_bins.resize(context.np-1, std::vector<std::uint8_t>(padded_size, 0));
-			
+
 			std::vector<std::vector<std::uint64_t>> sub_bins(context.np-1);
 			for(std::uint64_t i=0; i<context.np-1; i++) {
 				sub_bins[i].reserve(padded_size);
@@ -452,15 +440,12 @@ namespace RELAXEDNS {
 			const auto phase_ts_time = std::chrono::system_clock::now();
 			std::thread hint_threads[context.nthreads];
 			for(std::uint64_t i=0; i<context.nthreads; i++) {
-				hint_threads[i] = std::thread(multi_hint_thread, i, std::ref(sub_bins), std::ref(table), std::ref(masks_with_dummies), 
+				hint_threads[i] = std::thread(multi_hint_thread, i, std::ref(sub_bins), std::ref(table), std::ref(masks_with_dummies),
 							      std::ref(context), std::ref(allsocks), std::ref(chls));
 			}
 			for(std::uint64_t i=0; i<context.nthreads; i++) {
 				hint_threads[i].join();
 			}
-
-			/* std::cout<<"Checkpoint 1: X Value: "<< sub_bins[0][5]<<std::endl;
-			 allsocks[0]->Send(sub_bins[0].data(), padded_size * sizeof(std::uint64_t));*/
 
 			std::vector<sci::OTPack<sci::NetIO>*> otpackArr(2*(context.np-1));
 			std::thread ot_pack_threads[context.nthreads];
@@ -477,25 +462,18 @@ namespace RELAXEDNS {
 					sub_bins[i][j] = S_CONST;
 			}
 
-			//std::cout<<"Checkpoint 1: X Value: "<< sub_bins[0][5]<<std::endl;
 
 			std::vector<std::vector<std::uint8_t>> res_bins(context.np-1);
 			for(std::uint64_t i=0;i<context.np-1; i++)
 				res_bins[i].resize(padded_size);
 
-			/*std::vector<std::vector<uint64_t>> a_shares_bins(context.np-1);
-			 for(int i=0;i<context.np-1; i++)
-			 a_shares_bins[i].resize(padded_size);*/
-
 			std::vector<std::vector<std::uint64_t>> aux_bins(context.np-1);
-			/*for(int i=0;i<context.np-1; i++)
-			 aux_bins[i].reserve(padded_size);*/
 
 			//Equality
 			std::thread equality_threads[context.nthreads];
 			for(std::uint64_t i=0; i<context.nthreads; i++) {
-				equality_threads[i] = std::thread(multi_equality_thread, i, std::ref(sub_bins), 2, padded_size, std::ref(res_bins), 
-								  std::ref(a_shares_bins), std::ref(aux_bins), std::ref(ioArr), std::ref(otpackArr), 
+				equality_threads[i] = std::thread(multi_equality_thread, i, std::ref(sub_bins), 2, padded_size, std::ref(res_bins),
+								  std::ref(a_shares_bins), std::ref(aux_bins), std::ref(ioArr), std::ref(otpackArr),
 								  std::ref(context), std::ref(allsocks));
 			}
 			for(std::uint64_t i=0; i<context.nthreads; i++) {
@@ -505,45 +483,20 @@ namespace RELAXEDNS {
 			const duration_millis phase_two_duration = phase_te_time - phase_ts_time;
 			context.timings.polynomials = phase_two_duration.count();
 
-			//const auto agg_start_time = std::chrono::system_clock::now();
-
-			/*std::cout<<"##########################"<<std::endl;
-			 for(int i=0; i<5; i++) {
-				std::cout<<a_shares_bins[0][i]<<std::endl;
-			}
-			std::cout<<"##########################"<<std::endl;
-
-			allsocks[0]->Send(a_shares_bins[0].data(), padded_size * sizeof(std::uint64_t));*/
-			//TemplateField<ZpMersenneLongElement1> *field;
-			//std::vector<ZpMersenneLongElement1> field_bins;
-			/*for(std::uint64_t j=0; j< context.nbins; j++) {
-				field_bins.push_back(field->GetElement(a_shares_bins[0][j]));
-			}
-			for(std::uint64_t i=1; i< context.np-1; i++) {
-				for(std::uint64_t j=0; j< context.nbins; j++) {
-					field_bins[j] = field_bins[j]+field->GetElement(a_shares_bins[i][j]);
-				}
-			}
-			*/
-
-			//const auto agg_end_time = std::chrono::system_clock::now();
-			//const duration_millis agg_duration = agg_end_time - agg_start_time;
-			//context.timings.aggregation += agg_duration.count();
-
 		} else {//Protocol for non-leader parties
 			a_shares_bins.resize(1, std::vector<std::uint8_t>(padded_size, 0));
-			
+
 			//Hashing
 			auto simple_table_v = ENCRYPTO::simple_hash(context, inputs);
-			
+
 			//OPRF
 			auto masks = RELAXEDNS::ot_sender(simple_table_v, chls[0], context);
 			std::vector<std::uint64_t> actual_contents_of_bins;
 			actual_contents_of_bins.reserve(padded_size);
-			
+
 			//Relaxed batch OPPRF protocol for non-leader
 			OpprgPsiNonLeader(actual_contents_of_bins, simple_table_v, masks, context, allsocks[0], chls[0]);
-			
+
 			//Equality
 			std::vector<sci::OTPack<sci::NetIO>*> otpackArr(2);
 			for(int j=0; j<2; j++) {
@@ -565,8 +518,7 @@ namespace RELAXEDNS {
 				ioThreadArr[j] = ioArr[j];
 				otThreadpackArr[j] = otpackArr[j];
 			}
-			//std::cout<<"Checkpoint 1: X Value: "<< actual_contents_of_bins[5]<<std::endl;
-			perform_equality(actual_contents_of_bins.data(), 1, context.bitlen, context.radixparam, padded_size, res_bins.data(), 
+			perform_equality(actual_contents_of_bins.data(), 1, context.bitlen, context.radixparam, padded_size, res_bins.data(),
 					 a_shares_bins[0].data(), ioThreadArr, otThreadpackArr, context.smallmod);
 		}
 	}
