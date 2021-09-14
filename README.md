@@ -9,6 +9,8 @@ circuit and quorum private set intersection protocols.
 Code based on the implementation of 2-party private set intersection available at \[[encryptogroup/OPPRF-PSI](https://github.com/encryptogroup/OPPRF-PSI)\]
 and on the implementation of multiparty arithmetic circuits available at \[[cryptobiu/MPC-Benchmark/MPCHonestMajority](https://github.com/cryptobiu/MPC-Benchmark/tree/master/MPCHonestMajority)\]
 
+For mPSI protocols, this repository has implementation using polynomial-OPPRF and relaxed-OPPRF. See \[[mPSI-TableOPPRF](https://github.com/shahakash28/mPSI-TableOPPRF)\] for implementation using table-OPPRF.
+
 ## Required packages:
  - g++ (version >=8) 
  - libboost-all-dev (version >=1.69) 
