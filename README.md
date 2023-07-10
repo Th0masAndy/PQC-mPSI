@@ -1,5 +1,3 @@
-OPPRF-PSI [![Build Status](https://travis-ci.org/encryptogroup/OPPRF-PSI.svg?branch=master)](https://travis-ci.org/encryptogroup/OPPRF-PSI)
-
 # PQC-MPSI
 
 An implementation of the first multiparty private set intersection protocol with
