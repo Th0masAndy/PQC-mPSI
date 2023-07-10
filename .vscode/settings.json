@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "*.sage": "python",
+        "*.py": "python",
+        "*.tcc": "cpp",
+        "*.def": "cpp"
+    }
+}

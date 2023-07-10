@@ -1,0 +1,2 @@
+/usr/bin/ar qc libMPCHonestMajority.a  CMakeFiles/MPCHonestMajority.dir/ProtocolParty.cpp.o CMakeFiles/MPCHonestMajority.dir/ProtocolParty2.cpp.o CMakeFiles/MPCHonestMajority.dir/TemplateField.cpp.o CMakeFiles/MPCHonestMajority.dir/ZpKaratsubaElement.cpp.o CMakeFiles/MPCHonestMajority.dir/ZpMersenneByteElement.cpp.o CMakeFiles/MPCHonestMajority.dir/main.cpp.o
+/usr/bin/ranlib libMPCHonestMajority.a

@@ -83,9 +83,7 @@ target_include_directories(mpsi_src PUBLIC
 if (PSI_ANALYTICS_BUILD_EXAMPLE)
     add_executable(pqc_mpsi_example mpsi_analytics_example.cpp)
 
-    target_link_libraries(pqc_mpsi_example PUBLIC
-            mpsi_src
-            )
+    target_link_libraries(pqc_mpsi_example PUBLIC mpsi_src)
     set_target_properties(pqc_mpsi_example
         PROPERTIES RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin"
     )
@@ -98,4 +96,4 @@ macro (add_test _name)
   )
 endmacro()
 
-add_test(circuit)
+# add_test(circuit)

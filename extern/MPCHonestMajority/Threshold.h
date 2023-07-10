@@ -205,10 +205,10 @@ template <class FieldType> uint64_t Threshold<FieldType>::runMPSI() {
 	uint64_t counter = 0;
 	J = 2 * ceil((40 + log2(num_bins) + 3) / ceil(log2(p))) + 1; //number of times to repeat the final step to reduce false positive rate
 	num_outs = num_bins * J;
-        masks.resize(num_outs);
-        a_vals.resize(num_bins);
-        mult_outs.resize(num_outs);
-        outputs.resize(num_outs);
+	masks.resize(num_outs);
+	a_vals.resize(num_bins);
+	mult_outs.resize(num_outs);
+	outputs.resize(num_outs);
 	poly_outs.resize(num_bins);//The polynomial itself is only evaluated once per element
 
 	//cout << this->m_partyId << ": J = " << J << endl;
