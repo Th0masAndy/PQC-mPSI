@@ -1,4 +1,4 @@
-# Install script for directory: /root/zero-knowledge/PQC-mPSI/extern/MPCHonestMajority
+# Install script for directory: /root/PQC-mPSI/extern/MPCHonestMajority
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

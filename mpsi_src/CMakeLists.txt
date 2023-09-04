@@ -53,7 +53,8 @@ target_link_libraries(mpsi_src INTERFACE
         MPCHonestMajority
         Boost::program_options
         Threads::Threads
-        $ENV{HOME}/libscapi/build/NTL/src/ntl.a
+        $ENV{HOME}/ntl-11.5.1/src/ntl.a
+        # $ENV{HOME}/libscapi/build/NTL/src/ntl.a
         $ENV{HOME}/libscapi/libscapi.a
         OTExtensionBristol
         libsimpleot.a

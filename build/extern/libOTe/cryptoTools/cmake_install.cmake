@@ -1,4 +1,4 @@
-# Install script for directory: /root/zero-knowledge/PQC-mPSI/extern/libOTe/cryptoTools
+# Install script for directory: /root/PQC-mPSI/extern/libOTe/cryptoTools
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -38,14 +38,14 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/cmake" TYPE FILE FILES "/root/zero-knowledge/PQC-mPSI/extern/libOTe/cryptoTools/cryptotools-config.cmake")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/cmake" TYPE FILE FILES "/root/PQC-mPSI/extern/libOTe/cryptoTools/cryptotools-config.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/root/zero-knowledge/PQC-mPSI/build/extern/libOTe/cryptoTools/cryptoTools/cmake_install.cmake")
-  include("/root/zero-knowledge/PQC-mPSI/build/extern/libOTe/cryptoTools/tests_cryptoTools/cmake_install.cmake")
-  include("/root/zero-knowledge/PQC-mPSI/build/extern/libOTe/cryptoTools/frontend_cryptoTools/cmake_install.cmake")
+  include("/root/PQC-mPSI/build/extern/libOTe/cryptoTools/cryptoTools/cmake_install.cmake")
+  include("/root/PQC-mPSI/build/extern/libOTe/cryptoTools/tests_cryptoTools/cmake_install.cmake")
+  include("/root/PQC-mPSI/build/extern/libOTe/cryptoTools/frontend_cryptoTools/cmake_install.cmake")
 
 endif()
 

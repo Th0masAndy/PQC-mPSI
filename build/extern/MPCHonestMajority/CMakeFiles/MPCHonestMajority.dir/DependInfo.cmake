@@ -4,12 +4,12 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/root/zero-knowledge/PQC-mPSI/extern/MPCHonestMajority/ProtocolParty.cpp" "/root/zero-knowledge/PQC-mPSI/build/extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/ProtocolParty.cpp.o"
-  "/root/zero-knowledge/PQC-mPSI/extern/MPCHonestMajority/ProtocolParty2.cpp" "/root/zero-knowledge/PQC-mPSI/build/extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/ProtocolParty2.cpp.o"
-  "/root/zero-knowledge/PQC-mPSI/extern/MPCHonestMajority/TemplateField.cpp" "/root/zero-knowledge/PQC-mPSI/build/extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/TemplateField.cpp.o"
-  "/root/zero-knowledge/PQC-mPSI/extern/MPCHonestMajority/ZpKaratsubaElement.cpp" "/root/zero-knowledge/PQC-mPSI/build/extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/ZpKaratsubaElement.cpp.o"
-  "/root/zero-knowledge/PQC-mPSI/extern/MPCHonestMajority/ZpMersenneByteElement.cpp" "/root/zero-knowledge/PQC-mPSI/build/extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/ZpMersenneByteElement.cpp.o"
-  "/root/zero-knowledge/PQC-mPSI/extern/MPCHonestMajority/main.cpp" "/root/zero-knowledge/PQC-mPSI/build/extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/main.cpp.o"
+  "/root/PQC-mPSI/extern/MPCHonestMajority/ProtocolParty.cpp" "/root/PQC-mPSI/build/extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/ProtocolParty.cpp.o"
+  "/root/PQC-mPSI/extern/MPCHonestMajority/ProtocolParty2.cpp" "/root/PQC-mPSI/build/extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/ProtocolParty2.cpp.o"
+  "/root/PQC-mPSI/extern/MPCHonestMajority/TemplateField.cpp" "/root/PQC-mPSI/build/extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/TemplateField.cpp.o"
+  "/root/PQC-mPSI/extern/MPCHonestMajority/ZpKaratsubaElement.cpp" "/root/PQC-mPSI/build/extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/ZpKaratsubaElement.cpp.o"
+  "/root/PQC-mPSI/extern/MPCHonestMajority/ZpMersenneByteElement.cpp" "/root/PQC-mPSI/build/extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/ZpMersenneByteElement.cpp.o"
+  "/root/PQC-mPSI/extern/MPCHonestMajority/main.cpp" "/root/PQC-mPSI/build/extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

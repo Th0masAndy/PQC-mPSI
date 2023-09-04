@@ -4,14 +4,14 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/root/zero-knowledge/PQC-mPSI/extern/libOTe/libOTe_Tests/AknOt_Tests.cpp" "/root/zero-knowledge/PQC-mPSI/build/extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/AknOt_Tests.cpp.o"
-  "/root/zero-knowledge/PQC-mPSI/extern/libOTe/libOTe_Tests/BaseOT_Tests.cpp" "/root/zero-knowledge/PQC-mPSI/build/extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/BaseOT_Tests.cpp.o"
-  "/root/zero-knowledge/PQC-mPSI/extern/libOTe/libOTe_Tests/Common.cpp" "/root/zero-knowledge/PQC-mPSI/build/extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/Common.cpp.o"
-  "/root/zero-knowledge/PQC-mPSI/extern/libOTe/libOTe_Tests/NcoOT_Tests.cpp" "/root/zero-knowledge/PQC-mPSI/build/extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/NcoOT_Tests.cpp.o"
-  "/root/zero-knowledge/PQC-mPSI/extern/libOTe/libOTe_Tests/OT_Tests.cpp" "/root/zero-knowledge/PQC-mPSI/build/extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/OT_Tests.cpp.o"
-  "/root/zero-knowledge/PQC-mPSI/extern/libOTe/libOTe_Tests/SilentOT_Tests.cpp" "/root/zero-knowledge/PQC-mPSI/build/extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/SilentOT_Tests.cpp.o"
-  "/root/zero-knowledge/PQC-mPSI/extern/libOTe/libOTe_Tests/UnitTests.cpp" "/root/zero-knowledge/PQC-mPSI/build/extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/UnitTests.cpp.o"
-  "/root/zero-knowledge/PQC-mPSI/extern/libOTe/libOTe_Tests/bitpolymul_Tests.cpp" "/root/zero-knowledge/PQC-mPSI/build/extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/bitpolymul_Tests.cpp.o"
+  "/root/PQC-mPSI/extern/libOTe/libOTe_Tests/AknOt_Tests.cpp" "/root/PQC-mPSI/build/extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/AknOt_Tests.cpp.o"
+  "/root/PQC-mPSI/extern/libOTe/libOTe_Tests/BaseOT_Tests.cpp" "/root/PQC-mPSI/build/extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/BaseOT_Tests.cpp.o"
+  "/root/PQC-mPSI/extern/libOTe/libOTe_Tests/Common.cpp" "/root/PQC-mPSI/build/extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/Common.cpp.o"
+  "/root/PQC-mPSI/extern/libOTe/libOTe_Tests/NcoOT_Tests.cpp" "/root/PQC-mPSI/build/extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/NcoOT_Tests.cpp.o"
+  "/root/PQC-mPSI/extern/libOTe/libOTe_Tests/OT_Tests.cpp" "/root/PQC-mPSI/build/extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/OT_Tests.cpp.o"
+  "/root/PQC-mPSI/extern/libOTe/libOTe_Tests/SilentOT_Tests.cpp" "/root/PQC-mPSI/build/extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/SilentOT_Tests.cpp.o"
+  "/root/PQC-mPSI/extern/libOTe/libOTe_Tests/UnitTests.cpp" "/root/PQC-mPSI/build/extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/UnitTests.cpp.o"
+  "/root/PQC-mPSI/extern/libOTe/libOTe_Tests/bitpolymul_Tests.cpp" "/root/PQC-mPSI/build/extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/bitpolymul_Tests.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
@@ -33,8 +33,8 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
-  "/root/zero-knowledge/PQC-mPSI/build/extern/libOTe/libOTe/CMakeFiles/libOTe.dir/DependInfo.cmake"
-  "/root/zero-knowledge/PQC-mPSI/build/extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/DependInfo.cmake"
+  "/root/PQC-mPSI/build/extern/libOTe/libOTe/CMakeFiles/libOTe.dir/DependInfo.cmake"
+  "/root/PQC-mPSI/build/extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

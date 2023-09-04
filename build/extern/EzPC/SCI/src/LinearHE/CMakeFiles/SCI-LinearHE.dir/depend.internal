@@ -305,7 +305,7 @@ extern/EzPC/SCI/src/LinearHE/CMakeFiles/SCI-LinearHE.dir/conv-field.cpp.o
  ../extern/EzPC/SCI/src/utils/ubuntu_terminal_colors.h
  ../extern/EzPC/SCI/src/utils/utils.h
  ../extern/EzPC/SCI/src/utils/utils.hpp
- /root/zero-knowledge/PQC-mPSI/extern/EzPC/SCI/src/LinearHE/conv-field.cpp
+ /root/PQC-mPSI/extern/EzPC/SCI/src/LinearHE/conv-field.cpp
 extern/EzPC/SCI/src/LinearHE/CMakeFiles/SCI-LinearHE.dir/elemwise-prod-field.cpp.o
  ../extern/EzPC/SCI/build/include/seal/batchencoder.h
  ../extern/EzPC/SCI/build/include/seal/biguint.h
@@ -375,7 +375,7 @@ extern/EzPC/SCI/src/LinearHE/CMakeFiles/SCI-LinearHE.dir/elemwise-prod-field.cpp
  ../extern/EzPC/SCI/src/utils/ubuntu_terminal_colors.h
  ../extern/EzPC/SCI/src/utils/utils.h
  ../extern/EzPC/SCI/src/utils/utils.hpp
- /root/zero-knowledge/PQC-mPSI/extern/EzPC/SCI/src/LinearHE/elemwise-prod-field.cpp
+ /root/PQC-mPSI/extern/EzPC/SCI/src/LinearHE/elemwise-prod-field.cpp
 extern/EzPC/SCI/src/LinearHE/CMakeFiles/SCI-LinearHE.dir/fc-field.cpp.o
  ../extern/EzPC/SCI/build/include/seal/batchencoder.h
  ../extern/EzPC/SCI/build/include/seal/biguint.h
@@ -445,7 +445,7 @@ extern/EzPC/SCI/src/LinearHE/CMakeFiles/SCI-LinearHE.dir/fc-field.cpp.o
  ../extern/EzPC/SCI/src/utils/ubuntu_terminal_colors.h
  ../extern/EzPC/SCI/src/utils/utils.h
  ../extern/EzPC/SCI/src/utils/utils.hpp
- /root/zero-knowledge/PQC-mPSI/extern/EzPC/SCI/src/LinearHE/fc-field.cpp
+ /root/PQC-mPSI/extern/EzPC/SCI/src/LinearHE/fc-field.cpp
 extern/EzPC/SCI/src/LinearHE/CMakeFiles/SCI-LinearHE.dir/utils-HE.cpp.o
  ../extern/EzPC/SCI/build/include/seal/batchencoder.h
  ../extern/EzPC/SCI/build/include/seal/biguint.h
@@ -515,4 +515,4 @@ extern/EzPC/SCI/src/LinearHE/CMakeFiles/SCI-LinearHE.dir/utils-HE.cpp.o
  ../extern/EzPC/SCI/src/utils/ubuntu_terminal_colors.h
  ../extern/EzPC/SCI/src/utils/utils.h
  ../extern/EzPC/SCI/src/utils/utils.hpp
- /root/zero-knowledge/PQC-mPSI/extern/EzPC/SCI/src/LinearHE/utils-HE.cpp
+ /root/PQC-mPSI/extern/EzPC/SCI/src/LinearHE/utils-HE.cpp

@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /root/zero-knowledge/PQC-mPSI
+CMAKE_SOURCE_DIR = /root/PQC-mPSI
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /root/zero-knowledge/PQC-mPSI/build
+CMAKE_BINARY_DIR = /root/PQC-mPSI/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -126,14 +126,14 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /root/zero-knowledge/PQC-mPSI/build && $(CMAKE_COMMAND) -E cmake_progress_start /root/zero-knowledge/PQC-mPSI/build/CMakeFiles /root/zero-knowledge/PQC-mPSI/build/extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/progress.marks
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/ABY/extern/ENCRYPTO_utils/src/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /root/zero-knowledge/PQC-mPSI/build/CMakeFiles 0
+	cd /root/PQC-mPSI/build && $(CMAKE_COMMAND) -E cmake_progress_start /root/PQC-mPSI/build/CMakeFiles /root/PQC-mPSI/build/extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/progress.marks
+	cd /root/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/ABY/extern/ENCRYPTO_utils/src/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/PQC-mPSI/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/ABY/extern/ENCRYPTO_utils/src/clean
+	cd /root/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/ABY/extern/ENCRYPTO_utils/src/clean
 .PHONY : clean
 
 # The main clean target
@@ -143,22 +143,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/ABY/extern/ENCRYPTO_utils/src/preinstall
+	cd /root/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/ABY/extern/ENCRYPTO_utils/src/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/ABY/extern/ENCRYPTO_utils/src/preinstall
+	cd /root/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/ABY/extern/ENCRYPTO_utils/src/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /root/PQC-mPSI/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/rule:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/rule
+	cd /root/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/rule
 .PHONY : extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/rule
 
 # Convenience name for target.
@@ -168,7 +168,7 @@ encrypto_utils: extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.d
 
 # fast build rule for target.
 encrypto_utils/fast:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build
 .PHONY : encrypto_utils/fast
 
 ENCRYPTO_utils/cbitvector.o: ENCRYPTO_utils/cbitvector.cpp.o
@@ -177,7 +177,7 @@ ENCRYPTO_utils/cbitvector.o: ENCRYPTO_utils/cbitvector.cpp.o
 
 # target to build an object file
 ENCRYPTO_utils/cbitvector.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/cbitvector.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/cbitvector.cpp.o
 .PHONY : ENCRYPTO_utils/cbitvector.cpp.o
 
 ENCRYPTO_utils/cbitvector.i: ENCRYPTO_utils/cbitvector.cpp.i
@@ -186,7 +186,7 @@ ENCRYPTO_utils/cbitvector.i: ENCRYPTO_utils/cbitvector.cpp.i
 
 # target to preprocess a source file
 ENCRYPTO_utils/cbitvector.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/cbitvector.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/cbitvector.cpp.i
 .PHONY : ENCRYPTO_utils/cbitvector.cpp.i
 
 ENCRYPTO_utils/cbitvector.s: ENCRYPTO_utils/cbitvector.cpp.s
@@ -195,7 +195,7 @@ ENCRYPTO_utils/cbitvector.s: ENCRYPTO_utils/cbitvector.cpp.s
 
 # target to generate assembly for a file
 ENCRYPTO_utils/cbitvector.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/cbitvector.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/cbitvector.cpp.s
 .PHONY : ENCRYPTO_utils/cbitvector.cpp.s
 
 ENCRYPTO_utils/channel.o: ENCRYPTO_utils/channel.cpp.o
@@ -204,7 +204,7 @@ ENCRYPTO_utils/channel.o: ENCRYPTO_utils/channel.cpp.o
 
 # target to build an object file
 ENCRYPTO_utils/channel.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/channel.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/channel.cpp.o
 .PHONY : ENCRYPTO_utils/channel.cpp.o
 
 ENCRYPTO_utils/channel.i: ENCRYPTO_utils/channel.cpp.i
@@ -213,7 +213,7 @@ ENCRYPTO_utils/channel.i: ENCRYPTO_utils/channel.cpp.i
 
 # target to preprocess a source file
 ENCRYPTO_utils/channel.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/channel.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/channel.cpp.i
 .PHONY : ENCRYPTO_utils/channel.cpp.i
 
 ENCRYPTO_utils/channel.s: ENCRYPTO_utils/channel.cpp.s
@@ -222,7 +222,7 @@ ENCRYPTO_utils/channel.s: ENCRYPTO_utils/channel.cpp.s
 
 # target to generate assembly for a file
 ENCRYPTO_utils/channel.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/channel.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/channel.cpp.s
 .PHONY : ENCRYPTO_utils/channel.cpp.s
 
 ENCRYPTO_utils/circular_queue.o: ENCRYPTO_utils/circular_queue.cpp.o
@@ -231,7 +231,7 @@ ENCRYPTO_utils/circular_queue.o: ENCRYPTO_utils/circular_queue.cpp.o
 
 # target to build an object file
 ENCRYPTO_utils/circular_queue.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/circular_queue.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/circular_queue.cpp.o
 .PHONY : ENCRYPTO_utils/circular_queue.cpp.o
 
 ENCRYPTO_utils/circular_queue.i: ENCRYPTO_utils/circular_queue.cpp.i
@@ -240,7 +240,7 @@ ENCRYPTO_utils/circular_queue.i: ENCRYPTO_utils/circular_queue.cpp.i
 
 # target to preprocess a source file
 ENCRYPTO_utils/circular_queue.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/circular_queue.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/circular_queue.cpp.i
 .PHONY : ENCRYPTO_utils/circular_queue.cpp.i
 
 ENCRYPTO_utils/circular_queue.s: ENCRYPTO_utils/circular_queue.cpp.s
@@ -249,7 +249,7 @@ ENCRYPTO_utils/circular_queue.s: ENCRYPTO_utils/circular_queue.cpp.s
 
 # target to generate assembly for a file
 ENCRYPTO_utils/circular_queue.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/circular_queue.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/circular_queue.cpp.s
 .PHONY : ENCRYPTO_utils/circular_queue.cpp.s
 
 ENCRYPTO_utils/codewords.o: ENCRYPTO_utils/codewords.cpp.o
@@ -258,7 +258,7 @@ ENCRYPTO_utils/codewords.o: ENCRYPTO_utils/codewords.cpp.o
 
 # target to build an object file
 ENCRYPTO_utils/codewords.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/codewords.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/codewords.cpp.o
 .PHONY : ENCRYPTO_utils/codewords.cpp.o
 
 ENCRYPTO_utils/codewords.i: ENCRYPTO_utils/codewords.cpp.i
@@ -267,7 +267,7 @@ ENCRYPTO_utils/codewords.i: ENCRYPTO_utils/codewords.cpp.i
 
 # target to preprocess a source file
 ENCRYPTO_utils/codewords.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/codewords.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/codewords.cpp.i
 .PHONY : ENCRYPTO_utils/codewords.cpp.i
 
 ENCRYPTO_utils/codewords.s: ENCRYPTO_utils/codewords.cpp.s
@@ -276,7 +276,7 @@ ENCRYPTO_utils/codewords.s: ENCRYPTO_utils/codewords.cpp.s
 
 # target to generate assembly for a file
 ENCRYPTO_utils/codewords.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/codewords.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/codewords.cpp.s
 .PHONY : ENCRYPTO_utils/codewords.cpp.s
 
 ENCRYPTO_utils/connection.o: ENCRYPTO_utils/connection.cpp.o
@@ -285,7 +285,7 @@ ENCRYPTO_utils/connection.o: ENCRYPTO_utils/connection.cpp.o
 
 # target to build an object file
 ENCRYPTO_utils/connection.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/connection.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/connection.cpp.o
 .PHONY : ENCRYPTO_utils/connection.cpp.o
 
 ENCRYPTO_utils/connection.i: ENCRYPTO_utils/connection.cpp.i
@@ -294,7 +294,7 @@ ENCRYPTO_utils/connection.i: ENCRYPTO_utils/connection.cpp.i
 
 # target to preprocess a source file
 ENCRYPTO_utils/connection.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/connection.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/connection.cpp.i
 .PHONY : ENCRYPTO_utils/connection.cpp.i
 
 ENCRYPTO_utils/connection.s: ENCRYPTO_utils/connection.cpp.s
@@ -303,7 +303,7 @@ ENCRYPTO_utils/connection.s: ENCRYPTO_utils/connection.cpp.s
 
 # target to generate assembly for a file
 ENCRYPTO_utils/connection.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/connection.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/connection.cpp.s
 .PHONY : ENCRYPTO_utils/connection.cpp.s
 
 ENCRYPTO_utils/crypto/TedKrovetzAesNiWrapperC.o: ENCRYPTO_utils/crypto/TedKrovetzAesNiWrapperC.cpp.o
@@ -312,7 +312,7 @@ ENCRYPTO_utils/crypto/TedKrovetzAesNiWrapperC.o: ENCRYPTO_utils/crypto/TedKrovet
 
 # target to build an object file
 ENCRYPTO_utils/crypto/TedKrovetzAesNiWrapperC.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/crypto/TedKrovetzAesNiWrapperC.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/crypto/TedKrovetzAesNiWrapperC.cpp.o
 .PHONY : ENCRYPTO_utils/crypto/TedKrovetzAesNiWrapperC.cpp.o
 
 ENCRYPTO_utils/crypto/TedKrovetzAesNiWrapperC.i: ENCRYPTO_utils/crypto/TedKrovetzAesNiWrapperC.cpp.i
@@ -321,7 +321,7 @@ ENCRYPTO_utils/crypto/TedKrovetzAesNiWrapperC.i: ENCRYPTO_utils/crypto/TedKrovet
 
 # target to preprocess a source file
 ENCRYPTO_utils/crypto/TedKrovetzAesNiWrapperC.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/crypto/TedKrovetzAesNiWrapperC.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/crypto/TedKrovetzAesNiWrapperC.cpp.i
 .PHONY : ENCRYPTO_utils/crypto/TedKrovetzAesNiWrapperC.cpp.i
 
 ENCRYPTO_utils/crypto/TedKrovetzAesNiWrapperC.s: ENCRYPTO_utils/crypto/TedKrovetzAesNiWrapperC.cpp.s
@@ -330,7 +330,7 @@ ENCRYPTO_utils/crypto/TedKrovetzAesNiWrapperC.s: ENCRYPTO_utils/crypto/TedKrovet
 
 # target to generate assembly for a file
 ENCRYPTO_utils/crypto/TedKrovetzAesNiWrapperC.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/crypto/TedKrovetzAesNiWrapperC.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/crypto/TedKrovetzAesNiWrapperC.cpp.s
 .PHONY : ENCRYPTO_utils/crypto/TedKrovetzAesNiWrapperC.cpp.s
 
 ENCRYPTO_utils/crypto/crypto.o: ENCRYPTO_utils/crypto/crypto.cpp.o
@@ -339,7 +339,7 @@ ENCRYPTO_utils/crypto/crypto.o: ENCRYPTO_utils/crypto/crypto.cpp.o
 
 # target to build an object file
 ENCRYPTO_utils/crypto/crypto.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/crypto/crypto.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/crypto/crypto.cpp.o
 .PHONY : ENCRYPTO_utils/crypto/crypto.cpp.o
 
 ENCRYPTO_utils/crypto/crypto.i: ENCRYPTO_utils/crypto/crypto.cpp.i
@@ -348,7 +348,7 @@ ENCRYPTO_utils/crypto/crypto.i: ENCRYPTO_utils/crypto/crypto.cpp.i
 
 # target to preprocess a source file
 ENCRYPTO_utils/crypto/crypto.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/crypto/crypto.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/crypto/crypto.cpp.i
 .PHONY : ENCRYPTO_utils/crypto/crypto.cpp.i
 
 ENCRYPTO_utils/crypto/crypto.s: ENCRYPTO_utils/crypto/crypto.cpp.s
@@ -357,7 +357,7 @@ ENCRYPTO_utils/crypto/crypto.s: ENCRYPTO_utils/crypto/crypto.cpp.s
 
 # target to generate assembly for a file
 ENCRYPTO_utils/crypto/crypto.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/crypto/crypto.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/crypto/crypto.cpp.s
 .PHONY : ENCRYPTO_utils/crypto/crypto.cpp.s
 
 ENCRYPTO_utils/crypto/dgk.o: ENCRYPTO_utils/crypto/dgk.cpp.o
@@ -366,7 +366,7 @@ ENCRYPTO_utils/crypto/dgk.o: ENCRYPTO_utils/crypto/dgk.cpp.o
 
 # target to build an object file
 ENCRYPTO_utils/crypto/dgk.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/crypto/dgk.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/crypto/dgk.cpp.o
 .PHONY : ENCRYPTO_utils/crypto/dgk.cpp.o
 
 ENCRYPTO_utils/crypto/dgk.i: ENCRYPTO_utils/crypto/dgk.cpp.i
@@ -375,7 +375,7 @@ ENCRYPTO_utils/crypto/dgk.i: ENCRYPTO_utils/crypto/dgk.cpp.i
 
 # target to preprocess a source file
 ENCRYPTO_utils/crypto/dgk.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/crypto/dgk.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/crypto/dgk.cpp.i
 .PHONY : ENCRYPTO_utils/crypto/dgk.cpp.i
 
 ENCRYPTO_utils/crypto/dgk.s: ENCRYPTO_utils/crypto/dgk.cpp.s
@@ -384,7 +384,7 @@ ENCRYPTO_utils/crypto/dgk.s: ENCRYPTO_utils/crypto/dgk.cpp.s
 
 # target to generate assembly for a file
 ENCRYPTO_utils/crypto/dgk.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/crypto/dgk.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/crypto/dgk.cpp.s
 .PHONY : ENCRYPTO_utils/crypto/dgk.cpp.s
 
 ENCRYPTO_utils/crypto/djn.o: ENCRYPTO_utils/crypto/djn.cpp.o
@@ -393,7 +393,7 @@ ENCRYPTO_utils/crypto/djn.o: ENCRYPTO_utils/crypto/djn.cpp.o
 
 # target to build an object file
 ENCRYPTO_utils/crypto/djn.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/crypto/djn.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/crypto/djn.cpp.o
 .PHONY : ENCRYPTO_utils/crypto/djn.cpp.o
 
 ENCRYPTO_utils/crypto/djn.i: ENCRYPTO_utils/crypto/djn.cpp.i
@@ -402,7 +402,7 @@ ENCRYPTO_utils/crypto/djn.i: ENCRYPTO_utils/crypto/djn.cpp.i
 
 # target to preprocess a source file
 ENCRYPTO_utils/crypto/djn.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/crypto/djn.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/crypto/djn.cpp.i
 .PHONY : ENCRYPTO_utils/crypto/djn.cpp.i
 
 ENCRYPTO_utils/crypto/djn.s: ENCRYPTO_utils/crypto/djn.cpp.s
@@ -411,7 +411,7 @@ ENCRYPTO_utils/crypto/djn.s: ENCRYPTO_utils/crypto/djn.cpp.s
 
 # target to generate assembly for a file
 ENCRYPTO_utils/crypto/djn.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/crypto/djn.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/crypto/djn.cpp.s
 .PHONY : ENCRYPTO_utils/crypto/djn.cpp.s
 
 ENCRYPTO_utils/crypto/ecc-pk-crypto.o: ENCRYPTO_utils/crypto/ecc-pk-crypto.cpp.o
@@ -420,7 +420,7 @@ ENCRYPTO_utils/crypto/ecc-pk-crypto.o: ENCRYPTO_utils/crypto/ecc-pk-crypto.cpp.o
 
 # target to build an object file
 ENCRYPTO_utils/crypto/ecc-pk-crypto.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/crypto/ecc-pk-crypto.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/crypto/ecc-pk-crypto.cpp.o
 .PHONY : ENCRYPTO_utils/crypto/ecc-pk-crypto.cpp.o
 
 ENCRYPTO_utils/crypto/ecc-pk-crypto.i: ENCRYPTO_utils/crypto/ecc-pk-crypto.cpp.i
@@ -429,7 +429,7 @@ ENCRYPTO_utils/crypto/ecc-pk-crypto.i: ENCRYPTO_utils/crypto/ecc-pk-crypto.cpp.i
 
 # target to preprocess a source file
 ENCRYPTO_utils/crypto/ecc-pk-crypto.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/crypto/ecc-pk-crypto.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/crypto/ecc-pk-crypto.cpp.i
 .PHONY : ENCRYPTO_utils/crypto/ecc-pk-crypto.cpp.i
 
 ENCRYPTO_utils/crypto/ecc-pk-crypto.s: ENCRYPTO_utils/crypto/ecc-pk-crypto.cpp.s
@@ -438,7 +438,7 @@ ENCRYPTO_utils/crypto/ecc-pk-crypto.s: ENCRYPTO_utils/crypto/ecc-pk-crypto.cpp.s
 
 # target to generate assembly for a file
 ENCRYPTO_utils/crypto/ecc-pk-crypto.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/crypto/ecc-pk-crypto.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/crypto/ecc-pk-crypto.cpp.s
 .PHONY : ENCRYPTO_utils/crypto/ecc-pk-crypto.cpp.s
 
 ENCRYPTO_utils/crypto/gmp-pk-crypto.o: ENCRYPTO_utils/crypto/gmp-pk-crypto.cpp.o
@@ -447,7 +447,7 @@ ENCRYPTO_utils/crypto/gmp-pk-crypto.o: ENCRYPTO_utils/crypto/gmp-pk-crypto.cpp.o
 
 # target to build an object file
 ENCRYPTO_utils/crypto/gmp-pk-crypto.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/crypto/gmp-pk-crypto.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/crypto/gmp-pk-crypto.cpp.o
 .PHONY : ENCRYPTO_utils/crypto/gmp-pk-crypto.cpp.o
 
 ENCRYPTO_utils/crypto/gmp-pk-crypto.i: ENCRYPTO_utils/crypto/gmp-pk-crypto.cpp.i
@@ -456,7 +456,7 @@ ENCRYPTO_utils/crypto/gmp-pk-crypto.i: ENCRYPTO_utils/crypto/gmp-pk-crypto.cpp.i
 
 # target to preprocess a source file
 ENCRYPTO_utils/crypto/gmp-pk-crypto.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/crypto/gmp-pk-crypto.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/crypto/gmp-pk-crypto.cpp.i
 .PHONY : ENCRYPTO_utils/crypto/gmp-pk-crypto.cpp.i
 
 ENCRYPTO_utils/crypto/gmp-pk-crypto.s: ENCRYPTO_utils/crypto/gmp-pk-crypto.cpp.s
@@ -465,7 +465,7 @@ ENCRYPTO_utils/crypto/gmp-pk-crypto.s: ENCRYPTO_utils/crypto/gmp-pk-crypto.cpp.s
 
 # target to generate assembly for a file
 ENCRYPTO_utils/crypto/gmp-pk-crypto.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/crypto/gmp-pk-crypto.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/crypto/gmp-pk-crypto.cpp.s
 .PHONY : ENCRYPTO_utils/crypto/gmp-pk-crypto.cpp.s
 
 ENCRYPTO_utils/crypto/intrin_sequential_enc8.o: ENCRYPTO_utils/crypto/intrin_sequential_enc8.cpp.o
@@ -474,7 +474,7 @@ ENCRYPTO_utils/crypto/intrin_sequential_enc8.o: ENCRYPTO_utils/crypto/intrin_seq
 
 # target to build an object file
 ENCRYPTO_utils/crypto/intrin_sequential_enc8.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/crypto/intrin_sequential_enc8.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/crypto/intrin_sequential_enc8.cpp.o
 .PHONY : ENCRYPTO_utils/crypto/intrin_sequential_enc8.cpp.o
 
 ENCRYPTO_utils/crypto/intrin_sequential_enc8.i: ENCRYPTO_utils/crypto/intrin_sequential_enc8.cpp.i
@@ -483,7 +483,7 @@ ENCRYPTO_utils/crypto/intrin_sequential_enc8.i: ENCRYPTO_utils/crypto/intrin_seq
 
 # target to preprocess a source file
 ENCRYPTO_utils/crypto/intrin_sequential_enc8.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/crypto/intrin_sequential_enc8.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/crypto/intrin_sequential_enc8.cpp.i
 .PHONY : ENCRYPTO_utils/crypto/intrin_sequential_enc8.cpp.i
 
 ENCRYPTO_utils/crypto/intrin_sequential_enc8.s: ENCRYPTO_utils/crypto/intrin_sequential_enc8.cpp.s
@@ -492,7 +492,7 @@ ENCRYPTO_utils/crypto/intrin_sequential_enc8.s: ENCRYPTO_utils/crypto/intrin_seq
 
 # target to generate assembly for a file
 ENCRYPTO_utils/crypto/intrin_sequential_enc8.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/crypto/intrin_sequential_enc8.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/crypto/intrin_sequential_enc8.cpp.s
 .PHONY : ENCRYPTO_utils/crypto/intrin_sequential_enc8.cpp.s
 
 ENCRYPTO_utils/parse_options.o: ENCRYPTO_utils/parse_options.cpp.o
@@ -501,7 +501,7 @@ ENCRYPTO_utils/parse_options.o: ENCRYPTO_utils/parse_options.cpp.o
 
 # target to build an object file
 ENCRYPTO_utils/parse_options.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/parse_options.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/parse_options.cpp.o
 .PHONY : ENCRYPTO_utils/parse_options.cpp.o
 
 ENCRYPTO_utils/parse_options.i: ENCRYPTO_utils/parse_options.cpp.i
@@ -510,7 +510,7 @@ ENCRYPTO_utils/parse_options.i: ENCRYPTO_utils/parse_options.cpp.i
 
 # target to preprocess a source file
 ENCRYPTO_utils/parse_options.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/parse_options.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/parse_options.cpp.i
 .PHONY : ENCRYPTO_utils/parse_options.cpp.i
 
 ENCRYPTO_utils/parse_options.s: ENCRYPTO_utils/parse_options.cpp.s
@@ -519,7 +519,7 @@ ENCRYPTO_utils/parse_options.s: ENCRYPTO_utils/parse_options.cpp.s
 
 # target to generate assembly for a file
 ENCRYPTO_utils/parse_options.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/parse_options.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/parse_options.cpp.s
 .PHONY : ENCRYPTO_utils/parse_options.cpp.s
 
 ENCRYPTO_utils/powmod.o: ENCRYPTO_utils/powmod.cpp.o
@@ -528,7 +528,7 @@ ENCRYPTO_utils/powmod.o: ENCRYPTO_utils/powmod.cpp.o
 
 # target to build an object file
 ENCRYPTO_utils/powmod.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/powmod.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/powmod.cpp.o
 .PHONY : ENCRYPTO_utils/powmod.cpp.o
 
 ENCRYPTO_utils/powmod.i: ENCRYPTO_utils/powmod.cpp.i
@@ -537,7 +537,7 @@ ENCRYPTO_utils/powmod.i: ENCRYPTO_utils/powmod.cpp.i
 
 # target to preprocess a source file
 ENCRYPTO_utils/powmod.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/powmod.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/powmod.cpp.i
 .PHONY : ENCRYPTO_utils/powmod.cpp.i
 
 ENCRYPTO_utils/powmod.s: ENCRYPTO_utils/powmod.cpp.s
@@ -546,7 +546,7 @@ ENCRYPTO_utils/powmod.s: ENCRYPTO_utils/powmod.cpp.s
 
 # target to generate assembly for a file
 ENCRYPTO_utils/powmod.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/powmod.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/powmod.cpp.s
 .PHONY : ENCRYPTO_utils/powmod.cpp.s
 
 ENCRYPTO_utils/rcvthread.o: ENCRYPTO_utils/rcvthread.cpp.o
@@ -555,7 +555,7 @@ ENCRYPTO_utils/rcvthread.o: ENCRYPTO_utils/rcvthread.cpp.o
 
 # target to build an object file
 ENCRYPTO_utils/rcvthread.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/rcvthread.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/rcvthread.cpp.o
 .PHONY : ENCRYPTO_utils/rcvthread.cpp.o
 
 ENCRYPTO_utils/rcvthread.i: ENCRYPTO_utils/rcvthread.cpp.i
@@ -564,7 +564,7 @@ ENCRYPTO_utils/rcvthread.i: ENCRYPTO_utils/rcvthread.cpp.i
 
 # target to preprocess a source file
 ENCRYPTO_utils/rcvthread.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/rcvthread.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/rcvthread.cpp.i
 .PHONY : ENCRYPTO_utils/rcvthread.cpp.i
 
 ENCRYPTO_utils/rcvthread.s: ENCRYPTO_utils/rcvthread.cpp.s
@@ -573,7 +573,7 @@ ENCRYPTO_utils/rcvthread.s: ENCRYPTO_utils/rcvthread.cpp.s
 
 # target to generate assembly for a file
 ENCRYPTO_utils/rcvthread.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/rcvthread.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/rcvthread.cpp.s
 .PHONY : ENCRYPTO_utils/rcvthread.cpp.s
 
 ENCRYPTO_utils/sndthread.o: ENCRYPTO_utils/sndthread.cpp.o
@@ -582,7 +582,7 @@ ENCRYPTO_utils/sndthread.o: ENCRYPTO_utils/sndthread.cpp.o
 
 # target to build an object file
 ENCRYPTO_utils/sndthread.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/sndthread.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/sndthread.cpp.o
 .PHONY : ENCRYPTO_utils/sndthread.cpp.o
 
 ENCRYPTO_utils/sndthread.i: ENCRYPTO_utils/sndthread.cpp.i
@@ -591,7 +591,7 @@ ENCRYPTO_utils/sndthread.i: ENCRYPTO_utils/sndthread.cpp.i
 
 # target to preprocess a source file
 ENCRYPTO_utils/sndthread.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/sndthread.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/sndthread.cpp.i
 .PHONY : ENCRYPTO_utils/sndthread.cpp.i
 
 ENCRYPTO_utils/sndthread.s: ENCRYPTO_utils/sndthread.cpp.s
@@ -600,7 +600,7 @@ ENCRYPTO_utils/sndthread.s: ENCRYPTO_utils/sndthread.cpp.s
 
 # target to generate assembly for a file
 ENCRYPTO_utils/sndthread.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/sndthread.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/sndthread.cpp.s
 .PHONY : ENCRYPTO_utils/sndthread.cpp.s
 
 ENCRYPTO_utils/socket.o: ENCRYPTO_utils/socket.cpp.o
@@ -609,7 +609,7 @@ ENCRYPTO_utils/socket.o: ENCRYPTO_utils/socket.cpp.o
 
 # target to build an object file
 ENCRYPTO_utils/socket.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/socket.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/socket.cpp.o
 .PHONY : ENCRYPTO_utils/socket.cpp.o
 
 ENCRYPTO_utils/socket.i: ENCRYPTO_utils/socket.cpp.i
@@ -618,7 +618,7 @@ ENCRYPTO_utils/socket.i: ENCRYPTO_utils/socket.cpp.i
 
 # target to preprocess a source file
 ENCRYPTO_utils/socket.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/socket.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/socket.cpp.i
 .PHONY : ENCRYPTO_utils/socket.cpp.i
 
 ENCRYPTO_utils/socket.s: ENCRYPTO_utils/socket.cpp.s
@@ -627,7 +627,7 @@ ENCRYPTO_utils/socket.s: ENCRYPTO_utils/socket.cpp.s
 
 # target to generate assembly for a file
 ENCRYPTO_utils/socket.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/socket.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/socket.cpp.s
 .PHONY : ENCRYPTO_utils/socket.cpp.s
 
 ENCRYPTO_utils/thread.o: ENCRYPTO_utils/thread.cpp.o
@@ -636,7 +636,7 @@ ENCRYPTO_utils/thread.o: ENCRYPTO_utils/thread.cpp.o
 
 # target to build an object file
 ENCRYPTO_utils/thread.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/thread.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/thread.cpp.o
 .PHONY : ENCRYPTO_utils/thread.cpp.o
 
 ENCRYPTO_utils/thread.i: ENCRYPTO_utils/thread.cpp.i
@@ -645,7 +645,7 @@ ENCRYPTO_utils/thread.i: ENCRYPTO_utils/thread.cpp.i
 
 # target to preprocess a source file
 ENCRYPTO_utils/thread.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/thread.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/thread.cpp.i
 .PHONY : ENCRYPTO_utils/thread.cpp.i
 
 ENCRYPTO_utils/thread.s: ENCRYPTO_utils/thread.cpp.s
@@ -654,7 +654,7 @@ ENCRYPTO_utils/thread.s: ENCRYPTO_utils/thread.cpp.s
 
 # target to generate assembly for a file
 ENCRYPTO_utils/thread.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/thread.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/thread.cpp.s
 .PHONY : ENCRYPTO_utils/thread.cpp.s
 
 ENCRYPTO_utils/timer.o: ENCRYPTO_utils/timer.cpp.o
@@ -663,7 +663,7 @@ ENCRYPTO_utils/timer.o: ENCRYPTO_utils/timer.cpp.o
 
 # target to build an object file
 ENCRYPTO_utils/timer.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/timer.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/timer.cpp.o
 .PHONY : ENCRYPTO_utils/timer.cpp.o
 
 ENCRYPTO_utils/timer.i: ENCRYPTO_utils/timer.cpp.i
@@ -672,7 +672,7 @@ ENCRYPTO_utils/timer.i: ENCRYPTO_utils/timer.cpp.i
 
 # target to preprocess a source file
 ENCRYPTO_utils/timer.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/timer.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/timer.cpp.i
 .PHONY : ENCRYPTO_utils/timer.cpp.i
 
 ENCRYPTO_utils/timer.s: ENCRYPTO_utils/timer.cpp.s
@@ -681,7 +681,7 @@ ENCRYPTO_utils/timer.s: ENCRYPTO_utils/timer.cpp.s
 
 # target to generate assembly for a file
 ENCRYPTO_utils/timer.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/timer.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/timer.cpp.s
 .PHONY : ENCRYPTO_utils/timer.cpp.s
 
 ENCRYPTO_utils/utils.o: ENCRYPTO_utils/utils.cpp.o
@@ -690,7 +690,7 @@ ENCRYPTO_utils/utils.o: ENCRYPTO_utils/utils.cpp.o
 
 # target to build an object file
 ENCRYPTO_utils/utils.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/utils.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/utils.cpp.o
 .PHONY : ENCRYPTO_utils/utils.cpp.o
 
 ENCRYPTO_utils/utils.i: ENCRYPTO_utils/utils.cpp.i
@@ -699,7 +699,7 @@ ENCRYPTO_utils/utils.i: ENCRYPTO_utils/utils.cpp.i
 
 # target to preprocess a source file
 ENCRYPTO_utils/utils.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/utils.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/utils.cpp.i
 .PHONY : ENCRYPTO_utils/utils.cpp.i
 
 ENCRYPTO_utils/utils.s: ENCRYPTO_utils/utils.cpp.s
@@ -708,7 +708,7 @@ ENCRYPTO_utils/utils.s: ENCRYPTO_utils/utils.cpp.s
 
 # target to generate assembly for a file
 ENCRYPTO_utils/utils.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/utils.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/build.make extern/ABY/extern/ENCRYPTO_utils/src/CMakeFiles/encrypto_utils.dir/ENCRYPTO_utils/utils.cpp.s
 .PHONY : ENCRYPTO_utils/utils.cpp.s
 
 # Help Target
@@ -795,6 +795,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /root/PQC-mPSI/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

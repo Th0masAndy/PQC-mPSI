@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /root/zero-knowledge/PQC-mPSI
+CMAKE_SOURCE_DIR = /root/PQC-mPSI
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /root/zero-knowledge/PQC-mPSI/build
+CMAKE_BINARY_DIR = /root/PQC-mPSI/build
 
 # Utility rule file for arith_objs.
 
@@ -63,10 +63,10 @@ extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/arith_objs.dir/buil
 .PHONY : extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/arith_objs.dir/build
 
 extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/arith_objs.dir/clean:
-	cd /root/zero-knowledge/PQC-mPSI/build/extern/ABY/extern/ENCRYPTO_utils/extern/relic/src && $(CMAKE_COMMAND) -P CMakeFiles/arith_objs.dir/cmake_clean.cmake
+	cd /root/PQC-mPSI/build/extern/ABY/extern/ENCRYPTO_utils/extern/relic/src && $(CMAKE_COMMAND) -P CMakeFiles/arith_objs.dir/cmake_clean.cmake
 .PHONY : extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/arith_objs.dir/clean
 
 extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/arith_objs.dir/depend:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /root/zero-knowledge/PQC-mPSI /root/zero-knowledge/PQC-mPSI/extern/ABY/extern/ENCRYPTO_utils/extern/relic/src /root/zero-knowledge/PQC-mPSI/build /root/zero-knowledge/PQC-mPSI/build/extern/ABY/extern/ENCRYPTO_utils/extern/relic/src /root/zero-knowledge/PQC-mPSI/build/extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/arith_objs.dir/DependInfo.cmake --color=$(COLOR)
+	cd /root/PQC-mPSI/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /root/PQC-mPSI /root/PQC-mPSI/extern/ABY/extern/ENCRYPTO_utils/extern/relic/src /root/PQC-mPSI/build /root/PQC-mPSI/build/extern/ABY/extern/ENCRYPTO_utils/extern/relic/src /root/PQC-mPSI/build/extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/arith_objs.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/arith_objs.dir/depend
 

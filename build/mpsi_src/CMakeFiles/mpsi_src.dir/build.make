@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /root/zero-knowledge/PQC-mPSI
+CMAKE_SOURCE_DIR = /root/PQC-mPSI
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /root/zero-knowledge/PQC-mPSI/build
+CMAKE_BINARY_DIR = /root/PQC-mPSI/build
 
 # Include any dependencies generated for this target.
 include mpsi_src/CMakeFiles/mpsi_src.dir/depend.make
@@ -59,146 +59,146 @@ include mpsi_src/CMakeFiles/mpsi_src.dir/flags.make
 
 mpsi_src/CMakeFiles/mpsi_src.dir/common/psi_analytics.cpp.o: mpsi_src/CMakeFiles/mpsi_src.dir/flags.make
 mpsi_src/CMakeFiles/mpsi_src.dir/common/psi_analytics.cpp.o: ../mpsi_src/common/psi_analytics.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/zero-knowledge/PQC-mPSI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object mpsi_src/CMakeFiles/mpsi_src.dir/common/psi_analytics.cpp.o"
-	cd /root/zero-knowledge/PQC-mPSI/build/mpsi_src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mpsi_src.dir/common/psi_analytics.cpp.o -c /root/zero-knowledge/PQC-mPSI/mpsi_src/common/psi_analytics.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/PQC-mPSI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object mpsi_src/CMakeFiles/mpsi_src.dir/common/psi_analytics.cpp.o"
+	cd /root/PQC-mPSI/build/mpsi_src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mpsi_src.dir/common/psi_analytics.cpp.o -c /root/PQC-mPSI/mpsi_src/common/psi_analytics.cpp
 
 mpsi_src/CMakeFiles/mpsi_src.dir/common/psi_analytics.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mpsi_src.dir/common/psi_analytics.cpp.i"
-	cd /root/zero-knowledge/PQC-mPSI/build/mpsi_src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /root/zero-knowledge/PQC-mPSI/mpsi_src/common/psi_analytics.cpp > CMakeFiles/mpsi_src.dir/common/psi_analytics.cpp.i
+	cd /root/PQC-mPSI/build/mpsi_src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /root/PQC-mPSI/mpsi_src/common/psi_analytics.cpp > CMakeFiles/mpsi_src.dir/common/psi_analytics.cpp.i
 
 mpsi_src/CMakeFiles/mpsi_src.dir/common/psi_analytics.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mpsi_src.dir/common/psi_analytics.cpp.s"
-	cd /root/zero-knowledge/PQC-mPSI/build/mpsi_src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /root/zero-knowledge/PQC-mPSI/mpsi_src/common/psi_analytics.cpp -o CMakeFiles/mpsi_src.dir/common/psi_analytics.cpp.s
+	cd /root/PQC-mPSI/build/mpsi_src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /root/PQC-mPSI/mpsi_src/common/psi_analytics.cpp -o CMakeFiles/mpsi_src.dir/common/psi_analytics.cpp.s
 
 mpsi_src/CMakeFiles/mpsi_src.dir/common/helpers.cpp.o: mpsi_src/CMakeFiles/mpsi_src.dir/flags.make
 mpsi_src/CMakeFiles/mpsi_src.dir/common/helpers.cpp.o: ../mpsi_src/common/helpers.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/zero-knowledge/PQC-mPSI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object mpsi_src/CMakeFiles/mpsi_src.dir/common/helpers.cpp.o"
-	cd /root/zero-knowledge/PQC-mPSI/build/mpsi_src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mpsi_src.dir/common/helpers.cpp.o -c /root/zero-knowledge/PQC-mPSI/mpsi_src/common/helpers.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/PQC-mPSI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object mpsi_src/CMakeFiles/mpsi_src.dir/common/helpers.cpp.o"
+	cd /root/PQC-mPSI/build/mpsi_src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mpsi_src.dir/common/helpers.cpp.o -c /root/PQC-mPSI/mpsi_src/common/helpers.cpp
 
 mpsi_src/CMakeFiles/mpsi_src.dir/common/helpers.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mpsi_src.dir/common/helpers.cpp.i"
-	cd /root/zero-knowledge/PQC-mPSI/build/mpsi_src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /root/zero-knowledge/PQC-mPSI/mpsi_src/common/helpers.cpp > CMakeFiles/mpsi_src.dir/common/helpers.cpp.i
+	cd /root/PQC-mPSI/build/mpsi_src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /root/PQC-mPSI/mpsi_src/common/helpers.cpp > CMakeFiles/mpsi_src.dir/common/helpers.cpp.i
 
 mpsi_src/CMakeFiles/mpsi_src.dir/common/helpers.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mpsi_src.dir/common/helpers.cpp.s"
-	cd /root/zero-knowledge/PQC-mPSI/build/mpsi_src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /root/zero-knowledge/PQC-mPSI/mpsi_src/common/helpers.cpp -o CMakeFiles/mpsi_src.dir/common/helpers.cpp.s
+	cd /root/PQC-mPSI/build/mpsi_src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /root/PQC-mPSI/mpsi_src/common/helpers.cpp -o CMakeFiles/mpsi_src.dir/common/helpers.cpp.s
 
 mpsi_src/CMakeFiles/mpsi_src.dir/common/socket.cpp.o: mpsi_src/CMakeFiles/mpsi_src.dir/flags.make
 mpsi_src/CMakeFiles/mpsi_src.dir/common/socket.cpp.o: ../mpsi_src/common/socket.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/zero-knowledge/PQC-mPSI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object mpsi_src/CMakeFiles/mpsi_src.dir/common/socket.cpp.o"
-	cd /root/zero-knowledge/PQC-mPSI/build/mpsi_src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mpsi_src.dir/common/socket.cpp.o -c /root/zero-knowledge/PQC-mPSI/mpsi_src/common/socket.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/PQC-mPSI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object mpsi_src/CMakeFiles/mpsi_src.dir/common/socket.cpp.o"
+	cd /root/PQC-mPSI/build/mpsi_src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mpsi_src.dir/common/socket.cpp.o -c /root/PQC-mPSI/mpsi_src/common/socket.cpp
 
 mpsi_src/CMakeFiles/mpsi_src.dir/common/socket.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mpsi_src.dir/common/socket.cpp.i"
-	cd /root/zero-knowledge/PQC-mPSI/build/mpsi_src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /root/zero-knowledge/PQC-mPSI/mpsi_src/common/socket.cpp > CMakeFiles/mpsi_src.dir/common/socket.cpp.i
+	cd /root/PQC-mPSI/build/mpsi_src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /root/PQC-mPSI/mpsi_src/common/socket.cpp > CMakeFiles/mpsi_src.dir/common/socket.cpp.i
 
 mpsi_src/CMakeFiles/mpsi_src.dir/common/socket.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mpsi_src.dir/common/socket.cpp.s"
-	cd /root/zero-knowledge/PQC-mPSI/build/mpsi_src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /root/zero-knowledge/PQC-mPSI/mpsi_src/common/socket.cpp -o CMakeFiles/mpsi_src.dir/common/socket.cpp.s
+	cd /root/PQC-mPSI/build/mpsi_src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /root/PQC-mPSI/mpsi_src/common/socket.cpp -o CMakeFiles/mpsi_src.dir/common/socket.cpp.s
 
 mpsi_src/CMakeFiles/mpsi_src.dir/common/relaxed_opprf.cpp.o: mpsi_src/CMakeFiles/mpsi_src.dir/flags.make
 mpsi_src/CMakeFiles/mpsi_src.dir/common/relaxed_opprf.cpp.o: ../mpsi_src/common/relaxed_opprf.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/zero-knowledge/PQC-mPSI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object mpsi_src/CMakeFiles/mpsi_src.dir/common/relaxed_opprf.cpp.o"
-	cd /root/zero-knowledge/PQC-mPSI/build/mpsi_src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mpsi_src.dir/common/relaxed_opprf.cpp.o -c /root/zero-knowledge/PQC-mPSI/mpsi_src/common/relaxed_opprf.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/PQC-mPSI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object mpsi_src/CMakeFiles/mpsi_src.dir/common/relaxed_opprf.cpp.o"
+	cd /root/PQC-mPSI/build/mpsi_src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mpsi_src.dir/common/relaxed_opprf.cpp.o -c /root/PQC-mPSI/mpsi_src/common/relaxed_opprf.cpp
 
 mpsi_src/CMakeFiles/mpsi_src.dir/common/relaxed_opprf.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mpsi_src.dir/common/relaxed_opprf.cpp.i"
-	cd /root/zero-knowledge/PQC-mPSI/build/mpsi_src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /root/zero-knowledge/PQC-mPSI/mpsi_src/common/relaxed_opprf.cpp > CMakeFiles/mpsi_src.dir/common/relaxed_opprf.cpp.i
+	cd /root/PQC-mPSI/build/mpsi_src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /root/PQC-mPSI/mpsi_src/common/relaxed_opprf.cpp > CMakeFiles/mpsi_src.dir/common/relaxed_opprf.cpp.i
 
 mpsi_src/CMakeFiles/mpsi_src.dir/common/relaxed_opprf.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mpsi_src.dir/common/relaxed_opprf.cpp.s"
-	cd /root/zero-knowledge/PQC-mPSI/build/mpsi_src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /root/zero-knowledge/PQC-mPSI/mpsi_src/common/relaxed_opprf.cpp -o CMakeFiles/mpsi_src.dir/common/relaxed_opprf.cpp.s
+	cd /root/PQC-mPSI/build/mpsi_src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /root/PQC-mPSI/mpsi_src/common/relaxed_opprf.cpp -o CMakeFiles/mpsi_src.dir/common/relaxed_opprf.cpp.s
 
 mpsi_src/CMakeFiles/mpsi_src.dir/common/connection.cpp.o: mpsi_src/CMakeFiles/mpsi_src.dir/flags.make
 mpsi_src/CMakeFiles/mpsi_src.dir/common/connection.cpp.o: ../mpsi_src/common/connection.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/zero-knowledge/PQC-mPSI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object mpsi_src/CMakeFiles/mpsi_src.dir/common/connection.cpp.o"
-	cd /root/zero-knowledge/PQC-mPSI/build/mpsi_src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mpsi_src.dir/common/connection.cpp.o -c /root/zero-knowledge/PQC-mPSI/mpsi_src/common/connection.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/PQC-mPSI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object mpsi_src/CMakeFiles/mpsi_src.dir/common/connection.cpp.o"
+	cd /root/PQC-mPSI/build/mpsi_src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mpsi_src.dir/common/connection.cpp.o -c /root/PQC-mPSI/mpsi_src/common/connection.cpp
 
 mpsi_src/CMakeFiles/mpsi_src.dir/common/connection.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mpsi_src.dir/common/connection.cpp.i"
-	cd /root/zero-knowledge/PQC-mPSI/build/mpsi_src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /root/zero-knowledge/PQC-mPSI/mpsi_src/common/connection.cpp > CMakeFiles/mpsi_src.dir/common/connection.cpp.i
+	cd /root/PQC-mPSI/build/mpsi_src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /root/PQC-mPSI/mpsi_src/common/connection.cpp > CMakeFiles/mpsi_src.dir/common/connection.cpp.i
 
 mpsi_src/CMakeFiles/mpsi_src.dir/common/connection.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mpsi_src.dir/common/connection.cpp.s"
-	cd /root/zero-knowledge/PQC-mPSI/build/mpsi_src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /root/zero-knowledge/PQC-mPSI/mpsi_src/common/connection.cpp -o CMakeFiles/mpsi_src.dir/common/connection.cpp.s
+	cd /root/PQC-mPSI/build/mpsi_src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /root/PQC-mPSI/mpsi_src/common/connection.cpp -o CMakeFiles/mpsi_src.dir/common/connection.cpp.s
 
 mpsi_src/CMakeFiles/mpsi_src.dir/common/utils.cpp.o: mpsi_src/CMakeFiles/mpsi_src.dir/flags.make
 mpsi_src/CMakeFiles/mpsi_src.dir/common/utils.cpp.o: ../mpsi_src/common/utils.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/zero-knowledge/PQC-mPSI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object mpsi_src/CMakeFiles/mpsi_src.dir/common/utils.cpp.o"
-	cd /root/zero-knowledge/PQC-mPSI/build/mpsi_src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mpsi_src.dir/common/utils.cpp.o -c /root/zero-knowledge/PQC-mPSI/mpsi_src/common/utils.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/PQC-mPSI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object mpsi_src/CMakeFiles/mpsi_src.dir/common/utils.cpp.o"
+	cd /root/PQC-mPSI/build/mpsi_src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mpsi_src.dir/common/utils.cpp.o -c /root/PQC-mPSI/mpsi_src/common/utils.cpp
 
 mpsi_src/CMakeFiles/mpsi_src.dir/common/utils.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mpsi_src.dir/common/utils.cpp.i"
-	cd /root/zero-knowledge/PQC-mPSI/build/mpsi_src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /root/zero-knowledge/PQC-mPSI/mpsi_src/common/utils.cpp > CMakeFiles/mpsi_src.dir/common/utils.cpp.i
+	cd /root/PQC-mPSI/build/mpsi_src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /root/PQC-mPSI/mpsi_src/common/utils.cpp > CMakeFiles/mpsi_src.dir/common/utils.cpp.i
 
 mpsi_src/CMakeFiles/mpsi_src.dir/common/utils.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mpsi_src.dir/common/utils.cpp.s"
-	cd /root/zero-knowledge/PQC-mPSI/build/mpsi_src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /root/zero-knowledge/PQC-mPSI/mpsi_src/common/utils.cpp -o CMakeFiles/mpsi_src.dir/common/utils.cpp.s
+	cd /root/PQC-mPSI/build/mpsi_src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /root/PQC-mPSI/mpsi_src/common/utils.cpp -o CMakeFiles/mpsi_src.dir/common/utils.cpp.s
 
 mpsi_src/CMakeFiles/mpsi_src.dir/common/table_opprf.cpp.o: mpsi_src/CMakeFiles/mpsi_src.dir/flags.make
 mpsi_src/CMakeFiles/mpsi_src.dir/common/table_opprf.cpp.o: ../mpsi_src/common/table_opprf.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/zero-knowledge/PQC-mPSI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object mpsi_src/CMakeFiles/mpsi_src.dir/common/table_opprf.cpp.o"
-	cd /root/zero-knowledge/PQC-mPSI/build/mpsi_src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mpsi_src.dir/common/table_opprf.cpp.o -c /root/zero-knowledge/PQC-mPSI/mpsi_src/common/table_opprf.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/PQC-mPSI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object mpsi_src/CMakeFiles/mpsi_src.dir/common/table_opprf.cpp.o"
+	cd /root/PQC-mPSI/build/mpsi_src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mpsi_src.dir/common/table_opprf.cpp.o -c /root/PQC-mPSI/mpsi_src/common/table_opprf.cpp
 
 mpsi_src/CMakeFiles/mpsi_src.dir/common/table_opprf.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mpsi_src.dir/common/table_opprf.cpp.i"
-	cd /root/zero-knowledge/PQC-mPSI/build/mpsi_src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /root/zero-knowledge/PQC-mPSI/mpsi_src/common/table_opprf.cpp > CMakeFiles/mpsi_src.dir/common/table_opprf.cpp.i
+	cd /root/PQC-mPSI/build/mpsi_src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /root/PQC-mPSI/mpsi_src/common/table_opprf.cpp > CMakeFiles/mpsi_src.dir/common/table_opprf.cpp.i
 
 mpsi_src/CMakeFiles/mpsi_src.dir/common/table_opprf.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mpsi_src.dir/common/table_opprf.cpp.s"
-	cd /root/zero-knowledge/PQC-mPSI/build/mpsi_src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /root/zero-knowledge/PQC-mPSI/mpsi_src/common/table_opprf.cpp -o CMakeFiles/mpsi_src.dir/common/table_opprf.cpp.s
+	cd /root/PQC-mPSI/build/mpsi_src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /root/PQC-mPSI/mpsi_src/common/table_opprf.cpp -o CMakeFiles/mpsi_src.dir/common/table_opprf.cpp.s
 
 mpsi_src/CMakeFiles/mpsi_src.dir/polynomials/Mersenne.cpp.o: mpsi_src/CMakeFiles/mpsi_src.dir/flags.make
 mpsi_src/CMakeFiles/mpsi_src.dir/polynomials/Mersenne.cpp.o: ../mpsi_src/polynomials/Mersenne.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/zero-knowledge/PQC-mPSI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object mpsi_src/CMakeFiles/mpsi_src.dir/polynomials/Mersenne.cpp.o"
-	cd /root/zero-knowledge/PQC-mPSI/build/mpsi_src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mpsi_src.dir/polynomials/Mersenne.cpp.o -c /root/zero-knowledge/PQC-mPSI/mpsi_src/polynomials/Mersenne.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/PQC-mPSI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object mpsi_src/CMakeFiles/mpsi_src.dir/polynomials/Mersenne.cpp.o"
+	cd /root/PQC-mPSI/build/mpsi_src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mpsi_src.dir/polynomials/Mersenne.cpp.o -c /root/PQC-mPSI/mpsi_src/polynomials/Mersenne.cpp
 
 mpsi_src/CMakeFiles/mpsi_src.dir/polynomials/Mersenne.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mpsi_src.dir/polynomials/Mersenne.cpp.i"
-	cd /root/zero-knowledge/PQC-mPSI/build/mpsi_src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /root/zero-knowledge/PQC-mPSI/mpsi_src/polynomials/Mersenne.cpp > CMakeFiles/mpsi_src.dir/polynomials/Mersenne.cpp.i
+	cd /root/PQC-mPSI/build/mpsi_src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /root/PQC-mPSI/mpsi_src/polynomials/Mersenne.cpp > CMakeFiles/mpsi_src.dir/polynomials/Mersenne.cpp.i
 
 mpsi_src/CMakeFiles/mpsi_src.dir/polynomials/Mersenne.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mpsi_src.dir/polynomials/Mersenne.cpp.s"
-	cd /root/zero-knowledge/PQC-mPSI/build/mpsi_src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /root/zero-knowledge/PQC-mPSI/mpsi_src/polynomials/Mersenne.cpp -o CMakeFiles/mpsi_src.dir/polynomials/Mersenne.cpp.s
+	cd /root/PQC-mPSI/build/mpsi_src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /root/PQC-mPSI/mpsi_src/polynomials/Mersenne.cpp -o CMakeFiles/mpsi_src.dir/polynomials/Mersenne.cpp.s
 
 mpsi_src/CMakeFiles/mpsi_src.dir/polynomials/Poly.cpp.o: mpsi_src/CMakeFiles/mpsi_src.dir/flags.make
 mpsi_src/CMakeFiles/mpsi_src.dir/polynomials/Poly.cpp.o: ../mpsi_src/polynomials/Poly.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/zero-knowledge/PQC-mPSI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object mpsi_src/CMakeFiles/mpsi_src.dir/polynomials/Poly.cpp.o"
-	cd /root/zero-knowledge/PQC-mPSI/build/mpsi_src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mpsi_src.dir/polynomials/Poly.cpp.o -c /root/zero-knowledge/PQC-mPSI/mpsi_src/polynomials/Poly.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/PQC-mPSI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object mpsi_src/CMakeFiles/mpsi_src.dir/polynomials/Poly.cpp.o"
+	cd /root/PQC-mPSI/build/mpsi_src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mpsi_src.dir/polynomials/Poly.cpp.o -c /root/PQC-mPSI/mpsi_src/polynomials/Poly.cpp
 
 mpsi_src/CMakeFiles/mpsi_src.dir/polynomials/Poly.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mpsi_src.dir/polynomials/Poly.cpp.i"
-	cd /root/zero-knowledge/PQC-mPSI/build/mpsi_src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /root/zero-knowledge/PQC-mPSI/mpsi_src/polynomials/Poly.cpp > CMakeFiles/mpsi_src.dir/polynomials/Poly.cpp.i
+	cd /root/PQC-mPSI/build/mpsi_src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /root/PQC-mPSI/mpsi_src/polynomials/Poly.cpp > CMakeFiles/mpsi_src.dir/polynomials/Poly.cpp.i
 
 mpsi_src/CMakeFiles/mpsi_src.dir/polynomials/Poly.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mpsi_src.dir/polynomials/Poly.cpp.s"
-	cd /root/zero-knowledge/PQC-mPSI/build/mpsi_src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /root/zero-knowledge/PQC-mPSI/mpsi_src/polynomials/Poly.cpp -o CMakeFiles/mpsi_src.dir/polynomials/Poly.cpp.s
+	cd /root/PQC-mPSI/build/mpsi_src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /root/PQC-mPSI/mpsi_src/polynomials/Poly.cpp -o CMakeFiles/mpsi_src.dir/polynomials/Poly.cpp.s
 
 mpsi_src/CMakeFiles/mpsi_src.dir/ots/ots.cpp.o: mpsi_src/CMakeFiles/mpsi_src.dir/flags.make
 mpsi_src/CMakeFiles/mpsi_src.dir/ots/ots.cpp.o: ../mpsi_src/ots/ots.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/zero-knowledge/PQC-mPSI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object mpsi_src/CMakeFiles/mpsi_src.dir/ots/ots.cpp.o"
-	cd /root/zero-knowledge/PQC-mPSI/build/mpsi_src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mpsi_src.dir/ots/ots.cpp.o -c /root/zero-knowledge/PQC-mPSI/mpsi_src/ots/ots.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/PQC-mPSI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object mpsi_src/CMakeFiles/mpsi_src.dir/ots/ots.cpp.o"
+	cd /root/PQC-mPSI/build/mpsi_src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mpsi_src.dir/ots/ots.cpp.o -c /root/PQC-mPSI/mpsi_src/ots/ots.cpp
 
 mpsi_src/CMakeFiles/mpsi_src.dir/ots/ots.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mpsi_src.dir/ots/ots.cpp.i"
-	cd /root/zero-knowledge/PQC-mPSI/build/mpsi_src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /root/zero-knowledge/PQC-mPSI/mpsi_src/ots/ots.cpp > CMakeFiles/mpsi_src.dir/ots/ots.cpp.i
+	cd /root/PQC-mPSI/build/mpsi_src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /root/PQC-mPSI/mpsi_src/ots/ots.cpp > CMakeFiles/mpsi_src.dir/ots/ots.cpp.i
 
 mpsi_src/CMakeFiles/mpsi_src.dir/ots/ots.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mpsi_src.dir/ots/ots.cpp.s"
-	cd /root/zero-knowledge/PQC-mPSI/build/mpsi_src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /root/zero-knowledge/PQC-mPSI/mpsi_src/ots/ots.cpp -o CMakeFiles/mpsi_src.dir/ots/ots.cpp.s
+	cd /root/PQC-mPSI/build/mpsi_src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /root/PQC-mPSI/mpsi_src/ots/ots.cpp -o CMakeFiles/mpsi_src.dir/ots/ots.cpp.s
 
 mpsi_src/CMakeFiles/mpsi_src.dir/ots/block_op_ots.cpp.o: mpsi_src/CMakeFiles/mpsi_src.dir/flags.make
 mpsi_src/CMakeFiles/mpsi_src.dir/ots/block_op_ots.cpp.o: ../mpsi_src/ots/block_op_ots.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/zero-knowledge/PQC-mPSI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object mpsi_src/CMakeFiles/mpsi_src.dir/ots/block_op_ots.cpp.o"
-	cd /root/zero-knowledge/PQC-mPSI/build/mpsi_src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mpsi_src.dir/ots/block_op_ots.cpp.o -c /root/zero-knowledge/PQC-mPSI/mpsi_src/ots/block_op_ots.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/PQC-mPSI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object mpsi_src/CMakeFiles/mpsi_src.dir/ots/block_op_ots.cpp.o"
+	cd /root/PQC-mPSI/build/mpsi_src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/mpsi_src.dir/ots/block_op_ots.cpp.o -c /root/PQC-mPSI/mpsi_src/ots/block_op_ots.cpp
 
 mpsi_src/CMakeFiles/mpsi_src.dir/ots/block_op_ots.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/mpsi_src.dir/ots/block_op_ots.cpp.i"
-	cd /root/zero-knowledge/PQC-mPSI/build/mpsi_src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /root/zero-knowledge/PQC-mPSI/mpsi_src/ots/block_op_ots.cpp > CMakeFiles/mpsi_src.dir/ots/block_op_ots.cpp.i
+	cd /root/PQC-mPSI/build/mpsi_src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /root/PQC-mPSI/mpsi_src/ots/block_op_ots.cpp > CMakeFiles/mpsi_src.dir/ots/block_op_ots.cpp.i
 
 mpsi_src/CMakeFiles/mpsi_src.dir/ots/block_op_ots.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/mpsi_src.dir/ots/block_op_ots.cpp.s"
-	cd /root/zero-knowledge/PQC-mPSI/build/mpsi_src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /root/zero-knowledge/PQC-mPSI/mpsi_src/ots/block_op_ots.cpp -o CMakeFiles/mpsi_src.dir/ots/block_op_ots.cpp.s
+	cd /root/PQC-mPSI/build/mpsi_src && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /root/PQC-mPSI/mpsi_src/ots/block_op_ots.cpp -o CMakeFiles/mpsi_src.dir/ots/block_op_ots.cpp.s
 
 # Object files for target mpsi_src
 mpsi_src_OBJECTS = \
@@ -230,9 +230,9 @@ lib/libmpsi_src.a: mpsi_src/CMakeFiles/mpsi_src.dir/ots/ots.cpp.o
 lib/libmpsi_src.a: mpsi_src/CMakeFiles/mpsi_src.dir/ots/block_op_ots.cpp.o
 lib/libmpsi_src.a: mpsi_src/CMakeFiles/mpsi_src.dir/build.make
 lib/libmpsi_src.a: mpsi_src/CMakeFiles/mpsi_src.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/root/zero-knowledge/PQC-mPSI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Linking CXX static library ../lib/libmpsi_src.a"
-	cd /root/zero-knowledge/PQC-mPSI/build/mpsi_src && $(CMAKE_COMMAND) -P CMakeFiles/mpsi_src.dir/cmake_clean_target.cmake
-	cd /root/zero-knowledge/PQC-mPSI/build/mpsi_src && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/mpsi_src.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/root/PQC-mPSI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Linking CXX static library ../lib/libmpsi_src.a"
+	cd /root/PQC-mPSI/build/mpsi_src && $(CMAKE_COMMAND) -P CMakeFiles/mpsi_src.dir/cmake_clean_target.cmake
+	cd /root/PQC-mPSI/build/mpsi_src && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/mpsi_src.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 mpsi_src/CMakeFiles/mpsi_src.dir/build: lib/libmpsi_src.a
@@ -240,10 +240,10 @@ mpsi_src/CMakeFiles/mpsi_src.dir/build: lib/libmpsi_src.a
 .PHONY : mpsi_src/CMakeFiles/mpsi_src.dir/build
 
 mpsi_src/CMakeFiles/mpsi_src.dir/clean:
-	cd /root/zero-knowledge/PQC-mPSI/build/mpsi_src && $(CMAKE_COMMAND) -P CMakeFiles/mpsi_src.dir/cmake_clean.cmake
+	cd /root/PQC-mPSI/build/mpsi_src && $(CMAKE_COMMAND) -P CMakeFiles/mpsi_src.dir/cmake_clean.cmake
 .PHONY : mpsi_src/CMakeFiles/mpsi_src.dir/clean
 
 mpsi_src/CMakeFiles/mpsi_src.dir/depend:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /root/zero-knowledge/PQC-mPSI /root/zero-knowledge/PQC-mPSI/mpsi_src /root/zero-knowledge/PQC-mPSI/build /root/zero-knowledge/PQC-mPSI/build/mpsi_src /root/zero-knowledge/PQC-mPSI/build/mpsi_src/CMakeFiles/mpsi_src.dir/DependInfo.cmake --color=$(COLOR)
+	cd /root/PQC-mPSI/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /root/PQC-mPSI /root/PQC-mPSI/mpsi_src /root/PQC-mPSI/build /root/PQC-mPSI/build/mpsi_src /root/PQC-mPSI/build/mpsi_src/CMakeFiles/mpsi_src.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : mpsi_src/CMakeFiles/mpsi_src.dir/depend
 

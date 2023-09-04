@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/root/zero-knowledge/PQC-mPSI/mpsi_src/mpsi_analytics_example.cpp" "/root/zero-knowledge/PQC-mPSI/build/mpsi_src/CMakeFiles/pqc_mpsi_example.dir/mpsi_analytics_example.cpp.o"
+  "/root/PQC-mPSI/mpsi_src/mpsi_analytics_example.cpp" "/root/PQC-mPSI/build/mpsi_src/CMakeFiles/pqc_mpsi_example.dir/mpsi_analytics_example.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
@@ -41,12 +41,12 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
-  "/root/zero-knowledge/PQC-mPSI/build/mpsi_src/CMakeFiles/mpsi_src.dir/DependInfo.cmake"
-  "/root/zero-knowledge/PQC-mPSI/build/extern/HashingTables/CMakeFiles/HashingTables.dir/DependInfo.cmake"
-  "/root/zero-knowledge/PQC-mPSI/build/extern/libOTe/libOTe/CMakeFiles/libOTe.dir/DependInfo.cmake"
-  "/root/zero-knowledge/PQC-mPSI/build/extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/DependInfo.cmake"
-  "/root/zero-knowledge/PQC-mPSI/build/extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/DependInfo.cmake"
-  "/root/zero-knowledge/PQC-mPSI/build/extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/DependInfo.cmake"
+  "/root/PQC-mPSI/build/mpsi_src/CMakeFiles/mpsi_src.dir/DependInfo.cmake"
+  "/root/PQC-mPSI/build/extern/HashingTables/CMakeFiles/HashingTables.dir/DependInfo.cmake"
+  "/root/PQC-mPSI/build/extern/libOTe/libOTe/CMakeFiles/libOTe.dir/DependInfo.cmake"
+  "/root/PQC-mPSI/build/extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/DependInfo.cmake"
+  "/root/PQC-mPSI/build/extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/DependInfo.cmake"
+  "/root/PQC-mPSI/build/extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

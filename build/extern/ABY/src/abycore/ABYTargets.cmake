@@ -46,7 +46,7 @@ add_library(ABY::aby STATIC IMPORTED)
 
 set_target_properties(ABY::aby PROPERTIES
   INTERFACE_COMPILE_FEATURES "cxx_std_17"
-  INTERFACE_INCLUDE_DIRECTORIES "/root/zero-knowledge/PQC-mPSI/extern/ABY/src/abycore/.."
+  INTERFACE_INCLUDE_DIRECTORIES "/root/PQC-mPSI/extern/ABY/src/abycore/.."
   INTERFACE_LINK_LIBRARIES "\$<LINK_ONLY:stdc++fs>;OTExtension::otextension;ENCRYPTO_utils::encrypto_utils;GMP::GMP;Threads::Threads"
 )
 
@@ -54,7 +54,7 @@ set_target_properties(ABY::aby PROPERTIES
 set_property(TARGET ABY::aby APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
 set_target_properties(ABY::aby PROPERTIES
   IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/root/zero-knowledge/PQC-mPSI/build/extern/ABY/lib/libaby.a"
+  IMPORTED_LOCATION_RELEASE "/root/PQC-mPSI/build/extern/ABY/lib/libaby.a"
   )
 
 # Make sure the targets which have been exported in some other 

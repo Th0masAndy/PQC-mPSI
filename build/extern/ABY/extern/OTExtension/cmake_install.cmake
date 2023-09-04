@@ -1,4 +1,4 @@
-# Install script for directory: /root/zero-knowledge/PQC-mPSI/extern/ABY/extern/OTExtension
+# Install script for directory: /root/PQC-mPSI/extern/ABY/extern/OTExtension
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -38,18 +38,18 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "/root/zero-knowledge/PQC-mPSI/build/extern/ABY/lib/libotextension.a")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "/root/PQC-mPSI/build/extern/ABY/lib/libotextension.a")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE DIRECTORY FILES "/root/zero-knowledge/PQC-mPSI/extern/ABY/extern/OTExtension/ot" FILES_MATCHING REGEX "/[^/]*\\.h$")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE DIRECTORY FILES "/root/PQC-mPSI/extern/ABY/extern/OTExtension/ot" FILES_MATCHING REGEX "/[^/]*\\.h$")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/cmake/OTExtension/OTExtensionTargets.cmake")
     file(DIFFERENT EXPORT_FILE_CHANGED FILES
          "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/cmake/OTExtension/OTExtensionTargets.cmake"
-         "/root/zero-knowledge/PQC-mPSI/build/extern/ABY/extern/OTExtension/CMakeFiles/Export/lib/cmake/OTExtension/OTExtensionTargets.cmake")
+         "/root/PQC-mPSI/build/extern/ABY/extern/OTExtension/CMakeFiles/Export/lib/cmake/OTExtension/OTExtensionTargets.cmake")
     if(EXPORT_FILE_CHANGED)
       file(GLOB OLD_CONFIG_FILES "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/cmake/OTExtension/OTExtensionTargets-*.cmake")
       if(OLD_CONFIG_FILES)
@@ -58,13 +58,13 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
       endif()
     endif()
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/OTExtension" TYPE FILE FILES "/root/zero-knowledge/PQC-mPSI/build/extern/ABY/extern/OTExtension/CMakeFiles/Export/lib/cmake/OTExtension/OTExtensionTargets.cmake")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/OTExtension" TYPE FILE FILES "/root/PQC-mPSI/build/extern/ABY/extern/OTExtension/CMakeFiles/Export/lib/cmake/OTExtension/OTExtensionTargets.cmake")
   if("${CMAKE_INSTALL_CONFIG_NAME}" MATCHES "^([Rr][Ee][Ll][Ee][Aa][Ss][Ee])$")
-    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/OTExtension" TYPE FILE FILES "/root/zero-knowledge/PQC-mPSI/build/extern/ABY/extern/OTExtension/CMakeFiles/Export/lib/cmake/OTExtension/OTExtensionTargets-release.cmake")
+    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/OTExtension" TYPE FILE FILES "/root/PQC-mPSI/build/extern/ABY/extern/OTExtension/CMakeFiles/Export/lib/cmake/OTExtension/OTExtensionTargets-release.cmake")
   endif()
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/OTExtension" TYPE FILE FILES "/root/zero-knowledge/PQC-mPSI/build/extern/ABY/extern/OTExtension/OTExtensionConfig.cmake")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/OTExtension" TYPE FILE FILES "/root/PQC-mPSI/build/extern/ABY/extern/OTExtension/OTExtensionConfig.cmake")
 endif()
 

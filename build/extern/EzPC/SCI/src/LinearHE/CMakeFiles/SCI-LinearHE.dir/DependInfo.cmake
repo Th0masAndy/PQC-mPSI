@@ -4,10 +4,10 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/root/zero-knowledge/PQC-mPSI/extern/EzPC/SCI/src/LinearHE/conv-field.cpp" "/root/zero-knowledge/PQC-mPSI/build/extern/EzPC/SCI/src/LinearHE/CMakeFiles/SCI-LinearHE.dir/conv-field.cpp.o"
-  "/root/zero-knowledge/PQC-mPSI/extern/EzPC/SCI/src/LinearHE/elemwise-prod-field.cpp" "/root/zero-knowledge/PQC-mPSI/build/extern/EzPC/SCI/src/LinearHE/CMakeFiles/SCI-LinearHE.dir/elemwise-prod-field.cpp.o"
-  "/root/zero-knowledge/PQC-mPSI/extern/EzPC/SCI/src/LinearHE/fc-field.cpp" "/root/zero-knowledge/PQC-mPSI/build/extern/EzPC/SCI/src/LinearHE/CMakeFiles/SCI-LinearHE.dir/fc-field.cpp.o"
-  "/root/zero-knowledge/PQC-mPSI/extern/EzPC/SCI/src/LinearHE/utils-HE.cpp" "/root/zero-knowledge/PQC-mPSI/build/extern/EzPC/SCI/src/LinearHE/CMakeFiles/SCI-LinearHE.dir/utils-HE.cpp.o"
+  "/root/PQC-mPSI/extern/EzPC/SCI/src/LinearHE/conv-field.cpp" "/root/PQC-mPSI/build/extern/EzPC/SCI/src/LinearHE/CMakeFiles/SCI-LinearHE.dir/conv-field.cpp.o"
+  "/root/PQC-mPSI/extern/EzPC/SCI/src/LinearHE/elemwise-prod-field.cpp" "/root/PQC-mPSI/build/extern/EzPC/SCI/src/LinearHE/CMakeFiles/SCI-LinearHE.dir/elemwise-prod-field.cpp.o"
+  "/root/PQC-mPSI/extern/EzPC/SCI/src/LinearHE/fc-field.cpp" "/root/PQC-mPSI/build/extern/EzPC/SCI/src/LinearHE/CMakeFiles/SCI-LinearHE.dir/fc-field.cpp.o"
+  "/root/PQC-mPSI/extern/EzPC/SCI/src/LinearHE/utils-HE.cpp" "/root/PQC-mPSI/build/extern/EzPC/SCI/src/LinearHE/CMakeFiles/SCI-LinearHE.dir/utils-HE.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

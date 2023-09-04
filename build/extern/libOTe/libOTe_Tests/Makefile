@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /root/zero-knowledge/PQC-mPSI
+CMAKE_SOURCE_DIR = /root/PQC-mPSI
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /root/zero-knowledge/PQC-mPSI/build
+CMAKE_BINARY_DIR = /root/PQC-mPSI/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -126,14 +126,14 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /root/zero-knowledge/PQC-mPSI/build && $(CMAKE_COMMAND) -E cmake_progress_start /root/zero-knowledge/PQC-mPSI/build/CMakeFiles /root/zero-knowledge/PQC-mPSI/build/extern/libOTe/libOTe_Tests/CMakeFiles/progress.marks
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/libOTe/libOTe_Tests/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /root/zero-knowledge/PQC-mPSI/build/CMakeFiles 0
+	cd /root/PQC-mPSI/build && $(CMAKE_COMMAND) -E cmake_progress_start /root/PQC-mPSI/build/CMakeFiles /root/PQC-mPSI/build/extern/libOTe/libOTe_Tests/CMakeFiles/progress.marks
+	cd /root/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/libOTe/libOTe_Tests/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/PQC-mPSI/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/libOTe/libOTe_Tests/clean
+	cd /root/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/libOTe/libOTe_Tests/clean
 .PHONY : clean
 
 # The main clean target
@@ -143,22 +143,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/libOTe/libOTe_Tests/preinstall
+	cd /root/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/libOTe/libOTe_Tests/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/libOTe/libOTe_Tests/preinstall
+	cd /root/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/libOTe/libOTe_Tests/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /root/PQC-mPSI/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/rule:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/rule
+	cd /root/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/rule
 .PHONY : extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/rule
 
 # Convenience name for target.
@@ -168,7 +168,7 @@ libOTe_Tests: extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/rule
 
 # fast build rule for target.
 libOTe_Tests/fast:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/build.make extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/build
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/build.make extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/build
 .PHONY : libOTe_Tests/fast
 
 AknOt_Tests.o: AknOt_Tests.cpp.o
@@ -177,7 +177,7 @@ AknOt_Tests.o: AknOt_Tests.cpp.o
 
 # target to build an object file
 AknOt_Tests.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/build.make extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/AknOt_Tests.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/build.make extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/AknOt_Tests.cpp.o
 .PHONY : AknOt_Tests.cpp.o
 
 AknOt_Tests.i: AknOt_Tests.cpp.i
@@ -186,7 +186,7 @@ AknOt_Tests.i: AknOt_Tests.cpp.i
 
 # target to preprocess a source file
 AknOt_Tests.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/build.make extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/AknOt_Tests.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/build.make extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/AknOt_Tests.cpp.i
 .PHONY : AknOt_Tests.cpp.i
 
 AknOt_Tests.s: AknOt_Tests.cpp.s
@@ -195,7 +195,7 @@ AknOt_Tests.s: AknOt_Tests.cpp.s
 
 # target to generate assembly for a file
 AknOt_Tests.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/build.make extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/AknOt_Tests.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/build.make extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/AknOt_Tests.cpp.s
 .PHONY : AknOt_Tests.cpp.s
 
 BaseOT_Tests.o: BaseOT_Tests.cpp.o
@@ -204,7 +204,7 @@ BaseOT_Tests.o: BaseOT_Tests.cpp.o
 
 # target to build an object file
 BaseOT_Tests.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/build.make extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/BaseOT_Tests.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/build.make extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/BaseOT_Tests.cpp.o
 .PHONY : BaseOT_Tests.cpp.o
 
 BaseOT_Tests.i: BaseOT_Tests.cpp.i
@@ -213,7 +213,7 @@ BaseOT_Tests.i: BaseOT_Tests.cpp.i
 
 # target to preprocess a source file
 BaseOT_Tests.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/build.make extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/BaseOT_Tests.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/build.make extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/BaseOT_Tests.cpp.i
 .PHONY : BaseOT_Tests.cpp.i
 
 BaseOT_Tests.s: BaseOT_Tests.cpp.s
@@ -222,7 +222,7 @@ BaseOT_Tests.s: BaseOT_Tests.cpp.s
 
 # target to generate assembly for a file
 BaseOT_Tests.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/build.make extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/BaseOT_Tests.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/build.make extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/BaseOT_Tests.cpp.s
 .PHONY : BaseOT_Tests.cpp.s
 
 Common.o: Common.cpp.o
@@ -231,7 +231,7 @@ Common.o: Common.cpp.o
 
 # target to build an object file
 Common.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/build.make extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/Common.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/build.make extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/Common.cpp.o
 .PHONY : Common.cpp.o
 
 Common.i: Common.cpp.i
@@ -240,7 +240,7 @@ Common.i: Common.cpp.i
 
 # target to preprocess a source file
 Common.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/build.make extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/Common.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/build.make extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/Common.cpp.i
 .PHONY : Common.cpp.i
 
 Common.s: Common.cpp.s
@@ -249,7 +249,7 @@ Common.s: Common.cpp.s
 
 # target to generate assembly for a file
 Common.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/build.make extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/Common.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/build.make extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/Common.cpp.s
 .PHONY : Common.cpp.s
 
 NcoOT_Tests.o: NcoOT_Tests.cpp.o
@@ -258,7 +258,7 @@ NcoOT_Tests.o: NcoOT_Tests.cpp.o
 
 # target to build an object file
 NcoOT_Tests.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/build.make extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/NcoOT_Tests.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/build.make extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/NcoOT_Tests.cpp.o
 .PHONY : NcoOT_Tests.cpp.o
 
 NcoOT_Tests.i: NcoOT_Tests.cpp.i
@@ -267,7 +267,7 @@ NcoOT_Tests.i: NcoOT_Tests.cpp.i
 
 # target to preprocess a source file
 NcoOT_Tests.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/build.make extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/NcoOT_Tests.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/build.make extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/NcoOT_Tests.cpp.i
 .PHONY : NcoOT_Tests.cpp.i
 
 NcoOT_Tests.s: NcoOT_Tests.cpp.s
@@ -276,7 +276,7 @@ NcoOT_Tests.s: NcoOT_Tests.cpp.s
 
 # target to generate assembly for a file
 NcoOT_Tests.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/build.make extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/NcoOT_Tests.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/build.make extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/NcoOT_Tests.cpp.s
 .PHONY : NcoOT_Tests.cpp.s
 
 OT_Tests.o: OT_Tests.cpp.o
@@ -285,7 +285,7 @@ OT_Tests.o: OT_Tests.cpp.o
 
 # target to build an object file
 OT_Tests.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/build.make extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/OT_Tests.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/build.make extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/OT_Tests.cpp.o
 .PHONY : OT_Tests.cpp.o
 
 OT_Tests.i: OT_Tests.cpp.i
@@ -294,7 +294,7 @@ OT_Tests.i: OT_Tests.cpp.i
 
 # target to preprocess a source file
 OT_Tests.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/build.make extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/OT_Tests.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/build.make extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/OT_Tests.cpp.i
 .PHONY : OT_Tests.cpp.i
 
 OT_Tests.s: OT_Tests.cpp.s
@@ -303,7 +303,7 @@ OT_Tests.s: OT_Tests.cpp.s
 
 # target to generate assembly for a file
 OT_Tests.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/build.make extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/OT_Tests.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/build.make extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/OT_Tests.cpp.s
 .PHONY : OT_Tests.cpp.s
 
 SilentOT_Tests.o: SilentOT_Tests.cpp.o
@@ -312,7 +312,7 @@ SilentOT_Tests.o: SilentOT_Tests.cpp.o
 
 # target to build an object file
 SilentOT_Tests.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/build.make extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/SilentOT_Tests.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/build.make extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/SilentOT_Tests.cpp.o
 .PHONY : SilentOT_Tests.cpp.o
 
 SilentOT_Tests.i: SilentOT_Tests.cpp.i
@@ -321,7 +321,7 @@ SilentOT_Tests.i: SilentOT_Tests.cpp.i
 
 # target to preprocess a source file
 SilentOT_Tests.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/build.make extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/SilentOT_Tests.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/build.make extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/SilentOT_Tests.cpp.i
 .PHONY : SilentOT_Tests.cpp.i
 
 SilentOT_Tests.s: SilentOT_Tests.cpp.s
@@ -330,7 +330,7 @@ SilentOT_Tests.s: SilentOT_Tests.cpp.s
 
 # target to generate assembly for a file
 SilentOT_Tests.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/build.make extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/SilentOT_Tests.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/build.make extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/SilentOT_Tests.cpp.s
 .PHONY : SilentOT_Tests.cpp.s
 
 UnitTests.o: UnitTests.cpp.o
@@ -339,7 +339,7 @@ UnitTests.o: UnitTests.cpp.o
 
 # target to build an object file
 UnitTests.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/build.make extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/UnitTests.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/build.make extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/UnitTests.cpp.o
 .PHONY : UnitTests.cpp.o
 
 UnitTests.i: UnitTests.cpp.i
@@ -348,7 +348,7 @@ UnitTests.i: UnitTests.cpp.i
 
 # target to preprocess a source file
 UnitTests.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/build.make extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/UnitTests.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/build.make extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/UnitTests.cpp.i
 .PHONY : UnitTests.cpp.i
 
 UnitTests.s: UnitTests.cpp.s
@@ -357,7 +357,7 @@ UnitTests.s: UnitTests.cpp.s
 
 # target to generate assembly for a file
 UnitTests.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/build.make extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/UnitTests.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/build.make extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/UnitTests.cpp.s
 .PHONY : UnitTests.cpp.s
 
 bitpolymul_Tests.o: bitpolymul_Tests.cpp.o
@@ -366,7 +366,7 @@ bitpolymul_Tests.o: bitpolymul_Tests.cpp.o
 
 # target to build an object file
 bitpolymul_Tests.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/build.make extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/bitpolymul_Tests.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/build.make extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/bitpolymul_Tests.cpp.o
 .PHONY : bitpolymul_Tests.cpp.o
 
 bitpolymul_Tests.i: bitpolymul_Tests.cpp.i
@@ -375,7 +375,7 @@ bitpolymul_Tests.i: bitpolymul_Tests.cpp.i
 
 # target to preprocess a source file
 bitpolymul_Tests.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/build.make extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/bitpolymul_Tests.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/build.make extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/bitpolymul_Tests.cpp.i
 .PHONY : bitpolymul_Tests.cpp.i
 
 bitpolymul_Tests.s: bitpolymul_Tests.cpp.s
@@ -384,7 +384,7 @@ bitpolymul_Tests.s: bitpolymul_Tests.cpp.s
 
 # target to generate assembly for a file
 bitpolymul_Tests.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/build.make extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/bitpolymul_Tests.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/build.make extern/libOTe/libOTe_Tests/CMakeFiles/libOTe_Tests.dir/bitpolymul_Tests.cpp.s
 .PHONY : bitpolymul_Tests.cpp.s
 
 # Help Target
@@ -435,6 +435,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /root/PQC-mPSI/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

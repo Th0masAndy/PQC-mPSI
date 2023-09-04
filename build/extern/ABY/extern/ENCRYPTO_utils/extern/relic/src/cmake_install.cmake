@@ -1,4 +1,4 @@
-# Install script for directory: /root/zero-knowledge/PQC-mPSI/extern/ABY/extern/ENCRYPTO_utils/extern/relic/src
+# Install script for directory: /root/PQC-mPSI/extern/ABY/extern/ENCRYPTO_utils/extern/relic/src
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -38,6 +38,6 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "/root/zero-knowledge/PQC-mPSI/build/extern/ABY/lib/librelic_s.a")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "/root/PQC-mPSI/build/extern/ABY/lib/librelic_s.a")
 endif()
 

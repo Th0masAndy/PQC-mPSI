@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /root/zero-knowledge/PQC-mPSI
+CMAKE_SOURCE_DIR = /root/PQC-mPSI
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /root/zero-knowledge/PQC-mPSI/build
+CMAKE_BINARY_DIR = /root/PQC-mPSI/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -126,14 +126,14 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /root/zero-knowledge/PQC-mPSI/build && $(CMAKE_COMMAND) -E cmake_progress_start /root/zero-knowledge/PQC-mPSI/build/CMakeFiles /root/zero-knowledge/PQC-mPSI/build/extern/ABY/extern/OTExtension/CMakeFiles/progress.marks
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/ABY/extern/OTExtension/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /root/zero-knowledge/PQC-mPSI/build/CMakeFiles 0
+	cd /root/PQC-mPSI/build && $(CMAKE_COMMAND) -E cmake_progress_start /root/PQC-mPSI/build/CMakeFiles /root/PQC-mPSI/build/extern/ABY/extern/OTExtension/CMakeFiles/progress.marks
+	cd /root/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/ABY/extern/OTExtension/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/PQC-mPSI/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/ABY/extern/OTExtension/clean
+	cd /root/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/ABY/extern/OTExtension/clean
 .PHONY : clean
 
 # The main clean target
@@ -143,22 +143,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/ABY/extern/OTExtension/preinstall
+	cd /root/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/ABY/extern/OTExtension/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/ABY/extern/OTExtension/preinstall
+	cd /root/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/ABY/extern/OTExtension/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /root/PQC-mPSI/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/rule:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/rule
+	cd /root/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/rule
 .PHONY : extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/rule
 
 # Convenience name for target.
@@ -168,7 +168,7 @@ otextension: extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/rule
 
 # fast build rule for target.
 otextension/fast:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/build.make extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/build
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/build.make extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/build
 .PHONY : otextension/fast
 
 ot/alsz-ot-ext-rec.o: ot/alsz-ot-ext-rec.cpp.o
@@ -177,7 +177,7 @@ ot/alsz-ot-ext-rec.o: ot/alsz-ot-ext-rec.cpp.o
 
 # target to build an object file
 ot/alsz-ot-ext-rec.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/build.make extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/ot/alsz-ot-ext-rec.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/build.make extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/ot/alsz-ot-ext-rec.cpp.o
 .PHONY : ot/alsz-ot-ext-rec.cpp.o
 
 ot/alsz-ot-ext-rec.i: ot/alsz-ot-ext-rec.cpp.i
@@ -186,7 +186,7 @@ ot/alsz-ot-ext-rec.i: ot/alsz-ot-ext-rec.cpp.i
 
 # target to preprocess a source file
 ot/alsz-ot-ext-rec.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/build.make extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/ot/alsz-ot-ext-rec.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/build.make extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/ot/alsz-ot-ext-rec.cpp.i
 .PHONY : ot/alsz-ot-ext-rec.cpp.i
 
 ot/alsz-ot-ext-rec.s: ot/alsz-ot-ext-rec.cpp.s
@@ -195,7 +195,7 @@ ot/alsz-ot-ext-rec.s: ot/alsz-ot-ext-rec.cpp.s
 
 # target to generate assembly for a file
 ot/alsz-ot-ext-rec.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/build.make extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/ot/alsz-ot-ext-rec.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/build.make extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/ot/alsz-ot-ext-rec.cpp.s
 .PHONY : ot/alsz-ot-ext-rec.cpp.s
 
 ot/alsz-ot-ext-snd.o: ot/alsz-ot-ext-snd.cpp.o
@@ -204,7 +204,7 @@ ot/alsz-ot-ext-snd.o: ot/alsz-ot-ext-snd.cpp.o
 
 # target to build an object file
 ot/alsz-ot-ext-snd.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/build.make extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/ot/alsz-ot-ext-snd.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/build.make extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/ot/alsz-ot-ext-snd.cpp.o
 .PHONY : ot/alsz-ot-ext-snd.cpp.o
 
 ot/alsz-ot-ext-snd.i: ot/alsz-ot-ext-snd.cpp.i
@@ -213,7 +213,7 @@ ot/alsz-ot-ext-snd.i: ot/alsz-ot-ext-snd.cpp.i
 
 # target to preprocess a source file
 ot/alsz-ot-ext-snd.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/build.make extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/ot/alsz-ot-ext-snd.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/build.make extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/ot/alsz-ot-ext-snd.cpp.i
 .PHONY : ot/alsz-ot-ext-snd.cpp.i
 
 ot/alsz-ot-ext-snd.s: ot/alsz-ot-ext-snd.cpp.s
@@ -222,7 +222,7 @@ ot/alsz-ot-ext-snd.s: ot/alsz-ot-ext-snd.cpp.s
 
 # target to generate assembly for a file
 ot/alsz-ot-ext-snd.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/build.make extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/ot/alsz-ot-ext-snd.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/build.make extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/ot/alsz-ot-ext-snd.cpp.s
 .PHONY : ot/alsz-ot-ext-snd.cpp.s
 
 ot/iknp-ot-ext-rec.o: ot/iknp-ot-ext-rec.cpp.o
@@ -231,7 +231,7 @@ ot/iknp-ot-ext-rec.o: ot/iknp-ot-ext-rec.cpp.o
 
 # target to build an object file
 ot/iknp-ot-ext-rec.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/build.make extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/ot/iknp-ot-ext-rec.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/build.make extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/ot/iknp-ot-ext-rec.cpp.o
 .PHONY : ot/iknp-ot-ext-rec.cpp.o
 
 ot/iknp-ot-ext-rec.i: ot/iknp-ot-ext-rec.cpp.i
@@ -240,7 +240,7 @@ ot/iknp-ot-ext-rec.i: ot/iknp-ot-ext-rec.cpp.i
 
 # target to preprocess a source file
 ot/iknp-ot-ext-rec.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/build.make extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/ot/iknp-ot-ext-rec.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/build.make extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/ot/iknp-ot-ext-rec.cpp.i
 .PHONY : ot/iknp-ot-ext-rec.cpp.i
 
 ot/iknp-ot-ext-rec.s: ot/iknp-ot-ext-rec.cpp.s
@@ -249,7 +249,7 @@ ot/iknp-ot-ext-rec.s: ot/iknp-ot-ext-rec.cpp.s
 
 # target to generate assembly for a file
 ot/iknp-ot-ext-rec.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/build.make extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/ot/iknp-ot-ext-rec.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/build.make extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/ot/iknp-ot-ext-rec.cpp.s
 .PHONY : ot/iknp-ot-ext-rec.cpp.s
 
 ot/iknp-ot-ext-snd.o: ot/iknp-ot-ext-snd.cpp.o
@@ -258,7 +258,7 @@ ot/iknp-ot-ext-snd.o: ot/iknp-ot-ext-snd.cpp.o
 
 # target to build an object file
 ot/iknp-ot-ext-snd.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/build.make extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/ot/iknp-ot-ext-snd.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/build.make extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/ot/iknp-ot-ext-snd.cpp.o
 .PHONY : ot/iknp-ot-ext-snd.cpp.o
 
 ot/iknp-ot-ext-snd.i: ot/iknp-ot-ext-snd.cpp.i
@@ -267,7 +267,7 @@ ot/iknp-ot-ext-snd.i: ot/iknp-ot-ext-snd.cpp.i
 
 # target to preprocess a source file
 ot/iknp-ot-ext-snd.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/build.make extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/ot/iknp-ot-ext-snd.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/build.make extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/ot/iknp-ot-ext-snd.cpp.i
 .PHONY : ot/iknp-ot-ext-snd.cpp.i
 
 ot/iknp-ot-ext-snd.s: ot/iknp-ot-ext-snd.cpp.s
@@ -276,7 +276,7 @@ ot/iknp-ot-ext-snd.s: ot/iknp-ot-ext-snd.cpp.s
 
 # target to generate assembly for a file
 ot/iknp-ot-ext-snd.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/build.make extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/ot/iknp-ot-ext-snd.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/build.make extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/ot/iknp-ot-ext-snd.cpp.s
 .PHONY : ot/iknp-ot-ext-snd.cpp.s
 
 ot/kk-ot-ext-rec.o: ot/kk-ot-ext-rec.cpp.o
@@ -285,7 +285,7 @@ ot/kk-ot-ext-rec.o: ot/kk-ot-ext-rec.cpp.o
 
 # target to build an object file
 ot/kk-ot-ext-rec.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/build.make extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/ot/kk-ot-ext-rec.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/build.make extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/ot/kk-ot-ext-rec.cpp.o
 .PHONY : ot/kk-ot-ext-rec.cpp.o
 
 ot/kk-ot-ext-rec.i: ot/kk-ot-ext-rec.cpp.i
@@ -294,7 +294,7 @@ ot/kk-ot-ext-rec.i: ot/kk-ot-ext-rec.cpp.i
 
 # target to preprocess a source file
 ot/kk-ot-ext-rec.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/build.make extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/ot/kk-ot-ext-rec.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/build.make extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/ot/kk-ot-ext-rec.cpp.i
 .PHONY : ot/kk-ot-ext-rec.cpp.i
 
 ot/kk-ot-ext-rec.s: ot/kk-ot-ext-rec.cpp.s
@@ -303,7 +303,7 @@ ot/kk-ot-ext-rec.s: ot/kk-ot-ext-rec.cpp.s
 
 # target to generate assembly for a file
 ot/kk-ot-ext-rec.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/build.make extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/ot/kk-ot-ext-rec.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/build.make extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/ot/kk-ot-ext-rec.cpp.s
 .PHONY : ot/kk-ot-ext-rec.cpp.s
 
 ot/kk-ot-ext-snd.o: ot/kk-ot-ext-snd.cpp.o
@@ -312,7 +312,7 @@ ot/kk-ot-ext-snd.o: ot/kk-ot-ext-snd.cpp.o
 
 # target to build an object file
 ot/kk-ot-ext-snd.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/build.make extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/ot/kk-ot-ext-snd.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/build.make extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/ot/kk-ot-ext-snd.cpp.o
 .PHONY : ot/kk-ot-ext-snd.cpp.o
 
 ot/kk-ot-ext-snd.i: ot/kk-ot-ext-snd.cpp.i
@@ -321,7 +321,7 @@ ot/kk-ot-ext-snd.i: ot/kk-ot-ext-snd.cpp.i
 
 # target to preprocess a source file
 ot/kk-ot-ext-snd.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/build.make extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/ot/kk-ot-ext-snd.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/build.make extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/ot/kk-ot-ext-snd.cpp.i
 .PHONY : ot/kk-ot-ext-snd.cpp.i
 
 ot/kk-ot-ext-snd.s: ot/kk-ot-ext-snd.cpp.s
@@ -330,7 +330,7 @@ ot/kk-ot-ext-snd.s: ot/kk-ot-ext-snd.cpp.s
 
 # target to generate assembly for a file
 ot/kk-ot-ext-snd.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/build.make extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/ot/kk-ot-ext-snd.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/build.make extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/ot/kk-ot-ext-snd.cpp.s
 .PHONY : ot/kk-ot-ext-snd.cpp.s
 
 ot/naor-pinkas.o: ot/naor-pinkas.cpp.o
@@ -339,7 +339,7 @@ ot/naor-pinkas.o: ot/naor-pinkas.cpp.o
 
 # target to build an object file
 ot/naor-pinkas.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/build.make extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/ot/naor-pinkas.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/build.make extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/ot/naor-pinkas.cpp.o
 .PHONY : ot/naor-pinkas.cpp.o
 
 ot/naor-pinkas.i: ot/naor-pinkas.cpp.i
@@ -348,7 +348,7 @@ ot/naor-pinkas.i: ot/naor-pinkas.cpp.i
 
 # target to preprocess a source file
 ot/naor-pinkas.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/build.make extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/ot/naor-pinkas.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/build.make extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/ot/naor-pinkas.cpp.i
 .PHONY : ot/naor-pinkas.cpp.i
 
 ot/naor-pinkas.s: ot/naor-pinkas.cpp.s
@@ -357,7 +357,7 @@ ot/naor-pinkas.s: ot/naor-pinkas.cpp.s
 
 # target to generate assembly for a file
 ot/naor-pinkas.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/build.make extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/ot/naor-pinkas.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/build.make extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/ot/naor-pinkas.cpp.s
 .PHONY : ot/naor-pinkas.cpp.s
 
 ot/nnob-ot-ext-rec.o: ot/nnob-ot-ext-rec.cpp.o
@@ -366,7 +366,7 @@ ot/nnob-ot-ext-rec.o: ot/nnob-ot-ext-rec.cpp.o
 
 # target to build an object file
 ot/nnob-ot-ext-rec.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/build.make extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/ot/nnob-ot-ext-rec.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/build.make extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/ot/nnob-ot-ext-rec.cpp.o
 .PHONY : ot/nnob-ot-ext-rec.cpp.o
 
 ot/nnob-ot-ext-rec.i: ot/nnob-ot-ext-rec.cpp.i
@@ -375,7 +375,7 @@ ot/nnob-ot-ext-rec.i: ot/nnob-ot-ext-rec.cpp.i
 
 # target to preprocess a source file
 ot/nnob-ot-ext-rec.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/build.make extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/ot/nnob-ot-ext-rec.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/build.make extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/ot/nnob-ot-ext-rec.cpp.i
 .PHONY : ot/nnob-ot-ext-rec.cpp.i
 
 ot/nnob-ot-ext-rec.s: ot/nnob-ot-ext-rec.cpp.s
@@ -384,7 +384,7 @@ ot/nnob-ot-ext-rec.s: ot/nnob-ot-ext-rec.cpp.s
 
 # target to generate assembly for a file
 ot/nnob-ot-ext-rec.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/build.make extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/ot/nnob-ot-ext-rec.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/build.make extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/ot/nnob-ot-ext-rec.cpp.s
 .PHONY : ot/nnob-ot-ext-rec.cpp.s
 
 ot/nnob-ot-ext-snd.o: ot/nnob-ot-ext-snd.cpp.o
@@ -393,7 +393,7 @@ ot/nnob-ot-ext-snd.o: ot/nnob-ot-ext-snd.cpp.o
 
 # target to build an object file
 ot/nnob-ot-ext-snd.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/build.make extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/ot/nnob-ot-ext-snd.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/build.make extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/ot/nnob-ot-ext-snd.cpp.o
 .PHONY : ot/nnob-ot-ext-snd.cpp.o
 
 ot/nnob-ot-ext-snd.i: ot/nnob-ot-ext-snd.cpp.i
@@ -402,7 +402,7 @@ ot/nnob-ot-ext-snd.i: ot/nnob-ot-ext-snd.cpp.i
 
 # target to preprocess a source file
 ot/nnob-ot-ext-snd.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/build.make extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/ot/nnob-ot-ext-snd.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/build.make extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/ot/nnob-ot-ext-snd.cpp.i
 .PHONY : ot/nnob-ot-ext-snd.cpp.i
 
 ot/nnob-ot-ext-snd.s: ot/nnob-ot-ext-snd.cpp.s
@@ -411,7 +411,7 @@ ot/nnob-ot-ext-snd.s: ot/nnob-ot-ext-snd.cpp.s
 
 # target to generate assembly for a file
 ot/nnob-ot-ext-snd.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/build.make extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/ot/nnob-ot-ext-snd.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/build.make extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/ot/nnob-ot-ext-snd.cpp.s
 .PHONY : ot/nnob-ot-ext-snd.cpp.s
 
 ot/ot-ext-rec.o: ot/ot-ext-rec.cpp.o
@@ -420,7 +420,7 @@ ot/ot-ext-rec.o: ot/ot-ext-rec.cpp.o
 
 # target to build an object file
 ot/ot-ext-rec.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/build.make extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/ot/ot-ext-rec.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/build.make extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/ot/ot-ext-rec.cpp.o
 .PHONY : ot/ot-ext-rec.cpp.o
 
 ot/ot-ext-rec.i: ot/ot-ext-rec.cpp.i
@@ -429,7 +429,7 @@ ot/ot-ext-rec.i: ot/ot-ext-rec.cpp.i
 
 # target to preprocess a source file
 ot/ot-ext-rec.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/build.make extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/ot/ot-ext-rec.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/build.make extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/ot/ot-ext-rec.cpp.i
 .PHONY : ot/ot-ext-rec.cpp.i
 
 ot/ot-ext-rec.s: ot/ot-ext-rec.cpp.s
@@ -438,7 +438,7 @@ ot/ot-ext-rec.s: ot/ot-ext-rec.cpp.s
 
 # target to generate assembly for a file
 ot/ot-ext-rec.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/build.make extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/ot/ot-ext-rec.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/build.make extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/ot/ot-ext-rec.cpp.s
 .PHONY : ot/ot-ext-rec.cpp.s
 
 ot/ot-ext-snd.o: ot/ot-ext-snd.cpp.o
@@ -447,7 +447,7 @@ ot/ot-ext-snd.o: ot/ot-ext-snd.cpp.o
 
 # target to build an object file
 ot/ot-ext-snd.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/build.make extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/ot/ot-ext-snd.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/build.make extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/ot/ot-ext-snd.cpp.o
 .PHONY : ot/ot-ext-snd.cpp.o
 
 ot/ot-ext-snd.i: ot/ot-ext-snd.cpp.i
@@ -456,7 +456,7 @@ ot/ot-ext-snd.i: ot/ot-ext-snd.cpp.i
 
 # target to preprocess a source file
 ot/ot-ext-snd.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/build.make extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/ot/ot-ext-snd.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/build.make extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/ot/ot-ext-snd.cpp.i
 .PHONY : ot/ot-ext-snd.cpp.i
 
 ot/ot-ext-snd.s: ot/ot-ext-snd.cpp.s
@@ -465,7 +465,7 @@ ot/ot-ext-snd.s: ot/ot-ext-snd.cpp.s
 
 # target to generate assembly for a file
 ot/ot-ext-snd.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/build.make extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/ot/ot-ext-snd.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/build.make extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/ot/ot-ext-snd.cpp.s
 .PHONY : ot/ot-ext-snd.cpp.s
 
 ot/ot-ext.o: ot/ot-ext.cpp.o
@@ -474,7 +474,7 @@ ot/ot-ext.o: ot/ot-ext.cpp.o
 
 # target to build an object file
 ot/ot-ext.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/build.make extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/ot/ot-ext.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/build.make extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/ot/ot-ext.cpp.o
 .PHONY : ot/ot-ext.cpp.o
 
 ot/ot-ext.i: ot/ot-ext.cpp.i
@@ -483,7 +483,7 @@ ot/ot-ext.i: ot/ot-ext.cpp.i
 
 # target to preprocess a source file
 ot/ot-ext.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/build.make extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/ot/ot-ext.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/build.make extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/ot/ot-ext.cpp.i
 .PHONY : ot/ot-ext.cpp.i
 
 ot/ot-ext.s: ot/ot-ext.cpp.s
@@ -492,7 +492,7 @@ ot/ot-ext.s: ot/ot-ext.cpp.s
 
 # target to generate assembly for a file
 ot/ot-ext.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/build.make extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/ot/ot-ext.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/build.make extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/ot/ot-ext.cpp.s
 .PHONY : ot/ot-ext.cpp.s
 
 ot/pvwddh.o: ot/pvwddh.cpp.o
@@ -501,7 +501,7 @@ ot/pvwddh.o: ot/pvwddh.cpp.o
 
 # target to build an object file
 ot/pvwddh.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/build.make extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/ot/pvwddh.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/build.make extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/ot/pvwddh.cpp.o
 .PHONY : ot/pvwddh.cpp.o
 
 ot/pvwddh.i: ot/pvwddh.cpp.i
@@ -510,7 +510,7 @@ ot/pvwddh.i: ot/pvwddh.cpp.i
 
 # target to preprocess a source file
 ot/pvwddh.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/build.make extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/ot/pvwddh.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/build.make extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/ot/pvwddh.cpp.i
 .PHONY : ot/pvwddh.cpp.i
 
 ot/pvwddh.s: ot/pvwddh.cpp.s
@@ -519,7 +519,7 @@ ot/pvwddh.s: ot/pvwddh.cpp.s
 
 # target to generate assembly for a file
 ot/pvwddh.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/build.make extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/ot/pvwddh.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/build.make extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/ot/pvwddh.cpp.s
 .PHONY : ot/pvwddh.cpp.s
 
 ot/simpleot.o: ot/simpleot.cpp.o
@@ -528,7 +528,7 @@ ot/simpleot.o: ot/simpleot.cpp.o
 
 # target to build an object file
 ot/simpleot.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/build.make extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/ot/simpleot.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/build.make extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/ot/simpleot.cpp.o
 .PHONY : ot/simpleot.cpp.o
 
 ot/simpleot.i: ot/simpleot.cpp.i
@@ -537,7 +537,7 @@ ot/simpleot.i: ot/simpleot.cpp.i
 
 # target to preprocess a source file
 ot/simpleot.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/build.make extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/ot/simpleot.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/build.make extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/ot/simpleot.cpp.i
 .PHONY : ot/simpleot.cpp.i
 
 ot/simpleot.s: ot/simpleot.cpp.s
@@ -546,7 +546,7 @@ ot/simpleot.s: ot/simpleot.cpp.s
 
 # target to generate assembly for a file
 ot/simpleot.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/build.make extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/ot/simpleot.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/build.make extern/ABY/extern/OTExtension/CMakeFiles/otextension.dir/ot/simpleot.cpp.s
 .PHONY : ot/simpleot.cpp.s
 
 # Help Target
@@ -615,6 +615,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /root/PQC-mPSI/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

@@ -1,4 +1,4 @@
-# Install script for directory: /root/zero-knowledge/PQC-mPSI/extern/ABY/extern/ENCRYPTO_utils/extern/relic
+# Install script for directory: /root/PQC-mPSI/extern/ABY/extern/ENCRYPTO_utils/extern/relic
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -39,57 +39,57 @@ endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/relic" TYPE FILE FILES
-    "/root/zero-knowledge/PQC-mPSI/extern/ABY/extern/ENCRYPTO_utils/extern/relic/include/relic.h"
-    "/root/zero-knowledge/PQC-mPSI/extern/ABY/extern/ENCRYPTO_utils/extern/relic/include/relic_alloc.h"
-    "/root/zero-knowledge/PQC-mPSI/extern/ABY/extern/ENCRYPTO_utils/extern/relic/include/relic_arch.h"
-    "/root/zero-knowledge/PQC-mPSI/extern/ABY/extern/ENCRYPTO_utils/extern/relic/include/relic_bc.h"
-    "/root/zero-knowledge/PQC-mPSI/extern/ABY/extern/ENCRYPTO_utils/extern/relic/include/relic_bench.h"
-    "/root/zero-knowledge/PQC-mPSI/extern/ABY/extern/ENCRYPTO_utils/extern/relic/include/relic_bn.h"
-    "/root/zero-knowledge/PQC-mPSI/extern/ABY/extern/ENCRYPTO_utils/extern/relic/include/relic_core.h"
-    "/root/zero-knowledge/PQC-mPSI/extern/ABY/extern/ENCRYPTO_utils/extern/relic/include/relic_cp.h"
-    "/root/zero-knowledge/PQC-mPSI/extern/ABY/extern/ENCRYPTO_utils/extern/relic/include/relic_dv.h"
-    "/root/zero-knowledge/PQC-mPSI/extern/ABY/extern/ENCRYPTO_utils/extern/relic/include/relic_eb.h"
-    "/root/zero-knowledge/PQC-mPSI/extern/ABY/extern/ENCRYPTO_utils/extern/relic/include/relic_ec.h"
-    "/root/zero-knowledge/PQC-mPSI/extern/ABY/extern/ENCRYPTO_utils/extern/relic/include/relic_ed.h"
-    "/root/zero-knowledge/PQC-mPSI/extern/ABY/extern/ENCRYPTO_utils/extern/relic/include/relic_ep.h"
-    "/root/zero-knowledge/PQC-mPSI/extern/ABY/extern/ENCRYPTO_utils/extern/relic/include/relic_epx.h"
-    "/root/zero-knowledge/PQC-mPSI/extern/ABY/extern/ENCRYPTO_utils/extern/relic/include/relic_err.h"
-    "/root/zero-knowledge/PQC-mPSI/extern/ABY/extern/ENCRYPTO_utils/extern/relic/include/relic_fb.h"
-    "/root/zero-knowledge/PQC-mPSI/extern/ABY/extern/ENCRYPTO_utils/extern/relic/include/relic_fbx.h"
-    "/root/zero-knowledge/PQC-mPSI/extern/ABY/extern/ENCRYPTO_utils/extern/relic/include/relic_fp.h"
-    "/root/zero-knowledge/PQC-mPSI/extern/ABY/extern/ENCRYPTO_utils/extern/relic/include/relic_fpx.h"
-    "/root/zero-knowledge/PQC-mPSI/extern/ABY/extern/ENCRYPTO_utils/extern/relic/include/relic_label.h"
-    "/root/zero-knowledge/PQC-mPSI/extern/ABY/extern/ENCRYPTO_utils/extern/relic/include/relic_md.h"
-    "/root/zero-knowledge/PQC-mPSI/extern/ABY/extern/ENCRYPTO_utils/extern/relic/include/relic_pc.h"
-    "/root/zero-knowledge/PQC-mPSI/extern/ABY/extern/ENCRYPTO_utils/extern/relic/include/relic_pp.h"
-    "/root/zero-knowledge/PQC-mPSI/extern/ABY/extern/ENCRYPTO_utils/extern/relic/include/relic_rand.h"
-    "/root/zero-knowledge/PQC-mPSI/extern/ABY/extern/ENCRYPTO_utils/extern/relic/include/relic_test.h"
-    "/root/zero-knowledge/PQC-mPSI/extern/ABY/extern/ENCRYPTO_utils/extern/relic/include/relic_types.h"
-    "/root/zero-knowledge/PQC-mPSI/extern/ABY/extern/ENCRYPTO_utils/extern/relic/include/relic_util.h"
+    "/root/PQC-mPSI/extern/ABY/extern/ENCRYPTO_utils/extern/relic/include/relic.h"
+    "/root/PQC-mPSI/extern/ABY/extern/ENCRYPTO_utils/extern/relic/include/relic_alloc.h"
+    "/root/PQC-mPSI/extern/ABY/extern/ENCRYPTO_utils/extern/relic/include/relic_arch.h"
+    "/root/PQC-mPSI/extern/ABY/extern/ENCRYPTO_utils/extern/relic/include/relic_bc.h"
+    "/root/PQC-mPSI/extern/ABY/extern/ENCRYPTO_utils/extern/relic/include/relic_bench.h"
+    "/root/PQC-mPSI/extern/ABY/extern/ENCRYPTO_utils/extern/relic/include/relic_bn.h"
+    "/root/PQC-mPSI/extern/ABY/extern/ENCRYPTO_utils/extern/relic/include/relic_core.h"
+    "/root/PQC-mPSI/extern/ABY/extern/ENCRYPTO_utils/extern/relic/include/relic_cp.h"
+    "/root/PQC-mPSI/extern/ABY/extern/ENCRYPTO_utils/extern/relic/include/relic_dv.h"
+    "/root/PQC-mPSI/extern/ABY/extern/ENCRYPTO_utils/extern/relic/include/relic_eb.h"
+    "/root/PQC-mPSI/extern/ABY/extern/ENCRYPTO_utils/extern/relic/include/relic_ec.h"
+    "/root/PQC-mPSI/extern/ABY/extern/ENCRYPTO_utils/extern/relic/include/relic_ed.h"
+    "/root/PQC-mPSI/extern/ABY/extern/ENCRYPTO_utils/extern/relic/include/relic_ep.h"
+    "/root/PQC-mPSI/extern/ABY/extern/ENCRYPTO_utils/extern/relic/include/relic_epx.h"
+    "/root/PQC-mPSI/extern/ABY/extern/ENCRYPTO_utils/extern/relic/include/relic_err.h"
+    "/root/PQC-mPSI/extern/ABY/extern/ENCRYPTO_utils/extern/relic/include/relic_fb.h"
+    "/root/PQC-mPSI/extern/ABY/extern/ENCRYPTO_utils/extern/relic/include/relic_fbx.h"
+    "/root/PQC-mPSI/extern/ABY/extern/ENCRYPTO_utils/extern/relic/include/relic_fp.h"
+    "/root/PQC-mPSI/extern/ABY/extern/ENCRYPTO_utils/extern/relic/include/relic_fpx.h"
+    "/root/PQC-mPSI/extern/ABY/extern/ENCRYPTO_utils/extern/relic/include/relic_label.h"
+    "/root/PQC-mPSI/extern/ABY/extern/ENCRYPTO_utils/extern/relic/include/relic_md.h"
+    "/root/PQC-mPSI/extern/ABY/extern/ENCRYPTO_utils/extern/relic/include/relic_pc.h"
+    "/root/PQC-mPSI/extern/ABY/extern/ENCRYPTO_utils/extern/relic/include/relic_pp.h"
+    "/root/PQC-mPSI/extern/ABY/extern/ENCRYPTO_utils/extern/relic/include/relic_rand.h"
+    "/root/PQC-mPSI/extern/ABY/extern/ENCRYPTO_utils/extern/relic/include/relic_test.h"
+    "/root/PQC-mPSI/extern/ABY/extern/ENCRYPTO_utils/extern/relic/include/relic_types.h"
+    "/root/PQC-mPSI/extern/ABY/extern/ENCRYPTO_utils/extern/relic/include/relic_util.h"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/relic/low" TYPE FILE FILES
-    "/root/zero-knowledge/PQC-mPSI/extern/ABY/extern/ENCRYPTO_utils/extern/relic/include/low/relic_bn_low.h"
-    "/root/zero-knowledge/PQC-mPSI/extern/ABY/extern/ENCRYPTO_utils/extern/relic/include/low/relic_dv_low.h"
-    "/root/zero-knowledge/PQC-mPSI/extern/ABY/extern/ENCRYPTO_utils/extern/relic/include/low/relic_fb_low.h"
-    "/root/zero-knowledge/PQC-mPSI/extern/ABY/extern/ENCRYPTO_utils/extern/relic/include/low/relic_fp_low.h"
-    "/root/zero-knowledge/PQC-mPSI/extern/ABY/extern/ENCRYPTO_utils/extern/relic/include/low/relic_fpx_low.h"
+    "/root/PQC-mPSI/extern/ABY/extern/ENCRYPTO_utils/extern/relic/include/low/relic_bn_low.h"
+    "/root/PQC-mPSI/extern/ABY/extern/ENCRYPTO_utils/extern/relic/include/low/relic_dv_low.h"
+    "/root/PQC-mPSI/extern/ABY/extern/ENCRYPTO_utils/extern/relic/include/low/relic_fb_low.h"
+    "/root/PQC-mPSI/extern/ABY/extern/ENCRYPTO_utils/extern/relic/include/low/relic_fp_low.h"
+    "/root/PQC-mPSI/extern/ABY/extern/ENCRYPTO_utils/extern/relic/include/low/relic_fpx_low.h"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/relic" TYPE DIRECTORY FILES "/root/zero-knowledge/PQC-mPSI/build/extern/ABY/extern/ENCRYPTO_utils/extern/relic/include/")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/relic" TYPE DIRECTORY FILES "/root/PQC-mPSI/build/extern/ABY/extern/ENCRYPTO_utils/extern/relic/include/")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/cmake" TYPE FILE FILES "/root/zero-knowledge/PQC-mPSI/extern/ABY/extern/ENCRYPTO_utils/extern/relic/cmake/relic-config.cmake")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/cmake" TYPE FILE FILES "/root/PQC-mPSI/extern/ABY/extern/ENCRYPTO_utils/extern/relic/cmake/relic-config.cmake")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/root/zero-knowledge/PQC-mPSI/build/extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/cmake_install.cmake")
+  include("/root/PQC-mPSI/build/extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/cmake_install.cmake")
 
 endif()
 

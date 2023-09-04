@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /root/zero-knowledge/PQC-mPSI
+CMAKE_SOURCE_DIR = /root/PQC-mPSI
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /root/zero-knowledge/PQC-mPSI/build
+CMAKE_BINARY_DIR = /root/PQC-mPSI/build
 
 # Include any dependencies generated for this target.
 include extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/depend.make
@@ -59,81 +59,81 @@ include extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/flags.make
 
 extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/ProtocolParty.cpp.o: extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/flags.make
 extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/ProtocolParty.cpp.o: ../extern/MPCHonestMajority/ProtocolParty.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/zero-knowledge/PQC-mPSI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/ProtocolParty.cpp.o"
-	cd /root/zero-knowledge/PQC-mPSI/build/extern/MPCHonestMajority && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/MPCHonestMajority.dir/ProtocolParty.cpp.o -c /root/zero-knowledge/PQC-mPSI/extern/MPCHonestMajority/ProtocolParty.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/PQC-mPSI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/ProtocolParty.cpp.o"
+	cd /root/PQC-mPSI/build/extern/MPCHonestMajority && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/MPCHonestMajority.dir/ProtocolParty.cpp.o -c /root/PQC-mPSI/extern/MPCHonestMajority/ProtocolParty.cpp
 
 extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/ProtocolParty.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/MPCHonestMajority.dir/ProtocolParty.cpp.i"
-	cd /root/zero-knowledge/PQC-mPSI/build/extern/MPCHonestMajority && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /root/zero-knowledge/PQC-mPSI/extern/MPCHonestMajority/ProtocolParty.cpp > CMakeFiles/MPCHonestMajority.dir/ProtocolParty.cpp.i
+	cd /root/PQC-mPSI/build/extern/MPCHonestMajority && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /root/PQC-mPSI/extern/MPCHonestMajority/ProtocolParty.cpp > CMakeFiles/MPCHonestMajority.dir/ProtocolParty.cpp.i
 
 extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/ProtocolParty.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/MPCHonestMajority.dir/ProtocolParty.cpp.s"
-	cd /root/zero-knowledge/PQC-mPSI/build/extern/MPCHonestMajority && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /root/zero-knowledge/PQC-mPSI/extern/MPCHonestMajority/ProtocolParty.cpp -o CMakeFiles/MPCHonestMajority.dir/ProtocolParty.cpp.s
+	cd /root/PQC-mPSI/build/extern/MPCHonestMajority && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /root/PQC-mPSI/extern/MPCHonestMajority/ProtocolParty.cpp -o CMakeFiles/MPCHonestMajority.dir/ProtocolParty.cpp.s
 
 extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/ProtocolParty2.cpp.o: extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/flags.make
 extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/ProtocolParty2.cpp.o: ../extern/MPCHonestMajority/ProtocolParty2.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/zero-knowledge/PQC-mPSI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/ProtocolParty2.cpp.o"
-	cd /root/zero-knowledge/PQC-mPSI/build/extern/MPCHonestMajority && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/MPCHonestMajority.dir/ProtocolParty2.cpp.o -c /root/zero-knowledge/PQC-mPSI/extern/MPCHonestMajority/ProtocolParty2.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/PQC-mPSI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/ProtocolParty2.cpp.o"
+	cd /root/PQC-mPSI/build/extern/MPCHonestMajority && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/MPCHonestMajority.dir/ProtocolParty2.cpp.o -c /root/PQC-mPSI/extern/MPCHonestMajority/ProtocolParty2.cpp
 
 extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/ProtocolParty2.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/MPCHonestMajority.dir/ProtocolParty2.cpp.i"
-	cd /root/zero-knowledge/PQC-mPSI/build/extern/MPCHonestMajority && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /root/zero-knowledge/PQC-mPSI/extern/MPCHonestMajority/ProtocolParty2.cpp > CMakeFiles/MPCHonestMajority.dir/ProtocolParty2.cpp.i
+	cd /root/PQC-mPSI/build/extern/MPCHonestMajority && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /root/PQC-mPSI/extern/MPCHonestMajority/ProtocolParty2.cpp > CMakeFiles/MPCHonestMajority.dir/ProtocolParty2.cpp.i
 
 extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/ProtocolParty2.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/MPCHonestMajority.dir/ProtocolParty2.cpp.s"
-	cd /root/zero-knowledge/PQC-mPSI/build/extern/MPCHonestMajority && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /root/zero-knowledge/PQC-mPSI/extern/MPCHonestMajority/ProtocolParty2.cpp -o CMakeFiles/MPCHonestMajority.dir/ProtocolParty2.cpp.s
+	cd /root/PQC-mPSI/build/extern/MPCHonestMajority && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /root/PQC-mPSI/extern/MPCHonestMajority/ProtocolParty2.cpp -o CMakeFiles/MPCHonestMajority.dir/ProtocolParty2.cpp.s
 
 extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/TemplateField.cpp.o: extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/flags.make
 extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/TemplateField.cpp.o: ../extern/MPCHonestMajority/TemplateField.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/zero-knowledge/PQC-mPSI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/TemplateField.cpp.o"
-	cd /root/zero-knowledge/PQC-mPSI/build/extern/MPCHonestMajority && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/MPCHonestMajority.dir/TemplateField.cpp.o -c /root/zero-knowledge/PQC-mPSI/extern/MPCHonestMajority/TemplateField.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/PQC-mPSI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/TemplateField.cpp.o"
+	cd /root/PQC-mPSI/build/extern/MPCHonestMajority && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/MPCHonestMajority.dir/TemplateField.cpp.o -c /root/PQC-mPSI/extern/MPCHonestMajority/TemplateField.cpp
 
 extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/TemplateField.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/MPCHonestMajority.dir/TemplateField.cpp.i"
-	cd /root/zero-knowledge/PQC-mPSI/build/extern/MPCHonestMajority && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /root/zero-knowledge/PQC-mPSI/extern/MPCHonestMajority/TemplateField.cpp > CMakeFiles/MPCHonestMajority.dir/TemplateField.cpp.i
+	cd /root/PQC-mPSI/build/extern/MPCHonestMajority && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /root/PQC-mPSI/extern/MPCHonestMajority/TemplateField.cpp > CMakeFiles/MPCHonestMajority.dir/TemplateField.cpp.i
 
 extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/TemplateField.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/MPCHonestMajority.dir/TemplateField.cpp.s"
-	cd /root/zero-knowledge/PQC-mPSI/build/extern/MPCHonestMajority && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /root/zero-knowledge/PQC-mPSI/extern/MPCHonestMajority/TemplateField.cpp -o CMakeFiles/MPCHonestMajority.dir/TemplateField.cpp.s
+	cd /root/PQC-mPSI/build/extern/MPCHonestMajority && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /root/PQC-mPSI/extern/MPCHonestMajority/TemplateField.cpp -o CMakeFiles/MPCHonestMajority.dir/TemplateField.cpp.s
 
 extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/ZpKaratsubaElement.cpp.o: extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/flags.make
 extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/ZpKaratsubaElement.cpp.o: ../extern/MPCHonestMajority/ZpKaratsubaElement.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/zero-knowledge/PQC-mPSI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/ZpKaratsubaElement.cpp.o"
-	cd /root/zero-knowledge/PQC-mPSI/build/extern/MPCHonestMajority && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/MPCHonestMajority.dir/ZpKaratsubaElement.cpp.o -c /root/zero-knowledge/PQC-mPSI/extern/MPCHonestMajority/ZpKaratsubaElement.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/PQC-mPSI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/ZpKaratsubaElement.cpp.o"
+	cd /root/PQC-mPSI/build/extern/MPCHonestMajority && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/MPCHonestMajority.dir/ZpKaratsubaElement.cpp.o -c /root/PQC-mPSI/extern/MPCHonestMajority/ZpKaratsubaElement.cpp
 
 extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/ZpKaratsubaElement.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/MPCHonestMajority.dir/ZpKaratsubaElement.cpp.i"
-	cd /root/zero-knowledge/PQC-mPSI/build/extern/MPCHonestMajority && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /root/zero-knowledge/PQC-mPSI/extern/MPCHonestMajority/ZpKaratsubaElement.cpp > CMakeFiles/MPCHonestMajority.dir/ZpKaratsubaElement.cpp.i
+	cd /root/PQC-mPSI/build/extern/MPCHonestMajority && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /root/PQC-mPSI/extern/MPCHonestMajority/ZpKaratsubaElement.cpp > CMakeFiles/MPCHonestMajority.dir/ZpKaratsubaElement.cpp.i
 
 extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/ZpKaratsubaElement.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/MPCHonestMajority.dir/ZpKaratsubaElement.cpp.s"
-	cd /root/zero-knowledge/PQC-mPSI/build/extern/MPCHonestMajority && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /root/zero-knowledge/PQC-mPSI/extern/MPCHonestMajority/ZpKaratsubaElement.cpp -o CMakeFiles/MPCHonestMajority.dir/ZpKaratsubaElement.cpp.s
+	cd /root/PQC-mPSI/build/extern/MPCHonestMajority && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /root/PQC-mPSI/extern/MPCHonestMajority/ZpKaratsubaElement.cpp -o CMakeFiles/MPCHonestMajority.dir/ZpKaratsubaElement.cpp.s
 
 extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/ZpMersenneByteElement.cpp.o: extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/flags.make
 extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/ZpMersenneByteElement.cpp.o: ../extern/MPCHonestMajority/ZpMersenneByteElement.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/zero-knowledge/PQC-mPSI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/ZpMersenneByteElement.cpp.o"
-	cd /root/zero-knowledge/PQC-mPSI/build/extern/MPCHonestMajority && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/MPCHonestMajority.dir/ZpMersenneByteElement.cpp.o -c /root/zero-knowledge/PQC-mPSI/extern/MPCHonestMajority/ZpMersenneByteElement.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/PQC-mPSI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/ZpMersenneByteElement.cpp.o"
+	cd /root/PQC-mPSI/build/extern/MPCHonestMajority && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/MPCHonestMajority.dir/ZpMersenneByteElement.cpp.o -c /root/PQC-mPSI/extern/MPCHonestMajority/ZpMersenneByteElement.cpp
 
 extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/ZpMersenneByteElement.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/MPCHonestMajority.dir/ZpMersenneByteElement.cpp.i"
-	cd /root/zero-knowledge/PQC-mPSI/build/extern/MPCHonestMajority && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /root/zero-knowledge/PQC-mPSI/extern/MPCHonestMajority/ZpMersenneByteElement.cpp > CMakeFiles/MPCHonestMajority.dir/ZpMersenneByteElement.cpp.i
+	cd /root/PQC-mPSI/build/extern/MPCHonestMajority && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /root/PQC-mPSI/extern/MPCHonestMajority/ZpMersenneByteElement.cpp > CMakeFiles/MPCHonestMajority.dir/ZpMersenneByteElement.cpp.i
 
 extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/ZpMersenneByteElement.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/MPCHonestMajority.dir/ZpMersenneByteElement.cpp.s"
-	cd /root/zero-knowledge/PQC-mPSI/build/extern/MPCHonestMajority && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /root/zero-knowledge/PQC-mPSI/extern/MPCHonestMajority/ZpMersenneByteElement.cpp -o CMakeFiles/MPCHonestMajority.dir/ZpMersenneByteElement.cpp.s
+	cd /root/PQC-mPSI/build/extern/MPCHonestMajority && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /root/PQC-mPSI/extern/MPCHonestMajority/ZpMersenneByteElement.cpp -o CMakeFiles/MPCHonestMajority.dir/ZpMersenneByteElement.cpp.s
 
 extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/main.cpp.o: extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/flags.make
 extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/main.cpp.o: ../extern/MPCHonestMajority/main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/zero-knowledge/PQC-mPSI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/main.cpp.o"
-	cd /root/zero-knowledge/PQC-mPSI/build/extern/MPCHonestMajority && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/MPCHonestMajority.dir/main.cpp.o -c /root/zero-knowledge/PQC-mPSI/extern/MPCHonestMajority/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/root/PQC-mPSI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/main.cpp.o"
+	cd /root/PQC-mPSI/build/extern/MPCHonestMajority && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/MPCHonestMajority.dir/main.cpp.o -c /root/PQC-mPSI/extern/MPCHonestMajority/main.cpp
 
 extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/MPCHonestMajority.dir/main.cpp.i"
-	cd /root/zero-knowledge/PQC-mPSI/build/extern/MPCHonestMajority && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /root/zero-knowledge/PQC-mPSI/extern/MPCHonestMajority/main.cpp > CMakeFiles/MPCHonestMajority.dir/main.cpp.i
+	cd /root/PQC-mPSI/build/extern/MPCHonestMajority && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /root/PQC-mPSI/extern/MPCHonestMajority/main.cpp > CMakeFiles/MPCHonestMajority.dir/main.cpp.i
 
 extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/MPCHonestMajority.dir/main.cpp.s"
-	cd /root/zero-knowledge/PQC-mPSI/build/extern/MPCHonestMajority && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /root/zero-knowledge/PQC-mPSI/extern/MPCHonestMajority/main.cpp -o CMakeFiles/MPCHonestMajority.dir/main.cpp.s
+	cd /root/PQC-mPSI/build/extern/MPCHonestMajority && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /root/PQC-mPSI/extern/MPCHonestMajority/main.cpp -o CMakeFiles/MPCHonestMajority.dir/main.cpp.s
 
 # Object files for target MPCHonestMajority
 MPCHonestMajority_OBJECTS = \
@@ -155,9 +155,9 @@ extern/MPCHonestMajority/libMPCHonestMajority.a: extern/MPCHonestMajority/CMakeF
 extern/MPCHonestMajority/libMPCHonestMajority.a: extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/main.cpp.o
 extern/MPCHonestMajority/libMPCHonestMajority.a: extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/build.make
 extern/MPCHonestMajority/libMPCHonestMajority.a: extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/root/zero-knowledge/PQC-mPSI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX static library libMPCHonestMajority.a"
-	cd /root/zero-knowledge/PQC-mPSI/build/extern/MPCHonestMajority && $(CMAKE_COMMAND) -P CMakeFiles/MPCHonestMajority.dir/cmake_clean_target.cmake
-	cd /root/zero-knowledge/PQC-mPSI/build/extern/MPCHonestMajority && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/MPCHonestMajority.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/root/PQC-mPSI/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX static library libMPCHonestMajority.a"
+	cd /root/PQC-mPSI/build/extern/MPCHonestMajority && $(CMAKE_COMMAND) -P CMakeFiles/MPCHonestMajority.dir/cmake_clean_target.cmake
+	cd /root/PQC-mPSI/build/extern/MPCHonestMajority && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/MPCHonestMajority.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/build: extern/MPCHonestMajority/libMPCHonestMajority.a
@@ -165,10 +165,10 @@ extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/build: extern/MPCHones
 .PHONY : extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/build
 
 extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/clean:
-	cd /root/zero-knowledge/PQC-mPSI/build/extern/MPCHonestMajority && $(CMAKE_COMMAND) -P CMakeFiles/MPCHonestMajority.dir/cmake_clean.cmake
+	cd /root/PQC-mPSI/build/extern/MPCHonestMajority && $(CMAKE_COMMAND) -P CMakeFiles/MPCHonestMajority.dir/cmake_clean.cmake
 .PHONY : extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/clean
 
 extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/depend:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /root/zero-knowledge/PQC-mPSI /root/zero-knowledge/PQC-mPSI/extern/MPCHonestMajority /root/zero-knowledge/PQC-mPSI/build /root/zero-knowledge/PQC-mPSI/build/extern/MPCHonestMajority /root/zero-knowledge/PQC-mPSI/build/extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/DependInfo.cmake --color=$(COLOR)
+	cd /root/PQC-mPSI/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /root/PQC-mPSI /root/PQC-mPSI/extern/MPCHonestMajority /root/PQC-mPSI/build /root/PQC-mPSI/build/extern/MPCHonestMajority /root/PQC-mPSI/build/extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/depend
 

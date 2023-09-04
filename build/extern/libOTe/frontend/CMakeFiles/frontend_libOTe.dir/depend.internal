@@ -63,8 +63,8 @@ extern/libOTe/frontend/CMakeFiles/frontend_libOTe.dir/main.cpp.o
  ../extern/libOTe/libOTe/config.h
  ../extern/libOTe/libOTe/version.h
  ../extern/libOTe/libOTe_Tests/UnitTests.h
- /root/zero-knowledge/PQC-mPSI/extern/libOTe/frontend/main.cpp
- /root/zero-knowledge/PQC-mPSI/extern/libOTe/frontend/util.h
+ /root/PQC-mPSI/extern/libOTe/frontend/main.cpp
+ /root/PQC-mPSI/extern/libOTe/frontend/util.h
 extern/libOTe/frontend/CMakeFiles/frontend_libOTe.dir/util.cpp.o
  ../extern/libOTe/cryptoTools/cryptoTools/Common/CLP.h
  ../extern/libOTe/cryptoTools/cryptoTools/Common/Defines.h
@@ -83,5 +83,5 @@ extern/libOTe/frontend/CMakeFiles/frontend_libOTe.dir/util.cpp.o
  ../extern/libOTe/cryptoTools/cryptoTools/gsl/gsl_byte
  ../extern/libOTe/cryptoTools/cryptoTools/gsl/gsl_util
  ../extern/libOTe/cryptoTools/cryptoTools/gsl/span
- /root/zero-knowledge/PQC-mPSI/extern/libOTe/frontend/util.cpp
- /root/zero-knowledge/PQC-mPSI/extern/libOTe/frontend/util.h
+ /root/PQC-mPSI/extern/libOTe/frontend/util.cpp
+ /root/PQC-mPSI/extern/libOTe/frontend/util.h

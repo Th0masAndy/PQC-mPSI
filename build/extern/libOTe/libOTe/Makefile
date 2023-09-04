@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /root/zero-knowledge/PQC-mPSI
+CMAKE_SOURCE_DIR = /root/PQC-mPSI
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /root/zero-knowledge/PQC-mPSI/build
+CMAKE_BINARY_DIR = /root/PQC-mPSI/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -126,14 +126,14 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /root/zero-knowledge/PQC-mPSI/build && $(CMAKE_COMMAND) -E cmake_progress_start /root/zero-knowledge/PQC-mPSI/build/CMakeFiles /root/zero-knowledge/PQC-mPSI/build/extern/libOTe/libOTe/CMakeFiles/progress.marks
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/libOTe/libOTe/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /root/zero-knowledge/PQC-mPSI/build/CMakeFiles 0
+	cd /root/PQC-mPSI/build && $(CMAKE_COMMAND) -E cmake_progress_start /root/PQC-mPSI/build/CMakeFiles /root/PQC-mPSI/build/extern/libOTe/libOTe/CMakeFiles/progress.marks
+	cd /root/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/libOTe/libOTe/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/PQC-mPSI/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/libOTe/libOTe/clean
+	cd /root/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/libOTe/libOTe/clean
 .PHONY : clean
 
 # The main clean target
@@ -143,22 +143,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/libOTe/libOTe/preinstall
+	cd /root/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/libOTe/libOTe/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/libOTe/libOTe/preinstall
+	cd /root/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/libOTe/libOTe/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /root/PQC-mPSI/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 extern/libOTe/libOTe/CMakeFiles/libOTe.dir/rule:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/libOTe/libOTe/CMakeFiles/libOTe.dir/rule
+	cd /root/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/libOTe/libOTe/CMakeFiles/libOTe.dir/rule
 .PHONY : extern/libOTe/libOTe/CMakeFiles/libOTe.dir/rule
 
 # Convenience name for target.
@@ -168,7 +168,7 @@ libOTe: extern/libOTe/libOTe/CMakeFiles/libOTe.dir/rule
 
 # fast build rule for target.
 libOTe/fast:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build
 .PHONY : libOTe/fast
 
 Base/MasnyRindal.o: Base/MasnyRindal.cpp.o
@@ -177,7 +177,7 @@ Base/MasnyRindal.o: Base/MasnyRindal.cpp.o
 
 # target to build an object file
 Base/MasnyRindal.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/Base/MasnyRindal.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/Base/MasnyRindal.cpp.o
 .PHONY : Base/MasnyRindal.cpp.o
 
 Base/MasnyRindal.i: Base/MasnyRindal.cpp.i
@@ -186,7 +186,7 @@ Base/MasnyRindal.i: Base/MasnyRindal.cpp.i
 
 # target to preprocess a source file
 Base/MasnyRindal.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/Base/MasnyRindal.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/Base/MasnyRindal.cpp.i
 .PHONY : Base/MasnyRindal.cpp.i
 
 Base/MasnyRindal.s: Base/MasnyRindal.cpp.s
@@ -195,7 +195,7 @@ Base/MasnyRindal.s: Base/MasnyRindal.cpp.s
 
 # target to generate assembly for a file
 Base/MasnyRindal.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/Base/MasnyRindal.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/Base/MasnyRindal.cpp.s
 .PHONY : Base/MasnyRindal.cpp.s
 
 Base/MasnyRindalKyber.o: Base/MasnyRindalKyber.cpp.o
@@ -204,7 +204,7 @@ Base/MasnyRindalKyber.o: Base/MasnyRindalKyber.cpp.o
 
 # target to build an object file
 Base/MasnyRindalKyber.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/Base/MasnyRindalKyber.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/Base/MasnyRindalKyber.cpp.o
 .PHONY : Base/MasnyRindalKyber.cpp.o
 
 Base/MasnyRindalKyber.i: Base/MasnyRindalKyber.cpp.i
@@ -213,7 +213,7 @@ Base/MasnyRindalKyber.i: Base/MasnyRindalKyber.cpp.i
 
 # target to preprocess a source file
 Base/MasnyRindalKyber.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/Base/MasnyRindalKyber.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/Base/MasnyRindalKyber.cpp.i
 .PHONY : Base/MasnyRindalKyber.cpp.i
 
 Base/MasnyRindalKyber.s: Base/MasnyRindalKyber.cpp.s
@@ -222,7 +222,7 @@ Base/MasnyRindalKyber.s: Base/MasnyRindalKyber.cpp.s
 
 # target to generate assembly for a file
 Base/MasnyRindalKyber.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/Base/MasnyRindalKyber.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/Base/MasnyRindalKyber.cpp.s
 .PHONY : Base/MasnyRindalKyber.cpp.s
 
 Base/SimplestOT.o: Base/SimplestOT.cpp.o
@@ -231,7 +231,7 @@ Base/SimplestOT.o: Base/SimplestOT.cpp.o
 
 # target to build an object file
 Base/SimplestOT.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/Base/SimplestOT.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/Base/SimplestOT.cpp.o
 .PHONY : Base/SimplestOT.cpp.o
 
 Base/SimplestOT.i: Base/SimplestOT.cpp.i
@@ -240,7 +240,7 @@ Base/SimplestOT.i: Base/SimplestOT.cpp.i
 
 # target to preprocess a source file
 Base/SimplestOT.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/Base/SimplestOT.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/Base/SimplestOT.cpp.i
 .PHONY : Base/SimplestOT.cpp.i
 
 Base/SimplestOT.s: Base/SimplestOT.cpp.s
@@ -249,7 +249,7 @@ Base/SimplestOT.s: Base/SimplestOT.cpp.s
 
 # target to generate assembly for a file
 Base/SimplestOT.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/Base/SimplestOT.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/Base/SimplestOT.cpp.s
 .PHONY : Base/SimplestOT.cpp.s
 
 Base/naor-pinkas.o: Base/naor-pinkas.cpp.o
@@ -258,7 +258,7 @@ Base/naor-pinkas.o: Base/naor-pinkas.cpp.o
 
 # target to build an object file
 Base/naor-pinkas.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/Base/naor-pinkas.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/Base/naor-pinkas.cpp.o
 .PHONY : Base/naor-pinkas.cpp.o
 
 Base/naor-pinkas.i: Base/naor-pinkas.cpp.i
@@ -267,7 +267,7 @@ Base/naor-pinkas.i: Base/naor-pinkas.cpp.i
 
 # target to preprocess a source file
 Base/naor-pinkas.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/Base/naor-pinkas.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/Base/naor-pinkas.cpp.i
 .PHONY : Base/naor-pinkas.cpp.i
 
 Base/naor-pinkas.s: Base/naor-pinkas.cpp.s
@@ -276,7 +276,7 @@ Base/naor-pinkas.s: Base/naor-pinkas.cpp.s
 
 # target to generate assembly for a file
 Base/naor-pinkas.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/Base/naor-pinkas.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/Base/naor-pinkas.cpp.s
 .PHONY : Base/naor-pinkas.cpp.s
 
 NChooseK/AknOtReceiver.o: NChooseK/AknOtReceiver.cpp.o
@@ -285,7 +285,7 @@ NChooseK/AknOtReceiver.o: NChooseK/AknOtReceiver.cpp.o
 
 # target to build an object file
 NChooseK/AknOtReceiver.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/NChooseK/AknOtReceiver.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/NChooseK/AknOtReceiver.cpp.o
 .PHONY : NChooseK/AknOtReceiver.cpp.o
 
 NChooseK/AknOtReceiver.i: NChooseK/AknOtReceiver.cpp.i
@@ -294,7 +294,7 @@ NChooseK/AknOtReceiver.i: NChooseK/AknOtReceiver.cpp.i
 
 # target to preprocess a source file
 NChooseK/AknOtReceiver.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/NChooseK/AknOtReceiver.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/NChooseK/AknOtReceiver.cpp.i
 .PHONY : NChooseK/AknOtReceiver.cpp.i
 
 NChooseK/AknOtReceiver.s: NChooseK/AknOtReceiver.cpp.s
@@ -303,7 +303,7 @@ NChooseK/AknOtReceiver.s: NChooseK/AknOtReceiver.cpp.s
 
 # target to generate assembly for a file
 NChooseK/AknOtReceiver.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/NChooseK/AknOtReceiver.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/NChooseK/AknOtReceiver.cpp.s
 .PHONY : NChooseK/AknOtReceiver.cpp.s
 
 NChooseK/AknOtSender.o: NChooseK/AknOtSender.cpp.o
@@ -312,7 +312,7 @@ NChooseK/AknOtSender.o: NChooseK/AknOtSender.cpp.o
 
 # target to build an object file
 NChooseK/AknOtSender.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/NChooseK/AknOtSender.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/NChooseK/AknOtSender.cpp.o
 .PHONY : NChooseK/AknOtSender.cpp.o
 
 NChooseK/AknOtSender.i: NChooseK/AknOtSender.cpp.i
@@ -321,7 +321,7 @@ NChooseK/AknOtSender.i: NChooseK/AknOtSender.cpp.i
 
 # target to preprocess a source file
 NChooseK/AknOtSender.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/NChooseK/AknOtSender.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/NChooseK/AknOtSender.cpp.i
 .PHONY : NChooseK/AknOtSender.cpp.i
 
 NChooseK/AknOtSender.s: NChooseK/AknOtSender.cpp.s
@@ -330,7 +330,7 @@ NChooseK/AknOtSender.s: NChooseK/AknOtSender.cpp.s
 
 # target to generate assembly for a file
 NChooseK/AknOtSender.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/NChooseK/AknOtSender.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/NChooseK/AknOtSender.cpp.s
 .PHONY : NChooseK/AknOtSender.cpp.s
 
 NChooseOne/Kkrt/KkrtNcoOtReceiver.o: NChooseOne/Kkrt/KkrtNcoOtReceiver.cpp.o
@@ -339,7 +339,7 @@ NChooseOne/Kkrt/KkrtNcoOtReceiver.o: NChooseOne/Kkrt/KkrtNcoOtReceiver.cpp.o
 
 # target to build an object file
 NChooseOne/Kkrt/KkrtNcoOtReceiver.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/NChooseOne/Kkrt/KkrtNcoOtReceiver.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/NChooseOne/Kkrt/KkrtNcoOtReceiver.cpp.o
 .PHONY : NChooseOne/Kkrt/KkrtNcoOtReceiver.cpp.o
 
 NChooseOne/Kkrt/KkrtNcoOtReceiver.i: NChooseOne/Kkrt/KkrtNcoOtReceiver.cpp.i
@@ -348,7 +348,7 @@ NChooseOne/Kkrt/KkrtNcoOtReceiver.i: NChooseOne/Kkrt/KkrtNcoOtReceiver.cpp.i
 
 # target to preprocess a source file
 NChooseOne/Kkrt/KkrtNcoOtReceiver.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/NChooseOne/Kkrt/KkrtNcoOtReceiver.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/NChooseOne/Kkrt/KkrtNcoOtReceiver.cpp.i
 .PHONY : NChooseOne/Kkrt/KkrtNcoOtReceiver.cpp.i
 
 NChooseOne/Kkrt/KkrtNcoOtReceiver.s: NChooseOne/Kkrt/KkrtNcoOtReceiver.cpp.s
@@ -357,7 +357,7 @@ NChooseOne/Kkrt/KkrtNcoOtReceiver.s: NChooseOne/Kkrt/KkrtNcoOtReceiver.cpp.s
 
 # target to generate assembly for a file
 NChooseOne/Kkrt/KkrtNcoOtReceiver.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/NChooseOne/Kkrt/KkrtNcoOtReceiver.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/NChooseOne/Kkrt/KkrtNcoOtReceiver.cpp.s
 .PHONY : NChooseOne/Kkrt/KkrtNcoOtReceiver.cpp.s
 
 NChooseOne/Kkrt/KkrtNcoOtSender.o: NChooseOne/Kkrt/KkrtNcoOtSender.cpp.o
@@ -366,7 +366,7 @@ NChooseOne/Kkrt/KkrtNcoOtSender.o: NChooseOne/Kkrt/KkrtNcoOtSender.cpp.o
 
 # target to build an object file
 NChooseOne/Kkrt/KkrtNcoOtSender.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/NChooseOne/Kkrt/KkrtNcoOtSender.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/NChooseOne/Kkrt/KkrtNcoOtSender.cpp.o
 .PHONY : NChooseOne/Kkrt/KkrtNcoOtSender.cpp.o
 
 NChooseOne/Kkrt/KkrtNcoOtSender.i: NChooseOne/Kkrt/KkrtNcoOtSender.cpp.i
@@ -375,7 +375,7 @@ NChooseOne/Kkrt/KkrtNcoOtSender.i: NChooseOne/Kkrt/KkrtNcoOtSender.cpp.i
 
 # target to preprocess a source file
 NChooseOne/Kkrt/KkrtNcoOtSender.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/NChooseOne/Kkrt/KkrtNcoOtSender.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/NChooseOne/Kkrt/KkrtNcoOtSender.cpp.i
 .PHONY : NChooseOne/Kkrt/KkrtNcoOtSender.cpp.i
 
 NChooseOne/Kkrt/KkrtNcoOtSender.s: NChooseOne/Kkrt/KkrtNcoOtSender.cpp.s
@@ -384,7 +384,7 @@ NChooseOne/Kkrt/KkrtNcoOtSender.s: NChooseOne/Kkrt/KkrtNcoOtSender.cpp.s
 
 # target to generate assembly for a file
 NChooseOne/Kkrt/KkrtNcoOtSender.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/NChooseOne/Kkrt/KkrtNcoOtSender.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/NChooseOne/Kkrt/KkrtNcoOtSender.cpp.s
 .PHONY : NChooseOne/Kkrt/KkrtNcoOtSender.cpp.s
 
 NChooseOne/NcoOtExt.o: NChooseOne/NcoOtExt.cpp.o
@@ -393,7 +393,7 @@ NChooseOne/NcoOtExt.o: NChooseOne/NcoOtExt.cpp.o
 
 # target to build an object file
 NChooseOne/NcoOtExt.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/NChooseOne/NcoOtExt.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/NChooseOne/NcoOtExt.cpp.o
 .PHONY : NChooseOne/NcoOtExt.cpp.o
 
 NChooseOne/NcoOtExt.i: NChooseOne/NcoOtExt.cpp.i
@@ -402,7 +402,7 @@ NChooseOne/NcoOtExt.i: NChooseOne/NcoOtExt.cpp.i
 
 # target to preprocess a source file
 NChooseOne/NcoOtExt.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/NChooseOne/NcoOtExt.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/NChooseOne/NcoOtExt.cpp.i
 .PHONY : NChooseOne/NcoOtExt.cpp.i
 
 NChooseOne/NcoOtExt.s: NChooseOne/NcoOtExt.cpp.s
@@ -411,7 +411,7 @@ NChooseOne/NcoOtExt.s: NChooseOne/NcoOtExt.cpp.s
 
 # target to generate assembly for a file
 NChooseOne/NcoOtExt.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/NChooseOne/NcoOtExt.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/NChooseOne/NcoOtExt.cpp.s
 .PHONY : NChooseOne/NcoOtExt.cpp.s
 
 NChooseOne/Oos/OosNcoOtReceiver.o: NChooseOne/Oos/OosNcoOtReceiver.cpp.o
@@ -420,7 +420,7 @@ NChooseOne/Oos/OosNcoOtReceiver.o: NChooseOne/Oos/OosNcoOtReceiver.cpp.o
 
 # target to build an object file
 NChooseOne/Oos/OosNcoOtReceiver.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/NChooseOne/Oos/OosNcoOtReceiver.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/NChooseOne/Oos/OosNcoOtReceiver.cpp.o
 .PHONY : NChooseOne/Oos/OosNcoOtReceiver.cpp.o
 
 NChooseOne/Oos/OosNcoOtReceiver.i: NChooseOne/Oos/OosNcoOtReceiver.cpp.i
@@ -429,7 +429,7 @@ NChooseOne/Oos/OosNcoOtReceiver.i: NChooseOne/Oos/OosNcoOtReceiver.cpp.i
 
 # target to preprocess a source file
 NChooseOne/Oos/OosNcoOtReceiver.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/NChooseOne/Oos/OosNcoOtReceiver.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/NChooseOne/Oos/OosNcoOtReceiver.cpp.i
 .PHONY : NChooseOne/Oos/OosNcoOtReceiver.cpp.i
 
 NChooseOne/Oos/OosNcoOtReceiver.s: NChooseOne/Oos/OosNcoOtReceiver.cpp.s
@@ -438,7 +438,7 @@ NChooseOne/Oos/OosNcoOtReceiver.s: NChooseOne/Oos/OosNcoOtReceiver.cpp.s
 
 # target to generate assembly for a file
 NChooseOne/Oos/OosNcoOtReceiver.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/NChooseOne/Oos/OosNcoOtReceiver.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/NChooseOne/Oos/OosNcoOtReceiver.cpp.s
 .PHONY : NChooseOne/Oos/OosNcoOtReceiver.cpp.s
 
 NChooseOne/Oos/OosNcoOtSender.o: NChooseOne/Oos/OosNcoOtSender.cpp.o
@@ -447,7 +447,7 @@ NChooseOne/Oos/OosNcoOtSender.o: NChooseOne/Oos/OosNcoOtSender.cpp.o
 
 # target to build an object file
 NChooseOne/Oos/OosNcoOtSender.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/NChooseOne/Oos/OosNcoOtSender.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/NChooseOne/Oos/OosNcoOtSender.cpp.o
 .PHONY : NChooseOne/Oos/OosNcoOtSender.cpp.o
 
 NChooseOne/Oos/OosNcoOtSender.i: NChooseOne/Oos/OosNcoOtSender.cpp.i
@@ -456,7 +456,7 @@ NChooseOne/Oos/OosNcoOtSender.i: NChooseOne/Oos/OosNcoOtSender.cpp.i
 
 # target to preprocess a source file
 NChooseOne/Oos/OosNcoOtSender.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/NChooseOne/Oos/OosNcoOtSender.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/NChooseOne/Oos/OosNcoOtSender.cpp.i
 .PHONY : NChooseOne/Oos/OosNcoOtSender.cpp.i
 
 NChooseOne/Oos/OosNcoOtSender.s: NChooseOne/Oos/OosNcoOtSender.cpp.s
@@ -465,7 +465,7 @@ NChooseOne/Oos/OosNcoOtSender.s: NChooseOne/Oos/OosNcoOtSender.cpp.s
 
 # target to generate assembly for a file
 NChooseOne/Oos/OosNcoOtSender.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/NChooseOne/Oos/OosNcoOtSender.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/NChooseOne/Oos/OosNcoOtSender.cpp.s
 .PHONY : NChooseOne/Oos/OosNcoOtSender.cpp.s
 
 NChooseOne/RR17/Rr17NcoOtReceiver.o: NChooseOne/RR17/Rr17NcoOtReceiver.cpp.o
@@ -474,7 +474,7 @@ NChooseOne/RR17/Rr17NcoOtReceiver.o: NChooseOne/RR17/Rr17NcoOtReceiver.cpp.o
 
 # target to build an object file
 NChooseOne/RR17/Rr17NcoOtReceiver.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/NChooseOne/RR17/Rr17NcoOtReceiver.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/NChooseOne/RR17/Rr17NcoOtReceiver.cpp.o
 .PHONY : NChooseOne/RR17/Rr17NcoOtReceiver.cpp.o
 
 NChooseOne/RR17/Rr17NcoOtReceiver.i: NChooseOne/RR17/Rr17NcoOtReceiver.cpp.i
@@ -483,7 +483,7 @@ NChooseOne/RR17/Rr17NcoOtReceiver.i: NChooseOne/RR17/Rr17NcoOtReceiver.cpp.i
 
 # target to preprocess a source file
 NChooseOne/RR17/Rr17NcoOtReceiver.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/NChooseOne/RR17/Rr17NcoOtReceiver.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/NChooseOne/RR17/Rr17NcoOtReceiver.cpp.i
 .PHONY : NChooseOne/RR17/Rr17NcoOtReceiver.cpp.i
 
 NChooseOne/RR17/Rr17NcoOtReceiver.s: NChooseOne/RR17/Rr17NcoOtReceiver.cpp.s
@@ -492,7 +492,7 @@ NChooseOne/RR17/Rr17NcoOtReceiver.s: NChooseOne/RR17/Rr17NcoOtReceiver.cpp.s
 
 # target to generate assembly for a file
 NChooseOne/RR17/Rr17NcoOtReceiver.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/NChooseOne/RR17/Rr17NcoOtReceiver.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/NChooseOne/RR17/Rr17NcoOtReceiver.cpp.s
 .PHONY : NChooseOne/RR17/Rr17NcoOtReceiver.cpp.s
 
 NChooseOne/RR17/Rr17NcoOtSender.o: NChooseOne/RR17/Rr17NcoOtSender.cpp.o
@@ -501,7 +501,7 @@ NChooseOne/RR17/Rr17NcoOtSender.o: NChooseOne/RR17/Rr17NcoOtSender.cpp.o
 
 # target to build an object file
 NChooseOne/RR17/Rr17NcoOtSender.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/NChooseOne/RR17/Rr17NcoOtSender.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/NChooseOne/RR17/Rr17NcoOtSender.cpp.o
 .PHONY : NChooseOne/RR17/Rr17NcoOtSender.cpp.o
 
 NChooseOne/RR17/Rr17NcoOtSender.i: NChooseOne/RR17/Rr17NcoOtSender.cpp.i
@@ -510,7 +510,7 @@ NChooseOne/RR17/Rr17NcoOtSender.i: NChooseOne/RR17/Rr17NcoOtSender.cpp.i
 
 # target to preprocess a source file
 NChooseOne/RR17/Rr17NcoOtSender.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/NChooseOne/RR17/Rr17NcoOtSender.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/NChooseOne/RR17/Rr17NcoOtSender.cpp.i
 .PHONY : NChooseOne/RR17/Rr17NcoOtSender.cpp.i
 
 NChooseOne/RR17/Rr17NcoOtSender.s: NChooseOne/RR17/Rr17NcoOtSender.cpp.s
@@ -519,7 +519,7 @@ NChooseOne/RR17/Rr17NcoOtSender.s: NChooseOne/RR17/Rr17NcoOtSender.cpp.s
 
 # target to generate assembly for a file
 NChooseOne/RR17/Rr17NcoOtSender.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/NChooseOne/RR17/Rr17NcoOtSender.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/NChooseOne/RR17/Rr17NcoOtSender.cpp.s
 .PHONY : NChooseOne/RR17/Rr17NcoOtSender.cpp.s
 
 Tools/LinearCode.o: Tools/LinearCode.cpp.o
@@ -528,7 +528,7 @@ Tools/LinearCode.o: Tools/LinearCode.cpp.o
 
 # target to build an object file
 Tools/LinearCode.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/Tools/LinearCode.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/Tools/LinearCode.cpp.o
 .PHONY : Tools/LinearCode.cpp.o
 
 Tools/LinearCode.i: Tools/LinearCode.cpp.i
@@ -537,7 +537,7 @@ Tools/LinearCode.i: Tools/LinearCode.cpp.i
 
 # target to preprocess a source file
 Tools/LinearCode.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/Tools/LinearCode.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/Tools/LinearCode.cpp.i
 .PHONY : Tools/LinearCode.cpp.i
 
 Tools/LinearCode.s: Tools/LinearCode.cpp.s
@@ -546,7 +546,7 @@ Tools/LinearCode.s: Tools/LinearCode.cpp.s
 
 # target to generate assembly for a file
 Tools/LinearCode.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/Tools/LinearCode.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/Tools/LinearCode.cpp.s
 .PHONY : Tools/LinearCode.cpp.s
 
 Tools/SilentPprf.o: Tools/SilentPprf.cpp.o
@@ -555,7 +555,7 @@ Tools/SilentPprf.o: Tools/SilentPprf.cpp.o
 
 # target to build an object file
 Tools/SilentPprf.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/Tools/SilentPprf.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/Tools/SilentPprf.cpp.o
 .PHONY : Tools/SilentPprf.cpp.o
 
 Tools/SilentPprf.i: Tools/SilentPprf.cpp.i
@@ -564,7 +564,7 @@ Tools/SilentPprf.i: Tools/SilentPprf.cpp.i
 
 # target to preprocess a source file
 Tools/SilentPprf.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/Tools/SilentPprf.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/Tools/SilentPprf.cpp.i
 .PHONY : Tools/SilentPprf.cpp.i
 
 Tools/SilentPprf.s: Tools/SilentPprf.cpp.s
@@ -573,7 +573,7 @@ Tools/SilentPprf.s: Tools/SilentPprf.cpp.s
 
 # target to generate assembly for a file
 Tools/SilentPprf.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/Tools/SilentPprf.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/Tools/SilentPprf.cpp.s
 .PHONY : Tools/SilentPprf.cpp.s
 
 Tools/Tools.o: Tools/Tools.cpp.o
@@ -582,7 +582,7 @@ Tools/Tools.o: Tools/Tools.cpp.o
 
 # target to build an object file
 Tools/Tools.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/Tools/Tools.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/Tools/Tools.cpp.o
 .PHONY : Tools/Tools.cpp.o
 
 Tools/Tools.i: Tools/Tools.cpp.i
@@ -591,7 +591,7 @@ Tools/Tools.i: Tools/Tools.cpp.i
 
 # target to preprocess a source file
 Tools/Tools.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/Tools/Tools.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/Tools/Tools.cpp.i
 .PHONY : Tools/Tools.cpp.i
 
 Tools/Tools.s: Tools/Tools.cpp.s
@@ -600,7 +600,7 @@ Tools/Tools.s: Tools/Tools.cpp.s
 
 # target to generate assembly for a file
 Tools/Tools.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/Tools/Tools.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/Tools/Tools.cpp.s
 .PHONY : Tools/Tools.cpp.s
 
 Tools/bitpolymul.o: Tools/bitpolymul.cpp.o
@@ -609,7 +609,7 @@ Tools/bitpolymul.o: Tools/bitpolymul.cpp.o
 
 # target to build an object file
 Tools/bitpolymul.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/Tools/bitpolymul.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/Tools/bitpolymul.cpp.o
 .PHONY : Tools/bitpolymul.cpp.o
 
 Tools/bitpolymul.i: Tools/bitpolymul.cpp.i
@@ -618,7 +618,7 @@ Tools/bitpolymul.i: Tools/bitpolymul.cpp.i
 
 # target to preprocess a source file
 Tools/bitpolymul.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/Tools/bitpolymul.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/Tools/bitpolymul.cpp.i
 .PHONY : Tools/bitpolymul.cpp.i
 
 Tools/bitpolymul.s: Tools/bitpolymul.cpp.s
@@ -627,7 +627,7 @@ Tools/bitpolymul.s: Tools/bitpolymul.cpp.s
 
 # target to generate assembly for a file
 Tools/bitpolymul.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/Tools/bitpolymul.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/Tools/bitpolymul.cpp.s
 .PHONY : Tools/bitpolymul.cpp.s
 
 Tools/bitpolymul/bc.o: Tools/bitpolymul/bc.cpp.o
@@ -636,7 +636,7 @@ Tools/bitpolymul/bc.o: Tools/bitpolymul/bc.cpp.o
 
 # target to build an object file
 Tools/bitpolymul/bc.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/Tools/bitpolymul/bc.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/Tools/bitpolymul/bc.cpp.o
 .PHONY : Tools/bitpolymul/bc.cpp.o
 
 Tools/bitpolymul/bc.i: Tools/bitpolymul/bc.cpp.i
@@ -645,7 +645,7 @@ Tools/bitpolymul/bc.i: Tools/bitpolymul/bc.cpp.i
 
 # target to preprocess a source file
 Tools/bitpolymul/bc.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/Tools/bitpolymul/bc.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/Tools/bitpolymul/bc.cpp.i
 .PHONY : Tools/bitpolymul/bc.cpp.i
 
 Tools/bitpolymul/bc.s: Tools/bitpolymul/bc.cpp.s
@@ -654,7 +654,7 @@ Tools/bitpolymul/bc.s: Tools/bitpolymul/bc.cpp.s
 
 # target to generate assembly for a file
 Tools/bitpolymul/bc.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/Tools/bitpolymul/bc.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/Tools/bitpolymul/bc.cpp.s
 .PHONY : Tools/bitpolymul/bc.cpp.s
 
 Tools/bitpolymul/bc_to_lch_gen_code.o: Tools/bitpolymul/bc_to_lch_gen_code.cpp.o
@@ -663,7 +663,7 @@ Tools/bitpolymul/bc_to_lch_gen_code.o: Tools/bitpolymul/bc_to_lch_gen_code.cpp.o
 
 # target to build an object file
 Tools/bitpolymul/bc_to_lch_gen_code.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/Tools/bitpolymul/bc_to_lch_gen_code.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/Tools/bitpolymul/bc_to_lch_gen_code.cpp.o
 .PHONY : Tools/bitpolymul/bc_to_lch_gen_code.cpp.o
 
 Tools/bitpolymul/bc_to_lch_gen_code.i: Tools/bitpolymul/bc_to_lch_gen_code.cpp.i
@@ -672,7 +672,7 @@ Tools/bitpolymul/bc_to_lch_gen_code.i: Tools/bitpolymul/bc_to_lch_gen_code.cpp.i
 
 # target to preprocess a source file
 Tools/bitpolymul/bc_to_lch_gen_code.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/Tools/bitpolymul/bc_to_lch_gen_code.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/Tools/bitpolymul/bc_to_lch_gen_code.cpp.i
 .PHONY : Tools/bitpolymul/bc_to_lch_gen_code.cpp.i
 
 Tools/bitpolymul/bc_to_lch_gen_code.s: Tools/bitpolymul/bc_to_lch_gen_code.cpp.s
@@ -681,7 +681,7 @@ Tools/bitpolymul/bc_to_lch_gen_code.s: Tools/bitpolymul/bc_to_lch_gen_code.cpp.s
 
 # target to generate assembly for a file
 Tools/bitpolymul/bc_to_lch_gen_code.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/Tools/bitpolymul/bc_to_lch_gen_code.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/Tools/bitpolymul/bc_to_lch_gen_code.cpp.s
 .PHONY : Tools/bitpolymul/bc_to_lch_gen_code.cpp.s
 
 Tools/bitpolymul/bc_to_mono_gen_code.o: Tools/bitpolymul/bc_to_mono_gen_code.cpp.o
@@ -690,7 +690,7 @@ Tools/bitpolymul/bc_to_mono_gen_code.o: Tools/bitpolymul/bc_to_mono_gen_code.cpp
 
 # target to build an object file
 Tools/bitpolymul/bc_to_mono_gen_code.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/Tools/bitpolymul/bc_to_mono_gen_code.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/Tools/bitpolymul/bc_to_mono_gen_code.cpp.o
 .PHONY : Tools/bitpolymul/bc_to_mono_gen_code.cpp.o
 
 Tools/bitpolymul/bc_to_mono_gen_code.i: Tools/bitpolymul/bc_to_mono_gen_code.cpp.i
@@ -699,7 +699,7 @@ Tools/bitpolymul/bc_to_mono_gen_code.i: Tools/bitpolymul/bc_to_mono_gen_code.cpp
 
 # target to preprocess a source file
 Tools/bitpolymul/bc_to_mono_gen_code.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/Tools/bitpolymul/bc_to_mono_gen_code.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/Tools/bitpolymul/bc_to_mono_gen_code.cpp.i
 .PHONY : Tools/bitpolymul/bc_to_mono_gen_code.cpp.i
 
 Tools/bitpolymul/bc_to_mono_gen_code.s: Tools/bitpolymul/bc_to_mono_gen_code.cpp.s
@@ -708,7 +708,7 @@ Tools/bitpolymul/bc_to_mono_gen_code.s: Tools/bitpolymul/bc_to_mono_gen_code.cpp
 
 # target to generate assembly for a file
 Tools/bitpolymul/bc_to_mono_gen_code.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/Tools/bitpolymul/bc_to_mono_gen_code.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/Tools/bitpolymul/bc_to_mono_gen_code.cpp.s
 .PHONY : Tools/bitpolymul/bc_to_mono_gen_code.cpp.s
 
 Tools/bitpolymul/btfy.o: Tools/bitpolymul/btfy.cpp.o
@@ -717,7 +717,7 @@ Tools/bitpolymul/btfy.o: Tools/bitpolymul/btfy.cpp.o
 
 # target to build an object file
 Tools/bitpolymul/btfy.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/Tools/bitpolymul/btfy.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/Tools/bitpolymul/btfy.cpp.o
 .PHONY : Tools/bitpolymul/btfy.cpp.o
 
 Tools/bitpolymul/btfy.i: Tools/bitpolymul/btfy.cpp.i
@@ -726,7 +726,7 @@ Tools/bitpolymul/btfy.i: Tools/bitpolymul/btfy.cpp.i
 
 # target to preprocess a source file
 Tools/bitpolymul/btfy.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/Tools/bitpolymul/btfy.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/Tools/bitpolymul/btfy.cpp.i
 .PHONY : Tools/bitpolymul/btfy.cpp.i
 
 Tools/bitpolymul/btfy.s: Tools/bitpolymul/btfy.cpp.s
@@ -735,7 +735,7 @@ Tools/bitpolymul/btfy.s: Tools/bitpolymul/btfy.cpp.s
 
 # target to generate assembly for a file
 Tools/bitpolymul/btfy.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/Tools/bitpolymul/btfy.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/Tools/bitpolymul/btfy.cpp.s
 .PHONY : Tools/bitpolymul/btfy.cpp.s
 
 Tools/bitpolymul/encode.o: Tools/bitpolymul/encode.cpp.o
@@ -744,7 +744,7 @@ Tools/bitpolymul/encode.o: Tools/bitpolymul/encode.cpp.o
 
 # target to build an object file
 Tools/bitpolymul/encode.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/Tools/bitpolymul/encode.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/Tools/bitpolymul/encode.cpp.o
 .PHONY : Tools/bitpolymul/encode.cpp.o
 
 Tools/bitpolymul/encode.i: Tools/bitpolymul/encode.cpp.i
@@ -753,7 +753,7 @@ Tools/bitpolymul/encode.i: Tools/bitpolymul/encode.cpp.i
 
 # target to preprocess a source file
 Tools/bitpolymul/encode.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/Tools/bitpolymul/encode.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/Tools/bitpolymul/encode.cpp.i
 .PHONY : Tools/bitpolymul/encode.cpp.i
 
 Tools/bitpolymul/encode.s: Tools/bitpolymul/encode.cpp.s
@@ -762,7 +762,7 @@ Tools/bitpolymul/encode.s: Tools/bitpolymul/encode.cpp.s
 
 # target to generate assembly for a file
 Tools/bitpolymul/encode.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/Tools/bitpolymul/encode.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/Tools/bitpolymul/encode.cpp.s
 .PHONY : Tools/bitpolymul/encode.cpp.s
 
 TwoChooseOne/IknpDotExtReceiver.o: TwoChooseOne/IknpDotExtReceiver.cpp.o
@@ -771,7 +771,7 @@ TwoChooseOne/IknpDotExtReceiver.o: TwoChooseOne/IknpDotExtReceiver.cpp.o
 
 # target to build an object file
 TwoChooseOne/IknpDotExtReceiver.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/TwoChooseOne/IknpDotExtReceiver.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/TwoChooseOne/IknpDotExtReceiver.cpp.o
 .PHONY : TwoChooseOne/IknpDotExtReceiver.cpp.o
 
 TwoChooseOne/IknpDotExtReceiver.i: TwoChooseOne/IknpDotExtReceiver.cpp.i
@@ -780,7 +780,7 @@ TwoChooseOne/IknpDotExtReceiver.i: TwoChooseOne/IknpDotExtReceiver.cpp.i
 
 # target to preprocess a source file
 TwoChooseOne/IknpDotExtReceiver.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/TwoChooseOne/IknpDotExtReceiver.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/TwoChooseOne/IknpDotExtReceiver.cpp.i
 .PHONY : TwoChooseOne/IknpDotExtReceiver.cpp.i
 
 TwoChooseOne/IknpDotExtReceiver.s: TwoChooseOne/IknpDotExtReceiver.cpp.s
@@ -789,7 +789,7 @@ TwoChooseOne/IknpDotExtReceiver.s: TwoChooseOne/IknpDotExtReceiver.cpp.s
 
 # target to generate assembly for a file
 TwoChooseOne/IknpDotExtReceiver.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/TwoChooseOne/IknpDotExtReceiver.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/TwoChooseOne/IknpDotExtReceiver.cpp.s
 .PHONY : TwoChooseOne/IknpDotExtReceiver.cpp.s
 
 TwoChooseOne/IknpDotExtSender.o: TwoChooseOne/IknpDotExtSender.cpp.o
@@ -798,7 +798,7 @@ TwoChooseOne/IknpDotExtSender.o: TwoChooseOne/IknpDotExtSender.cpp.o
 
 # target to build an object file
 TwoChooseOne/IknpDotExtSender.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/TwoChooseOne/IknpDotExtSender.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/TwoChooseOne/IknpDotExtSender.cpp.o
 .PHONY : TwoChooseOne/IknpDotExtSender.cpp.o
 
 TwoChooseOne/IknpDotExtSender.i: TwoChooseOne/IknpDotExtSender.cpp.i
@@ -807,7 +807,7 @@ TwoChooseOne/IknpDotExtSender.i: TwoChooseOne/IknpDotExtSender.cpp.i
 
 # target to preprocess a source file
 TwoChooseOne/IknpDotExtSender.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/TwoChooseOne/IknpDotExtSender.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/TwoChooseOne/IknpDotExtSender.cpp.i
 .PHONY : TwoChooseOne/IknpDotExtSender.cpp.i
 
 TwoChooseOne/IknpDotExtSender.s: TwoChooseOne/IknpDotExtSender.cpp.s
@@ -816,7 +816,7 @@ TwoChooseOne/IknpDotExtSender.s: TwoChooseOne/IknpDotExtSender.cpp.s
 
 # target to generate assembly for a file
 TwoChooseOne/IknpDotExtSender.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/TwoChooseOne/IknpDotExtSender.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/TwoChooseOne/IknpDotExtSender.cpp.s
 .PHONY : TwoChooseOne/IknpDotExtSender.cpp.s
 
 TwoChooseOne/IknpOtExtReceiver.o: TwoChooseOne/IknpOtExtReceiver.cpp.o
@@ -825,7 +825,7 @@ TwoChooseOne/IknpOtExtReceiver.o: TwoChooseOne/IknpOtExtReceiver.cpp.o
 
 # target to build an object file
 TwoChooseOne/IknpOtExtReceiver.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/TwoChooseOne/IknpOtExtReceiver.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/TwoChooseOne/IknpOtExtReceiver.cpp.o
 .PHONY : TwoChooseOne/IknpOtExtReceiver.cpp.o
 
 TwoChooseOne/IknpOtExtReceiver.i: TwoChooseOne/IknpOtExtReceiver.cpp.i
@@ -834,7 +834,7 @@ TwoChooseOne/IknpOtExtReceiver.i: TwoChooseOne/IknpOtExtReceiver.cpp.i
 
 # target to preprocess a source file
 TwoChooseOne/IknpOtExtReceiver.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/TwoChooseOne/IknpOtExtReceiver.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/TwoChooseOne/IknpOtExtReceiver.cpp.i
 .PHONY : TwoChooseOne/IknpOtExtReceiver.cpp.i
 
 TwoChooseOne/IknpOtExtReceiver.s: TwoChooseOne/IknpOtExtReceiver.cpp.s
@@ -843,7 +843,7 @@ TwoChooseOne/IknpOtExtReceiver.s: TwoChooseOne/IknpOtExtReceiver.cpp.s
 
 # target to generate assembly for a file
 TwoChooseOne/IknpOtExtReceiver.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/TwoChooseOne/IknpOtExtReceiver.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/TwoChooseOne/IknpOtExtReceiver.cpp.s
 .PHONY : TwoChooseOne/IknpOtExtReceiver.cpp.s
 
 TwoChooseOne/IknpOtExtSender.o: TwoChooseOne/IknpOtExtSender.cpp.o
@@ -852,7 +852,7 @@ TwoChooseOne/IknpOtExtSender.o: TwoChooseOne/IknpOtExtSender.cpp.o
 
 # target to build an object file
 TwoChooseOne/IknpOtExtSender.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/TwoChooseOne/IknpOtExtSender.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/TwoChooseOne/IknpOtExtSender.cpp.o
 .PHONY : TwoChooseOne/IknpOtExtSender.cpp.o
 
 TwoChooseOne/IknpOtExtSender.i: TwoChooseOne/IknpOtExtSender.cpp.i
@@ -861,7 +861,7 @@ TwoChooseOne/IknpOtExtSender.i: TwoChooseOne/IknpOtExtSender.cpp.i
 
 # target to preprocess a source file
 TwoChooseOne/IknpOtExtSender.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/TwoChooseOne/IknpOtExtSender.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/TwoChooseOne/IknpOtExtSender.cpp.i
 .PHONY : TwoChooseOne/IknpOtExtSender.cpp.i
 
 TwoChooseOne/IknpOtExtSender.s: TwoChooseOne/IknpOtExtSender.cpp.s
@@ -870,7 +870,7 @@ TwoChooseOne/IknpOtExtSender.s: TwoChooseOne/IknpOtExtSender.cpp.s
 
 # target to generate assembly for a file
 TwoChooseOne/IknpOtExtSender.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/TwoChooseOne/IknpOtExtSender.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/TwoChooseOne/IknpOtExtSender.cpp.s
 .PHONY : TwoChooseOne/IknpOtExtSender.cpp.s
 
 TwoChooseOne/KosDotExtReceiver.o: TwoChooseOne/KosDotExtReceiver.cpp.o
@@ -879,7 +879,7 @@ TwoChooseOne/KosDotExtReceiver.o: TwoChooseOne/KosDotExtReceiver.cpp.o
 
 # target to build an object file
 TwoChooseOne/KosDotExtReceiver.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/TwoChooseOne/KosDotExtReceiver.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/TwoChooseOne/KosDotExtReceiver.cpp.o
 .PHONY : TwoChooseOne/KosDotExtReceiver.cpp.o
 
 TwoChooseOne/KosDotExtReceiver.i: TwoChooseOne/KosDotExtReceiver.cpp.i
@@ -888,7 +888,7 @@ TwoChooseOne/KosDotExtReceiver.i: TwoChooseOne/KosDotExtReceiver.cpp.i
 
 # target to preprocess a source file
 TwoChooseOne/KosDotExtReceiver.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/TwoChooseOne/KosDotExtReceiver.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/TwoChooseOne/KosDotExtReceiver.cpp.i
 .PHONY : TwoChooseOne/KosDotExtReceiver.cpp.i
 
 TwoChooseOne/KosDotExtReceiver.s: TwoChooseOne/KosDotExtReceiver.cpp.s
@@ -897,7 +897,7 @@ TwoChooseOne/KosDotExtReceiver.s: TwoChooseOne/KosDotExtReceiver.cpp.s
 
 # target to generate assembly for a file
 TwoChooseOne/KosDotExtReceiver.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/TwoChooseOne/KosDotExtReceiver.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/TwoChooseOne/KosDotExtReceiver.cpp.s
 .PHONY : TwoChooseOne/KosDotExtReceiver.cpp.s
 
 TwoChooseOne/KosDotExtSender.o: TwoChooseOne/KosDotExtSender.cpp.o
@@ -906,7 +906,7 @@ TwoChooseOne/KosDotExtSender.o: TwoChooseOne/KosDotExtSender.cpp.o
 
 # target to build an object file
 TwoChooseOne/KosDotExtSender.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/TwoChooseOne/KosDotExtSender.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/TwoChooseOne/KosDotExtSender.cpp.o
 .PHONY : TwoChooseOne/KosDotExtSender.cpp.o
 
 TwoChooseOne/KosDotExtSender.i: TwoChooseOne/KosDotExtSender.cpp.i
@@ -915,7 +915,7 @@ TwoChooseOne/KosDotExtSender.i: TwoChooseOne/KosDotExtSender.cpp.i
 
 # target to preprocess a source file
 TwoChooseOne/KosDotExtSender.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/TwoChooseOne/KosDotExtSender.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/TwoChooseOne/KosDotExtSender.cpp.i
 .PHONY : TwoChooseOne/KosDotExtSender.cpp.i
 
 TwoChooseOne/KosDotExtSender.s: TwoChooseOne/KosDotExtSender.cpp.s
@@ -924,7 +924,7 @@ TwoChooseOne/KosDotExtSender.s: TwoChooseOne/KosDotExtSender.cpp.s
 
 # target to generate assembly for a file
 TwoChooseOne/KosDotExtSender.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/TwoChooseOne/KosDotExtSender.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/TwoChooseOne/KosDotExtSender.cpp.s
 .PHONY : TwoChooseOne/KosDotExtSender.cpp.s
 
 TwoChooseOne/KosOtExtReceiver.o: TwoChooseOne/KosOtExtReceiver.cpp.o
@@ -933,7 +933,7 @@ TwoChooseOne/KosOtExtReceiver.o: TwoChooseOne/KosOtExtReceiver.cpp.o
 
 # target to build an object file
 TwoChooseOne/KosOtExtReceiver.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/TwoChooseOne/KosOtExtReceiver.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/TwoChooseOne/KosOtExtReceiver.cpp.o
 .PHONY : TwoChooseOne/KosOtExtReceiver.cpp.o
 
 TwoChooseOne/KosOtExtReceiver.i: TwoChooseOne/KosOtExtReceiver.cpp.i
@@ -942,7 +942,7 @@ TwoChooseOne/KosOtExtReceiver.i: TwoChooseOne/KosOtExtReceiver.cpp.i
 
 # target to preprocess a source file
 TwoChooseOne/KosOtExtReceiver.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/TwoChooseOne/KosOtExtReceiver.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/TwoChooseOne/KosOtExtReceiver.cpp.i
 .PHONY : TwoChooseOne/KosOtExtReceiver.cpp.i
 
 TwoChooseOne/KosOtExtReceiver.s: TwoChooseOne/KosOtExtReceiver.cpp.s
@@ -951,7 +951,7 @@ TwoChooseOne/KosOtExtReceiver.s: TwoChooseOne/KosOtExtReceiver.cpp.s
 
 # target to generate assembly for a file
 TwoChooseOne/KosOtExtReceiver.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/TwoChooseOne/KosOtExtReceiver.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/TwoChooseOne/KosOtExtReceiver.cpp.s
 .PHONY : TwoChooseOne/KosOtExtReceiver.cpp.s
 
 TwoChooseOne/KosOtExtSender.o: TwoChooseOne/KosOtExtSender.cpp.o
@@ -960,7 +960,7 @@ TwoChooseOne/KosOtExtSender.o: TwoChooseOne/KosOtExtSender.cpp.o
 
 # target to build an object file
 TwoChooseOne/KosOtExtSender.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/TwoChooseOne/KosOtExtSender.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/TwoChooseOne/KosOtExtSender.cpp.o
 .PHONY : TwoChooseOne/KosOtExtSender.cpp.o
 
 TwoChooseOne/KosOtExtSender.i: TwoChooseOne/KosOtExtSender.cpp.i
@@ -969,7 +969,7 @@ TwoChooseOne/KosOtExtSender.i: TwoChooseOne/KosOtExtSender.cpp.i
 
 # target to preprocess a source file
 TwoChooseOne/KosOtExtSender.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/TwoChooseOne/KosOtExtSender.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/TwoChooseOne/KosOtExtSender.cpp.i
 .PHONY : TwoChooseOne/KosOtExtSender.cpp.i
 
 TwoChooseOne/KosOtExtSender.s: TwoChooseOne/KosOtExtSender.cpp.s
@@ -978,7 +978,7 @@ TwoChooseOne/KosOtExtSender.s: TwoChooseOne/KosOtExtSender.cpp.s
 
 # target to generate assembly for a file
 TwoChooseOne/KosOtExtSender.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/TwoChooseOne/KosOtExtSender.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/TwoChooseOne/KosOtExtSender.cpp.s
 .PHONY : TwoChooseOne/KosOtExtSender.cpp.s
 
 TwoChooseOne/OTExtInterface.o: TwoChooseOne/OTExtInterface.cpp.o
@@ -987,7 +987,7 @@ TwoChooseOne/OTExtInterface.o: TwoChooseOne/OTExtInterface.cpp.o
 
 # target to build an object file
 TwoChooseOne/OTExtInterface.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/TwoChooseOne/OTExtInterface.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/TwoChooseOne/OTExtInterface.cpp.o
 .PHONY : TwoChooseOne/OTExtInterface.cpp.o
 
 TwoChooseOne/OTExtInterface.i: TwoChooseOne/OTExtInterface.cpp.i
@@ -996,7 +996,7 @@ TwoChooseOne/OTExtInterface.i: TwoChooseOne/OTExtInterface.cpp.i
 
 # target to preprocess a source file
 TwoChooseOne/OTExtInterface.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/TwoChooseOne/OTExtInterface.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/TwoChooseOne/OTExtInterface.cpp.i
 .PHONY : TwoChooseOne/OTExtInterface.cpp.i
 
 TwoChooseOne/OTExtInterface.s: TwoChooseOne/OTExtInterface.cpp.s
@@ -1005,7 +1005,7 @@ TwoChooseOne/OTExtInterface.s: TwoChooseOne/OTExtInterface.cpp.s
 
 # target to generate assembly for a file
 TwoChooseOne/OTExtInterface.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/TwoChooseOne/OTExtInterface.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/TwoChooseOne/OTExtInterface.cpp.s
 .PHONY : TwoChooseOne/OTExtInterface.cpp.s
 
 TwoChooseOne/SilentOtExtReceiver.o: TwoChooseOne/SilentOtExtReceiver.cpp.o
@@ -1014,7 +1014,7 @@ TwoChooseOne/SilentOtExtReceiver.o: TwoChooseOne/SilentOtExtReceiver.cpp.o
 
 # target to build an object file
 TwoChooseOne/SilentOtExtReceiver.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/TwoChooseOne/SilentOtExtReceiver.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/TwoChooseOne/SilentOtExtReceiver.cpp.o
 .PHONY : TwoChooseOne/SilentOtExtReceiver.cpp.o
 
 TwoChooseOne/SilentOtExtReceiver.i: TwoChooseOne/SilentOtExtReceiver.cpp.i
@@ -1023,7 +1023,7 @@ TwoChooseOne/SilentOtExtReceiver.i: TwoChooseOne/SilentOtExtReceiver.cpp.i
 
 # target to preprocess a source file
 TwoChooseOne/SilentOtExtReceiver.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/TwoChooseOne/SilentOtExtReceiver.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/TwoChooseOne/SilentOtExtReceiver.cpp.i
 .PHONY : TwoChooseOne/SilentOtExtReceiver.cpp.i
 
 TwoChooseOne/SilentOtExtReceiver.s: TwoChooseOne/SilentOtExtReceiver.cpp.s
@@ -1032,7 +1032,7 @@ TwoChooseOne/SilentOtExtReceiver.s: TwoChooseOne/SilentOtExtReceiver.cpp.s
 
 # target to generate assembly for a file
 TwoChooseOne/SilentOtExtReceiver.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/TwoChooseOne/SilentOtExtReceiver.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/TwoChooseOne/SilentOtExtReceiver.cpp.s
 .PHONY : TwoChooseOne/SilentOtExtReceiver.cpp.s
 
 TwoChooseOne/SilentOtExtSender.o: TwoChooseOne/SilentOtExtSender.cpp.o
@@ -1041,7 +1041,7 @@ TwoChooseOne/SilentOtExtSender.o: TwoChooseOne/SilentOtExtSender.cpp.o
 
 # target to build an object file
 TwoChooseOne/SilentOtExtSender.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/TwoChooseOne/SilentOtExtSender.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/TwoChooseOne/SilentOtExtSender.cpp.o
 .PHONY : TwoChooseOne/SilentOtExtSender.cpp.o
 
 TwoChooseOne/SilentOtExtSender.i: TwoChooseOne/SilentOtExtSender.cpp.i
@@ -1050,7 +1050,7 @@ TwoChooseOne/SilentOtExtSender.i: TwoChooseOne/SilentOtExtSender.cpp.i
 
 # target to preprocess a source file
 TwoChooseOne/SilentOtExtSender.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/TwoChooseOne/SilentOtExtSender.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/TwoChooseOne/SilentOtExtSender.cpp.i
 .PHONY : TwoChooseOne/SilentOtExtSender.cpp.i
 
 TwoChooseOne/SilentOtExtSender.s: TwoChooseOne/SilentOtExtSender.cpp.s
@@ -1059,7 +1059,7 @@ TwoChooseOne/SilentOtExtSender.s: TwoChooseOne/SilentOtExtSender.cpp.s
 
 # target to generate assembly for a file
 TwoChooseOne/SilentOtExtSender.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/TwoChooseOne/SilentOtExtSender.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/libOTe/CMakeFiles/libOTe.dir/build.make extern/libOTe/libOTe/CMakeFiles/libOTe.dir/TwoChooseOne/SilentOtExtSender.cpp.s
 .PHONY : TwoChooseOne/SilentOtExtSender.cpp.s
 
 # Help Target
@@ -1185,6 +1185,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /root/PQC-mPSI/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

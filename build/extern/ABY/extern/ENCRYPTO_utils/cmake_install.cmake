@@ -1,4 +1,4 @@
-# Install script for directory: /root/zero-knowledge/PQC-mPSI/extern/ABY/extern/ENCRYPTO_utils
+# Install script for directory: /root/PQC-mPSI/extern/ABY/extern/ENCRYPTO_utils
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -39,8 +39,8 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/root/zero-knowledge/PQC-mPSI/build/extern/ABY/extern/ENCRYPTO_utils/extern/relic/cmake_install.cmake")
-  include("/root/zero-knowledge/PQC-mPSI/build/extern/ABY/extern/ENCRYPTO_utils/src/cmake_install.cmake")
+  include("/root/PQC-mPSI/build/extern/ABY/extern/ENCRYPTO_utils/extern/relic/cmake_install.cmake")
+  include("/root/PQC-mPSI/build/extern/ABY/extern/ENCRYPTO_utils/src/cmake_install.cmake")
 
 endif()
 

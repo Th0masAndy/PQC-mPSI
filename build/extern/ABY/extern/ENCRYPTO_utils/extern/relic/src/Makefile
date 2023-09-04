@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /root/zero-knowledge/PQC-mPSI
+CMAKE_SOURCE_DIR = /root/PQC-mPSI
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /root/zero-knowledge/PQC-mPSI/build
+CMAKE_BINARY_DIR = /root/PQC-mPSI/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -126,14 +126,14 @@ install/strip/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	cd /root/zero-knowledge/PQC-mPSI/build && $(CMAKE_COMMAND) -E cmake_progress_start /root/zero-knowledge/PQC-mPSI/build/CMakeFiles /root/zero-knowledge/PQC-mPSI/build/extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/progress.marks
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /root/zero-knowledge/PQC-mPSI/build/CMakeFiles 0
+	cd /root/PQC-mPSI/build && $(CMAKE_COMMAND) -E cmake_progress_start /root/PQC-mPSI/build/CMakeFiles /root/PQC-mPSI/build/extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/progress.marks
+	cd /root/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/PQC-mPSI/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/clean
+	cd /root/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/clean
 .PHONY : clean
 
 # The main clean target
@@ -143,22 +143,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/preinstall
+	cd /root/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/preinstall
+	cd /root/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /root/PQC-mPSI/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/rule:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/rule
+	cd /root/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/rule
 .PHONY : extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/rule
 
 # Convenience name for target.
@@ -168,12 +168,12 @@ relic_s: extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.di
 
 # fast build rule for target.
 relic_s/fast:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build
 .PHONY : relic_s/fast
 
 # Convenience name for target.
 extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/arith_objs.dir/rule:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/arith_objs.dir/rule
+	cd /root/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/arith_objs.dir/rule
 .PHONY : extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/arith_objs.dir/rule
 
 # Convenience name for target.
@@ -183,7 +183,7 @@ arith_objs: extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/arith_o
 
 # fast build rule for target.
 arith_objs/fast:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/arith_objs.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/arith_objs.dir/build
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/arith_objs.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/arith_objs.dir/build
 .PHONY : arith_objs/fast
 
 arch/relic_arch_x64.o: arch/relic_arch_x64.c.o
@@ -192,7 +192,7 @@ arch/relic_arch_x64.o: arch/relic_arch_x64.c.o
 
 # target to build an object file
 arch/relic_arch_x64.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/arch/relic_arch_x64.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/arch/relic_arch_x64.c.o
 .PHONY : arch/relic_arch_x64.c.o
 
 arch/relic_arch_x64.i: arch/relic_arch_x64.c.i
@@ -201,7 +201,7 @@ arch/relic_arch_x64.i: arch/relic_arch_x64.c.i
 
 # target to preprocess a source file
 arch/relic_arch_x64.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/arch/relic_arch_x64.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/arch/relic_arch_x64.c.i
 .PHONY : arch/relic_arch_x64.c.i
 
 arch/relic_arch_x64.s: arch/relic_arch_x64.c.s
@@ -210,7 +210,7 @@ arch/relic_arch_x64.s: arch/relic_arch_x64.c.s
 
 # target to generate assembly for a file
 arch/relic_arch_x64.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/arch/relic_arch_x64.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/arch/relic_arch_x64.c.s
 .PHONY : arch/relic_arch_x64.c.s
 
 bn/relic_bn_add.o: bn/relic_bn_add.c.o
@@ -219,7 +219,7 @@ bn/relic_bn_add.o: bn/relic_bn_add.c.o
 
 # target to build an object file
 bn/relic_bn_add.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/bn/relic_bn_add.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/bn/relic_bn_add.c.o
 .PHONY : bn/relic_bn_add.c.o
 
 bn/relic_bn_add.i: bn/relic_bn_add.c.i
@@ -228,7 +228,7 @@ bn/relic_bn_add.i: bn/relic_bn_add.c.i
 
 # target to preprocess a source file
 bn/relic_bn_add.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/bn/relic_bn_add.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/bn/relic_bn_add.c.i
 .PHONY : bn/relic_bn_add.c.i
 
 bn/relic_bn_add.s: bn/relic_bn_add.c.s
@@ -237,7 +237,7 @@ bn/relic_bn_add.s: bn/relic_bn_add.c.s
 
 # target to generate assembly for a file
 bn/relic_bn_add.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/bn/relic_bn_add.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/bn/relic_bn_add.c.s
 .PHONY : bn/relic_bn_add.c.s
 
 bn/relic_bn_cmp.o: bn/relic_bn_cmp.c.o
@@ -246,7 +246,7 @@ bn/relic_bn_cmp.o: bn/relic_bn_cmp.c.o
 
 # target to build an object file
 bn/relic_bn_cmp.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/bn/relic_bn_cmp.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/bn/relic_bn_cmp.c.o
 .PHONY : bn/relic_bn_cmp.c.o
 
 bn/relic_bn_cmp.i: bn/relic_bn_cmp.c.i
@@ -255,7 +255,7 @@ bn/relic_bn_cmp.i: bn/relic_bn_cmp.c.i
 
 # target to preprocess a source file
 bn/relic_bn_cmp.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/bn/relic_bn_cmp.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/bn/relic_bn_cmp.c.i
 .PHONY : bn/relic_bn_cmp.c.i
 
 bn/relic_bn_cmp.s: bn/relic_bn_cmp.c.s
@@ -264,7 +264,7 @@ bn/relic_bn_cmp.s: bn/relic_bn_cmp.c.s
 
 # target to generate assembly for a file
 bn/relic_bn_cmp.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/bn/relic_bn_cmp.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/bn/relic_bn_cmp.c.s
 .PHONY : bn/relic_bn_cmp.c.s
 
 bn/relic_bn_div.o: bn/relic_bn_div.c.o
@@ -273,7 +273,7 @@ bn/relic_bn_div.o: bn/relic_bn_div.c.o
 
 # target to build an object file
 bn/relic_bn_div.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/bn/relic_bn_div.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/bn/relic_bn_div.c.o
 .PHONY : bn/relic_bn_div.c.o
 
 bn/relic_bn_div.i: bn/relic_bn_div.c.i
@@ -282,7 +282,7 @@ bn/relic_bn_div.i: bn/relic_bn_div.c.i
 
 # target to preprocess a source file
 bn/relic_bn_div.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/bn/relic_bn_div.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/bn/relic_bn_div.c.i
 .PHONY : bn/relic_bn_div.c.i
 
 bn/relic_bn_div.s: bn/relic_bn_div.c.s
@@ -291,7 +291,7 @@ bn/relic_bn_div.s: bn/relic_bn_div.c.s
 
 # target to generate assembly for a file
 bn/relic_bn_div.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/bn/relic_bn_div.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/bn/relic_bn_div.c.s
 .PHONY : bn/relic_bn_div.c.s
 
 bn/relic_bn_factor.o: bn/relic_bn_factor.c.o
@@ -300,7 +300,7 @@ bn/relic_bn_factor.o: bn/relic_bn_factor.c.o
 
 # target to build an object file
 bn/relic_bn_factor.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/bn/relic_bn_factor.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/bn/relic_bn_factor.c.o
 .PHONY : bn/relic_bn_factor.c.o
 
 bn/relic_bn_factor.i: bn/relic_bn_factor.c.i
@@ -309,7 +309,7 @@ bn/relic_bn_factor.i: bn/relic_bn_factor.c.i
 
 # target to preprocess a source file
 bn/relic_bn_factor.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/bn/relic_bn_factor.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/bn/relic_bn_factor.c.i
 .PHONY : bn/relic_bn_factor.c.i
 
 bn/relic_bn_factor.s: bn/relic_bn_factor.c.s
@@ -318,7 +318,7 @@ bn/relic_bn_factor.s: bn/relic_bn_factor.c.s
 
 # target to generate assembly for a file
 bn/relic_bn_factor.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/bn/relic_bn_factor.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/bn/relic_bn_factor.c.s
 .PHONY : bn/relic_bn_factor.c.s
 
 bn/relic_bn_gcd.o: bn/relic_bn_gcd.c.o
@@ -327,7 +327,7 @@ bn/relic_bn_gcd.o: bn/relic_bn_gcd.c.o
 
 # target to build an object file
 bn/relic_bn_gcd.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/bn/relic_bn_gcd.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/bn/relic_bn_gcd.c.o
 .PHONY : bn/relic_bn_gcd.c.o
 
 bn/relic_bn_gcd.i: bn/relic_bn_gcd.c.i
@@ -336,7 +336,7 @@ bn/relic_bn_gcd.i: bn/relic_bn_gcd.c.i
 
 # target to preprocess a source file
 bn/relic_bn_gcd.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/bn/relic_bn_gcd.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/bn/relic_bn_gcd.c.i
 .PHONY : bn/relic_bn_gcd.c.i
 
 bn/relic_bn_gcd.s: bn/relic_bn_gcd.c.s
@@ -345,7 +345,7 @@ bn/relic_bn_gcd.s: bn/relic_bn_gcd.c.s
 
 # target to generate assembly for a file
 bn/relic_bn_gcd.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/bn/relic_bn_gcd.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/bn/relic_bn_gcd.c.s
 .PHONY : bn/relic_bn_gcd.c.s
 
 bn/relic_bn_lcm.o: bn/relic_bn_lcm.c.o
@@ -354,7 +354,7 @@ bn/relic_bn_lcm.o: bn/relic_bn_lcm.c.o
 
 # target to build an object file
 bn/relic_bn_lcm.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/bn/relic_bn_lcm.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/bn/relic_bn_lcm.c.o
 .PHONY : bn/relic_bn_lcm.c.o
 
 bn/relic_bn_lcm.i: bn/relic_bn_lcm.c.i
@@ -363,7 +363,7 @@ bn/relic_bn_lcm.i: bn/relic_bn_lcm.c.i
 
 # target to preprocess a source file
 bn/relic_bn_lcm.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/bn/relic_bn_lcm.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/bn/relic_bn_lcm.c.i
 .PHONY : bn/relic_bn_lcm.c.i
 
 bn/relic_bn_lcm.s: bn/relic_bn_lcm.c.s
@@ -372,7 +372,7 @@ bn/relic_bn_lcm.s: bn/relic_bn_lcm.c.s
 
 # target to generate assembly for a file
 bn/relic_bn_lcm.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/bn/relic_bn_lcm.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/bn/relic_bn_lcm.c.s
 .PHONY : bn/relic_bn_lcm.c.s
 
 bn/relic_bn_mem.o: bn/relic_bn_mem.c.o
@@ -381,7 +381,7 @@ bn/relic_bn_mem.o: bn/relic_bn_mem.c.o
 
 # target to build an object file
 bn/relic_bn_mem.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/bn/relic_bn_mem.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/bn/relic_bn_mem.c.o
 .PHONY : bn/relic_bn_mem.c.o
 
 bn/relic_bn_mem.i: bn/relic_bn_mem.c.i
@@ -390,7 +390,7 @@ bn/relic_bn_mem.i: bn/relic_bn_mem.c.i
 
 # target to preprocess a source file
 bn/relic_bn_mem.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/bn/relic_bn_mem.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/bn/relic_bn_mem.c.i
 .PHONY : bn/relic_bn_mem.c.i
 
 bn/relic_bn_mem.s: bn/relic_bn_mem.c.s
@@ -399,7 +399,7 @@ bn/relic_bn_mem.s: bn/relic_bn_mem.c.s
 
 # target to generate assembly for a file
 bn/relic_bn_mem.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/bn/relic_bn_mem.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/bn/relic_bn_mem.c.s
 .PHONY : bn/relic_bn_mem.c.s
 
 bn/relic_bn_mod.o: bn/relic_bn_mod.c.o
@@ -408,7 +408,7 @@ bn/relic_bn_mod.o: bn/relic_bn_mod.c.o
 
 # target to build an object file
 bn/relic_bn_mod.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/bn/relic_bn_mod.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/bn/relic_bn_mod.c.o
 .PHONY : bn/relic_bn_mod.c.o
 
 bn/relic_bn_mod.i: bn/relic_bn_mod.c.i
@@ -417,7 +417,7 @@ bn/relic_bn_mod.i: bn/relic_bn_mod.c.i
 
 # target to preprocess a source file
 bn/relic_bn_mod.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/bn/relic_bn_mod.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/bn/relic_bn_mod.c.i
 .PHONY : bn/relic_bn_mod.c.i
 
 bn/relic_bn_mod.s: bn/relic_bn_mod.c.s
@@ -426,7 +426,7 @@ bn/relic_bn_mod.s: bn/relic_bn_mod.c.s
 
 # target to generate assembly for a file
 bn/relic_bn_mod.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/bn/relic_bn_mod.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/bn/relic_bn_mod.c.s
 .PHONY : bn/relic_bn_mod.c.s
 
 bn/relic_bn_mul.o: bn/relic_bn_mul.c.o
@@ -435,7 +435,7 @@ bn/relic_bn_mul.o: bn/relic_bn_mul.c.o
 
 # target to build an object file
 bn/relic_bn_mul.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/bn/relic_bn_mul.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/bn/relic_bn_mul.c.o
 .PHONY : bn/relic_bn_mul.c.o
 
 bn/relic_bn_mul.i: bn/relic_bn_mul.c.i
@@ -444,7 +444,7 @@ bn/relic_bn_mul.i: bn/relic_bn_mul.c.i
 
 # target to preprocess a source file
 bn/relic_bn_mul.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/bn/relic_bn_mul.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/bn/relic_bn_mul.c.i
 .PHONY : bn/relic_bn_mul.c.i
 
 bn/relic_bn_mul.s: bn/relic_bn_mul.c.s
@@ -453,7 +453,7 @@ bn/relic_bn_mul.s: bn/relic_bn_mul.c.s
 
 # target to generate assembly for a file
 bn/relic_bn_mul.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/bn/relic_bn_mul.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/bn/relic_bn_mul.c.s
 .PHONY : bn/relic_bn_mul.c.s
 
 bn/relic_bn_mxp.o: bn/relic_bn_mxp.c.o
@@ -462,7 +462,7 @@ bn/relic_bn_mxp.o: bn/relic_bn_mxp.c.o
 
 # target to build an object file
 bn/relic_bn_mxp.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/bn/relic_bn_mxp.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/bn/relic_bn_mxp.c.o
 .PHONY : bn/relic_bn_mxp.c.o
 
 bn/relic_bn_mxp.i: bn/relic_bn_mxp.c.i
@@ -471,7 +471,7 @@ bn/relic_bn_mxp.i: bn/relic_bn_mxp.c.i
 
 # target to preprocess a source file
 bn/relic_bn_mxp.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/bn/relic_bn_mxp.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/bn/relic_bn_mxp.c.i
 .PHONY : bn/relic_bn_mxp.c.i
 
 bn/relic_bn_mxp.s: bn/relic_bn_mxp.c.s
@@ -480,7 +480,7 @@ bn/relic_bn_mxp.s: bn/relic_bn_mxp.c.s
 
 # target to generate assembly for a file
 bn/relic_bn_mxp.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/bn/relic_bn_mxp.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/bn/relic_bn_mxp.c.s
 .PHONY : bn/relic_bn_mxp.c.s
 
 bn/relic_bn_prime.o: bn/relic_bn_prime.c.o
@@ -489,7 +489,7 @@ bn/relic_bn_prime.o: bn/relic_bn_prime.c.o
 
 # target to build an object file
 bn/relic_bn_prime.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/bn/relic_bn_prime.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/bn/relic_bn_prime.c.o
 .PHONY : bn/relic_bn_prime.c.o
 
 bn/relic_bn_prime.i: bn/relic_bn_prime.c.i
@@ -498,7 +498,7 @@ bn/relic_bn_prime.i: bn/relic_bn_prime.c.i
 
 # target to preprocess a source file
 bn/relic_bn_prime.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/bn/relic_bn_prime.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/bn/relic_bn_prime.c.i
 .PHONY : bn/relic_bn_prime.c.i
 
 bn/relic_bn_prime.s: bn/relic_bn_prime.c.s
@@ -507,7 +507,7 @@ bn/relic_bn_prime.s: bn/relic_bn_prime.c.s
 
 # target to generate assembly for a file
 bn/relic_bn_prime.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/bn/relic_bn_prime.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/bn/relic_bn_prime.c.s
 .PHONY : bn/relic_bn_prime.c.s
 
 bn/relic_bn_rec.o: bn/relic_bn_rec.c.o
@@ -516,7 +516,7 @@ bn/relic_bn_rec.o: bn/relic_bn_rec.c.o
 
 # target to build an object file
 bn/relic_bn_rec.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/bn/relic_bn_rec.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/bn/relic_bn_rec.c.o
 .PHONY : bn/relic_bn_rec.c.o
 
 bn/relic_bn_rec.i: bn/relic_bn_rec.c.i
@@ -525,7 +525,7 @@ bn/relic_bn_rec.i: bn/relic_bn_rec.c.i
 
 # target to preprocess a source file
 bn/relic_bn_rec.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/bn/relic_bn_rec.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/bn/relic_bn_rec.c.i
 .PHONY : bn/relic_bn_rec.c.i
 
 bn/relic_bn_rec.s: bn/relic_bn_rec.c.s
@@ -534,7 +534,7 @@ bn/relic_bn_rec.s: bn/relic_bn_rec.c.s
 
 # target to generate assembly for a file
 bn/relic_bn_rec.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/bn/relic_bn_rec.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/bn/relic_bn_rec.c.s
 .PHONY : bn/relic_bn_rec.c.s
 
 bn/relic_bn_shift.o: bn/relic_bn_shift.c.o
@@ -543,7 +543,7 @@ bn/relic_bn_shift.o: bn/relic_bn_shift.c.o
 
 # target to build an object file
 bn/relic_bn_shift.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/bn/relic_bn_shift.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/bn/relic_bn_shift.c.o
 .PHONY : bn/relic_bn_shift.c.o
 
 bn/relic_bn_shift.i: bn/relic_bn_shift.c.i
@@ -552,7 +552,7 @@ bn/relic_bn_shift.i: bn/relic_bn_shift.c.i
 
 # target to preprocess a source file
 bn/relic_bn_shift.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/bn/relic_bn_shift.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/bn/relic_bn_shift.c.i
 .PHONY : bn/relic_bn_shift.c.i
 
 bn/relic_bn_shift.s: bn/relic_bn_shift.c.s
@@ -561,7 +561,7 @@ bn/relic_bn_shift.s: bn/relic_bn_shift.c.s
 
 # target to generate assembly for a file
 bn/relic_bn_shift.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/bn/relic_bn_shift.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/bn/relic_bn_shift.c.s
 .PHONY : bn/relic_bn_shift.c.s
 
 bn/relic_bn_smb.o: bn/relic_bn_smb.c.o
@@ -570,7 +570,7 @@ bn/relic_bn_smb.o: bn/relic_bn_smb.c.o
 
 # target to build an object file
 bn/relic_bn_smb.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/bn/relic_bn_smb.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/bn/relic_bn_smb.c.o
 .PHONY : bn/relic_bn_smb.c.o
 
 bn/relic_bn_smb.i: bn/relic_bn_smb.c.i
@@ -579,7 +579,7 @@ bn/relic_bn_smb.i: bn/relic_bn_smb.c.i
 
 # target to preprocess a source file
 bn/relic_bn_smb.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/bn/relic_bn_smb.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/bn/relic_bn_smb.c.i
 .PHONY : bn/relic_bn_smb.c.i
 
 bn/relic_bn_smb.s: bn/relic_bn_smb.c.s
@@ -588,7 +588,7 @@ bn/relic_bn_smb.s: bn/relic_bn_smb.c.s
 
 # target to generate assembly for a file
 bn/relic_bn_smb.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/bn/relic_bn_smb.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/bn/relic_bn_smb.c.s
 .PHONY : bn/relic_bn_smb.c.s
 
 bn/relic_bn_sqr.o: bn/relic_bn_sqr.c.o
@@ -597,7 +597,7 @@ bn/relic_bn_sqr.o: bn/relic_bn_sqr.c.o
 
 # target to build an object file
 bn/relic_bn_sqr.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/bn/relic_bn_sqr.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/bn/relic_bn_sqr.c.o
 .PHONY : bn/relic_bn_sqr.c.o
 
 bn/relic_bn_sqr.i: bn/relic_bn_sqr.c.i
@@ -606,7 +606,7 @@ bn/relic_bn_sqr.i: bn/relic_bn_sqr.c.i
 
 # target to preprocess a source file
 bn/relic_bn_sqr.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/bn/relic_bn_sqr.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/bn/relic_bn_sqr.c.i
 .PHONY : bn/relic_bn_sqr.c.i
 
 bn/relic_bn_sqr.s: bn/relic_bn_sqr.c.s
@@ -615,7 +615,7 @@ bn/relic_bn_sqr.s: bn/relic_bn_sqr.c.s
 
 # target to generate assembly for a file
 bn/relic_bn_sqr.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/bn/relic_bn_sqr.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/bn/relic_bn_sqr.c.s
 .PHONY : bn/relic_bn_sqr.c.s
 
 bn/relic_bn_srt.o: bn/relic_bn_srt.c.o
@@ -624,7 +624,7 @@ bn/relic_bn_srt.o: bn/relic_bn_srt.c.o
 
 # target to build an object file
 bn/relic_bn_srt.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/bn/relic_bn_srt.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/bn/relic_bn_srt.c.o
 .PHONY : bn/relic_bn_srt.c.o
 
 bn/relic_bn_srt.i: bn/relic_bn_srt.c.i
@@ -633,7 +633,7 @@ bn/relic_bn_srt.i: bn/relic_bn_srt.c.i
 
 # target to preprocess a source file
 bn/relic_bn_srt.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/bn/relic_bn_srt.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/bn/relic_bn_srt.c.i
 .PHONY : bn/relic_bn_srt.c.i
 
 bn/relic_bn_srt.s: bn/relic_bn_srt.c.s
@@ -642,7 +642,7 @@ bn/relic_bn_srt.s: bn/relic_bn_srt.c.s
 
 # target to generate assembly for a file
 bn/relic_bn_srt.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/bn/relic_bn_srt.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/bn/relic_bn_srt.c.s
 .PHONY : bn/relic_bn_srt.c.s
 
 bn/relic_bn_util.o: bn/relic_bn_util.c.o
@@ -651,7 +651,7 @@ bn/relic_bn_util.o: bn/relic_bn_util.c.o
 
 # target to build an object file
 bn/relic_bn_util.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/bn/relic_bn_util.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/bn/relic_bn_util.c.o
 .PHONY : bn/relic_bn_util.c.o
 
 bn/relic_bn_util.i: bn/relic_bn_util.c.i
@@ -660,7 +660,7 @@ bn/relic_bn_util.i: bn/relic_bn_util.c.i
 
 # target to preprocess a source file
 bn/relic_bn_util.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/bn/relic_bn_util.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/bn/relic_bn_util.c.i
 .PHONY : bn/relic_bn_util.c.i
 
 bn/relic_bn_util.s: bn/relic_bn_util.c.s
@@ -669,7 +669,7 @@ bn/relic_bn_util.s: bn/relic_bn_util.c.s
 
 # target to generate assembly for a file
 bn/relic_bn_util.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/bn/relic_bn_util.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/bn/relic_bn_util.c.s
 .PHONY : bn/relic_bn_util.c.s
 
 dv/relic_dv_mem.o: dv/relic_dv_mem.c.o
@@ -678,7 +678,7 @@ dv/relic_dv_mem.o: dv/relic_dv_mem.c.o
 
 # target to build an object file
 dv/relic_dv_mem.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/dv/relic_dv_mem.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/dv/relic_dv_mem.c.o
 .PHONY : dv/relic_dv_mem.c.o
 
 dv/relic_dv_mem.i: dv/relic_dv_mem.c.i
@@ -687,7 +687,7 @@ dv/relic_dv_mem.i: dv/relic_dv_mem.c.i
 
 # target to preprocess a source file
 dv/relic_dv_mem.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/dv/relic_dv_mem.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/dv/relic_dv_mem.c.i
 .PHONY : dv/relic_dv_mem.c.i
 
 dv/relic_dv_mem.s: dv/relic_dv_mem.c.s
@@ -696,7 +696,7 @@ dv/relic_dv_mem.s: dv/relic_dv_mem.c.s
 
 # target to generate assembly for a file
 dv/relic_dv_mem.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/dv/relic_dv_mem.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/dv/relic_dv_mem.c.s
 .PHONY : dv/relic_dv_mem.c.s
 
 dv/relic_dv_util.o: dv/relic_dv_util.c.o
@@ -705,7 +705,7 @@ dv/relic_dv_util.o: dv/relic_dv_util.c.o
 
 # target to build an object file
 dv/relic_dv_util.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/dv/relic_dv_util.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/dv/relic_dv_util.c.o
 .PHONY : dv/relic_dv_util.c.o
 
 dv/relic_dv_util.i: dv/relic_dv_util.c.i
@@ -714,7 +714,7 @@ dv/relic_dv_util.i: dv/relic_dv_util.c.i
 
 # target to preprocess a source file
 dv/relic_dv_util.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/dv/relic_dv_util.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/dv/relic_dv_util.c.i
 .PHONY : dv/relic_dv_util.c.i
 
 dv/relic_dv_util.s: dv/relic_dv_util.c.s
@@ -723,7 +723,7 @@ dv/relic_dv_util.s: dv/relic_dv_util.c.s
 
 # target to generate assembly for a file
 dv/relic_dv_util.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/dv/relic_dv_util.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/dv/relic_dv_util.c.s
 .PHONY : dv/relic_dv_util.c.s
 
 eb/relic_eb_add.o: eb/relic_eb_add.c.o
@@ -732,7 +732,7 @@ eb/relic_eb_add.o: eb/relic_eb_add.c.o
 
 # target to build an object file
 eb/relic_eb_add.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/eb/relic_eb_add.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/eb/relic_eb_add.c.o
 .PHONY : eb/relic_eb_add.c.o
 
 eb/relic_eb_add.i: eb/relic_eb_add.c.i
@@ -741,7 +741,7 @@ eb/relic_eb_add.i: eb/relic_eb_add.c.i
 
 # target to preprocess a source file
 eb/relic_eb_add.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/eb/relic_eb_add.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/eb/relic_eb_add.c.i
 .PHONY : eb/relic_eb_add.c.i
 
 eb/relic_eb_add.s: eb/relic_eb_add.c.s
@@ -750,7 +750,7 @@ eb/relic_eb_add.s: eb/relic_eb_add.c.s
 
 # target to generate assembly for a file
 eb/relic_eb_add.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/eb/relic_eb_add.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/eb/relic_eb_add.c.s
 .PHONY : eb/relic_eb_add.c.s
 
 eb/relic_eb_curve.o: eb/relic_eb_curve.c.o
@@ -759,7 +759,7 @@ eb/relic_eb_curve.o: eb/relic_eb_curve.c.o
 
 # target to build an object file
 eb/relic_eb_curve.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/eb/relic_eb_curve.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/eb/relic_eb_curve.c.o
 .PHONY : eb/relic_eb_curve.c.o
 
 eb/relic_eb_curve.i: eb/relic_eb_curve.c.i
@@ -768,7 +768,7 @@ eb/relic_eb_curve.i: eb/relic_eb_curve.c.i
 
 # target to preprocess a source file
 eb/relic_eb_curve.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/eb/relic_eb_curve.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/eb/relic_eb_curve.c.i
 .PHONY : eb/relic_eb_curve.c.i
 
 eb/relic_eb_curve.s: eb/relic_eb_curve.c.s
@@ -777,7 +777,7 @@ eb/relic_eb_curve.s: eb/relic_eb_curve.c.s
 
 # target to generate assembly for a file
 eb/relic_eb_curve.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/eb/relic_eb_curve.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/eb/relic_eb_curve.c.s
 .PHONY : eb/relic_eb_curve.c.s
 
 eb/relic_eb_dbl.o: eb/relic_eb_dbl.c.o
@@ -786,7 +786,7 @@ eb/relic_eb_dbl.o: eb/relic_eb_dbl.c.o
 
 # target to build an object file
 eb/relic_eb_dbl.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/eb/relic_eb_dbl.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/eb/relic_eb_dbl.c.o
 .PHONY : eb/relic_eb_dbl.c.o
 
 eb/relic_eb_dbl.i: eb/relic_eb_dbl.c.i
@@ -795,7 +795,7 @@ eb/relic_eb_dbl.i: eb/relic_eb_dbl.c.i
 
 # target to preprocess a source file
 eb/relic_eb_dbl.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/eb/relic_eb_dbl.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/eb/relic_eb_dbl.c.i
 .PHONY : eb/relic_eb_dbl.c.i
 
 eb/relic_eb_dbl.s: eb/relic_eb_dbl.c.s
@@ -804,7 +804,7 @@ eb/relic_eb_dbl.s: eb/relic_eb_dbl.c.s
 
 # target to generate assembly for a file
 eb/relic_eb_dbl.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/eb/relic_eb_dbl.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/eb/relic_eb_dbl.c.s
 .PHONY : eb/relic_eb_dbl.c.s
 
 eb/relic_eb_frb.o: eb/relic_eb_frb.c.o
@@ -813,7 +813,7 @@ eb/relic_eb_frb.o: eb/relic_eb_frb.c.o
 
 # target to build an object file
 eb/relic_eb_frb.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/eb/relic_eb_frb.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/eb/relic_eb_frb.c.o
 .PHONY : eb/relic_eb_frb.c.o
 
 eb/relic_eb_frb.i: eb/relic_eb_frb.c.i
@@ -822,7 +822,7 @@ eb/relic_eb_frb.i: eb/relic_eb_frb.c.i
 
 # target to preprocess a source file
 eb/relic_eb_frb.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/eb/relic_eb_frb.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/eb/relic_eb_frb.c.i
 .PHONY : eb/relic_eb_frb.c.i
 
 eb/relic_eb_frb.s: eb/relic_eb_frb.c.s
@@ -831,7 +831,7 @@ eb/relic_eb_frb.s: eb/relic_eb_frb.c.s
 
 # target to generate assembly for a file
 eb/relic_eb_frb.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/eb/relic_eb_frb.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/eb/relic_eb_frb.c.s
 .PHONY : eb/relic_eb_frb.c.s
 
 eb/relic_eb_hlv.o: eb/relic_eb_hlv.c.o
@@ -840,7 +840,7 @@ eb/relic_eb_hlv.o: eb/relic_eb_hlv.c.o
 
 # target to build an object file
 eb/relic_eb_hlv.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/eb/relic_eb_hlv.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/eb/relic_eb_hlv.c.o
 .PHONY : eb/relic_eb_hlv.c.o
 
 eb/relic_eb_hlv.i: eb/relic_eb_hlv.c.i
@@ -849,7 +849,7 @@ eb/relic_eb_hlv.i: eb/relic_eb_hlv.c.i
 
 # target to preprocess a source file
 eb/relic_eb_hlv.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/eb/relic_eb_hlv.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/eb/relic_eb_hlv.c.i
 .PHONY : eb/relic_eb_hlv.c.i
 
 eb/relic_eb_hlv.s: eb/relic_eb_hlv.c.s
@@ -858,7 +858,7 @@ eb/relic_eb_hlv.s: eb/relic_eb_hlv.c.s
 
 # target to generate assembly for a file
 eb/relic_eb_hlv.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/eb/relic_eb_hlv.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/eb/relic_eb_hlv.c.s
 .PHONY : eb/relic_eb_hlv.c.s
 
 eb/relic_eb_map.o: eb/relic_eb_map.c.o
@@ -867,7 +867,7 @@ eb/relic_eb_map.o: eb/relic_eb_map.c.o
 
 # target to build an object file
 eb/relic_eb_map.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/eb/relic_eb_map.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/eb/relic_eb_map.c.o
 .PHONY : eb/relic_eb_map.c.o
 
 eb/relic_eb_map.i: eb/relic_eb_map.c.i
@@ -876,7 +876,7 @@ eb/relic_eb_map.i: eb/relic_eb_map.c.i
 
 # target to preprocess a source file
 eb/relic_eb_map.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/eb/relic_eb_map.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/eb/relic_eb_map.c.i
 .PHONY : eb/relic_eb_map.c.i
 
 eb/relic_eb_map.s: eb/relic_eb_map.c.s
@@ -885,7 +885,7 @@ eb/relic_eb_map.s: eb/relic_eb_map.c.s
 
 # target to generate assembly for a file
 eb/relic_eb_map.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/eb/relic_eb_map.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/eb/relic_eb_map.c.s
 .PHONY : eb/relic_eb_map.c.s
 
 eb/relic_eb_mul.o: eb/relic_eb_mul.c.o
@@ -894,7 +894,7 @@ eb/relic_eb_mul.o: eb/relic_eb_mul.c.o
 
 # target to build an object file
 eb/relic_eb_mul.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/eb/relic_eb_mul.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/eb/relic_eb_mul.c.o
 .PHONY : eb/relic_eb_mul.c.o
 
 eb/relic_eb_mul.i: eb/relic_eb_mul.c.i
@@ -903,7 +903,7 @@ eb/relic_eb_mul.i: eb/relic_eb_mul.c.i
 
 # target to preprocess a source file
 eb/relic_eb_mul.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/eb/relic_eb_mul.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/eb/relic_eb_mul.c.i
 .PHONY : eb/relic_eb_mul.c.i
 
 eb/relic_eb_mul.s: eb/relic_eb_mul.c.s
@@ -912,7 +912,7 @@ eb/relic_eb_mul.s: eb/relic_eb_mul.c.s
 
 # target to generate assembly for a file
 eb/relic_eb_mul.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/eb/relic_eb_mul.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/eb/relic_eb_mul.c.s
 .PHONY : eb/relic_eb_mul.c.s
 
 eb/relic_eb_mul_fix.o: eb/relic_eb_mul_fix.c.o
@@ -921,7 +921,7 @@ eb/relic_eb_mul_fix.o: eb/relic_eb_mul_fix.c.o
 
 # target to build an object file
 eb/relic_eb_mul_fix.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/eb/relic_eb_mul_fix.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/eb/relic_eb_mul_fix.c.o
 .PHONY : eb/relic_eb_mul_fix.c.o
 
 eb/relic_eb_mul_fix.i: eb/relic_eb_mul_fix.c.i
@@ -930,7 +930,7 @@ eb/relic_eb_mul_fix.i: eb/relic_eb_mul_fix.c.i
 
 # target to preprocess a source file
 eb/relic_eb_mul_fix.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/eb/relic_eb_mul_fix.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/eb/relic_eb_mul_fix.c.i
 .PHONY : eb/relic_eb_mul_fix.c.i
 
 eb/relic_eb_mul_fix.s: eb/relic_eb_mul_fix.c.s
@@ -939,7 +939,7 @@ eb/relic_eb_mul_fix.s: eb/relic_eb_mul_fix.c.s
 
 # target to generate assembly for a file
 eb/relic_eb_mul_fix.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/eb/relic_eb_mul_fix.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/eb/relic_eb_mul_fix.c.s
 .PHONY : eb/relic_eb_mul_fix.c.s
 
 eb/relic_eb_mul_sim.o: eb/relic_eb_mul_sim.c.o
@@ -948,7 +948,7 @@ eb/relic_eb_mul_sim.o: eb/relic_eb_mul_sim.c.o
 
 # target to build an object file
 eb/relic_eb_mul_sim.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/eb/relic_eb_mul_sim.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/eb/relic_eb_mul_sim.c.o
 .PHONY : eb/relic_eb_mul_sim.c.o
 
 eb/relic_eb_mul_sim.i: eb/relic_eb_mul_sim.c.i
@@ -957,7 +957,7 @@ eb/relic_eb_mul_sim.i: eb/relic_eb_mul_sim.c.i
 
 # target to preprocess a source file
 eb/relic_eb_mul_sim.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/eb/relic_eb_mul_sim.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/eb/relic_eb_mul_sim.c.i
 .PHONY : eb/relic_eb_mul_sim.c.i
 
 eb/relic_eb_mul_sim.s: eb/relic_eb_mul_sim.c.s
@@ -966,7 +966,7 @@ eb/relic_eb_mul_sim.s: eb/relic_eb_mul_sim.c.s
 
 # target to generate assembly for a file
 eb/relic_eb_mul_sim.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/eb/relic_eb_mul_sim.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/eb/relic_eb_mul_sim.c.s
 .PHONY : eb/relic_eb_mul_sim.c.s
 
 eb/relic_eb_neg.o: eb/relic_eb_neg.c.o
@@ -975,7 +975,7 @@ eb/relic_eb_neg.o: eb/relic_eb_neg.c.o
 
 # target to build an object file
 eb/relic_eb_neg.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/eb/relic_eb_neg.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/eb/relic_eb_neg.c.o
 .PHONY : eb/relic_eb_neg.c.o
 
 eb/relic_eb_neg.i: eb/relic_eb_neg.c.i
@@ -984,7 +984,7 @@ eb/relic_eb_neg.i: eb/relic_eb_neg.c.i
 
 # target to preprocess a source file
 eb/relic_eb_neg.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/eb/relic_eb_neg.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/eb/relic_eb_neg.c.i
 .PHONY : eb/relic_eb_neg.c.i
 
 eb/relic_eb_neg.s: eb/relic_eb_neg.c.s
@@ -993,7 +993,7 @@ eb/relic_eb_neg.s: eb/relic_eb_neg.c.s
 
 # target to generate assembly for a file
 eb/relic_eb_neg.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/eb/relic_eb_neg.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/eb/relic_eb_neg.c.s
 .PHONY : eb/relic_eb_neg.c.s
 
 eb/relic_eb_norm.o: eb/relic_eb_norm.c.o
@@ -1002,7 +1002,7 @@ eb/relic_eb_norm.o: eb/relic_eb_norm.c.o
 
 # target to build an object file
 eb/relic_eb_norm.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/eb/relic_eb_norm.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/eb/relic_eb_norm.c.o
 .PHONY : eb/relic_eb_norm.c.o
 
 eb/relic_eb_norm.i: eb/relic_eb_norm.c.i
@@ -1011,7 +1011,7 @@ eb/relic_eb_norm.i: eb/relic_eb_norm.c.i
 
 # target to preprocess a source file
 eb/relic_eb_norm.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/eb/relic_eb_norm.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/eb/relic_eb_norm.c.i
 .PHONY : eb/relic_eb_norm.c.i
 
 eb/relic_eb_norm.s: eb/relic_eb_norm.c.s
@@ -1020,7 +1020,7 @@ eb/relic_eb_norm.s: eb/relic_eb_norm.c.s
 
 # target to generate assembly for a file
 eb/relic_eb_norm.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/eb/relic_eb_norm.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/eb/relic_eb_norm.c.s
 .PHONY : eb/relic_eb_norm.c.s
 
 eb/relic_eb_param.o: eb/relic_eb_param.c.o
@@ -1029,7 +1029,7 @@ eb/relic_eb_param.o: eb/relic_eb_param.c.o
 
 # target to build an object file
 eb/relic_eb_param.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/eb/relic_eb_param.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/eb/relic_eb_param.c.o
 .PHONY : eb/relic_eb_param.c.o
 
 eb/relic_eb_param.i: eb/relic_eb_param.c.i
@@ -1038,7 +1038,7 @@ eb/relic_eb_param.i: eb/relic_eb_param.c.i
 
 # target to preprocess a source file
 eb/relic_eb_param.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/eb/relic_eb_param.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/eb/relic_eb_param.c.i
 .PHONY : eb/relic_eb_param.c.i
 
 eb/relic_eb_param.s: eb/relic_eb_param.c.s
@@ -1047,7 +1047,7 @@ eb/relic_eb_param.s: eb/relic_eb_param.c.s
 
 # target to generate assembly for a file
 eb/relic_eb_param.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/eb/relic_eb_param.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/eb/relic_eb_param.c.s
 .PHONY : eb/relic_eb_param.c.s
 
 eb/relic_eb_pck.o: eb/relic_eb_pck.c.o
@@ -1056,7 +1056,7 @@ eb/relic_eb_pck.o: eb/relic_eb_pck.c.o
 
 # target to build an object file
 eb/relic_eb_pck.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/eb/relic_eb_pck.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/eb/relic_eb_pck.c.o
 .PHONY : eb/relic_eb_pck.c.o
 
 eb/relic_eb_pck.i: eb/relic_eb_pck.c.i
@@ -1065,7 +1065,7 @@ eb/relic_eb_pck.i: eb/relic_eb_pck.c.i
 
 # target to preprocess a source file
 eb/relic_eb_pck.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/eb/relic_eb_pck.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/eb/relic_eb_pck.c.i
 .PHONY : eb/relic_eb_pck.c.i
 
 eb/relic_eb_pck.s: eb/relic_eb_pck.c.s
@@ -1074,7 +1074,7 @@ eb/relic_eb_pck.s: eb/relic_eb_pck.c.s
 
 # target to generate assembly for a file
 eb/relic_eb_pck.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/eb/relic_eb_pck.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/eb/relic_eb_pck.c.s
 .PHONY : eb/relic_eb_pck.c.s
 
 eb/relic_eb_util.o: eb/relic_eb_util.c.o
@@ -1083,7 +1083,7 @@ eb/relic_eb_util.o: eb/relic_eb_util.c.o
 
 # target to build an object file
 eb/relic_eb_util.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/eb/relic_eb_util.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/eb/relic_eb_util.c.o
 .PHONY : eb/relic_eb_util.c.o
 
 eb/relic_eb_util.i: eb/relic_eb_util.c.i
@@ -1092,7 +1092,7 @@ eb/relic_eb_util.i: eb/relic_eb_util.c.i
 
 # target to preprocess a source file
 eb/relic_eb_util.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/eb/relic_eb_util.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/eb/relic_eb_util.c.i
 .PHONY : eb/relic_eb_util.c.i
 
 eb/relic_eb_util.s: eb/relic_eb_util.c.s
@@ -1101,7 +1101,7 @@ eb/relic_eb_util.s: eb/relic_eb_util.c.s
 
 # target to generate assembly for a file
 eb/relic_eb_util.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/eb/relic_eb_util.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/eb/relic_eb_util.c.s
 .PHONY : eb/relic_eb_util.c.s
 
 ep/relic_ep_add.o: ep/relic_ep_add.c.o
@@ -1110,7 +1110,7 @@ ep/relic_ep_add.o: ep/relic_ep_add.c.o
 
 # target to build an object file
 ep/relic_ep_add.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/ep/relic_ep_add.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/ep/relic_ep_add.c.o
 .PHONY : ep/relic_ep_add.c.o
 
 ep/relic_ep_add.i: ep/relic_ep_add.c.i
@@ -1119,7 +1119,7 @@ ep/relic_ep_add.i: ep/relic_ep_add.c.i
 
 # target to preprocess a source file
 ep/relic_ep_add.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/ep/relic_ep_add.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/ep/relic_ep_add.c.i
 .PHONY : ep/relic_ep_add.c.i
 
 ep/relic_ep_add.s: ep/relic_ep_add.c.s
@@ -1128,7 +1128,7 @@ ep/relic_ep_add.s: ep/relic_ep_add.c.s
 
 # target to generate assembly for a file
 ep/relic_ep_add.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/ep/relic_ep_add.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/ep/relic_ep_add.c.s
 .PHONY : ep/relic_ep_add.c.s
 
 ep/relic_ep_curve.o: ep/relic_ep_curve.c.o
@@ -1137,7 +1137,7 @@ ep/relic_ep_curve.o: ep/relic_ep_curve.c.o
 
 # target to build an object file
 ep/relic_ep_curve.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/ep/relic_ep_curve.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/ep/relic_ep_curve.c.o
 .PHONY : ep/relic_ep_curve.c.o
 
 ep/relic_ep_curve.i: ep/relic_ep_curve.c.i
@@ -1146,7 +1146,7 @@ ep/relic_ep_curve.i: ep/relic_ep_curve.c.i
 
 # target to preprocess a source file
 ep/relic_ep_curve.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/ep/relic_ep_curve.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/ep/relic_ep_curve.c.i
 .PHONY : ep/relic_ep_curve.c.i
 
 ep/relic_ep_curve.s: ep/relic_ep_curve.c.s
@@ -1155,7 +1155,7 @@ ep/relic_ep_curve.s: ep/relic_ep_curve.c.s
 
 # target to generate assembly for a file
 ep/relic_ep_curve.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/ep/relic_ep_curve.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/ep/relic_ep_curve.c.s
 .PHONY : ep/relic_ep_curve.c.s
 
 ep/relic_ep_dbl.o: ep/relic_ep_dbl.c.o
@@ -1164,7 +1164,7 @@ ep/relic_ep_dbl.o: ep/relic_ep_dbl.c.o
 
 # target to build an object file
 ep/relic_ep_dbl.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/ep/relic_ep_dbl.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/ep/relic_ep_dbl.c.o
 .PHONY : ep/relic_ep_dbl.c.o
 
 ep/relic_ep_dbl.i: ep/relic_ep_dbl.c.i
@@ -1173,7 +1173,7 @@ ep/relic_ep_dbl.i: ep/relic_ep_dbl.c.i
 
 # target to preprocess a source file
 ep/relic_ep_dbl.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/ep/relic_ep_dbl.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/ep/relic_ep_dbl.c.i
 .PHONY : ep/relic_ep_dbl.c.i
 
 ep/relic_ep_dbl.s: ep/relic_ep_dbl.c.s
@@ -1182,7 +1182,7 @@ ep/relic_ep_dbl.s: ep/relic_ep_dbl.c.s
 
 # target to generate assembly for a file
 ep/relic_ep_dbl.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/ep/relic_ep_dbl.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/ep/relic_ep_dbl.c.s
 .PHONY : ep/relic_ep_dbl.c.s
 
 ep/relic_ep_map.o: ep/relic_ep_map.c.o
@@ -1191,7 +1191,7 @@ ep/relic_ep_map.o: ep/relic_ep_map.c.o
 
 # target to build an object file
 ep/relic_ep_map.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/ep/relic_ep_map.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/ep/relic_ep_map.c.o
 .PHONY : ep/relic_ep_map.c.o
 
 ep/relic_ep_map.i: ep/relic_ep_map.c.i
@@ -1200,7 +1200,7 @@ ep/relic_ep_map.i: ep/relic_ep_map.c.i
 
 # target to preprocess a source file
 ep/relic_ep_map.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/ep/relic_ep_map.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/ep/relic_ep_map.c.i
 .PHONY : ep/relic_ep_map.c.i
 
 ep/relic_ep_map.s: ep/relic_ep_map.c.s
@@ -1209,7 +1209,7 @@ ep/relic_ep_map.s: ep/relic_ep_map.c.s
 
 # target to generate assembly for a file
 ep/relic_ep_map.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/ep/relic_ep_map.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/ep/relic_ep_map.c.s
 .PHONY : ep/relic_ep_map.c.s
 
 ep/relic_ep_mul.o: ep/relic_ep_mul.c.o
@@ -1218,7 +1218,7 @@ ep/relic_ep_mul.o: ep/relic_ep_mul.c.o
 
 # target to build an object file
 ep/relic_ep_mul.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/ep/relic_ep_mul.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/ep/relic_ep_mul.c.o
 .PHONY : ep/relic_ep_mul.c.o
 
 ep/relic_ep_mul.i: ep/relic_ep_mul.c.i
@@ -1227,7 +1227,7 @@ ep/relic_ep_mul.i: ep/relic_ep_mul.c.i
 
 # target to preprocess a source file
 ep/relic_ep_mul.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/ep/relic_ep_mul.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/ep/relic_ep_mul.c.i
 .PHONY : ep/relic_ep_mul.c.i
 
 ep/relic_ep_mul.s: ep/relic_ep_mul.c.s
@@ -1236,7 +1236,7 @@ ep/relic_ep_mul.s: ep/relic_ep_mul.c.s
 
 # target to generate assembly for a file
 ep/relic_ep_mul.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/ep/relic_ep_mul.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/ep/relic_ep_mul.c.s
 .PHONY : ep/relic_ep_mul.c.s
 
 ep/relic_ep_mul_fix.o: ep/relic_ep_mul_fix.c.o
@@ -1245,7 +1245,7 @@ ep/relic_ep_mul_fix.o: ep/relic_ep_mul_fix.c.o
 
 # target to build an object file
 ep/relic_ep_mul_fix.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/ep/relic_ep_mul_fix.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/ep/relic_ep_mul_fix.c.o
 .PHONY : ep/relic_ep_mul_fix.c.o
 
 ep/relic_ep_mul_fix.i: ep/relic_ep_mul_fix.c.i
@@ -1254,7 +1254,7 @@ ep/relic_ep_mul_fix.i: ep/relic_ep_mul_fix.c.i
 
 # target to preprocess a source file
 ep/relic_ep_mul_fix.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/ep/relic_ep_mul_fix.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/ep/relic_ep_mul_fix.c.i
 .PHONY : ep/relic_ep_mul_fix.c.i
 
 ep/relic_ep_mul_fix.s: ep/relic_ep_mul_fix.c.s
@@ -1263,7 +1263,7 @@ ep/relic_ep_mul_fix.s: ep/relic_ep_mul_fix.c.s
 
 # target to generate assembly for a file
 ep/relic_ep_mul_fix.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/ep/relic_ep_mul_fix.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/ep/relic_ep_mul_fix.c.s
 .PHONY : ep/relic_ep_mul_fix.c.s
 
 ep/relic_ep_mul_sim.o: ep/relic_ep_mul_sim.c.o
@@ -1272,7 +1272,7 @@ ep/relic_ep_mul_sim.o: ep/relic_ep_mul_sim.c.o
 
 # target to build an object file
 ep/relic_ep_mul_sim.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/ep/relic_ep_mul_sim.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/ep/relic_ep_mul_sim.c.o
 .PHONY : ep/relic_ep_mul_sim.c.o
 
 ep/relic_ep_mul_sim.i: ep/relic_ep_mul_sim.c.i
@@ -1281,7 +1281,7 @@ ep/relic_ep_mul_sim.i: ep/relic_ep_mul_sim.c.i
 
 # target to preprocess a source file
 ep/relic_ep_mul_sim.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/ep/relic_ep_mul_sim.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/ep/relic_ep_mul_sim.c.i
 .PHONY : ep/relic_ep_mul_sim.c.i
 
 ep/relic_ep_mul_sim.s: ep/relic_ep_mul_sim.c.s
@@ -1290,7 +1290,7 @@ ep/relic_ep_mul_sim.s: ep/relic_ep_mul_sim.c.s
 
 # target to generate assembly for a file
 ep/relic_ep_mul_sim.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/ep/relic_ep_mul_sim.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/ep/relic_ep_mul_sim.c.s
 .PHONY : ep/relic_ep_mul_sim.c.s
 
 ep/relic_ep_neg.o: ep/relic_ep_neg.c.o
@@ -1299,7 +1299,7 @@ ep/relic_ep_neg.o: ep/relic_ep_neg.c.o
 
 # target to build an object file
 ep/relic_ep_neg.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/ep/relic_ep_neg.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/ep/relic_ep_neg.c.o
 .PHONY : ep/relic_ep_neg.c.o
 
 ep/relic_ep_neg.i: ep/relic_ep_neg.c.i
@@ -1308,7 +1308,7 @@ ep/relic_ep_neg.i: ep/relic_ep_neg.c.i
 
 # target to preprocess a source file
 ep/relic_ep_neg.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/ep/relic_ep_neg.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/ep/relic_ep_neg.c.i
 .PHONY : ep/relic_ep_neg.c.i
 
 ep/relic_ep_neg.s: ep/relic_ep_neg.c.s
@@ -1317,7 +1317,7 @@ ep/relic_ep_neg.s: ep/relic_ep_neg.c.s
 
 # target to generate assembly for a file
 ep/relic_ep_neg.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/ep/relic_ep_neg.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/ep/relic_ep_neg.c.s
 .PHONY : ep/relic_ep_neg.c.s
 
 ep/relic_ep_norm.o: ep/relic_ep_norm.c.o
@@ -1326,7 +1326,7 @@ ep/relic_ep_norm.o: ep/relic_ep_norm.c.o
 
 # target to build an object file
 ep/relic_ep_norm.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/ep/relic_ep_norm.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/ep/relic_ep_norm.c.o
 .PHONY : ep/relic_ep_norm.c.o
 
 ep/relic_ep_norm.i: ep/relic_ep_norm.c.i
@@ -1335,7 +1335,7 @@ ep/relic_ep_norm.i: ep/relic_ep_norm.c.i
 
 # target to preprocess a source file
 ep/relic_ep_norm.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/ep/relic_ep_norm.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/ep/relic_ep_norm.c.i
 .PHONY : ep/relic_ep_norm.c.i
 
 ep/relic_ep_norm.s: ep/relic_ep_norm.c.s
@@ -1344,7 +1344,7 @@ ep/relic_ep_norm.s: ep/relic_ep_norm.c.s
 
 # target to generate assembly for a file
 ep/relic_ep_norm.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/ep/relic_ep_norm.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/ep/relic_ep_norm.c.s
 .PHONY : ep/relic_ep_norm.c.s
 
 ep/relic_ep_param.o: ep/relic_ep_param.c.o
@@ -1353,7 +1353,7 @@ ep/relic_ep_param.o: ep/relic_ep_param.c.o
 
 # target to build an object file
 ep/relic_ep_param.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/ep/relic_ep_param.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/ep/relic_ep_param.c.o
 .PHONY : ep/relic_ep_param.c.o
 
 ep/relic_ep_param.i: ep/relic_ep_param.c.i
@@ -1362,7 +1362,7 @@ ep/relic_ep_param.i: ep/relic_ep_param.c.i
 
 # target to preprocess a source file
 ep/relic_ep_param.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/ep/relic_ep_param.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/ep/relic_ep_param.c.i
 .PHONY : ep/relic_ep_param.c.i
 
 ep/relic_ep_param.s: ep/relic_ep_param.c.s
@@ -1371,7 +1371,7 @@ ep/relic_ep_param.s: ep/relic_ep_param.c.s
 
 # target to generate assembly for a file
 ep/relic_ep_param.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/ep/relic_ep_param.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/ep/relic_ep_param.c.s
 .PHONY : ep/relic_ep_param.c.s
 
 ep/relic_ep_pck.o: ep/relic_ep_pck.c.o
@@ -1380,7 +1380,7 @@ ep/relic_ep_pck.o: ep/relic_ep_pck.c.o
 
 # target to build an object file
 ep/relic_ep_pck.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/ep/relic_ep_pck.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/ep/relic_ep_pck.c.o
 .PHONY : ep/relic_ep_pck.c.o
 
 ep/relic_ep_pck.i: ep/relic_ep_pck.c.i
@@ -1389,7 +1389,7 @@ ep/relic_ep_pck.i: ep/relic_ep_pck.c.i
 
 # target to preprocess a source file
 ep/relic_ep_pck.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/ep/relic_ep_pck.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/ep/relic_ep_pck.c.i
 .PHONY : ep/relic_ep_pck.c.i
 
 ep/relic_ep_pck.s: ep/relic_ep_pck.c.s
@@ -1398,7 +1398,7 @@ ep/relic_ep_pck.s: ep/relic_ep_pck.c.s
 
 # target to generate assembly for a file
 ep/relic_ep_pck.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/ep/relic_ep_pck.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/ep/relic_ep_pck.c.s
 .PHONY : ep/relic_ep_pck.c.s
 
 ep/relic_ep_util.o: ep/relic_ep_util.c.o
@@ -1407,7 +1407,7 @@ ep/relic_ep_util.o: ep/relic_ep_util.c.o
 
 # target to build an object file
 ep/relic_ep_util.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/ep/relic_ep_util.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/ep/relic_ep_util.c.o
 .PHONY : ep/relic_ep_util.c.o
 
 ep/relic_ep_util.i: ep/relic_ep_util.c.i
@@ -1416,7 +1416,7 @@ ep/relic_ep_util.i: ep/relic_ep_util.c.i
 
 # target to preprocess a source file
 ep/relic_ep_util.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/ep/relic_ep_util.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/ep/relic_ep_util.c.i
 .PHONY : ep/relic_ep_util.c.i
 
 ep/relic_ep_util.s: ep/relic_ep_util.c.s
@@ -1425,7 +1425,7 @@ ep/relic_ep_util.s: ep/relic_ep_util.c.s
 
 # target to generate assembly for a file
 ep/relic_ep_util.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/ep/relic_ep_util.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/ep/relic_ep_util.c.s
 .PHONY : ep/relic_ep_util.c.s
 
 fb/relic_fb_add.o: fb/relic_fb_add.c.o
@@ -1434,7 +1434,7 @@ fb/relic_fb_add.o: fb/relic_fb_add.c.o
 
 # target to build an object file
 fb/relic_fb_add.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fb/relic_fb_add.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fb/relic_fb_add.c.o
 .PHONY : fb/relic_fb_add.c.o
 
 fb/relic_fb_add.i: fb/relic_fb_add.c.i
@@ -1443,7 +1443,7 @@ fb/relic_fb_add.i: fb/relic_fb_add.c.i
 
 # target to preprocess a source file
 fb/relic_fb_add.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fb/relic_fb_add.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fb/relic_fb_add.c.i
 .PHONY : fb/relic_fb_add.c.i
 
 fb/relic_fb_add.s: fb/relic_fb_add.c.s
@@ -1452,7 +1452,7 @@ fb/relic_fb_add.s: fb/relic_fb_add.c.s
 
 # target to generate assembly for a file
 fb/relic_fb_add.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fb/relic_fb_add.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fb/relic_fb_add.c.s
 .PHONY : fb/relic_fb_add.c.s
 
 fb/relic_fb_cmp.o: fb/relic_fb_cmp.c.o
@@ -1461,7 +1461,7 @@ fb/relic_fb_cmp.o: fb/relic_fb_cmp.c.o
 
 # target to build an object file
 fb/relic_fb_cmp.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fb/relic_fb_cmp.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fb/relic_fb_cmp.c.o
 .PHONY : fb/relic_fb_cmp.c.o
 
 fb/relic_fb_cmp.i: fb/relic_fb_cmp.c.i
@@ -1470,7 +1470,7 @@ fb/relic_fb_cmp.i: fb/relic_fb_cmp.c.i
 
 # target to preprocess a source file
 fb/relic_fb_cmp.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fb/relic_fb_cmp.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fb/relic_fb_cmp.c.i
 .PHONY : fb/relic_fb_cmp.c.i
 
 fb/relic_fb_cmp.s: fb/relic_fb_cmp.c.s
@@ -1479,7 +1479,7 @@ fb/relic_fb_cmp.s: fb/relic_fb_cmp.c.s
 
 # target to generate assembly for a file
 fb/relic_fb_cmp.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fb/relic_fb_cmp.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fb/relic_fb_cmp.c.s
 .PHONY : fb/relic_fb_cmp.c.s
 
 fb/relic_fb_exp.o: fb/relic_fb_exp.c.o
@@ -1488,7 +1488,7 @@ fb/relic_fb_exp.o: fb/relic_fb_exp.c.o
 
 # target to build an object file
 fb/relic_fb_exp.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fb/relic_fb_exp.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fb/relic_fb_exp.c.o
 .PHONY : fb/relic_fb_exp.c.o
 
 fb/relic_fb_exp.i: fb/relic_fb_exp.c.i
@@ -1497,7 +1497,7 @@ fb/relic_fb_exp.i: fb/relic_fb_exp.c.i
 
 # target to preprocess a source file
 fb/relic_fb_exp.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fb/relic_fb_exp.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fb/relic_fb_exp.c.i
 .PHONY : fb/relic_fb_exp.c.i
 
 fb/relic_fb_exp.s: fb/relic_fb_exp.c.s
@@ -1506,7 +1506,7 @@ fb/relic_fb_exp.s: fb/relic_fb_exp.c.s
 
 # target to generate assembly for a file
 fb/relic_fb_exp.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fb/relic_fb_exp.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fb/relic_fb_exp.c.s
 .PHONY : fb/relic_fb_exp.c.s
 
 fb/relic_fb_inv.o: fb/relic_fb_inv.c.o
@@ -1515,7 +1515,7 @@ fb/relic_fb_inv.o: fb/relic_fb_inv.c.o
 
 # target to build an object file
 fb/relic_fb_inv.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fb/relic_fb_inv.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fb/relic_fb_inv.c.o
 .PHONY : fb/relic_fb_inv.c.o
 
 fb/relic_fb_inv.i: fb/relic_fb_inv.c.i
@@ -1524,7 +1524,7 @@ fb/relic_fb_inv.i: fb/relic_fb_inv.c.i
 
 # target to preprocess a source file
 fb/relic_fb_inv.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fb/relic_fb_inv.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fb/relic_fb_inv.c.i
 .PHONY : fb/relic_fb_inv.c.i
 
 fb/relic_fb_inv.s: fb/relic_fb_inv.c.s
@@ -1533,7 +1533,7 @@ fb/relic_fb_inv.s: fb/relic_fb_inv.c.s
 
 # target to generate assembly for a file
 fb/relic_fb_inv.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fb/relic_fb_inv.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fb/relic_fb_inv.c.s
 .PHONY : fb/relic_fb_inv.c.s
 
 fb/relic_fb_itr.o: fb/relic_fb_itr.c.o
@@ -1542,7 +1542,7 @@ fb/relic_fb_itr.o: fb/relic_fb_itr.c.o
 
 # target to build an object file
 fb/relic_fb_itr.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fb/relic_fb_itr.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fb/relic_fb_itr.c.o
 .PHONY : fb/relic_fb_itr.c.o
 
 fb/relic_fb_itr.i: fb/relic_fb_itr.c.i
@@ -1551,7 +1551,7 @@ fb/relic_fb_itr.i: fb/relic_fb_itr.c.i
 
 # target to preprocess a source file
 fb/relic_fb_itr.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fb/relic_fb_itr.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fb/relic_fb_itr.c.i
 .PHONY : fb/relic_fb_itr.c.i
 
 fb/relic_fb_itr.s: fb/relic_fb_itr.c.s
@@ -1560,7 +1560,7 @@ fb/relic_fb_itr.s: fb/relic_fb_itr.c.s
 
 # target to generate assembly for a file
 fb/relic_fb_itr.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fb/relic_fb_itr.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fb/relic_fb_itr.c.s
 .PHONY : fb/relic_fb_itr.c.s
 
 fb/relic_fb_mul.o: fb/relic_fb_mul.c.o
@@ -1569,7 +1569,7 @@ fb/relic_fb_mul.o: fb/relic_fb_mul.c.o
 
 # target to build an object file
 fb/relic_fb_mul.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fb/relic_fb_mul.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fb/relic_fb_mul.c.o
 .PHONY : fb/relic_fb_mul.c.o
 
 fb/relic_fb_mul.i: fb/relic_fb_mul.c.i
@@ -1578,7 +1578,7 @@ fb/relic_fb_mul.i: fb/relic_fb_mul.c.i
 
 # target to preprocess a source file
 fb/relic_fb_mul.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fb/relic_fb_mul.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fb/relic_fb_mul.c.i
 .PHONY : fb/relic_fb_mul.c.i
 
 fb/relic_fb_mul.s: fb/relic_fb_mul.c.s
@@ -1587,7 +1587,7 @@ fb/relic_fb_mul.s: fb/relic_fb_mul.c.s
 
 # target to generate assembly for a file
 fb/relic_fb_mul.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fb/relic_fb_mul.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fb/relic_fb_mul.c.s
 .PHONY : fb/relic_fb_mul.c.s
 
 fb/relic_fb_param.o: fb/relic_fb_param.c.o
@@ -1596,7 +1596,7 @@ fb/relic_fb_param.o: fb/relic_fb_param.c.o
 
 # target to build an object file
 fb/relic_fb_param.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fb/relic_fb_param.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fb/relic_fb_param.c.o
 .PHONY : fb/relic_fb_param.c.o
 
 fb/relic_fb_param.i: fb/relic_fb_param.c.i
@@ -1605,7 +1605,7 @@ fb/relic_fb_param.i: fb/relic_fb_param.c.i
 
 # target to preprocess a source file
 fb/relic_fb_param.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fb/relic_fb_param.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fb/relic_fb_param.c.i
 .PHONY : fb/relic_fb_param.c.i
 
 fb/relic_fb_param.s: fb/relic_fb_param.c.s
@@ -1614,7 +1614,7 @@ fb/relic_fb_param.s: fb/relic_fb_param.c.s
 
 # target to generate assembly for a file
 fb/relic_fb_param.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fb/relic_fb_param.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fb/relic_fb_param.c.s
 .PHONY : fb/relic_fb_param.c.s
 
 fb/relic_fb_poly.o: fb/relic_fb_poly.c.o
@@ -1623,7 +1623,7 @@ fb/relic_fb_poly.o: fb/relic_fb_poly.c.o
 
 # target to build an object file
 fb/relic_fb_poly.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fb/relic_fb_poly.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fb/relic_fb_poly.c.o
 .PHONY : fb/relic_fb_poly.c.o
 
 fb/relic_fb_poly.i: fb/relic_fb_poly.c.i
@@ -1632,7 +1632,7 @@ fb/relic_fb_poly.i: fb/relic_fb_poly.c.i
 
 # target to preprocess a source file
 fb/relic_fb_poly.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fb/relic_fb_poly.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fb/relic_fb_poly.c.i
 .PHONY : fb/relic_fb_poly.c.i
 
 fb/relic_fb_poly.s: fb/relic_fb_poly.c.s
@@ -1641,7 +1641,7 @@ fb/relic_fb_poly.s: fb/relic_fb_poly.c.s
 
 # target to generate assembly for a file
 fb/relic_fb_poly.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fb/relic_fb_poly.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fb/relic_fb_poly.c.s
 .PHONY : fb/relic_fb_poly.c.s
 
 fb/relic_fb_rdc.o: fb/relic_fb_rdc.c.o
@@ -1650,7 +1650,7 @@ fb/relic_fb_rdc.o: fb/relic_fb_rdc.c.o
 
 # target to build an object file
 fb/relic_fb_rdc.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fb/relic_fb_rdc.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fb/relic_fb_rdc.c.o
 .PHONY : fb/relic_fb_rdc.c.o
 
 fb/relic_fb_rdc.i: fb/relic_fb_rdc.c.i
@@ -1659,7 +1659,7 @@ fb/relic_fb_rdc.i: fb/relic_fb_rdc.c.i
 
 # target to preprocess a source file
 fb/relic_fb_rdc.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fb/relic_fb_rdc.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fb/relic_fb_rdc.c.i
 .PHONY : fb/relic_fb_rdc.c.i
 
 fb/relic_fb_rdc.s: fb/relic_fb_rdc.c.s
@@ -1668,7 +1668,7 @@ fb/relic_fb_rdc.s: fb/relic_fb_rdc.c.s
 
 # target to generate assembly for a file
 fb/relic_fb_rdc.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fb/relic_fb_rdc.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fb/relic_fb_rdc.c.s
 .PHONY : fb/relic_fb_rdc.c.s
 
 fb/relic_fb_shift.o: fb/relic_fb_shift.c.o
@@ -1677,7 +1677,7 @@ fb/relic_fb_shift.o: fb/relic_fb_shift.c.o
 
 # target to build an object file
 fb/relic_fb_shift.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fb/relic_fb_shift.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fb/relic_fb_shift.c.o
 .PHONY : fb/relic_fb_shift.c.o
 
 fb/relic_fb_shift.i: fb/relic_fb_shift.c.i
@@ -1686,7 +1686,7 @@ fb/relic_fb_shift.i: fb/relic_fb_shift.c.i
 
 # target to preprocess a source file
 fb/relic_fb_shift.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fb/relic_fb_shift.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fb/relic_fb_shift.c.i
 .PHONY : fb/relic_fb_shift.c.i
 
 fb/relic_fb_shift.s: fb/relic_fb_shift.c.s
@@ -1695,7 +1695,7 @@ fb/relic_fb_shift.s: fb/relic_fb_shift.c.s
 
 # target to generate assembly for a file
 fb/relic_fb_shift.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fb/relic_fb_shift.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fb/relic_fb_shift.c.s
 .PHONY : fb/relic_fb_shift.c.s
 
 fb/relic_fb_slv.o: fb/relic_fb_slv.c.o
@@ -1704,7 +1704,7 @@ fb/relic_fb_slv.o: fb/relic_fb_slv.c.o
 
 # target to build an object file
 fb/relic_fb_slv.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fb/relic_fb_slv.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fb/relic_fb_slv.c.o
 .PHONY : fb/relic_fb_slv.c.o
 
 fb/relic_fb_slv.i: fb/relic_fb_slv.c.i
@@ -1713,7 +1713,7 @@ fb/relic_fb_slv.i: fb/relic_fb_slv.c.i
 
 # target to preprocess a source file
 fb/relic_fb_slv.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fb/relic_fb_slv.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fb/relic_fb_slv.c.i
 .PHONY : fb/relic_fb_slv.c.i
 
 fb/relic_fb_slv.s: fb/relic_fb_slv.c.s
@@ -1722,7 +1722,7 @@ fb/relic_fb_slv.s: fb/relic_fb_slv.c.s
 
 # target to generate assembly for a file
 fb/relic_fb_slv.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fb/relic_fb_slv.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fb/relic_fb_slv.c.s
 .PHONY : fb/relic_fb_slv.c.s
 
 fb/relic_fb_sqr.o: fb/relic_fb_sqr.c.o
@@ -1731,7 +1731,7 @@ fb/relic_fb_sqr.o: fb/relic_fb_sqr.c.o
 
 # target to build an object file
 fb/relic_fb_sqr.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fb/relic_fb_sqr.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fb/relic_fb_sqr.c.o
 .PHONY : fb/relic_fb_sqr.c.o
 
 fb/relic_fb_sqr.i: fb/relic_fb_sqr.c.i
@@ -1740,7 +1740,7 @@ fb/relic_fb_sqr.i: fb/relic_fb_sqr.c.i
 
 # target to preprocess a source file
 fb/relic_fb_sqr.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fb/relic_fb_sqr.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fb/relic_fb_sqr.c.i
 .PHONY : fb/relic_fb_sqr.c.i
 
 fb/relic_fb_sqr.s: fb/relic_fb_sqr.c.s
@@ -1749,7 +1749,7 @@ fb/relic_fb_sqr.s: fb/relic_fb_sqr.c.s
 
 # target to generate assembly for a file
 fb/relic_fb_sqr.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fb/relic_fb_sqr.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fb/relic_fb_sqr.c.s
 .PHONY : fb/relic_fb_sqr.c.s
 
 fb/relic_fb_srt.o: fb/relic_fb_srt.c.o
@@ -1758,7 +1758,7 @@ fb/relic_fb_srt.o: fb/relic_fb_srt.c.o
 
 # target to build an object file
 fb/relic_fb_srt.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fb/relic_fb_srt.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fb/relic_fb_srt.c.o
 .PHONY : fb/relic_fb_srt.c.o
 
 fb/relic_fb_srt.i: fb/relic_fb_srt.c.i
@@ -1767,7 +1767,7 @@ fb/relic_fb_srt.i: fb/relic_fb_srt.c.i
 
 # target to preprocess a source file
 fb/relic_fb_srt.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fb/relic_fb_srt.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fb/relic_fb_srt.c.i
 .PHONY : fb/relic_fb_srt.c.i
 
 fb/relic_fb_srt.s: fb/relic_fb_srt.c.s
@@ -1776,7 +1776,7 @@ fb/relic_fb_srt.s: fb/relic_fb_srt.c.s
 
 # target to generate assembly for a file
 fb/relic_fb_srt.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fb/relic_fb_srt.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fb/relic_fb_srt.c.s
 .PHONY : fb/relic_fb_srt.c.s
 
 fb/relic_fb_trc.o: fb/relic_fb_trc.c.o
@@ -1785,7 +1785,7 @@ fb/relic_fb_trc.o: fb/relic_fb_trc.c.o
 
 # target to build an object file
 fb/relic_fb_trc.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fb/relic_fb_trc.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fb/relic_fb_trc.c.o
 .PHONY : fb/relic_fb_trc.c.o
 
 fb/relic_fb_trc.i: fb/relic_fb_trc.c.i
@@ -1794,7 +1794,7 @@ fb/relic_fb_trc.i: fb/relic_fb_trc.c.i
 
 # target to preprocess a source file
 fb/relic_fb_trc.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fb/relic_fb_trc.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fb/relic_fb_trc.c.i
 .PHONY : fb/relic_fb_trc.c.i
 
 fb/relic_fb_trc.s: fb/relic_fb_trc.c.s
@@ -1803,7 +1803,7 @@ fb/relic_fb_trc.s: fb/relic_fb_trc.c.s
 
 # target to generate assembly for a file
 fb/relic_fb_trc.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fb/relic_fb_trc.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fb/relic_fb_trc.c.s
 .PHONY : fb/relic_fb_trc.c.s
 
 fb/relic_fb_util.o: fb/relic_fb_util.c.o
@@ -1812,7 +1812,7 @@ fb/relic_fb_util.o: fb/relic_fb_util.c.o
 
 # target to build an object file
 fb/relic_fb_util.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fb/relic_fb_util.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fb/relic_fb_util.c.o
 .PHONY : fb/relic_fb_util.c.o
 
 fb/relic_fb_util.i: fb/relic_fb_util.c.i
@@ -1821,7 +1821,7 @@ fb/relic_fb_util.i: fb/relic_fb_util.c.i
 
 # target to preprocess a source file
 fb/relic_fb_util.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fb/relic_fb_util.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fb/relic_fb_util.c.i
 .PHONY : fb/relic_fb_util.c.i
 
 fb/relic_fb_util.s: fb/relic_fb_util.c.s
@@ -1830,7 +1830,7 @@ fb/relic_fb_util.s: fb/relic_fb_util.c.s
 
 # target to generate assembly for a file
 fb/relic_fb_util.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fb/relic_fb_util.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fb/relic_fb_util.c.s
 .PHONY : fb/relic_fb_util.c.s
 
 fp/relic_fp_add.o: fp/relic_fp_add.c.o
@@ -1839,7 +1839,7 @@ fp/relic_fp_add.o: fp/relic_fp_add.c.o
 
 # target to build an object file
 fp/relic_fp_add.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fp/relic_fp_add.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fp/relic_fp_add.c.o
 .PHONY : fp/relic_fp_add.c.o
 
 fp/relic_fp_add.i: fp/relic_fp_add.c.i
@@ -1848,7 +1848,7 @@ fp/relic_fp_add.i: fp/relic_fp_add.c.i
 
 # target to preprocess a source file
 fp/relic_fp_add.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fp/relic_fp_add.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fp/relic_fp_add.c.i
 .PHONY : fp/relic_fp_add.c.i
 
 fp/relic_fp_add.s: fp/relic_fp_add.c.s
@@ -1857,7 +1857,7 @@ fp/relic_fp_add.s: fp/relic_fp_add.c.s
 
 # target to generate assembly for a file
 fp/relic_fp_add.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fp/relic_fp_add.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fp/relic_fp_add.c.s
 .PHONY : fp/relic_fp_add.c.s
 
 fp/relic_fp_cmp.o: fp/relic_fp_cmp.c.o
@@ -1866,7 +1866,7 @@ fp/relic_fp_cmp.o: fp/relic_fp_cmp.c.o
 
 # target to build an object file
 fp/relic_fp_cmp.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fp/relic_fp_cmp.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fp/relic_fp_cmp.c.o
 .PHONY : fp/relic_fp_cmp.c.o
 
 fp/relic_fp_cmp.i: fp/relic_fp_cmp.c.i
@@ -1875,7 +1875,7 @@ fp/relic_fp_cmp.i: fp/relic_fp_cmp.c.i
 
 # target to preprocess a source file
 fp/relic_fp_cmp.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fp/relic_fp_cmp.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fp/relic_fp_cmp.c.i
 .PHONY : fp/relic_fp_cmp.c.i
 
 fp/relic_fp_cmp.s: fp/relic_fp_cmp.c.s
@@ -1884,7 +1884,7 @@ fp/relic_fp_cmp.s: fp/relic_fp_cmp.c.s
 
 # target to generate assembly for a file
 fp/relic_fp_cmp.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fp/relic_fp_cmp.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fp/relic_fp_cmp.c.s
 .PHONY : fp/relic_fp_cmp.c.s
 
 fp/relic_fp_exp.o: fp/relic_fp_exp.c.o
@@ -1893,7 +1893,7 @@ fp/relic_fp_exp.o: fp/relic_fp_exp.c.o
 
 # target to build an object file
 fp/relic_fp_exp.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fp/relic_fp_exp.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fp/relic_fp_exp.c.o
 .PHONY : fp/relic_fp_exp.c.o
 
 fp/relic_fp_exp.i: fp/relic_fp_exp.c.i
@@ -1902,7 +1902,7 @@ fp/relic_fp_exp.i: fp/relic_fp_exp.c.i
 
 # target to preprocess a source file
 fp/relic_fp_exp.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fp/relic_fp_exp.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fp/relic_fp_exp.c.i
 .PHONY : fp/relic_fp_exp.c.i
 
 fp/relic_fp_exp.s: fp/relic_fp_exp.c.s
@@ -1911,7 +1911,7 @@ fp/relic_fp_exp.s: fp/relic_fp_exp.c.s
 
 # target to generate assembly for a file
 fp/relic_fp_exp.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fp/relic_fp_exp.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fp/relic_fp_exp.c.s
 .PHONY : fp/relic_fp_exp.c.s
 
 fp/relic_fp_inv.o: fp/relic_fp_inv.c.o
@@ -1920,7 +1920,7 @@ fp/relic_fp_inv.o: fp/relic_fp_inv.c.o
 
 # target to build an object file
 fp/relic_fp_inv.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fp/relic_fp_inv.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fp/relic_fp_inv.c.o
 .PHONY : fp/relic_fp_inv.c.o
 
 fp/relic_fp_inv.i: fp/relic_fp_inv.c.i
@@ -1929,7 +1929,7 @@ fp/relic_fp_inv.i: fp/relic_fp_inv.c.i
 
 # target to preprocess a source file
 fp/relic_fp_inv.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fp/relic_fp_inv.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fp/relic_fp_inv.c.i
 .PHONY : fp/relic_fp_inv.c.i
 
 fp/relic_fp_inv.s: fp/relic_fp_inv.c.s
@@ -1938,7 +1938,7 @@ fp/relic_fp_inv.s: fp/relic_fp_inv.c.s
 
 # target to generate assembly for a file
 fp/relic_fp_inv.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fp/relic_fp_inv.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fp/relic_fp_inv.c.s
 .PHONY : fp/relic_fp_inv.c.s
 
 fp/relic_fp_mul.o: fp/relic_fp_mul.c.o
@@ -1947,7 +1947,7 @@ fp/relic_fp_mul.o: fp/relic_fp_mul.c.o
 
 # target to build an object file
 fp/relic_fp_mul.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fp/relic_fp_mul.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fp/relic_fp_mul.c.o
 .PHONY : fp/relic_fp_mul.c.o
 
 fp/relic_fp_mul.i: fp/relic_fp_mul.c.i
@@ -1956,7 +1956,7 @@ fp/relic_fp_mul.i: fp/relic_fp_mul.c.i
 
 # target to preprocess a source file
 fp/relic_fp_mul.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fp/relic_fp_mul.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fp/relic_fp_mul.c.i
 .PHONY : fp/relic_fp_mul.c.i
 
 fp/relic_fp_mul.s: fp/relic_fp_mul.c.s
@@ -1965,7 +1965,7 @@ fp/relic_fp_mul.s: fp/relic_fp_mul.c.s
 
 # target to generate assembly for a file
 fp/relic_fp_mul.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fp/relic_fp_mul.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fp/relic_fp_mul.c.s
 .PHONY : fp/relic_fp_mul.c.s
 
 fp/relic_fp_param.o: fp/relic_fp_param.c.o
@@ -1974,7 +1974,7 @@ fp/relic_fp_param.o: fp/relic_fp_param.c.o
 
 # target to build an object file
 fp/relic_fp_param.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fp/relic_fp_param.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fp/relic_fp_param.c.o
 .PHONY : fp/relic_fp_param.c.o
 
 fp/relic_fp_param.i: fp/relic_fp_param.c.i
@@ -1983,7 +1983,7 @@ fp/relic_fp_param.i: fp/relic_fp_param.c.i
 
 # target to preprocess a source file
 fp/relic_fp_param.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fp/relic_fp_param.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fp/relic_fp_param.c.i
 .PHONY : fp/relic_fp_param.c.i
 
 fp/relic_fp_param.s: fp/relic_fp_param.c.s
@@ -1992,7 +1992,7 @@ fp/relic_fp_param.s: fp/relic_fp_param.c.s
 
 # target to generate assembly for a file
 fp/relic_fp_param.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fp/relic_fp_param.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fp/relic_fp_param.c.s
 .PHONY : fp/relic_fp_param.c.s
 
 fp/relic_fp_prime.o: fp/relic_fp_prime.c.o
@@ -2001,7 +2001,7 @@ fp/relic_fp_prime.o: fp/relic_fp_prime.c.o
 
 # target to build an object file
 fp/relic_fp_prime.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fp/relic_fp_prime.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fp/relic_fp_prime.c.o
 .PHONY : fp/relic_fp_prime.c.o
 
 fp/relic_fp_prime.i: fp/relic_fp_prime.c.i
@@ -2010,7 +2010,7 @@ fp/relic_fp_prime.i: fp/relic_fp_prime.c.i
 
 # target to preprocess a source file
 fp/relic_fp_prime.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fp/relic_fp_prime.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fp/relic_fp_prime.c.i
 .PHONY : fp/relic_fp_prime.c.i
 
 fp/relic_fp_prime.s: fp/relic_fp_prime.c.s
@@ -2019,7 +2019,7 @@ fp/relic_fp_prime.s: fp/relic_fp_prime.c.s
 
 # target to generate assembly for a file
 fp/relic_fp_prime.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fp/relic_fp_prime.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fp/relic_fp_prime.c.s
 .PHONY : fp/relic_fp_prime.c.s
 
 fp/relic_fp_rdc.o: fp/relic_fp_rdc.c.o
@@ -2028,7 +2028,7 @@ fp/relic_fp_rdc.o: fp/relic_fp_rdc.c.o
 
 # target to build an object file
 fp/relic_fp_rdc.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fp/relic_fp_rdc.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fp/relic_fp_rdc.c.o
 .PHONY : fp/relic_fp_rdc.c.o
 
 fp/relic_fp_rdc.i: fp/relic_fp_rdc.c.i
@@ -2037,7 +2037,7 @@ fp/relic_fp_rdc.i: fp/relic_fp_rdc.c.i
 
 # target to preprocess a source file
 fp/relic_fp_rdc.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fp/relic_fp_rdc.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fp/relic_fp_rdc.c.i
 .PHONY : fp/relic_fp_rdc.c.i
 
 fp/relic_fp_rdc.s: fp/relic_fp_rdc.c.s
@@ -2046,7 +2046,7 @@ fp/relic_fp_rdc.s: fp/relic_fp_rdc.c.s
 
 # target to generate assembly for a file
 fp/relic_fp_rdc.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fp/relic_fp_rdc.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fp/relic_fp_rdc.c.s
 .PHONY : fp/relic_fp_rdc.c.s
 
 fp/relic_fp_shift.o: fp/relic_fp_shift.c.o
@@ -2055,7 +2055,7 @@ fp/relic_fp_shift.o: fp/relic_fp_shift.c.o
 
 # target to build an object file
 fp/relic_fp_shift.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fp/relic_fp_shift.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fp/relic_fp_shift.c.o
 .PHONY : fp/relic_fp_shift.c.o
 
 fp/relic_fp_shift.i: fp/relic_fp_shift.c.i
@@ -2064,7 +2064,7 @@ fp/relic_fp_shift.i: fp/relic_fp_shift.c.i
 
 # target to preprocess a source file
 fp/relic_fp_shift.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fp/relic_fp_shift.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fp/relic_fp_shift.c.i
 .PHONY : fp/relic_fp_shift.c.i
 
 fp/relic_fp_shift.s: fp/relic_fp_shift.c.s
@@ -2073,7 +2073,7 @@ fp/relic_fp_shift.s: fp/relic_fp_shift.c.s
 
 # target to generate assembly for a file
 fp/relic_fp_shift.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fp/relic_fp_shift.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fp/relic_fp_shift.c.s
 .PHONY : fp/relic_fp_shift.c.s
 
 fp/relic_fp_sqr.o: fp/relic_fp_sqr.c.o
@@ -2082,7 +2082,7 @@ fp/relic_fp_sqr.o: fp/relic_fp_sqr.c.o
 
 # target to build an object file
 fp/relic_fp_sqr.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fp/relic_fp_sqr.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fp/relic_fp_sqr.c.o
 .PHONY : fp/relic_fp_sqr.c.o
 
 fp/relic_fp_sqr.i: fp/relic_fp_sqr.c.i
@@ -2091,7 +2091,7 @@ fp/relic_fp_sqr.i: fp/relic_fp_sqr.c.i
 
 # target to preprocess a source file
 fp/relic_fp_sqr.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fp/relic_fp_sqr.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fp/relic_fp_sqr.c.i
 .PHONY : fp/relic_fp_sqr.c.i
 
 fp/relic_fp_sqr.s: fp/relic_fp_sqr.c.s
@@ -2100,7 +2100,7 @@ fp/relic_fp_sqr.s: fp/relic_fp_sqr.c.s
 
 # target to generate assembly for a file
 fp/relic_fp_sqr.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fp/relic_fp_sqr.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fp/relic_fp_sqr.c.s
 .PHONY : fp/relic_fp_sqr.c.s
 
 fp/relic_fp_srt.o: fp/relic_fp_srt.c.o
@@ -2109,7 +2109,7 @@ fp/relic_fp_srt.o: fp/relic_fp_srt.c.o
 
 # target to build an object file
 fp/relic_fp_srt.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fp/relic_fp_srt.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fp/relic_fp_srt.c.o
 .PHONY : fp/relic_fp_srt.c.o
 
 fp/relic_fp_srt.i: fp/relic_fp_srt.c.i
@@ -2118,7 +2118,7 @@ fp/relic_fp_srt.i: fp/relic_fp_srt.c.i
 
 # target to preprocess a source file
 fp/relic_fp_srt.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fp/relic_fp_srt.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fp/relic_fp_srt.c.i
 .PHONY : fp/relic_fp_srt.c.i
 
 fp/relic_fp_srt.s: fp/relic_fp_srt.c.s
@@ -2127,7 +2127,7 @@ fp/relic_fp_srt.s: fp/relic_fp_srt.c.s
 
 # target to generate assembly for a file
 fp/relic_fp_srt.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fp/relic_fp_srt.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fp/relic_fp_srt.c.s
 .PHONY : fp/relic_fp_srt.c.s
 
 fp/relic_fp_util.o: fp/relic_fp_util.c.o
@@ -2136,7 +2136,7 @@ fp/relic_fp_util.o: fp/relic_fp_util.c.o
 
 # target to build an object file
 fp/relic_fp_util.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fp/relic_fp_util.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fp/relic_fp_util.c.o
 .PHONY : fp/relic_fp_util.c.o
 
 fp/relic_fp_util.i: fp/relic_fp_util.c.i
@@ -2145,7 +2145,7 @@ fp/relic_fp_util.i: fp/relic_fp_util.c.i
 
 # target to preprocess a source file
 fp/relic_fp_util.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fp/relic_fp_util.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fp/relic_fp_util.c.i
 .PHONY : fp/relic_fp_util.c.i
 
 fp/relic_fp_util.s: fp/relic_fp_util.c.s
@@ -2154,7 +2154,7 @@ fp/relic_fp_util.s: fp/relic_fp_util.c.s
 
 # target to generate assembly for a file
 fp/relic_fp_util.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fp/relic_fp_util.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/fp/relic_fp_util.c.s
 .PHONY : fp/relic_fp_util.c.s
 
 low/easy/relic_bn_add_low.o: low/easy/relic_bn_add_low.c.o
@@ -2163,7 +2163,7 @@ low/easy/relic_bn_add_low.o: low/easy/relic_bn_add_low.c.o
 
 # target to build an object file
 low/easy/relic_bn_add_low.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_bn_add_low.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_bn_add_low.c.o
 .PHONY : low/easy/relic_bn_add_low.c.o
 
 low/easy/relic_bn_add_low.i: low/easy/relic_bn_add_low.c.i
@@ -2172,7 +2172,7 @@ low/easy/relic_bn_add_low.i: low/easy/relic_bn_add_low.c.i
 
 # target to preprocess a source file
 low/easy/relic_bn_add_low.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_bn_add_low.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_bn_add_low.c.i
 .PHONY : low/easy/relic_bn_add_low.c.i
 
 low/easy/relic_bn_add_low.s: low/easy/relic_bn_add_low.c.s
@@ -2181,7 +2181,7 @@ low/easy/relic_bn_add_low.s: low/easy/relic_bn_add_low.c.s
 
 # target to generate assembly for a file
 low/easy/relic_bn_add_low.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_bn_add_low.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_bn_add_low.c.s
 .PHONY : low/easy/relic_bn_add_low.c.s
 
 low/easy/relic_bn_div_low.o: low/easy/relic_bn_div_low.c.o
@@ -2190,7 +2190,7 @@ low/easy/relic_bn_div_low.o: low/easy/relic_bn_div_low.c.o
 
 # target to build an object file
 low/easy/relic_bn_div_low.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_bn_div_low.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_bn_div_low.c.o
 .PHONY : low/easy/relic_bn_div_low.c.o
 
 low/easy/relic_bn_div_low.i: low/easy/relic_bn_div_low.c.i
@@ -2199,7 +2199,7 @@ low/easy/relic_bn_div_low.i: low/easy/relic_bn_div_low.c.i
 
 # target to preprocess a source file
 low/easy/relic_bn_div_low.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_bn_div_low.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_bn_div_low.c.i
 .PHONY : low/easy/relic_bn_div_low.c.i
 
 low/easy/relic_bn_div_low.s: low/easy/relic_bn_div_low.c.s
@@ -2208,7 +2208,7 @@ low/easy/relic_bn_div_low.s: low/easy/relic_bn_div_low.c.s
 
 # target to generate assembly for a file
 low/easy/relic_bn_div_low.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_bn_div_low.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_bn_div_low.c.s
 .PHONY : low/easy/relic_bn_div_low.c.s
 
 low/easy/relic_bn_mod_low.o: low/easy/relic_bn_mod_low.c.o
@@ -2217,7 +2217,7 @@ low/easy/relic_bn_mod_low.o: low/easy/relic_bn_mod_low.c.o
 
 # target to build an object file
 low/easy/relic_bn_mod_low.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_bn_mod_low.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_bn_mod_low.c.o
 .PHONY : low/easy/relic_bn_mod_low.c.o
 
 low/easy/relic_bn_mod_low.i: low/easy/relic_bn_mod_low.c.i
@@ -2226,7 +2226,7 @@ low/easy/relic_bn_mod_low.i: low/easy/relic_bn_mod_low.c.i
 
 # target to preprocess a source file
 low/easy/relic_bn_mod_low.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_bn_mod_low.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_bn_mod_low.c.i
 .PHONY : low/easy/relic_bn_mod_low.c.i
 
 low/easy/relic_bn_mod_low.s: low/easy/relic_bn_mod_low.c.s
@@ -2235,7 +2235,7 @@ low/easy/relic_bn_mod_low.s: low/easy/relic_bn_mod_low.c.s
 
 # target to generate assembly for a file
 low/easy/relic_bn_mod_low.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_bn_mod_low.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_bn_mod_low.c.s
 .PHONY : low/easy/relic_bn_mod_low.c.s
 
 low/easy/relic_bn_mul_low.o: low/easy/relic_bn_mul_low.c.o
@@ -2244,7 +2244,7 @@ low/easy/relic_bn_mul_low.o: low/easy/relic_bn_mul_low.c.o
 
 # target to build an object file
 low/easy/relic_bn_mul_low.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_bn_mul_low.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_bn_mul_low.c.o
 .PHONY : low/easy/relic_bn_mul_low.c.o
 
 low/easy/relic_bn_mul_low.i: low/easy/relic_bn_mul_low.c.i
@@ -2253,7 +2253,7 @@ low/easy/relic_bn_mul_low.i: low/easy/relic_bn_mul_low.c.i
 
 # target to preprocess a source file
 low/easy/relic_bn_mul_low.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_bn_mul_low.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_bn_mul_low.c.i
 .PHONY : low/easy/relic_bn_mul_low.c.i
 
 low/easy/relic_bn_mul_low.s: low/easy/relic_bn_mul_low.c.s
@@ -2262,7 +2262,7 @@ low/easy/relic_bn_mul_low.s: low/easy/relic_bn_mul_low.c.s
 
 # target to generate assembly for a file
 low/easy/relic_bn_mul_low.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_bn_mul_low.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_bn_mul_low.c.s
 .PHONY : low/easy/relic_bn_mul_low.c.s
 
 low/easy/relic_bn_shift_low.o: low/easy/relic_bn_shift_low.c.o
@@ -2271,7 +2271,7 @@ low/easy/relic_bn_shift_low.o: low/easy/relic_bn_shift_low.c.o
 
 # target to build an object file
 low/easy/relic_bn_shift_low.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_bn_shift_low.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_bn_shift_low.c.o
 .PHONY : low/easy/relic_bn_shift_low.c.o
 
 low/easy/relic_bn_shift_low.i: low/easy/relic_bn_shift_low.c.i
@@ -2280,7 +2280,7 @@ low/easy/relic_bn_shift_low.i: low/easy/relic_bn_shift_low.c.i
 
 # target to preprocess a source file
 low/easy/relic_bn_shift_low.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_bn_shift_low.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_bn_shift_low.c.i
 .PHONY : low/easy/relic_bn_shift_low.c.i
 
 low/easy/relic_bn_shift_low.s: low/easy/relic_bn_shift_low.c.s
@@ -2289,7 +2289,7 @@ low/easy/relic_bn_shift_low.s: low/easy/relic_bn_shift_low.c.s
 
 # target to generate assembly for a file
 low/easy/relic_bn_shift_low.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_bn_shift_low.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_bn_shift_low.c.s
 .PHONY : low/easy/relic_bn_shift_low.c.s
 
 low/easy/relic_bn_sqr_low.o: low/easy/relic_bn_sqr_low.c.o
@@ -2298,7 +2298,7 @@ low/easy/relic_bn_sqr_low.o: low/easy/relic_bn_sqr_low.c.o
 
 # target to build an object file
 low/easy/relic_bn_sqr_low.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_bn_sqr_low.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_bn_sqr_low.c.o
 .PHONY : low/easy/relic_bn_sqr_low.c.o
 
 low/easy/relic_bn_sqr_low.i: low/easy/relic_bn_sqr_low.c.i
@@ -2307,7 +2307,7 @@ low/easy/relic_bn_sqr_low.i: low/easy/relic_bn_sqr_low.c.i
 
 # target to preprocess a source file
 low/easy/relic_bn_sqr_low.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_bn_sqr_low.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_bn_sqr_low.c.i
 .PHONY : low/easy/relic_bn_sqr_low.c.i
 
 low/easy/relic_bn_sqr_low.s: low/easy/relic_bn_sqr_low.c.s
@@ -2316,7 +2316,7 @@ low/easy/relic_bn_sqr_low.s: low/easy/relic_bn_sqr_low.c.s
 
 # target to generate assembly for a file
 low/easy/relic_bn_sqr_low.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_bn_sqr_low.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_bn_sqr_low.c.s
 .PHONY : low/easy/relic_bn_sqr_low.c.s
 
 low/easy/relic_fb_add_low.o: low/easy/relic_fb_add_low.c.o
@@ -2325,7 +2325,7 @@ low/easy/relic_fb_add_low.o: low/easy/relic_fb_add_low.c.o
 
 # target to build an object file
 low/easy/relic_fb_add_low.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_fb_add_low.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_fb_add_low.c.o
 .PHONY : low/easy/relic_fb_add_low.c.o
 
 low/easy/relic_fb_add_low.i: low/easy/relic_fb_add_low.c.i
@@ -2334,7 +2334,7 @@ low/easy/relic_fb_add_low.i: low/easy/relic_fb_add_low.c.i
 
 # target to preprocess a source file
 low/easy/relic_fb_add_low.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_fb_add_low.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_fb_add_low.c.i
 .PHONY : low/easy/relic_fb_add_low.c.i
 
 low/easy/relic_fb_add_low.s: low/easy/relic_fb_add_low.c.s
@@ -2343,7 +2343,7 @@ low/easy/relic_fb_add_low.s: low/easy/relic_fb_add_low.c.s
 
 # target to generate assembly for a file
 low/easy/relic_fb_add_low.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_fb_add_low.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_fb_add_low.c.s
 .PHONY : low/easy/relic_fb_add_low.c.s
 
 low/easy/relic_fb_inv_low.o: low/easy/relic_fb_inv_low.c.o
@@ -2352,7 +2352,7 @@ low/easy/relic_fb_inv_low.o: low/easy/relic_fb_inv_low.c.o
 
 # target to build an object file
 low/easy/relic_fb_inv_low.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_fb_inv_low.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_fb_inv_low.c.o
 .PHONY : low/easy/relic_fb_inv_low.c.o
 
 low/easy/relic_fb_inv_low.i: low/easy/relic_fb_inv_low.c.i
@@ -2361,7 +2361,7 @@ low/easy/relic_fb_inv_low.i: low/easy/relic_fb_inv_low.c.i
 
 # target to preprocess a source file
 low/easy/relic_fb_inv_low.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_fb_inv_low.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_fb_inv_low.c.i
 .PHONY : low/easy/relic_fb_inv_low.c.i
 
 low/easy/relic_fb_inv_low.s: low/easy/relic_fb_inv_low.c.s
@@ -2370,7 +2370,7 @@ low/easy/relic_fb_inv_low.s: low/easy/relic_fb_inv_low.c.s
 
 # target to generate assembly for a file
 low/easy/relic_fb_inv_low.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_fb_inv_low.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_fb_inv_low.c.s
 .PHONY : low/easy/relic_fb_inv_low.c.s
 
 low/easy/relic_fb_itr_low.o: low/easy/relic_fb_itr_low.c.o
@@ -2379,7 +2379,7 @@ low/easy/relic_fb_itr_low.o: low/easy/relic_fb_itr_low.c.o
 
 # target to build an object file
 low/easy/relic_fb_itr_low.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_fb_itr_low.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_fb_itr_low.c.o
 .PHONY : low/easy/relic_fb_itr_low.c.o
 
 low/easy/relic_fb_itr_low.i: low/easy/relic_fb_itr_low.c.i
@@ -2388,7 +2388,7 @@ low/easy/relic_fb_itr_low.i: low/easy/relic_fb_itr_low.c.i
 
 # target to preprocess a source file
 low/easy/relic_fb_itr_low.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_fb_itr_low.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_fb_itr_low.c.i
 .PHONY : low/easy/relic_fb_itr_low.c.i
 
 low/easy/relic_fb_itr_low.s: low/easy/relic_fb_itr_low.c.s
@@ -2397,7 +2397,7 @@ low/easy/relic_fb_itr_low.s: low/easy/relic_fb_itr_low.c.s
 
 # target to generate assembly for a file
 low/easy/relic_fb_itr_low.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_fb_itr_low.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_fb_itr_low.c.s
 .PHONY : low/easy/relic_fb_itr_low.c.s
 
 low/easy/relic_fb_mul_low.o: low/easy/relic_fb_mul_low.c.o
@@ -2406,7 +2406,7 @@ low/easy/relic_fb_mul_low.o: low/easy/relic_fb_mul_low.c.o
 
 # target to build an object file
 low/easy/relic_fb_mul_low.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_fb_mul_low.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_fb_mul_low.c.o
 .PHONY : low/easy/relic_fb_mul_low.c.o
 
 low/easy/relic_fb_mul_low.i: low/easy/relic_fb_mul_low.c.i
@@ -2415,7 +2415,7 @@ low/easy/relic_fb_mul_low.i: low/easy/relic_fb_mul_low.c.i
 
 # target to preprocess a source file
 low/easy/relic_fb_mul_low.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_fb_mul_low.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_fb_mul_low.c.i
 .PHONY : low/easy/relic_fb_mul_low.c.i
 
 low/easy/relic_fb_mul_low.s: low/easy/relic_fb_mul_low.c.s
@@ -2424,7 +2424,7 @@ low/easy/relic_fb_mul_low.s: low/easy/relic_fb_mul_low.c.s
 
 # target to generate assembly for a file
 low/easy/relic_fb_mul_low.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_fb_mul_low.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_fb_mul_low.c.s
 .PHONY : low/easy/relic_fb_mul_low.c.s
 
 low/easy/relic_fb_rdc_low.o: low/easy/relic_fb_rdc_low.c.o
@@ -2433,7 +2433,7 @@ low/easy/relic_fb_rdc_low.o: low/easy/relic_fb_rdc_low.c.o
 
 # target to build an object file
 low/easy/relic_fb_rdc_low.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_fb_rdc_low.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_fb_rdc_low.c.o
 .PHONY : low/easy/relic_fb_rdc_low.c.o
 
 low/easy/relic_fb_rdc_low.i: low/easy/relic_fb_rdc_low.c.i
@@ -2442,7 +2442,7 @@ low/easy/relic_fb_rdc_low.i: low/easy/relic_fb_rdc_low.c.i
 
 # target to preprocess a source file
 low/easy/relic_fb_rdc_low.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_fb_rdc_low.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_fb_rdc_low.c.i
 .PHONY : low/easy/relic_fb_rdc_low.c.i
 
 low/easy/relic_fb_rdc_low.s: low/easy/relic_fb_rdc_low.c.s
@@ -2451,7 +2451,7 @@ low/easy/relic_fb_rdc_low.s: low/easy/relic_fb_rdc_low.c.s
 
 # target to generate assembly for a file
 low/easy/relic_fb_rdc_low.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_fb_rdc_low.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_fb_rdc_low.c.s
 .PHONY : low/easy/relic_fb_rdc_low.c.s
 
 low/easy/relic_fb_shift_low.o: low/easy/relic_fb_shift_low.c.o
@@ -2460,7 +2460,7 @@ low/easy/relic_fb_shift_low.o: low/easy/relic_fb_shift_low.c.o
 
 # target to build an object file
 low/easy/relic_fb_shift_low.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_fb_shift_low.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_fb_shift_low.c.o
 .PHONY : low/easy/relic_fb_shift_low.c.o
 
 low/easy/relic_fb_shift_low.i: low/easy/relic_fb_shift_low.c.i
@@ -2469,7 +2469,7 @@ low/easy/relic_fb_shift_low.i: low/easy/relic_fb_shift_low.c.i
 
 # target to preprocess a source file
 low/easy/relic_fb_shift_low.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_fb_shift_low.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_fb_shift_low.c.i
 .PHONY : low/easy/relic_fb_shift_low.c.i
 
 low/easy/relic_fb_shift_low.s: low/easy/relic_fb_shift_low.c.s
@@ -2478,7 +2478,7 @@ low/easy/relic_fb_shift_low.s: low/easy/relic_fb_shift_low.c.s
 
 # target to generate assembly for a file
 low/easy/relic_fb_shift_low.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_fb_shift_low.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_fb_shift_low.c.s
 .PHONY : low/easy/relic_fb_shift_low.c.s
 
 low/easy/relic_fb_slv_low.o: low/easy/relic_fb_slv_low.c.o
@@ -2487,7 +2487,7 @@ low/easy/relic_fb_slv_low.o: low/easy/relic_fb_slv_low.c.o
 
 # target to build an object file
 low/easy/relic_fb_slv_low.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_fb_slv_low.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_fb_slv_low.c.o
 .PHONY : low/easy/relic_fb_slv_low.c.o
 
 low/easy/relic_fb_slv_low.i: low/easy/relic_fb_slv_low.c.i
@@ -2496,7 +2496,7 @@ low/easy/relic_fb_slv_low.i: low/easy/relic_fb_slv_low.c.i
 
 # target to preprocess a source file
 low/easy/relic_fb_slv_low.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_fb_slv_low.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_fb_slv_low.c.i
 .PHONY : low/easy/relic_fb_slv_low.c.i
 
 low/easy/relic_fb_slv_low.s: low/easy/relic_fb_slv_low.c.s
@@ -2505,7 +2505,7 @@ low/easy/relic_fb_slv_low.s: low/easy/relic_fb_slv_low.c.s
 
 # target to generate assembly for a file
 low/easy/relic_fb_slv_low.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_fb_slv_low.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_fb_slv_low.c.s
 .PHONY : low/easy/relic_fb_slv_low.c.s
 
 low/easy/relic_fb_sqr_low.o: low/easy/relic_fb_sqr_low.c.o
@@ -2514,7 +2514,7 @@ low/easy/relic_fb_sqr_low.o: low/easy/relic_fb_sqr_low.c.o
 
 # target to build an object file
 low/easy/relic_fb_sqr_low.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_fb_sqr_low.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_fb_sqr_low.c.o
 .PHONY : low/easy/relic_fb_sqr_low.c.o
 
 low/easy/relic_fb_sqr_low.i: low/easy/relic_fb_sqr_low.c.i
@@ -2523,7 +2523,7 @@ low/easy/relic_fb_sqr_low.i: low/easy/relic_fb_sqr_low.c.i
 
 # target to preprocess a source file
 low/easy/relic_fb_sqr_low.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_fb_sqr_low.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_fb_sqr_low.c.i
 .PHONY : low/easy/relic_fb_sqr_low.c.i
 
 low/easy/relic_fb_sqr_low.s: low/easy/relic_fb_sqr_low.c.s
@@ -2532,7 +2532,7 @@ low/easy/relic_fb_sqr_low.s: low/easy/relic_fb_sqr_low.c.s
 
 # target to generate assembly for a file
 low/easy/relic_fb_sqr_low.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_fb_sqr_low.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_fb_sqr_low.c.s
 .PHONY : low/easy/relic_fb_sqr_low.c.s
 
 low/easy/relic_fb_srt_low.o: low/easy/relic_fb_srt_low.c.o
@@ -2541,7 +2541,7 @@ low/easy/relic_fb_srt_low.o: low/easy/relic_fb_srt_low.c.o
 
 # target to build an object file
 low/easy/relic_fb_srt_low.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_fb_srt_low.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_fb_srt_low.c.o
 .PHONY : low/easy/relic_fb_srt_low.c.o
 
 low/easy/relic_fb_srt_low.i: low/easy/relic_fb_srt_low.c.i
@@ -2550,7 +2550,7 @@ low/easy/relic_fb_srt_low.i: low/easy/relic_fb_srt_low.c.i
 
 # target to preprocess a source file
 low/easy/relic_fb_srt_low.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_fb_srt_low.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_fb_srt_low.c.i
 .PHONY : low/easy/relic_fb_srt_low.c.i
 
 low/easy/relic_fb_srt_low.s: low/easy/relic_fb_srt_low.c.s
@@ -2559,7 +2559,7 @@ low/easy/relic_fb_srt_low.s: low/easy/relic_fb_srt_low.c.s
 
 # target to generate assembly for a file
 low/easy/relic_fb_srt_low.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_fb_srt_low.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_fb_srt_low.c.s
 .PHONY : low/easy/relic_fb_srt_low.c.s
 
 low/easy/relic_fb_trc_low.o: low/easy/relic_fb_trc_low.c.o
@@ -2568,7 +2568,7 @@ low/easy/relic_fb_trc_low.o: low/easy/relic_fb_trc_low.c.o
 
 # target to build an object file
 low/easy/relic_fb_trc_low.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_fb_trc_low.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_fb_trc_low.c.o
 .PHONY : low/easy/relic_fb_trc_low.c.o
 
 low/easy/relic_fb_trc_low.i: low/easy/relic_fb_trc_low.c.i
@@ -2577,7 +2577,7 @@ low/easy/relic_fb_trc_low.i: low/easy/relic_fb_trc_low.c.i
 
 # target to preprocess a source file
 low/easy/relic_fb_trc_low.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_fb_trc_low.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_fb_trc_low.c.i
 .PHONY : low/easy/relic_fb_trc_low.c.i
 
 low/easy/relic_fb_trc_low.s: low/easy/relic_fb_trc_low.c.s
@@ -2586,7 +2586,7 @@ low/easy/relic_fb_trc_low.s: low/easy/relic_fb_trc_low.c.s
 
 # target to generate assembly for a file
 low/easy/relic_fb_trc_low.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_fb_trc_low.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_fb_trc_low.c.s
 .PHONY : low/easy/relic_fb_trc_low.c.s
 
 low/easy/relic_fp_add_low.o: low/easy/relic_fp_add_low.c.o
@@ -2595,7 +2595,7 @@ low/easy/relic_fp_add_low.o: low/easy/relic_fp_add_low.c.o
 
 # target to build an object file
 low/easy/relic_fp_add_low.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_fp_add_low.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_fp_add_low.c.o
 .PHONY : low/easy/relic_fp_add_low.c.o
 
 low/easy/relic_fp_add_low.i: low/easy/relic_fp_add_low.c.i
@@ -2604,7 +2604,7 @@ low/easy/relic_fp_add_low.i: low/easy/relic_fp_add_low.c.i
 
 # target to preprocess a source file
 low/easy/relic_fp_add_low.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_fp_add_low.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_fp_add_low.c.i
 .PHONY : low/easy/relic_fp_add_low.c.i
 
 low/easy/relic_fp_add_low.s: low/easy/relic_fp_add_low.c.s
@@ -2613,7 +2613,7 @@ low/easy/relic_fp_add_low.s: low/easy/relic_fp_add_low.c.s
 
 # target to generate assembly for a file
 low/easy/relic_fp_add_low.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_fp_add_low.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_fp_add_low.c.s
 .PHONY : low/easy/relic_fp_add_low.c.s
 
 low/easy/relic_fp_inv_low.o: low/easy/relic_fp_inv_low.c.o
@@ -2622,7 +2622,7 @@ low/easy/relic_fp_inv_low.o: low/easy/relic_fp_inv_low.c.o
 
 # target to build an object file
 low/easy/relic_fp_inv_low.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_fp_inv_low.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_fp_inv_low.c.o
 .PHONY : low/easy/relic_fp_inv_low.c.o
 
 low/easy/relic_fp_inv_low.i: low/easy/relic_fp_inv_low.c.i
@@ -2631,7 +2631,7 @@ low/easy/relic_fp_inv_low.i: low/easy/relic_fp_inv_low.c.i
 
 # target to preprocess a source file
 low/easy/relic_fp_inv_low.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_fp_inv_low.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_fp_inv_low.c.i
 .PHONY : low/easy/relic_fp_inv_low.c.i
 
 low/easy/relic_fp_inv_low.s: low/easy/relic_fp_inv_low.c.s
@@ -2640,7 +2640,7 @@ low/easy/relic_fp_inv_low.s: low/easy/relic_fp_inv_low.c.s
 
 # target to generate assembly for a file
 low/easy/relic_fp_inv_low.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_fp_inv_low.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_fp_inv_low.c.s
 .PHONY : low/easy/relic_fp_inv_low.c.s
 
 low/easy/relic_fp_mul_low.o: low/easy/relic_fp_mul_low.c.o
@@ -2649,7 +2649,7 @@ low/easy/relic_fp_mul_low.o: low/easy/relic_fp_mul_low.c.o
 
 # target to build an object file
 low/easy/relic_fp_mul_low.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_fp_mul_low.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_fp_mul_low.c.o
 .PHONY : low/easy/relic_fp_mul_low.c.o
 
 low/easy/relic_fp_mul_low.i: low/easy/relic_fp_mul_low.c.i
@@ -2658,7 +2658,7 @@ low/easy/relic_fp_mul_low.i: low/easy/relic_fp_mul_low.c.i
 
 # target to preprocess a source file
 low/easy/relic_fp_mul_low.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_fp_mul_low.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_fp_mul_low.c.i
 .PHONY : low/easy/relic_fp_mul_low.c.i
 
 low/easy/relic_fp_mul_low.s: low/easy/relic_fp_mul_low.c.s
@@ -2667,7 +2667,7 @@ low/easy/relic_fp_mul_low.s: low/easy/relic_fp_mul_low.c.s
 
 # target to generate assembly for a file
 low/easy/relic_fp_mul_low.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_fp_mul_low.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_fp_mul_low.c.s
 .PHONY : low/easy/relic_fp_mul_low.c.s
 
 low/easy/relic_fp_rdc_low.o: low/easy/relic_fp_rdc_low.c.o
@@ -2676,7 +2676,7 @@ low/easy/relic_fp_rdc_low.o: low/easy/relic_fp_rdc_low.c.o
 
 # target to build an object file
 low/easy/relic_fp_rdc_low.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_fp_rdc_low.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_fp_rdc_low.c.o
 .PHONY : low/easy/relic_fp_rdc_low.c.o
 
 low/easy/relic_fp_rdc_low.i: low/easy/relic_fp_rdc_low.c.i
@@ -2685,7 +2685,7 @@ low/easy/relic_fp_rdc_low.i: low/easy/relic_fp_rdc_low.c.i
 
 # target to preprocess a source file
 low/easy/relic_fp_rdc_low.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_fp_rdc_low.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_fp_rdc_low.c.i
 .PHONY : low/easy/relic_fp_rdc_low.c.i
 
 low/easy/relic_fp_rdc_low.s: low/easy/relic_fp_rdc_low.c.s
@@ -2694,7 +2694,7 @@ low/easy/relic_fp_rdc_low.s: low/easy/relic_fp_rdc_low.c.s
 
 # target to generate assembly for a file
 low/easy/relic_fp_rdc_low.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_fp_rdc_low.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_fp_rdc_low.c.s
 .PHONY : low/easy/relic_fp_rdc_low.c.s
 
 low/easy/relic_fp_shift_low.o: low/easy/relic_fp_shift_low.c.o
@@ -2703,7 +2703,7 @@ low/easy/relic_fp_shift_low.o: low/easy/relic_fp_shift_low.c.o
 
 # target to build an object file
 low/easy/relic_fp_shift_low.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_fp_shift_low.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_fp_shift_low.c.o
 .PHONY : low/easy/relic_fp_shift_low.c.o
 
 low/easy/relic_fp_shift_low.i: low/easy/relic_fp_shift_low.c.i
@@ -2712,7 +2712,7 @@ low/easy/relic_fp_shift_low.i: low/easy/relic_fp_shift_low.c.i
 
 # target to preprocess a source file
 low/easy/relic_fp_shift_low.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_fp_shift_low.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_fp_shift_low.c.i
 .PHONY : low/easy/relic_fp_shift_low.c.i
 
 low/easy/relic_fp_shift_low.s: low/easy/relic_fp_shift_low.c.s
@@ -2721,7 +2721,7 @@ low/easy/relic_fp_shift_low.s: low/easy/relic_fp_shift_low.c.s
 
 # target to generate assembly for a file
 low/easy/relic_fp_shift_low.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_fp_shift_low.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_fp_shift_low.c.s
 .PHONY : low/easy/relic_fp_shift_low.c.s
 
 low/easy/relic_fp_sqr_low.o: low/easy/relic_fp_sqr_low.c.o
@@ -2730,7 +2730,7 @@ low/easy/relic_fp_sqr_low.o: low/easy/relic_fp_sqr_low.c.o
 
 # target to build an object file
 low/easy/relic_fp_sqr_low.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_fp_sqr_low.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_fp_sqr_low.c.o
 .PHONY : low/easy/relic_fp_sqr_low.c.o
 
 low/easy/relic_fp_sqr_low.i: low/easy/relic_fp_sqr_low.c.i
@@ -2739,7 +2739,7 @@ low/easy/relic_fp_sqr_low.i: low/easy/relic_fp_sqr_low.c.i
 
 # target to preprocess a source file
 low/easy/relic_fp_sqr_low.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_fp_sqr_low.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_fp_sqr_low.c.i
 .PHONY : low/easy/relic_fp_sqr_low.c.i
 
 low/easy/relic_fp_sqr_low.s: low/easy/relic_fp_sqr_low.c.s
@@ -2748,7 +2748,7 @@ low/easy/relic_fp_sqr_low.s: low/easy/relic_fp_sqr_low.c.s
 
 # target to generate assembly for a file
 low/easy/relic_fp_sqr_low.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_fp_sqr_low.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/low/easy/relic_fp_sqr_low.c.s
 .PHONY : low/easy/relic_fp_sqr_low.c.s
 
 md/blake2s-ref.o: md/blake2s-ref.c.o
@@ -2757,7 +2757,7 @@ md/blake2s-ref.o: md/blake2s-ref.c.o
 
 # target to build an object file
 md/blake2s-ref.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/md/blake2s-ref.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/md/blake2s-ref.c.o
 .PHONY : md/blake2s-ref.c.o
 
 md/blake2s-ref.i: md/blake2s-ref.c.i
@@ -2766,7 +2766,7 @@ md/blake2s-ref.i: md/blake2s-ref.c.i
 
 # target to preprocess a source file
 md/blake2s-ref.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/md/blake2s-ref.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/md/blake2s-ref.c.i
 .PHONY : md/blake2s-ref.c.i
 
 md/blake2s-ref.s: md/blake2s-ref.c.s
@@ -2775,7 +2775,7 @@ md/blake2s-ref.s: md/blake2s-ref.c.s
 
 # target to generate assembly for a file
 md/blake2s-ref.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/md/blake2s-ref.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/md/blake2s-ref.c.s
 .PHONY : md/blake2s-ref.c.s
 
 md/relic_md_blake2s.o: md/relic_md_blake2s.c.o
@@ -2784,7 +2784,7 @@ md/relic_md_blake2s.o: md/relic_md_blake2s.c.o
 
 # target to build an object file
 md/relic_md_blake2s.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/md/relic_md_blake2s.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/md/relic_md_blake2s.c.o
 .PHONY : md/relic_md_blake2s.c.o
 
 md/relic_md_blake2s.i: md/relic_md_blake2s.c.i
@@ -2793,7 +2793,7 @@ md/relic_md_blake2s.i: md/relic_md_blake2s.c.i
 
 # target to preprocess a source file
 md/relic_md_blake2s.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/md/relic_md_blake2s.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/md/relic_md_blake2s.c.i
 .PHONY : md/relic_md_blake2s.c.i
 
 md/relic_md_blake2s.s: md/relic_md_blake2s.c.s
@@ -2802,7 +2802,7 @@ md/relic_md_blake2s.s: md/relic_md_blake2s.c.s
 
 # target to generate assembly for a file
 md/relic_md_blake2s.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/md/relic_md_blake2s.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/md/relic_md_blake2s.c.s
 .PHONY : md/relic_md_blake2s.c.s
 
 md/relic_md_hmac.o: md/relic_md_hmac.c.o
@@ -2811,7 +2811,7 @@ md/relic_md_hmac.o: md/relic_md_hmac.c.o
 
 # target to build an object file
 md/relic_md_hmac.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/md/relic_md_hmac.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/md/relic_md_hmac.c.o
 .PHONY : md/relic_md_hmac.c.o
 
 md/relic_md_hmac.i: md/relic_md_hmac.c.i
@@ -2820,7 +2820,7 @@ md/relic_md_hmac.i: md/relic_md_hmac.c.i
 
 # target to preprocess a source file
 md/relic_md_hmac.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/md/relic_md_hmac.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/md/relic_md_hmac.c.i
 .PHONY : md/relic_md_hmac.c.i
 
 md/relic_md_hmac.s: md/relic_md_hmac.c.s
@@ -2829,7 +2829,7 @@ md/relic_md_hmac.s: md/relic_md_hmac.c.s
 
 # target to generate assembly for a file
 md/relic_md_hmac.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/md/relic_md_hmac.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/md/relic_md_hmac.c.s
 .PHONY : md/relic_md_hmac.c.s
 
 md/relic_md_kdf.o: md/relic_md_kdf.c.o
@@ -2838,7 +2838,7 @@ md/relic_md_kdf.o: md/relic_md_kdf.c.o
 
 # target to build an object file
 md/relic_md_kdf.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/md/relic_md_kdf.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/md/relic_md_kdf.c.o
 .PHONY : md/relic_md_kdf.c.o
 
 md/relic_md_kdf.i: md/relic_md_kdf.c.i
@@ -2847,7 +2847,7 @@ md/relic_md_kdf.i: md/relic_md_kdf.c.i
 
 # target to preprocess a source file
 md/relic_md_kdf.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/md/relic_md_kdf.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/md/relic_md_kdf.c.i
 .PHONY : md/relic_md_kdf.c.i
 
 md/relic_md_kdf.s: md/relic_md_kdf.c.s
@@ -2856,7 +2856,7 @@ md/relic_md_kdf.s: md/relic_md_kdf.c.s
 
 # target to generate assembly for a file
 md/relic_md_kdf.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/md/relic_md_kdf.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/md/relic_md_kdf.c.s
 .PHONY : md/relic_md_kdf.c.s
 
 md/relic_md_mgf.o: md/relic_md_mgf.c.o
@@ -2865,7 +2865,7 @@ md/relic_md_mgf.o: md/relic_md_mgf.c.o
 
 # target to build an object file
 md/relic_md_mgf.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/md/relic_md_mgf.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/md/relic_md_mgf.c.o
 .PHONY : md/relic_md_mgf.c.o
 
 md/relic_md_mgf.i: md/relic_md_mgf.c.i
@@ -2874,7 +2874,7 @@ md/relic_md_mgf.i: md/relic_md_mgf.c.i
 
 # target to preprocess a source file
 md/relic_md_mgf.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/md/relic_md_mgf.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/md/relic_md_mgf.c.i
 .PHONY : md/relic_md_mgf.c.i
 
 md/relic_md_mgf.s: md/relic_md_mgf.c.s
@@ -2883,7 +2883,7 @@ md/relic_md_mgf.s: md/relic_md_mgf.c.s
 
 # target to generate assembly for a file
 md/relic_md_mgf.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/md/relic_md_mgf.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/md/relic_md_mgf.c.s
 .PHONY : md/relic_md_mgf.c.s
 
 md/relic_md_sha1.o: md/relic_md_sha1.c.o
@@ -2892,7 +2892,7 @@ md/relic_md_sha1.o: md/relic_md_sha1.c.o
 
 # target to build an object file
 md/relic_md_sha1.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/md/relic_md_sha1.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/md/relic_md_sha1.c.o
 .PHONY : md/relic_md_sha1.c.o
 
 md/relic_md_sha1.i: md/relic_md_sha1.c.i
@@ -2901,7 +2901,7 @@ md/relic_md_sha1.i: md/relic_md_sha1.c.i
 
 # target to preprocess a source file
 md/relic_md_sha1.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/md/relic_md_sha1.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/md/relic_md_sha1.c.i
 .PHONY : md/relic_md_sha1.c.i
 
 md/relic_md_sha1.s: md/relic_md_sha1.c.s
@@ -2910,7 +2910,7 @@ md/relic_md_sha1.s: md/relic_md_sha1.c.s
 
 # target to generate assembly for a file
 md/relic_md_sha1.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/md/relic_md_sha1.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/md/relic_md_sha1.c.s
 .PHONY : md/relic_md_sha1.c.s
 
 md/relic_md_sha224.o: md/relic_md_sha224.c.o
@@ -2919,7 +2919,7 @@ md/relic_md_sha224.o: md/relic_md_sha224.c.o
 
 # target to build an object file
 md/relic_md_sha224.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/md/relic_md_sha224.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/md/relic_md_sha224.c.o
 .PHONY : md/relic_md_sha224.c.o
 
 md/relic_md_sha224.i: md/relic_md_sha224.c.i
@@ -2928,7 +2928,7 @@ md/relic_md_sha224.i: md/relic_md_sha224.c.i
 
 # target to preprocess a source file
 md/relic_md_sha224.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/md/relic_md_sha224.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/md/relic_md_sha224.c.i
 .PHONY : md/relic_md_sha224.c.i
 
 md/relic_md_sha224.s: md/relic_md_sha224.c.s
@@ -2937,7 +2937,7 @@ md/relic_md_sha224.s: md/relic_md_sha224.c.s
 
 # target to generate assembly for a file
 md/relic_md_sha224.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/md/relic_md_sha224.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/md/relic_md_sha224.c.s
 .PHONY : md/relic_md_sha224.c.s
 
 md/relic_md_sha256.o: md/relic_md_sha256.c.o
@@ -2946,7 +2946,7 @@ md/relic_md_sha256.o: md/relic_md_sha256.c.o
 
 # target to build an object file
 md/relic_md_sha256.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/md/relic_md_sha256.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/md/relic_md_sha256.c.o
 .PHONY : md/relic_md_sha256.c.o
 
 md/relic_md_sha256.i: md/relic_md_sha256.c.i
@@ -2955,7 +2955,7 @@ md/relic_md_sha256.i: md/relic_md_sha256.c.i
 
 # target to preprocess a source file
 md/relic_md_sha256.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/md/relic_md_sha256.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/md/relic_md_sha256.c.i
 .PHONY : md/relic_md_sha256.c.i
 
 md/relic_md_sha256.s: md/relic_md_sha256.c.s
@@ -2964,7 +2964,7 @@ md/relic_md_sha256.s: md/relic_md_sha256.c.s
 
 # target to generate assembly for a file
 md/relic_md_sha256.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/md/relic_md_sha256.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/md/relic_md_sha256.c.s
 .PHONY : md/relic_md_sha256.c.s
 
 md/relic_md_sha384.o: md/relic_md_sha384.c.o
@@ -2973,7 +2973,7 @@ md/relic_md_sha384.o: md/relic_md_sha384.c.o
 
 # target to build an object file
 md/relic_md_sha384.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/md/relic_md_sha384.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/md/relic_md_sha384.c.o
 .PHONY : md/relic_md_sha384.c.o
 
 md/relic_md_sha384.i: md/relic_md_sha384.c.i
@@ -2982,7 +2982,7 @@ md/relic_md_sha384.i: md/relic_md_sha384.c.i
 
 # target to preprocess a source file
 md/relic_md_sha384.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/md/relic_md_sha384.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/md/relic_md_sha384.c.i
 .PHONY : md/relic_md_sha384.c.i
 
 md/relic_md_sha384.s: md/relic_md_sha384.c.s
@@ -2991,7 +2991,7 @@ md/relic_md_sha384.s: md/relic_md_sha384.c.s
 
 # target to generate assembly for a file
 md/relic_md_sha384.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/md/relic_md_sha384.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/md/relic_md_sha384.c.s
 .PHONY : md/relic_md_sha384.c.s
 
 md/relic_md_sha512.o: md/relic_md_sha512.c.o
@@ -3000,7 +3000,7 @@ md/relic_md_sha512.o: md/relic_md_sha512.c.o
 
 # target to build an object file
 md/relic_md_sha512.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/md/relic_md_sha512.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/md/relic_md_sha512.c.o
 .PHONY : md/relic_md_sha512.c.o
 
 md/relic_md_sha512.i: md/relic_md_sha512.c.i
@@ -3009,7 +3009,7 @@ md/relic_md_sha512.i: md/relic_md_sha512.c.i
 
 # target to preprocess a source file
 md/relic_md_sha512.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/md/relic_md_sha512.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/md/relic_md_sha512.c.i
 .PHONY : md/relic_md_sha512.c.i
 
 md/relic_md_sha512.s: md/relic_md_sha512.c.s
@@ -3018,7 +3018,7 @@ md/relic_md_sha512.s: md/relic_md_sha512.c.s
 
 # target to generate assembly for a file
 md/relic_md_sha512.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/md/relic_md_sha512.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/md/relic_md_sha512.c.s
 .PHONY : md/relic_md_sha512.c.s
 
 md/sha1.o: md/sha1.c.o
@@ -3027,7 +3027,7 @@ md/sha1.o: md/sha1.c.o
 
 # target to build an object file
 md/sha1.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/md/sha1.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/md/sha1.c.o
 .PHONY : md/sha1.c.o
 
 md/sha1.i: md/sha1.c.i
@@ -3036,7 +3036,7 @@ md/sha1.i: md/sha1.c.i
 
 # target to preprocess a source file
 md/sha1.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/md/sha1.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/md/sha1.c.i
 .PHONY : md/sha1.c.i
 
 md/sha1.s: md/sha1.c.s
@@ -3045,7 +3045,7 @@ md/sha1.s: md/sha1.c.s
 
 # target to generate assembly for a file
 md/sha1.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/md/sha1.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/md/sha1.c.s
 .PHONY : md/sha1.c.s
 
 md/sha224-256.o: md/sha224-256.c.o
@@ -3054,7 +3054,7 @@ md/sha224-256.o: md/sha224-256.c.o
 
 # target to build an object file
 md/sha224-256.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/md/sha224-256.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/md/sha224-256.c.o
 .PHONY : md/sha224-256.c.o
 
 md/sha224-256.i: md/sha224-256.c.i
@@ -3063,7 +3063,7 @@ md/sha224-256.i: md/sha224-256.c.i
 
 # target to preprocess a source file
 md/sha224-256.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/md/sha224-256.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/md/sha224-256.c.i
 .PHONY : md/sha224-256.c.i
 
 md/sha224-256.s: md/sha224-256.c.s
@@ -3072,7 +3072,7 @@ md/sha224-256.s: md/sha224-256.c.s
 
 # target to generate assembly for a file
 md/sha224-256.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/md/sha224-256.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/md/sha224-256.c.s
 .PHONY : md/sha224-256.c.s
 
 md/sha384-512.o: md/sha384-512.c.o
@@ -3081,7 +3081,7 @@ md/sha384-512.o: md/sha384-512.c.o
 
 # target to build an object file
 md/sha384-512.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/md/sha384-512.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/md/sha384-512.c.o
 .PHONY : md/sha384-512.c.o
 
 md/sha384-512.i: md/sha384-512.c.i
@@ -3090,7 +3090,7 @@ md/sha384-512.i: md/sha384-512.c.i
 
 # target to preprocess a source file
 md/sha384-512.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/md/sha384-512.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/md/sha384-512.c.i
 .PHONY : md/sha384-512.c.i
 
 md/sha384-512.s: md/sha384-512.c.s
@@ -3099,7 +3099,7 @@ md/sha384-512.s: md/sha384-512.c.s
 
 # target to generate assembly for a file
 md/sha384-512.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/md/sha384-512.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/md/sha384-512.c.s
 .PHONY : md/sha384-512.c.s
 
 rand/relic_rand_core.o: rand/relic_rand_core.c.o
@@ -3108,7 +3108,7 @@ rand/relic_rand_core.o: rand/relic_rand_core.c.o
 
 # target to build an object file
 rand/relic_rand_core.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/rand/relic_rand_core.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/rand/relic_rand_core.c.o
 .PHONY : rand/relic_rand_core.c.o
 
 rand/relic_rand_core.i: rand/relic_rand_core.c.i
@@ -3117,7 +3117,7 @@ rand/relic_rand_core.i: rand/relic_rand_core.c.i
 
 # target to preprocess a source file
 rand/relic_rand_core.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/rand/relic_rand_core.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/rand/relic_rand_core.c.i
 .PHONY : rand/relic_rand_core.c.i
 
 rand/relic_rand_core.s: rand/relic_rand_core.c.s
@@ -3126,7 +3126,7 @@ rand/relic_rand_core.s: rand/relic_rand_core.c.s
 
 # target to generate assembly for a file
 rand/relic_rand_core.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/rand/relic_rand_core.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/rand/relic_rand_core.c.s
 .PHONY : rand/relic_rand_core.c.s
 
 rand/relic_rand_hashd.o: rand/relic_rand_hashd.c.o
@@ -3135,7 +3135,7 @@ rand/relic_rand_hashd.o: rand/relic_rand_hashd.c.o
 
 # target to build an object file
 rand/relic_rand_hashd.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/rand/relic_rand_hashd.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/rand/relic_rand_hashd.c.o
 .PHONY : rand/relic_rand_hashd.c.o
 
 rand/relic_rand_hashd.i: rand/relic_rand_hashd.c.i
@@ -3144,7 +3144,7 @@ rand/relic_rand_hashd.i: rand/relic_rand_hashd.c.i
 
 # target to preprocess a source file
 rand/relic_rand_hashd.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/rand/relic_rand_hashd.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/rand/relic_rand_hashd.c.i
 .PHONY : rand/relic_rand_hashd.c.i
 
 rand/relic_rand_hashd.s: rand/relic_rand_hashd.c.s
@@ -3153,7 +3153,7 @@ rand/relic_rand_hashd.s: rand/relic_rand_hashd.c.s
 
 # target to generate assembly for a file
 rand/relic_rand_hashd.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/rand/relic_rand_hashd.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/rand/relic_rand_hashd.c.s
 .PHONY : rand/relic_rand_hashd.c.s
 
 relic_conf.o: relic_conf.c.o
@@ -3162,7 +3162,7 @@ relic_conf.o: relic_conf.c.o
 
 # target to build an object file
 relic_conf.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/relic_conf.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/relic_conf.c.o
 .PHONY : relic_conf.c.o
 
 relic_conf.i: relic_conf.c.i
@@ -3171,7 +3171,7 @@ relic_conf.i: relic_conf.c.i
 
 # target to preprocess a source file
 relic_conf.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/relic_conf.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/relic_conf.c.i
 .PHONY : relic_conf.c.i
 
 relic_conf.s: relic_conf.c.s
@@ -3180,7 +3180,7 @@ relic_conf.s: relic_conf.c.s
 
 # target to generate assembly for a file
 relic_conf.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/relic_conf.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/relic_conf.c.s
 .PHONY : relic_conf.c.s
 
 relic_core.o: relic_core.c.o
@@ -3189,7 +3189,7 @@ relic_core.o: relic_core.c.o
 
 # target to build an object file
 relic_core.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/relic_core.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/relic_core.c.o
 .PHONY : relic_core.c.o
 
 relic_core.i: relic_core.c.i
@@ -3198,7 +3198,7 @@ relic_core.i: relic_core.c.i
 
 # target to preprocess a source file
 relic_core.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/relic_core.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/relic_core.c.i
 .PHONY : relic_core.c.i
 
 relic_core.s: relic_core.c.s
@@ -3207,7 +3207,7 @@ relic_core.s: relic_core.c.s
 
 # target to generate assembly for a file
 relic_core.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/relic_core.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/relic_core.c.s
 .PHONY : relic_core.c.s
 
 relic_err.o: relic_err.c.o
@@ -3216,7 +3216,7 @@ relic_err.o: relic_err.c.o
 
 # target to build an object file
 relic_err.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/relic_err.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/relic_err.c.o
 .PHONY : relic_err.c.o
 
 relic_err.i: relic_err.c.i
@@ -3225,7 +3225,7 @@ relic_err.i: relic_err.c.i
 
 # target to preprocess a source file
 relic_err.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/relic_err.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/relic_err.c.i
 .PHONY : relic_err.c.i
 
 relic_err.s: relic_err.c.s
@@ -3234,7 +3234,7 @@ relic_err.s: relic_err.c.s
 
 # target to generate assembly for a file
 relic_err.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/relic_err.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/relic_err.c.s
 .PHONY : relic_err.c.s
 
 relic_util.o: relic_util.c.o
@@ -3243,7 +3243,7 @@ relic_util.o: relic_util.c.o
 
 # target to build an object file
 relic_util.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/relic_util.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/relic_util.c.o
 .PHONY : relic_util.c.o
 
 relic_util.i: relic_util.c.i
@@ -3252,7 +3252,7 @@ relic_util.i: relic_util.c.i
 
 # target to preprocess a source file
 relic_util.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/relic_util.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/relic_util.c.i
 .PHONY : relic_util.c.i
 
 relic_util.s: relic_util.c.s
@@ -3261,7 +3261,7 @@ relic_util.s: relic_util.c.s
 
 # target to generate assembly for a file
 relic_util.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/relic_util.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/build.make extern/ABY/extern/ENCRYPTO_utils/extern/relic/src/CMakeFiles/relic_s.dir/relic_util.c.s
 .PHONY : relic_util.c.s
 
 # Help Target
@@ -3631,6 +3631,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /root/PQC-mPSI/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

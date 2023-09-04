@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /root/zero-knowledge/PQC-mPSI
+CMAKE_SOURCE_DIR = /root/PQC-mPSI
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /root/zero-knowledge/PQC-mPSI/build
+CMAKE_BINARY_DIR = /root/PQC-mPSI/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -126,14 +126,14 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /root/zero-knowledge/PQC-mPSI/build && $(CMAKE_COMMAND) -E cmake_progress_start /root/zero-knowledge/PQC-mPSI/build/CMakeFiles /root/zero-knowledge/PQC-mPSI/build/extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/progress.marks
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/libOTe/cryptoTools/cryptoTools/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /root/zero-knowledge/PQC-mPSI/build/CMakeFiles 0
+	cd /root/PQC-mPSI/build && $(CMAKE_COMMAND) -E cmake_progress_start /root/PQC-mPSI/build/CMakeFiles /root/PQC-mPSI/build/extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/progress.marks
+	cd /root/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/libOTe/cryptoTools/cryptoTools/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/PQC-mPSI/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/libOTe/cryptoTools/cryptoTools/clean
+	cd /root/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/libOTe/cryptoTools/cryptoTools/clean
 .PHONY : clean
 
 # The main clean target
@@ -143,22 +143,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/libOTe/cryptoTools/cryptoTools/preinstall
+	cd /root/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/libOTe/cryptoTools/cryptoTools/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/libOTe/cryptoTools/cryptoTools/preinstall
+	cd /root/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/libOTe/cryptoTools/cryptoTools/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /root/PQC-mPSI/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/rule:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/rule
+	cd /root/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/rule
 .PHONY : extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/rule
 
 # Convenience name for target.
@@ -168,7 +168,7 @@ cryptoTools: extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/ru
 
 # fast build rule for target.
 cryptoTools/fast:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build
 .PHONY : cryptoTools/fast
 
 Circuit/BetaCircuit.o: Circuit/BetaCircuit.cpp.o
@@ -177,7 +177,7 @@ Circuit/BetaCircuit.o: Circuit/BetaCircuit.cpp.o
 
 # target to build an object file
 Circuit/BetaCircuit.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Circuit/BetaCircuit.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Circuit/BetaCircuit.cpp.o
 .PHONY : Circuit/BetaCircuit.cpp.o
 
 Circuit/BetaCircuit.i: Circuit/BetaCircuit.cpp.i
@@ -186,7 +186,7 @@ Circuit/BetaCircuit.i: Circuit/BetaCircuit.cpp.i
 
 # target to preprocess a source file
 Circuit/BetaCircuit.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Circuit/BetaCircuit.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Circuit/BetaCircuit.cpp.i
 .PHONY : Circuit/BetaCircuit.cpp.i
 
 Circuit/BetaCircuit.s: Circuit/BetaCircuit.cpp.s
@@ -195,7 +195,7 @@ Circuit/BetaCircuit.s: Circuit/BetaCircuit.cpp.s
 
 # target to generate assembly for a file
 Circuit/BetaCircuit.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Circuit/BetaCircuit.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Circuit/BetaCircuit.cpp.s
 .PHONY : Circuit/BetaCircuit.cpp.s
 
 Circuit/BetaLibrary.o: Circuit/BetaLibrary.cpp.o
@@ -204,7 +204,7 @@ Circuit/BetaLibrary.o: Circuit/BetaLibrary.cpp.o
 
 # target to build an object file
 Circuit/BetaLibrary.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Circuit/BetaLibrary.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Circuit/BetaLibrary.cpp.o
 .PHONY : Circuit/BetaLibrary.cpp.o
 
 Circuit/BetaLibrary.i: Circuit/BetaLibrary.cpp.i
@@ -213,7 +213,7 @@ Circuit/BetaLibrary.i: Circuit/BetaLibrary.cpp.i
 
 # target to preprocess a source file
 Circuit/BetaLibrary.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Circuit/BetaLibrary.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Circuit/BetaLibrary.cpp.i
 .PHONY : Circuit/BetaLibrary.cpp.i
 
 Circuit/BetaLibrary.s: Circuit/BetaLibrary.cpp.s
@@ -222,7 +222,7 @@ Circuit/BetaLibrary.s: Circuit/BetaLibrary.cpp.s
 
 # target to generate assembly for a file
 Circuit/BetaLibrary.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Circuit/BetaLibrary.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Circuit/BetaLibrary.cpp.s
 .PHONY : Circuit/BetaLibrary.cpp.s
 
 Common/BitVector.o: Common/BitVector.cpp.o
@@ -231,7 +231,7 @@ Common/BitVector.o: Common/BitVector.cpp.o
 
 # target to build an object file
 Common/BitVector.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Common/BitVector.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Common/BitVector.cpp.o
 .PHONY : Common/BitVector.cpp.o
 
 Common/BitVector.i: Common/BitVector.cpp.i
@@ -240,7 +240,7 @@ Common/BitVector.i: Common/BitVector.cpp.i
 
 # target to preprocess a source file
 Common/BitVector.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Common/BitVector.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Common/BitVector.cpp.i
 .PHONY : Common/BitVector.cpp.i
 
 Common/BitVector.s: Common/BitVector.cpp.s
@@ -249,7 +249,7 @@ Common/BitVector.s: Common/BitVector.cpp.s
 
 # target to generate assembly for a file
 Common/BitVector.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Common/BitVector.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Common/BitVector.cpp.s
 .PHONY : Common/BitVector.cpp.s
 
 Common/CLP.o: Common/CLP.cpp.o
@@ -258,7 +258,7 @@ Common/CLP.o: Common/CLP.cpp.o
 
 # target to build an object file
 Common/CLP.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Common/CLP.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Common/CLP.cpp.o
 .PHONY : Common/CLP.cpp.o
 
 Common/CLP.i: Common/CLP.cpp.i
@@ -267,7 +267,7 @@ Common/CLP.i: Common/CLP.cpp.i
 
 # target to preprocess a source file
 Common/CLP.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Common/CLP.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Common/CLP.cpp.i
 .PHONY : Common/CLP.cpp.i
 
 Common/CLP.s: Common/CLP.cpp.s
@@ -276,7 +276,7 @@ Common/CLP.s: Common/CLP.cpp.s
 
 # target to generate assembly for a file
 Common/CLP.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Common/CLP.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Common/CLP.cpp.s
 .PHONY : Common/CLP.cpp.s
 
 Common/CuckooIndex.o: Common/CuckooIndex.cpp.o
@@ -285,7 +285,7 @@ Common/CuckooIndex.o: Common/CuckooIndex.cpp.o
 
 # target to build an object file
 Common/CuckooIndex.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Common/CuckooIndex.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Common/CuckooIndex.cpp.o
 .PHONY : Common/CuckooIndex.cpp.o
 
 Common/CuckooIndex.i: Common/CuckooIndex.cpp.i
@@ -294,7 +294,7 @@ Common/CuckooIndex.i: Common/CuckooIndex.cpp.i
 
 # target to preprocess a source file
 Common/CuckooIndex.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Common/CuckooIndex.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Common/CuckooIndex.cpp.i
 .PHONY : Common/CuckooIndex.cpp.i
 
 Common/CuckooIndex.s: Common/CuckooIndex.cpp.s
@@ -303,7 +303,7 @@ Common/CuckooIndex.s: Common/CuckooIndex.cpp.s
 
 # target to generate assembly for a file
 Common/CuckooIndex.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Common/CuckooIndex.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Common/CuckooIndex.cpp.s
 .PHONY : Common/CuckooIndex.cpp.s
 
 Common/Defines.o: Common/Defines.cpp.o
@@ -312,7 +312,7 @@ Common/Defines.o: Common/Defines.cpp.o
 
 # target to build an object file
 Common/Defines.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Common/Defines.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Common/Defines.cpp.o
 .PHONY : Common/Defines.cpp.o
 
 Common/Defines.i: Common/Defines.cpp.i
@@ -321,7 +321,7 @@ Common/Defines.i: Common/Defines.cpp.i
 
 # target to preprocess a source file
 Common/Defines.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Common/Defines.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Common/Defines.cpp.i
 .PHONY : Common/Defines.cpp.i
 
 Common/Defines.s: Common/Defines.cpp.s
@@ -330,7 +330,7 @@ Common/Defines.s: Common/Defines.cpp.s
 
 # target to generate assembly for a file
 Common/Defines.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Common/Defines.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Common/Defines.cpp.s
 .PHONY : Common/Defines.cpp.s
 
 Common/Log.o: Common/Log.cpp.o
@@ -339,7 +339,7 @@ Common/Log.o: Common/Log.cpp.o
 
 # target to build an object file
 Common/Log.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Common/Log.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Common/Log.cpp.o
 .PHONY : Common/Log.cpp.o
 
 Common/Log.i: Common/Log.cpp.i
@@ -348,7 +348,7 @@ Common/Log.i: Common/Log.cpp.i
 
 # target to preprocess a source file
 Common/Log.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Common/Log.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Common/Log.cpp.i
 .PHONY : Common/Log.cpp.i
 
 Common/Log.s: Common/Log.cpp.s
@@ -357,7 +357,7 @@ Common/Log.s: Common/Log.cpp.s
 
 # target to generate assembly for a file
 Common/Log.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Common/Log.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Common/Log.cpp.s
 .PHONY : Common/Log.cpp.s
 
 Common/TestCollection.o: Common/TestCollection.cpp.o
@@ -366,7 +366,7 @@ Common/TestCollection.o: Common/TestCollection.cpp.o
 
 # target to build an object file
 Common/TestCollection.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Common/TestCollection.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Common/TestCollection.cpp.o
 .PHONY : Common/TestCollection.cpp.o
 
 Common/TestCollection.i: Common/TestCollection.cpp.i
@@ -375,7 +375,7 @@ Common/TestCollection.i: Common/TestCollection.cpp.i
 
 # target to preprocess a source file
 Common/TestCollection.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Common/TestCollection.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Common/TestCollection.cpp.i
 .PHONY : Common/TestCollection.cpp.i
 
 Common/TestCollection.s: Common/TestCollection.cpp.s
@@ -384,7 +384,7 @@ Common/TestCollection.s: Common/TestCollection.cpp.s
 
 # target to generate assembly for a file
 Common/TestCollection.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Common/TestCollection.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Common/TestCollection.cpp.s
 .PHONY : Common/TestCollection.cpp.s
 
 Common/Timer.o: Common/Timer.cpp.o
@@ -393,7 +393,7 @@ Common/Timer.o: Common/Timer.cpp.o
 
 # target to build an object file
 Common/Timer.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Common/Timer.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Common/Timer.cpp.o
 .PHONY : Common/Timer.cpp.o
 
 Common/Timer.i: Common/Timer.cpp.i
@@ -402,7 +402,7 @@ Common/Timer.i: Common/Timer.cpp.i
 
 # target to preprocess a source file
 Common/Timer.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Common/Timer.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Common/Timer.cpp.i
 .PHONY : Common/Timer.cpp.i
 
 Common/Timer.s: Common/Timer.cpp.s
@@ -411,7 +411,7 @@ Common/Timer.s: Common/Timer.cpp.s
 
 # target to generate assembly for a file
 Common/Timer.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Common/Timer.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Common/Timer.cpp.s
 .PHONY : Common/Timer.cpp.s
 
 Crypto/AES.o: Crypto/AES.cpp.o
@@ -420,7 +420,7 @@ Crypto/AES.o: Crypto/AES.cpp.o
 
 # target to build an object file
 Crypto/AES.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Crypto/AES.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Crypto/AES.cpp.o
 .PHONY : Crypto/AES.cpp.o
 
 Crypto/AES.i: Crypto/AES.cpp.i
@@ -429,7 +429,7 @@ Crypto/AES.i: Crypto/AES.cpp.i
 
 # target to preprocess a source file
 Crypto/AES.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Crypto/AES.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Crypto/AES.cpp.i
 .PHONY : Crypto/AES.cpp.i
 
 Crypto/AES.s: Crypto/AES.cpp.s
@@ -438,7 +438,7 @@ Crypto/AES.s: Crypto/AES.cpp.s
 
 # target to generate assembly for a file
 Crypto/AES.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Crypto/AES.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Crypto/AES.cpp.s
 .PHONY : Crypto/AES.cpp.s
 
 Crypto/Blake2.o: Crypto/Blake2.cpp.o
@@ -447,7 +447,7 @@ Crypto/Blake2.o: Crypto/Blake2.cpp.o
 
 # target to build an object file
 Crypto/Blake2.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Crypto/Blake2.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Crypto/Blake2.cpp.o
 .PHONY : Crypto/Blake2.cpp.o
 
 Crypto/Blake2.i: Crypto/Blake2.cpp.i
@@ -456,7 +456,7 @@ Crypto/Blake2.i: Crypto/Blake2.cpp.i
 
 # target to preprocess a source file
 Crypto/Blake2.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Crypto/Blake2.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Crypto/Blake2.cpp.i
 .PHONY : Crypto/Blake2.cpp.i
 
 Crypto/Blake2.s: Crypto/Blake2.cpp.s
@@ -465,7 +465,7 @@ Crypto/Blake2.s: Crypto/Blake2.cpp.s
 
 # target to generate assembly for a file
 Crypto/Blake2.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Crypto/Blake2.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Crypto/Blake2.cpp.s
 .PHONY : Crypto/Blake2.cpp.s
 
 Crypto/Curve.o: Crypto/Curve.cpp.o
@@ -474,7 +474,7 @@ Crypto/Curve.o: Crypto/Curve.cpp.o
 
 # target to build an object file
 Crypto/Curve.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Crypto/Curve.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Crypto/Curve.cpp.o
 .PHONY : Crypto/Curve.cpp.o
 
 Crypto/Curve.i: Crypto/Curve.cpp.i
@@ -483,7 +483,7 @@ Crypto/Curve.i: Crypto/Curve.cpp.i
 
 # target to preprocess a source file
 Crypto/Curve.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Crypto/Curve.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Crypto/Curve.cpp.i
 .PHONY : Crypto/Curve.cpp.i
 
 Crypto/Curve.s: Crypto/Curve.cpp.s
@@ -492,7 +492,7 @@ Crypto/Curve.s: Crypto/Curve.cpp.s
 
 # target to generate assembly for a file
 Crypto/Curve.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Crypto/Curve.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Crypto/Curve.cpp.s
 .PHONY : Crypto/Curve.cpp.s
 
 Crypto/PRNG.o: Crypto/PRNG.cpp.o
@@ -501,7 +501,7 @@ Crypto/PRNG.o: Crypto/PRNG.cpp.o
 
 # target to build an object file
 Crypto/PRNG.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Crypto/PRNG.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Crypto/PRNG.cpp.o
 .PHONY : Crypto/PRNG.cpp.o
 
 Crypto/PRNG.i: Crypto/PRNG.cpp.i
@@ -510,7 +510,7 @@ Crypto/PRNG.i: Crypto/PRNG.cpp.i
 
 # target to preprocess a source file
 Crypto/PRNG.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Crypto/PRNG.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Crypto/PRNG.cpp.i
 .PHONY : Crypto/PRNG.cpp.i
 
 Crypto/PRNG.s: Crypto/PRNG.cpp.s
@@ -519,7 +519,7 @@ Crypto/PRNG.s: Crypto/PRNG.cpp.s
 
 # target to generate assembly for a file
 Crypto/PRNG.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Crypto/PRNG.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Crypto/PRNG.cpp.s
 .PHONY : Crypto/PRNG.cpp.s
 
 Crypto/RCurve.o: Crypto/RCurve.cpp.o
@@ -528,7 +528,7 @@ Crypto/RCurve.o: Crypto/RCurve.cpp.o
 
 # target to build an object file
 Crypto/RCurve.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Crypto/RCurve.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Crypto/RCurve.cpp.o
 .PHONY : Crypto/RCurve.cpp.o
 
 Crypto/RCurve.i: Crypto/RCurve.cpp.i
@@ -537,7 +537,7 @@ Crypto/RCurve.i: Crypto/RCurve.cpp.i
 
 # target to preprocess a source file
 Crypto/RCurve.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Crypto/RCurve.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Crypto/RCurve.cpp.i
 .PHONY : Crypto/RCurve.cpp.i
 
 Crypto/RCurve.s: Crypto/RCurve.cpp.s
@@ -546,7 +546,7 @@ Crypto/RCurve.s: Crypto/RCurve.cpp.s
 
 # target to generate assembly for a file
 Crypto/RCurve.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Crypto/RCurve.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Crypto/RCurve.cpp.s
 .PHONY : Crypto/RCurve.cpp.s
 
 Crypto/blake2/blake2b.o: Crypto/blake2/blake2b.c.o
@@ -555,7 +555,7 @@ Crypto/blake2/blake2b.o: Crypto/blake2/blake2b.c.o
 
 # target to build an object file
 Crypto/blake2/blake2b.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Crypto/blake2/blake2b.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Crypto/blake2/blake2b.c.o
 .PHONY : Crypto/blake2/blake2b.c.o
 
 Crypto/blake2/blake2b.i: Crypto/blake2/blake2b.c.i
@@ -564,7 +564,7 @@ Crypto/blake2/blake2b.i: Crypto/blake2/blake2b.c.i
 
 # target to preprocess a source file
 Crypto/blake2/blake2b.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Crypto/blake2/blake2b.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Crypto/blake2/blake2b.c.i
 .PHONY : Crypto/blake2/blake2b.c.i
 
 Crypto/blake2/blake2b.s: Crypto/blake2/blake2b.c.s
@@ -573,7 +573,7 @@ Crypto/blake2/blake2b.s: Crypto/blake2/blake2b.c.s
 
 # target to generate assembly for a file
 Crypto/blake2/blake2b.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Crypto/blake2/blake2b.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Crypto/blake2/blake2b.c.s
 .PHONY : Crypto/blake2/blake2b.c.s
 
 Crypto/blake2/blake2bp.o: Crypto/blake2/blake2bp.c.o
@@ -582,7 +582,7 @@ Crypto/blake2/blake2bp.o: Crypto/blake2/blake2bp.c.o
 
 # target to build an object file
 Crypto/blake2/blake2bp.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Crypto/blake2/blake2bp.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Crypto/blake2/blake2bp.c.o
 .PHONY : Crypto/blake2/blake2bp.c.o
 
 Crypto/blake2/blake2bp.i: Crypto/blake2/blake2bp.c.i
@@ -591,7 +591,7 @@ Crypto/blake2/blake2bp.i: Crypto/blake2/blake2bp.c.i
 
 # target to preprocess a source file
 Crypto/blake2/blake2bp.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Crypto/blake2/blake2bp.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Crypto/blake2/blake2bp.c.i
 .PHONY : Crypto/blake2/blake2bp.c.i
 
 Crypto/blake2/blake2bp.s: Crypto/blake2/blake2bp.c.s
@@ -600,7 +600,7 @@ Crypto/blake2/blake2bp.s: Crypto/blake2/blake2bp.c.s
 
 # target to generate assembly for a file
 Crypto/blake2/blake2bp.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Crypto/blake2/blake2bp.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Crypto/blake2/blake2bp.c.s
 .PHONY : Crypto/blake2/blake2bp.c.s
 
 Crypto/blake2/blake2xb.o: Crypto/blake2/blake2xb.c.o
@@ -609,7 +609,7 @@ Crypto/blake2/blake2xb.o: Crypto/blake2/blake2xb.c.o
 
 # target to build an object file
 Crypto/blake2/blake2xb.c.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Crypto/blake2/blake2xb.c.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Crypto/blake2/blake2xb.c.o
 .PHONY : Crypto/blake2/blake2xb.c.o
 
 Crypto/blake2/blake2xb.i: Crypto/blake2/blake2xb.c.i
@@ -618,7 +618,7 @@ Crypto/blake2/blake2xb.i: Crypto/blake2/blake2xb.c.i
 
 # target to preprocess a source file
 Crypto/blake2/blake2xb.c.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Crypto/blake2/blake2xb.c.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Crypto/blake2/blake2xb.c.i
 .PHONY : Crypto/blake2/blake2xb.c.i
 
 Crypto/blake2/blake2xb.s: Crypto/blake2/blake2xb.c.s
@@ -627,7 +627,7 @@ Crypto/blake2/blake2xb.s: Crypto/blake2/blake2xb.c.s
 
 # target to generate assembly for a file
 Crypto/blake2/blake2xb.c.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Crypto/blake2/blake2xb.c.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Crypto/blake2/blake2xb.c.s
 .PHONY : Crypto/blake2/blake2xb.c.s
 
 Network/Channel.o: Network/Channel.cpp.o
@@ -636,7 +636,7 @@ Network/Channel.o: Network/Channel.cpp.o
 
 # target to build an object file
 Network/Channel.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Network/Channel.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Network/Channel.cpp.o
 .PHONY : Network/Channel.cpp.o
 
 Network/Channel.i: Network/Channel.cpp.i
@@ -645,7 +645,7 @@ Network/Channel.i: Network/Channel.cpp.i
 
 # target to preprocess a source file
 Network/Channel.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Network/Channel.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Network/Channel.cpp.i
 .PHONY : Network/Channel.cpp.i
 
 Network/Channel.s: Network/Channel.cpp.s
@@ -654,7 +654,7 @@ Network/Channel.s: Network/Channel.cpp.s
 
 # target to generate assembly for a file
 Network/Channel.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Network/Channel.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Network/Channel.cpp.s
 .PHONY : Network/Channel.cpp.s
 
 Network/IOService.o: Network/IOService.cpp.o
@@ -663,7 +663,7 @@ Network/IOService.o: Network/IOService.cpp.o
 
 # target to build an object file
 Network/IOService.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Network/IOService.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Network/IOService.cpp.o
 .PHONY : Network/IOService.cpp.o
 
 Network/IOService.i: Network/IOService.cpp.i
@@ -672,7 +672,7 @@ Network/IOService.i: Network/IOService.cpp.i
 
 # target to preprocess a source file
 Network/IOService.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Network/IOService.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Network/IOService.cpp.i
 .PHONY : Network/IOService.cpp.i
 
 Network/IOService.s: Network/IOService.cpp.s
@@ -681,7 +681,7 @@ Network/IOService.s: Network/IOService.cpp.s
 
 # target to generate assembly for a file
 Network/IOService.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Network/IOService.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Network/IOService.cpp.s
 .PHONY : Network/IOService.cpp.s
 
 Network/IoBuffer.o: Network/IoBuffer.cpp.o
@@ -690,7 +690,7 @@ Network/IoBuffer.o: Network/IoBuffer.cpp.o
 
 # target to build an object file
 Network/IoBuffer.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Network/IoBuffer.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Network/IoBuffer.cpp.o
 .PHONY : Network/IoBuffer.cpp.o
 
 Network/IoBuffer.i: Network/IoBuffer.cpp.i
@@ -699,7 +699,7 @@ Network/IoBuffer.i: Network/IoBuffer.cpp.i
 
 # target to preprocess a source file
 Network/IoBuffer.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Network/IoBuffer.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Network/IoBuffer.cpp.i
 .PHONY : Network/IoBuffer.cpp.i
 
 Network/IoBuffer.s: Network/IoBuffer.cpp.s
@@ -708,7 +708,7 @@ Network/IoBuffer.s: Network/IoBuffer.cpp.s
 
 # target to generate assembly for a file
 Network/IoBuffer.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Network/IoBuffer.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Network/IoBuffer.cpp.s
 .PHONY : Network/IoBuffer.cpp.s
 
 Network/Session.o: Network/Session.cpp.o
@@ -717,7 +717,7 @@ Network/Session.o: Network/Session.cpp.o
 
 # target to build an object file
 Network/Session.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Network/Session.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Network/Session.cpp.o
 .PHONY : Network/Session.cpp.o
 
 Network/Session.i: Network/Session.cpp.i
@@ -726,7 +726,7 @@ Network/Session.i: Network/Session.cpp.i
 
 # target to preprocess a source file
 Network/Session.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Network/Session.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Network/Session.cpp.i
 .PHONY : Network/Session.cpp.i
 
 Network/Session.s: Network/Session.cpp.s
@@ -735,7 +735,7 @@ Network/Session.s: Network/Session.cpp.s
 
 # target to generate assembly for a file
 Network/Session.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Network/Session.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Network/Session.cpp.s
 .PHONY : Network/Session.cpp.s
 
 Network/TLS.o: Network/TLS.cpp.o
@@ -744,7 +744,7 @@ Network/TLS.o: Network/TLS.cpp.o
 
 # target to build an object file
 Network/TLS.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Network/TLS.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Network/TLS.cpp.o
 .PHONY : Network/TLS.cpp.o
 
 Network/TLS.i: Network/TLS.cpp.i
@@ -753,7 +753,7 @@ Network/TLS.i: Network/TLS.cpp.i
 
 # target to preprocess a source file
 Network/TLS.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Network/TLS.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Network/TLS.cpp.i
 .PHONY : Network/TLS.cpp.i
 
 Network/TLS.s: Network/TLS.cpp.s
@@ -762,7 +762,7 @@ Network/TLS.s: Network/TLS.cpp.s
 
 # target to generate assembly for a file
 Network/TLS.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Network/TLS.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/build.make extern/libOTe/cryptoTools/cryptoTools/CMakeFiles/cryptoTools.dir/Network/TLS.cpp.s
 .PHONY : Network/TLS.cpp.s
 
 # Help Target
@@ -855,6 +855,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /root/PQC-mPSI/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

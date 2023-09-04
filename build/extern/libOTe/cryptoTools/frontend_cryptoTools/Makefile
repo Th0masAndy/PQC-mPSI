@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /root/zero-knowledge/PQC-mPSI
+CMAKE_SOURCE_DIR = /root/PQC-mPSI
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /root/zero-knowledge/PQC-mPSI/build
+CMAKE_BINARY_DIR = /root/PQC-mPSI/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -126,14 +126,14 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /root/zero-knowledge/PQC-mPSI/build && $(CMAKE_COMMAND) -E cmake_progress_start /root/zero-knowledge/PQC-mPSI/build/CMakeFiles /root/zero-knowledge/PQC-mPSI/build/extern/libOTe/cryptoTools/frontend_cryptoTools/CMakeFiles/progress.marks
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/libOTe/cryptoTools/frontend_cryptoTools/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /root/zero-knowledge/PQC-mPSI/build/CMakeFiles 0
+	cd /root/PQC-mPSI/build && $(CMAKE_COMMAND) -E cmake_progress_start /root/PQC-mPSI/build/CMakeFiles /root/PQC-mPSI/build/extern/libOTe/cryptoTools/frontend_cryptoTools/CMakeFiles/progress.marks
+	cd /root/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/libOTe/cryptoTools/frontend_cryptoTools/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/PQC-mPSI/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/libOTe/cryptoTools/frontend_cryptoTools/clean
+	cd /root/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/libOTe/cryptoTools/frontend_cryptoTools/clean
 .PHONY : clean
 
 # The main clean target
@@ -143,22 +143,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/libOTe/cryptoTools/frontend_cryptoTools/preinstall
+	cd /root/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/libOTe/cryptoTools/frontend_cryptoTools/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/libOTe/cryptoTools/frontend_cryptoTools/preinstall
+	cd /root/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/libOTe/cryptoTools/frontend_cryptoTools/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /root/PQC-mPSI/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 extern/libOTe/cryptoTools/frontend_cryptoTools/CMakeFiles/frontend_cryptoTools.dir/rule:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/libOTe/cryptoTools/frontend_cryptoTools/CMakeFiles/frontend_cryptoTools.dir/rule
+	cd /root/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/libOTe/cryptoTools/frontend_cryptoTools/CMakeFiles/frontend_cryptoTools.dir/rule
 .PHONY : extern/libOTe/cryptoTools/frontend_cryptoTools/CMakeFiles/frontend_cryptoTools.dir/rule
 
 # Convenience name for target.
@@ -168,7 +168,7 @@ frontend_cryptoTools: extern/libOTe/cryptoTools/frontend_cryptoTools/CMakeFiles/
 
 # fast build rule for target.
 frontend_cryptoTools/fast:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/frontend_cryptoTools/CMakeFiles/frontend_cryptoTools.dir/build.make extern/libOTe/cryptoTools/frontend_cryptoTools/CMakeFiles/frontend_cryptoTools.dir/build
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/frontend_cryptoTools/CMakeFiles/frontend_cryptoTools.dir/build.make extern/libOTe/cryptoTools/frontend_cryptoTools/CMakeFiles/frontend_cryptoTools.dir/build
 .PHONY : frontend_cryptoTools/fast
 
 Tutorials/Network.o: Tutorials/Network.cpp.o
@@ -177,7 +177,7 @@ Tutorials/Network.o: Tutorials/Network.cpp.o
 
 # target to build an object file
 Tutorials/Network.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/frontend_cryptoTools/CMakeFiles/frontend_cryptoTools.dir/build.make extern/libOTe/cryptoTools/frontend_cryptoTools/CMakeFiles/frontend_cryptoTools.dir/Tutorials/Network.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/frontend_cryptoTools/CMakeFiles/frontend_cryptoTools.dir/build.make extern/libOTe/cryptoTools/frontend_cryptoTools/CMakeFiles/frontend_cryptoTools.dir/Tutorials/Network.cpp.o
 .PHONY : Tutorials/Network.cpp.o
 
 Tutorials/Network.i: Tutorials/Network.cpp.i
@@ -186,7 +186,7 @@ Tutorials/Network.i: Tutorials/Network.cpp.i
 
 # target to preprocess a source file
 Tutorials/Network.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/frontend_cryptoTools/CMakeFiles/frontend_cryptoTools.dir/build.make extern/libOTe/cryptoTools/frontend_cryptoTools/CMakeFiles/frontend_cryptoTools.dir/Tutorials/Network.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/frontend_cryptoTools/CMakeFiles/frontend_cryptoTools.dir/build.make extern/libOTe/cryptoTools/frontend_cryptoTools/CMakeFiles/frontend_cryptoTools.dir/Tutorials/Network.cpp.i
 .PHONY : Tutorials/Network.cpp.i
 
 Tutorials/Network.s: Tutorials/Network.cpp.s
@@ -195,7 +195,7 @@ Tutorials/Network.s: Tutorials/Network.cpp.s
 
 # target to generate assembly for a file
 Tutorials/Network.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/frontend_cryptoTools/CMakeFiles/frontend_cryptoTools.dir/build.make extern/libOTe/cryptoTools/frontend_cryptoTools/CMakeFiles/frontend_cryptoTools.dir/Tutorials/Network.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/frontend_cryptoTools/CMakeFiles/frontend_cryptoTools.dir/build.make extern/libOTe/cryptoTools/frontend_cryptoTools/CMakeFiles/frontend_cryptoTools.dir/Tutorials/Network.cpp.s
 .PHONY : Tutorials/Network.cpp.s
 
 main.o: main.cpp.o
@@ -204,7 +204,7 @@ main.o: main.cpp.o
 
 # target to build an object file
 main.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/frontend_cryptoTools/CMakeFiles/frontend_cryptoTools.dir/build.make extern/libOTe/cryptoTools/frontend_cryptoTools/CMakeFiles/frontend_cryptoTools.dir/main.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/frontend_cryptoTools/CMakeFiles/frontend_cryptoTools.dir/build.make extern/libOTe/cryptoTools/frontend_cryptoTools/CMakeFiles/frontend_cryptoTools.dir/main.cpp.o
 .PHONY : main.cpp.o
 
 main.i: main.cpp.i
@@ -213,7 +213,7 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/frontend_cryptoTools/CMakeFiles/frontend_cryptoTools.dir/build.make extern/libOTe/cryptoTools/frontend_cryptoTools/CMakeFiles/frontend_cryptoTools.dir/main.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/frontend_cryptoTools/CMakeFiles/frontend_cryptoTools.dir/build.make extern/libOTe/cryptoTools/frontend_cryptoTools/CMakeFiles/frontend_cryptoTools.dir/main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -222,7 +222,7 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/frontend_cryptoTools/CMakeFiles/frontend_cryptoTools.dir/build.make extern/libOTe/cryptoTools/frontend_cryptoTools/CMakeFiles/frontend_cryptoTools.dir/main.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/frontend_cryptoTools/CMakeFiles/frontend_cryptoTools.dir/build.make extern/libOTe/cryptoTools/frontend_cryptoTools/CMakeFiles/frontend_cryptoTools.dir/main.cpp.s
 .PHONY : main.cpp.s
 
 signalHandle.o: signalHandle.cpp.o
@@ -231,7 +231,7 @@ signalHandle.o: signalHandle.cpp.o
 
 # target to build an object file
 signalHandle.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/frontend_cryptoTools/CMakeFiles/frontend_cryptoTools.dir/build.make extern/libOTe/cryptoTools/frontend_cryptoTools/CMakeFiles/frontend_cryptoTools.dir/signalHandle.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/frontend_cryptoTools/CMakeFiles/frontend_cryptoTools.dir/build.make extern/libOTe/cryptoTools/frontend_cryptoTools/CMakeFiles/frontend_cryptoTools.dir/signalHandle.cpp.o
 .PHONY : signalHandle.cpp.o
 
 signalHandle.i: signalHandle.cpp.i
@@ -240,7 +240,7 @@ signalHandle.i: signalHandle.cpp.i
 
 # target to preprocess a source file
 signalHandle.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/frontend_cryptoTools/CMakeFiles/frontend_cryptoTools.dir/build.make extern/libOTe/cryptoTools/frontend_cryptoTools/CMakeFiles/frontend_cryptoTools.dir/signalHandle.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/frontend_cryptoTools/CMakeFiles/frontend_cryptoTools.dir/build.make extern/libOTe/cryptoTools/frontend_cryptoTools/CMakeFiles/frontend_cryptoTools.dir/signalHandle.cpp.i
 .PHONY : signalHandle.cpp.i
 
 signalHandle.s: signalHandle.cpp.s
@@ -249,7 +249,7 @@ signalHandle.s: signalHandle.cpp.s
 
 # target to generate assembly for a file
 signalHandle.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/frontend_cryptoTools/CMakeFiles/frontend_cryptoTools.dir/build.make extern/libOTe/cryptoTools/frontend_cryptoTools/CMakeFiles/frontend_cryptoTools.dir/signalHandle.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/cryptoTools/frontend_cryptoTools/CMakeFiles/frontend_cryptoTools.dir/build.make extern/libOTe/cryptoTools/frontend_cryptoTools/CMakeFiles/frontend_cryptoTools.dir/signalHandle.cpp.s
 .PHONY : signalHandle.cpp.s
 
 # Help Target
@@ -285,6 +285,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /root/PQC-mPSI/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /root/zero-knowledge/PQC-mPSI
+CMAKE_SOURCE_DIR = /root/PQC-mPSI
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /root/zero-knowledge/PQC-mPSI/build
+CMAKE_BINARY_DIR = /root/PQC-mPSI/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -126,14 +126,14 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /root/zero-knowledge/PQC-mPSI/build && $(CMAKE_COMMAND) -E cmake_progress_start /root/zero-knowledge/PQC-mPSI/build/CMakeFiles /root/zero-knowledge/PQC-mPSI/build/extern/EzPC/SCI/src/LinearHE/CMakeFiles/progress.marks
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/EzPC/SCI/src/LinearHE/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /root/zero-knowledge/PQC-mPSI/build/CMakeFiles 0
+	cd /root/PQC-mPSI/build && $(CMAKE_COMMAND) -E cmake_progress_start /root/PQC-mPSI/build/CMakeFiles /root/PQC-mPSI/build/extern/EzPC/SCI/src/LinearHE/CMakeFiles/progress.marks
+	cd /root/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/EzPC/SCI/src/LinearHE/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/PQC-mPSI/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/EzPC/SCI/src/LinearHE/clean
+	cd /root/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/EzPC/SCI/src/LinearHE/clean
 .PHONY : clean
 
 # The main clean target
@@ -143,22 +143,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/EzPC/SCI/src/LinearHE/preinstall
+	cd /root/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/EzPC/SCI/src/LinearHE/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/EzPC/SCI/src/LinearHE/preinstall
+	cd /root/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/EzPC/SCI/src/LinearHE/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /root/PQC-mPSI/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 extern/EzPC/SCI/src/LinearHE/CMakeFiles/SCI-LinearHE.dir/rule:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/EzPC/SCI/src/LinearHE/CMakeFiles/SCI-LinearHE.dir/rule
+	cd /root/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/EzPC/SCI/src/LinearHE/CMakeFiles/SCI-LinearHE.dir/rule
 .PHONY : extern/EzPC/SCI/src/LinearHE/CMakeFiles/SCI-LinearHE.dir/rule
 
 # Convenience name for target.
@@ -168,7 +168,7 @@ SCI-LinearHE: extern/EzPC/SCI/src/LinearHE/CMakeFiles/SCI-LinearHE.dir/rule
 
 # fast build rule for target.
 SCI-LinearHE/fast:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/EzPC/SCI/src/LinearHE/CMakeFiles/SCI-LinearHE.dir/build.make extern/EzPC/SCI/src/LinearHE/CMakeFiles/SCI-LinearHE.dir/build
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/EzPC/SCI/src/LinearHE/CMakeFiles/SCI-LinearHE.dir/build.make extern/EzPC/SCI/src/LinearHE/CMakeFiles/SCI-LinearHE.dir/build
 .PHONY : SCI-LinearHE/fast
 
 conv-field.o: conv-field.cpp.o
@@ -177,7 +177,7 @@ conv-field.o: conv-field.cpp.o
 
 # target to build an object file
 conv-field.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/EzPC/SCI/src/LinearHE/CMakeFiles/SCI-LinearHE.dir/build.make extern/EzPC/SCI/src/LinearHE/CMakeFiles/SCI-LinearHE.dir/conv-field.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/EzPC/SCI/src/LinearHE/CMakeFiles/SCI-LinearHE.dir/build.make extern/EzPC/SCI/src/LinearHE/CMakeFiles/SCI-LinearHE.dir/conv-field.cpp.o
 .PHONY : conv-field.cpp.o
 
 conv-field.i: conv-field.cpp.i
@@ -186,7 +186,7 @@ conv-field.i: conv-field.cpp.i
 
 # target to preprocess a source file
 conv-field.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/EzPC/SCI/src/LinearHE/CMakeFiles/SCI-LinearHE.dir/build.make extern/EzPC/SCI/src/LinearHE/CMakeFiles/SCI-LinearHE.dir/conv-field.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/EzPC/SCI/src/LinearHE/CMakeFiles/SCI-LinearHE.dir/build.make extern/EzPC/SCI/src/LinearHE/CMakeFiles/SCI-LinearHE.dir/conv-field.cpp.i
 .PHONY : conv-field.cpp.i
 
 conv-field.s: conv-field.cpp.s
@@ -195,7 +195,7 @@ conv-field.s: conv-field.cpp.s
 
 # target to generate assembly for a file
 conv-field.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/EzPC/SCI/src/LinearHE/CMakeFiles/SCI-LinearHE.dir/build.make extern/EzPC/SCI/src/LinearHE/CMakeFiles/SCI-LinearHE.dir/conv-field.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/EzPC/SCI/src/LinearHE/CMakeFiles/SCI-LinearHE.dir/build.make extern/EzPC/SCI/src/LinearHE/CMakeFiles/SCI-LinearHE.dir/conv-field.cpp.s
 .PHONY : conv-field.cpp.s
 
 elemwise-prod-field.o: elemwise-prod-field.cpp.o
@@ -204,7 +204,7 @@ elemwise-prod-field.o: elemwise-prod-field.cpp.o
 
 # target to build an object file
 elemwise-prod-field.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/EzPC/SCI/src/LinearHE/CMakeFiles/SCI-LinearHE.dir/build.make extern/EzPC/SCI/src/LinearHE/CMakeFiles/SCI-LinearHE.dir/elemwise-prod-field.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/EzPC/SCI/src/LinearHE/CMakeFiles/SCI-LinearHE.dir/build.make extern/EzPC/SCI/src/LinearHE/CMakeFiles/SCI-LinearHE.dir/elemwise-prod-field.cpp.o
 .PHONY : elemwise-prod-field.cpp.o
 
 elemwise-prod-field.i: elemwise-prod-field.cpp.i
@@ -213,7 +213,7 @@ elemwise-prod-field.i: elemwise-prod-field.cpp.i
 
 # target to preprocess a source file
 elemwise-prod-field.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/EzPC/SCI/src/LinearHE/CMakeFiles/SCI-LinearHE.dir/build.make extern/EzPC/SCI/src/LinearHE/CMakeFiles/SCI-LinearHE.dir/elemwise-prod-field.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/EzPC/SCI/src/LinearHE/CMakeFiles/SCI-LinearHE.dir/build.make extern/EzPC/SCI/src/LinearHE/CMakeFiles/SCI-LinearHE.dir/elemwise-prod-field.cpp.i
 .PHONY : elemwise-prod-field.cpp.i
 
 elemwise-prod-field.s: elemwise-prod-field.cpp.s
@@ -222,7 +222,7 @@ elemwise-prod-field.s: elemwise-prod-field.cpp.s
 
 # target to generate assembly for a file
 elemwise-prod-field.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/EzPC/SCI/src/LinearHE/CMakeFiles/SCI-LinearHE.dir/build.make extern/EzPC/SCI/src/LinearHE/CMakeFiles/SCI-LinearHE.dir/elemwise-prod-field.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/EzPC/SCI/src/LinearHE/CMakeFiles/SCI-LinearHE.dir/build.make extern/EzPC/SCI/src/LinearHE/CMakeFiles/SCI-LinearHE.dir/elemwise-prod-field.cpp.s
 .PHONY : elemwise-prod-field.cpp.s
 
 fc-field.o: fc-field.cpp.o
@@ -231,7 +231,7 @@ fc-field.o: fc-field.cpp.o
 
 # target to build an object file
 fc-field.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/EzPC/SCI/src/LinearHE/CMakeFiles/SCI-LinearHE.dir/build.make extern/EzPC/SCI/src/LinearHE/CMakeFiles/SCI-LinearHE.dir/fc-field.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/EzPC/SCI/src/LinearHE/CMakeFiles/SCI-LinearHE.dir/build.make extern/EzPC/SCI/src/LinearHE/CMakeFiles/SCI-LinearHE.dir/fc-field.cpp.o
 .PHONY : fc-field.cpp.o
 
 fc-field.i: fc-field.cpp.i
@@ -240,7 +240,7 @@ fc-field.i: fc-field.cpp.i
 
 # target to preprocess a source file
 fc-field.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/EzPC/SCI/src/LinearHE/CMakeFiles/SCI-LinearHE.dir/build.make extern/EzPC/SCI/src/LinearHE/CMakeFiles/SCI-LinearHE.dir/fc-field.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/EzPC/SCI/src/LinearHE/CMakeFiles/SCI-LinearHE.dir/build.make extern/EzPC/SCI/src/LinearHE/CMakeFiles/SCI-LinearHE.dir/fc-field.cpp.i
 .PHONY : fc-field.cpp.i
 
 fc-field.s: fc-field.cpp.s
@@ -249,7 +249,7 @@ fc-field.s: fc-field.cpp.s
 
 # target to generate assembly for a file
 fc-field.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/EzPC/SCI/src/LinearHE/CMakeFiles/SCI-LinearHE.dir/build.make extern/EzPC/SCI/src/LinearHE/CMakeFiles/SCI-LinearHE.dir/fc-field.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/EzPC/SCI/src/LinearHE/CMakeFiles/SCI-LinearHE.dir/build.make extern/EzPC/SCI/src/LinearHE/CMakeFiles/SCI-LinearHE.dir/fc-field.cpp.s
 .PHONY : fc-field.cpp.s
 
 utils-HE.o: utils-HE.cpp.o
@@ -258,7 +258,7 @@ utils-HE.o: utils-HE.cpp.o
 
 # target to build an object file
 utils-HE.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/EzPC/SCI/src/LinearHE/CMakeFiles/SCI-LinearHE.dir/build.make extern/EzPC/SCI/src/LinearHE/CMakeFiles/SCI-LinearHE.dir/utils-HE.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/EzPC/SCI/src/LinearHE/CMakeFiles/SCI-LinearHE.dir/build.make extern/EzPC/SCI/src/LinearHE/CMakeFiles/SCI-LinearHE.dir/utils-HE.cpp.o
 .PHONY : utils-HE.cpp.o
 
 utils-HE.i: utils-HE.cpp.i
@@ -267,7 +267,7 @@ utils-HE.i: utils-HE.cpp.i
 
 # target to preprocess a source file
 utils-HE.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/EzPC/SCI/src/LinearHE/CMakeFiles/SCI-LinearHE.dir/build.make extern/EzPC/SCI/src/LinearHE/CMakeFiles/SCI-LinearHE.dir/utils-HE.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/EzPC/SCI/src/LinearHE/CMakeFiles/SCI-LinearHE.dir/build.make extern/EzPC/SCI/src/LinearHE/CMakeFiles/SCI-LinearHE.dir/utils-HE.cpp.i
 .PHONY : utils-HE.cpp.i
 
 utils-HE.s: utils-HE.cpp.s
@@ -276,7 +276,7 @@ utils-HE.s: utils-HE.cpp.s
 
 # target to generate assembly for a file
 utils-HE.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/EzPC/SCI/src/LinearHE/CMakeFiles/SCI-LinearHE.dir/build.make extern/EzPC/SCI/src/LinearHE/CMakeFiles/SCI-LinearHE.dir/utils-HE.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/EzPC/SCI/src/LinearHE/CMakeFiles/SCI-LinearHE.dir/build.make extern/EzPC/SCI/src/LinearHE/CMakeFiles/SCI-LinearHE.dir/utils-HE.cpp.s
 .PHONY : utils-HE.cpp.s
 
 # Help Target
@@ -315,6 +315,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /root/PQC-mPSI/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

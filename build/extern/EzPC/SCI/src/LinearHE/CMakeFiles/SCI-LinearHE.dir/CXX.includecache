@@ -2298,21 +2298,21 @@ utils/utils.hpp
 
 ../extern/EzPC/SCI/src/utils/utils.hpp
 
-/root/zero-knowledge/PQC-mPSI/extern/EzPC/SCI/src/LinearHE/conv-field.cpp
+/root/PQC-mPSI/extern/EzPC/SCI/src/LinearHE/conv-field.cpp
 LinearHE/conv-field.h
-/root/zero-knowledge/PQC-mPSI/extern/EzPC/SCI/src/LinearHE/LinearHE/conv-field.h
+/root/PQC-mPSI/extern/EzPC/SCI/src/LinearHE/LinearHE/conv-field.h
 
-/root/zero-knowledge/PQC-mPSI/extern/EzPC/SCI/src/LinearHE/elemwise-prod-field.cpp
+/root/PQC-mPSI/extern/EzPC/SCI/src/LinearHE/elemwise-prod-field.cpp
 LinearHE/elemwise-prod-field.h
-/root/zero-knowledge/PQC-mPSI/extern/EzPC/SCI/src/LinearHE/LinearHE/elemwise-prod-field.h
+/root/PQC-mPSI/extern/EzPC/SCI/src/LinearHE/LinearHE/elemwise-prod-field.h
 
-/root/zero-knowledge/PQC-mPSI/extern/EzPC/SCI/src/LinearHE/fc-field.cpp
+/root/PQC-mPSI/extern/EzPC/SCI/src/LinearHE/fc-field.cpp
 LinearHE/fc-field.h
-/root/zero-knowledge/PQC-mPSI/extern/EzPC/SCI/src/LinearHE/LinearHE/fc-field.h
+/root/PQC-mPSI/extern/EzPC/SCI/src/LinearHE/LinearHE/fc-field.h
 
-/root/zero-knowledge/PQC-mPSI/extern/EzPC/SCI/src/LinearHE/utils-HE.cpp
+/root/PQC-mPSI/extern/EzPC/SCI/src/LinearHE/utils-HE.cpp
 LinearHE/utils-HE.h
-/root/zero-knowledge/PQC-mPSI/extern/EzPC/SCI/src/LinearHE/LinearHE/utils-HE.h
+/root/PQC-mPSI/extern/EzPC/SCI/src/LinearHE/LinearHE/utils-HE.h
 seal/util/polyarithsmallmod.h
-/root/zero-knowledge/PQC-mPSI/extern/EzPC/SCI/src/LinearHE/seal/util/polyarithsmallmod.h
+/root/PQC-mPSI/extern/EzPC/SCI/src/LinearHE/seal/util/polyarithsmallmod.h
 

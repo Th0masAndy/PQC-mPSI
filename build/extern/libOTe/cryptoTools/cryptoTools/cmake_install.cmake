@@ -1,4 +1,4 @@
-# Install script for directory: /root/zero-knowledge/PQC-mPSI/extern/libOTe/cryptoTools/cryptoTools
+# Install script for directory: /root/PQC-mPSI/extern/libOTe/cryptoTools/cryptoTools
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -38,14 +38,14 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/cryptoTools" TYPE DIRECTORY FILES "/root/zero-knowledge/PQC-mPSI/extern/libOTe/cryptoTools/cryptoTools/." FILES_MATCHING REGEX "/[^/]*\\.h$")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/cryptoTools" TYPE DIRECTORY FILES "/root/PQC-mPSI/extern/libOTe/cryptoTools/cryptoTools/." FILES_MATCHING REGEX "/[^/]*\\.h$")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/cryptoTools" TYPE DIRECTORY FILES "/root/zero-knowledge/PQC-mPSI/extern/libOTe/cryptoTools/cryptoTools/gsl")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/cryptoTools" TYPE DIRECTORY FILES "/root/PQC-mPSI/extern/libOTe/cryptoTools/cryptoTools/gsl")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "/root/zero-knowledge/PQC-mPSI/build/extern/libOTe/cryptoTools/cryptoTools/libcryptoTools.a")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "/root/PQC-mPSI/build/extern/libOTe/cryptoTools/cryptoTools/libcryptoTools.a")
 endif()
 

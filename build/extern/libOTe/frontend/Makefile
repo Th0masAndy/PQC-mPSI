@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /root/zero-knowledge/PQC-mPSI
+CMAKE_SOURCE_DIR = /root/PQC-mPSI
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /root/zero-knowledge/PQC-mPSI/build
+CMAKE_BINARY_DIR = /root/PQC-mPSI/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -126,14 +126,14 @@ install/local/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	cd /root/zero-knowledge/PQC-mPSI/build && $(CMAKE_COMMAND) -E cmake_progress_start /root/zero-knowledge/PQC-mPSI/build/CMakeFiles /root/zero-knowledge/PQC-mPSI/build/extern/libOTe/frontend/CMakeFiles/progress.marks
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/libOTe/frontend/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /root/zero-knowledge/PQC-mPSI/build/CMakeFiles 0
+	cd /root/PQC-mPSI/build && $(CMAKE_COMMAND) -E cmake_progress_start /root/PQC-mPSI/build/CMakeFiles /root/PQC-mPSI/build/extern/libOTe/frontend/CMakeFiles/progress.marks
+	cd /root/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/libOTe/frontend/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/PQC-mPSI/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/libOTe/frontend/clean
+	cd /root/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/libOTe/frontend/clean
 .PHONY : clean
 
 # The main clean target
@@ -143,22 +143,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/libOTe/frontend/preinstall
+	cd /root/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/libOTe/frontend/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/libOTe/frontend/preinstall
+	cd /root/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/libOTe/frontend/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /root/PQC-mPSI/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 extern/libOTe/frontend/CMakeFiles/frontend_libOTe.dir/rule:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/libOTe/frontend/CMakeFiles/frontend_libOTe.dir/rule
+	cd /root/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/libOTe/frontend/CMakeFiles/frontend_libOTe.dir/rule
 .PHONY : extern/libOTe/frontend/CMakeFiles/frontend_libOTe.dir/rule
 
 # Convenience name for target.
@@ -168,7 +168,7 @@ frontend_libOTe: extern/libOTe/frontend/CMakeFiles/frontend_libOTe.dir/rule
 
 # fast build rule for target.
 frontend_libOTe/fast:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/frontend/CMakeFiles/frontend_libOTe.dir/build.make extern/libOTe/frontend/CMakeFiles/frontend_libOTe.dir/build
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/frontend/CMakeFiles/frontend_libOTe.dir/build.make extern/libOTe/frontend/CMakeFiles/frontend_libOTe.dir/build
 .PHONY : frontend_libOTe/fast
 
 main.o: main.cpp.o
@@ -177,7 +177,7 @@ main.o: main.cpp.o
 
 # target to build an object file
 main.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/frontend/CMakeFiles/frontend_libOTe.dir/build.make extern/libOTe/frontend/CMakeFiles/frontend_libOTe.dir/main.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/frontend/CMakeFiles/frontend_libOTe.dir/build.make extern/libOTe/frontend/CMakeFiles/frontend_libOTe.dir/main.cpp.o
 .PHONY : main.cpp.o
 
 main.i: main.cpp.i
@@ -186,7 +186,7 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/frontend/CMakeFiles/frontend_libOTe.dir/build.make extern/libOTe/frontend/CMakeFiles/frontend_libOTe.dir/main.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/frontend/CMakeFiles/frontend_libOTe.dir/build.make extern/libOTe/frontend/CMakeFiles/frontend_libOTe.dir/main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -195,7 +195,7 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/frontend/CMakeFiles/frontend_libOTe.dir/build.make extern/libOTe/frontend/CMakeFiles/frontend_libOTe.dir/main.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/frontend/CMakeFiles/frontend_libOTe.dir/build.make extern/libOTe/frontend/CMakeFiles/frontend_libOTe.dir/main.cpp.s
 .PHONY : main.cpp.s
 
 util.o: util.cpp.o
@@ -204,7 +204,7 @@ util.o: util.cpp.o
 
 # target to build an object file
 util.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/frontend/CMakeFiles/frontend_libOTe.dir/build.make extern/libOTe/frontend/CMakeFiles/frontend_libOTe.dir/util.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/frontend/CMakeFiles/frontend_libOTe.dir/build.make extern/libOTe/frontend/CMakeFiles/frontend_libOTe.dir/util.cpp.o
 .PHONY : util.cpp.o
 
 util.i: util.cpp.i
@@ -213,7 +213,7 @@ util.i: util.cpp.i
 
 # target to preprocess a source file
 util.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/frontend/CMakeFiles/frontend_libOTe.dir/build.make extern/libOTe/frontend/CMakeFiles/frontend_libOTe.dir/util.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/frontend/CMakeFiles/frontend_libOTe.dir/build.make extern/libOTe/frontend/CMakeFiles/frontend_libOTe.dir/util.cpp.i
 .PHONY : util.cpp.i
 
 util.s: util.cpp.s
@@ -222,7 +222,7 @@ util.s: util.cpp.s
 
 # target to generate assembly for a file
 util.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/libOTe/frontend/CMakeFiles/frontend_libOTe.dir/build.make extern/libOTe/frontend/CMakeFiles/frontend_libOTe.dir/util.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/libOTe/frontend/CMakeFiles/frontend_libOTe.dir/build.make extern/libOTe/frontend/CMakeFiles/frontend_libOTe.dir/util.cpp.s
 .PHONY : util.cpp.s
 
 # Help Target
@@ -255,6 +255,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /root/PQC-mPSI/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

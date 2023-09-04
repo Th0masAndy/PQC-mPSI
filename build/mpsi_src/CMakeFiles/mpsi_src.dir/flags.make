@@ -6,5 +6,5 @@ CXX_FLAGS =  -no-pie -pthread -maes -msse2 -msse3 -msse4.1 -mpclmul -mbmi2 -mavx
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/root/zero-knowledge/PQC-mPSI/mpsi_src -I/root/zero-knowledge/PQC-mPSI/extern -I/root/zero-knowledge/PQC-mPSI/extern/libOTe/cryptoTools -I/root/zero-knowledge/PQC-mPSI/extern/libOTe -I/root/zero-knowledge/PQC-mPSI/extern/ABY/src -I/root/zero-knowledge/PQC-mPSI/extern/ABY/extern/ENCRYPTO_utils/src -I/root/zero-knowledge/PQC-mPSI/extern/HashingTables -I/root/zero-knowledge/PQC-mPSI/extern/MPCHonestMajority -I/root/zero-knowledge/PQC-mPSI/extern/EzPC/SCI/src -I/root/libscapi/build/NTL/include -I/root/libscapi/install/include -I/root -I/root/libscapi/install/include/OTExtensionBristol -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include 
+CXX_INCLUDES = -I/root/PQC-mPSI/mpsi_src -I/root/PQC-mPSI/extern -I/root/PQC-mPSI/extern/libOTe/cryptoTools -I/root/PQC-mPSI/extern/libOTe -I/root/PQC-mPSI/extern/ABY/src -I/root/PQC-mPSI/extern/ABY/extern/ENCRYPTO_utils/src -I/root/PQC-mPSI/extern/HashingTables -I/root/PQC-mPSI/extern/MPCHonestMajority -I/root/PQC-mPSI/extern/EzPC/SCI/src -I/root/libscapi/build/NTL/include -I/root/libscapi/install/include -I/root -I/root/libscapi/install/include/OTExtensionBristol -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include 
 

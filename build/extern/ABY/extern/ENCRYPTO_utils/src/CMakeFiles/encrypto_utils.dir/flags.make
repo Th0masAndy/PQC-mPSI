@@ -6,5 +6,5 @@ CXX_FLAGS = -O3 -DNDEBUG   -Wall -Wextra -pthread -std=gnu++17
 
 CXX_DEFINES = -DBOOST_ALL_NO_LIB -DBOOST_ATOMIC_DYN_LINK -DBOOST_SYSTEM_DYN_LINK -DBOOST_THREAD_DYN_LINK -DECCLVL=251
 
-CXX_INCLUDES = -I/root/zero-knowledge/PQC-mPSI/extern/ABY/extern/ENCRYPTO_utils/src -isystem /root/zero-knowledge/PQC-mPSI/extern/ABY/extern/ENCRYPTO_utils/extern/relic/include -isystem /root/zero-knowledge/PQC-mPSI/extern/ABY/extern/ENCRYPTO_utils/extern/relic/include/low -isystem /root/zero-knowledge/PQC-mPSI/build/extern/ABY/extern/ENCRYPTO_utils/extern/relic/include 
+CXX_INCLUDES = -I/root/PQC-mPSI/extern/ABY/extern/ENCRYPTO_utils/src -isystem /root/PQC-mPSI/extern/ABY/extern/ENCRYPTO_utils/extern/relic/include -isystem /root/PQC-mPSI/extern/ABY/extern/ENCRYPTO_utils/extern/relic/include/low -isystem /root/PQC-mPSI/build/extern/ABY/extern/ENCRYPTO_utils/extern/relic/include 
 

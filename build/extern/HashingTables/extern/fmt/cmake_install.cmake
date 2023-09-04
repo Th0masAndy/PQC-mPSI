@@ -1,4 +1,4 @@
-# Install script for directory: /root/zero-knowledge/PQC-mPSI/extern/HashingTables/extern/fmt
+# Install script for directory: /root/PQC-mPSI/extern/HashingTables/extern/fmt
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

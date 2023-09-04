@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /root/zero-knowledge/PQC-mPSI
+CMAKE_SOURCE_DIR = /root/PQC-mPSI
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /root/zero-knowledge/PQC-mPSI/build
+CMAKE_BINARY_DIR = /root/PQC-mPSI/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -126,14 +126,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /root/zero-knowledge/PQC-mPSI/build && $(CMAKE_COMMAND) -E cmake_progress_start /root/zero-knowledge/PQC-mPSI/build/CMakeFiles /root/zero-knowledge/PQC-mPSI/build/mpsi_src/CMakeFiles/progress.marks
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 mpsi_src/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /root/zero-knowledge/PQC-mPSI/build/CMakeFiles 0
+	cd /root/PQC-mPSI/build && $(CMAKE_COMMAND) -E cmake_progress_start /root/PQC-mPSI/build/CMakeFiles /root/PQC-mPSI/build/mpsi_src/CMakeFiles/progress.marks
+	cd /root/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 mpsi_src/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/PQC-mPSI/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 mpsi_src/clean
+	cd /root/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 mpsi_src/clean
 .PHONY : clean
 
 # The main clean target
@@ -143,22 +143,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 mpsi_src/preinstall
+	cd /root/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 mpsi_src/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 mpsi_src/preinstall
+	cd /root/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 mpsi_src/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /root/PQC-mPSI/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 mpsi_src/CMakeFiles/pqc_mpsi_example.dir/rule:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 mpsi_src/CMakeFiles/pqc_mpsi_example.dir/rule
+	cd /root/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 mpsi_src/CMakeFiles/pqc_mpsi_example.dir/rule
 .PHONY : mpsi_src/CMakeFiles/pqc_mpsi_example.dir/rule
 
 # Convenience name for target.
@@ -168,12 +168,12 @@ pqc_mpsi_example: mpsi_src/CMakeFiles/pqc_mpsi_example.dir/rule
 
 # fast build rule for target.
 pqc_mpsi_example/fast:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f mpsi_src/CMakeFiles/pqc_mpsi_example.dir/build.make mpsi_src/CMakeFiles/pqc_mpsi_example.dir/build
+	cd /root/PQC-mPSI/build && $(MAKE) -f mpsi_src/CMakeFiles/pqc_mpsi_example.dir/build.make mpsi_src/CMakeFiles/pqc_mpsi_example.dir/build
 .PHONY : pqc_mpsi_example/fast
 
 # Convenience name for target.
 mpsi_src/CMakeFiles/mpsi_src.dir/rule:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 mpsi_src/CMakeFiles/mpsi_src.dir/rule
+	cd /root/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 mpsi_src/CMakeFiles/mpsi_src.dir/rule
 .PHONY : mpsi_src/CMakeFiles/mpsi_src.dir/rule
 
 # Convenience name for target.
@@ -183,7 +183,7 @@ mpsi_src: mpsi_src/CMakeFiles/mpsi_src.dir/rule
 
 # fast build rule for target.
 mpsi_src/fast:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f mpsi_src/CMakeFiles/mpsi_src.dir/build.make mpsi_src/CMakeFiles/mpsi_src.dir/build
+	cd /root/PQC-mPSI/build && $(MAKE) -f mpsi_src/CMakeFiles/mpsi_src.dir/build.make mpsi_src/CMakeFiles/mpsi_src.dir/build
 .PHONY : mpsi_src/fast
 
 common/connection.o: common/connection.cpp.o
@@ -192,7 +192,7 @@ common/connection.o: common/connection.cpp.o
 
 # target to build an object file
 common/connection.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f mpsi_src/CMakeFiles/mpsi_src.dir/build.make mpsi_src/CMakeFiles/mpsi_src.dir/common/connection.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f mpsi_src/CMakeFiles/mpsi_src.dir/build.make mpsi_src/CMakeFiles/mpsi_src.dir/common/connection.cpp.o
 .PHONY : common/connection.cpp.o
 
 common/connection.i: common/connection.cpp.i
@@ -201,7 +201,7 @@ common/connection.i: common/connection.cpp.i
 
 # target to preprocess a source file
 common/connection.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f mpsi_src/CMakeFiles/mpsi_src.dir/build.make mpsi_src/CMakeFiles/mpsi_src.dir/common/connection.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f mpsi_src/CMakeFiles/mpsi_src.dir/build.make mpsi_src/CMakeFiles/mpsi_src.dir/common/connection.cpp.i
 .PHONY : common/connection.cpp.i
 
 common/connection.s: common/connection.cpp.s
@@ -210,7 +210,7 @@ common/connection.s: common/connection.cpp.s
 
 # target to generate assembly for a file
 common/connection.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f mpsi_src/CMakeFiles/mpsi_src.dir/build.make mpsi_src/CMakeFiles/mpsi_src.dir/common/connection.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f mpsi_src/CMakeFiles/mpsi_src.dir/build.make mpsi_src/CMakeFiles/mpsi_src.dir/common/connection.cpp.s
 .PHONY : common/connection.cpp.s
 
 common/helpers.o: common/helpers.cpp.o
@@ -219,7 +219,7 @@ common/helpers.o: common/helpers.cpp.o
 
 # target to build an object file
 common/helpers.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f mpsi_src/CMakeFiles/mpsi_src.dir/build.make mpsi_src/CMakeFiles/mpsi_src.dir/common/helpers.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f mpsi_src/CMakeFiles/mpsi_src.dir/build.make mpsi_src/CMakeFiles/mpsi_src.dir/common/helpers.cpp.o
 .PHONY : common/helpers.cpp.o
 
 common/helpers.i: common/helpers.cpp.i
@@ -228,7 +228,7 @@ common/helpers.i: common/helpers.cpp.i
 
 # target to preprocess a source file
 common/helpers.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f mpsi_src/CMakeFiles/mpsi_src.dir/build.make mpsi_src/CMakeFiles/mpsi_src.dir/common/helpers.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f mpsi_src/CMakeFiles/mpsi_src.dir/build.make mpsi_src/CMakeFiles/mpsi_src.dir/common/helpers.cpp.i
 .PHONY : common/helpers.cpp.i
 
 common/helpers.s: common/helpers.cpp.s
@@ -237,7 +237,7 @@ common/helpers.s: common/helpers.cpp.s
 
 # target to generate assembly for a file
 common/helpers.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f mpsi_src/CMakeFiles/mpsi_src.dir/build.make mpsi_src/CMakeFiles/mpsi_src.dir/common/helpers.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f mpsi_src/CMakeFiles/mpsi_src.dir/build.make mpsi_src/CMakeFiles/mpsi_src.dir/common/helpers.cpp.s
 .PHONY : common/helpers.cpp.s
 
 common/psi_analytics.o: common/psi_analytics.cpp.o
@@ -246,7 +246,7 @@ common/psi_analytics.o: common/psi_analytics.cpp.o
 
 # target to build an object file
 common/psi_analytics.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f mpsi_src/CMakeFiles/mpsi_src.dir/build.make mpsi_src/CMakeFiles/mpsi_src.dir/common/psi_analytics.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f mpsi_src/CMakeFiles/mpsi_src.dir/build.make mpsi_src/CMakeFiles/mpsi_src.dir/common/psi_analytics.cpp.o
 .PHONY : common/psi_analytics.cpp.o
 
 common/psi_analytics.i: common/psi_analytics.cpp.i
@@ -255,7 +255,7 @@ common/psi_analytics.i: common/psi_analytics.cpp.i
 
 # target to preprocess a source file
 common/psi_analytics.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f mpsi_src/CMakeFiles/mpsi_src.dir/build.make mpsi_src/CMakeFiles/mpsi_src.dir/common/psi_analytics.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f mpsi_src/CMakeFiles/mpsi_src.dir/build.make mpsi_src/CMakeFiles/mpsi_src.dir/common/psi_analytics.cpp.i
 .PHONY : common/psi_analytics.cpp.i
 
 common/psi_analytics.s: common/psi_analytics.cpp.s
@@ -264,7 +264,7 @@ common/psi_analytics.s: common/psi_analytics.cpp.s
 
 # target to generate assembly for a file
 common/psi_analytics.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f mpsi_src/CMakeFiles/mpsi_src.dir/build.make mpsi_src/CMakeFiles/mpsi_src.dir/common/psi_analytics.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f mpsi_src/CMakeFiles/mpsi_src.dir/build.make mpsi_src/CMakeFiles/mpsi_src.dir/common/psi_analytics.cpp.s
 .PHONY : common/psi_analytics.cpp.s
 
 common/relaxed_opprf.o: common/relaxed_opprf.cpp.o
@@ -273,7 +273,7 @@ common/relaxed_opprf.o: common/relaxed_opprf.cpp.o
 
 # target to build an object file
 common/relaxed_opprf.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f mpsi_src/CMakeFiles/mpsi_src.dir/build.make mpsi_src/CMakeFiles/mpsi_src.dir/common/relaxed_opprf.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f mpsi_src/CMakeFiles/mpsi_src.dir/build.make mpsi_src/CMakeFiles/mpsi_src.dir/common/relaxed_opprf.cpp.o
 .PHONY : common/relaxed_opprf.cpp.o
 
 common/relaxed_opprf.i: common/relaxed_opprf.cpp.i
@@ -282,7 +282,7 @@ common/relaxed_opprf.i: common/relaxed_opprf.cpp.i
 
 # target to preprocess a source file
 common/relaxed_opprf.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f mpsi_src/CMakeFiles/mpsi_src.dir/build.make mpsi_src/CMakeFiles/mpsi_src.dir/common/relaxed_opprf.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f mpsi_src/CMakeFiles/mpsi_src.dir/build.make mpsi_src/CMakeFiles/mpsi_src.dir/common/relaxed_opprf.cpp.i
 .PHONY : common/relaxed_opprf.cpp.i
 
 common/relaxed_opprf.s: common/relaxed_opprf.cpp.s
@@ -291,7 +291,7 @@ common/relaxed_opprf.s: common/relaxed_opprf.cpp.s
 
 # target to generate assembly for a file
 common/relaxed_opprf.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f mpsi_src/CMakeFiles/mpsi_src.dir/build.make mpsi_src/CMakeFiles/mpsi_src.dir/common/relaxed_opprf.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f mpsi_src/CMakeFiles/mpsi_src.dir/build.make mpsi_src/CMakeFiles/mpsi_src.dir/common/relaxed_opprf.cpp.s
 .PHONY : common/relaxed_opprf.cpp.s
 
 common/socket.o: common/socket.cpp.o
@@ -300,7 +300,7 @@ common/socket.o: common/socket.cpp.o
 
 # target to build an object file
 common/socket.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f mpsi_src/CMakeFiles/mpsi_src.dir/build.make mpsi_src/CMakeFiles/mpsi_src.dir/common/socket.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f mpsi_src/CMakeFiles/mpsi_src.dir/build.make mpsi_src/CMakeFiles/mpsi_src.dir/common/socket.cpp.o
 .PHONY : common/socket.cpp.o
 
 common/socket.i: common/socket.cpp.i
@@ -309,7 +309,7 @@ common/socket.i: common/socket.cpp.i
 
 # target to preprocess a source file
 common/socket.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f mpsi_src/CMakeFiles/mpsi_src.dir/build.make mpsi_src/CMakeFiles/mpsi_src.dir/common/socket.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f mpsi_src/CMakeFiles/mpsi_src.dir/build.make mpsi_src/CMakeFiles/mpsi_src.dir/common/socket.cpp.i
 .PHONY : common/socket.cpp.i
 
 common/socket.s: common/socket.cpp.s
@@ -318,7 +318,7 @@ common/socket.s: common/socket.cpp.s
 
 # target to generate assembly for a file
 common/socket.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f mpsi_src/CMakeFiles/mpsi_src.dir/build.make mpsi_src/CMakeFiles/mpsi_src.dir/common/socket.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f mpsi_src/CMakeFiles/mpsi_src.dir/build.make mpsi_src/CMakeFiles/mpsi_src.dir/common/socket.cpp.s
 .PHONY : common/socket.cpp.s
 
 common/table_opprf.o: common/table_opprf.cpp.o
@@ -327,7 +327,7 @@ common/table_opprf.o: common/table_opprf.cpp.o
 
 # target to build an object file
 common/table_opprf.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f mpsi_src/CMakeFiles/mpsi_src.dir/build.make mpsi_src/CMakeFiles/mpsi_src.dir/common/table_opprf.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f mpsi_src/CMakeFiles/mpsi_src.dir/build.make mpsi_src/CMakeFiles/mpsi_src.dir/common/table_opprf.cpp.o
 .PHONY : common/table_opprf.cpp.o
 
 common/table_opprf.i: common/table_opprf.cpp.i
@@ -336,7 +336,7 @@ common/table_opprf.i: common/table_opprf.cpp.i
 
 # target to preprocess a source file
 common/table_opprf.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f mpsi_src/CMakeFiles/mpsi_src.dir/build.make mpsi_src/CMakeFiles/mpsi_src.dir/common/table_opprf.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f mpsi_src/CMakeFiles/mpsi_src.dir/build.make mpsi_src/CMakeFiles/mpsi_src.dir/common/table_opprf.cpp.i
 .PHONY : common/table_opprf.cpp.i
 
 common/table_opprf.s: common/table_opprf.cpp.s
@@ -345,7 +345,7 @@ common/table_opprf.s: common/table_opprf.cpp.s
 
 # target to generate assembly for a file
 common/table_opprf.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f mpsi_src/CMakeFiles/mpsi_src.dir/build.make mpsi_src/CMakeFiles/mpsi_src.dir/common/table_opprf.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f mpsi_src/CMakeFiles/mpsi_src.dir/build.make mpsi_src/CMakeFiles/mpsi_src.dir/common/table_opprf.cpp.s
 .PHONY : common/table_opprf.cpp.s
 
 common/utils.o: common/utils.cpp.o
@@ -354,7 +354,7 @@ common/utils.o: common/utils.cpp.o
 
 # target to build an object file
 common/utils.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f mpsi_src/CMakeFiles/mpsi_src.dir/build.make mpsi_src/CMakeFiles/mpsi_src.dir/common/utils.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f mpsi_src/CMakeFiles/mpsi_src.dir/build.make mpsi_src/CMakeFiles/mpsi_src.dir/common/utils.cpp.o
 .PHONY : common/utils.cpp.o
 
 common/utils.i: common/utils.cpp.i
@@ -363,7 +363,7 @@ common/utils.i: common/utils.cpp.i
 
 # target to preprocess a source file
 common/utils.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f mpsi_src/CMakeFiles/mpsi_src.dir/build.make mpsi_src/CMakeFiles/mpsi_src.dir/common/utils.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f mpsi_src/CMakeFiles/mpsi_src.dir/build.make mpsi_src/CMakeFiles/mpsi_src.dir/common/utils.cpp.i
 .PHONY : common/utils.cpp.i
 
 common/utils.s: common/utils.cpp.s
@@ -372,7 +372,7 @@ common/utils.s: common/utils.cpp.s
 
 # target to generate assembly for a file
 common/utils.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f mpsi_src/CMakeFiles/mpsi_src.dir/build.make mpsi_src/CMakeFiles/mpsi_src.dir/common/utils.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f mpsi_src/CMakeFiles/mpsi_src.dir/build.make mpsi_src/CMakeFiles/mpsi_src.dir/common/utils.cpp.s
 .PHONY : common/utils.cpp.s
 
 mpsi_analytics_example.o: mpsi_analytics_example.cpp.o
@@ -381,7 +381,7 @@ mpsi_analytics_example.o: mpsi_analytics_example.cpp.o
 
 # target to build an object file
 mpsi_analytics_example.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f mpsi_src/CMakeFiles/pqc_mpsi_example.dir/build.make mpsi_src/CMakeFiles/pqc_mpsi_example.dir/mpsi_analytics_example.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f mpsi_src/CMakeFiles/pqc_mpsi_example.dir/build.make mpsi_src/CMakeFiles/pqc_mpsi_example.dir/mpsi_analytics_example.cpp.o
 .PHONY : mpsi_analytics_example.cpp.o
 
 mpsi_analytics_example.i: mpsi_analytics_example.cpp.i
@@ -390,7 +390,7 @@ mpsi_analytics_example.i: mpsi_analytics_example.cpp.i
 
 # target to preprocess a source file
 mpsi_analytics_example.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f mpsi_src/CMakeFiles/pqc_mpsi_example.dir/build.make mpsi_src/CMakeFiles/pqc_mpsi_example.dir/mpsi_analytics_example.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f mpsi_src/CMakeFiles/pqc_mpsi_example.dir/build.make mpsi_src/CMakeFiles/pqc_mpsi_example.dir/mpsi_analytics_example.cpp.i
 .PHONY : mpsi_analytics_example.cpp.i
 
 mpsi_analytics_example.s: mpsi_analytics_example.cpp.s
@@ -399,7 +399,7 @@ mpsi_analytics_example.s: mpsi_analytics_example.cpp.s
 
 # target to generate assembly for a file
 mpsi_analytics_example.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f mpsi_src/CMakeFiles/pqc_mpsi_example.dir/build.make mpsi_src/CMakeFiles/pqc_mpsi_example.dir/mpsi_analytics_example.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f mpsi_src/CMakeFiles/pqc_mpsi_example.dir/build.make mpsi_src/CMakeFiles/pqc_mpsi_example.dir/mpsi_analytics_example.cpp.s
 .PHONY : mpsi_analytics_example.cpp.s
 
 ots/block_op_ots.o: ots/block_op_ots.cpp.o
@@ -408,7 +408,7 @@ ots/block_op_ots.o: ots/block_op_ots.cpp.o
 
 # target to build an object file
 ots/block_op_ots.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f mpsi_src/CMakeFiles/mpsi_src.dir/build.make mpsi_src/CMakeFiles/mpsi_src.dir/ots/block_op_ots.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f mpsi_src/CMakeFiles/mpsi_src.dir/build.make mpsi_src/CMakeFiles/mpsi_src.dir/ots/block_op_ots.cpp.o
 .PHONY : ots/block_op_ots.cpp.o
 
 ots/block_op_ots.i: ots/block_op_ots.cpp.i
@@ -417,7 +417,7 @@ ots/block_op_ots.i: ots/block_op_ots.cpp.i
 
 # target to preprocess a source file
 ots/block_op_ots.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f mpsi_src/CMakeFiles/mpsi_src.dir/build.make mpsi_src/CMakeFiles/mpsi_src.dir/ots/block_op_ots.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f mpsi_src/CMakeFiles/mpsi_src.dir/build.make mpsi_src/CMakeFiles/mpsi_src.dir/ots/block_op_ots.cpp.i
 .PHONY : ots/block_op_ots.cpp.i
 
 ots/block_op_ots.s: ots/block_op_ots.cpp.s
@@ -426,7 +426,7 @@ ots/block_op_ots.s: ots/block_op_ots.cpp.s
 
 # target to generate assembly for a file
 ots/block_op_ots.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f mpsi_src/CMakeFiles/mpsi_src.dir/build.make mpsi_src/CMakeFiles/mpsi_src.dir/ots/block_op_ots.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f mpsi_src/CMakeFiles/mpsi_src.dir/build.make mpsi_src/CMakeFiles/mpsi_src.dir/ots/block_op_ots.cpp.s
 .PHONY : ots/block_op_ots.cpp.s
 
 ots/ots.o: ots/ots.cpp.o
@@ -435,7 +435,7 @@ ots/ots.o: ots/ots.cpp.o
 
 # target to build an object file
 ots/ots.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f mpsi_src/CMakeFiles/mpsi_src.dir/build.make mpsi_src/CMakeFiles/mpsi_src.dir/ots/ots.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f mpsi_src/CMakeFiles/mpsi_src.dir/build.make mpsi_src/CMakeFiles/mpsi_src.dir/ots/ots.cpp.o
 .PHONY : ots/ots.cpp.o
 
 ots/ots.i: ots/ots.cpp.i
@@ -444,7 +444,7 @@ ots/ots.i: ots/ots.cpp.i
 
 # target to preprocess a source file
 ots/ots.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f mpsi_src/CMakeFiles/mpsi_src.dir/build.make mpsi_src/CMakeFiles/mpsi_src.dir/ots/ots.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f mpsi_src/CMakeFiles/mpsi_src.dir/build.make mpsi_src/CMakeFiles/mpsi_src.dir/ots/ots.cpp.i
 .PHONY : ots/ots.cpp.i
 
 ots/ots.s: ots/ots.cpp.s
@@ -453,7 +453,7 @@ ots/ots.s: ots/ots.cpp.s
 
 # target to generate assembly for a file
 ots/ots.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f mpsi_src/CMakeFiles/mpsi_src.dir/build.make mpsi_src/CMakeFiles/mpsi_src.dir/ots/ots.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f mpsi_src/CMakeFiles/mpsi_src.dir/build.make mpsi_src/CMakeFiles/mpsi_src.dir/ots/ots.cpp.s
 .PHONY : ots/ots.cpp.s
 
 polynomials/Mersenne.o: polynomials/Mersenne.cpp.o
@@ -462,7 +462,7 @@ polynomials/Mersenne.o: polynomials/Mersenne.cpp.o
 
 # target to build an object file
 polynomials/Mersenne.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f mpsi_src/CMakeFiles/mpsi_src.dir/build.make mpsi_src/CMakeFiles/mpsi_src.dir/polynomials/Mersenne.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f mpsi_src/CMakeFiles/mpsi_src.dir/build.make mpsi_src/CMakeFiles/mpsi_src.dir/polynomials/Mersenne.cpp.o
 .PHONY : polynomials/Mersenne.cpp.o
 
 polynomials/Mersenne.i: polynomials/Mersenne.cpp.i
@@ -471,7 +471,7 @@ polynomials/Mersenne.i: polynomials/Mersenne.cpp.i
 
 # target to preprocess a source file
 polynomials/Mersenne.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f mpsi_src/CMakeFiles/mpsi_src.dir/build.make mpsi_src/CMakeFiles/mpsi_src.dir/polynomials/Mersenne.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f mpsi_src/CMakeFiles/mpsi_src.dir/build.make mpsi_src/CMakeFiles/mpsi_src.dir/polynomials/Mersenne.cpp.i
 .PHONY : polynomials/Mersenne.cpp.i
 
 polynomials/Mersenne.s: polynomials/Mersenne.cpp.s
@@ -480,7 +480,7 @@ polynomials/Mersenne.s: polynomials/Mersenne.cpp.s
 
 # target to generate assembly for a file
 polynomials/Mersenne.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f mpsi_src/CMakeFiles/mpsi_src.dir/build.make mpsi_src/CMakeFiles/mpsi_src.dir/polynomials/Mersenne.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f mpsi_src/CMakeFiles/mpsi_src.dir/build.make mpsi_src/CMakeFiles/mpsi_src.dir/polynomials/Mersenne.cpp.s
 .PHONY : polynomials/Mersenne.cpp.s
 
 polynomials/Poly.o: polynomials/Poly.cpp.o
@@ -489,7 +489,7 @@ polynomials/Poly.o: polynomials/Poly.cpp.o
 
 # target to build an object file
 polynomials/Poly.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f mpsi_src/CMakeFiles/mpsi_src.dir/build.make mpsi_src/CMakeFiles/mpsi_src.dir/polynomials/Poly.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f mpsi_src/CMakeFiles/mpsi_src.dir/build.make mpsi_src/CMakeFiles/mpsi_src.dir/polynomials/Poly.cpp.o
 .PHONY : polynomials/Poly.cpp.o
 
 polynomials/Poly.i: polynomials/Poly.cpp.i
@@ -498,7 +498,7 @@ polynomials/Poly.i: polynomials/Poly.cpp.i
 
 # target to preprocess a source file
 polynomials/Poly.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f mpsi_src/CMakeFiles/mpsi_src.dir/build.make mpsi_src/CMakeFiles/mpsi_src.dir/polynomials/Poly.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f mpsi_src/CMakeFiles/mpsi_src.dir/build.make mpsi_src/CMakeFiles/mpsi_src.dir/polynomials/Poly.cpp.i
 .PHONY : polynomials/Poly.cpp.i
 
 polynomials/Poly.s: polynomials/Poly.cpp.s
@@ -507,7 +507,7 @@ polynomials/Poly.s: polynomials/Poly.cpp.s
 
 # target to generate assembly for a file
 polynomials/Poly.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f mpsi_src/CMakeFiles/mpsi_src.dir/build.make mpsi_src/CMakeFiles/mpsi_src.dir/polynomials/Poly.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f mpsi_src/CMakeFiles/mpsi_src.dir/build.make mpsi_src/CMakeFiles/mpsi_src.dir/polynomials/Poly.cpp.s
 .PHONY : polynomials/Poly.cpp.s
 
 # Help Target
@@ -571,6 +571,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /root/PQC-mPSI/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

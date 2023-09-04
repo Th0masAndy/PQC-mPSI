@@ -1,4 +1,4 @@
-# Install script for directory: /root/zero-knowledge/PQC-mPSI/extern/libOTe/frontend
+# Install script for directory: /root/PQC-mPSI/extern/libOTe/frontend
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

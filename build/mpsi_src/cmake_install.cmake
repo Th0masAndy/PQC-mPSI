@@ -1,4 +1,4 @@
-# Install script for directory: /root/zero-knowledge/PQC-mPSI/mpsi_src
+# Install script for directory: /root/PQC-mPSI/mpsi_src
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

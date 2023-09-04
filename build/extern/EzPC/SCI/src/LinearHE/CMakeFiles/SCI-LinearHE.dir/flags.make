@@ -6,5 +6,5 @@ CXX_FLAGS = -pthread -Wall -maes -msse4.1 -mavx -mavx2 -mrdseed -faligned-new -s
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/root/zero-knowledge/PQC-mPSI/extern/EzPC/SCI/src -isystem /root/zero-knowledge/PQC-mPSI/extern/EzPC/SCI/build/include -isystem /root/zero-knowledge/PQC-mPSI/extern/EzPC/SCI/extern/eigen 
+CXX_INCLUDES = -I/root/PQC-mPSI/extern/EzPC/SCI/src -isystem /root/PQC-mPSI/extern/EzPC/SCI/build/include -isystem /root/PQC-mPSI/extern/EzPC/SCI/extern/eigen 
 

@@ -15,6 +15,6 @@ link_directories(/usr/ssl/lib/ $ENV{HOME}/libscapi/install/lib )
 
 add_library(MPCHonestMajority ${SOURCE_FILES})
 
-TARGET_LINK_LIBRARIES(MPCHonestMajority /root/ntl-11.1.0/src/ntl.a
+TARGET_LINK_LIBRARIES(MPCHonestMajority /root/ntl-11.5.1/src/ntl.a
         $ENV{HOME}/libscapi/libscapi.a gmp OTExtensionBristol libsimpleot.a
         boost_system boost_thread pthread crypto dl ssl z)

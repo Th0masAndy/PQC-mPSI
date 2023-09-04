@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /root/zero-knowledge/PQC-mPSI
+CMAKE_SOURCE_DIR = /root/PQC-mPSI
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /root/zero-knowledge/PQC-mPSI/build
+CMAKE_BINARY_DIR = /root/PQC-mPSI/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -126,14 +126,14 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /root/zero-knowledge/PQC-mPSI/build && $(CMAKE_COMMAND) -E cmake_progress_start /root/zero-knowledge/PQC-mPSI/build/CMakeFiles /root/zero-knowledge/PQC-mPSI/build/extern/HashingTables/CMakeFiles/progress.marks
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/HashingTables/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /root/zero-knowledge/PQC-mPSI/build/CMakeFiles 0
+	cd /root/PQC-mPSI/build && $(CMAKE_COMMAND) -E cmake_progress_start /root/PQC-mPSI/build/CMakeFiles /root/PQC-mPSI/build/extern/HashingTables/CMakeFiles/progress.marks
+	cd /root/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/HashingTables/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/PQC-mPSI/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/HashingTables/clean
+	cd /root/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/HashingTables/clean
 .PHONY : clean
 
 # The main clean target
@@ -143,22 +143,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/HashingTables/preinstall
+	cd /root/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/HashingTables/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/HashingTables/preinstall
+	cd /root/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/HashingTables/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /root/PQC-mPSI/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 extern/HashingTables/CMakeFiles/HashingTables.dir/rule:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/HashingTables/CMakeFiles/HashingTables.dir/rule
+	cd /root/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/HashingTables/CMakeFiles/HashingTables.dir/rule
 .PHONY : extern/HashingTables/CMakeFiles/HashingTables.dir/rule
 
 # Convenience name for target.
@@ -168,7 +168,7 @@ HashingTables: extern/HashingTables/CMakeFiles/HashingTables.dir/rule
 
 # fast build rule for target.
 HashingTables/fast:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/HashingTables/CMakeFiles/HashingTables.dir/build.make extern/HashingTables/CMakeFiles/HashingTables.dir/build
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/HashingTables/CMakeFiles/HashingTables.dir/build.make extern/HashingTables/CMakeFiles/HashingTables.dir/build
 .PHONY : HashingTables/fast
 
 common/hash_table_entry.o: common/hash_table_entry.cpp.o
@@ -177,7 +177,7 @@ common/hash_table_entry.o: common/hash_table_entry.cpp.o
 
 # target to build an object file
 common/hash_table_entry.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/HashingTables/CMakeFiles/HashingTables.dir/build.make extern/HashingTables/CMakeFiles/HashingTables.dir/common/hash_table_entry.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/HashingTables/CMakeFiles/HashingTables.dir/build.make extern/HashingTables/CMakeFiles/HashingTables.dir/common/hash_table_entry.cpp.o
 .PHONY : common/hash_table_entry.cpp.o
 
 common/hash_table_entry.i: common/hash_table_entry.cpp.i
@@ -186,7 +186,7 @@ common/hash_table_entry.i: common/hash_table_entry.cpp.i
 
 # target to preprocess a source file
 common/hash_table_entry.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/HashingTables/CMakeFiles/HashingTables.dir/build.make extern/HashingTables/CMakeFiles/HashingTables.dir/common/hash_table_entry.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/HashingTables/CMakeFiles/HashingTables.dir/build.make extern/HashingTables/CMakeFiles/HashingTables.dir/common/hash_table_entry.cpp.i
 .PHONY : common/hash_table_entry.cpp.i
 
 common/hash_table_entry.s: common/hash_table_entry.cpp.s
@@ -195,7 +195,7 @@ common/hash_table_entry.s: common/hash_table_entry.cpp.s
 
 # target to generate assembly for a file
 common/hash_table_entry.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/HashingTables/CMakeFiles/HashingTables.dir/build.make extern/HashingTables/CMakeFiles/HashingTables.dir/common/hash_table_entry.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/HashingTables/CMakeFiles/HashingTables.dir/build.make extern/HashingTables/CMakeFiles/HashingTables.dir/common/hash_table_entry.cpp.s
 .PHONY : common/hash_table_entry.cpp.s
 
 common/hashing.o: common/hashing.cpp.o
@@ -204,7 +204,7 @@ common/hashing.o: common/hashing.cpp.o
 
 # target to build an object file
 common/hashing.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/HashingTables/CMakeFiles/HashingTables.dir/build.make extern/HashingTables/CMakeFiles/HashingTables.dir/common/hashing.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/HashingTables/CMakeFiles/HashingTables.dir/build.make extern/HashingTables/CMakeFiles/HashingTables.dir/common/hashing.cpp.o
 .PHONY : common/hashing.cpp.o
 
 common/hashing.i: common/hashing.cpp.i
@@ -213,7 +213,7 @@ common/hashing.i: common/hashing.cpp.i
 
 # target to preprocess a source file
 common/hashing.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/HashingTables/CMakeFiles/HashingTables.dir/build.make extern/HashingTables/CMakeFiles/HashingTables.dir/common/hashing.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/HashingTables/CMakeFiles/HashingTables.dir/build.make extern/HashingTables/CMakeFiles/HashingTables.dir/common/hashing.cpp.i
 .PHONY : common/hashing.cpp.i
 
 common/hashing.s: common/hashing.cpp.s
@@ -222,7 +222,7 @@ common/hashing.s: common/hashing.cpp.s
 
 # target to generate assembly for a file
 common/hashing.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/HashingTables/CMakeFiles/HashingTables.dir/build.make extern/HashingTables/CMakeFiles/HashingTables.dir/common/hashing.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/HashingTables/CMakeFiles/HashingTables.dir/build.make extern/HashingTables/CMakeFiles/HashingTables.dir/common/hashing.cpp.s
 .PHONY : common/hashing.cpp.s
 
 cuckoo_hashing/cuckoo_hashing.o: cuckoo_hashing/cuckoo_hashing.cpp.o
@@ -231,7 +231,7 @@ cuckoo_hashing/cuckoo_hashing.o: cuckoo_hashing/cuckoo_hashing.cpp.o
 
 # target to build an object file
 cuckoo_hashing/cuckoo_hashing.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/HashingTables/CMakeFiles/HashingTables.dir/build.make extern/HashingTables/CMakeFiles/HashingTables.dir/cuckoo_hashing/cuckoo_hashing.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/HashingTables/CMakeFiles/HashingTables.dir/build.make extern/HashingTables/CMakeFiles/HashingTables.dir/cuckoo_hashing/cuckoo_hashing.cpp.o
 .PHONY : cuckoo_hashing/cuckoo_hashing.cpp.o
 
 cuckoo_hashing/cuckoo_hashing.i: cuckoo_hashing/cuckoo_hashing.cpp.i
@@ -240,7 +240,7 @@ cuckoo_hashing/cuckoo_hashing.i: cuckoo_hashing/cuckoo_hashing.cpp.i
 
 # target to preprocess a source file
 cuckoo_hashing/cuckoo_hashing.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/HashingTables/CMakeFiles/HashingTables.dir/build.make extern/HashingTables/CMakeFiles/HashingTables.dir/cuckoo_hashing/cuckoo_hashing.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/HashingTables/CMakeFiles/HashingTables.dir/build.make extern/HashingTables/CMakeFiles/HashingTables.dir/cuckoo_hashing/cuckoo_hashing.cpp.i
 .PHONY : cuckoo_hashing/cuckoo_hashing.cpp.i
 
 cuckoo_hashing/cuckoo_hashing.s: cuckoo_hashing/cuckoo_hashing.cpp.s
@@ -249,7 +249,7 @@ cuckoo_hashing/cuckoo_hashing.s: cuckoo_hashing/cuckoo_hashing.cpp.s
 
 # target to generate assembly for a file
 cuckoo_hashing/cuckoo_hashing.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/HashingTables/CMakeFiles/HashingTables.dir/build.make extern/HashingTables/CMakeFiles/HashingTables.dir/cuckoo_hashing/cuckoo_hashing.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/HashingTables/CMakeFiles/HashingTables.dir/build.make extern/HashingTables/CMakeFiles/HashingTables.dir/cuckoo_hashing/cuckoo_hashing.cpp.s
 .PHONY : cuckoo_hashing/cuckoo_hashing.cpp.s
 
 simple_hashing/simple_hashing.o: simple_hashing/simple_hashing.cpp.o
@@ -258,7 +258,7 @@ simple_hashing/simple_hashing.o: simple_hashing/simple_hashing.cpp.o
 
 # target to build an object file
 simple_hashing/simple_hashing.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/HashingTables/CMakeFiles/HashingTables.dir/build.make extern/HashingTables/CMakeFiles/HashingTables.dir/simple_hashing/simple_hashing.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/HashingTables/CMakeFiles/HashingTables.dir/build.make extern/HashingTables/CMakeFiles/HashingTables.dir/simple_hashing/simple_hashing.cpp.o
 .PHONY : simple_hashing/simple_hashing.cpp.o
 
 simple_hashing/simple_hashing.i: simple_hashing/simple_hashing.cpp.i
@@ -267,7 +267,7 @@ simple_hashing/simple_hashing.i: simple_hashing/simple_hashing.cpp.i
 
 # target to preprocess a source file
 simple_hashing/simple_hashing.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/HashingTables/CMakeFiles/HashingTables.dir/build.make extern/HashingTables/CMakeFiles/HashingTables.dir/simple_hashing/simple_hashing.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/HashingTables/CMakeFiles/HashingTables.dir/build.make extern/HashingTables/CMakeFiles/HashingTables.dir/simple_hashing/simple_hashing.cpp.i
 .PHONY : simple_hashing/simple_hashing.cpp.i
 
 simple_hashing/simple_hashing.s: simple_hashing/simple_hashing.cpp.s
@@ -276,7 +276,7 @@ simple_hashing/simple_hashing.s: simple_hashing/simple_hashing.cpp.s
 
 # target to generate assembly for a file
 simple_hashing/simple_hashing.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/HashingTables/CMakeFiles/HashingTables.dir/build.make extern/HashingTables/CMakeFiles/HashingTables.dir/simple_hashing/simple_hashing.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/HashingTables/CMakeFiles/HashingTables.dir/build.make extern/HashingTables/CMakeFiles/HashingTables.dir/simple_hashing/simple_hashing.cpp.s
 .PHONY : simple_hashing/simple_hashing.cpp.s
 
 # Help Target
@@ -315,6 +315,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /root/PQC-mPSI/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

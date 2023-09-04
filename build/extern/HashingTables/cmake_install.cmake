@@ -1,4 +1,4 @@
-# Install script for directory: /root/zero-knowledge/PQC-mPSI/extern/HashingTables
+# Install script for directory: /root/PQC-mPSI/extern/HashingTables
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

@@ -6,5 +6,5 @@ CXX_FLAGS =  -no-pie -pthread -maes -msse2 -msse3 -msse4.1 -mpclmul -mbmi2 -mavx
 
 CXX_DEFINES = -DBOOST_ALL_NO_LIB -DBOOST_FILESYSTEM_DYN_LINK -DBOOST_SYSTEM_DYN_LINK
 
-CXX_INCLUDES = -I/root/zero-knowledge/PQC-mPSI/build -I/root/zero-knowledge/PQC-mPSI -I/root/zero-knowledge/PQC-mPSI/extern/libOTe/libOTe/.. -I/root/zero-knowledge/PQC-mPSI/extern/libOTe/cryptoTools/cryptoTools/.. -I/root/zero-knowledge/PQC-mPSI/build/include 
+CXX_INCLUDES = -I/root/PQC-mPSI/build -I/root/PQC-mPSI -I/root/PQC-mPSI/extern/libOTe/libOTe/.. -I/root/PQC-mPSI/extern/libOTe/cryptoTools/cryptoTools/.. -I/root/PQC-mPSI/build/include 
 

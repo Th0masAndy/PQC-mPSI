@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /root/zero-knowledge/PQC-mPSI
+CMAKE_SOURCE_DIR = /root/PQC-mPSI
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /root/zero-knowledge/PQC-mPSI/build
+CMAKE_BINARY_DIR = /root/PQC-mPSI/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -126,14 +126,14 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /root/zero-knowledge/PQC-mPSI/build && $(CMAKE_COMMAND) -E cmake_progress_start /root/zero-knowledge/PQC-mPSI/build/CMakeFiles /root/zero-knowledge/PQC-mPSI/build/extern/MPCHonestMajority/CMakeFiles/progress.marks
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/MPCHonestMajority/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /root/zero-knowledge/PQC-mPSI/build/CMakeFiles 0
+	cd /root/PQC-mPSI/build && $(CMAKE_COMMAND) -E cmake_progress_start /root/PQC-mPSI/build/CMakeFiles /root/PQC-mPSI/build/extern/MPCHonestMajority/CMakeFiles/progress.marks
+	cd /root/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/MPCHonestMajority/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /root/PQC-mPSI/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/MPCHonestMajority/clean
+	cd /root/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/MPCHonestMajority/clean
 .PHONY : clean
 
 # The main clean target
@@ -143,22 +143,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/MPCHonestMajority/preinstall
+	cd /root/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/MPCHonestMajority/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/MPCHonestMajority/preinstall
+	cd /root/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/MPCHonestMajority/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /root/PQC-mPSI/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/rule:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/rule
+	cd /root/PQC-mPSI/build && $(MAKE) -f CMakeFiles/Makefile2 extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/rule
 .PHONY : extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/rule
 
 # Convenience name for target.
@@ -168,7 +168,7 @@ MPCHonestMajority: extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/rul
 
 # fast build rule for target.
 MPCHonestMajority/fast:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/build.make extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/build
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/build.make extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/build
 .PHONY : MPCHonestMajority/fast
 
 ProtocolParty.o: ProtocolParty.cpp.o
@@ -177,7 +177,7 @@ ProtocolParty.o: ProtocolParty.cpp.o
 
 # target to build an object file
 ProtocolParty.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/build.make extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/ProtocolParty.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/build.make extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/ProtocolParty.cpp.o
 .PHONY : ProtocolParty.cpp.o
 
 ProtocolParty.i: ProtocolParty.cpp.i
@@ -186,7 +186,7 @@ ProtocolParty.i: ProtocolParty.cpp.i
 
 # target to preprocess a source file
 ProtocolParty.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/build.make extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/ProtocolParty.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/build.make extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/ProtocolParty.cpp.i
 .PHONY : ProtocolParty.cpp.i
 
 ProtocolParty.s: ProtocolParty.cpp.s
@@ -195,7 +195,7 @@ ProtocolParty.s: ProtocolParty.cpp.s
 
 # target to generate assembly for a file
 ProtocolParty.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/build.make extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/ProtocolParty.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/build.make extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/ProtocolParty.cpp.s
 .PHONY : ProtocolParty.cpp.s
 
 ProtocolParty2.o: ProtocolParty2.cpp.o
@@ -204,7 +204,7 @@ ProtocolParty2.o: ProtocolParty2.cpp.o
 
 # target to build an object file
 ProtocolParty2.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/build.make extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/ProtocolParty2.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/build.make extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/ProtocolParty2.cpp.o
 .PHONY : ProtocolParty2.cpp.o
 
 ProtocolParty2.i: ProtocolParty2.cpp.i
@@ -213,7 +213,7 @@ ProtocolParty2.i: ProtocolParty2.cpp.i
 
 # target to preprocess a source file
 ProtocolParty2.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/build.make extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/ProtocolParty2.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/build.make extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/ProtocolParty2.cpp.i
 .PHONY : ProtocolParty2.cpp.i
 
 ProtocolParty2.s: ProtocolParty2.cpp.s
@@ -222,7 +222,7 @@ ProtocolParty2.s: ProtocolParty2.cpp.s
 
 # target to generate assembly for a file
 ProtocolParty2.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/build.make extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/ProtocolParty2.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/build.make extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/ProtocolParty2.cpp.s
 .PHONY : ProtocolParty2.cpp.s
 
 TemplateField.o: TemplateField.cpp.o
@@ -231,7 +231,7 @@ TemplateField.o: TemplateField.cpp.o
 
 # target to build an object file
 TemplateField.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/build.make extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/TemplateField.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/build.make extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/TemplateField.cpp.o
 .PHONY : TemplateField.cpp.o
 
 TemplateField.i: TemplateField.cpp.i
@@ -240,7 +240,7 @@ TemplateField.i: TemplateField.cpp.i
 
 # target to preprocess a source file
 TemplateField.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/build.make extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/TemplateField.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/build.make extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/TemplateField.cpp.i
 .PHONY : TemplateField.cpp.i
 
 TemplateField.s: TemplateField.cpp.s
@@ -249,7 +249,7 @@ TemplateField.s: TemplateField.cpp.s
 
 # target to generate assembly for a file
 TemplateField.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/build.make extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/TemplateField.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/build.make extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/TemplateField.cpp.s
 .PHONY : TemplateField.cpp.s
 
 ZpKaratsubaElement.o: ZpKaratsubaElement.cpp.o
@@ -258,7 +258,7 @@ ZpKaratsubaElement.o: ZpKaratsubaElement.cpp.o
 
 # target to build an object file
 ZpKaratsubaElement.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/build.make extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/ZpKaratsubaElement.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/build.make extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/ZpKaratsubaElement.cpp.o
 .PHONY : ZpKaratsubaElement.cpp.o
 
 ZpKaratsubaElement.i: ZpKaratsubaElement.cpp.i
@@ -267,7 +267,7 @@ ZpKaratsubaElement.i: ZpKaratsubaElement.cpp.i
 
 # target to preprocess a source file
 ZpKaratsubaElement.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/build.make extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/ZpKaratsubaElement.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/build.make extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/ZpKaratsubaElement.cpp.i
 .PHONY : ZpKaratsubaElement.cpp.i
 
 ZpKaratsubaElement.s: ZpKaratsubaElement.cpp.s
@@ -276,7 +276,7 @@ ZpKaratsubaElement.s: ZpKaratsubaElement.cpp.s
 
 # target to generate assembly for a file
 ZpKaratsubaElement.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/build.make extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/ZpKaratsubaElement.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/build.make extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/ZpKaratsubaElement.cpp.s
 .PHONY : ZpKaratsubaElement.cpp.s
 
 ZpMersenneByteElement.o: ZpMersenneByteElement.cpp.o
@@ -285,7 +285,7 @@ ZpMersenneByteElement.o: ZpMersenneByteElement.cpp.o
 
 # target to build an object file
 ZpMersenneByteElement.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/build.make extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/ZpMersenneByteElement.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/build.make extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/ZpMersenneByteElement.cpp.o
 .PHONY : ZpMersenneByteElement.cpp.o
 
 ZpMersenneByteElement.i: ZpMersenneByteElement.cpp.i
@@ -294,7 +294,7 @@ ZpMersenneByteElement.i: ZpMersenneByteElement.cpp.i
 
 # target to preprocess a source file
 ZpMersenneByteElement.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/build.make extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/ZpMersenneByteElement.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/build.make extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/ZpMersenneByteElement.cpp.i
 .PHONY : ZpMersenneByteElement.cpp.i
 
 ZpMersenneByteElement.s: ZpMersenneByteElement.cpp.s
@@ -303,7 +303,7 @@ ZpMersenneByteElement.s: ZpMersenneByteElement.cpp.s
 
 # target to generate assembly for a file
 ZpMersenneByteElement.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/build.make extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/ZpMersenneByteElement.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/build.make extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/ZpMersenneByteElement.cpp.s
 .PHONY : ZpMersenneByteElement.cpp.s
 
 main.o: main.cpp.o
@@ -312,7 +312,7 @@ main.o: main.cpp.o
 
 # target to build an object file
 main.cpp.o:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/build.make extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/main.cpp.o
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/build.make extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/main.cpp.o
 .PHONY : main.cpp.o
 
 main.i: main.cpp.i
@@ -321,7 +321,7 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/build.make extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/main.cpp.i
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/build.make extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -330,7 +330,7 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(MAKE) -f extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/build.make extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/main.cpp.s
+	cd /root/PQC-mPSI/build && $(MAKE) -f extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/build.make extern/MPCHonestMajority/CMakeFiles/MPCHonestMajority.dir/main.cpp.s
 .PHONY : main.cpp.s
 
 # Help Target
@@ -375,6 +375,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /root/zero-knowledge/PQC-mPSI/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /root/PQC-mPSI/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

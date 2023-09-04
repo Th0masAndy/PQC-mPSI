@@ -47,7 +47,7 @@ add_library(ENCRYPTO_utils::encrypto_utils STATIC IMPORTED)
 set_target_properties(ENCRYPTO_utils::encrypto_utils PROPERTIES
   INTERFACE_COMPILE_DEFINITIONS "ECCLVL=251"
   INTERFACE_COMPILE_FEATURES "cxx_std_17"
-  INTERFACE_INCLUDE_DIRECTORIES "/root/zero-knowledge/PQC-mPSI/extern/ABY/extern/ENCRYPTO_utils/src"
+  INTERFACE_INCLUDE_DIRECTORIES "/root/PQC-mPSI/extern/ABY/extern/ENCRYPTO_utils/src"
   INTERFACE_LINK_LIBRARIES "\$<LINK_ONLY:Boost::system>;\$<LINK_ONLY:Boost::thread>;GMP::GMP;GMP::GMPXX;OpenSSL::Crypto;RELIC::relic"
 )
 
@@ -55,7 +55,7 @@ set_target_properties(ENCRYPTO_utils::encrypto_utils PROPERTIES
 set_property(TARGET ENCRYPTO_utils::encrypto_utils APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
 set_target_properties(ENCRYPTO_utils::encrypto_utils PROPERTIES
   IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/root/zero-knowledge/PQC-mPSI/build/extern/ABY/lib/libencrypto_utils.a"
+  IMPORTED_LOCATION_RELEASE "/root/PQC-mPSI/build/extern/ABY/lib/libencrypto_utils.a"
   )
 
 # This file does not depend on other imported targets which have

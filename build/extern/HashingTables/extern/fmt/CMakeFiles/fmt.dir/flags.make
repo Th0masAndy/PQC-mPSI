@@ -6,5 +6,5 @@ CXX_FLAGS = -Wall -Wextra -O3 -DNDEBUG -fPIC   -std=gnu++17
 
 CXX_DEFINES = -DFMT_EXPORT -Dfmt_EXPORTS
 
-CXX_INCLUDES = -I/root/zero-knowledge/PQC-mPSI/extern/HashingTables/extern/fmt/include 
+CXX_INCLUDES = -I/root/PQC-mPSI/extern/HashingTables/extern/fmt/include 
 
