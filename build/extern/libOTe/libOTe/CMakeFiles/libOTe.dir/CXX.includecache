@@ -1172,24 +1172,6 @@ stdint.h
 bpmDefines.h
 /root/PQC-mPSI/extern/libOTe/libOTe/Tools/bitpolymul/bpmDefines.h
 
-/root/PQC-mPSI/extern/libOTe/libOTe/Tools/bitpolymul/bc_to_gen_code.h
-libOTe/config.h
-/root/PQC-mPSI/extern/libOTe/libOTe/Tools/bitpolymul/libOTe/config.h
-immintrin.h
--
-
-/root/PQC-mPSI/extern/libOTe/libOTe/Tools/bitpolymul/bc_to_lch_gen_code.cpp
-libOTe/config.h
-/root/PQC-mPSI/extern/libOTe/libOTe/Tools/bitpolymul/libOTe/config.h
-bc_to_gen_code.h
-/root/PQC-mPSI/extern/libOTe/libOTe/Tools/bitpolymul/bc_to_gen_code.h
-
-/root/PQC-mPSI/extern/libOTe/libOTe/Tools/bitpolymul/bc_to_mono_gen_code.cpp
-libOTe/config.h
-/root/PQC-mPSI/extern/libOTe/libOTe/Tools/bitpolymul/libOTe/config.h
-bc_to_gen_code.h
-/root/PQC-mPSI/extern/libOTe/libOTe/Tools/bitpolymul/bc_to_gen_code.h
-
 /root/PQC-mPSI/extern/libOTe/libOTe/Tools/bitpolymul/bitmat_prod.h
 libOTe/config.h
 /root/PQC-mPSI/extern/libOTe/libOTe/Tools/bitpolymul/libOTe/config.h

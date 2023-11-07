@@ -1,0 +1,143 @@
+{
+	"archive" : {},
+	"artifacts" : 
+	[
+		{
+			"path" : "extern/MPCHonestMajority/libMPCHonestMajority.a"
+		}
+	],
+	"backtrace" : 1,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_library",
+			"INCLUDE_DIRECTORIES"
+		],
+		"files" : 
+		[
+			"extern/MPCHonestMajority/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 16,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 7,
+				"parent" : 0
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : " -no-pie -pthread -maes -msse2 -msse3 -msse4.1 -mpclmul -mbmi2 -mavx -mrdseed -mavx2 -Wno-ignored-attributes -O3 -std=c++11 -maes -mpclmul -mbmi2 -msse4.1 -Wno-ignored-attributes -g  "
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 2,
+					"path" : "/usr/local/include/libscapi/build/NTL/include"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/root"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/root/libscapi/install/include"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/root/libscapi/install/include/OTExtensionBristol"
+				}
+			],
+			"language" : "CXX",
+			"sourceIndexes" : 
+			[
+				0,
+				1,
+				2,
+				3,
+				4,
+				5
+			]
+		}
+	],
+	"id" : "MPCHonestMajority::@b72ba248a38d092b0c9e",
+	"name" : "MPCHonestMajority",
+	"nameOnDisk" : "libMPCHonestMajority.a",
+	"paths" : 
+	{
+		"build" : "extern/MPCHonestMajority",
+		"source" : "extern/MPCHonestMajority"
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				0,
+				1,
+				2,
+				3,
+				4,
+				5
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "extern/MPCHonestMajority/ProtocolParty.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "extern/MPCHonestMajority/ProtocolParty2.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "extern/MPCHonestMajority/TemplateField.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "extern/MPCHonestMajority/ZpKaratsubaElement.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "extern/MPCHonestMajority/ZpMersenneByteElement.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "extern/MPCHonestMajority/main.cpp",
+			"sourceGroupIndex" : 0
+		}
+	],
+	"type" : "STATIC_LIBRARY"
+}

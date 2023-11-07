@@ -1,0 +1,377 @@
+{
+	"artifacts" : 
+	[
+		{
+			"path" : "bin/pqc_mpsi_example"
+		}
+	],
+	"backtrace" : 1,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_executable",
+			"link_directories",
+			"target_link_libraries"
+		],
+		"files" : 
+		[
+			"mpsi_src/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 85,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 42,
+				"parent" : 0
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 87,
+				"parent" : 0
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : " -no-pie -pthread -maes -msse2 -msse3 -msse4.1 -mpclmul -mbmi2 -mavx -mrdseed -mavx2 -Wno-ignored-attributes -g  "
+				},
+				{
+					"backtrace" : 3,
+					"fragment" : "-pthread"
+				}
+			],
+			"defines" : 
+			[
+				{
+					"backtrace" : 3,
+					"define" : "BOOST_ALL_NO_LIB"
+				},
+				{
+					"backtrace" : 3,
+					"define" : "BOOST_FILESYSTEM_DYN_LINK"
+				},
+				{
+					"backtrace" : 3,
+					"define" : "BOOST_PROGRAM_OPTIONS_DYN_LINK"
+				},
+				{
+					"backtrace" : 3,
+					"define" : "BOOST_SYSTEM_DYN_LINK"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 3,
+					"path" : "/root/PQC-mPSI/mpsi_src"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/root/PQC-mPSI/extern"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/root/PQC-mPSI/extern/libOTe/cryptoTools"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/root/PQC-mPSI/extern/libOTe"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/root/PQC-mPSI/extern/ABY/src"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/root/PQC-mPSI/extern/ABY/extern/ENCRYPTO_utils/src"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/root/PQC-mPSI/extern/HashingTables"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/root/PQC-mPSI/extern/MPCHonestMajority"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/root/PQC-mPSI/extern/EzPC/SCI/src"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/root/libscapi/build/NTL/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/root/libscapi/install/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/root"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/root/libscapi/install/include/OTExtensionBristol"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/usr/include/glib-2.0"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/usr/lib/x86_64-linux-gnu/glib-2.0/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/root/PQC-mPSI/extern/HashingTables/extern/fmt/include"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/root/PQC-mPSI/extern/libOTe/libOTe/.."
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/root/PQC-mPSI/extern/libOTe/cryptoTools/cryptoTools/.."
+				},
+				{
+					"backtrace" : 3,
+					"path" : "/root/PQC-mPSI/build/include"
+				}
+			],
+			"language" : "CXX",
+			"sourceIndexes" : 
+			[
+				0
+			]
+		}
+	],
+	"dependencies" : 
+	[
+		{
+			"backtrace" : 3,
+			"id" : "relic_s::@66eb24acbfe27925ab07"
+		},
+		{
+			"backtrace" : 3,
+			"id" : "HashingTables::@71fb1f8bf2f6314adbef"
+		},
+		{
+			"backtrace" : 3,
+			"id" : "cryptoTools::@3e108e8813c01c3a9cfa"
+		},
+		{
+			"backtrace" : 3,
+			"id" : "libOTe::@e1a9d73a0e305907490b"
+		},
+		{
+			"backtrace" : 3,
+			"id" : "MPCHonestMajority::@b72ba248a38d092b0c9e"
+		},
+		{
+			"backtrace" : 3,
+			"id" : "mpsi_src::@b23b731c102fe1d7b721"
+		}
+	],
+	"id" : "pqc_mpsi_example::@b23b731c102fe1d7b721",
+	"link" : 
+	{
+		"commandFragments" : 
+		[
+			{
+				"fragment" : "-no-pie -pthread -maes -msse2 -msse3 -msse4.1 -mpclmul -mbmi2 -mavx -mrdseed -mavx2 -Wno-ignored-attributes -g",
+				"role" : "flags"
+			},
+			{
+				"fragment" : "",
+				"role" : "flags"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "-L/usr/ssl/lib",
+				"role" : "libraryPath"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "-L/root/libscapi/install/lib",
+				"role" : "libraryPath"
+			},
+			{
+				"fragment" : "-Wl,-rpath,/usr/ssl/lib:/root/libscapi/install/lib",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 3,
+				"fragment" : "../lib/libmpsi_src.a",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lglib-2.0",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lgmpxx",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lntl",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "../extern/HashingTables/libHashingTables.a",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/usr/lib/x86_64-linux-gnu/libssl.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/usr/lib/x86_64-linux-gnu/libcrypto.so",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "../extern/libOTe/libOTe/liblibOTe.a",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "../extern/libOTe/cryptoTools/cryptoTools/libcryptoTools.a",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "../extern/ABY/lib/librelic_s.a",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/usr/lib/x86_64-linux-gnu/libboost_system.so.1.71.0",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/usr/lib/x86_64-linux-gnu/libboost_filesystem.so.1.71.0",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "../extern/MPCHonestMajority/libMPCHonestMajority.a",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lgmp",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/usr/lib/x86_64-linux-gnu/libboost_program_options.so.1.71.0",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-pthread",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/root/ntl-11.5.1/src/ntl.a",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/root/libscapi/libscapi.a",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lOTExtensionBristol",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-Wl,-Bstatic",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lsimpleot",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-Wl,-Bdynamic",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lboost_system",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lboost_thread",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lcrypto",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-ldl",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lssl",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lz",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "../extern/ABY/lib/librelic_s.a",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lrt",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lpthread",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lm",
+				"role" : "libraries"
+			}
+		],
+		"language" : "CXX"
+	},
+	"name" : "pqc_mpsi_example",
+	"nameOnDisk" : "pqc_mpsi_example",
+	"paths" : 
+	{
+		"build" : "mpsi_src",
+		"source" : "mpsi_src"
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				0
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "mpsi_src/mpsi_analytics_example.cpp",
+			"sourceGroupIndex" : 0
+		}
+	],
+	"type" : "EXECUTABLE"
+}

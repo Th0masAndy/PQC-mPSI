@@ -1,9 +1,16 @@
 #! /bin/bash
 cd build
-make -j8
+make -j
 cd ..
 
-killall ./build/bin/pqc_mpsi_example
+
+process_name="./build/bin/pqc_mpsi_example"
+
+process_ids=$(ps aux | grep "$process_name" | grep -v "grep" | awk '{print $2}')
+for pid in $process_ids; do
+  kill -9 $pid
+  echo "Killed process $pid with name $process_name"
+done
 
 for i in `seq $2 -1 $1`;
 do

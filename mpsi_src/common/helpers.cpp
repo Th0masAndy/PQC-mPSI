@@ -35,54 +35,54 @@ namespace ENCRYPTO {
 
 std::vector<uint64_t> GeneratePseudoRandomElements(const std::size_t n, const std::size_t bitlen,
                                                    const std::size_t seed) {
-  std::vector<uint64_t> elements;
-  elements.reserve(n);
+    std::vector<uint64_t> elements;
+    elements.reserve(n);
 
-  std::mt19937 engine(seed);
+    std::mt19937 engine(seed);
 
-  bool not_finished = true;
-  while (not_finished) {
-    std::uniform_int_distribution<std::uint64_t> dist(0, (1ull << bitlen) - 1);
+    bool not_finished = true;
+    while (not_finished) {
+        std::uniform_int_distribution<std::uint64_t> dist(0, (1ull << bitlen) - 1);
 
-    const auto my_rand = [&engine, &dist]() { return dist(engine); };
-    while (elements.size() != n) {
-      elements.push_back(my_rand());
+        const auto my_rand = [&engine, &dist]() { return dist(engine); };
+        while (elements.size() != n) {
+            elements.push_back(my_rand());
+        }
+        // check that the elements are unique
+        // if there are duplicated, remove them and add some more random elements, then recheck
+        std::unordered_set<uint64_t> s;
+        for (auto e : elements) {
+            s.insert(e);
+        }
+        elements.assign(s.begin(), s.end());
+
+        if (elements.size() == n) {
+            not_finished = false;
+        }
     }
-    // check that the elements are unique
-    // if there are duplicated, remove them and add some more random elements, then recheck
-    std::unordered_set<uint64_t> s;
-    for (auto e : elements) {
-      s.insert(e);
+
+    std::sort(elements.begin(), elements.end());
+    for (auto i = 1ull; i < elements.size(); ++i) {
+        assert(elements.at(i - 1) != elements.at(i));
     }
-    elements.assign(s.begin(), s.end());
 
-    if (elements.size() == n) {
-      not_finished = false;
+    for (auto &e : elements) {
+        e = HashingTable::ElementToHash(e) & __61_bit_mask;
     }
-  }
 
-  std::sort(elements.begin(), elements.end());
-  for (auto i = 1ull; i < elements.size(); ++i) {
-    assert(elements.at(i - 1) != elements.at(i));
-  }
-
-  for (auto &e : elements) {
-    e = HashingTable::ElementToHash(e) & __61_bit_mask;
-  }
-
-  return elements;
+    return elements;
 }
 
 std::vector<uint64_t> GenerateSequentialElements(const std::size_t n) {
-  std::vector<uint64_t> elements(n);
-  std::size_t i = 0;
-  std::generate(elements.begin(), elements.end(), [&i]() mutable { return i++; });
+    std::vector<uint64_t> elements(n);
+    std::size_t i = 0;
+    std::generate(elements.begin(), elements.end(), [&i]() mutable { return i++; });
 
-  for (auto &e : elements) {
-    e = HashingTable::ElementToHash(e) & __61_bit_mask;
-  }
+    for (auto &e : elements) {
+        e = HashingTable::ElementToHash(e) & 0xffffffffffffffff;
+    }
 
-  return elements;
+    return elements;
 }
 
-}
+}  // namespace ENCRYPTO

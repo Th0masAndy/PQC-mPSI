@@ -449,7 +449,7 @@ void run_threshold_relaxed_opprf(std::vector<std::vector<std::uint8_t>>& a_share
                                  ENCRYPTO::PsiAnalyticsContext& context, const std::vector<std::uint64_t>& inputs,
                                  std::vector<std::unique_ptr<CSocket>>& allsocks, std::vector<osuCrypto::Channel>& chls,
                                  std::vector<sci::NetIO*>& ioArr) {
-    int padded_size = ((context.nbins + 7) / 8) * 8;
+    int padded_size = ((context.neles + 7) / 8) * 8;
 
     if (context.role == P_0) {  // Protocol for leader party
 
@@ -461,35 +461,16 @@ void run_threshold_relaxed_opprf(std::vector<std::vector<std::uint8_t>>& a_share
         }
 
         // Hashing
-        std::vector<std::uint64_t> table;
-        std::vector<std::vector<osuCrypto::block>> masks_with_dummies(context.np - 1);
-        table = ENCRYPTO::cuckoo_hash(context, inputs);
 
         // OPRF
         const auto oprf_start_time = std::chrono::system_clock::now();
-        std::thread oprf_threads[context.nthreads];
-        for (std::uint64_t i = 0; i < context.nthreads; i++) {
-            oprf_threads[i] = std::thread(multi_oprf_thread, i, std::ref(masks_with_dummies), table, std::ref(context),
-                                          std::ref(chls));
-        }
-        for (std::uint64_t i = 0; i < context.nthreads; i++) {
-            oprf_threads[i].join();
-        }
+
         const auto oprf_end_time = std::chrono::system_clock::now();
         const duration_millis oprf_duration = oprf_end_time - oprf_start_time;
         context.timings.oprf = oprf_duration.count();
 
         // Hints
         const auto phase_ts_time = std::chrono::system_clock::now();
-        std::thread hint_threads[context.nthreads];
-        for (std::uint64_t i = 0; i < context.nthreads; i++) {
-            hint_threads[i] =
-                std::thread(multi_hint_thread, i, std::ref(sub_bins), std::ref(table), std::ref(masks_with_dummies),
-                            std::ref(context), std::ref(allsocks), std::ref(chls));
-        }
-        for (std::uint64_t i = 0; i < context.nthreads; i++) {
-            hint_threads[i].join();
-        }
 
         std::vector<sci::OTPack<sci::NetIO>*> otpackArr(2 * (context.np - 1));
         std::thread ot_pack_threads[context.nthreads];
@@ -503,7 +484,8 @@ void run_threshold_relaxed_opprf(std::vector<std::vector<std::uint8_t>>& a_share
         }
 
         for (std::uint64_t i = 0; i < context.np - 1; i++) {
-            for (int j = context.nbins; j < padded_size; j++) sub_bins[i][j] = S_CONST;
+            for (int j = 0; j < context.neles; j++) sub_bins[i][j] = inputs[j];
+            for (int j = context.neles; j < padded_size; j++) sub_bins[i][j] = S_CONST;
         }
 
         std::vector<std::vector<std::uint8_t>> res_bins(context.np - 1);
@@ -533,14 +515,13 @@ void run_threshold_relaxed_opprf(std::vector<std::vector<std::uint8_t>>& a_share
         a_shares_bins.resize(1, std::vector<std::uint8_t>(padded_size, 0));
 
         // Hashing
-        auto simple_table_v = ENCRYPTO::simple_hash(context, inputs);
 
         auto end = std::chrono::high_resolution_clock::now();
         auto elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin);
         printf("SH Time measured: %.3f seconds.\n", elapsed.count() * 1e-9);
 
         // OPRF
-        auto masks = RELAXEDNS::ot_sender(simple_table_v, chls[0], context);
+        // auto masks = RELAXEDNS::ot_sender(simple_table_v, chls[0], context);
         std::vector<std::uint64_t> actual_contents_of_bins;
         actual_contents_of_bins.reserve(padded_size);
 
@@ -550,7 +531,7 @@ void run_threshold_relaxed_opprf(std::vector<std::vector<std::uint8_t>>& a_share
 
         printf("-----------------Internal time---------------------\n");
         // Relaxed batch OPPRF protocol for non-leader
-        OpprgPsiNonLeader(actual_contents_of_bins, simple_table_v, masks, context, allsocks[0], chls[0]);
+        // OpprgPsiNonLeader(actual_contents_of_bins, simple_table_v, masks, context, allsocks[0], chls[0]);
         printf("-----------------Internal time---------------------\n");
 
         end = std::chrono::high_resolution_clock::now();
@@ -566,8 +547,8 @@ void run_threshold_relaxed_opprf(std::vector<std::vector<std::uint8_t>>& a_share
                 otpackArr[j] = new OTPack<NetIO>(ioArr[j], 2, context.radixparam, context.bitlen);
             }
         }
-
-        for (int j = context.nbins; j < padded_size; j++) actual_contents_of_bins[j] = C_CONST;
+        for (int j = 0; j < context.neles; j++) actual_contents_of_bins[j] = inputs[j];
+        for (int j = context.neles; j < padded_size; j++) actual_contents_of_bins[j] = C_CONST;
         std::vector<std::uint8_t> res_bins;
         res_bins.resize(padded_size);
 

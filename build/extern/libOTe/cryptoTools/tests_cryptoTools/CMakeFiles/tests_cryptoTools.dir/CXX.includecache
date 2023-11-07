@@ -620,8 +620,6 @@ cryptoTools/Common/Log.h
 cryptoTools/Common/TestCollection.h
 -
 
-/root/PQC-mPSI/extern/libOTe/cryptoTools/tests_cryptoTools/SimpleCuckoo.cpp
-
 /root/PQC-mPSI/extern/libOTe/cryptoTools/tests_cryptoTools/SimpleCuckoo.h
 
 /root/PQC-mPSI/extern/libOTe/cryptoTools/tests_cryptoTools/UnitTests.cpp
