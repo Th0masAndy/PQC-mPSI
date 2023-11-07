@@ -51,11 +51,11 @@ set_target_properties(ENCRYPTO_utils::encrypto_utils PROPERTIES
   INTERFACE_LINK_LIBRARIES "\$<LINK_ONLY:Boost::system>;\$<LINK_ONLY:Boost::thread>;GMP::GMP;GMP::GMPXX;OpenSSL::Crypto;RELIC::relic"
 )
 
-# Import target "ENCRYPTO_utils::encrypto_utils" for configuration "Release"
-set_property(TARGET ENCRYPTO_utils::encrypto_utils APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "ENCRYPTO_utils::encrypto_utils" for configuration "Debug"
+set_property(TARGET ENCRYPTO_utils::encrypto_utils APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(ENCRYPTO_utils::encrypto_utils PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/root/PQC-mPSI/build/extern/ABY/lib/libencrypto_utils.a"
+  IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
+  IMPORTED_LOCATION_DEBUG "/root/PQC-mPSI/build/extern/ABY/lib/libencrypto_utils.a"
   )
 
 # This file does not depend on other imported targets which have

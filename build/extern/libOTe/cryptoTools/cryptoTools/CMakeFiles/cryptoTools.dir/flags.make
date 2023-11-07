@@ -3,13 +3,13 @@
 
 # compile C with /usr/bin/cc
 # compile CXX with /usr/bin/c++
-C_FLAGS = -O3 -DNDEBUG  
+C_FLAGS = -g  
 
 C_DEFINES = -DBOOST_ALL_NO_LIB -DBOOST_FILESYSTEM_DYN_LINK -DBOOST_SYSTEM_DYN_LINK
 
 C_INCLUDES = -I/root/PQC-mPSI/extern/libOTe/cryptoTools -I/root/PQC-mPSI/extern/libOTe/cryptoTools/cryptoTools/.. -I/root/PQC-mPSI/build/include 
 
-CXX_FLAGS =  -no-pie -pthread -maes -msse2 -msse3 -msse4.1 -mpclmul -mbmi2 -mavx -mrdseed -mavx2 -Wno-ignored-attributes -O3 -DNDEBUG  
+CXX_FLAGS =  -no-pie -pthread -maes -msse2 -msse3 -msse4.1 -mpclmul -mbmi2 -mavx -mrdseed -mavx2 -Wno-ignored-attributes -g  
 
 CXX_DEFINES = -DBOOST_ALL_NO_LIB -DBOOST_FILESYSTEM_DYN_LINK -DBOOST_SYSTEM_DYN_LINK
 

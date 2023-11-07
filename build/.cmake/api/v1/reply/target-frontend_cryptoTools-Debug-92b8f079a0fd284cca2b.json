@@ -1,0 +1,203 @@
+{
+	"artifacts" : 
+	[
+		{
+			"path" : "extern/libOTe/cryptoTools/frontend_cryptoTools/frontend_cryptoTools"
+		}
+	],
+	"backtrace" : 1,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_executable",
+			"target_link_libraries",
+			"include_directories"
+		],
+		"files" : 
+		[
+			"extern/libOTe/cryptoTools/frontend_cryptoTools/CMakeLists.txt",
+			"extern/libOTe/cryptoTools/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 7,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 8,
+				"parent" : 0
+			},
+			{
+				"file" : 1
+			},
+			{
+				"command" : 2,
+				"file" : 1,
+				"line" : 83,
+				"parent" : 3
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 5,
+				"parent" : 0
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : " -no-pie -pthread -maes -msse2 -msse3 -msse4.1 -mpclmul -mbmi2 -mavx -mrdseed -mavx2 -Wno-ignored-attributes -g  "
+				}
+			],
+			"defines" : 
+			[
+				{
+					"backtrace" : 2,
+					"define" : "BOOST_ALL_NO_LIB"
+				},
+				{
+					"backtrace" : 2,
+					"define" : "BOOST_FILESYSTEM_DYN_LINK"
+				},
+				{
+					"backtrace" : 2,
+					"define" : "BOOST_SYSTEM_DYN_LINK"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 4,
+					"path" : "/root/PQC-mPSI/extern/libOTe/cryptoTools"
+				},
+				{
+					"backtrace" : 5,
+					"path" : "/root/PQC-mPSI"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/root/PQC-mPSI/extern/libOTe/cryptoTools/cryptoTools/.."
+				},
+				{
+					"backtrace" : 2,
+					"path" : "/root/PQC-mPSI/build/include"
+				}
+			],
+			"language" : "CXX",
+			"sourceIndexes" : 
+			[
+				0,
+				1,
+				2
+			]
+		}
+	],
+	"dependencies" : 
+	[
+		{
+			"backtrace" : 2,
+			"id" : "cryptoTools::@3e108e8813c01c3a9cfa"
+		},
+		{
+			"backtrace" : 2,
+			"id" : "tests_cryptoTools::@3cea51dec3ffc4cca7b8"
+		}
+	],
+	"id" : "frontend_cryptoTools::@c72a9bb2f0c7b7af1f9e",
+	"link" : 
+	{
+		"commandFragments" : 
+		[
+			{
+				"fragment" : "-no-pie -pthread -maes -msse2 -msse3 -msse4.1 -mpclmul -mbmi2 -mavx -mrdseed -mavx2 -Wno-ignored-attributes -g",
+				"role" : "flags"
+			},
+			{
+				"fragment" : "-rdynamic",
+				"role" : "flags"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "../cryptoTools/libcryptoTools.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "../tests_cryptoTools/libtests_cryptoTools.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "../cryptoTools/libcryptoTools.a",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "../../../ABY/lib/librelic_s.a",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/usr/lib/x86_64-linux-gnu/libboost_system.so.1.71.0",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "/usr/lib/x86_64-linux-gnu/libboost_filesystem.so.1.71.0",
+				"role" : "libraries"
+			}
+		],
+		"language" : "CXX"
+	},
+	"name" : "frontend_cryptoTools",
+	"nameOnDisk" : "frontend_cryptoTools",
+	"paths" : 
+	{
+		"build" : "extern/libOTe/cryptoTools/frontend_cryptoTools",
+		"source" : "extern/libOTe/cryptoTools/frontend_cryptoTools"
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				0,
+				1,
+				2
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "extern/libOTe/cryptoTools/frontend_cryptoTools/Tutorials/Network.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "extern/libOTe/cryptoTools/frontend_cryptoTools/main.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "extern/libOTe/cryptoTools/frontend_cryptoTools/signalHandle.cpp",
+			"sourceGroupIndex" : 0
+		}
+	],
+	"type" : "EXECUTABLE"
+}

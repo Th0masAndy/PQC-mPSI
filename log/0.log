@@ -1,6 +1,6 @@
 key = partyID value = 0
 key = partiesNumber value = 15
-key = numBins value = 1727
+key = numBins value = 7084
 key = inputsFile value = ../in_party_0.txt
 key = outputsFile value = output.txt
 key = circuitFile value = ic.txt
@@ -42,7 +42,7 @@ connected
 connected
 key = partyID value = 0
 key = partiesNumber value = 15
-key = numBins value = 1727
+key = numBins value = 7084
 key = inputsFile value = ../in_party_0.txt
 key = outputsFile value = output.txt
 key = circuitFile value = ic.txt
@@ -117,30 +117,19 @@ other port = 10800
 accepting...
 channel established
 time in milliseconds initializationPhase: 0
-client socket connect error (hangs).client socket connect error (hangs).client socket connect error (hangs).
-
-
-client socket connect error (hangs).
-client socket connect error (hangs).
-client socket connect error (hangs).
-client socket connect error (hangs).
-client socket connect error (hangs).
-client socket connect error (hangs).
-client socket connect error (hangs).
-client socket connect error (hangs).
-client socket connect error (hangs).
-client socket connect error (hangs).
-client socket connect error (hangs).
-client socket connect error (hangs).client socket connect error (hangs).client socket connect error (hangs).
+client socket connect error (hangs).client socket connect error (hangs).
 client socket connect error (hangs).
 
-client socket connect error (hangs).
-client socket connect error (hangs).
-
-client socket connect error (hangs).
-client socket connect error (hangs).
 client socket connect error (hangs).client socket connect error (hangs).
 
+client socket connect error (hangs).
+client socket connect error (hangs).
+client socket connect error (hangs).
+client socket connect error (hangs).
+client socket connect error (hangs).
+client socket connect error (hangs).
+client socket connect error (hangs).
+client socket connect error (hangs).
 client socket connect error (hangs).
 client socket connect error (hangs).
 client socket connect error (hangs).
@@ -151,27 +140,38 @@ client socket connect error (hangs).
 client socket connect error (hangs).
 client socket connect error (hangs).
 client socket connect error (hangs).
+client socket connect error (hangs).client socket connect error (hangs).client socket connect error (hangs).
+
+
 client socket connect error (hangs).
-0: Circuit evaluated in 70 milliseconds.
-0: 0 found at 1350 positions. 
+client socket connect error (hangs).
+client socket connect error (hangs).client socket connect error (hangs).
+client socket connect error (hangs).
+client socket connect error (hangs).
+
+client socket connect error (hangs).
+client socket connect error (hangs).client socket connect error (hangs).
+
+0: Circuit evaluated in 136 milliseconds.
+0: 0 found at 5535 positions. 
 0: Printing timings...
-0: Time for hashing 0.314051 ms
-0: Time for OPRF 2.14138 ms
-0: Time for polynomials 4645.75 ms
-0: Time for transmission of the polynomials 6.95335e-310 ms
-0: Time for OPPRF 5861.59 ms
-0: Time for circuit 112.57 ms
-0: Total runtime: 5974.31ms
+0: Time for hashing 1.84579 ms
+0: Time for OPRF 8.27919 ms
+0: Time for polynomials 37832.7 ms
+0: Time for transmission of the polynomials 6.92789e-310 ms
+0: Time for OPPRF 46529.1 ms
+0: Time for circuit 307.691 ms
+0: Total runtime: 46837.4ms
 
 0: Communication Statistics: 
-0: Sent Data OPRF (MB): 1.92999
-0: Received Data OPRF (MB): 1.92999
-0: Sent Data Hint (MB): 1.10678
-0: Received Data Hint (MB): 209.885
-0: Sent Data Circuit (MB): 0.994415
-0: Received Data Circuit (MB): 1.54781
-0: Sent Data CryptFlow2 (MB): 23.3588
-0: Received Data CryptFlow2 (MB): 23.3588
-0: Total Sent Data (MB): 27.39
-0: Total Received Data (MB): 236.721
-0: Total Communication (MB): 264.111
+0: Sent Data OPRF (MB): 6.50751
+0: Received Data OPRF (MB): 6.50751
+0: Sent Data Hint (MB): 4.53992
+0: Received Data Hint (MB): 1760.64
+0: Sent Data Circuit (MB): 4.33898
+0: Received Data Circuit (MB): 6.7981
+0: Sent Data CryptFlow2 (MB): 53.8188
+0: Received Data CryptFlow2 (MB): 53.8188
+0: Total Sent Data (MB): 69.2052
+0: Total Received Data (MB): 1827.76
+0: Total Communication (MB): 1896.97

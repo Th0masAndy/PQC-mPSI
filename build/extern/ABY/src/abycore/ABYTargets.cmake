@@ -50,11 +50,11 @@ set_target_properties(ABY::aby PROPERTIES
   INTERFACE_LINK_LIBRARIES "\$<LINK_ONLY:stdc++fs>;OTExtension::otextension;ENCRYPTO_utils::encrypto_utils;GMP::GMP;Threads::Threads"
 )
 
-# Import target "ABY::aby" for configuration "Release"
-set_property(TARGET ABY::aby APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "ABY::aby" for configuration "Debug"
+set_property(TARGET ABY::aby APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(ABY::aby PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/root/PQC-mPSI/build/extern/ABY/lib/libaby.a"
+  IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
+  IMPORTED_LOCATION_DEBUG "/root/PQC-mPSI/build/extern/ABY/lib/libaby.a"
   )
 
 # Make sure the targets which have been exported in some other 

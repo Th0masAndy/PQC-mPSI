@@ -50,11 +50,11 @@ set_target_properties(OTExtension::otextension PROPERTIES
   INTERFACE_LINK_LIBRARIES "ENCRYPTO_utils::encrypto_utils;Threads::Threads"
 )
 
-# Import target "OTExtension::otextension" for configuration "Release"
-set_property(TARGET OTExtension::otextension APPEND PROPERTY IMPORTED_CONFIGURATIONS RELEASE)
+# Import target "OTExtension::otextension" for configuration "Debug"
+set_property(TARGET OTExtension::otextension APPEND PROPERTY IMPORTED_CONFIGURATIONS DEBUG)
 set_target_properties(OTExtension::otextension PROPERTIES
-  IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
-  IMPORTED_LOCATION_RELEASE "/root/PQC-mPSI/build/extern/ABY/lib/libotextension.a"
+  IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
+  IMPORTED_LOCATION_DEBUG "/root/PQC-mPSI/build/extern/ABY/lib/libotextension.a"
   )
 
 # Make sure the targets which have been exported in some other 

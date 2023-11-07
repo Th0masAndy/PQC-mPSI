@@ -1,6 +1,6 @@
 key = partyID value = 11
 key = partiesNumber value = 15
-key = numBins value = 1727
+key = numBins value = 7084
 key = inputsFile value = ../in_party_11.txt
 key = outputsFile value = output.txt
 key = circuitFile value = ic.txt
@@ -16,7 +16,7 @@ connected
 connected
 key = partyID value = 11
 key = partiesNumber value = 15
-key = numBins value = 1727
+key = numBins value = 7084
 key = inputsFile value = ../in_party_11.txt
 key = outputsFile value = output.txt
 key = circuitFile value = ic.txt
@@ -102,39 +102,39 @@ other port = 10811
 accepting...
 channel established
 time in milliseconds initializationPhase: 0
-max_observed_bin_size: 955
-SH Time measured: 0.761 seconds.
-S0 Time measured: 1.686 seconds. For OPRF and then OPPRF start
+max_observed_bin_size: 2025
+SH Time measured: 7.812 seconds.
+S0 Time measured: 11.459 seconds. For OPRF and then OPPRF start
 -----------------Internal time---------------------
 S1 Time measured: 0.000 seconds. OPPRF start
-S2 Time measured: 1.678 seconds. for cuckoo hash
-S3 Time measured: 2.672 seconds. for intert table(hints) RB-OPPRF
-S4 Time measured: 2.679 seconds. send hints 
-S5 Time measured: 3.121 seconds. receive table
-S6 Time measured: 3.121 seconds. OPPRF end
+S2 Time measured: 16.724 seconds. for cuckoo hash
+S3 Time measured: 26.229 seconds. for intert table(hints) RB-OPPRF
+S4 Time measured: 26.313 seconds. send hints 
+S5 Time measured: 26.668 seconds. receive table
+S6 Time measured: 26.669 seconds. OPPRF end
 -----------------Internal time---------------------
-S8 Time measured: 5.472 seconds. End For OPPRF 
-S9 Time measured: 5.859 seconds. After EQ+B2A
-EQ + B2A cost 1749532Bytes
-11: Circuit evaluated in 58 milliseconds.
+S8 Time measured: 44.687 seconds. End For OPPRF 
+S9 Time measured: 46.512 seconds. After EQ+B2A
+EQ + B2A cost 4030934Bytes
+11: Circuit evaluated in 116 milliseconds.
 11: Printing timings...
-11: Time for hashing 549.254 ms
-11: Time for OPRF 0.876167 ms
-11: Time for polynomials 6.95291e-310 ms
-11: Time for transmission of the polynomials 6.95291e-310 ms
-11: Time for OPPRF 5859.89 ms
-11: Time for circuit 104.356 ms
-11: Total runtime: 5964.26ms
+11: Time for hashing 5658.27 ms
+11: Time for OPRF 15.8926 ms
+11: Time for polynomials 6.9434e-310 ms
+11: Time for transmission of the polynomials 6.9434e-310 ms
+11: Time for OPPRF 46513.5 ms
+11: Time for circuit 287.599 ms
+11: Total runtime: 46801.1ms
 
 11: Communication Statistics: 
-11: Sent Data OPRF (MB): 0.137856
-11: Received Data OPRF (MB): 0.137856
-11: Sent Data Hint (MB): 14.9918
-11: Received Data Hint (MB): 0.0790558
-11: Sent Data Circuit (MB): 0.370204
-11: Received Data Circuit (MB): 0.330676
-11: Sent Data CryptFlow2 (MB): 1.66848
-11: Received Data CryptFlow2 (MB): 1.66848
-11: Total Sent Data (MB): 17.1683
-11: Total Received Data (MB): 2.21607
-11: Total Communication (MB): 19.3844
+11: Sent Data OPRF (MB): 0.464822
+11: Received Data OPRF (MB): 0.464822
+11: Sent Data Hint (MB): 125.76
+11: Received Data Hint (MB): 0.32428
+11: Sent Data Circuit (MB): 1.61638
+11: Received Data Circuit (MB): 1.44073
+11: Sent Data CryptFlow2 (MB): 3.8442
+11: Received Data CryptFlow2 (MB): 3.8442
+11: Total Sent Data (MB): 131.685
+11: Total Received Data (MB): 6.07403
+11: Total Communication (MB): 137.759
