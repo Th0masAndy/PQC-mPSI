@@ -489,10 +489,11 @@ void run_threshold_relaxed_opprf(std::vector<std::vector<std::uint8_t>>& a_share
         }
 
         std::vector<std::vector<std::uint8_t>> res_bins(context.np - 1);
-        for (std::uint64_t i = 0; i < context.np - 1; i++) res_bins[i].resize(padded_size);
+        for (std::uint64_t i = 0; i < context.np - 1; i++) res_bins[i].resize(padded_size, 1);
 
         std::vector<std::vector<std::uint64_t>> aux_bins(context.np - 1);
 
+        auto b2a_s = std::chrono::system_clock::now();
         // Equality
         std::thread equality_threads[context.nthreads];
         for (std::uint64_t i = 0; i < context.nthreads; i++) {
@@ -504,6 +505,10 @@ void run_threshold_relaxed_opprf(std::vector<std::vector<std::uint8_t>>& a_share
         for (std::uint64_t i = 0; i < context.nthreads; i++) {
             equality_threads[i].join();
         }
+        auto b2a_e = std::chrono::system_clock::now();
+        const duration_millis d = b2a_e - b2a_s;
+        context.timings.eq = d.count();
+
         const auto phase_te_time = std::chrono::system_clock::now();
         const duration_millis phase_two_duration = phase_te_time - phase_ts_time;
         context.timings.polynomials = phase_two_duration.count();
@@ -550,7 +555,7 @@ void run_threshold_relaxed_opprf(std::vector<std::vector<std::uint8_t>>& a_share
         for (int j = 0; j < context.neles; j++) actual_contents_of_bins[j] = inputs[j];
         for (int j = context.neles; j < padded_size; j++) actual_contents_of_bins[j] = C_CONST;
         std::vector<std::uint8_t> res_bins;
-        res_bins.resize(padded_size);
+        res_bins.resize(padded_size, 0);
 
         sci::NetIO* ioThreadArr[2];
         sci::OTPack<sci::NetIO>* otThreadpackArr[2];
@@ -558,8 +563,14 @@ void run_threshold_relaxed_opprf(std::vector<std::vector<std::uint8_t>>& a_share
             ioThreadArr[j] = ioArr[j];
             otThreadpackArr[j] = otpackArr[j];
         }
+
+        auto b2a_s = std::chrono::system_clock::now();
         perform_equality(actual_contents_of_bins.data(), 1, context.bitlen, context.radixparam, padded_size,
                          res_bins.data(), a_shares_bins[0].data(), ioThreadArr, otThreadpackArr, context.smallmod);
+
+        auto b2a_e = std::chrono::system_clock::now();
+        const duration_millis d = b2a_e - b2a_s;
+        context.timings.eq = d.count();
 
         end = std::chrono::high_resolution_clock::now();
         elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin);

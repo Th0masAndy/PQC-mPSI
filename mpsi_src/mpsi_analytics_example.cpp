@@ -312,11 +312,6 @@ void MPSI_threshold_execution(ENCRYPTO::PsiAnalyticsContext& context, std::vecto
     std::vector<std::vector<std::uint8_t>> sub_bins;
     std::uint64_t int_count;
 
-    for (auto& e : inputs) {
-        std::cout << e << " ";
-    }
-    std::cout << std::endl;
-
     switch (context.opprf_type) {
         case ENCRYPTO::PsiAnalyticsContext::POLY: {
             std::string error_msg("Not implemented currently.");

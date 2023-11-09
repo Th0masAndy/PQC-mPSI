@@ -333,6 +333,7 @@ void PrintTimings(const PsiAnalyticsContext& context) {
               << context.timings.polynomials_transmission << " ms\n";
     std::cout << context.role << ": Time for OPPRF " << context.timings.opprf << " ms\n";
     std::cout << context.role << ": Time for circuit " << context.timings.circuit << " ms\n";
+    std::cout << context.role << ": Time for eq " << context.timings.eq << " ms\n";
 
     std::cout << context.role << ": Total runtime: " << context.timings.total << "ms\n";
 }
