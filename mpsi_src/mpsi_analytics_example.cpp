@@ -323,6 +323,20 @@ void MPSI_threshold_execution(ENCRYPTO::PsiAnalyticsContext& context, std::vecto
         } break;
     }
 
+    std::vector<std::vector<std::uint8_t>> a_shares;
+    a_shares.resize(sub_bins.size());
+
+    int slice = sub_bins[0].size() / 8192;
+    for (auto idx = 0; idx < sub_bins.size(); idx++) {
+        auto& vec = sub_bins[idx];
+        a_shares[idx].resize(8192, 0);
+        for (auto slot = 0; slot < 8192; slot++) {
+            for (auto i = 0; i < slice; i++) {
+                a_shares[idx][slot] += vec[slot + 8192 * i];
+            }
+        }
+    }
+
     for (auto& v : sub_bins) {
         for (auto& e : v) {
             printf("%d ", e);
@@ -336,7 +350,7 @@ void MPSI_threshold_execution(ENCRYPTO::PsiAnalyticsContext& context, std::vecto
 
     // cout << context.role << ": PSI circuit successfully executed: " << bins[0] << endl;
     // cout << context.role << ": Passing inputs..." << endl;
-    mpsi.readMPSIInputs(sub_bins, context.nbins);
+    mpsi.readMPSIInputs(a_shares, context.nbins / slice);
 
     // cout << context.role << ": Running circuit..." << endl;
     auto t2 = std::chrono::system_clock::now();
