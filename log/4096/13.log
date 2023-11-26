@@ -1,0 +1,113 @@
+key = partyID value = 13
+key = partiesNumber value = 16
+key = numBins value = 7084
+key = inputsFile value = ../in_party_13.txt
+key = outputsFile value = output.txt
+key = circuitFile value = ic.txt
+key = fieldType value = ZpMersenneByte
+key = genRandomSharesType value = HIM
+key = multType value = DN
+key = verifyType value = Single
+key = partiesFile value = Parties.txt
+key = internalIterationsNumber value = 1
+key = threshold value = 8
+key = primemod value = 31
+connected
+connected
+key = partyID value = 13
+key = partiesNumber value = 16
+key = numBins value = 7084
+key = inputsFile value = ../in_party_13.txt
+key = outputsFile value = output.txt
+key = circuitFile value = ic.txt
+key = fieldType value = ZpMersenneByte
+key = genRandomSharesType value = HIM
+key = multType value = DN
+key = verifyType value = Single
+key = partiesFile value = Parties.txt
+key = internalIterationsNumber value = 1
+key = threshold value = 8
+key = primemod value = 31
+number of parties = 16
+ID = 13
+partiesFile = Parties.txt
+in communication
+num parties = 16
+my id = 13
+my port = 10600
+other port = 8012
+Failed to connect. sleeping for 500 milliseconds, connect: Connection refused
+accepting...
+channel established
+my port = 10601
+other port = 8212
+Failed to connect. sleeping for 500 milliseconds, connect: Connection refused
+accepting...
+channel established
+my port = 10602
+other port = 8412
+Failed to connect. sleeping for 500 milliseconds, connect: Connection refused
+accepting...
+channel established
+my port = 10603
+other port = 8612
+Failed to connect. sleeping for 500 milliseconds, connect: Connection refused
+accepting...
+channel established
+my port = 10604
+other port = 8812
+Failed to connect. sleeping for 500 milliseconds, connect: Connection refused
+accepting...
+channel established
+my port = 10605
+other port = 9012
+Failed to connect. sleeping for 500 milliseconds, connect: Connection refused
+accepting...
+channel established
+my port = 10606
+other port = 9212
+Failed to connect. sleeping for 500 milliseconds, connect: Connection refused
+accepting...
+channel established
+my port = 10607
+other port = 9412
+Failed to connect. sleeping for 500 milliseconds, connect: Connection refused
+accepting...
+channel established
+my port = 10608
+other port = 9612
+Failed to connect. sleeping for 500 milliseconds, connect: Connection refused
+accepting...
+channel established
+my port = 10609
+other port = 9812
+Failed to connect. sleeping for 500 milliseconds, connect: Connection refused
+accepting...
+channel established
+my port = 10610
+other port = 10012
+Failed to connect. sleeping for 500 milliseconds, connect: Connection refused
+accepting...
+channel established
+my port = 10611
+other port = 10212
+Failed to connect. sleeping for 500 milliseconds, connect: Connection refused
+accepting...
+channel established
+my port = 10612
+other port = 10412
+accepting...
+channel established
+my port = 10613
+other port = 10813
+Failed to connect. sleeping for 500 milliseconds, connect: Connection refused
+accepting...
+channel established
+my port = 10614
+other port = 11013
+accepting...
+channel established
+time in milliseconds initializationPhase: 0
+max_observed_bin_size: 8
+terminate called after throwing an instance of 'std::length_error'
+  what():  vector::_M_default_append

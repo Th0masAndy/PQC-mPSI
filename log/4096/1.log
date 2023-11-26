@@ -1,0 +1,102 @@
+key = partyID value = 1
+key = partiesNumber value = 16
+key = numBins value = 7084
+key = inputsFile value = ../in_party_1.txt
+key = outputsFile value = output.txt
+key = circuitFile value = ic.txt
+key = fieldType value = ZpMersenneByte
+key = genRandomSharesType value = HIM
+key = multType value = DN
+key = verifyType value = Single
+key = partiesFile value = Parties.txt
+key = internalIterationsNumber value = 1
+key = threshold value = 8
+key = primemod value = 31
+connected
+connected
+key = partyID value = 1
+key = partiesNumber value = 16
+key = numBins value = 7084
+key = inputsFile value = ../in_party_1.txt
+key = outputsFile value = output.txt
+key = circuitFile value = ic.txt
+key = fieldType value = ZpMersenneByte
+key = genRandomSharesType value = HIM
+key = multType value = DN
+key = verifyType value = Single
+key = partiesFile value = Parties.txt
+key = internalIterationsNumber value = 1
+key = threshold value = 8
+key = primemod value = 31
+number of parties = 16
+ID = 1
+partiesFile = Parties.txt
+in communication
+num parties = 16
+my id = 1
+my port = 8200
+other port = 8000
+Failed to connect. sleeping for 500 milliseconds, connect: Connection refused
+accepting...
+channel established
+my port = 8201
+other port = 8401
+Failed to connect. sleeping for 500 milliseconds, connect: Connection refused
+accepting...
+channel established
+my port = 8202
+other port = 8601
+accepting...
+channel established
+my port = 8203
+other port = 8801
+accepting...
+channel established
+my port = 8204
+other port = 9001
+accepting...
+channel established
+my port = 8205
+other port = 9201
+accepting...
+channel established
+my port = 8206
+other port = 9401
+accepting...
+channel established
+my port = 8207
+other port = 9601
+accepting...
+channel established
+my port = 8208
+other port = 9801
+accepting...
+channel established
+my port = 8209
+other port = 10001
+accepting...
+channel established
+my port = 8210
+other port = 10201
+accepting...
+channel established
+my port = 8211
+other port = 10401
+accepting...
+channel established
+my port = 8212
+other port = 10601
+accepting...
+channel established
+my port = 8213
+other port = 10801
+accepting...
+channel established
+my port = 8214
+other port = 11001
+accepting...
+channel established
+time in milliseconds initializationPhase: 0
+max_observed_bin_size: 8
+terminate called after throwing an instance of 'std::length_error'
+  what():  vector::_M_default_append

@@ -1,0 +1,193 @@
+key = partyID value = 0
+key = partiesNumber value = 16
+key = numBins value = 14132
+key = inputsFile value = ../in_party_0.txt
+key = outputsFile value = output.txt
+key = circuitFile value = ic.txt
+key = fieldType value = ZpMersenneByte
+key = genRandomSharesType value = HIM
+key = multType value = DN
+key = verifyType value = Single
+key = partiesFile value = Parties.txt
+key = internalIterationsNumber value = 1
+key = threshold value = 8
+key = primemod value = 31
+connected
+connected
+connected
+connected
+connected
+connected
+connected
+connected
+connected
+connected
+connected
+connected
+connected
+connected
+connected
+connected
+connected
+connected
+connected
+connected
+connected
+connected
+connected
+connected
+connected
+connected
+connected
+connected
+connected
+connected
+key = partyID value = 0
+key = partiesNumber value = 16
+key = numBins value = 14132
+key = inputsFile value = ../in_party_0.txt
+key = outputsFile value = output.txt
+key = circuitFile value = ic.txt
+key = fieldType value = ZpMersenneByte
+key = genRandomSharesType value = HIM
+key = multType value = DN
+key = verifyType value = Single
+key = partiesFile value = Parties.txt
+key = internalIterationsNumber value = 1
+key = threshold value = 8
+key = primemod value = 31
+number of parties = 16
+ID = 0
+partiesFile = Parties.txt
+in communication
+num parties = 16
+my id = 0
+my port = 8000
+other port = 8200
+accepting...
+channel established
+my port = 8001
+other port = 8400
+accepting...
+channel established
+my port = 8002
+other port = 8600
+accepting...
+channel established
+my port = 8003
+other port = 8800
+accepting...
+channel established
+my port = 8004
+other port = 9000
+accepting...
+channel established
+my port = 8005
+other port = 9200
+accepting...
+channel established
+my port = 8006
+other port = 9400
+accepting...
+channel established
+my port = 8007
+other port = 9600
+accepting...
+channel established
+my port = 8008
+other port = 9800
+accepting...
+channel established
+my port = 8009
+other port = 10000
+accepting...
+channel established
+my port = 8010
+other port = 10200
+accepting...
+channel established
+my port = 8011
+other port = 10400
+accepting...
+channel established
+my port = 8012
+other port = 10600
+accepting...
+channel established
+my port = 8013
+other port = 10800
+accepting...
+channel established
+my port = 8014
+other port = 11000
+accepting...
+channel established
+time in milliseconds initializationPhase: 0
+client socket connect error (hangs).
+client socket connect error (hangs).
+client socket connect error (hangs).
+client socket connect error (hangs).
+client socket connect error (hangs).
+client socket connect error (hangs).
+client socket connect error (hangs).
+client socket connect error (hangs).
+client socket connect error (hangs).
+client socket connect error (hangs).
+client socket connect error (hangs).
+client socket connect error (hangs).
+client socket connect error (hangs).
+client socket connect error (hangs).
+client socket connect error (hangs).
+client socket connect error (hangs).
+client socket connect error (hangs).
+client socket connect error (hangs).
+client socket connect error (hangs).
+client socket connect error (hangs).
+client socket connect error (hangs).
+client socket connect error (hangs).
+client socket connect error (hangs).client socket connect error (hangs).
+
+client socket connect error (hangs).
+client socket connect error (hangs).
+client socket connect error (hangs).client socket connect error (hangs).
+
+client socket connect error (hangs).
+client socket connect error (hangs).
+client socket connect error (hangs).
+client socket connect error (hangs).client socket connect error (hangs).
+
+client socket connect error (hangs).
+client socket connect error (hangs).
+client socket connect error (hangs).
+client socket connect error (hangs).
+client socket connect error (hangs).
+client socket connect error (hangs).
+client socket connect error (hangs).
+client socket connect error (hangs).
+client socket connect error (hangs).
+0: Circuit evaluated in 333 milliseconds.
+0: 0 found at 11041 positions. 
+0: Printing timings...
+0: Time for hashing 6.37584 ms
+0: Time for OPRF 18.5418 ms
+0: Time for polynomials 210274 ms
+0: Time for transmission of the polynomials 0 ms
+0: Time for OPPRF 263815 ms
+0: Time for circuit 629.371 ms
+0: Total runtime: 264446ms
+
+0: Communication Statistics: 
+0: Sent Data OPRF (MB): 13.425
+0: Received Data OPRF (MB): 13.425
+0: Sent Data Hint (MB): 9.70367
+0: Received Data Hint (MB): 7545.6
+0: Sent Data Circuit (MB): 9.00739
+0: Received Data Circuit (MB): 14.2635
+0: Sent Data CryptFlow2 (MB): 98.6322
+0: Received Data CryptFlow2 (MB): 98.6322
+0: Total Sent Data (MB): 130.768
+0: Total Received Data (MB): 7671.92
+0: Total Communication (MB): 7802.69
+0: Total Sent Communication except for circuits (MB): 121.761
+0: Total Communication of client (MB): 1907.58
+0: Total Communication of client (MB): 1971.44

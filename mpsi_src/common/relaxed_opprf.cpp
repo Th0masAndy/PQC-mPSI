@@ -115,9 +115,8 @@ void multi_oprf_thread(int tid, std::vector<std::vector<osuCrypto::block>>& mask
 void OpprgPsiNonLeader(std::vector<std::uint64_t>& actual_contents_of_bins,
                        std::vector<std::vector<std::uint64_t>>& simple_table_v,
                        std::vector<std::vector<osuCrypto::block>>& masks, ENCRYPTO::PsiAnalyticsContext& context,
-                       std::unique_ptr<CSocket>& sock, osuCrypto::Channel& chl) {
-    auto begin = std::chrono::high_resolution_clock::now();
-
+                       std::unique_ptr<CSocket>& sock, osuCrypto::Channel& chl,
+                       std::chrono::_V2::system_clock::time_point& begin) {
     std::vector<std::uint64_t> content_of_bins;
     std::uint64_t bufferlength = (std::uint64_t)ceil(context.nbins / 2.0);
     osuCrypto::PRNG prng(osuCrypto::sysRandomSeed(), bufferlength);
@@ -140,6 +139,8 @@ void OpprgPsiNonLeader(std::vector<std::uint64_t>& actual_contents_of_bins,
             filterinputs.push_back(simple_table_v[i][j]);
         }
     }
+    simple_table_v.clear();
+
     ENCRYPTO::CuckooTable cuckoo_table(static_cast<std::size_t>(context.fbins));
     cuckoo_table.SetNumOfHashFunctions(context.ffuns);
     cuckoo_table.Insert(filterinputs);
@@ -438,7 +439,7 @@ void run_relaxed_opprf(std::vector<std::vector<std::uint64_t>>& sub_bins, ENCRYP
         auto elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin);
         printf("S0 Time measured: %.3f seconds.\n", elapsed.count() * 1e-9);
         printf("---------------------------------------\n");
-        OpprgPsiNonLeader(sub_bins[0], simple_table_v, masks, context, allsocks[0], chls[0]);
+        OpprgPsiNonLeader(sub_bins[0], simple_table_v, masks, context, allsocks[0], chls[0], begin);
     }
 }
 
@@ -550,7 +551,7 @@ void run_threshold_relaxed_opprf(std::vector<std::vector<std::uint8_t>>& a_share
 
         printf("-----------------Internal time---------------------\n");
         // Relaxed batch OPPRF protocol for non-leader
-        OpprgPsiNonLeader(actual_contents_of_bins, simple_table_v, masks, context, allsocks[0], chls[0]);
+        OpprgPsiNonLeader(actual_contents_of_bins, simple_table_v, masks, context, allsocks[0], chls[0], begin);
         printf("-----------------Internal time---------------------\n");
 
         end = std::chrono::high_resolution_clock::now();

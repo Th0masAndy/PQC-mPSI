@@ -1,0 +1,67 @@
+key = partyID value = 2
+key = partiesNumber value = 8
+key = numBins value = 7084
+key = inputsFile value = ../in_party_2.txt
+key = outputsFile value = output.txt
+key = circuitFile value = ic.txt
+key = fieldType value = ZpMersenneByte
+key = genRandomSharesType value = HIM
+key = multType value = DN
+key = verifyType value = Single
+key = partiesFile value = Parties.txt
+key = internalIterationsNumber value = 1
+key = threshold value = 4
+key = primemod value = 31
+connected
+connected
+key = partyID value = 2
+key = partiesNumber value = 8
+key = numBins value = 7084
+key = inputsFile value = ../in_party_2.txt
+key = outputsFile value = output.txt
+key = circuitFile value = ic.txt
+key = fieldType value = ZpMersenneByte
+key = genRandomSharesType value = HIM
+key = multType value = DN
+key = verifyType value = Single
+key = partiesFile value = Parties.txt
+key = internalIterationsNumber value = 1
+key = threshold value = 4
+key = primemod value = 31
+number of parties = 8
+ID = 2
+partiesFile = Parties.txt
+in communication
+num parties = 8
+my id = 2
+my port = 8400
+other port = 8001
+Failed to connect. sleeping for 500 milliseconds, connect: Connection refused
+accepting...
+channel established
+my port = 8401
+other port = 8201
+accepting...
+channel established
+my port = 8402
+other port = 8602
+Failed to connect. sleeping for 500 milliseconds, connect: Connection refused
+accepting...
+channel established
+my port = 8403
+other port = 8802
+accepting...
+channel established
+my port = 8404
+other port = 9002
+accepting...
+channel established
+my port = 8405
+other port = 9202
+accepting...
+channel established
+my port = 8406
+other port = 9402
+accepting...
+channel established
+time in milliseconds initializationPhase: 0

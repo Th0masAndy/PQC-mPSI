@@ -1,0 +1,140 @@
+key = partyID value = 4
+key = partiesNumber value = 16
+key = numBins value = 14132
+key = inputsFile value = ../in_party_4.txt
+key = outputsFile value = output.txt
+key = circuitFile value = ic.txt
+key = fieldType value = ZpMersenneByte
+key = genRandomSharesType value = HIM
+key = multType value = DN
+key = verifyType value = Single
+key = partiesFile value = Parties.txt
+key = internalIterationsNumber value = 1
+key = threshold value = 8
+key = primemod value = 31
+connected
+connected
+key = partyID value = 4
+key = partiesNumber value = 16
+key = numBins value = 14132
+key = inputsFile value = ../in_party_4.txt
+key = outputsFile value = output.txt
+key = circuitFile value = ic.txt
+key = fieldType value = ZpMersenneByte
+key = genRandomSharesType value = HIM
+key = multType value = DN
+key = verifyType value = Single
+key = partiesFile value = Parties.txt
+key = internalIterationsNumber value = 1
+key = threshold value = 8
+key = primemod value = 31
+number of parties = 16
+ID = 4
+partiesFile = Parties.txt
+in communication
+num parties = 16
+my id = 4
+my port = 8800
+other port = 8003
+Failed to connect. sleeping for 500 milliseconds, connect: Connection refused
+accepting...
+channel established
+my port = 8801
+other port = 8203
+Failed to connect. sleeping for 500 milliseconds, connect: Connection refused
+accepting...
+channel established
+my port = 8802
+other port = 8403
+Failed to connect. sleeping for 500 milliseconds, connect: Connection refused
+accepting...
+channel established
+my port = 8803
+other port = 8603
+accepting...
+channel established
+my port = 8804
+other port = 9004
+Failed to connect. sleeping for 500 milliseconds, connect: Connection refused
+accepting...
+channel established
+my port = 8805
+other port = 9204
+accepting...
+channel established
+my port = 8806
+other port = 9404
+accepting...
+channel established
+my port = 8807
+other port = 9604
+accepting...
+channel established
+my port = 8808
+other port = 9804
+accepting...
+channel established
+my port = 8809
+other port = 10004
+accepting...
+channel established
+my port = 8810
+other port = 10204
+accepting...
+channel established
+my port = 8811
+other port = 10404
+accepting...
+channel established
+my port = 8812
+other port = 10604
+accepting...
+channel established
+my port = 8813
+other port = 10804
+accepting...
+channel established
+my port = 8814
+other port = 11004
+accepting...
+channel established
+time in milliseconds initializationPhase: 0
+max_observed_bin_size: 3932
+SH Time measured: 52.371 seconds.
+S0 Time measured: 67.207 seconds. For OPRF and then OPPRF start
+-----------------Internal time---------------------
+S1 Time measured: 67.208 seconds. OPPRF start
+S2 Time measured: 160.139 seconds. for cuckoo hash
+S3 Time measured: 207.796 seconds. for intert table(hints) RB-OPPRF
+S4 Time measured: 208.104 seconds. send hints 
+S5 Time measured: 208.531 seconds. receive table
+S6 Time measured: 208.533 seconds. OPPRF end
+-----------------Internal time---------------------
+S8 Time measured: 253.439 seconds. End For OPPRF 
+S9 Time measured: 263.738 seconds. After EQ+B2A
+EQ + B2A cost 6894404Bytes
+4: Circuit evaluated in 208 milliseconds.
+4: Printing timings...
+4: Time for hashing 33082.8 ms
+4: Time for OPRF 22.5971 ms
+4: Time for polynomials 0 ms
+4: Time for transmission of the polynomials 0 ms
+4: Time for OPPRF 263743 ms
+4: Time for circuit 582.294 ms
+4: Total runtime: 264326ms
+
+4: Communication Statistics: 
+4: Sent Data OPRF (MB): 0.894998
+4: Received Data OPRF (MB): 0.894998
+4: Sent Data Hint (MB): 503.04
+4: Received Data Hint (MB): 0.646912
+4: Sent Data Circuit (MB): 3.13127
+4: Received Data Circuit (MB): 2.78086
+4: Sent Data CryptFlow2 (MB): 6.57502
+4: Received Data CryptFlow2 (MB): 6.57502
+4: Total Sent Data (MB): 513.641
+4: Total Received Data (MB): 10.8978
+4: Total Communication (MB): 524.539
+4: Total Sent Communication except for circuits (MB): 510.51
+4: Total Communication of client (MB): 7738.81
+4: Total Communication of client (MB): 7802.68

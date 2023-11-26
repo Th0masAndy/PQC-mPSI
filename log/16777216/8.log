@@ -1,0 +1,144 @@
+key = partyID value = 8
+key = partiesNumber value = 16
+key = numBins value = 14132
+key = inputsFile value = ../in_party_8.txt
+key = outputsFile value = output.txt
+key = circuitFile value = ic.txt
+key = fieldType value = ZpMersenneByte
+key = genRandomSharesType value = HIM
+key = multType value = DN
+key = verifyType value = Single
+key = partiesFile value = Parties.txt
+key = internalIterationsNumber value = 1
+key = threshold value = 8
+key = primemod value = 31
+connected
+connected
+key = partyID value = 8
+key = partiesNumber value = 16
+key = numBins value = 14132
+key = inputsFile value = ../in_party_8.txt
+key = outputsFile value = output.txt
+key = circuitFile value = ic.txt
+key = fieldType value = ZpMersenneByte
+key = genRandomSharesType value = HIM
+key = multType value = DN
+key = verifyType value = Single
+key = partiesFile value = Parties.txt
+key = internalIterationsNumber value = 1
+key = threshold value = 8
+key = primemod value = 31
+number of parties = 16
+ID = 8
+partiesFile = Parties.txt
+in communication
+num parties = 16
+my id = 8
+my port = 9600
+other port = 8007
+Failed to connect. sleeping for 500 milliseconds, connect: Connection refused
+accepting...
+channel established
+my port = 9601
+other port = 8207
+Failed to connect. sleeping for 500 milliseconds, connect: Connection refused
+accepting...
+channel established
+my port = 9602
+other port = 8407
+Failed to connect. sleeping for 500 milliseconds, connect: Connection refused
+accepting...
+channel established
+my port = 9603
+other port = 8607
+Failed to connect. sleeping for 500 milliseconds, connect: Connection refused
+accepting...
+channel established
+my port = 9604
+other port = 8807
+Failed to connect. sleeping for 500 milliseconds, connect: Connection refused
+accepting...
+channel established
+my port = 9605
+other port = 9007
+Failed to connect. sleeping for 500 milliseconds, connect: Connection refused
+accepting...
+channel established
+my port = 9606
+other port = 9207
+Failed to connect. sleeping for 500 milliseconds, connect: Connection refused
+accepting...
+channel established
+my port = 9607
+other port = 9407
+accepting...
+channel established
+my port = 9608
+other port = 9808
+Failed to connect. sleeping for 500 milliseconds, connect: Connection refused
+accepting...
+channel established
+my port = 9609
+other port = 10008
+accepting...
+channel established
+my port = 9610
+other port = 10208
+accepting...
+channel established
+my port = 9611
+other port = 10408
+accepting...
+channel established
+my port = 9612
+other port = 10608
+accepting...
+channel established
+my port = 9613
+other port = 10808
+accepting...
+channel established
+my port = 9614
+other port = 11008
+accepting...
+channel established
+time in milliseconds initializationPhase: 0
+max_observed_bin_size: 3932
+SH Time measured: 51.993 seconds.
+S0 Time measured: 66.801 seconds. For OPRF and then OPPRF start
+-----------------Internal time---------------------
+S1 Time measured: 66.802 seconds. OPPRF start
+S2 Time measured: 158.661 seconds. for cuckoo hash
+S3 Time measured: 205.343 seconds. for intert table(hints) RB-OPPRF
+S4 Time measured: 205.668 seconds. send hints 
+S5 Time measured: 206.113 seconds. receive table
+S6 Time measured: 206.115 seconds. OPPRF end
+-----------------Internal time---------------------
+S8 Time measured: 254.068 seconds. End For OPPRF 
+S9 Time measured: 263.789 seconds. After EQ+B2A
+EQ + B2A cost 6894404Bytes
+8: Circuit evaluated in 209 milliseconds.
+8: Printing timings...
+8: Time for hashing 32814.1 ms
+8: Time for OPRF 23.6688 ms
+8: Time for polynomials 0 ms
+8: Time for transmission of the polynomials 0 ms
+8: Time for OPPRF 263796 ms
+8: Time for circuit 528.874 ms
+8: Total runtime: 264325ms
+
+8: Communication Statistics: 
+8: Sent Data OPRF (MB): 0.894998
+8: Received Data OPRF (MB): 0.894998
+8: Sent Data Hint (MB): 503.04
+8: Received Data Hint (MB): 0.646912
+8: Sent Data Circuit (MB): 3.13127
+8: Received Data Circuit (MB): 2.78086
+8: Sent Data CryptFlow2 (MB): 6.57502
+8: Received Data CryptFlow2 (MB): 6.57502
+8: Total Sent Data (MB): 513.641
+8: Total Received Data (MB): 10.8978
+8: Total Communication (MB): 524.539
+8: Total Sent Communication except for circuits (MB): 510.51
+8: Total Communication of client (MB): 7738.81
+8: Total Communication of client (MB): 7802.68

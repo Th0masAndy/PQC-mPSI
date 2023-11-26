@@ -1,0 +1,81 @@
+key = partyID value = 1
+key = partiesNumber value = 2
+key = numBins value = 14132
+key = inputsFile value = ../in_party_1.txt
+key = outputsFile value = output.txt
+key = circuitFile value = ic.txt
+key = fieldType value = ZpMersenneByte
+key = genRandomSharesType value = HIM
+key = multType value = DN
+key = verifyType value = Single
+key = partiesFile value = Parties.txt
+key = internalIterationsNumber value = 1
+key = threshold value = 1
+key = primemod value = 31
+connected
+connected
+key = partyID value = 1
+key = partiesNumber value = 2
+key = numBins value = 14132
+key = inputsFile value = ../in_party_1.txt
+key = outputsFile value = output.txt
+key = circuitFile value = ic.txt
+key = fieldType value = ZpMersenneByte
+key = genRandomSharesType value = HIM
+key = multType value = DN
+key = verifyType value = Single
+key = partiesFile value = Parties.txt
+key = internalIterationsNumber value = 1
+key = threshold value = 1
+key = primemod value = 31
+number of parties = 2
+ID = 1
+partiesFile = Parties.txt
+in communication
+num parties = 2
+my id = 1
+my port = 8200
+other port = 8000
+accepting...
+channel established
+time in milliseconds initializationPhase: 0
+max_observed_bin_size: 15385
+SH Time measured: 203.355 seconds.
+S0 Time measured: 313.019 seconds. For OPRF and then OPPRF start
+-----------------Internal time---------------------
+S1 Time measured: 313.020 seconds. OPPRF start
+S2 Time measured: 712.252 seconds. for cuckoo hash
+S3 Time measured: 946.364 seconds. for intert table(hints) RB-OPPRF
+S4 Time measured: 947.578 seconds. send hints 
+S5 Time measured: 948.006 seconds. receive table
+S6 Time measured: 948.008 seconds. OPPRF end
+-----------------Internal time---------------------
+S8 Time measured: 1131.905 seconds. End For OPPRF 
+S9 Time measured: 1132.125 seconds. After EQ+B2A
+EQ + B2A cost 6894404Bytes
+1: Circuit evaluated in 31 milliseconds.
+1: Printing timings...
+1: Time for hashing 163923 ms
+1: Time for OPRF 19.05 ms
+1: Time for polynomials 0 ms
+1: Time for transmission of the polynomials 0 ms
+1: Time for OPPRF 1.13213e+06 ms
+1: Time for circuit 73.7161 ms
+1: Total runtime: 1.1322e+06ms
+
+1: Communication Statistics: 
+1: Sent Data OPRF (MB): 0.894998
+1: Received Data OPRF (MB): 0.894998
+1: Sent Data Hint (MB): 2012.16
+1: Received Data Hint (MB): 0.646912
+1: Sent Data Circuit (MB): 1.26013
+1: Received Data Circuit (MB): 0.909724
+1: Sent Data CryptFlow2 (MB): 6.57502
+1: Received Data CryptFlow2 (MB): 6.57502
+1: Total Sent Data (MB): 2020.89
+1: Total Received Data (MB): 9.02665
+1: Total Communication (MB): 2029.92
+1: Total Sent Communication except for circuits (MB): 2019.63
+1: Total Communication of client (MB): 30375.6
+1: Total Communication of client (MB): 30439.5
+end main

@@ -1,0 +1,150 @@
+key = partyID value = 14
+key = partiesNumber value = 16
+key = numBins value = 14132
+key = inputsFile value = ../in_party_14.txt
+key = outputsFile value = output.txt
+key = circuitFile value = ic.txt
+key = fieldType value = ZpMersenneByte
+key = genRandomSharesType value = HIM
+key = multType value = DN
+key = verifyType value = Single
+key = partiesFile value = Parties.txt
+key = internalIterationsNumber value = 1
+key = threshold value = 8
+key = primemod value = 31
+connected
+connected
+key = partyID value = 14
+key = partiesNumber value = 16
+key = numBins value = 14132
+key = inputsFile value = ../in_party_14.txt
+key = outputsFile value = output.txt
+key = circuitFile value = ic.txt
+key = fieldType value = ZpMersenneByte
+key = genRandomSharesType value = HIM
+key = multType value = DN
+key = verifyType value = Single
+key = partiesFile value = Parties.txt
+key = internalIterationsNumber value = 1
+key = threshold value = 8
+key = primemod value = 31
+number of parties = 16
+ID = 14
+partiesFile = Parties.txt
+in communication
+num parties = 16
+my id = 14
+my port = 10800
+other port = 8013
+Failed to connect. sleeping for 500 milliseconds, connect: Connection refused
+accepting...
+channel established
+my port = 10801
+other port = 8213
+Failed to connect. sleeping for 500 milliseconds, connect: Connection refused
+accepting...
+channel established
+my port = 10802
+other port = 8413
+Failed to connect. sleeping for 500 milliseconds, connect: Connection refused
+accepting...
+channel established
+my port = 10803
+other port = 8613
+Failed to connect. sleeping for 500 milliseconds, connect: Connection refused
+accepting...
+channel established
+my port = 10804
+other port = 8813
+Failed to connect. sleeping for 500 milliseconds, connect: Connection refused
+accepting...
+channel established
+my port = 10805
+other port = 9013
+Failed to connect. sleeping for 500 milliseconds, connect: Connection refused
+accepting...
+channel established
+my port = 10806
+other port = 9213
+Failed to connect. sleeping for 500 milliseconds, connect: Connection refused
+accepting...
+channel established
+my port = 10807
+other port = 9413
+Failed to connect. sleeping for 500 milliseconds, connect: Connection refused
+accepting...
+channel established
+my port = 10808
+other port = 9613
+Failed to connect. sleeping for 500 milliseconds, connect: Connection refused
+accepting...
+channel established
+my port = 10809
+other port = 9813
+Failed to connect. sleeping for 500 milliseconds, connect: Connection refused
+accepting...
+channel established
+my port = 10810
+other port = 10013
+Failed to connect. sleeping for 500 milliseconds, connect: Connection refused
+accepting...
+channel established
+my port = 10811
+other port = 10213
+Failed to connect. sleeping for 500 milliseconds, connect: Connection refused
+accepting...
+channel established
+my port = 10812
+other port = 10413
+Failed to connect. sleeping for 500 milliseconds, connect: Connection refused
+accepting...
+channel established
+my port = 10813
+other port = 10613
+accepting...
+channel established
+my port = 10814
+other port = 11014
+Failed to connect. sleeping for 500 milliseconds, connect: Connection refused
+accepting...
+channel established
+time in milliseconds initializationPhase: 0
+max_observed_bin_size: 288
+SH Time measured: 2.417 seconds.
+S0 Time measured: 3.698 seconds. For OPRF and then OPPRF start
+-----------------Internal time---------------------
+S1 Time measured: 3.699 seconds. OPPRF start
+S2 Time measured: 8.087 seconds. for cuckoo hash
+S3 Time measured: 10.120 seconds. for intert table(hints) RB-OPPRF
+S4 Time measured: 10.136 seconds. send hints 
+S5 Time measured: 10.565 seconds. receive table
+S6 Time measured: 10.567 seconds. OPPRF end
+-----------------Internal time---------------------
+S8 Time measured: 12.538 seconds. End For OPPRF 
+S9 Time measured: 13.256 seconds. After EQ+B2A
+EQ + B2A cost 6894404Bytes
+14: Circuit evaluated in 232 milliseconds.
+14: Printing timings...
+14: Time for hashing 1823.81 ms
+14: Time for OPRF 21.5248 ms
+14: Time for polynomials 0 ms
+14: Time for transmission of the polynomials 2.65509e-315 ms
+14: Time for OPPRF 13258.8 ms
+14: Time for circuit 526.769 ms
+14: Total runtime: 13785.7ms
+
+14: Communication Statistics: 
+14: Sent Data OPRF (MB): 0.894998
+14: Received Data OPRF (MB): 0.894998
+14: Sent Data Hint (MB): 31.44
+14: Received Data Hint (MB): 0.646912
+14: Sent Data Circuit (MB): 3.13127
+14: Received Data Circuit (MB): 2.78086
+14: Sent Data CryptFlow2 (MB): 6.57502
+14: Received Data CryptFlow2 (MB): 6.57502
+14: Total Sent Data (MB): 42.0413
+14: Total Received Data (MB): 10.8978
+14: Total Communication (MB): 52.9391
+14: Total Sent Communication except for circuits (MB): 38.91
+14: Total Communication of client (MB): 664.815
+14: Total Communication of client (MB): 728.682

@@ -1,0 +1,143 @@
+key = partyID value = 6
+key = partiesNumber value = 16
+key = numBins value = 14132
+key = inputsFile value = ../in_party_6.txt
+key = outputsFile value = output.txt
+key = circuitFile value = ic.txt
+key = fieldType value = ZpMersenneByte
+key = genRandomSharesType value = HIM
+key = multType value = DN
+key = verifyType value = Single
+key = partiesFile value = Parties.txt
+key = internalIterationsNumber value = 1
+key = threshold value = 8
+key = primemod value = 31
+connected
+connected
+key = partyID value = 6
+key = partiesNumber value = 16
+key = numBins value = 14132
+key = inputsFile value = ../in_party_6.txt
+key = outputsFile value = output.txt
+key = circuitFile value = ic.txt
+key = fieldType value = ZpMersenneByte
+key = genRandomSharesType value = HIM
+key = multType value = DN
+key = verifyType value = Single
+key = partiesFile value = Parties.txt
+key = internalIterationsNumber value = 1
+key = threshold value = 8
+key = primemod value = 31
+number of parties = 16
+ID = 6
+partiesFile = Parties.txt
+in communication
+num parties = 16
+my id = 6
+my port = 9200
+other port = 8005
+Failed to connect. sleeping for 500 milliseconds, connect: Connection refused
+accepting...
+channel established
+my port = 9201
+other port = 8205
+Failed to connect. sleeping for 500 milliseconds, connect: Connection refused
+accepting...
+channel established
+my port = 9202
+other port = 8405
+Failed to connect. sleeping for 500 milliseconds, connect: Connection refused
+accepting...
+channel established
+my port = 9203
+other port = 8605
+Failed to connect. sleeping for 500 milliseconds, connect: Connection refused
+accepting...
+channel established
+my port = 9204
+other port = 8805
+Failed to connect. sleeping for 500 milliseconds, connect: Connection refused
+accepting...
+channel established
+my port = 9205
+other port = 9005
+accepting...
+channel established
+my port = 9206
+other port = 9406
+Failed to connect. sleeping for 500 milliseconds, connect: Connection refused
+accepting...
+channel established
+my port = 9207
+other port = 9606
+accepting...
+channel established
+my port = 9208
+other port = 9806
+accepting...
+channel established
+my port = 9209
+other port = 10006
+accepting...
+channel established
+my port = 9210
+other port = 10206
+accepting...
+channel established
+my port = 9211
+other port = 10406
+accepting...
+channel established
+my port = 9212
+other port = 10606
+accepting...
+channel established
+my port = 9213
+other port = 10806
+accepting...
+channel established
+my port = 9214
+other port = 11006
+accepting...
+channel established
+time in milliseconds initializationPhase: 0
+max_observed_bin_size: 92
+SH Time measured: 0.590 seconds.
+S0 Time measured: 1.215 seconds. For OPRF and then OPPRF start
+-----------------Internal time---------------------
+S1 Time measured: 1.216 seconds. OPPRF start
+S2 Time measured: 2.210 seconds. for cuckoo hash
+S3 Time measured: 2.661 seconds. for intert table(hints) RB-OPPRF
+S4 Time measured: 2.665 seconds. send hints 
+S5 Time measured: 3.125 seconds. receive table
+S6 Time measured: 3.127 seconds. OPPRF end
+-----------------Internal time---------------------
+S8 Time measured: 3.516 seconds. End For OPPRF 
+S9 Time measured: 4.137 seconds. After EQ+B2A
+EQ + B2A cost 6894404Bytes
+6: Circuit evaluated in 223 milliseconds.
+6: Printing timings...
+6: Time for hashing 453.005 ms
+6: Time for OPRF 6.80169 ms
+6: Time for polynomials 0 ms
+6: Time for transmission of the polynomials 0 ms
+6: Time for OPPRF 4139.45 ms
+6: Time for circuit 554.601 ms
+6: Total runtime: 4694.21ms
+
+6: Communication Statistics: 
+6: Sent Data OPRF (MB): 0.894998
+6: Received Data OPRF (MB): 0.894998
+6: Sent Data Hint (MB): 7.85999
+6: Received Data Hint (MB): 0.646912
+6: Sent Data Circuit (MB): 3.13127
+6: Received Data Circuit (MB): 2.78086
+6: Sent Data CryptFlow2 (MB): 6.57502
+6: Received Data CryptFlow2 (MB): 6.57502
+6: Total Sent Data (MB): 18.4613
+6: Total Received Data (MB): 10.8978
+6: Total Communication (MB): 29.3591
+6: Total Sent Communication except for circuits (MB): 15.33
+6: Total Communication of client (MB): 311.115
+6: Total Communication of client (MB): 374.982
+corrupted size vs. prev_size while consolidating

@@ -88,8 +88,8 @@ auto read_test_options(int32_t argcp, char** argvp) {
     try {
         po::store(po::parse_command_line(argcp, argvp, allowed), vm);
         po::notify(vm);
-    } catch (const boost::exception_detail::clone_impl<boost::exception_detail::error_info_injector<
-                 boost::program_options::required_option>>& e) {
+    } catch (const boost::exception_detail::clone_impl<
+             boost::exception_detail::error_info_injector<boost::program_options::required_option>>& e) {
         if (!vm.count("help")) {
             std::cout << e.what() << std::endl;
             std::cout << allowed << std::endl;
@@ -140,9 +140,11 @@ auto read_test_options(int32_t argcp, char** argvp) {
         context.nthreads = context.np - 1;
     }
 
+    auto small_size = 11041;
+
     context.nbins = context.neles * context.epsilon;
 
-    context.nbins = 1350 * context.epsilon;
+    context.nbins = small_size * context.epsilon;
 
     // Setting parameters for polynomial OPPRF, based on Pinkas et al, 2019
     int logn = int(std::log2(context.neles));
@@ -168,7 +170,7 @@ auto read_test_options(int32_t argcp, char** argvp) {
     context.fbins = context.fepsilon * context.neles * context.nfuns;
 
     if (context.role == P_0) {
-        context.neles = 1350;
+        context.neles = small_size;
     }
 
     // Setting parameters for circuit
@@ -255,8 +257,8 @@ void prepareArgs(ENCRYPTO::PsiAnalyticsContext context, char** circuitArgv) {
  * Run the full PSI (non-circuit) protocol
  */
 void MPSI_execution(ENCRYPTO::PsiAnalyticsContext& context, std::vector<std::uint64_t>& inputs,
-                    std::vector<std::unique_ptr<CSocket>>& allsocks,
-                    std::vector<osuCrypto::Channel>& chl, MPSI_Party<ZpMersenneLongElement>& mpsi) {
+                    std::vector<std::unique_ptr<CSocket>>& allsocks, std::vector<osuCrypto::Channel>& chl,
+                    MPSI_Party<ZpMersenneLongElement>& mpsi) {
     ResetCommunication(allsocks, chl, context);
     auto start_time = std::chrono::system_clock::now();
     std::vector<std::vector<std::uint64_t>> sub_bins;
@@ -302,11 +304,9 @@ void MPSI_execution(ENCRYPTO::PsiAnalyticsContext& context, std::vector<std::uin
 /*
  * Run the threshold PSI protocol
  */
-void MPSI_threshold_execution(ENCRYPTO::PsiAnalyticsContext& context,
-                              std::vector<std::uint64_t>& inputs,
-                              std::vector<std::unique_ptr<CSocket>>& allsocks,
-                              std::vector<osuCrypto::Channel>& chl, std::vector<sci::NetIO*> ioArr,
-                              Threshold<ZpMersenneByteElement>& mpsi) {
+void MPSI_threshold_execution(ENCRYPTO::PsiAnalyticsContext& context, std::vector<std::uint64_t>& inputs,
+                              std::vector<std::unique_ptr<CSocket>>& allsocks, std::vector<osuCrypto::Channel>& chl,
+                              std::vector<sci::NetIO*> ioArr, Threshold<ZpMersenneByteElement>& mpsi) {
     ResetCommunication(allsocks, chl, context);
     RELAXEDNS::ResetCommunicationThreshold(ioArr, context);
     auto start_time = std::chrono::system_clock::now();
@@ -356,11 +356,9 @@ void MPSI_threshold_execution(ENCRYPTO::PsiAnalyticsContext& context,
 /*
  * Run the Circuit PSI protocol
  */
-void MPSI_circuit_execution(ENCRYPTO::PsiAnalyticsContext& context,
-                            std::vector<std::uint64_t>& inputs,
-                            std::vector<std::unique_ptr<CSocket>>& allsocks,
-                            std::vector<osuCrypto::Channel>& chl, std::vector<sci::NetIO*> ioArr,
-                            CircuitPSI<ZpMersenneByteElement>& mpsi) {
+void MPSI_circuit_execution(ENCRYPTO::PsiAnalyticsContext& context, std::vector<std::uint64_t>& inputs,
+                            std::vector<std::unique_ptr<CSocket>>& allsocks, std::vector<osuCrypto::Channel>& chl,
+                            std::vector<sci::NetIO*> ioArr, CircuitPSI<ZpMersenneByteElement>& mpsi) {
     ResetCommunication(allsocks, chl, context);
     RELAXEDNS::ResetCommunicationThreshold(ioArr, context);
     auto start_time = std::chrono::system_clock::now();
@@ -407,8 +405,7 @@ void MPSI_circuit_execution(ENCRYPTO::PsiAnalyticsContext& context,
 /*
  * Set up connections between parties for OPPRF phase
  */
-void synchronize_parties(ENCRYPTO::PsiAnalyticsContext& context,
-                         std::vector<std::unique_ptr<CSocket>>& allsocks,
+void synchronize_parties(ENCRYPTO::PsiAnalyticsContext& context, std::vector<std::unique_ptr<CSocket>>& allsocks,
                          std::vector<osuCrypto::Channel>& chl, osuCrypto::IOService& ios,
                          std::vector<osuCrypto::Session>& ep) {
     if (context.role == P_0) {
@@ -422,8 +419,7 @@ void synchronize_parties(ENCRYPTO::PsiAnalyticsContext& context,
         std::thread conn_threads[context.nthreads];
         // std::vector<std::unique_ptr<CSocket>> allsocks(context.np-1);
         for (int i = 0; i < context.nthreads; i++) {
-            conn_threads[i] =
-                std::thread(ENCRYPTO::multi_conn_thread, i, std::ref(allsocks), std::ref(context));
+            conn_threads[i] = std::thread(ENCRYPTO::multi_conn_thread, i, std::ref(allsocks), std::ref(context));
         }
 
         for (int i = 0; i < context.nthreads; i++) {
@@ -432,8 +428,7 @@ void synchronize_parties(ENCRYPTO::PsiAnalyticsContext& context,
 
         std::thread sync_threads[context.nthreads];
         for (int i = 0; i < context.nthreads; i++) {
-            sync_threads[i] =
-                std::thread(ENCRYPTO::multi_sync_thread, i, std::ref(allsocks), std::ref(context));
+            sync_threads[i] = std::thread(ENCRYPTO::multi_sync_thread, i, std::ref(allsocks), std::ref(context));
         }
 
         for (int i = 0; i < context.nthreads; i++) {
@@ -445,8 +440,8 @@ void synchronize_parties(ENCRYPTO::PsiAnalyticsContext& context,
         ep.push_back(ENCRYPTO::ot_sender_connect(context, ios, chl[0]));
         std::vector<std::uint8_t> testdata(1000, 0);
         allsocks.resize(1);
-        allsocks[0] = ENCRYPTO::EstablishConnection(context.address[0], context.port[0],
-                                                    static_cast<e_role>(context.role));
+        allsocks[0] =
+            ENCRYPTO::EstablishConnection(context.address[0], context.port[0], static_cast<e_role>(context.role));
         allsocks[0]->Receive(testdata.data(), 1000);
         // ios[0] = thisio;
     }
@@ -532,8 +527,8 @@ int main(int argc, char** argv) {
             party = 1;
             ioArr.resize(2 * (context.np - 1));
             for (int i = 0; i < context.nthreads; i++) {
-                boolean_conn_threads[i] = std::thread(RELAXEDNS::multi_boolean_conn, i,
-                                                      std::ref(ioArr), std::ref(context));
+                boolean_conn_threads[i] =
+                    std::thread(RELAXEDNS::multi_boolean_conn, i, std::ref(ioArr), std::ref(context));
             }
 
             for (int i = 0; i < context.nthreads; i++) {

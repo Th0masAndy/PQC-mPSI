@@ -478,6 +478,12 @@ void PrintCommunication(PsiAnalyticsContext& context) {
     std::cout << context.role << ": Total Sent Data (MB): " << sentinMB << std::endl;
     std::cout << context.role << ": Total Received Data (MB): " << recvinMB << std::endl;
     std::cout << context.role << ": Total Communication (MB): " << sentinMB + recvinMB << std::endl;
+
+    double send = context.sentBytesOPRF / ((1.0 * (1ULL << 20))) + context.sentBytesHint / ((1.0 * (1ULL << 20))) +
+                  context.sentBytesSCI / ((1.0 * (1ULL << 20)));
+    std::cout << context.role << ": Total Sent Communication except for circuits (MB): " << send << std::endl;
+    std::cout << context.role << ": Total Communication of client (MB): " << send * 15 + 7.14995 + 74.0147 << std::endl;
+    std::cout << context.role << ": Total Communication of client (MB): " << send * 15 + 14.2635 + 130.768 << std::endl;
 }
 
 /*

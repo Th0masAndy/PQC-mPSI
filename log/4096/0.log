@@ -1,0 +1,229 @@
+key = partyID value = 0
+key = partiesNumber value = 16
+key = numBins value = 7084
+key = inputsFile value = ../in_party_0.txt
+key = outputsFile value = output.txt
+key = circuitFile value = ic.txt
+key = fieldType value = ZpMersenneByte
+key = genRandomSharesType value = HIM
+key = multType value = DN
+key = verifyType value = Single
+key = partiesFile value = Parties.txt
+key = internalIterationsNumber value = 1
+key = threshold value = 8
+key = primemod value = 31
+connected
+connected
+connected
+connected
+connected
+connected
+connected
+connected
+connected
+connected
+connected
+connected
+connected
+connected
+connected
+connected
+connected
+connected
+connected
+connected
+connected
+connected
+connected
+connected
+connected
+connected
+connected
+connected
+connected
+connected
+key = partyID value = 0
+key = partiesNumber value = 16
+key = numBins value = 7084
+key = inputsFile value = ../in_party_0.txt
+key = outputsFile value = output.txt
+key = circuitFile value = ic.txt
+key = fieldType value = ZpMersenneByte
+key = genRandomSharesType value = HIM
+key = multType value = DN
+key = verifyType value = Single
+key = partiesFile value = Parties.txt
+key = internalIterationsNumber value = 1
+key = threshold value = 8
+key = primemod value = 31
+number of parties = 16
+ID = 0
+partiesFile = Parties.txt
+in communication
+num parties = 16
+my id = 0
+my port = 8000
+other port = 8200
+accepting...
+channel established
+my port = 8001
+other port = 8400
+accepting...
+channel established
+my port = 8002
+other port = 8600
+accepting...
+channel established
+my port = 8003
+other port = 8800
+accepting...
+channel established
+my port = 8004
+other port = 9000
+accepting...
+channel established
+my port = 8005
+other port = 9200
+accepting...
+channel established
+my port = 8006
+other port = 9400
+accepting...
+channel established
+my port = 8007
+other port = 9600
+accepting...
+channel established
+my port = 8008
+other port = 9800
+accepting...
+channel established
+my port = 8009
+other port = 10000
+accepting...
+channel established
+my port = 8010
+other port = 10200
+accepting...
+channel established
+my port = 8011
+other port = 10400
+accepting...
+channel established
+my port = 8012
+other port = 10600
+accepting...
+channel established
+my port = 8013
+other port = 10800
+accepting...
+channel established
+my port = 8014
+other port = 11000
+accepting...
+channel established
+time in milliseconds initializationPhase: 0
+client socket connect error (hangs).
+client socket connect error (hangs).client socket connect error (hangs).client socket connect error (hangs).
+
+client socket connect error (hangs).
+
+client socket connect error (hangs).
+client socket connect error (hangs).
+client socket connect error (hangs).client socket connect error (hangs).
+client socket connect error (hangs).
+client socket connect error (hangs).
+client socket connect error (hangs).
+
+client socket connect error (hangs).
+client socket connect error (hangs).
+client socket connect error (hangs).
+client socket connect error (hangs).
+client socket connect error (hangs).
+client socket connect error (hangs).
+client socket connect error (hangs).
+client socket connect error (hangs).
+client socket connect error (hangs).
+client socket connect error (hangs).
+client socket connect error (hangs).
+client socket connect error (hangs).
+client socket connect error (hangs).
+client socket connect error (hangs).
+client socket connect error (hangs).
+client socket connect error (hangs).
+client socket connect error (hangs).
+client socket connect error (hangs).
+client socket connect error (hangs).client socket connect error (hangs).
+
+client socket connect error (hangs).
+client socket connect error (hangs).
+client socket connect error (hangs).
+client socket connect error (hangs).
+client socket connect error (hangs).client socket connect error (hangs).
+
+client socket connect error (hangs).
+client socket connect error (hangs).
+client socket connect error (hangs).
+client socket connect error (hangs).
+network receive error (n n -> n ): End of file
+ at  /root/PQC-mPSI/extern/libOTe/cryptoTools/cryptoTools/Network/Channel.cpp:807
+network receive error (n n -> n ): End of file
+ at  /root/PQC-mPSI/extern/libOTe/cryptoTools/cryptoTools/Network/Channel.cpp:807
+network receive error (n n -> n ): End of file
+ at  /root/PQC-mPSI/extern/libOTe/cryptoTools/cryptoTools/Network/Channel.cpp:807
+network receive error (n n -> n ): End of file
+ at  /root/PQC-mPSI/extern/libOTe/cryptoTools/cryptoTools/Network/Channel.cpp:807
+network receive error (n n -> n ): End of file
+ at  /root/PQC-mPSI/extern/libOTe/cryptoTools/cryptoTools/Network/Channel.cpp:807
+network receive error (n n -> n ): End of file
+ at  /root/PQC-mPSI/extern/libOTe/cryptoTools/cryptoTools/Network/Channel.cpp:807
+network receive error (n n -> n ): End of file
+ at  /root/PQC-mPSI/extern/libOTe/cryptoTools/cryptoTools/Network/Channel.cpp:807
+network receive error (n n -> n ): End of file
+ at  /root/PQC-mPSI/extern/libOTe/cryptoTools/cryptoTools/Network/Channel.cpp:807
+network receive error (n n -> n ): End of file
+ at  /root/PQC-mPSI/extern/libOTe/cryptoTools/cryptoTools/Network/Channel.cpp:807
+network receive error (n n -> n ): End of file
+ at  /root/PQC-mPSI/extern/libOTe/cryptoTools/cryptoTools/Network/Channel.cpp:807
+network receive error (n n -> n ): End of file
+ at  /root/PQC-mPSI/extern/libOTe/cryptoTools/cryptoTools/Network/Channel.cpp:807
+network receive error (n n -> n ): End of file
+ at  /root/PQC-mPSI/extern/libOTe/cryptoTools/cryptoTools/Network/Channel.cpp:807
+network receive error (n n -> n ): End of file
+ at  /root/PQC-mPSI/extern/libOTe/cryptoTools/cryptoTools/Network/Channel.cpp:807
+network send error: Broken pipe
+ at  /root/PQC-mPSI/extern/libOTe/cryptoTools/cryptoTools/Network/Channel.cpp:858
+network send error: Broken pipe
+ at  /root/PQC-mPSI/extern/libOTe/cryptoTools/cryptoTools/Network/Channel.cpp:858
+network send error: Broken pipe
+ at  /root/PQC-mPSI/extern/libOTe/cryptoTools/cryptoTools/Network/Channel.cpp:858
+network send error: Broken pipe
+ at  /root/PQC-mPSI/extern/libOTe/cryptoTools/cryptoTools/Network/Channel.cpp:858
+network send error: Broken pipe
+ at  /root/PQC-mPSI/extern/libOTe/cryptoTools/cryptoTools/Network/Channel.cpp:858
+network send error: Broken pipe
+ at  /root/PQC-mPSI/extern/libOTe/cryptoTools/cryptoTools/Network/Channel.cpp:858
+network send error: Broken pipe
+ at  /root/PQC-mPSI/extern/libOTe/cryptoTools/cryptoTools/Network/Channel.cpp:858
+network send error: Broken pipe
+ at  /root/PQC-mPSI/extern/libOTe/cryptoTools/cryptoTools/Network/Channel.cpp:858
+network send error: Broken pipe
+ at  /root/PQC-mPSI/extern/libOTe/cryptoTools/cryptoTools/Network/Channel.cpp:858
+network send error: Broken pipe
+ at  /root/PQC-mPSI/extern/libOTe/cryptoTools/cryptoTools/Network/Channel.cpp:858
+network send error: Broken pipe
+ at  /root/PQC-mPSI/extern/libOTe/cryptoTools/cryptoTools/Network/Channel.cpp:858
+network send error: Broken pipe
+ at  /root/PQC-mPSI/extern/libOTe/cryptoTools/cryptoTools/Network/Channel.cpp:858
+network send error: Broken pipe
+ at  /root/PQC-mPSI/extern/libOTe/cryptoTools/cryptoTools/Network/Channel.cpp:858
+network receive error (n n -> n ): End of file
+ at  /root/PQC-mPSI/extern/libOTe/cryptoTools/cryptoTools/Network/Channel.cpp:807
+network receive error (n n -> n ): End of file
+ at  /root/PQC-mPSI/extern/libOTe/cryptoTools/cryptoTools/Network/Channel.cpp:807
+network send error: Broken pipe
+ at  /root/PQC-mPSI/extern/libOTe/cryptoTools/cryptoTools/Network/Channel.cpp:858
+network send error: Broken pipe
+ at  /root/PQC-mPSI/extern/libOTe/cryptoTools/cryptoTools/Network/Channel.cpp:858
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  End of file
